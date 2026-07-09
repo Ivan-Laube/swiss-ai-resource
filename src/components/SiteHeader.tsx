@@ -1,33 +1,30 @@
 import Link from "next/link";
+import { localeLabels, locales, type Locale } from "@/i18n";
+import type { Messages } from "@/i18n/types";
 import styles from "./SiteHeader.module.css";
 
-const languages = [
-  { code: "de", label: "DE" },
-  { code: "en", label: "EN" },
-  { code: "fr", label: "FR" },
-  { code: "it", label: "IT" },
-] as const;
-
 type SiteHeaderProps = {
-  activeLang?: (typeof languages)[number]["code"];
+  activeLang: Locale;
+  messages: Messages;
 };
 
-export function SiteHeader({ activeLang = "de" }: SiteHeaderProps) {
+export function SiteHeader({ activeLang, messages }: SiteHeaderProps) {
   return (
     <header className={styles.header}>
       <Link href={`/${activeLang}/`} className={styles.brand}>
-        Swiss AI Resource
+        {messages.nav.brand}
       </Link>
-      <nav aria-label="Sprachen">
+      <nav aria-label={messages.nav.languagesLabel}>
         <ul className={styles.langList}>
-          {languages.map(({ code, label }) => (
+          {locales.map((code) => (
             <li key={code}>
               <Link
                 href={`/${code}/`}
                 className={code === activeLang ? styles.active : undefined}
                 aria-current={code === activeLang ? "page" : undefined}
+                hrefLang={code}
               >
-                {label}
+                {localeLabels[code]}
               </Link>
             </li>
           ))}
