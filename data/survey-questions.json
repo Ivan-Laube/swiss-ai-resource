@@ -1,0 +1,881 @@
+{
+  "id": "swiss-ai-adoption-2026",
+  "version": 2,
+  "estimated_minutes": 5,
+  "title": {
+    "de": "Schweizer KI-Adoption 2026",
+    "en": "Swiss AI Adoption 2026",
+    "fr": "Adoption de l'IA en Suisse 2026",
+    "it": "Adozione dell'IA in Svizzera 2026"
+  },
+  "description": {
+    "de": "Kurze Umfrage (ca. 5 Minuten) zu KI-Nutzung, Ausgaben und Hosting-Anforderungen in Schweizer Unternehmen. Die anonymisierten Ergebnisse fliessen in den Benchmark-Bericht ein.",
+    "en": "A short survey (about 5 minutes) on AI use, spend, and hosting requirements in Swiss companies. Anonymized results feed the benchmark report.",
+    "fr": "Courte enquête (environ 5 minutes) sur l'utilisation de l'IA, les dépenses et les exigences d'hébergement dans les entreprises suisses. Les résultats anonymisés alimentent le rapport de référence.",
+    "it": "Breve sondaggio (circa 5 minuti) su utilizzo dell'IA, spesa e requisiti di hosting nelle aziende svizzere. I risultati anonimi alimentano il rapporto di benchmark."
+  },
+  "questions": [
+    {
+      "id": "company-size",
+      "prompt": {
+        "de": "Wie viele Mitarbeitende hat Ihr Unternehmen?",
+        "en": "How many employees does your company have?",
+        "fr": "Combien d'employés compte votre entreprise ?",
+        "it": "Quanti dipendenti ha la vostra azienda?"
+      },
+      "help": {
+        "de": "Vollzeitäquivalente (FTE) in der Schweiz; grobe Bandbreite genügt. Bands entsprechen den BFS/EU-KMU-Schwellen.",
+        "en": "Full-time equivalents (FTE) in Switzerland; a rough band is enough. Bands follow BFS/EU SME thresholds.",
+        "fr": "Équivalents temps plein (ETP) en Suisse ; une fourchette approximative suffit. Les bandes suivent les seuils PME BFS/UE.",
+        "it": "Equivalenti a tempo pieno (FTE) in Svizzera; basta una fascia approssimativa. Le fasce seguono le soglie PMI BFS/UE."
+      },
+      "input": "single",
+      "required": true,
+      "aggregate": true,
+      "options": [
+        {
+          "id": "1-9",
+          "label": { "de": "1–9", "en": "1–9", "fr": "1–9", "it": "1–9" }
+        },
+        {
+          "id": "10-49",
+          "label": { "de": "10–49", "en": "10–49", "fr": "10–49", "it": "10–49" }
+        },
+        {
+          "id": "50-249",
+          "label": { "de": "50–249", "en": "50–249", "fr": "50–249", "it": "50–249" }
+        },
+        {
+          "id": "250-999",
+          "label": { "de": "250–999", "en": "250–999", "fr": "250–999", "it": "250–999" }
+        },
+        {
+          "id": "1000-plus",
+          "label": { "de": "1000+", "en": "1000+", "fr": "1000+", "it": "1000+" }
+        }
+      ]
+    },
+    {
+      "id": "sector",
+      "prompt": {
+        "de": "In welcher Branche ist Ihr Unternehmen hauptsächlich tätig?",
+        "en": "In which sector does your company mainly operate?",
+        "fr": "Dans quel secteur votre entreprise opère-t-elle principalement ?",
+        "it": "In quale settore opera principalmente la vostra azienda?"
+      },
+      "input": "single",
+      "required": true,
+      "aggregate": true,
+      "options": [
+        {
+          "id": "manufacturing",
+          "label": {
+            "de": "Industrie / Produktion",
+            "en": "Manufacturing / industry",
+            "fr": "Industrie / production",
+            "it": "Industria / produzione"
+          }
+        },
+        {
+          "id": "construction",
+          "label": {
+            "de": "Bau / Immobilienentwicklung",
+            "en": "Construction / real-estate development",
+            "fr": "Construction / promotion immobilière",
+            "it": "Edilizia / sviluppo immobiliare"
+          }
+        },
+        {
+          "id": "finance-insurance",
+          "label": {
+            "de": "Finanzdienstleistungen / Versicherungen",
+            "en": "Finance / insurance",
+            "fr": "Services financiers / assurances",
+            "it": "Servizi finanziari / assicurazioni"
+          }
+        },
+        {
+          "id": "healthcare-life-sciences",
+          "label": {
+            "de": "Gesundheitswesen / Life Sciences",
+            "en": "Healthcare / life sciences",
+            "fr": "Santé / sciences de la vie",
+            "it": "Sanità / life sciences"
+          }
+        },
+        {
+          "id": "retail-trade",
+          "label": {
+            "de": "Detailhandel / Handel",
+            "en": "Retail / trade",
+            "fr": "Commerce de détail / négoce",
+            "it": "Commercio al dettaglio / commercio"
+          }
+        },
+        {
+          "id": "hospitality-tourism",
+          "label": {
+            "de": "Gastgewerbe / Tourismus",
+            "en": "Hospitality / tourism",
+            "fr": "Hôtellerie-restauration / tourisme",
+            "it": "Alberghiero-ristorazione / turismo"
+          }
+        },
+        {
+          "id": "transport-logistics",
+          "label": {
+            "de": "Transport / Logistik",
+            "en": "Transport / logistics",
+            "fr": "Transport / logistique",
+            "it": "Trasporti / logistica"
+          }
+        },
+        {
+          "id": "professional-services",
+          "label": {
+            "de": "Unternehmensnahe Dienstleistungen",
+            "en": "Professional services",
+            "fr": "Services professionnels",
+            "it": "Servizi professionali"
+          }
+        },
+        {
+          "id": "ict-software",
+          "label": {
+            "de": "ICT / Software",
+            "en": "ICT / software",
+            "fr": "TIC / logiciel",
+            "it": "TIC / software"
+          }
+        },
+        {
+          "id": "public-admin",
+          "label": {
+            "de": "Öffentliche Verwaltung / Bildung",
+            "en": "Public administration / education",
+            "fr": "Administration publique / éducation",
+            "it": "Amministrazione pubblica / istruzione"
+          }
+        },
+        {
+          "id": "other",
+          "label": {
+            "de": "Andere",
+            "en": "Other",
+            "fr": "Autre",
+            "it": "Altro"
+          }
+        }
+      ]
+    },
+    {
+      "id": "language-region",
+      "prompt": {
+        "de": "In welcher Sprachregion ist Ihr Unternehmen hauptsächlich tätig?",
+        "en": "In which language region does your company mainly operate?",
+        "fr": "Dans quelle région linguistique votre entreprise opère-t-elle principalement ?",
+        "it": "In quale regione linguistica opera principalmente la vostra azienda?"
+      },
+      "help": {
+        "de": "Nach dem Hauptsitz bzw. dem wichtigsten Betriebsstandort in der Schweiz.",
+        "en": "Based on HQ or the main operating site in Switzerland.",
+        "fr": "Selon le siège ou le principal site d'exploitation en Suisse.",
+        "it": "In base alla sede o al principale sito operativo in Svizzera."
+      },
+      "input": "single",
+      "required": true,
+      "aggregate": true,
+      "options": [
+        {
+          "id": "german-speaking",
+          "label": {
+            "de": "Deutschschweiz",
+            "en": "German-speaking Switzerland",
+            "fr": "Suisse alémanique",
+            "it": "Svizzera tedesca"
+          }
+        },
+        {
+          "id": "french-speaking",
+          "label": {
+            "de": "Romandie",
+            "en": "French-speaking Switzerland",
+            "fr": "Suisse romande",
+            "it": "Romandia"
+          }
+        },
+        {
+          "id": "italian-speaking",
+          "label": {
+            "de": "Tessin / italienischsprachige Schweiz",
+            "en": "Ticino / Italian-speaking Switzerland",
+            "fr": "Tessin / Suisse italienne",
+            "it": "Ticino / Svizzera italiana"
+          }
+        },
+        {
+          "id": "multilingual",
+          "label": {
+            "de": "Mehrsprachig / mehrere Regionen",
+            "en": "Multilingual / multiple regions",
+            "fr": "Multilingue / plusieurs régions",
+            "it": "Multilingue / più regioni"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ai-maturity",
+      "prompt": {
+        "de": "Wie weit ist Ihr Unternehmen bei der KI-Nutzung?",
+        "en": "How far along is your company with AI use?",
+        "fr": "Où en est votre entreprise dans l'utilisation de l'IA ?",
+        "it": "A che punto è la vostra azienda nell'uso dell'IA?"
+      },
+      "input": "single",
+      "required": true,
+      "aggregate": true,
+      "options": [
+        {
+          "id": "not-using",
+          "label": {
+            "de": "Noch keine KI im Einsatz",
+            "en": "Not using AI yet",
+            "fr": "Pas encore d'IA en usage",
+            "it": "Ancora nessuna IA in uso"
+          }
+        },
+        {
+          "id": "exploring",
+          "label": {
+            "de": "Abklären / Experimentieren",
+            "en": "Exploring / experimenting",
+            "fr": "Exploration / expérimentation",
+            "it": "Esplorazione / sperimentazione"
+          }
+        },
+        {
+          "id": "piloting",
+          "label": {
+            "de": "Pilotprojekte",
+            "en": "Piloting",
+            "fr": "Projets pilotes",
+            "it": "Progetti pilota"
+          }
+        },
+        {
+          "id": "production",
+          "label": {
+            "de": "Produktiv im Einsatz",
+            "en": "In production use",
+            "fr": "En usage productif",
+            "it": "In uso produttivo"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ai-tools",
+      "prompt": {
+        "de": "Welche KI-Tools nutzt Ihr Unternehmen heute? (Mehrfachauswahl)",
+        "en": "Which AI tools does your company use today? (Multiple choice)",
+        "fr": "Quels outils d'IA votre entreprise utilise-t-elle aujourd'hui ? (Choix multiple)",
+        "it": "Quali strumenti di IA usa oggi la vostra azienda? (Scelta multipla)"
+      },
+      "help": {
+        "de": "Alle zutreffenden. «Keine» schliesst andere Optionen aus (Formlogik T24).",
+        "en": "Select all that apply. “None” excludes other options (form logic in T24).",
+        "fr": "Toutes les options pertinentes. « Aucun » exclut les autres options (logique du formulaire T24).",
+        "it": "Tutte le opzioni pertinenti. «Nessuno» esclude le altre opzioni (logica del form T24)."
+      },
+      "input": "multi",
+      "required": true,
+      "aggregate": true,
+      "options": [
+        {
+          "id": "chatgpt",
+          "label": {
+            "de": "ChatGPT (OpenAI)",
+            "en": "ChatGPT (OpenAI)",
+            "fr": "ChatGPT (OpenAI)",
+            "it": "ChatGPT (OpenAI)"
+          }
+        },
+        {
+          "id": "microsoft-copilot",
+          "label": {
+            "de": "Microsoft 365 Copilot",
+            "en": "Microsoft 365 Copilot",
+            "fr": "Microsoft 365 Copilot",
+            "it": "Microsoft 365 Copilot"
+          }
+        },
+        {
+          "id": "google-gemini",
+          "label": {
+            "de": "Google Gemini",
+            "en": "Google Gemini",
+            "fr": "Google Gemini",
+            "it": "Google Gemini"
+          }
+        },
+        {
+          "id": "claude",
+          "label": {
+            "de": "Claude (Anthropic)",
+            "en": "Claude (Anthropic)",
+            "fr": "Claude (Anthropic)",
+            "it": "Claude (Anthropic)"
+          }
+        },
+        {
+          "id": "mistral",
+          "label": {
+            "de": "Mistral",
+            "en": "Mistral",
+            "fr": "Mistral",
+            "it": "Mistral"
+          }
+        },
+        {
+          "id": "deepl",
+          "label": {
+            "de": "DeepL",
+            "en": "DeepL",
+            "fr": "DeepL",
+            "it": "DeepL"
+          }
+        },
+        {
+          "id": "azure-openai",
+          "label": {
+            "de": "Azure OpenAI",
+            "en": "Azure OpenAI",
+            "fr": "Azure OpenAI",
+            "it": "Azure OpenAI"
+          }
+        },
+        {
+          "id": "aws-bedrock",
+          "label": {
+            "de": "AWS Bedrock",
+            "en": "AWS Bedrock",
+            "fr": "AWS Bedrock",
+            "it": "AWS Bedrock"
+          }
+        },
+        {
+          "id": "swiss-eu-host",
+          "label": {
+            "de": "Schweizer / EU-Anbieter (z. B. Infomaniak, Exoscale, Swisscom, Aleph Alpha)",
+            "en": "Swiss / EU host (e.g. Infomaniak, Exoscale, Swisscom, Aleph Alpha)",
+            "fr": "Hébergeur suisse / UE (p. ex. Infomaniak, Exoscale, Swisscom, Aleph Alpha)",
+            "it": "Host svizzero / UE (p. es. Infomaniak, Exoscale, Swisscom, Aleph Alpha)"
+          }
+        },
+        {
+          "id": "self-hosted-oss",
+          "label": {
+            "de": "Selbst gehostete Open-Source-Modelle",
+            "en": "Self-hosted open-source models",
+            "fr": "Modèles open source auto-hébergés",
+            "it": "Modelli open source self-hosted"
+          }
+        },
+        {
+          "id": "other",
+          "label": {
+            "de": "Andere",
+            "en": "Other",
+            "fr": "Autre",
+            "it": "Altro"
+          }
+        },
+        {
+          "id": "none",
+          "label": {
+            "de": "Keine",
+            "en": "None",
+            "fr": "Aucun",
+            "it": "Nessuno"
+          }
+        }
+      ]
+    },
+    {
+      "id": "primary-use-cases",
+      "prompt": {
+        "de": "Wofür setzt Ihr Unternehmen KI hauptsächlich ein? (Mehrfachauswahl)",
+        "en": "What does your company mainly use AI for? (Multiple choice)",
+        "fr": "À quelles fins votre entreprise utilise-t-elle principalement l'IA ? (Choix multiple)",
+        "it": "Per cosa usa principalmente l'IA la vostra azienda? (Scelta multipla)"
+      },
+      "input": "multi",
+      "required": true,
+      "aggregate": true,
+      "options": [
+        {
+          "id": "content",
+          "label": {
+            "de": "Inhalte / Texte / Marketing",
+            "en": "Content / writing / marketing",
+            "fr": "Contenus / textes / marketing",
+            "it": "Contenuti / testi / marketing"
+          }
+        },
+        {
+          "id": "translation",
+          "label": {
+            "de": "Übersetzung / Mehrsprachigkeit",
+            "en": "Translation / multilingual work",
+            "fr": "Traduction / multilinguisme",
+            "it": "Traduzione / multilinguismo"
+          }
+        },
+        {
+          "id": "coding",
+          "label": {
+            "de": "Softwareentwicklung / Coding",
+            "en": "Software development / coding",
+            "fr": "Développement logiciel / coding",
+            "it": "Sviluppo software / coding"
+          }
+        },
+        {
+          "id": "support",
+          "label": {
+            "de": "Kundensupport",
+            "en": "Customer support",
+            "fr": "Support client",
+            "it": "Supporto clienti"
+          }
+        },
+        {
+          "id": "analysis",
+          "label": {
+            "de": "Datenanalyse",
+            "en": "Data analysis",
+            "fr": "Analyse de données",
+            "it": "Analisi dei dati"
+          }
+        },
+        {
+          "id": "knowledge",
+          "label": {
+            "de": "Internes Wissen / Suche",
+            "en": "Internal knowledge / search",
+            "fr": "Connaissance interne / recherche",
+            "it": "Conoscenza interna / ricerca"
+          }
+        },
+        {
+          "id": "automation",
+          "label": {
+            "de": "Prozessautomatisierung",
+            "en": "Process automation",
+            "fr": "Automatisation de processus",
+            "it": "Automazione dei processi"
+          }
+        },
+        {
+          "id": "sales",
+          "label": {
+            "de": "Vertrieb / CRM",
+            "en": "Sales / CRM",
+            "fr": "Ventes / CRM",
+            "it": "Vendite / CRM"
+          }
+        },
+        {
+          "id": "other",
+          "label": {
+            "de": "Andere",
+            "en": "Other",
+            "fr": "Autre",
+            "it": "Altro"
+          }
+        }
+      ]
+    },
+    {
+      "id": "monthly-spend-chf",
+      "prompt": {
+        "de": "Wie hoch sind die geschätzten monatlichen KI-Ausgaben Ihres Unternehmens (CHF)?",
+        "en": "What are your company’s estimated monthly AI spend (CHF)?",
+        "fr": "Quelles sont les dépenses mensuelles estimées de votre entreprise en IA (CHF) ?",
+        "it": "Qual è la spesa mensile stimata della vostra azienda per l'IA (CHF)?"
+      },
+      "help": {
+        "de": "Nur Lizenzen, API- und Cloud-Kosten für KI — ohne Personalzeit. Suite-Bundles (z. B. M365 Copilot im Abo) mitzählen, falls bekannt.",
+        "en": "Licenses, API, and cloud costs for AI only — exclude staff time. Include suite bundles (e.g. M365 Copilot in the subscription) if known.",
+        "fr": "Uniquement licences, API et coûts cloud pour l'IA — hors temps de personnel. Inclure les bundles de suite (p. ex. M365 Copilot dans l'abonnement) si connus.",
+        "it": "Solo licenze, API e costi cloud per l'IA — senza tempo del personale. Includere i bundle della suite (p. es. M365 Copilot nell'abbonamento) se noti."
+      },
+      "input": "single",
+      "required": true,
+      "aggregate": true,
+      "options": [
+        {
+          "id": "0",
+          "label": { "de": "CHF 0", "en": "CHF 0", "fr": "CHF 0", "it": "CHF 0" }
+        },
+        {
+          "id": "1-500",
+          "label": {
+            "de": "CHF 1–500",
+            "en": "CHF 1–500",
+            "fr": "CHF 1–500",
+            "it": "CHF 1–500"
+          }
+        },
+        {
+          "id": "501-2000",
+          "label": {
+            "de": "CHF 501–2000",
+            "en": "CHF 501–2000",
+            "fr": "CHF 501–2000",
+            "it": "CHF 501–2000"
+          }
+        },
+        {
+          "id": "2001-10000",
+          "label": {
+            "de": "CHF 2001–10'000",
+            "en": "CHF 2001–10,000",
+            "fr": "CHF 2001–10 000",
+            "it": "CHF 2001–10'000"
+          }
+        },
+        {
+          "id": "10000-plus",
+          "label": {
+            "de": "CHF 10'000+",
+            "en": "CHF 10,000+",
+            "fr": "CHF 10 000+",
+            "it": "CHF 10'000+"
+          }
+        },
+        {
+          "id": "prefer-not",
+          "label": {
+            "de": "Keine Angabe",
+            "en": "Prefer not to say",
+            "fr": "Préfère ne pas répondre",
+            "it": "Preferisco non rispondere"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hosting-requirement",
+      "prompt": {
+        "de": "Welche Hosting-Anforderung gilt für KI-Datenverarbeitung in Ihrem Unternehmen?",
+        "en": "What hosting requirement applies to AI data processing in your company?",
+        "fr": "Quelle exigence d'hébergement s'applique au traitement de données par l'IA dans votre entreprise ?",
+        "it": "Quale requisito di hosting si applica al trattamento dei dati con l'IA nella vostra azienda?"
+      },
+      "input": "single",
+      "required": true,
+      "aggregate": true,
+      "options": [
+        {
+          "id": "switzerland",
+          "label": {
+            "de": "Nur Schweiz",
+            "en": "Switzerland only",
+            "fr": "Suisse uniquement",
+            "it": "Solo Svizzera"
+          }
+        },
+        {
+          "id": "eu-eea",
+          "label": {
+            "de": "Schweiz oder EU/EWR",
+            "en": "Switzerland or EU/EEA",
+            "fr": "Suisse ou UE/EEE",
+            "it": "Svizzera o UE/SEE"
+          }
+        },
+        {
+          "id": "any",
+          "label": {
+            "de": "Kein geografischer Zwang",
+            "en": "No geographic constraint",
+            "fr": "Aucune contrainte géographique",
+            "it": "Nessun vincolo geografico"
+          }
+        },
+        {
+          "id": "undecided",
+          "label": {
+            "de": "Noch nicht entschieden",
+            "en": "Not yet decided",
+            "fr": "Pas encore décidé",
+            "it": "Non ancora deciso"
+          }
+        }
+      ]
+    },
+    {
+      "id": "personal-data-in-ai",
+      "prompt": {
+        "de": "Verarbeitet Ihr Unternehmen Personendaten mit KI-Tools?",
+        "en": "Does your company process personal data with AI tools?",
+        "fr": "Votre entreprise traite-t-elle des données personnelles avec des outils d'IA ?",
+        "it": "La vostra azienda tratta dati personali con strumenti di IA?"
+      },
+      "help": {
+        "de": "Z. B. Kunden- oder Mitarbeitendendaten in Prompts, Tickets oder Trainingskontexten (DSG).",
+        "en": "E.g. customer or employee data in prompts, tickets, or training contexts (Swiss FADP / DSG).",
+        "fr": "P. ex. données clients ou d'employés dans des prompts, tickets ou contextes d'entraînement (LPD).",
+        "it": "P. es. dati di clienti o dipendenti in prompt, ticket o contesti di addestramento (LPD)."
+      },
+      "input": "single",
+      "required": true,
+      "aggregate": true,
+      "options": [
+        {
+          "id": "yes",
+          "label": { "de": "Ja", "en": "Yes", "fr": "Oui", "it": "Sì" }
+        },
+        {
+          "id": "no",
+          "label": { "de": "Nein", "en": "No", "fr": "Non", "it": "No" }
+        },
+        {
+          "id": "unsure",
+          "label": {
+            "de": "Unsicher",
+            "en": "Unsure",
+            "fr": "Incertain",
+            "it": "Incerto"
+          }
+        }
+      ]
+    },
+    {
+      "id": "eu-market-exposure",
+      "prompt": {
+        "de": "Bietet Ihr Unternehmen KI-Systeme oder KI-gestützte Produkte/Dienstleistungen auf dem EU-Markt an bzw. an EU-Nutzerinnen und Nutzer?",
+        "en": "Does your company offer AI systems or AI-enabled products/services on the EU market or to EU users?",
+        "fr": "Votre entreprise propose-t-elle des systèmes d'IA ou des produits/services assistés par l'IA sur le marché de l'UE ou à des utilisateurs de l'UE ?",
+        "it": "La vostra azienda offre sistemi di IA o prodotti/servizi supportati dall'IA sul mercato UE o a utenti UE?"
+      },
+      "help": {
+        "de": "Relevant für die mögliche Anwendbarkeit des EU AI Act auf Schweizer Anbieter.",
+        "en": "Relevant to possible EU AI Act applicability for Swiss providers.",
+        "fr": "Pertinent pour l'applicabilité éventuelle de l'AI Act de l'UE aux fournisseurs suisses.",
+        "it": "Rilevante per la possibile applicabilità dell'AI Act UE ai fornitori svizzeri."
+      },
+      "input": "single",
+      "required": true,
+      "aggregate": true,
+      "options": [
+        {
+          "id": "yes",
+          "label": { "de": "Ja", "en": "Yes", "fr": "Oui", "it": "Sì" }
+        },
+        {
+          "id": "no",
+          "label": { "de": "Nein", "en": "No", "fr": "Non", "it": "No" }
+        },
+        {
+          "id": "unsure",
+          "label": {
+            "de": "Unsicher",
+            "en": "Unsure",
+            "fr": "Incertain",
+            "it": "Incerto"
+          }
+        }
+      ]
+    },
+    {
+      "id": "deployment-blockers",
+      "prompt": {
+        "de": "Was bremst den KI-Einsatz in Ihrem Unternehmen am stärksten? (Mehrfachauswahl)",
+        "en": "What most holds back AI deployment in your company? (Multiple choice)",
+        "fr": "Qu'est-ce qui freine le plus le déploiement de l'IA dans votre entreprise ? (Choix multiple)",
+        "it": "Cosa frena di più l'adozione dell'IA nella vostra azienda? (Scelta multipla)"
+      },
+      "help": {
+        "de": "Alle zutreffenden. «Keine wesentlichen Bremsen» schliesst andere Optionen aus (Formlogik T24).",
+        "en": "Select all that apply. “No major blockers” excludes other options (form logic in T24).",
+        "fr": "Toutes les options pertinentes. « Pas de freins majeurs » exclut les autres options (logique du formulaire T24).",
+        "it": "Tutte le opzioni pertinenti. «Nessun freno rilevante» esclude le altre opzioni (logica del form T24)."
+      },
+      "input": "multi",
+      "required": true,
+      "aggregate": true,
+      "options": [
+        {
+          "id": "cost",
+          "label": {
+            "de": "Kosten",
+            "en": "Cost",
+            "fr": "Coûts",
+            "it": "Costi"
+          }
+        },
+        {
+          "id": "data-protection",
+          "label": {
+            "de": "Datenschutz / Compliance",
+            "en": "Data protection / compliance",
+            "fr": "Protection des données / conformité",
+            "it": "Protezione dei dati / conformità"
+          }
+        },
+        {
+          "id": "skills",
+          "label": {
+            "de": "Fehlende Kompetenzen",
+            "en": "Skills gap",
+            "fr": "Compétences manquantes",
+            "it": "Competenze mancanti"
+          }
+        },
+        {
+          "id": "roi",
+          "label": {
+            "de": "Unklarer Nutzen / ROI",
+            "en": "Unclear ROI / benefit",
+            "fr": "Bénéfice / ROI peu clair",
+            "it": "Beneficio / ROI poco chiaro"
+          }
+        },
+        {
+          "id": "regulation",
+          "label": {
+            "de": "Regulatorische Unsicherheit",
+            "en": "Regulatory uncertainty",
+            "fr": "Incertitude réglementaire",
+            "it": "Incertezza normativa"
+          }
+        },
+        {
+          "id": "integration",
+          "label": {
+            "de": "Integration in bestehende IT",
+            "en": "Integration with existing IT",
+            "fr": "Intégration dans l'informatique existante",
+            "it": "Integrazione con l'IT esistente"
+          }
+        },
+        {
+          "id": "management-buy-in",
+          "label": {
+            "de": "Fehlendes Management-Buy-in",
+            "en": "Lack of management buy-in",
+            "fr": "Manque d'adhésion de la direction",
+            "it": "Mancanza di buy-in del management"
+          }
+        },
+        {
+          "id": "vendor-lock-in",
+          "label": {
+            "de": "Vendor-Lock-in",
+            "en": "Vendor lock-in",
+            "fr": "Dépendance vis-à-vis du fournisseur",
+            "it": "Vendor lock-in"
+          }
+        },
+        {
+          "id": "none",
+          "label": {
+            "de": "Keine wesentlichen Bremsen",
+            "en": "No major blockers",
+            "fr": "Pas de freins majeurs",
+            "it": "Nessun freno rilevante"
+          }
+        },
+        {
+          "id": "other",
+          "label": {
+            "de": "Andere",
+            "en": "Other",
+            "fr": "Autre",
+            "it": "Altro"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vendor-decision-factors",
+      "prompt": {
+        "de": "Was ist bei der Wahl eines KI-Anbieters für Sie am wichtigsten? (Mehrfachauswahl)",
+        "en": "What matters most when choosing an AI vendor? (Multiple choice)",
+        "fr": "Qu'est-ce qui compte le plus lors du choix d'un fournisseur d'IA ? (Choix multiple)",
+        "it": "Cosa conta di più nella scelta di un fornitore di IA? (Scelta multipla)"
+      },
+      "input": "multi",
+      "required": true,
+      "aggregate": true,
+      "options": [
+        {
+          "id": "price",
+          "label": {
+            "de": "Preis",
+            "en": "Price",
+            "fr": "Prix",
+            "it": "Prezzo"
+          }
+        },
+        {
+          "id": "hosting-region",
+          "label": {
+            "de": "Hosting-Region (CH/EU)",
+            "en": "Hosting region (CH/EU)",
+            "fr": "Région d'hébergement (CH/UE)",
+            "it": "Regione di hosting (CH/UE)"
+          }
+        },
+        {
+          "id": "dpa-terms",
+          "label": {
+            "de": "Auftragsbearbeitungsvertrag / Vertragsbedingungen",
+            "en": "DPA / contract terms",
+            "fr": "Accord de sous-traitance / conditions contractuelles",
+            "it": "Contratto di elaborazione / condizioni contrattuali"
+          }
+        },
+        {
+          "id": "certifications",
+          "label": {
+            "de": "Zertifizierungen (z. B. ISO 27001, SOC 2)",
+            "en": "Certifications (e.g. ISO 27001, SOC 2)",
+            "fr": "Certifications (p. ex. ISO 27001, SOC 2)",
+            "it": "Certificazioni (p. es. ISO 27001, SOC 2)"
+          }
+        },
+        {
+          "id": "model-quality",
+          "label": {
+            "de": "Modellqualität (inkl. DE/FR/IT)",
+            "en": "Model quality (incl. DE/FR/IT)",
+            "fr": "Qualité du modèle (y c. DE/FR/IT)",
+            "it": "Qualità del modello (incl. DE/FR/IT)"
+          }
+        },
+        {
+          "id": "local-language-support",
+          "label": {
+            "de": "Support / Verträge in Landessprachen",
+            "en": "Support / contracts in national languages",
+            "fr": "Support / contrats dans les langues nationales",
+            "it": "Supporto / contratti nelle lingue nazionali"
+          }
+        },
+        {
+          "id": "swiss-entity-support",
+          "label": {
+            "de": "Schweizer Rechtsträger / lokaler Support",
+            "en": "Swiss legal entity / local support",
+            "fr": "Entité juridique suisse / support local",
+            "it": "Soggetto giuridico svizzero / supporto locale"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "id": "aws-dpa",
+  "url": "https://d1.awsstatic.com/legal/aws-gdpr/AWS_GDPR_DPA.pdf",
+  "fetched_at": "2026-07-16T09:44:01.744Z",
+  "http_status": 200,
+  "content_type": "application/pdf",
+  "sha256": "a525259e30854519b5298c8f195bbb70a901c90fdd2cdbc788a1bb07e20c6dd4",
+  "byte_length": 29427,
+  "ok": true
+}

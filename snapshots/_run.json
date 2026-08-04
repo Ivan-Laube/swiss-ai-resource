@@ -1,0 +1,249 @@
+{
+  "ran_at": "2026-07-16T09:44:12.254Z",
+  "dry_run": false,
+  "total": 38,
+  "ok": 31,
+  "failed": 7,
+  "changed": [
+    "anthropic-regional-compliance",
+    "google-cloud-ml-locations",
+    "ovhcloud-ai-endpoints"
+  ],
+  "results": [
+    {
+      "id": "edoeb-ki-und-datenschutz",
+      "ok": true,
+      "http_status": 200,
+      "change": "unchanged"
+    },
+    {
+      "id": "edoeb-dsg-ki-update",
+      "ok": true,
+      "http_status": 200,
+      "change": "unchanged"
+    },
+    {
+      "id": "edoeb-chatgpt-ki-anwendungen",
+      "ok": true,
+      "http_status": 200,
+      "change": "unchanged"
+    },
+    {
+      "id": "edoeb-bekanntgabe-ausland",
+      "ok": true,
+      "http_status": 200,
+      "change": "unchanged"
+    },
+    {
+      "id": "fedlex-dsg",
+      "ok": true,
+      "http_status": 200,
+      "change": "unchanged"
+    },
+    {
+      "id": "dpf-participant-list",
+      "ok": false,
+      "http_status": 200,
+      "change": "kept",
+      "error": "CSS selector \"body\" matched elements but produced empty text"
+    },
+    {
+      "id": "eur-lex-ai-act-de",
+      "ok": false,
+      "http_status": 202,
+      "change": "kept",
+      "error": "HTTP 202 Accepted"
+    },
+    {
+      "id": "eur-lex-ai-act-en",
+      "ok": false,
+      "http_status": 202,
+      "change": "kept",
+      "error": "HTTP 202 Accepted"
+    },
+    {
+      "id": "finma-guidance-08-2024-pdf",
+      "ok": true,
+      "http_status": 200,
+      "change": "unchanged"
+    },
+    {
+      "id": "finma-guidance-08-2024-news",
+      "ok": true,
+      "http_status": 200,
+      "change": "unchanged"
+    },
+    {
+      "id": "consilium-digital-omnibus-ai",
+      "ok": false,
+      "http_status": 403,
+      "change": "kept",
+      "error": "HTTP 403 Forbidden"
+    },
+    {
+      "id": "anthropic-ai-fluency",
+      "ok": true,
+      "http_status": 200,
+      "change": "unchanged"
+    },
+    {
+      "id": "openai-business-data",
+      "ok": false,
+      "http_status": 403,
+      "change": "kept",
+      "error": "HTTP 403 Forbidden"
+    },
+    {
+      "id": "openai-dpa",
+      "ok": false,
+      "http_status": 403,
+      "change": "kept",
+      "error": "HTTP 403 Forbidden"
+    },
+    {
+      "id": "anthropic-regional-compliance",
+      "ok": true,
+      "http_status": 200,
+      "change": "changed"
+    },
+    {
+      "id": "anthropic-certifications",
+      "ok": true,
+      "http_status": 200,
+      "change": "unchanged"
+    },
+    {
+      "id": "google-cloud-dpa",
+      "ok": true,
+      "http_status": 200,
+      "change": "unchanged"
+    },
+    {
+      "id": "google-cloud-ml-locations",
+      "ok": true,
+      "http_status": 200,
+      "change": "changed"
+    },
+    {
+      "id": "microsoft-azure-openai-privacy",
+      "ok": true,
+      "http_status": 200,
+      "change": "unchanged"
+    },
+    {
+      "id": "microsoft-dpa",
+      "ok": true,
+      "http_status": 200,
+      "change": "unchanged"
+    },
+    {
+      "id": "mistral-dpa",
+      "ok": true,
+      "http_status": 200,
+      "change": "unchanged"
+    },
+    {
+      "id": "mistral-home",
+      "ok": true,
+      "http_status": 200,
+      "change": "unchanged"
+    },
+    {
+      "id": "aleph-alpha-pga",
+      "ok": true,
+      "http_status": 200,
+      "change": "unchanged"
+    },
+    {
+      "id": "aws-bedrock-security",
+      "ok": true,
+      "http_status": 200,
+      "change": "unchanged"
+    },
+    {
+      "id": "aws-dpa",
+      "ok": true,
+      "http_status": 200,
+      "change": "unchanged"
+    },
+    {
+      "id": "swisscom-ai-platform",
+      "ok": true,
+      "http_status": 200,
+      "change": "unchanged"
+    },
+    {
+      "id": "infomaniak-trust",
+      "ok": true,
+      "http_status": 200,
+      "change": "unchanged"
+    },
+    {
+      "id": "infomaniak-dpa",
+      "ok": true,
+      "http_status": 200,
+      "change": "unchanged"
+    },
+    {
+      "id": "huggingface-security",
+      "ok": true,
+      "http_status": 200,
+      "change": "unchanged"
+    },
+    {
+      "id": "cohere-trust",
+      "ok": true,
+      "http_status": 200,
+      "change": "unchanged"
+    },
+    {
+      "id": "cohere-enterprise-data",
+      "ok": true,
+      "http_status": 200,
+      "change": "unchanged"
+    },
+    {
+      "id": "ibm-watsonx-home",
+      "ok": true,
+      "http_status": 200,
+      "change": "unchanged"
+    },
+    {
+      "id": "exoscale-compliance",
+      "ok": true,
+      "http_status": 200,
+      "change": "unchanged"
+    },
+    {
+      "id": "exoscale-ai",
+      "ok": true,
+      "http_status": 200,
+      "change": "unchanged"
+    },
+    {
+      "id": "ovhcloud-ai-endpoints",
+      "ok": true,
+      "http_status": 200,
+      "change": "changed"
+    },
+    {
+      "id": "ovhcloud-dpa",
+      "ok": true,
+      "http_status": 200,
+      "change": "unchanged"
+    },
+    {
+      "id": "deepl-infrastructure",
+      "ok": false,
+      "http_status": 403,
+      "change": "kept",
+      "error": "HTTP 403 Forbidden"
+    },
+    {
+      "id": "deepl-pro-security",
+      "ok": true,
+      "http_status": 200,
+      "change": "unchanged"
+    }
+  ]
+}

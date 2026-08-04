@@ -1,0 +1,10 @@
+{
+  "id": "anthropic-regional-compliance",
+  "url": "https://claude.com/regional-compliance",
+  "fetched_at": "2026-07-16T10:04:34.015Z",
+  "http_status": 200,
+  "content_type": "text/html; charset=utf-8",
+  "sha256": "6a072634e5b56a4a883cc4936c99f578ef4b09447885601c9f2165447d549164",
+  "byte_length": 18523,
+  "ok": true
+}

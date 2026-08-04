@@ -28,15 +28,22 @@ export function getLocaleOrDefault(value: string): Locale {
   return isLocale(value) ? value : defaultLocale;
 }
 
-export function buildLanguageAlternates(path = ""): Record<string, string> {
+export function buildLanguageAlternates(
+  path = "",
+  availableLocales: readonly Locale[] = locales,
+): Record<string, string> {
   const normalizedPath = path.startsWith("/") ? path : path ? `/${path}` : "";
   const languages: Record<string, string> = {};
 
-  for (const locale of locales) {
+  for (const locale of availableLocales) {
     languages[hrefLangTags[locale]] = `${siteUrl}/${locale}${normalizedPath}/`;
   }
 
-  languages["x-default"] = `${siteUrl}/${defaultLocale}${normalizedPath}/`;
+  // Canonical language is DE; prefer it for x-default when present.
+  const xDefaultLocale = availableLocales.includes(defaultLocale)
+    ? defaultLocale
+    : (availableLocales[0] ?? defaultLocale);
+  languages["x-default"] = `${siteUrl}/${xDefaultLocale}${normalizedPath}/`;
 
   return languages;
 }

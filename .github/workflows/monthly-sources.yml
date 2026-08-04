@@ -1,0 +1,259 @@
+name: Monthly source snapshots
+
+on:
+  schedule:
+    # 1st of each month at 06:00 UTC
+    - cron: "0 6 1 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Fetch and snapshot sources
+        run: npm run snapshot:sources
+
+      - name: Classify snapshot diffs
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: npm run classify:snapshots
+
+      - name: Act on classifications
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: npm run maintain:act -- --write
+
+      - name: Check published citation links
+        run: npm run check:links -- --write
+
+      - name: Validate content frontmatter
+        run: npm run check:content
+
+      - name: Validate vendors.json
+        run: npm run check:vendors
+
+      # Gate pushes to main: a broken static export must not reach Pages.
+      - name: Verify static export still builds
+        run: npm run build
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Commit snapshot updates
+        run: |
+          # Material brief/PR bodies stay unstaged for the review branch.
+          # Link brief is committed to main with other snapshot reports.
+          git add snapshots/
+          git reset HEAD -- snapshots/_act/material-brief.md snapshots/_act/pr-body.md 2>/dev/null || true
+
+          if git diff --cached --quiet; then
+            echo "No snapshot changes to commit."
+          else
+            git commit -m "chore(snapshots): monthly source refresh"
+            git push
+          fi
+
+      - name: Commit last_verified bumps
+        run: |
+          if [ ! -f snapshots/_act.json ]; then
+            echo "No act report; skipping bumps."
+            exit 0
+          fi
+
+          mapfile -t FILES < <(node -e "
+            const r = require('./snapshots/_act.json');
+            for (const f of r.bumped_files || []) console.log(f);
+          ")
+          if [ ${#FILES[@]} -eq 0 ]; then
+            echo "No last_verified bumps to commit."
+            exit 0
+          fi
+
+          git add -- "${FILES[@]}"
+          if git diff --cached --quiet; then
+            echo "Bump files unchanged."
+            exit 0
+          fi
+
+          git commit -m "chore(content): bump last_verified"
+          git push
+
+      - name: Commit vendor last_checked bumps
+        run: |
+          if [ ! -f snapshots/_act.json ]; then
+            echo "No act report; skipping vendor bumps."
+            exit 0
+          fi
+
+          # Material vendor updates own data/vendors.json on the review branch.
+          HAS_MATERIAL=$(node -e "process.stdout.write(String((require('./snapshots/_act.json').vendors_material||[]).length))")
+          if [ "$HAS_MATERIAL" != "0" ]; then
+            echo "Material vendor updates present; vendors.json deferred to review PR."
+            exit 0
+          fi
+
+          BUMPED=$(node -e "process.stdout.write(String((require('./snapshots/_act.json').vendors_bumped||[]).length))")
+          if [ "$BUMPED" = "0" ]; then
+            echo "No vendor last_checked bumps."
+            exit 0
+          fi
+
+          mapfile -t VFILES < <(node -e "
+            const r = require('./snapshots/_act.json');
+            for (const f of r.vendor_files || []) console.log(f);
+          ")
+          if [ ${#VFILES[@]} -eq 0 ]; then
+            echo "No vendor files written."
+            exit 0
+          fi
+
+          git add -- "${VFILES[@]}"
+          if git diff --cached --quiet; then
+            echo "Vendor bump files unchanged."
+            exit 0
+          fi
+
+          git commit -m "chore(vendors): bump last_checked"
+          git push
+
+      - name: Open broken-links issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ ! -f snapshots/_links.json ]; then
+            echo "No links report; skipping broken-links issue."
+            exit 0
+          fi
+
+          BROKEN=$(node -e "process.stdout.write(String(require('./snapshots/_links.json').summary.broken||0))")
+          if [ "$BROKEN" = "0" ]; then
+            echo "No broken links."
+            exit 0
+          fi
+
+          if [ ! -f snapshots/_links/brief.md ]; then
+            echo "Missing snapshots/_links/brief.md"
+            exit 1
+          fi
+
+          CHECKED=$(node -e "process.stdout.write(require('./snapshots/_links.json').checked_at)")
+          MONTH="${CHECKED:0:7}"
+
+          gh issue create \
+            --title "Broken links (${MONTH})" \
+            --body-file snapshots/_links/brief.md
+
+      - name: Open fetch-failures issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ ! -f snapshots/_act/fetch-failures.md ]; then
+            echo "No persistent fetch failures."
+            exit 0
+          fi
+
+          if [ ! -f snapshots/_act.json ]; then
+            echo "No act report; skipping fetch-failures issue."
+            exit 0
+          fi
+
+          VERIFIED=$(node -e "process.stdout.write(require('./snapshots/_act.json').verified_date)")
+          MONTH="${VERIFIED:0:7}"
+
+          gh issue create \
+            --title "Snapshot fetch failures (${MONTH})" \
+            --body-file snapshots/_act/fetch-failures.md
+
+      - name: Open material issue and PR
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ ! -f snapshots/_act.json ]; then
+            echo "No act report; skipping material workflow."
+            exit 0
+          fi
+
+          CONTENT_MATERIAL=$(node -e "process.stdout.write(String(require('./snapshots/_act.json').summary.material||0))")
+          VENDOR_MATERIAL=$(node -e "process.stdout.write(String(require('./snapshots/_act.json').summary.vendors_material||0))")
+          if [ "$CONTENT_MATERIAL" = "0" ] && [ "$VENDOR_MATERIAL" = "0" ]; then
+            echo "No material changes."
+            exit 0
+          fi
+
+          if [ ! -f snapshots/_act/material-brief.md ]; then
+            echo "Missing snapshots/_act/material-brief.md"
+            exit 1
+          fi
+
+          VERIFIED=$(node -e "process.stdout.write(require('./snapshots/_act.json').verified_date)")
+          MONTH="${VERIFIED:0:7}"
+          BRANCH="review/material-${VERIFIED}"
+
+          git checkout -B "$BRANCH"
+
+          mapfile -t MATERIAL_FILES < <(node -e "
+            const r = require('./snapshots/_act.json');
+            for (const f of r.material_files || []) console.log(f);
+          ")
+          if [ ${#MATERIAL_FILES[@]} -gt 0 ]; then
+            git add -- "${MATERIAL_FILES[@]}"
+          else
+            git add -- snapshots/_act/material-brief.md snapshots/_act/pr-body.md
+          fi
+
+          if git diff --cached --quiet; then
+            echo "No material file changes staged; opening issue only."
+            gh issue create \
+              --title "Material source changes (${MONTH})" \
+              --body-file snapshots/_act/material-brief.md
+            exit 0
+          fi
+
+          COMMIT_MSG="review: material source changes"
+          if [ "$VENDOR_MATERIAL" != "0" ]; then
+            COMMIT_MSG="review: material source and vendor field updates"
+          fi
+
+          git commit -m "$COMMIT_MSG"
+          git push -u origin "$BRANCH"
+
+          ISSUE_URL=$(gh issue create \
+            --title "Material source changes (${MONTH})" \
+            --body-file snapshots/_act/material-brief.md)
+          echo "Opened issue: $ISSUE_URL"
+
+          if [ -f snapshots/_act/pr-body.md ]; then
+            {
+              echo "Tracking issue: ${ISSUE_URL}"
+              echo ""
+              cat snapshots/_act/pr-body.md
+            } > snapshots/_act/pr-body-linked.md
+          else
+            echo "Tracking issue: ${ISSUE_URL}" > snapshots/_act/pr-body-linked.md
+          fi
+
+          gh pr create \
+            --title "review: material source changes (${MONTH})" \
+            --body-file snapshots/_act/pr-body-linked.md \
+            --base main \
+            --head "$BRANCH"

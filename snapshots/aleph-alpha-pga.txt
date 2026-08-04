@@ -1,0 +1,182 @@
+Aleph Alpha
+
+Homepage
+
+Solutions
+
+By Verticals
+
+Public sector
+AI solutions for government and administration
+
+Industrials
+AI-driven automation for manufacturing industries
+
+Financial Services Industry
+Sovereign AI for banking and insurance
+
+By Solutions
+
+DORA Contract Compliance
+AI support for digital risk compliance
+
+GovTech AI Assistant
+AI assistant for the public sector
+
+Pharia Engineering
+AI enhancing engineering and production efficiency
+
+Blog
+
+PhariaAI home
+
+PhariaAssistant
+
+Administrator
+
+Developer
+
+Installation & configuration
+
+Vertical AI solutions
+
+API
+
+Vertical AI Solutions
+
+Welcome to Aleph Alpha Verticals!
+
+Creance
+
+Pharia Industrial Engineering
+
+Pharia Government Assistant
+
+Pharia Government Assistant (Deutsch)
+
+Übersicht
+
+Versionshinweise
+
+Chat
+
+Effektives Prompten
+
+Übersetzung
+
+Transkription
+
+Release notes
+
+Pharia Government Assistant
+
+Pharia Government Assistant
+
+Pharia Government Assistant is a secure and sovereign AI solution designed specifically to support public sector organisations to become more efficient. It helps them to navigate digital transformations while maintaining high standards of data protection and sovereignty.
+
+In this article:
+
+Background
+Pharia Government Assistant applications
+
+Chat
+Translation
+
+Security and compliance
+
+Background
+
+Public sector organisations commonly face three significant challenges:
+
+Workforce shortages
+
+High volume of repetitive tasks
+
+Fragmented information silos
+
+Pharia Government Assistant addresses these challenges by providing an AI-powered assistant that supports knowledge workers, helps to automate repetitive tasks, and centralises access to information while ensuring data sovereignty and a GDPR-compliant processing.
+
+Pharia Government Assistant applications
+
+Chat
+
+The core conversational AI interface that enables natural interaction with documents and institutional knowledge (stored in collections):
+
+Q&A with source citations: Ask questions about uploaded documents or predefined knowledge collections and receive answers with
+source citations
+for full transparency.
+
+File upload: Supports up to 10 files simultaneously (maximum 100 MB or 500 pages per file).[1]
+
+Content generation and refinement: Summarise, rephrase, and compare documents.
+
+Creative writing assistance: Enhance creative writing, generate ideas, and improve existing text.
+
+Integrated translation: Translate text between nine languages[2] directly within the Chat interface.
+
+Local Chat history: Conversation history is stored on the user’s device and is not synchronised, ensuring privacy.
+
+Near real-time responses: Token streaming technology delivers fast responses, allowing users to see results without long delays.
+
+Built with Llama: Chat is powered by the Meta Llama 3.3 70B model, licensed under the Llama 3.3 Community License Agreement.
+
+The user documentation for Chat is available
+here.
+
+Translation
+
+The Translation application is a dedicated service for document and text translation.
+
+High-fidelity translation: Translates content across more than 40 languages.[3]
+
+Cross-jurisdictional communication: Facilitates clear and effective communication across diverse linguistic and administrative domains.
+
+Proprietary model: Leverages a specialised translation model for fast and reliable translations.
+
+The user documentation for Translation is available
+here.
+
+Security and compliance
+
+Pharia Government Assistant is built with security and compliance as core principles:
+
+Data sovereignty and GDPR compliance: Hosted in the EU01 region by STACKIT, excluding data transfer outside the EU/EEA.
+
+Privacy protection: Data isolation ensures user information and content remain inaccessible to Aleph Alpha and third parties. Uploaded customer data and prompts are not used for AI training or analytics purposes.
+
+Transparency:
+Explainability features
+with source citations for Chat responses.
+
+1. Supported file types: PDF, DOCX, and TXT. Multimodal inputs and outputs, such as images and diagrams, are not currently supported.
+
+2. Supported chat languages: English, German, French, Italian, Portuguese, Hindi, Spanish, and Thai.
+
+3. Supported translation languages: Albanian, Arabic, Bosnian, Bulgarian, Chinese (CN), Chinese (TW), Croatian, Czech, Danish, Dutch, English, Estonian, Finnish, French, German, Greek (Modern), Hebrew (Modern), Hungarian, Indonesian, Irish, Italian, Japanese, Korean, Latvian, Lithuanian, Macedonian, Malay, Maltese, Norwegian, Persian, Polish, Portuguese, Portuguese (BR), Romanian, Russian, Serbian, Slovak, Slovenian, Spanish, Swedish, Thai, Turkish, Ukrainian, Vietnamese.
+
+Previous
+Pharia Industrial Engineering
+
+Next
+Übersicht
+
+Aleph Alpha
+
+Copyright © 2025 Aleph Alpha GmbH
+
+Company
+Release notes
+Aleph Alpha website
+Github
+Pharia-1-LLM-7B models
+
+Legal
+Data privacy
+Licences
+Imprint
+
+Support
+About us
+Product support portal
+Contact us
+Blog

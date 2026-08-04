@@ -1,1 +1,632 @@
-[]
+[
+  {
+    "id": "openai",
+    "name": "OpenAI",
+    "website": "https://openai.com/",
+    "last_checked": "2026-07-10",
+    "hosting_regions": {
+      "value": ["EU", "US", "UK", "JP", "CA", "KR", "SG", "AU", "IN", "AE"],
+      "source_url": "https://openai.com/business-data/"
+    },
+    "swiss_hosting": {
+      "value": false,
+      "source_url": "https://openai.com/business-data/"
+    },
+    "eu_hosting": {
+      "value": true,
+      "source_url": "https://openai.com/business-data/"
+    },
+    "dpa_url": {
+      "value": "https://openai.com/policies/data-processing-addendum/",
+      "source_url": "https://openai.com/policies/data-processing-addendum/"
+    },
+    "training_opt_out": {
+      "value": true,
+      "source_url": "https://openai.com/business-data/"
+    },
+    "certifications": {
+      "value": ["iso_27001", "soc_2"],
+      "source_url": "https://openai.com/business-data/"
+    },
+    "pricing_tier": {
+      "value": "usage",
+      "source_url": "https://openai.com/"
+    },
+    "swiss_entity": {
+      "value": false,
+      "source_url": "https://openai.com/policies/data-processing-addendum/"
+    },
+    "eu_entity": {
+      "value": true,
+      "source_url": "https://openai.com/policies/data-processing-addendum/"
+    }
+  },
+  {
+    "id": "anthropic",
+    "name": "Anthropic",
+    "website": "https://www.anthropic.com/",
+    "last_checked": "2026-07-10",
+    "hosting_regions": {
+      "value": ["EU", "US", "CA", "JP", "KR", "SG", "IN", "AU"],
+      "source_url": "https://claude.com/regional-compliance"
+    },
+    "swiss_hosting": {
+      "value": null,
+      "source_url": null
+    },
+    "eu_hosting": {
+      "value": true,
+      "source_url": "https://claude.com/regional-compliance"
+    },
+    "dpa_url": {
+      "value": null,
+      "source_url": null
+    },
+    "training_opt_out": {
+      "value": true,
+      "source_url": "https://claude.com/regional-compliance"
+    },
+    "certifications": {
+      "value": ["iso_27001", "soc_2"],
+      "source_url": "https://privacy.claude.com/en/articles/10015870-what-certifications-has-anthropic-obtained"
+    },
+    "pricing_tier": {
+      "value": "usage",
+      "source_url": "https://www.anthropic.com/"
+    },
+    "swiss_entity": {
+      "value": null,
+      "source_url": null
+    },
+    "eu_entity": {
+      "value": null,
+      "source_url": null
+    }
+  },
+  {
+    "id": "google-cloud",
+    "name": "Google Cloud (Vertex AI / Gemini)",
+    "website": "https://cloud.google.com/",
+    "last_checked": "2026-07-10",
+    "hosting_regions": {
+      "value": ["CH", "EU", "US"],
+      "source_url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/machine-learning/general/locations"
+    },
+    "swiss_hosting": {
+      "value": true,
+      "source_url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/machine-learning/general/locations"
+    },
+    "eu_hosting": {
+      "value": true,
+      "source_url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/machine-learning/general/locations"
+    },
+    "dpa_url": {
+      "value": "https://cloud.google.com/terms/data-processing-addendum",
+      "source_url": "https://cloud.google.com/terms/data-processing-addendum"
+    },
+    "training_opt_out": {
+      "value": null,
+      "source_url": null
+    },
+    "certifications": {
+      "value": ["iso_27001", "soc_2"],
+      "source_url": "https://cloud.google.com/terms/data-processing-addendum"
+    },
+    "pricing_tier": {
+      "value": "usage",
+      "source_url": "https://cloud.google.com/"
+    },
+    "swiss_entity": {
+      "value": null,
+      "source_url": null
+    },
+    "eu_entity": {
+      "value": null,
+      "source_url": null
+    }
+  },
+  {
+    "id": "microsoft-azure",
+    "name": "Microsoft Azure (Azure OpenAI)",
+    "website": "https://azure.microsoft.com/",
+    "last_checked": "2026-07-10",
+    "hosting_regions": {
+      "value": ["EU", "US"],
+      "source_url": "https://learn.microsoft.com/en-us/azure/ai-foundry/responsible-ai/openai/data-privacy"
+    },
+    "swiss_hosting": {
+      "value": null,
+      "source_url": null
+    },
+    "eu_hosting": {
+      "value": true,
+      "source_url": "https://learn.microsoft.com/en-us/azure/ai-foundry/responsible-ai/openai/data-privacy"
+    },
+    "dpa_url": {
+      "value": "https://www.microsoft.com/licensing/docs/view/Microsoft-Products-and-Services-Data-Protection-Addendum-DPA",
+      "source_url": "https://learn.microsoft.com/en-us/azure/ai-foundry/responsible-ai/openai/data-privacy"
+    },
+    "training_opt_out": {
+      "value": true,
+      "source_url": "https://learn.microsoft.com/en-us/azure/ai-foundry/responsible-ai/openai/data-privacy"
+    },
+    "certifications": {
+      "value": null,
+      "source_url": null
+    },
+    "pricing_tier": {
+      "value": "usage",
+      "source_url": "https://azure.microsoft.com/"
+    },
+    "swiss_entity": {
+      "value": null,
+      "source_url": null
+    },
+    "eu_entity": {
+      "value": null,
+      "source_url": null
+    }
+  },
+  {
+    "id": "mistral",
+    "name": "Mistral AI",
+    "website": "https://mistral.ai/",
+    "last_checked": "2026-07-10",
+    "hosting_regions": {
+      "value": ["EU"],
+      "source_url": "https://mistral.ai/"
+    },
+    "swiss_hosting": {
+      "value": false,
+      "source_url": "https://mistral.ai/"
+    },
+    "eu_hosting": {
+      "value": true,
+      "source_url": "https://mistral.ai/"
+    },
+    "dpa_url": {
+      "value": "https://legal.mistral.ai/terms/data-processing-addendum",
+      "source_url": "https://legal.mistral.ai/terms/data-processing-addendum"
+    },
+    "training_opt_out": {
+      "value": null,
+      "source_url": null
+    },
+    "certifications": {
+      "value": null,
+      "source_url": null
+    },
+    "pricing_tier": {
+      "value": "usage",
+      "source_url": "https://mistral.ai/"
+    },
+    "swiss_entity": {
+      "value": false,
+      "source_url": "https://legal.mistral.ai/terms/data-processing-addendum"
+    },
+    "eu_entity": {
+      "value": true,
+      "source_url": "https://legal.mistral.ai/terms/data-processing-addendum"
+    }
+  },
+  {
+    "id": "aleph-alpha",
+    "name": "Aleph Alpha",
+    "website": "https://aleph-alpha.com/",
+    "last_checked": "2026-07-10",
+    "hosting_regions": {
+      "value": ["EU"],
+      "source_url": "https://docs.aleph-alpha.com/verticals/pga.html"
+    },
+    "swiss_hosting": {
+      "value": false,
+      "source_url": "https://docs.aleph-alpha.com/verticals/pga.html"
+    },
+    "eu_hosting": {
+      "value": true,
+      "source_url": "https://docs.aleph-alpha.com/verticals/pga.html"
+    },
+    "dpa_url": {
+      "value": null,
+      "source_url": null
+    },
+    "training_opt_out": {
+      "value": true,
+      "source_url": "https://docs.aleph-alpha.com/verticals/pga.html"
+    },
+    "certifications": {
+      "value": null,
+      "source_url": null
+    },
+    "pricing_tier": {
+      "value": "contact",
+      "source_url": "https://aleph-alpha.com/"
+    },
+    "swiss_entity": {
+      "value": null,
+      "source_url": null
+    },
+    "eu_entity": {
+      "value": null,
+      "source_url": null
+    }
+  },
+  {
+    "id": "aws-bedrock",
+    "name": "Amazon Bedrock",
+    "website": "https://aws.amazon.com/bedrock/",
+    "last_checked": "2026-07-10",
+    "hosting_regions": {
+      "value": null,
+      "source_url": null
+    },
+    "swiss_hosting": {
+      "value": null,
+      "source_url": null
+    },
+    "eu_hosting": {
+      "value": null,
+      "source_url": null
+    },
+    "dpa_url": {
+      "value": "https://d1.awsstatic.com/legal/aws-gdpr/AWS_GDPR_DPA.pdf",
+      "source_url": "https://d1.awsstatic.com/legal/aws-gdpr/AWS_GDPR_DPA.pdf"
+    },
+    "training_opt_out": {
+      "value": true,
+      "source_url": "https://aws.amazon.com/bedrock/security-compliance/"
+    },
+    "certifications": {
+      "value": ["iso_27001", "soc_2"],
+      "source_url": "https://aws.amazon.com/bedrock/security-compliance/"
+    },
+    "pricing_tier": {
+      "value": "usage",
+      "source_url": "https://aws.amazon.com/bedrock/"
+    },
+    "swiss_entity": {
+      "value": null,
+      "source_url": null
+    },
+    "eu_entity": {
+      "value": null,
+      "source_url": null
+    }
+  },
+  {
+    "id": "swisscom-ai",
+    "name": "Swisscom AI",
+    "website": "https://www.swisscom.ch/en/business/enterprise/offer/platforms-applications/data-driven-business/swiss-ai-platform.html",
+    "last_checked": "2026-07-10",
+    "hosting_regions": {
+      "value": ["CH"],
+      "source_url": "https://www.swisscom.ch/en/business/enterprise/offer/platforms-applications/data-driven-business/swiss-ai-platform.html"
+    },
+    "swiss_hosting": {
+      "value": true,
+      "source_url": "https://www.swisscom.ch/en/business/enterprise/offer/platforms-applications/data-driven-business/swiss-ai-platform.html"
+    },
+    "eu_hosting": {
+      "value": false,
+      "source_url": "https://www.swisscom.ch/en/business/enterprise/offer/platforms-applications/data-driven-business/swiss-ai-platform.html"
+    },
+    "dpa_url": {
+      "value": null,
+      "source_url": null
+    },
+    "training_opt_out": {
+      "value": true,
+      "source_url": "https://www.swisscom.ch/en/business/enterprise/offer/platforms-applications/data-driven-business/swiss-ai-platform.html"
+    },
+    "certifications": {
+      "value": null,
+      "source_url": null
+    },
+    "pricing_tier": {
+      "value": "contact",
+      "source_url": "https://www.swisscom.ch/en/business/enterprise/offer/platforms-applications/data-driven-business/swiss-ai-platform.html"
+    },
+    "swiss_entity": {
+      "value": true,
+      "source_url": "https://www.swisscom.ch/en/business/enterprise/offer/platforms-applications/data-driven-business/swiss-ai-platform.html"
+    },
+    "eu_entity": {
+      "value": null,
+      "source_url": null
+    }
+  },
+  {
+    "id": "infomaniak",
+    "name": "Infomaniak",
+    "website": "https://www.infomaniak.com/",
+    "last_checked": "2026-07-10",
+    "hosting_regions": {
+      "value": ["CH"],
+      "source_url": "https://www.infomaniak.com/en/trust-center"
+    },
+    "swiss_hosting": {
+      "value": true,
+      "source_url": "https://www.infomaniak.com/en/trust-center"
+    },
+    "eu_hosting": {
+      "value": false,
+      "source_url": "https://www.infomaniak.com/en/trust-center"
+    },
+    "dpa_url": {
+      "value": "https://www.infomaniak.com/documents/privacy/DPA/Data_Processing_Agreement_(DPA).pdf",
+      "source_url": "https://www.infomaniak.com/documents/privacy/DPA/Data_Processing_Agreement_(DPA).pdf"
+    },
+    "training_opt_out": {
+      "value": true,
+      "source_url": "https://www.infomaniak.com/en/trust-center"
+    },
+    "certifications": {
+      "value": ["iso_27001", "finma_relevant"],
+      "source_url": "https://www.infomaniak.com/en/trust-center"
+    },
+    "pricing_tier": {
+      "value": "subscription",
+      "source_url": "https://www.infomaniak.com/"
+    },
+    "swiss_entity": {
+      "value": true,
+      "source_url": "https://www.infomaniak.com/documents/privacy/DPA/Data_Processing_Agreement_(DPA).pdf"
+    },
+    "eu_entity": {
+      "value": null,
+      "source_url": null
+    }
+  },
+  {
+    "id": "huggingface",
+    "name": "Hugging Face",
+    "website": "https://huggingface.co/",
+    "last_checked": "2026-07-10",
+    "hosting_regions": {
+      "value": null,
+      "source_url": null
+    },
+    "swiss_hosting": {
+      "value": null,
+      "source_url": null
+    },
+    "eu_hosting": {
+      "value": null,
+      "source_url": null
+    },
+    "dpa_url": {
+      "value": null,
+      "source_url": null
+    },
+    "training_opt_out": {
+      "value": null,
+      "source_url": null
+    },
+    "certifications": {
+      "value": ["soc_2"],
+      "source_url": "https://huggingface.co/docs/hub/main/security"
+    },
+    "pricing_tier": {
+      "value": null,
+      "source_url": null
+    },
+    "swiss_entity": {
+      "value": null,
+      "source_url": null
+    },
+    "eu_entity": {
+      "value": null,
+      "source_url": null
+    }
+  },
+  {
+    "id": "cohere",
+    "name": "Cohere",
+    "website": "https://cohere.com/",
+    "last_checked": "2026-07-10",
+    "hosting_regions": {
+      "value": ["US"],
+      "source_url": "https://trustcenter.cohere.com/"
+    },
+    "swiss_hosting": {
+      "value": false,
+      "source_url": "https://trustcenter.cohere.com/"
+    },
+    "eu_hosting": {
+      "value": false,
+      "source_url": "https://trustcenter.cohere.com/"
+    },
+    "dpa_url": {
+      "value": null,
+      "source_url": null
+    },
+    "training_opt_out": {
+      "value": true,
+      "source_url": "https://cohere.com/enterprise-data-commitments"
+    },
+    "certifications": {
+      "value": ["iso_27001", "soc_2"],
+      "source_url": "https://trustcenter.cohere.com/"
+    },
+    "pricing_tier": {
+      "value": "usage",
+      "source_url": "https://cohere.com/"
+    },
+    "swiss_entity": {
+      "value": null,
+      "source_url": null
+    },
+    "eu_entity": {
+      "value": null,
+      "source_url": null
+    }
+  },
+  {
+    "id": "ibm-watsonx",
+    "name": "IBM watsonx",
+    "website": "https://www.ibm.com/watsonx",
+    "last_checked": "2026-07-10",
+    "hosting_regions": {
+      "value": null,
+      "source_url": null
+    },
+    "swiss_hosting": {
+      "value": null,
+      "source_url": null
+    },
+    "eu_hosting": {
+      "value": null,
+      "source_url": null
+    },
+    "dpa_url": {
+      "value": null,
+      "source_url": null
+    },
+    "training_opt_out": {
+      "value": null,
+      "source_url": null
+    },
+    "certifications": {
+      "value": null,
+      "source_url": null
+    },
+    "pricing_tier": {
+      "value": "usage",
+      "source_url": "https://www.ibm.com/watsonx"
+    },
+    "swiss_entity": {
+      "value": null,
+      "source_url": null
+    },
+    "eu_entity": {
+      "value": null,
+      "source_url": null
+    }
+  },
+  {
+    "id": "exoscale",
+    "name": "Exoscale",
+    "website": "https://www.exoscale.com/",
+    "last_checked": "2026-07-10",
+    "hosting_regions": {
+      "value": ["CH", "EU"],
+      "source_url": "https://www.exoscale.com/compliance/"
+    },
+    "swiss_hosting": {
+      "value": true,
+      "source_url": "https://www.exoscale.com/compliance/"
+    },
+    "eu_hosting": {
+      "value": true,
+      "source_url": "https://www.exoscale.com/ai-cloud-infrastructure/"
+    },
+    "dpa_url": {
+      "value": null,
+      "source_url": null
+    },
+    "training_opt_out": {
+      "value": null,
+      "source_url": null
+    },
+    "certifications": {
+      "value": ["iso_27001", "soc_2"],
+      "source_url": "https://www.exoscale.com/compliance/"
+    },
+    "pricing_tier": {
+      "value": "usage",
+      "source_url": "https://www.exoscale.com/ai-cloud-infrastructure/"
+    },
+    "swiss_entity": {
+      "value": null,
+      "source_url": null
+    },
+    "eu_entity": {
+      "value": null,
+      "source_url": null
+    }
+  },
+  {
+    "id": "ovhcloud",
+    "name": "OVHcloud",
+    "website": "https://www.ovhcloud.com/",
+    "last_checked": "2026-07-10",
+    "hosting_regions": {
+      "value": ["EU"],
+      "source_url": "https://docs.ovhcloud.com/en/guides/public-cloud/ai-machine-learning/ai-endpoints-capabilities"
+    },
+    "swiss_hosting": {
+      "value": false,
+      "source_url": "https://docs.ovhcloud.com/en/guides/public-cloud/ai-machine-learning/ai-endpoints-capabilities"
+    },
+    "eu_hosting": {
+      "value": true,
+      "source_url": "https://docs.ovhcloud.com/en/guides/public-cloud/ai-machine-learning/ai-endpoints-capabilities"
+    },
+    "dpa_url": {
+      "value": "https://www.ovh.com/fr/support/documents_legaux/Annexe%20Traitement%20de%20donn%C3%A9es%20%C3%A0%20caract%C3%A8re%20personnel.pdf",
+      "source_url": "https://www.ovh.com/fr/support/documents_legaux/Annexe%20Traitement%20de%20donn%C3%A9es%20%C3%A0%20caract%C3%A8re%20personnel.pdf"
+    },
+    "training_opt_out": {
+      "value": true,
+      "source_url": "https://docs.ovhcloud.com/en/guides/public-cloud/ai-machine-learning/ai-endpoints-capabilities"
+    },
+    "certifications": {
+      "value": null,
+      "source_url": null
+    },
+    "pricing_tier": {
+      "value": "usage",
+      "source_url": "https://docs.ovhcloud.com/en/guides/public-cloud/ai-machine-learning/ai-endpoints-capabilities"
+    },
+    "swiss_entity": {
+      "value": false,
+      "source_url": "https://www.ovh.com/fr/support/documents_legaux/Annexe%20Traitement%20de%20donn%C3%A9es%20%C3%A0%20caract%C3%A8re%20personnel.pdf"
+    },
+    "eu_entity": {
+      "value": true,
+      "source_url": "https://www.ovh.com/fr/support/documents_legaux/Annexe%20Traitement%20de%20donn%C3%A9es%20%C3%A0%20caract%C3%A8re%20personnel.pdf"
+    }
+  },
+  {
+    "id": "deepl",
+    "name": "DeepL",
+    "website": "https://www.deepl.com/",
+    "last_checked": "2026-07-10",
+    "hosting_regions": {
+      "value": ["EU", "US", "APAC"],
+      "source_url": "https://www.deepl.com/en/blog/expanding-deepl-data-infrastructure"
+    },
+    "swiss_hosting": {
+      "value": null,
+      "source_url": null
+    },
+    "eu_hosting": {
+      "value": true,
+      "source_url": "https://www.deepl.com/en/blog/expanding-deepl-data-infrastructure"
+    },
+    "dpa_url": {
+      "value": null,
+      "source_url": null
+    },
+    "training_opt_out": {
+      "value": true,
+      "source_url": "https://www.deepl.com/en/blog/expanding-deepl-data-infrastructure"
+    },
+    "certifications": {
+      "value": ["iso_27001", "soc_2"],
+      "source_url": "https://www.deepl.com/en/blog/expanding-deepl-data-infrastructure"
+    },
+    "pricing_tier": {
+      "value": "subscription",
+      "source_url": "https://www.deepl.com/en/pro-data-security"
+    },
+    "swiss_entity": {
+      "value": false,
+      "source_url": "https://www.deepl.com/en/blog/expanding-deepl-data-infrastructure"
+    },
+    "eu_entity": {
+      "value": true,
+      "source_url": "https://www.deepl.com/en/blog/expanding-deepl-data-infrastructure"
+    }
+  }
+]

@@ -1,0 +1,260 @@
+{
+  "terms": [
+    {
+      "id": "dsg",
+      "domain": "dsg",
+      "de": "Bundesgesetz über den Datenschutz",
+      "fr": "Loi fédérale sur la protection des données",
+      "it": "Legge federale sulla protezione dei dati",
+      "abbreviations": { "de": "DSG", "fr": "LPD", "it": "LPD" },
+      "source_url": "https://www.fedlex.admin.ch/eli/cc/2022/491/de",
+      "notes": "Informal «nDSG» refers to the revised DSG in force since 2023-09-01; not an official short title."
+    },
+    {
+      "id": "dsv",
+      "domain": "dsg",
+      "de": "Datenschutzverordnung",
+      "fr": "Ordonnance sur la protection des données",
+      "it": "Ordinanza sulla protezione dei dati",
+      "abbreviations": { "de": "DSV", "fr": "OPDo", "it": "OPDa" },
+      "source_url": "https://www.fedlex.admin.ch/eli/cc/2022/568/de",
+      "notes": null
+    },
+    {
+      "id": "personendaten",
+      "domain": "dsg",
+      "de": "Personendaten",
+      "fr": "données personnelles",
+      "it": "dati personali",
+      "source_url": "https://www.fedlex.admin.ch/eli/cc/2022/491/de",
+      "notes": "Art. 5 lit. a DSG / LPD."
+    },
+    {
+      "id": "betroffene-person",
+      "domain": "dsg",
+      "de": "betroffene Person",
+      "fr": "personne concernée",
+      "it": "persona interessata",
+      "source_url": "https://www.fedlex.admin.ch/eli/cc/2022/491/de",
+      "notes": "Art. 5 lit. b DSG / LPD."
+    },
+    {
+      "id": "bearbeiten",
+      "domain": "dsg",
+      "de": "Bearbeiten",
+      "fr": "traitement",
+      "it": "trattamento",
+      "source_url": "https://www.fedlex.admin.ch/eli/cc/2022/491/de",
+      "notes": "Art. 5 lit. d DSG / LPD. DE uses the verb form as the defined term; FR/IT use the noun."
+    },
+    {
+      "id": "bekanntgeben",
+      "domain": "dsg",
+      "de": "Bekanntgeben",
+      "fr": "communication",
+      "it": "comunicazione",
+      "source_url": "https://www.fedlex.admin.ch/eli/cc/2022/491/de",
+      "notes": "Art. 5 lit. e DSG / LPD. DE uses the verb form as the defined term; FR/IT use the noun."
+    },
+    {
+      "id": "bekanntgabe-ins-ausland",
+      "domain": "dsg",
+      "de": "Bekanntgabe von Personendaten ins Ausland",
+      "fr": "Communication de données personnelles à l'étranger",
+      "it": "Comunicazione di dati personali all'estero",
+      "source_url": "https://www.fedlex.admin.ch/eli/cc/2022/491/de",
+      "notes": "Section heading / Art. 16–18 DSG / LPD."
+    },
+    {
+      "id": "angemessenes-datenschutzniveau",
+      "domain": "dsg",
+      "de": "angemessenes Datenschutzniveau",
+      "fr": "niveau de protection adéquat",
+      "it": "protezione adeguata",
+      "source_url": "https://www.fedlex.admin.ch/eli/cc/2022/491/de",
+      "notes": "Art. 16 Abs. 1 DSG / LPD uses «angemessener Schutz» / «niveau de protection adéquat» / «protezione adeguata». DE content and this de label use the common paraphrase «angemessenes Datenschutzniveau»."
+    },
+    {
+      "id": "standarddatenschutzklauseln",
+      "domain": "dsg",
+      "de": "Standarddatenschutzklauseln",
+      "fr": "clauses type de protection des données",
+      "it": "clausole tipo di protezione dei dati",
+      "source_url": "https://www.fedlex.admin.ch/eli/cc/2022/491/de",
+      "notes": "Art. 16 Abs. 2 lit. d DSG / LPD."
+    },
+    {
+      "id": "datenschutz-folgenabschaetzung",
+      "domain": "dsg",
+      "de": "Datenschutz-Folgenabschätzung",
+      "fr": "analyse d'impact relative à la protection des données personnelles",
+      "it": "valutazione d'impatto sulla protezione dei dati",
+      "abbreviations": { "de": "DSFA" },
+      "source_url": "https://www.fedlex.admin.ch/eli/cc/2022/491/de",
+      "notes": "Art. 22 DSG / LPD. FR title of the article; IT uses «valutazione d'impatto sulla protezione dei dati»."
+    },
+    {
+      "id": "verantwortlicher",
+      "domain": "dsg",
+      "de": "Verantwortlicher",
+      "fr": "responsable du traitement",
+      "it": "titolare del trattamento",
+      "source_url": "https://www.fedlex.admin.ch/eli/cc/2022/491/de",
+      "notes": "Art. 5 lit. j DSG / LPD. IT «titolare» ≠ FR «responsable» — do not align by cognate."
+    },
+    {
+      "id": "auftragsbearbeiter",
+      "domain": "dsg",
+      "de": "Auftragsbearbeiter",
+      "fr": "sous-traitant",
+      "it": "responsabile del trattamento",
+      "source_url": "https://www.fedlex.admin.ch/eli/cc/2022/491/de",
+      "notes": "Art. 5 lit. k DSG / LPD. IT «responsabile del trattamento» is the processor, not the controller."
+    },
+    {
+      "id": "verzeichnis-bearbeitungstaetigkeiten",
+      "domain": "dsg",
+      "de": "Verzeichnis der Bearbeitungstätigkeiten",
+      "fr": "registre des activités de traitement",
+      "it": "registro delle attività di trattamento",
+      "source_url": "https://www.fedlex.admin.ch/eli/cc/2022/491/de",
+      "notes": "Art. 12 DSG / LPD."
+    },
+    {
+      "id": "automatisierte-einzelentscheidung",
+      "domain": "dsg",
+      "de": "automatisierte Einzelentscheidung",
+      "fr": "décision individuelle automatisée",
+      "it": "decisione individuale automatizzata",
+      "source_url": "https://www.fedlex.admin.ch/eli/cc/2022/491/de",
+      "notes": "Art. 21 DSG / LPD."
+    },
+    {
+      "id": "edoeb",
+      "domain": "institutional",
+      "de": "Eidgenössischer Datenschutz- und Öffentlichkeitsbeauftragter",
+      "fr": "Préposé fédéral à la protection des données et à la transparence",
+      "it": "Incaricato federale della protezione dei dati e della trasparenza",
+      "abbreviations": { "de": "EDÖB", "fr": "PFPDT", "it": "IFPDT" },
+      "source_url": "https://www.fedlex.admin.ch/eli/cc/2022/491/de",
+      "notes": "Art. 4 DSG / LPD."
+    },
+    {
+      "id": "ai-act",
+      "domain": "ai_act",
+      "de": "Verordnung (EU) 2024/1689",
+      "fr": "règlement (UE) 2024/1689",
+      "it": "regolamento (UE) 2024/1689",
+      "source_url": "https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX:32024R1689",
+      "notes": "Full title: Verordnung über künstliche Intelligenz / règlement sur l'intelligence artificielle / regolamento sull'intelligenza artificiale. Informal «AI Act» / «KI-Verordnung» is not the official short title in FR/IT."
+    },
+    {
+      "id": "ki-system",
+      "domain": "ai_act",
+      "de": "KI-System",
+      "fr": "système d'IA",
+      "it": "sistema di IA",
+      "source_url": "https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX:32024R1689",
+      "notes": "Art. 3 Nr. 1 AI Act."
+    },
+    {
+      "id": "anbieter",
+      "domain": "ai_act",
+      "de": "Anbieter",
+      "fr": "fournisseur",
+      "it": "fornitore",
+      "source_url": "https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX:32024R1689",
+      "notes": "Art. 3 Nr. 3 AI Act. Distinct from DSG «Verantwortlicher» / EDÖB usage of Anbieter for AI vendors."
+    },
+    {
+      "id": "betreiber",
+      "domain": "ai_act",
+      "de": "Betreiber",
+      "fr": "déployeur",
+      "it": "deployer",
+      "source_url": "https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX:32024R1689",
+      "notes": "Art. 3 Nr. 4 AI Act. Official IT keeps the English loanword «deployer»."
+    },
+    {
+      "id": "inverkehrbringen",
+      "domain": "ai_act",
+      "de": "Inverkehrbringen",
+      "fr": "mise sur le marché",
+      "it": "immissione sul mercato",
+      "source_url": "https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX:32024R1689",
+      "notes": "Art. 3 Nr. 9 AI Act."
+    },
+    {
+      "id": "inbetriebnahme",
+      "domain": "ai_act",
+      "de": "Inbetriebnahme",
+      "fr": "mise en service",
+      "it": "messa in servizio",
+      "source_url": "https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX:32024R1689",
+      "notes": "Art. 3 Nr. 11 AI Act."
+    },
+    {
+      "id": "hochrisiko-ki-system",
+      "domain": "ai_act",
+      "de": "Hochrisiko-KI-System",
+      "fr": "système d'IA à haut risque",
+      "it": "sistema di IA ad alto rischio",
+      "source_url": "https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX:32024R1689",
+      "notes": "Classification term used throughout the AI Act (e.g. Art. 6); not a separate Art. 3 definition entry."
+    },
+    {
+      "id": "ki-kompetenz",
+      "domain": "ai_act",
+      "de": "KI-Kompetenz",
+      "fr": "maîtrise de l'IA",
+      "it": "alfabetizzazione in materia di IA",
+      "source_url": "https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX:32024R1689",
+      "notes": "Art. 3 Nr. 56 and Art. 4 AI Act. Do not free-translate as «compétences en IA» / «competenze in IA»."
+    },
+    {
+      "id": "ki-modell-allgemeiner-verwendungszweck",
+      "domain": "ai_act",
+      "de": "KI-Modell mit allgemeinem Verwendungszweck",
+      "fr": "modèle d'IA à usage général",
+      "it": "modello di IA per finalità generali",
+      "source_url": "https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX:32024R1689",
+      "notes": "Art. 3 Nr. 63 AI Act. «GPAI» is the common English abbreviation, not an official DE/FR/IT short form."
+    },
+    {
+      "id": "ki-system-allgemeiner-verwendungszweck",
+      "domain": "ai_act",
+      "de": "KI-System mit allgemeinem Verwendungszweck",
+      "fr": "système d'IA à usage général",
+      "it": "sistema di IA per finalità generali",
+      "source_url": "https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX:32024R1689",
+      "notes": "Art. 3 Nr. 66 AI Act."
+    },
+    {
+      "id": "ausgabe",
+      "domain": "ai_act",
+      "de": "Ausgabe",
+      "fr": "sortie",
+      "it": "output",
+      "source_url": "https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX:32024R1689",
+      "notes": "Used in Art. 2 territorial scope (output used in the Union). Official IT often retains «output»."
+    },
+    {
+      "id": "menschliche-aufsicht",
+      "domain": "ai_act",
+      "de": "menschliche Aufsicht",
+      "fr": "contrôle humain",
+      "it": "sorveglianza umana",
+      "source_url": "https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX:32024R1689",
+      "notes": "Art. 14 AI Act (human oversight)."
+    },
+    {
+      "id": "verbotene-ki-praktiken",
+      "domain": "ai_act",
+      "de": "Verbotene Praktiken im KI-Bereich",
+      "fr": "Pratiques interdites en matière d'IA",
+      "it": "Pratiche di IA vietate",
+      "source_url": "https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX:32024R1689",
+      "notes": "Art. 5 / Chapter II AI Act official heading."
+    }
+  ]
+}

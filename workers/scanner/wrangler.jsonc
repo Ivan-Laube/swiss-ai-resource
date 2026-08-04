@@ -1,0 +1,18 @@
+{
+  "name": "swiss-ai-scanner",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-07-01",
+  "ratelimits": [
+    {
+      "name": "SCANNER_RATE_LIMITER",
+      "namespace_id": "2302",
+      "simple": {
+        "limit": 5,
+        "period": 60
+      }
+    }
+  ],
+  "vars": {
+    "SITE_ORIGIN": "https://aicompliant.ch"
+  }
+}

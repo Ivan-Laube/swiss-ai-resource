@@ -1,0 +1,3772 @@
+;
+
+Skip to main content
+
+Licensing
+
+Azure
+Dynamics 365
+Microsoft 365
+Office 365
+Power Platform
+SQL Server
+System Center
+Windows
+Windows 365
+Windows Server
+Product licensing briefs
+Product licensing search
+Licensing Terms
+
+Overview
+Software Assurance Benefits
+Getting Software Assurance
+Resources
+Microsoft Customer Agreement
+
+Enterprise Agreement
+Microsoft Products and Services Agreement (MPSA)
+Open Value
+Select Plus
+Licensing program guides
+
+Software development companies
+Microsoft solution providers
+Services Provider License Agreement (SPLA)
+Microsoft Partner Network
+
+Find a Microsoft partner
+For SMBs
+For Consumers
+For Students
+For Enterprises
+For Government organizations
+For Educational institutions
+For Nonprofit organizations
+
+Tools and resources
+Product fulfillment
+Volume Licensing Service Center (VLSC)
+VLSC training and resources
+Business Center (for MPSA customers)
+Business Center training and resources
+
+Overview
+Software Assurance Benefits
+Getting Software Assurance
+Resources
+
+Contact a Volume Licensing Activation Center
+Access the Volume Licensing Service Center
+Find training and resources for the VLSC
+Contact Support for the Volume Licensing Service Center
+
+Find support for Microsoft products
+Get help with Windows
+Get help with Office
+Find answers on Microsoft forums
+
+Licensing News
+
+Microsoft Security
+Azure
+Dynamics 365
+Microsoft 365
+Microsoft Teams
+Windows 365
+
+Microsoft AI
+Azure Space
+Mixed reality
+Microsoft HoloLens
+Microsoft Viva
+Quantum computing
+Sustainability
+
+Education
+Automotive
+Financial services
+Government
+Healthcare
+Manufacturing
+Retail
+
+Find a partner
+Become a partner
+Partner Network
+Microsoft Marketplace
+Software companies
+
+Blog
+Microsoft Advertising
+Developer Center
+Documentation
+Events
+Licensing
+Microsoft Learn
+Microsoft Research
+
+View Sitemap
+
+Licensing Resources and Documents
+
+Search for a specific licensing resource or browse by category using the links below.
+
+Search
+
+Licensing Resources and Documents
+Licensing Use Rights
+Microsoft Products and Services Data Protection Addendum (DPA)
+
+Microsoft Products and Services Data Protection Addendum (DPA)
+When you subscribe to a Product under the terms of the Product Terms site, the data processing and security terms are defined in Microsoft Online Services Data Protection Addendum (DPA). The DPA is an addendum to the Product Terms site (and formerly OST). The current and archived editions of the DPA are available for download.
+
+Download the most recent version (English) (May 2026):
+Microsoft Product and Services Data Protection Addendum (WW)
+Download
+
+Year
+
+All Years
+2026
+2025
+2024
+2023
+2022
+2021
+2020
+
+Language
+
+All Languages
+English
+Arabic
+Bulgarian
+Catalan
+Chinese (Simplified)
+Chinese (Traditional)
+Croatian
+Czech
+Danish
+Dutch
+Estonian
+Finnish
+French (Europe)
+German
+Greek
+Hungarian
+Italian
+Japanese
+Korean
+Latvian
+Lithuanian
+Norwegian (Bokmal)
+Polish
+Portuguese (Brazil)
+Portuguese (Portugal)
+Romanian
+Russian
+Serbian
+Slovak
+Slovenian
+Spanish (International)
+Swedish
+Thai
+Turkish
+Ukranian
+Indonesian
+
+Asset Types
+
+All Asset types
+Microsoft Product and Services DPA
+
+Resource Name
+
+Type
+
+Month
+
+Day
+
+Year
+
+Language
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+May
+22
+2026
+
+English
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+May
+22
+2026
+
+Portuguese (Portugal)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+May
+22
+2026
+
+Romanian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+May
+22
+2026
+
+Russian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+May
+22
+2026
+
+Serbian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+May
+22
+2026
+
+Slovak
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+May
+22
+2026
+
+Slovenian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+May
+22
+2026
+
+Spanish (International)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+May
+22
+2026
+
+Czech
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+May
+22
+2026
+
+Danish
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+May
+22
+2026
+
+Dutch
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+May
+22
+2026
+
+Estonian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+May
+22
+2026
+
+Finnish
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+May
+22
+2026
+
+French (Europe)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+May
+22
+2026
+
+Greek
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+May
+22
+2026
+
+Hungarian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+May
+22
+2026
+
+Indonesian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+May
+22
+2026
+
+Italian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+May
+22
+2026
+
+Japanese
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+May
+22
+2026
+
+Korean
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+May
+22
+2026
+
+Latvian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+May
+22
+2026
+
+Bulgarian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+May
+22
+2026
+
+Catalan
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+May
+22
+2026
+
+Chinese (Simplified)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+May
+22
+2026
+
+Chinese (Traditional)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+May
+22
+2026
+
+Croatian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+May
+22
+2026
+
+German
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+May
+22
+2026
+
+Swedish
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+May
+22
+2026
+
+Thai
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+May
+22
+2026
+
+Turkish
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+May
+22
+2026
+
+Ukranian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+May
+22
+2026
+
+Lithuanian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+May
+22
+2026
+
+Norwegian (Bokmal)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+May
+22
+2026
+
+Polish
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+May
+22
+2026
+
+Portuguese (Brazil)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+01
+2025
+
+English
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+01
+2025
+
+Serbian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+01
+2025
+
+Slovak
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+01
+2025
+
+Slovenian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+01
+2025
+
+Spanish (International)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+01
+2025
+
+Swedish
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+01
+2025
+
+Thai
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+01
+2025
+
+Turkish
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+01
+2025
+
+Ukranian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+01
+2025
+
+French (Europe)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+01
+2025
+
+Greek
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+01
+2025
+
+Hungarian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+01
+2025
+
+Indonesian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+01
+2025
+
+Italian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+01
+2025
+
+Japanese
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+01
+2025
+
+Korean
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+01
+2025
+
+Latvian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+01
+2025
+
+Lithuanian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+01
+2025
+
+Norwegian (Bokmal)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+01
+2025
+
+Polish
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+01
+2025
+
+Portuguese (Brazil)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+01
+2025
+
+Portuguese (Portugal)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+01
+2025
+
+Romanian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+01
+2025
+
+Russian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+01
+2025
+
+Bulgarian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+01
+2025
+
+Catalan
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+01
+2025
+
+Chinese (Simplified)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+01
+2025
+
+Chinese (Traditional)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+01
+2025
+
+Croatian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+01
+2025
+
+Czech
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+01
+2025
+
+Danish
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+01
+2025
+
+Dutch
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+01
+2025
+
+Estonian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+01
+2025
+
+Finnish
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+01
+2025
+
+German
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+April
+01
+2025
+
+Ukranian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+April
+01
+2025
+
+Spanish (International)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+April
+01
+2025
+
+Swedish
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+April
+01
+2025
+
+Thai
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+April
+01
+2025
+
+Serbian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+April
+01
+2025
+
+Slovak
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+April
+01
+2025
+
+Slovenian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+April
+01
+2025
+
+Portuguese (Brazil)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+April
+01
+2025
+
+Portuguese (Portugal)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+April
+01
+2025
+
+Romanian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+April
+01
+2025
+
+Korean
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+April
+01
+2025
+
+Latvian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+April
+01
+2025
+
+Lithuanian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+April
+01
+2025
+
+Greek
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+April
+01
+2025
+
+Hungarian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+April
+01
+2025
+
+Indonesian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+April
+01
+2025
+
+Italian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+April
+01
+2025
+
+Finnish
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+April
+01
+2025
+
+French (Europe)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+April
+01
+2025
+
+German
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+April
+01
+2025
+
+Danish
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+April
+01
+2025
+
+Dutch
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+April
+01
+2025
+
+English
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+April
+01
+2025
+
+Chinese (Traditional)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+April
+01
+2025
+
+Croatian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+April
+01
+2025
+
+Czech
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+April
+01
+2025
+
+Catalan
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+April
+01
+2025
+
+Chinese (Simplified)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+April
+01
+2025
+
+Bulgarian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+April
+01
+2025
+
+Estonian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+April
+01
+2025
+
+Turkish
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+April
+01
+2025
+
+Japanese
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+April
+01
+2025
+
+Norwegian (Bokmal)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+April
+01
+2025
+
+Polish
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+April
+01
+2025
+
+Russian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+February
+18
+2025
+
+English
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+February
+18
+2025
+
+Ukranian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+February
+18
+2025
+
+Spanish (International)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+February
+18
+2025
+
+Swedish
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+February
+18
+2025
+
+Thai
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+February
+18
+2025
+
+Romanian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+February
+18
+2025
+
+Slovak
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+February
+18
+2025
+
+Slovenian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+February
+18
+2025
+
+Norwegian (Bokmal)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+February
+18
+2025
+
+Polish
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+February
+18
+2025
+
+Portuguese (Brazil)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+February
+18
+2025
+
+Portuguese (Portugal)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+February
+18
+2025
+
+Korean
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+February
+18
+2025
+
+Latvian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+February
+18
+2025
+
+Lithuanian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+February
+18
+2025
+
+French (Europe)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+February
+18
+2025
+
+German
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+February
+18
+2025
+
+Italian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+February
+18
+2025
+
+Japanese
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+February
+18
+2025
+
+Chinese (Traditional)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+February
+18
+2025
+
+Finnish
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+February
+18
+2025
+
+Chinese (Simplified)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+February
+18
+2025
+
+Turkish
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+02
+2024
+
+Arabic
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+02
+2024
+
+Bulgarian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+02
+2024
+
+Catalan
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+02
+2024
+
+Chinese (Simplified)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+02
+2024
+
+Chinese (Traditional)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+02
+2024
+
+Croatian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+02
+2024
+
+Czech
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+02
+2024
+
+Danish
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+02
+2024
+
+Dutch
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+02
+2024
+
+Estonian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+02
+2024
+
+Finnish
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+02
+2024
+
+French (Europe)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+02
+2024
+
+German
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+02
+2024
+
+Greek
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+02
+2024
+
+Hungarian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+02
+2024
+
+Italian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+02
+2024
+
+Japanese
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+02
+2024
+
+Korean
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+02
+2024
+
+Latvian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+02
+2024
+
+Lithuanian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+02
+2024
+
+Norwegian (Bokmal)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+02
+2024
+
+Polish
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+02
+2024
+
+Portuguese (Brazil)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+02
+2024
+
+Portuguese (Portugal)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+02
+2024
+
+Romanian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+02
+2024
+
+Russian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+02
+2024
+
+Serbian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+02
+2024
+
+Slovak
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+02
+2024
+
+Slovenian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+02
+2024
+
+Spanish (International)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+02
+2024
+
+Swedish
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+02
+2024
+
+Thai
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+02
+2024
+
+Turkish
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+02
+2024
+
+Ukranian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+02
+2024
+
+English
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+02
+2024
+
+Indonesian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+November
+15
+2023
+
+Arabic
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+November
+15
+2023
+
+Bulgarian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+November
+15
+2023
+
+Catalan
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+November
+15
+2023
+
+Chinese (Simplified)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+November
+15
+2023
+
+Chinese (Traditional)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+November
+15
+2023
+
+Croatian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+November
+15
+2023
+
+Czech
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+November
+15
+2023
+
+Danish
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+November
+15
+2023
+
+Dutch
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+November
+15
+2023
+
+English
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+November
+15
+2023
+
+Estonian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+November
+15
+2023
+
+Finnish
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+November
+15
+2023
+
+French (Europe)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+November
+15
+2023
+
+German
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+November
+15
+2023
+
+Greek
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+November
+15
+2023
+
+Hungarian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+November
+15
+2023
+
+Italian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+November
+15
+2023
+
+Japanese
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+November
+15
+2023
+
+Korean
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+November
+15
+2023
+
+Latvian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+November
+15
+2023
+
+Lithuanian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+November
+15
+2023
+
+Norwegian (Bokmal)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+November
+15
+2023
+
+Polish
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+November
+15
+2023
+
+Portuguese (Brazil)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+November
+15
+2023
+
+Portuguese (Portugal)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+November
+15
+2023
+
+Romanian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+November
+15
+2023
+
+Russian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+November
+15
+2023
+
+Serbian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+November
+15
+2023
+
+Slovak
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+November
+15
+2023
+
+Slovenian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+November
+15
+2023
+
+Spanish (International)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+November
+15
+2023
+
+Swedish
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+November
+15
+2023
+
+Thai
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+November
+15
+2023
+
+Turkish
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+November
+15
+2023
+
+Ukranian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+01
+2023
+
+English
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+01
+2023
+
+Arabic
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+01
+2023
+
+Catalan
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+01
+2023
+
+Chinese (Simplified)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+01
+2023
+
+Chinese (Traditional)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+01
+2023
+
+Croatian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+01
+2023
+
+Estonian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+01
+2023
+
+Finnish
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+01
+2023
+
+Bulgarian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+01
+2023
+
+Korean
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+01
+2023
+
+Lithuanian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+01
+2023
+
+Portuguese (Brazil)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+01
+2023
+
+Portuguese (Portugal)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+01
+2023
+
+Russian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+01
+2023
+
+Serbian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+01
+2023
+
+Slovak
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+01
+2023
+
+Slovenian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+01
+2023
+
+Thai
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+01
+2023
+
+Turkish
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+01
+2023
+
+Ukranian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+01
+2023
+
+Latvian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+01
+2023
+
+French (Europe)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+01
+2023
+
+German
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+01
+2023
+
+Hungarian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+01
+2023
+
+Danish
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+01
+2023
+
+Czech
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+01
+2023
+
+Greek
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+01
+2023
+
+Italian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+01
+2023
+
+Japanese
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+01
+2023
+
+Norwegian (Bokmal)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+01
+2023
+
+Polish
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+01
+2023
+
+Romanian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+01
+2023
+
+Spanish (International)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+01
+2023
+
+Dutch
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+January
+01
+2023
+
+Swedish
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2022
+
+Romanian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2022
+
+Spanish (International)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2022
+
+Polish
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2022
+
+Czech
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2022
+
+Danish
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2022
+
+Swedish
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2022
+
+French (Europe)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2022
+
+Dutch
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2022
+
+Serbian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2022
+
+Slovak
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2022
+
+Slovenian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2022
+
+Turkish
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2022
+
+Thai
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2022
+
+Ukranian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2022
+
+Lithuanian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2022
+
+Portuguese (Brazil)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2022
+
+Latvian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2022
+
+Russian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2022
+
+Croatian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2022
+
+English
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2022
+
+Portuguese (Portugal)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2022
+
+Finnish
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2022
+
+Korean
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2022
+
+Estonian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2022
+
+Bulgarian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2022
+
+Chinese (Simplified)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2022
+
+Chinese (Traditional)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2022
+
+Catalan
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2022
+
+Arabic
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2022
+
+Italian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2022
+
+German
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2022
+
+Greek
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2022
+
+Japanese
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2022
+
+Hungarian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+27
+2021
+
+Russian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2021
+
+Bulgarian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2021
+
+Arabic
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2021
+
+Chinese (Simplified)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2021
+
+Catalan
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2021
+
+Croatian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2021
+
+Chinese (Traditional)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2021
+
+Finnish
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2021
+
+Hungarian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2021
+
+Estonian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2021
+
+Korean
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2021
+
+Lithuanian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2021
+
+Portuguese (Brazil)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2021
+
+Portuguese (Portugal)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2021
+
+Latvian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2021
+
+Serbian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2021
+
+Slovenian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2021
+
+Slovak
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2021
+
+Turkish
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2021
+
+Thai
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2021
+
+Danish
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2021
+
+Dutch
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2021
+
+German
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2021
+
+Greek
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2021
+
+Italian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2021
+
+Norwegian (Bokmal)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2021
+
+Romanian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2021
+
+Spanish (International)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2021
+
+Japanese
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2021
+
+Ukranian
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2021
+
+Swedish
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2021
+
+Polish
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2021
+
+French (Europe)
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2021
+
+English
+
+Microsoft Product and Services Data Protection Addendum (WW)
+
+September
+15
+2021
+
+Czech
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+December
+09
+2020
+
+Arabic
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+December
+09
+2020
+
+English
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+December
+09
+2020
+
+Bulgarian
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+December
+09
+2020
+
+Chinese (Simplified)
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+December
+09
+2020
+
+Chinese (Traditional)
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+December
+09
+2020
+
+Croatian
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+December
+09
+2020
+
+German
+
+Online Services DPA
+
+December
+09
+2020
+
+Czech
+
+Online Services DPA
+
+December
+09
+2020
+
+Danish
+
+Online Services DPA
+
+December
+09
+2020
+
+Catalan
+
+Online Services DPA
+
+December
+09
+2020
+
+Estonian
+
+Online Services DPA
+
+December
+09
+2020
+
+Finnish
+
+Online Services DPA
+
+December
+09
+2020
+
+French (Europe)
+
+Online Services DPA
+
+December
+09
+2020
+
+Greek
+
+Online Services DPA
+
+December
+09
+2020
+
+Italian
+
+Online Services DPA
+
+December
+09
+2020
+
+Dutch
+
+Online Services DPA
+
+December
+09
+2020
+
+Korean
+
+Online Services DPA
+
+December
+09
+2020
+
+Latvian
+
+Online Services DPA
+
+December
+09
+2020
+
+Lithuanian
+
+Online Services DPA
+
+December
+09
+2020
+
+Japanese
+
+Online Services DPA
+
+December
+09
+2020
+
+Polish
+
+Online Services DPA
+
+December
+09
+2020
+
+Norwegian (Bokmal)
+
+Online Services DPA
+
+December
+09
+2020
+
+Portuguese (Portugal)
+
+Online Services DPA
+
+December
+09
+2020
+
+Portuguese (Brazil)
+
+Online Services DPA
+
+December
+09
+2020
+
+Serbian
+
+Online Services DPA
+
+December
+09
+2020
+
+Slovak
+
+Online Services DPA
+
+December
+09
+2020
+
+Romanian
+
+Online Services DPA
+
+December
+09
+2020
+
+Spanish (International)
+
+Online Services DPA
+
+December
+09
+2020
+
+Slovenian
+
+Online Services DPA
+
+December
+09
+2020
+
+Thai
+
+Online Services DPA
+
+December
+09
+2020
+
+Swedish
+
+Online Services DPA
+
+December
+09
+2020
+
+Turkish
+
+Online Services DPA
+
+December
+09
+2020
+
+Ukranian
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+21
+2020
+
+English
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+21
+2020
+
+Arabic
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+21
+2020
+
+Bulgarian
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+21
+2020
+
+Catalan
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+21
+2020
+
+Chinese (Simplified)
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+21
+2020
+
+Chinese (Traditional)
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+21
+2020
+
+Croatian
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+21
+2020
+
+Danish
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+21
+2020
+
+Estonian
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+21
+2020
+
+Greek
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+21
+2020
+
+Hungarian
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+21
+2020
+
+Italian
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+21
+2020
+
+Japanese
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+21
+2020
+
+Korean
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+21
+2020
+
+Latvian
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+21
+2020
+
+Lithuanian
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+21
+2020
+
+Norwegian (Bokmal)
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+21
+2020
+
+Polish
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+21
+2020
+
+Portuguese (Brazil)
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+21
+2020
+
+Portuguese (Portugal)
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+21
+2020
+
+Romanian
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+21
+2020
+
+Russian
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+21
+2020
+
+Serbian
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+21
+2020
+
+Slovenian
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+21
+2020
+
+Spanish (International)
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+21
+2020
+
+Swedish
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+21
+2020
+
+Thai
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+21
+2020
+
+Turkish
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+21
+2020
+
+Ukranian
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+21
+2020
+
+Dutch
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+21
+2020
+
+Czech
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+21
+2020
+
+Finnish
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+21
+2020
+
+German
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+21
+2020
+
+Slovak
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+21
+2020
+
+French (Europe)
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+01
+2020
+
+Bulgarian
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+01
+2020
+
+Catalan
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+01
+2020
+
+Chinese (Simplified)
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+01
+2020
+
+Chinese (Traditional)
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+01
+2020
+
+Croatian
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+01
+2020
+
+Estonian
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+01
+2020
+
+Greek
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+01
+2020
+
+Hungarian
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+01
+2020
+
+Italian
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+01
+2020
+
+Latvian
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+01
+2020
+
+Lithuanian
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+01
+2020
+
+Norwegian (Bokmal)
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+01
+2020
+
+Portuguese (Brazil)
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+01
+2020
+
+Portuguese (Portugal)
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+01
+2020
+
+Romanian
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+01
+2020
+
+Russian
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+01
+2020
+
+Serbian
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+01
+2020
+
+Slovenian
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+01
+2020
+
+Swedish
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+01
+2020
+
+Turkish
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+01
+2020
+
+Ukranian
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+01
+2020
+
+Polish
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+01
+2020
+
+Danish
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+01
+2020
+
+Thai
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+01
+2020
+
+Czech
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+01
+2020
+
+Finnish
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+01
+2020
+
+Slovak
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+01
+2020
+
+Spanish (International)
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+01
+2020
+
+German
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+01
+2020
+
+Japanese
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+01
+2020
+
+French (Europe)
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+July
+01
+2020
+
+Korean
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+January
+01
+2020
+
+English
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+January
+01
+2020
+
+Arabic
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+January
+01
+2020
+
+Bulgarian
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+January
+01
+2020
+
+Catalan
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+January
+01
+2020
+
+Chinese (Simplified)
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+January
+01
+2020
+
+Chinese (Traditional)
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+January
+01
+2020
+
+Croatian
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+January
+01
+2020
+
+Czech
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+January
+01
+2020
+
+Danish
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+January
+01
+2020
+
+Dutch
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+January
+01
+2020
+
+Estonian
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+January
+01
+2020
+
+Finnish
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+January
+01
+2020
+
+Greek
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+January
+01
+2020
+
+Hungarian
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+January
+01
+2020
+
+Italian
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+January
+01
+2020
+
+Japanese
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+January
+01
+2020
+
+Latvian
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+January
+01
+2020
+
+Lithuanian
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+January
+01
+2020
+
+Norwegian (Bokmal)
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+January
+01
+2020
+
+Polish
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+January
+01
+2020
+
+Portuguese (Brazil)
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+January
+01
+2020
+
+Portuguese (Portugal)
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+January
+01
+2020
+
+Romanian
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+January
+01
+2020
+
+Russian
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+January
+01
+2020
+
+Serbian
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+January
+01
+2020
+
+Slovak
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+January
+01
+2020
+
+Slovenian
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+January
+01
+2020
+
+Spanish (International)
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+January
+01
+2020
+
+Swedish
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+January
+01
+2020
+
+Thai
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+January
+01
+2020
+
+Turkish
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+January
+01
+2020
+
+Ukranian
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+January
+01
+2020
+
+French (Europe)
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+January
+01
+2020
+
+Korean
+
+Microsoft Online Services Data Protection Addendum (WW)
+
+January
+01
+2020
+
+German
+
+You have been redirected here from www.microsoftvolumelicensing.com (MSVL).
+
+Welcome to the NEW Microsoft Licensing Resources and Documents site! This site has replaced MSVL and contains all the content formally hosted on MSVL. Please update your bookmark to https://aka.ms/licensingdocs.
+Close
+
+Surface Pro
+Surface Laptop
+Surface Laptop Ultra
+Surface RTX Spark Dev Box
+Copilot for organizations
+Copilot for personal use
+Explore Microsoft products
+Windows 11 apps
+
+Account profile
+Download Center
+Microsoft Store support
+Returns
+Order tracking
+Certified Refurbished
+Microsoft Store Promise
+Flexible Payments
+
+Microsoft in education
+Devices for education
+Microsoft Teams for Education
+Microsoft 365 Education
+How to buy for your school
+Educator training and development
+Deals for students and parents
+AI for education
+
+Microsoft AI
+Microsoft Security
+Dynamics 365
+Microsoft 365
+Microsoft Power Platform
+Microsoft Teams
+Microsoft 365 Copilot
+Small Business
+
+Azure
+Microsoft Developer
+Microsoft Learn
+Support for AI marketplace apps
+Microsoft Tech Community
+Microsoft Marketplace
+Software companies
+Visual Studio
+
+Careers
+About Microsoft
+Company news
+Privacy at Microsoft
+Investors
+Diversity and inclusion
+Accessibility
+Sustainability
+
+English (United States)
+
+Your Privacy Choices Opt-Out Icon
+
+Your Privacy Choices
+
+Consumer Health Privacy
+
+Contact us
+Privacy
+Manage cookies
+Terms of use
+Trademarks
+About our ads

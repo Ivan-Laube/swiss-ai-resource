@@ -1,0 +1,134 @@
+name: Translate on DE merge
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "content/de/**/*.md"
+  workflow_dispatch:
+    inputs:
+      slugs:
+        description: "Comma-separated DE slugs (empty = all publishable)"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: translate-on-de-merge-main
+  cancel-in-progress: false
+
+jobs:
+  translate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Resolve DE slugs to translate
+        id: slugs
+        env:
+          GITHUB_EVENT_BEFORE: ${{ github.event.before }}
+          GITHUB_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            INPUT="${{ github.event.inputs.slugs }}"
+            if [ -z "${INPUT// }" ]; then
+              mapfile -t SLUGS < <(npx tsx scripts/changed-de-slugs.ts --all)
+            else
+              ARGS=()
+              IFS=',' read -ra PARTS <<< "$INPUT"
+              for part in "${PARTS[@]}"; do
+                slug="$(echo "$part" | xargs)"
+                if [ -n "$slug" ]; then
+                  ARGS+=("--slug=$slug")
+                fi
+              done
+              if [ ${#ARGS[@]} -eq 0 ]; then
+                echo "No valid slugs in workflow_dispatch input."
+                exit 1
+              fi
+              mapfile -t SLUGS < <(npx tsx scripts/changed-de-slugs.ts "${ARGS[@]}")
+            fi
+          else
+            mapfile -t SLUGS < <(npx tsx scripts/changed-de-slugs.ts)
+          fi
+
+          if [ ${#SLUGS[@]} -eq 0 ]; then
+            echo "No DE slugs with canonical content changes; skipping translate."
+            echo "list=" >> "$GITHUB_OUTPUT"
+            echo "count=0" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          JOINED=$(printf '%s,' "${SLUGS[@]}")
+          JOINED="${JOINED%,}"
+          echo "Canonical DE changes: ${JOINED}"
+          echo "list=${JOINED}" >> "$GITHUB_OUTPUT"
+          echo "count=${#SLUGS[@]}" >> "$GITHUB_OUTPUT"
+
+      - name: Regenerate EN/FR/IT drafts
+        if: steps.slugs.outputs.count != '0'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          TRANSLATE_MODEL: ${{ vars.TRANSLATE_MODEL }}
+        run: |
+          set -euo pipefail
+          ARGS=()
+          IFS=',' read -ra PARTS <<< "${{ steps.slugs.outputs.list }}"
+          for slug in "${PARTS[@]}"; do
+            [ -n "$slug" ] || continue
+            ARGS+=("--slug=$slug")
+          done
+
+          if [ ${#ARGS[@]} -eq 0 ]; then
+            echo "Slug list empty unexpectedly."
+            exit 1
+          fi
+
+          npm run translate -- "${ARGS[@]}" --strict
+
+      - name: Validate content frontmatter
+        if: steps.slugs.outputs.count != '0'
+        run: npm run check:content
+
+      # Gate push to main: regenerated translations must not break the static export.
+      - name: Verify static export still builds
+        if: steps.slugs.outputs.count != '0'
+        run: npm run build
+
+      - name: Configure git
+        if: steps.slugs.outputs.count != '0'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Commit regenerated translations
+        if: steps.slugs.outputs.count != '0'
+        run: |
+          set -euo pipefail
+
+          git add -- content/en content/fr content/it
+          if git diff --cached --quiet; then
+            echo "No translation file changes to commit."
+            exit 0
+          fi
+
+          SLUG_LABEL="${{ steps.slugs.outputs.list }}"
+          git commit -m "chore(content): regenerate translations (${SLUG_LABEL})"
+          git push

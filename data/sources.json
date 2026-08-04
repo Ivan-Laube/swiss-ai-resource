@@ -1,3 +1,367 @@
 {
-  "sources": []
+  "sources": [
+    {
+      "id": "edoeb-ki-und-datenschutz",
+      "title": "EDÖB – KI und Datenschutz",
+      "url": "https://www.edoeb.admin.ch/de/ki-und-datenschutz",
+      "selector": "body",
+      "dependent_pages": ["ndsg-ai-basics", "ai-procurement-checklist"],
+      "category": "regulator",
+      "vendor_id": null
+    },
+    {
+      "id": "edoeb-dsg-ki-update",
+      "title": "EDÖB – Update: Geltendes Datenschutzgesetz ist auf KI direkt anwendbar",
+      "url": "https://www.edoeb.admin.ch/de/update-geltendes-datenschutzgesetz-ist-auf-ki-direkt-anwendbar",
+      "selector": "body",
+      "dependent_pages": ["ndsg-ai-basics"],
+      "category": "regulator",
+      "vendor_id": null
+    },
+    {
+      "id": "edoeb-chatgpt-ki-anwendungen",
+      "title": "EDÖB – Einsatz von ChatGPT und vergleichbaren KI-gestützten Anwendungen",
+      "url": "https://www.edoeb.admin.ch/de/04042023-einsatz-von-chatgpt-und-vergleichbaren-ki-gestuetzten-anwendungen",
+      "selector": "body",
+      "dependent_pages": ["us-hosted-llms-ndsg"],
+      "category": "regulator",
+      "vendor_id": null
+    },
+    {
+      "id": "edoeb-bekanntgabe-ausland",
+      "title": "EDÖB – Bekanntgabe von Personendaten ins Ausland",
+      "url": "https://www.edoeb.admin.ch/de/bekanntgabe-von-personendaten-ins-ausland",
+      "selector": "body",
+      "dependent_pages": ["us-hosted-llms-ndsg", "ai-procurement-checklist"],
+      "category": "regulator",
+      "vendor_id": null
+    },
+    {
+      "id": "fedlex-dsg",
+      "title": "Fedlex – Bundesgesetz über den Datenschutz (DSG)",
+      "url": "https://www.fedlex.admin.ch/eli/cc/2022/491/de",
+      "selector": "body",
+      "dependent_pages": ["ndsg-ai-basics", "us-hosted-llms-ndsg"],
+      "category": "regulator",
+      "vendor_id": null
+    },
+    {
+      "id": "dpf-participant-list",
+      "title": "Data Privacy Framework – Participant List (FTC overview fallback; official list is SPA at /list)",
+      "url": "https://www.dataprivacyframework.gov/list",
+      "selector": "body",
+      "dependent_pages": ["us-hosted-llms-ndsg"],
+      "category": "other",
+      "vendor_id": null,
+      "fallback_urls": [
+        "https://www.ftc.gov/business-guidance/privacy-security/data-privacy-framework"
+      ]
+    },
+    {
+      "id": "eur-lex-ai-act-de",
+      "title": "EUR-Lex – Verordnung (EU) 2024/1689 (AI Act), DE",
+      "url": "https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX%3A32024R1689",
+      "selector": "body",
+      "dependent_pages": ["eu-ai-act-swiss-exporters", "ai-procurement-checklist"],
+      "category": "regulator",
+      "vendor_id": null,
+      "fallback_urls": [
+        "https://eur-lex.europa.eu/legal-content/DE/TXT/PDF/?uri=CELEX:32024R1689",
+        "https://eur-lex.europa.eu/eli/reg/2024/1689/oj/deu/pdf"
+      ]
+    },
+    {
+      "id": "eur-lex-ai-act-en",
+      "title": "EUR-Lex – Verordnung (EU) 2024/1689 (AI Act), EN",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689",
+      "selector": "body",
+      "dependent_pages": ["eu-ai-act-swiss-exporters"],
+      "category": "regulator",
+      "vendor_id": null,
+      "fallback_urls": [
+        "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:32024R1689",
+        "https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng/pdf"
+      ]
+    },
+    {
+      "id": "finma-guidance-08-2024-pdf",
+      "title": "FINMA Guidance 08/2024 – Governance and risk management when using artificial intelligence (PDF)",
+      "url": "https://www.finma.ch/en/~/media/finma/dokumente/dokumentencenter/myfinma/4dokumentation/finma-aufsichtsmitteilungen/20241218-finma-aufsichtsmitteilung-08-2024.pdf",
+      "selector": "body",
+      "dependent_pages": ["finma-ai-expectations", "ai-procurement-checklist"],
+      "category": "guidance",
+      "vendor_id": null
+    },
+    {
+      "id": "finma-guidance-08-2024-news",
+      "title": "FINMA – News: Guidance on governance and risk management when using artificial intelligence",
+      "url": "https://www.finma.ch/en/news/2024/12/20241218-mm-finma-am-08-24/",
+      "selector": "body",
+      "dependent_pages": ["finma-ai-expectations"],
+      "category": "guidance",
+      "vendor_id": null
+    },
+    {
+      "id": "consilium-digital-omnibus-ai",
+      "title": "Digital Omnibus on AI – OEIL procedure 2025/0359(COD) (awaiting OJ); swap to EUR-Lex consolidated text after OJ publication",
+      "url": "https://oeil.europarl.europa.eu/oeil/en/procedure-file?reference=2025%2F0359%28COD%29",
+      "selector": "body",
+      "dependent_pages": ["eu-ai-act-swiss-exporters"],
+      "category": "regulator",
+      "vendor_id": null,
+      "fallback_urls": [
+        "https://www.consilium.europa.eu/en/press/press-releases/2026/06/29/artificial-intelligence-council-gives-final-green-light-to-simplify-and-streamline-rules/",
+        "https://www.europarl.europa.eu/legislative-train/package-digital-package/file-digital-omnibus-on-ai"
+      ]
+    },
+    {
+      "id": "anthropic-ai-fluency",
+      "title": "Anthropic – AI Fluency framework (4D)",
+      "url": "https://www.anthropic.com/ai-fluency",
+      "selector": "body",
+      "dependent_pages": ["ai-procurement-checklist"],
+      "category": "guidance",
+      "vendor_id": null
+    },
+    {
+      "id": "openai-business-data",
+      "title": "OpenAI – Business data privacy, security, and compliance",
+      "url": "https://openai.com/business-data/",
+      "selector": "body",
+      "dependent_pages": [],
+      "category": "vendor",
+      "vendor_id": "openai"
+    },
+    {
+      "id": "openai-dpa",
+      "title": "OpenAI – Data Processing Addendum",
+      "url": "https://openai.com/policies/data-processing-addendum/",
+      "selector": "body",
+      "dependent_pages": [],
+      "category": "vendor",
+      "vendor_id": "openai",
+      "fallback_urls": [
+        "https://cdn.openai.com/pdf/openai-data-processing-addendum.pdf"
+      ]
+    },
+    {
+      "id": "anthropic-regional-compliance",
+      "title": "Anthropic – Regional compliance",
+      "url": "https://claude.com/regional-compliance",
+      "selector": "body",
+      "dependent_pages": [],
+      "category": "vendor",
+      "vendor_id": "anthropic"
+    },
+    {
+      "id": "anthropic-certifications",
+      "title": "Anthropic – Certifications (Privacy Center)",
+      "url": "https://privacy.claude.com/en/articles/10015870-what-certifications-has-anthropic-obtained",
+      "selector": "body",
+      "dependent_pages": [],
+      "category": "vendor",
+      "vendor_id": "anthropic"
+    },
+    {
+      "id": "google-cloud-dpa",
+      "title": "Google Cloud – Data Processing Addendum",
+      "url": "https://cloud.google.com/terms/data-processing-addendum",
+      "selector": "body",
+      "dependent_pages": [],
+      "category": "vendor",
+      "vendor_id": "google-cloud"
+    },
+    {
+      "id": "google-cloud-ml-locations",
+      "title": "Google Cloud – Machine learning service locations",
+      "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/machine-learning/general/locations",
+      "selector": "body",
+      "dependent_pages": [],
+      "category": "vendor",
+      "vendor_id": "google-cloud"
+    },
+    {
+      "id": "microsoft-azure-openai-privacy",
+      "title": "Microsoft – Data, privacy, and security for Models sold by Azure",
+      "url": "https://learn.microsoft.com/en-us/azure/ai-foundry/responsible-ai/openai/data-privacy",
+      "selector": "body",
+      "dependent_pages": [],
+      "category": "vendor",
+      "vendor_id": "microsoft-azure"
+    },
+    {
+      "id": "microsoft-dpa",
+      "title": "Microsoft – Products and Services Data Protection Addendum",
+      "url": "https://www.microsoft.com/licensing/docs/view/Microsoft-Products-and-Services-Data-Protection-Addendum-DPA",
+      "selector": "body",
+      "dependent_pages": [],
+      "category": "vendor",
+      "vendor_id": "microsoft-azure"
+    },
+    {
+      "id": "mistral-dpa",
+      "title": "Mistral AI – Data Processing Addendum",
+      "url": "https://legal.mistral.ai/terms/data-processing-addendum",
+      "selector": "body",
+      "dependent_pages": [],
+      "category": "vendor",
+      "vendor_id": "mistral"
+    },
+    {
+      "id": "mistral-home",
+      "title": "Mistral AI – Homepage (EU cloud hosting)",
+      "url": "https://mistral.ai/",
+      "selector": "body",
+      "dependent_pages": [],
+      "category": "vendor",
+      "vendor_id": "mistral"
+    },
+    {
+      "id": "aleph-alpha-pga",
+      "title": "Aleph Alpha – Pharia Government Assistant (security and compliance)",
+      "url": "https://docs.aleph-alpha.com/verticals/pga.html",
+      "selector": "body",
+      "dependent_pages": [],
+      "category": "vendor",
+      "vendor_id": "aleph-alpha"
+    },
+    {
+      "id": "aws-bedrock-security",
+      "title": "Amazon Bedrock – Security and privacy",
+      "url": "https://aws.amazon.com/bedrock/security-compliance/",
+      "selector": "body",
+      "dependent_pages": [],
+      "category": "vendor",
+      "vendor_id": "aws-bedrock"
+    },
+    {
+      "id": "aws-dpa",
+      "title": "AWS – GDPR Data Processing Addendum (PDF)",
+      "url": "https://d1.awsstatic.com/legal/aws-gdpr/AWS_GDPR_DPA.pdf",
+      "selector": "body",
+      "dependent_pages": [],
+      "category": "vendor",
+      "vendor_id": "aws-bedrock"
+    },
+    {
+      "id": "swisscom-ai-platform",
+      "title": "Swisscom – Swiss AI Platform",
+      "url": "https://www.swisscom.ch/en/business/enterprise/offer/platforms-applications/data-driven-business/swiss-ai-platform.html",
+      "selector": "body",
+      "dependent_pages": [],
+      "category": "vendor",
+      "vendor_id": "swisscom-ai"
+    },
+    {
+      "id": "infomaniak-trust",
+      "title": "Infomaniak – Trust Center",
+      "url": "https://www.infomaniak.com/en/trust-center",
+      "selector": "body",
+      "dependent_pages": [],
+      "category": "vendor",
+      "vendor_id": "infomaniak"
+    },
+    {
+      "id": "infomaniak-dpa",
+      "title": "Infomaniak – Data Processing Agreement (PDF)",
+      "url": "https://www.infomaniak.com/documents/privacy/DPA/Data_Processing_Agreement_(DPA).pdf",
+      "selector": "body",
+      "dependent_pages": [],
+      "category": "vendor",
+      "vendor_id": "infomaniak"
+    },
+    {
+      "id": "huggingface-security",
+      "title": "Hugging Face – Hub security",
+      "url": "https://huggingface.co/docs/hub/main/security",
+      "selector": "body",
+      "dependent_pages": [],
+      "category": "vendor",
+      "vendor_id": "huggingface"
+    },
+    {
+      "id": "cohere-trust",
+      "title": "Cohere – Trust Center",
+      "url": "https://trustcenter.cohere.com/",
+      "selector": "body",
+      "dependent_pages": [],
+      "category": "vendor",
+      "vendor_id": "cohere"
+    },
+    {
+      "id": "cohere-enterprise-data",
+      "title": "Cohere – Enterprise Data Commitments",
+      "url": "https://cohere.com/enterprise-data-commitments",
+      "selector": "body",
+      "dependent_pages": [],
+      "category": "vendor",
+      "vendor_id": "cohere"
+    },
+    {
+      "id": "ibm-watsonx-home",
+      "title": "IBM – watsonx",
+      "url": "https://www.ibm.com/watsonx",
+      "selector": "body",
+      "dependent_pages": [],
+      "category": "vendor",
+      "vendor_id": "ibm-watsonx"
+    },
+    {
+      "id": "exoscale-compliance",
+      "title": "Exoscale – Compliance",
+      "url": "https://www.exoscale.com/compliance/",
+      "selector": "body",
+      "dependent_pages": [],
+      "category": "vendor",
+      "vendor_id": "exoscale"
+    },
+    {
+      "id": "exoscale-ai",
+      "title": "Exoscale – AI cloud infrastructure",
+      "url": "https://www.exoscale.com/ai-cloud-infrastructure/",
+      "selector": "body",
+      "dependent_pages": [],
+      "category": "vendor",
+      "vendor_id": "exoscale"
+    },
+    {
+      "id": "ovhcloud-ai-endpoints",
+      "title": "OVHcloud – AI Endpoints capabilities",
+      "url": "https://docs.ovhcloud.com/en/guides/public-cloud/ai-machine-learning/ai-endpoints-capabilities",
+      "selector": "body",
+      "dependent_pages": [],
+      "category": "vendor",
+      "vendor_id": "ovhcloud"
+    },
+    {
+      "id": "ovhcloud-dpa",
+      "title": "OVHcloud – Data Processing Agreement (Annexe traitement de données)",
+      "url": "https://www.ovh.com/fr/support/documents_legaux/Annexe%20Traitement%20de%20donn%C3%A9es%20%C3%A0%20caract%C3%A8re%20personnel.pdf",
+      "selector": "body",
+      "dependent_pages": [],
+      "category": "vendor",
+      "vendor_id": "ovhcloud"
+    },
+    {
+      "id": "deepl-infrastructure",
+      "title": "DeepL – Infrastructure and data protection",
+      "url": "https://www.deepl.com/en/blog/expanding-deepl-data-infrastructure",
+      "selector": "body",
+      "dependent_pages": [],
+      "category": "vendor",
+      "vendor_id": "deepl",
+      "fallback_urls": [
+        "https://support.deepl.com/hc/en-us/articles/26380849099932-DeepL-infrastructure-and-data-protection"
+      ]
+    },
+    {
+      "id": "deepl-pro-security",
+      "title": "DeepL – Pro data security",
+      "url": "https://www.deepl.com/en/pro-data-security",
+      "selector": "body",
+      "dependent_pages": [],
+      "category": "vendor",
+      "vendor_id": "deepl"
+    }
+  ]
 }

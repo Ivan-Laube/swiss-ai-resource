@@ -1,0 +1,248 @@
+Personal Data Processing Agreement
+Preamble
+This Data Processing Agreement (“Agreement”) forms an integral part of the General Terms
+and Conditions of Use (hereinafter referred to as “T&Cs”) between the “Company” or the
+“Client” using the services of INFOMANIAK NETWORK SA, Rue Eugène-Marziano 25, 1227
+Acacias, SWITZERLAND (the “Subcontractor” or Infomaniak) collectively referred to as “the
+Parties”.
+Considering that:
+1. The Company acts as the Data Controller;
+2. The Company wishes to subcontract certain Services, involving the Processing of
+personal data, to the Subcontractor;
+3. The Parties seek to establish a Data Processing Agreement. The purpose of this
+agreement between the Subcontractor and the Company, pursuant to Art. 9 of the Swiss
+Federal Act on Data Protection (hereinafter the “FADP”) and Article 28 of Regulation
+(EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the
+protection of natural persons with regard to the processing of personal data and on the
+free movement of such data (“General Data Protection Regulation” or hereinafter
+referred to as “GDPR”), is to define the conditions under which Infomaniak has the right,
+as a Subcontractor and within the framework of the Services defined in the contract, to
+process personal data as defined in the GDPR at the instruction of the Client;
+4. The Parties wish to define their rights and obligations;
+5. The Processing of personal data by Infomaniak in its capacity as Data Controller does
+not fall within the scope of this Agreement;
+It is agreed as follows:
+Article 1 – Definitions and interpretation
+1.1 Except as otherwise defined herein, capitalised terms and expressions used in this
+Agreement shall have the following meanings:
+1.1.1 “Agreement” means this Data Processing Agreement and its Appendices;
+1.1.2 “Company’s Personal Data” means personal data processed by the Subcontractor on
+behalf of the Company in accordance with or in connection with the T&Cs;
+1.1.3 “Data Protection Laws” means Swiss and European data protection laws and, to the
+extent applicable, the data protection laws of any other country;
+1.1.4 “EEA” means European Economic Area;
+1.1.5 “European Data Protection Laws” means EU Directive 95/46/EC, as transposed into the
+national law of each Member State and as amended, replaced or repealed from time to time,
+including by the GDPR and laws implementing or supplementing the GDPR;
+
+-- 1 of 7 --
+
+1.1.6 “GDPR” means Regulation (EU) 2016/679 of the European Parliament and of the Council
+of 27 April 2016 on the protection of natural persons with regard to the processing of personal
+data and on the free movement of such data;
+1.1.7 “Data transfer” means: a transfer of Personal Data from the Company to the Subcontractor
+or a further transfer of Personal Data from the Company to a Sub-subcontractor;
+1.1.8 “Services” means the services used by the Company.
+1.1.9 “Sub-subcontractor” means any person appointed by or on behalf of the Subcontractor to
+process Company’s Personal Data under the Agreement;
+1.1.10 “FADP” refers to the Federal Act on Data Protection (RS 235.1) and its implementing
+ordinances, namely the “DPO” (Data Protection Ordinance – SR 235.11) and the “DPCO” (Data
+Protection Certification Ordinance – SR 235.12);
+1.2 The terms “Commission,” “Controller,” “Data Subject,” “Member State,” “Personal Data,”
+“Personal Data Breach” and “Processing” shall be used in this Agreement with the same
+meaning as in the FADP or GDPR and shall be interpreted accordingly.
+Article 2 – Processing of the Company’s Personal
+Data
+2.1 Infomaniak undertakes:
+2.1.1 to comply with all applicable data protection laws in relation to the Processing of the
+Company’s Personal Data;
+2.1.2 not to process the Company’s Personal Data other than as instructed by the Company;
+2.1.3 to process the Company's Personal Data downloaded, stored and used by the Company
+only for the provision of the Services as defined in this Agreement;
+2.1.4 not to access or use the Company’s Personal Data for purposes other than those
+necessary for the performance of the Services (in particular for incident management);
+2.1.5 to implement technical and organisational measures to ensure the security of the
+Company’s Personal Data in the context of these Services;
+2.1.6 to implement high security standards and maintain continuous improvement processes in
+order to provide the Company with a high level of security as part of the Services provided;
+2.1.7 to maintain and develop physical security measures to prevent unauthorised persons from
+accessing the infrastructure on which the Company’s Personal Data is stored;
+2.1.8 to have physical and/or logical isolation systems (depending on the Services) in order to
+isolate the clients’ hostings from each other, and to perform intrusion tests once a year to
+ensure there is no leakage of data between clients;
+2.1.9 to implement an access management system that restricts access to the premises to
+persons who require access in the course of their duties and responsibilities;
+
+-- 2 of 7 --
+
+2.1.10 to protect access to administrative functions through user and administrator
+authentication processes;
+2.1.11 to implement an access management system for support and maintenance operations
+that operates on a “least privilege” and need to know basis;
+2.1.12 to inform the Client if, in its opinion and taking into account the information available to it,
+Infomaniak discovers that one of the Client’s instructions infringes the provisions of the GDPR
+or the FADP or other provisions of the European Union or a Member State of the European
+Union on the protection of personal data;
+2.1.13 to inform the Client (unless prohibited by applicable laws or by order of a competent
+authority) in the event of requests received from a competent authority relating to the
+Company’s Personal Data processed under this Agreement, and limit the disclosure of data to
+what the authority has specifically requested.
+2.2 By means of this Agreement, the Company instructs the Subcontractor to process the
+Company’s Personal Data in order to enable the execution of the main contract governed by the
+T&Cs.
+Article 3 – Subcontractor’s staff
+3.1 Infomaniak must take reasonable measures to ensure the reliability of any person,
+employee, agent or Subcontractor of any Sub-subcontractor who may have access to the
+Company’s Personal Data, ensuring in each case that access is strictly limited to persons who
+need to know/access the Company’s Personal Data and to comply with the laws applicable in
+the context of this person’s duties within Infomaniak, ensuring that all such persons are subject
+to confidentiality.
+Article 4 – Infomaniak’s obligations as Data Controller
+4.1 Taking into account the state of the art, the implementation costs and the nature, scope,
+context and purposes of the processing as well as the risk of varying probability and severity for
+the rights and freedoms of natural persons, Infomaniak must, with regard to the Company’s
+Personal Data, implement appropriate technical and organisational measures to guarantee a
+level of security appropriate to this risk, including, where applicable, the measures referred to in
+Article 3 of the DPO and Article 32(1) of the GDPR.
+4.2 When assessing the appropriate level of security, Infomaniak must take particular account of
+the risks presented by the Processing, in particular in the event of a breach of the Company’s
+Personal Data.
+Article 5 – Sub-subcontractors
+5.1 The Client authorises Infomaniak to use Subcontractors to process the Company’s Personal
+Data (“Sub-subcontractors”). Sub-subcontractors may only be engaged for the performance of
+the Services and shall feature in the specific terms and conditions of the Services that may be
+affected or in the confidentiality policy.
+
+-- 3 of 7 --
+
+5.2 In the event of a change to or addition of a Sub-subcontractor, Infomaniak shall inform the
+Client in advance of any changes of Sub-subcontractor. The Client shall have 30 days from the
+date of this notification to raise an objection to these changes. The Client’s objection must be
+made in writing (an email is sufficient) and must include its specific reasons and proposed
+alternatives, if any. If the Client does not object within this period, the relevant Sub-
+subcontractor may be tasked with processing the Company’s Personal Data.
+5.3 Infomaniak shall ensure that the Sub-subcontractor is, as a minimum, able to fulfil the
+obligations imposed on Infomaniak in this Agreement concerning the Processing of the
+Company’s Personal Data. To this end, Infomaniak shall conclude an agreement with the Sub-
+subcontractor. Infomaniak remains fully liable vis-à-vis the Client for the fulfilment of any
+obligation that the Sub-subcontractor does not fulfil.
+Article 6 – Rights of the data subject
+6.1 Considering the nature of the Processing, Infomaniak must assist the Company by
+implementing appropriate technical and organisational measures, insofar as this is possible, in
+order to fulfil the Company’s obligations and to respond to requests to exercise the rights of
+Data Subjects under data protection laws.
+6.2 Infomaniak must:
+6.2.1 promptly notify the Company if Infomaniak receives a request from a data subject under
+any Data Protection Act with regard to the rights of the Data Subject; and
+6.2.2 not respond to such a request, except on documented instructions from the Company or
+as required by applicable laws, in which case Infomaniak must, to the extent permitted by law,
+respond to such request.
+6.3 At the end of the service (in particular in the event of the non-renewal or termination of the
+contract between Infomaniak and the Company), Infomaniak undertakes to delete, under the
+terms of the contract and under the conditions provided, any content (including information,
+data, files, systems, applications, websites and other items) that is reproduced, stored, hosted
+or otherwise used by the Client within the framework of the Services, unless requested by a
+competent legal or judicial authority, or if the applicable law does not require otherwise.
+6.4 The Client shall ensure, with the assistance of Infomaniak, that the operations required
+(such as backup, transfer to a third-party solution, snapshots, etc.) to store the Company’s
+Personal Data are carried out before the Services are terminated or expire, and before any
+operation to delete, update or reinstall the Services is carried out.
+Article 7 – Deletion or return of the Company’s
+Personal Data
+7.1 Upon instruction from the Company and in any event within ten working days of the date of
+cessation of any service involving the Processing of the Company’s Personal Data, Infomaniak
+must delete and cause to be deleted all copies of the Company’s Personal Data.
+
+-- 4 of 7 --
+
+7.2 Infomaniak must provide the Company with a written certification attesting that it has fully
+complied with this section within 10 working days of the date of termination or instruction by the
+Company.
+Article 8 – Breach of the Company’s Personal Data
+8.1 Infomaniak must notify the Company without undue delay as soon as Infomaniak becomes
+aware of a breach affecting the Company’s Personal Data and provide the Company with
+sufficient information to enable it to notify the Data Subjects of the personal data breach under
+data protection laws.
+8.2 Infomaniak must cooperate with the Company and take reasonable measures, in
+accordance with the Company’s instructions, to help investigate, mitigate and remedy each
+personal data breach.
+8.3 In the event of loss, destruction or alteration of the Company’s Personal Data due to
+Infomaniak’s failure to fulfil its obligations under data protection laws, this Agreement or the
+contract entered into between Infomaniak and the Company, Infomaniak shall, at its own
+expense, carry out all operations necessary to restore or rebuild the Company’s Personal Data.
+If, during the contract term, Infomaniak is unable, for whatever reason, to comply with its
+obligations, it undertakes to notify the Client as soon as possible and to implement any
+necessary palliative or corrective measures.
+Article 9 – Liability
+9.1 In terms of data protection, Infomaniak may only be held liable for damage caused by
+Processing for which (i) it has not complied with its obligations under data protection laws, (ii) it
+has not complied with its obligations under data protection laws concerning the Sub-
+subcontractors in charge of data, or for which (iii) it has acted contrary to the Client’s legal
+instructions or in violation of their agreements (contract, this Agreement, etc.). In such cases,
+the liability provision of the contract applies.
+Article 10 – Assistance
+10.1 Infomaniak undertakes to assist the Company, to the extent possible, by means of
+technical and organisational measures, so that the Company complies with its obligations with
+regard to the rights of the Data Subjects, and so that it ensures compliance with the security of
+Processing, its obligation to notify the Company of a breach of its Personal Data and its
+obligation to carry out a data protection impact assessment, taking into account the information
+available to Infomaniak.
+Article 11 – Data protection impact assessment and
+prior consultation
+11.1 Infomaniak must provide the Company with reasonable assistance for any data protection
+impact assessment and any prior consultation with the supervisory authorities or other
+competent data protection authorities, which the Company reasonably considers to be required
+
+-- 5 of 7 --
+
+by Articles 35 and/or 36 GDPR or the equivalent provisions of any other data protection law, in
+each case, only in relation to the Processing of the Company’s Personal Data, and taking into
+account the nature of the Processing and the information available to Infomaniak.
+Article 12 – Audits
+12.1 Infomaniak has the right to respond to requests from the competent supervisory authority,
+provided that any disclosure of information is strictly limited to what is requested by the said
+supervisory authority. In this case, and unless prohibited by law, Infomaniak must first consult
+the Company regarding any required disclosure.
+12.2 Infomaniak shall provide the Client with all the information necessary to enable other
+auditors to perform audits in order to demonstrate compliance with the requirements of the
+FADP and GDPR and compliance with this Agreement with regard to the Processing of the
+Company’s Personal Data.
+12.3 This information is available in the standard documentation on Infomaniak’s website.
+Additional information may be provided to the Client upon request addressed to the Infomaniak
+support team.
+12.4 If a service is approved and complies with a specific code of conduct or is subject to
+specific certifications or control procedures, Infomaniak shall provide, at the Client’s written
+request, the corresponding control certificates and reports.
+12.4.1 If the aforementioned information, report and certificate prove insufficient to enable the
+Client to demonstrate that the obligations stipulated by the FADP or GDPR have been met,
+Infomaniak and the Client shall meet to agree on the operational, security and financial
+conditions of an on-site technical inspection. In any case, the conditions of this inspection must
+not affect the security of other Infomaniak customers.
+12.5 The aforementioned on-site inspection and the provision of inspection certificates and
+reports may incur a reasonable additional fee.
+12.6 Any information communicated to the Client under this clause and which is not available on
+the Infomaniak website is considered confidential information of Infomaniak within the
+framework of the contract. Before communicating this information, Infomaniak may require the
+signing of a specific confidentiality agreement.
+12.7 The Company’s rights to information and audit exist only under this Article (Audits) to the
+extent that the Agreement does not otherwise provide the Company with information and
+verification that meets the relevant requirements of data protection law.
+Article 13 – Transfer of data
+13.1 Infomaniak may not transfer or authorise the transfer of the Company’s Personal Data to
+countries outside the EU and/or the European Economic Area (EEA) without the Company’s
+prior written consent. If Personal Data processed under this Agreement is transferred from a
+country in the European Economic Area to a country outside the European Economic Area, the
+Parties shall ensure that the personal data is adequately protected. For this purpose, the parties
+rely, unless otherwise agreed, on the EU-approved standard contractual clauses for the transfer
+of the Company’s Personal Data.
+
+-- 6 of 7 --
+
+Article 14 – Applicable law and jurisdiction
+14.1 This Agreement is governed by Swiss law.
+14.2 Any dispute relating to this Agreement, which the Parties fail to resolve amicably, shall be
+submitted to the exclusive jurisdiction of the courts of Geneva, subject to the possibility of
+recourse to the Swiss Federal Supreme Court.
+Infomaniak Network SA
+
+-- 7 of 7 --

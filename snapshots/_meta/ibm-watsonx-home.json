@@ -1,0 +1,10 @@
+{
+  "id": "ibm-watsonx-home",
+  "url": "https://www.ibm.com/watsonx",
+  "fetched_at": "2026-07-16T09:44:07.776Z",
+  "http_status": 200,
+  "content_type": "text/html;charset=utf-8",
+  "sha256": "dcbc850dc82988ffa654927239ec15653b80db0fce0c9522e8ae1d3e1a7bf9a9",
+  "byte_length": 6416,
+  "ok": true
+}

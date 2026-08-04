@@ -1,0 +1,14 @@
+{
+  "id": "eur-lex-ai-act-de",
+  "url": "https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX%3A32024R1689",
+  "fetched_url": "file://C:/Users/i_lau/Swiss AI/tmp-seeds/eur-lex-ai-act-de.html",
+  "fetched_at": "2026-07-17T09:43:17.873Z",
+  "http_status": 200,
+  "content_type": "text/html",
+  "sha256": "b8a326805e2a74f69d2fd429b96e6f1fee72e4bc38c74400a75a0533865f8a8d",
+  "byte_length": 681384,
+  "ok": true,
+  "consecutive_failures": 0,
+  "last_ok_at": "2026-07-17T09:43:17.873Z",
+  "seeded": true
+}

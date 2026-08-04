@@ -34,3 +34,59 @@
   line-height: 1.5;
   background: color-mix(in srgb, var(--foreground) 6%, transparent);
 }
+
+.compliance,
+.tools,
+.vendors,
+.websiteCheck,
+.survey {
+  margin-top: 2.5rem;
+}
+
+.compliance h2,
+.tools h2,
+.vendors h2,
+.websiteCheck h2,
+.survey h2 {
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+.vendorsLead {
+  margin-bottom: 1rem;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  opacity: 0.8;
+}
+
+.pageList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.pageList a {
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.pageList p {
+  margin-top: 0.35rem;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  opacity: 0.8;
+}
+
+.toolsIndex {
+  margin-top: 1.25rem;
+  font-size: 0.9375rem;
+}
+
+.toolsIndex a {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  opacity: 0.85;
+}

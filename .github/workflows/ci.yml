@@ -1,0 +1,75 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Typecheck
+        run: npx tsc --noEmit
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Validate content frontmatter
+        run: npm run check:content
+
+      - name: Validate vendors.json
+        run: npm run check:vendors
+
+      - name: Validate sources.json
+        run: npm run check:sources
+
+      - name: Validate glossary.json
+        run: npm run check:glossary
+
+      - name: Validate decision trees
+        run: npm run check:rules
+
+      - name: Validate scanner-checks.json
+        run: npm run check:scanner
+
+      - name: Validate survey questions
+        run: npm run check:survey
+
+      - name: Validate survey answer helpers
+        run: npm run check:survey-answers
+
+      - name: Validate survey aggregates
+        run: npm run check:survey-aggregates
+
+      - name: Validate classify report (when present)
+        run: npm run check:classify
+
+      - name: Validate act report (when present)
+        run: npm run check:act
+
+      - name: Validate links report (when present)
+        run: npm run check:links-report
+
+      - name: Build static export
+        run: npm run build

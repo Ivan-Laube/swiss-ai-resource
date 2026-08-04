@@ -1,0 +1,14 @@
+{
+  "id": "openai-business-data",
+  "url": "https://openai.com/business-data/",
+  "fetched_url": "https://openai.com/business-data/",
+  "fetched_at": "2026-07-17T09:37:15.560Z",
+  "http_status": 200,
+  "content_type": "text/html; charset=utf-8",
+  "sha256": "a64c7d04dad334e324ff2756b084b7a2d6b05be5ec184602e34c451085e266ab",
+  "byte_length": 8649,
+  "ok": true,
+  "consecutive_failures": 0,
+  "last_ok_at": "2026-07-17T09:37:15.560Z",
+  "attempt": "browser"
+}

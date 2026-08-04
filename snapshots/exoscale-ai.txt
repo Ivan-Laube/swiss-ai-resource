@@ -1,0 +1,263 @@
+Newsletter
+Blog
+Partner Programs
+Academy
+Contact us
+
+Exoscale
+
+Products
+
+Compute Instances
+Concrete AI
+Managed Kubernetes
+DBaaS
+Object Storage
+Block Storage
+GPU Servers
+
+All products
+
+Marketplace
+
+Pricing
+
+Resources
+
+Documentation
+API
+Blog
+Integration
+Support
+
+Changelog
+
+Log in
+Register
+
+Menu
+
+Register
+Log in
+
+Products
+
+Compute Instances
+Concrete AI
+Managed Kubernetes
+DBaaS
+Object Storage
+Block Storage
+GPU Servers
+
+All products
+
+Marketplace
+
+Pricing
+
+Resources
+
+Documentation
+API
+Blog
+Integration
+Support
+
+What's new
+
+Newsletter
+Blog
+Partner Programs
+Academy
+Contact us
+
+Exoscale - European Cloud Hosting Services
+
+AI Cloud Infrastructure
+
+The Sovereign European Cloud for Modern AI
+
+High-Performance NVIDIA GPUs, Dedicated Inference Infrastructure and Vector Databases
+
+From raw compute to managed APIs: build and scale AI on dedicated NVIDIA GPUs and Vector Databases. Fully sovereign. Exclusively European. Production-ready.
+
+Why Choose Exoscale for Your AI Workloads?
+
+Dedicated PerformanceRun demanding AI workloads: your GPUs are physically isolated, ensuring consistent throughput and stable latency for critical production environments. Avoid performance drop from noisy neighbors.
+
+GDPR Compliant by DesignYour data stays exclusively within Europe, meeting the highest privacy and regulatory compliance standards. Our infrastructure is built to ensure that sensitive information never leaves the European jurisdiction, providing you with complete peace of mind.
+
+Long-Term ReliabilityEngineered for stable, predictable operation in production. Built on proven architectures, open interfaces, and clear operational limits, so workloads remain portable, behave as expected, and stay reliable over time.
+
+Concrete AI: Our AI Infrastructure Product Suite
+Discover the building blocks for running AI in production, from high-performance compute to fully managed inference and data services.
+
+High-Performance GPUsAccelerate AI training, fine-tuning, and volume inference using powerful NVIDIA GPUs. Scale from a single GPU to multi-GPU setups without complex orchestration. Perfect for machine learning, data processing, 3D rendering, inference, and scientific computing.
+Discover
+
+Dedicated InferenceFully managed, secure, and production-ready API endpoints for any open-source AI model. Zero operations required. Focus on building your applications while we handle scaling, monitoring, and maintenance.
+Discover
+
+Managed InferenceAccess a curated catalog of production-ready AI models through a managed API with pay-as-you-go pricing. Ideal for rapid prototyping, variable traffic, and teams that want AI capabilities without operating dedicated GPU infrastructure.
+Discover
+
+Managed Vector DatabasesEssential tools for modern AI, powering Retrieval-Augmented Generation (RAG) and semantic search workloads. Fully managed PostgreSQL with pgvector and OpenSearch-based vector search.
+Discover
+
+Strategic Advantages for Enterprise AI
+
+European Sovereignty & Sustainability
+Your data remains in Europe, ensuring GDPR compliance and sovereignty. Our data centers use renewable power and efficient cooling to reduce environmental impact significantly. Built in Europe, for Europe.
+
+Predictable, Transparent Pricing
+Pay only for the GPU usage you consume or pay-as-you-go for the managed inference. Transparent, per-second billing with no hidden fees or surprise costs.
+
+OpenAI API Compatibility
+Dedicated Inference integrates easily with your existing AI tools. No vendor lock-in and simple transition to our sovereign cloud infrastructure.
+
+Dedicated Hardware & Privacy
+All GPU instances and dedicated inference endpoints run on fully isolated infrastructure, guaranteeing maximum privacy and performance.
+
+Local, Expert, Premium Support
+Get 24/7 support with a 30-minute response time, handled directly by Exoscale engineers in Europe.
+
+A Complete, Integrated Platform
+Run your entire AI stack on Exoscale, GPUs, vector databases, inference, compute, storage, networking, and more, all fully integrated, cloud-native, and sovereign.
+
+Explore More Exoscale Services
+Extend your AI workloads with SKS, Compute Instances, Object and Block Storage, and our Support Plans. These services provide the reliability, performance, and flexibility you need to build and scale production-grade AI on a sovereign European cloud.
+
+Compute InstancesFlexible virtual machines optimized for general-purpose, memory-intensive, CPU-bound applications or GPU workloads. Combine with your Kubernetes workloads to scale efficiently across all use cases.
+Discover
+
+Block StorageAttach flexible, high-performance volumes to your VM instances for persistent data, fast I/O, and scalable capacity. Ideal for databases, log storage, and container environments.
+Discover
+
+Scalable Kubernetes ServiceDeploy containerized applications on a production-ready Kubernetes cluster in under two minutes.
+Use SKS as the control layer for your virtual machine instances, with support for CLI, API, Terraform, and other DevOps tools.
+Discover
+
+Simple Object StorageUse a highly scalable and S3-compatible storage solution for unstructured data. Ideal for storing backups, logs, static assets, or media, fully integrated with Exoscale regions and access-controlled via API.
+Discover
+
+Support PlansGet the help you need to run your infrastructure with confidence through flexible support plans that provide expert guidance and guaranteed response times (SLA), ensuring our experts are there when you need them most.
+Discover
+
+Trusted by Engineering Teams Across Europe
+
+Running mission-critical AI in production requires a dependable partner. Our engineering and support teams help organizations across Europe reliably migrate, deploy, and scale their workloads on Exoscale’s sovereign, sustainable cloud platform.
+Contact us
+
+Frequently Asked Questions
+
+Can I use my existing AI models on Exoscale?
+
+Yes, you can deploy any model from platforms like Hugging Face or bring your own custom model file, especially by using our Dedicated Inference service.
+
+How does Exoscale ensure GDPR compliance for AI data?
+
+All our data centers are located entirely within Europe, ensuring that your data never crosses European borders and is fully compliant with GDPR by default.
+
+What are the pricing models for the AI products?
+
+For GPU compute, we offer transparent, per-second billing, meaning you only pay for the exact GPU time you use. Dedicated Inference cost is primarily on GPU time. For Managed Inference you will pay for what you use. For Vector Databases, you only pay for your PostgreSQL or OpenSearch instance. No extra fees are billed for the extension.
+
+Does Exoscale support open standards to avoid vendor lock-in?
+
+Yes. We prioritize open standards and compatibility (such as OpenAI-compatible APIs and standard Kubernetes), ensuring you can easily migrate workloads in and out without proprietary barriers.
+
+Exoscale
+
+Company
+
+Jobs
+
+Sustainability
+
+Partner Programs
+
+Academy
+
+Events
+
+Contact
+
+Cloud Hosting
+
+Cloud Server
+
+Kubernetes
+
+DBaaS
+
+Object Storage
+
+Block Storage
+
+GPU
+
+Networking
+
+Virtual Private Cloud
+
+Cloud DNS
+
+CDN
+
+Infrastructure
+
+Templates
+
+Datacenters
+
+Security
+
+Compliance
+
+FAQ
+
+Status
+
+Resources
+
+Documentation
+
+API
+
+Blog
+
+Backup
+
+Integration
+
+Technology Providers
+
+Changelog
+
+Newsletter
+
+Support
+
+Data Portability
+
+Abuse
+
+Exoscale
+
+Boulevard de Grancy 19A
+1006
+–
+Lausanne
+Switzerland
+
+Contact us
+
+PrivacyTerms and ConditionsSLA
+
+Exoscale is a registered trademark
+of Akenes SA -
+Reg/VAT CHE-423.524.322
+© 2026 Exoscale
+
+Member of A1 Digital

@@ -1,0 +1,148 @@
+.main {
+  flex: 1;
+  width: min(42rem, 100%);
+  margin: 0 auto;
+  padding: 3rem 1.5rem 4rem;
+}
+
+.back {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+  opacity: 0.75;
+}
+
+.back:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+.meta {
+  margin-bottom: 0.75rem;
+  font-size: 0.875rem;
+  opacity: 0.7;
+}
+
+.metaFooter {
+  margin: 1.25rem 0 0;
+  font-size: 0.875rem;
+  opacity: 0.7;
+}
+
+.translationNotes {
+  margin-bottom: 1.5rem;
+}
+
+.translationNote {
+  margin: 0 0 0.35rem;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  opacity: 0.65;
+}
+
+.translationNote:last-child {
+  margin-bottom: 0;
+}
+
+.main h1 {
+  margin-bottom: 0.75rem;
+  font-size: clamp(1.75rem, 3.5vw, 2.35rem);
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+.lead {
+  margin-bottom: 2rem;
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  opacity: 0.85;
+}
+
+.prose {
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.prose :where(h2) {
+  margin: 2rem 0 0.75rem;
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+.prose :where(h3) {
+  margin: 1.5rem 0 0.5rem;
+  font-size: 1.0625rem;
+}
+
+.prose :where(p, ul, ol, table) {
+  margin-bottom: 1rem;
+}
+
+.prose :where(ul, ol) {
+  padding-left: 1.25rem;
+}
+
+.prose :where(li) {
+  margin-bottom: 0.35rem;
+}
+
+.prose :where(a) {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.prose :where(strong) {
+  font-weight: 600;
+}
+
+.prose :where(table) {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+}
+
+.prose :where(th, td) {
+  padding: 0.5rem 0.65rem;
+  border: 1px solid color-mix(in srgb, var(--foreground) 14%, transparent);
+  text-align: left;
+  vertical-align: top;
+}
+
+.prose :where(th) {
+  font-weight: 600;
+  background: color-mix(in srgb, var(--foreground) 5%, transparent);
+}
+
+.sources {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid color-mix(in srgb, var(--foreground) 12%, transparent);
+}
+
+.sources h2 {
+  margin-bottom: 0.75rem;
+  font-size: 1.125rem;
+}
+
+.sources ul {
+  padding-left: 1.25rem;
+}
+
+.sources li {
+  margin-bottom: 0.4rem;
+  line-height: 1.45;
+}
+
+.sources a {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.disclaimer {
+  margin-top: 2rem;
+  padding: 1rem 1.25rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  background: color-mix(in srgb, var(--foreground) 6%, transparent);
+}

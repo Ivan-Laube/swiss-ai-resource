@@ -1,0 +1,10 @@
+{
+  "id": "infomaniak-trust",
+  "url": "https://www.infomaniak.com/en/trust-center",
+  "fetched_at": "2026-07-16T09:44:03.314Z",
+  "http_status": 200,
+  "content_type": "text/html; charset=utf-8",
+  "sha256": "9b92af45aead1826bc4e34995a9dada3ce2e18e9b51b3852c3dbae81066dfeff",
+  "byte_length": 12547,
+  "ok": true
+}

@@ -1,0 +1,415 @@
+SAS OVH, 2 rue Kellermann – 59100 Roubaix – France
+RCS Lille Métropole 424 761 419 00045 Code APE 2620Z
+ANNEXE TRAITEMENT DE DONNEES A CARACTERE PERSONNEL OU “DPA”
+Version du 26 février 2020
+La présente annexe (ci-après dénommée « DPA » en référencement à l’acronyme de l’appellation
+anglaise « Data Processing Agreement ») fait partie intégrante du contrat (le « Contrat ») conclu entre
+OVH S.A.S. (« OVH ») et le Client, et ayant pour objet de définir les conditions applicables aux Services
+fournis par OVH (les « Services »). Le DPA et le Contrat sont complémentaires et s’expliquent
+mutuellement. Toutefois, en cas de contradiction, le DPA prévaut.
+Les expressions qui commencent par une lettre majuscule et qui ne sont pas définies dans le présent
+DPA ont le sens qui leur est donné dans le Contrat. Les termes « Règles d’entreprise contraignantes »,
+« Responsable du traitement », « Données », « Violation de données », « Traitement », « Sous-
+traitant » et « Autorité de contrôle » ont le sens qui leur est donné par le Règlement (UE) 2016/679 du
+Parlement européen et du Conseil du 27 avril 2016 relatif à la protection des personnes physiques à
+l’égard du traitement des données à caractère personnel et à la libre circulation de ces données
+("Règlement général sur la protection des données" ou "RGPD").
+Partie 1 – Traitements de Données à caractère personnel réalisés par OVH en qualité de « Sous-
+traitant »
+La présente partie a pour objet de définir, conformément à l’article 28 du RGPD, les conditions dans
+lesquelles OVH, en qualité de Sous-traitant et dans le cadre des Services définis dans le Contrat, traite
+des Données à caractère personnel sur instruction du Client.
+Aux fins de la présente partie, le Client est présumé agir en qualité de Responsable du traitement. Si le
+Client agit en tant que Sous-traitant pour le compte d’un tiers Responsable du traitement, les Parties
+conviennent expressément que les conditions suivantes s’appliquent :
+(a) Le Client doit s’assurer que (i) toutes les autorisations nécessaires pour conclure le présent
+DPA, y compris la nomination par le Client d’OVH en tant que sous-traitant ultérieur, ont été
+obtenues du Responsable du traitement (ii), un contrat, qui est en parfaite adéquation avec les
+termes et conditions du Contrat (y compris le présent DPA), a été conclu avec le Responsable
+du traitement conformément à l’article 28 du RGPD, (iii) toutes les instructions reçues par OVH
+de la part du Client en exécution du Contrat et du présent DPA sont parfaitement conformes
+aux instructions du Responsable du traitement et (iv) toutes les informations communiquées
+ou mises à disposition par OVH en vertu du présent DPA sont, lorsque cela est requis,
+communiquées de manière appropriée au Responsable du traitement.
+(b) OVH (i) traite les Données à caractère personnel uniquement sur instruction du Client et (ii)
+ne reçoit aucune instruction directement du Responsable du traitement, sauf dans les cas où,
+le Client a matériellement disparu ou a cessé d’avoir une existence juridique sans que les droits
+et obligations du Client n’aient été transférés à une entité tierce.
+(c) Le Client, qui est entièrement responsable envers OVH de la bonne exécution des
+obligations du Responsable du traitement conformément au présent DPA, indemnise et dégage
+
+-- 1 of 10 --
+
+SAS OVH, 2 rue Kellermann – 59100 Roubaix – France
+RCS Lille Métropole 424 761 419 00045 Code APE 2620Z
+OVH de toute responsabilité pour (i) tout manquement du Responsable du traitement de se
+conformer à la loi applicable, et (ii) toute action, réclamation ou plainte du Responsable du
+traitement concernant les dispositions du Contrat (y compris le présent DPA) ou concernant les
+instructions reçues par OVH de la part du Client.
+1. Champ d’application
+OVH est autorisé, en tant que Sous-traitant agissant selon les instructions du Client, à traiter les
+Données à caractère personnel du Responsable du traitement dans la mesure nécessaire à la
+fourniture des Services.
+La nature des opérations menées par OVH concernant les Données à caractère personnel peut être le
+calcul de données, le stockage et/ou tout autre Service tel que décrit dans le Contrat.
+Le type de Données à caractère personnel et les catégories de personnes concernées sont déterminés
+et contrôlés par le Client, à sa seule discrétion.
+Les activités de traitement sont effectuées par OVH pour la durée prévue au Contrat.
+2. Sélection des Services
+Le Client est seul responsable du choix des Services. Le Client doit s’assurer que les Services choisis ont
+les caractéristiques et les conditions requises compte tenu des activités et traitements du Responsable
+du traitement, ainsi que du type de Données à caractère personnel à traiter dans le cadre des Services,
+notamment, mais non-limitativement, lorsque les Services sont utilisés pour traiter des Données à
+caractère personnel soumises à des règlementations ou des normes spécifiques (par exemple, dans
+certains pays, des données relatives à la santé ou des données bancaires). Le Client est informé qu’OVH
+propose certains Services intégrant des mesures techniques et organisationnelles, notamment en
+matière de sécurité, spécifiquement conçues pour le traitement de données de santé ou de données
+bancaires.
+Si le traitement effectué par le Responsable du traitement est susceptible d’entraîner un risque élevé
+pour les droits et libertés des personnes physiques, le Client doit choisir ses Services avec précaution.
+Lors de l’évaluation du risque, il est notamment tenu compte des critères suivants, sans toutefois s’y
+limiter : évaluation systématique et approfondie d'aspects personnels concernant des personnes
+physiques ; prise de décision automatisée ayant des effets juridiques ou pouvant affecter de manière
+significative la personne concernée ; suivi systématique des personnes concernées ; traitement de
+catégories particulières de données ou de données sensibles ; traitement à grande échelle ;
+croisement de données ; combinaison de données ; traitement de données concernant des personnes
+vulnérables ; utilisation de nouvelles technologies innovantes méconnues du public pour le traitement.
+OVH met à la disposition du Client, dans les conditions prévues à l’article "Audits", les informations
+relatives aux mesures de sécurité mises en œuvre dans le cadre des Services, afin qu’il puisse évaluer
+la conformité de ces mesures aux traitements de données personnelles du Responsable du traitement.
+
+-- 2 of 10 --
+
+SAS OVH, 2 rue Kellermann – 59100 Roubaix – France
+RCS Lille Métropole 424 761 419 00045 Code APE 2620Z
+3. Conformité à la règlementation applicable
+Chaque partie respecte la règlementation applicable en matière de protection des données (y compris
+le Règlement Général sur la Protection des Données).
+4. Obligations d’OVH
+OVH s’engage à :
+a) traiter les Données à caractère personnel téléchargées, stockées et utilisées par le Client
+dans le cadre des Services uniquement dans la mesure nécessaire à la fourniture des
+Services tels que définis dans le Contrat,
+b) ne pas accéder à ou utiliser des Données à caractère personnel à d’autres fins que celles
+nécessaires à l’exécution des Services (en particulier dans le cadre de la gestion des
+incidents),
+c) mettre en place les mesures techniques et organisationnelles décrites dans le Contrat, afin
+d’assurer la sécurité des Données à caractère personnel dans le cadre du Service,
+d) s’assurer que les employés d’OVH autorisés à traiter les Données à caractère personnel
+dans le cadre du Contrat sont soumis à une obligation de confidentialité et reçoivent une
+formation appropriée concernant la protection des Données à caractère personnel,
+e) informer le Client si, à son avis et compte tenu des informations dont il dispose, une des
+instructions du Client enfreint les dispositions du RGPD ou d’autres dispositions de l’Union
+européenne ou d’un État membre de l’Union européenne en matière de protection des
+données personnelles,
+f) dans le cas de demandes reçues d’une autorité compétente et relatives aux Données à
+caractère personnel traitées en vertu du Contrat, à informer le Client (à moins que les lois
+applicables ou l’injonction d’une autorité compétente ne l’interdisent), et à limiter la
+communication des données à ce que l’autorité a expressément demandé.
+Sur demande écrite du Client, OVH fournit au Client une assistance raisonnable dans la réalisation
+d’analyses d’impact relatives à la protection des données et la consultation de l’autorité de contrôle
+compétente, dans la mesure où le Client est tenu de le faire en vertu de la loi applicable en matière de
+protection des données, et si une telle assistance est nécessaire et se rapporte aux traitements de
+Données à caractère personnel opérés par OVH en vertu du Contrat. Cette assistance consiste à assurer
+la transparence des mesures de sécurité mises en œuvre par OVH pour ses Services.
+OVH s’engage à mettre en place les mesures techniques et organisationnelles suivantes :
+(a) des mesures de sécurité physique destinées à empêcher les personnes non autorisées d’accéder à
+l’infrastructure dans laquelle les données du client sont stockées,
+b) des contrôles d’identité et d’accès au moyen d’un système d’authentification et d’une politique en
+matière de mots de passe,
+c) un système de gestion des accès qui limite l’accès aux locaux, aux personnes ayant besoin d’y
+accéder dans l’exercice de leurs fonctions et dans le cadre de leurs responsabilités,
+d) du personnel de sécurité chargé de surveiller la sécurité physique des locaux d’OVH,
+e) un système qui isole physiquement et/ou de façon logique les clients les uns des autres,
+f) des processus d’authentification des utilisateurs et des administrateurs, ainsi que des mesures visant
+à protéger l’accès aux fonctions d’administration,
+
+-- 3 of 10 --
+
+SAS OVH, 2 rue Kellermann – 59100 Roubaix – France
+RCS Lille Métropole 424 761 419 00045 Code APE 2620Z
+g) un système de gestion de l’accès pour les opérations de soutien et d’entretien qui fonctionne selon
+les principes du moindre privilège et du besoin de savoir ; et
+h) des processus et des mesures de suivi des actions effectuées sur son système d’information.
+Ce mesures techniques et organisationnelles sont détaillées sur le Site Internet d’OVH.
+5. Violation de données à caractère personnel
+Si OVH a connaissance d’un incident affectant les Données à caractère personnel du Responsable du
+traitement (accès non autorisé, perte, divulgation ou altération de données), OVH en informe le Client
+dans les meilleurs délais.
+La notification doit (i) décrire la nature de l’incident, (ii) décrire les conséquences probables de
+l’incident, (iii) décrire les mesures prises ou proposées par OVH en réponse à l’incident et (iv) préciser
+qui est l’interlocuteur chez OVH.
+6. Localisation et transfert des Données à caractère personnel
+Lorsque les Services permettent au Client de stocker des Contenus et notamment des Données à
+caractère personnel, la ou les localisation(s), ou zone(s) géographique(s) du ou des centre(s) de
+donnée(s) disponible(s) sont précisées sur le Site Internet d’OVH. Si plusieurs localisations ou zones
+géographiques sont disponibles, le Client sélectionne celle(s) de son choix au moment de la
+Commande. Sauf dérogation prévue dans les Conditions Particulières de Service en vigueur, OVH
+s’interdit de modifier, sans l’accord du Client, la localisation ou zone géographique prévue à la
+Commande.
+Les Données à caractère personnel stockées par le Client dans le cadre des Services ne sont en aucun
+cas transférées vers des pays n’étant pas reconnus par la Commission Européenne comme offrant un
+niveau adéquat de protection des données à caractère personnel (« Décision d’adéquation »), sauf (a)
+si ce transfert est expressément prévu dans les Conditions de Services applicables, ou (b) si le Client
+choisit un centre de données situé en dehors de l’Union européenne dans un pays qui n’est pas soumis
+à une Décision d’adéquation ou (c) avec accord spécifique du Client.
+Sans préjudice des dispositions qui précèdent concernant la localisation des centres de données, OVH
+ainsi que les Sous-traitants autorisés conformément à la section 7 ci-dessous, peuvent, à l’exclusion
+des entités localisées aux Etats-Unis d’Amérique, traiter à distance les Données à caractère personnel
+objet de la présente partie si cela est nécessaire à l’exécution des Services, en particulier, afin d’assurer
+la sécurité des Services ou de gérer des incidents.
+Si, en application du Contrat, des Données à caractère personnel objet de la présente partie sont
+transférées en dehors de l’Union européenne vers un pays qui ne fait pas l’objet d’une Décision
+d’adéquation, ou accessibles à distance depuis un tel pays, un accord de transfert de données
+conforme aux clauses contractuelles types adoptées par la Décision n°210/87/EU de la Commission
+européenne du 5 février 2010 (les « Clauses Contractuelles Types ») ou, à la discrétion d’OVH, toute
+autre garantie appropriée prévue au chapitre V «Transferts de données à caractère personnel vers des
+pays tiers ou des organisations internationales » du RGPD est mise en œuvre. Par la présente, le Client
+donne à OVH un mandat lui permettant de conclure les clauses contractuelles types susmentionnées
+
+-- 4 of 10 --
+
+SAS OVH, 2 rue Kellermann – 59100 Roubaix – France
+RCS Lille Métropole 424 761 419 00045 Code APE 2620Z
+avec l’importateur de données, au nom et pour le compte de l’exportateur de données et déclare
+disposer de toutes les autorisations nécessaires.
+Lorsque les Clauses Contractuelles Types sont mises en œuvre, les conditions suivantes s’appliquent :
+(a) Pour les clauses 5 f) et 12 (2) des Clauses Contractuelles Types, les dispositions de l’article
+« Audits » de la présente Annexe sont applicables.
+(b) Pour la clause 11 des Clauses Contractuelles Types, le Client consent à ce qu’OVH et
+l'importateur de données engagent des sous-traitants dans les conditions de la section « Sous-
+traitance » de la présente Annexe.
+(c) Pour la clause 12 (1) des Clauses Contractuelles Types, l’importateur de données doit, dans
+les conditions de la présente Annexe, et notamment la section « Suppression et restitution des
+Données à caractère personnel », (i) aider le l'exportateur de données à récupérer ses données et (ii)
+supprimer les données de l'exportateur de données.
+(d) Si la responsabilité de l'importateur de données est engagée du fait du non-respect des
+obligations qui lui incombent en vertu des Clauses Contractuelles Types, toutes les dispositions du
+Contrat relative à la responsabilité, notamment, mais non-limitativement, la section « Responsabilité »
+de la présente Annexe, sont pleinement applicables entre l'importateur de données et l'exportateur
+de données.
+Le paragraphe précédent a pour objet de spécifier les modalités selon lesquelles les Parties
+conviennent d'appliquer les Clauses Contractuelles Types et non de déroger ou d'entrer en conflit avec
+celles-ci. En cas de conflit, les Clauses Contractuelles Types signées prévalent.
+Le Responsable du traitement doit accomplir toutes les formalités et obtenir toutes les autorisations
+nécessaires (y compris, le cas échéant, auprès des personnes concernées et des autorités compétentes
+en matière de protection des données) pour transférer des données à caractère personnel dans le
+cadre du Contrat.
+7. Sous-traitance
+Sous réserve des dispositions de la section "Localisation et transfert des Données à caractère
+personnel" ci-dessus, OVH est autorisé à recourir à des Sous-traitants pour l’assister dans la fourniture
+des Services. Dans le cadre de cette assistance, les Sous-traitants peuvent participer aux activités de
+traitement des Données à caractère personnel effectuées par OVH sur instruction du Client.
+La liste des sous-traitants susceptibles d’intervenir dans le cadre des traitements de données à
+caractère personnel réalisés par OVH sur instruction du Client (« Sous-traitants ultérieurs »), ainsi que
+leur localisation et les Services concernés, sont détaillés (a) sur le Site Internet d’OVH ou, (b) lorsqu'un
+Sous-traitant ultérieur ne participe qu’à un Service spécifique, dans les Conditions Particulières
+applicables audit Service.
+Si OVH décide de changer de Sous-traitant ultérieur ou d’ajouter un nouveau Sous-traitant ultérieur («
+Changement de Sous-traitant »), OVH en informe le Client par courrier électronique (à l’adresse e-mail
+enregistrée dans le compte client) (a) trente (30) jours à l'avance si le Sous-traitant est une Société
+Apparentée d’OVH situé dans l'Union européenne ou dans un pays faisant l'objet d'une Décision
+d'Adéquation, ou (b) quatre-vingt-dix (90) jours à l'avance dans les autres cas. Le Client a le droit
+d’émettre des objections en cas de Changement de Sous-traitant, dans les conditions prévues à l’article
+
+-- 5 of 10 --
+
+SAS OVH, 2 rue Kellermann – 59100 Roubaix – France
+RCS Lille Métropole 424 761 419 00045 Code APE 2620Z
+28 du RGPD. Les objections doivent être notifiées à OVH dans les quinze (15) jours suivant envoi de la
+notification du Changement de Sous-traitant par OVH en précisant le motif de l’objection. Les
+objections doivent être notifiées par le Client via son Interface de Gestion ou par écrit au Data
+Protection Officer, OVH SAS, 2 rue Kellermann 59100 Roubaix (France). OVH n’est en aucun cas obligé
+de renoncer à un Changement de Sous-traitant. Si à la suite d’une objection du Client, OVH ne renonce
+pas au Changement de Sous-Traitant, le Client peut mettre fin aux services concernés sans pouvoir
+prétendre à indemnisation.
+OVH veille à ce que ses Sous-traitants ultérieurs soient, au minimum, en mesure de remplir les
+obligations mises à la charge d’OVH dans le présent Contrat concernant le traitement des Données à
+caractère personnel effectué par le Sous-traitant ultérieur. À cette fin, OVH conclut un accord avec le
+Sous-traitant ultérieur. OVH reste vis-à-vis du Client entièrement responsable de l’exécution de toute
+obligation que le Sous-traitant ultérieur ne remplit pas.
+OVH est expressément autorisé à engager des fournisseurs tiers (tels que des fournisseurs d’énergie,
+des fournisseurs de réseaux, des gestionnaires de points d’interconnexion de réseaux ou des centres
+de données colocalisés, des fournisseurs de matériel et de logiciels, des transporteurs, des fournisseurs
+techniques, des sociétés de sécurité), sans devoir informer le Client ou obtenir son autorisation
+préalable, dans la mesure où ces fournisseurs tiers ne traitent pas les Données à caractère personnel
+objet de la présent partie
+8. Obligations du Client
+Pour le traitement des Données à caractère personnel conformément au Contrat, le client doit fournir
+à OVH par écrit (a) toute instruction pertinente et (b) toute information nécessaire à la création du
+registre des activités de traitement du sous-traitant. Le Client reste seul responsable du traitement des
+informations et instructions communiquées à OVH.
+Le Client a la responsabilité de s’assurer que :
+a) le traitement des Données à caractère personnel dans le cadre de l’exécution des Services a une
+base juridique appropriée (par exemple, le consentement de la personne concernée, les intérêts
+légitimes du Responsable de traitement, etc.),
+b) toutes les procédures et formalités requises (telles qu’analyse d’impact relative à la protection des
+données, notification et demande d’autorisation à l’autorité de contrôle compétente en matière de
+traitement de données personnelles ou à tout autre organisme compétent, le cas échéant) ont été
+effectuées,
+c) la personne concernée est informée du traitement de ses Données à caractère personnel de façon
+concise, transparente, intelligible et facilement accessible, en utilisant un langage clair et simple,
+comme le prévoit le RGPD,
+d) les personnes concernées sont informées et ont à tout moment la possibilité d’exercer facilement
+les droits relatifs aux données prévus par le RGPD directement auprès du Responsable du traitement.
+Le Client est responsable de la mise en œuvre des mesures techniques et organisationnelles
+appropriées pour assurer la sécurité des ressources, systèmes, applications et opérations qui ne
+relèvent pas du périmètre de responsabilité d’OVH tel que prévu au Contrat (notamment tous les
+systèmes et logiciels déployés et exploités par le Client ou les Utilisateurs au sein des Services).
+
+-- 6 of 10 --
+
+SAS OVH, 2 rue Kellermann – 59100 Roubaix – France
+RCS Lille Métropole 424 761 419 00045 Code APE 2620Z
+9. Droit des personnes concernées
+Le Responsable du traitement est pleinement responsable de l’information des personnes concernées
+concernant leurs droits et du respect de ces droits, y compris les droits d’accès, de rectification,
+d’effacement, de limitation ou de portabilité.
+OVH fournit la coopération et l’assistance, dans la mesure où cela est raisonnablement nécessaire,
+pour répondre aux demandes des personnes concernées. Cette coopération et cette assistance
+raisonnable peuvent consister à (a) communiquer au Client toute demande reçue directement de la
+personne concernée et (b) permettre au Responsable du traitement de concevoir et de déployer les
+mesures techniques et organisationnelles nécessaires pour répondre aux demandes des personnes
+concernées. Le Responsable du traitement est seul responsable des réponses à ces demandes.
+Le Client reconnaît et convient que, dans l’éventualité où une telle coopération et assistance
+nécessiterait des ressources importantes de la part d’OVH, cela pourra être facturé au Client à
+condition de le lui notifier et d’obtenir son accord au préalable.
+10. Suppression et restitution des Données à caractère personnel
+À la fin du Service (notamment en cas de résiliation ou de non-renouvellement), OVH s’engage à
+supprimer dans les conditions prévues au Contrat, tout Contenu (notamment les informations,
+données, fichiers, systèmes, applications, sites internet et autres éléments) reproduit, stocké, hébergé
+ou autrement utilisé par le Client dans le cadre des Services, sauf si une demande émise par une
+autorité légale ou judiciaire compétente, ou la loi applicable de l’Union européenne ou d’un État
+membre de l’Union européenne, en exigent autrement.
+Le Client est seul responsable de faire en sorte que les opérations nécessaires (telles que la sauvegarde,
+le transfert vers une solution tierce, les instantanés, etc.) à la conservation des Données à caractère
+personnel soient effectuées, notamment avant la résiliation ou l’expiration des Services, et avant de
+procéder à toute opération de suppression, de mise à jour ou de réinstallation des Services.
+À cet égard, le Client est informé que la résiliation et l’expiration d’un Service pour quelque raison que
+ce soit (incluant, mais de façon non exclusive le non-renouvellement), ainsi que certaines opérations
+de mise à jour ou de réinstallation des Services, peuvent automatiquement entraîner la suppression
+irréversible de tout Contenu (y compris les informations, données, fichiers, systèmes, applications,
+sites internet et autres éléments) reproduit, stocké, hébergé ou autrement utilisé par le Client dans le
+cadre des Services, ce compris toute sauvegarde potentielle.
+11. Responsabilité
+OVH ne peut être tenu responsable que des dommages causés par un traitement pour lequel (i) il n'a
+pas respecté les obligations prévues par le RGPD qui incombent spécifiquement aux sous-traitants ou
+pour lequel (ii) il a agi en-dehors des instructions licites du Client ou contrairement à celles-ci. Dans de
+tels cas, la disposition du Contrat relative à la Responsabilité s’applique.
+Lorsqu’OVH et le Client sont impliqués dans un traitement dans le cadre du présent Contrat qui a causé
+un dommage à une personne concernée, le Client prend en charge, dans un premier temps,
+
+-- 7 of 10 --
+
+SAS OVH, 2 rue Kellermann – 59100 Roubaix – France
+RCS Lille Métropole 424 761 419 00045 Code APE 2620Z
+l’intégralité de la réparation effective (ou toute autre compensation) due à la personne concernée et,
+dans un second temps, réclame à OVH la part de la réparation correspondant à la part de responsabilité
+d’OVH dans le dommage, étant précisé que les clauses limitatives de responsabilité prévues par le
+Contrat demeurent applicables.
+12. Audits
+OVH met à la disposition du Client toutes les informations nécessaires pour (a) démontrer la
+conformité aux exigences du RGPD et (b) mener des audits.
+Ces informations sont disponibles dans la documentation standard sur le site internet d’OVH. Des
+informations supplémentaires peuvent être communiquées au Client sur demande faite au Support
+OVH.
+Si un Service est certifié, qu’il respecte un code de conduite ou fait l’objet de procédures de contrôles
+spécifiques, OVH met à disposition, sur demande écrite du Client, les certificats et rapports des
+contrôles correspondants.
+Si les informations, les rapports et les certificats susmentionnés s’avèrent insuffisants pour permettre
+au Client de démontrer que les obligations prévues par le RGPD sont remplies, OVH et le Client se
+réunissent alors pour convenir des conditions opérationnelles, sécuritaires et financières d’une
+inspection technique sur site. En toutes hypothèses, les conditions de cette inspection ne doivent pas
+affecter la sécurité des autres clients d’OVH.
+L’inspection sur site susmentionnée, ainsi que la communication des certificats et des rapports de
+contrôles peuvent donner lieu à une facturation supplémentaire raisonnable.
+Toute information communiquée au Client en vertu de la présente clause et qui n’est pas disponible
+sur le Site Internet d’OVH est considérée comme une information confidentielle d’OVH en vertu du
+Contrat. Avant de communiquer ces informations, OVH peut exiger la signature d’un accord de
+confidentialité spécifique.
+Nonobstant ce qui précède, le Client est autorisé à répondre aux demandes de l’autorité de contrôle
+compétente à condition que toute divulgation d’informations soit strictement limitée à ce qui est
+demandé par ladite autorité. Dans un tel cas, et à moins que la loi applicable ne l’interdise, le Client
+doit d’abord consulter OVH au sujet de toute divulgation requise.
+
+-- 8 of 10 --
+
+SAS OVH, 2 rue Kellermann – 59100 Roubaix – France
+RCS Lille Métropole 424 761 419 00045 Code APE 2620Z
+13. Contact OVH
+Pour toutes questions concernant ses données à caractère personnel (incident, conditions
+d’utilisation, etc.), le Client peut contacter OVH par l’un des moyens suivants :
+(a) Création d’un ticket dans son Interface de Gestion compte client,
+(b) Utilisation du formulaire de contact prévu à cet effet sur le Site Internet d’OVH,
+(c) En contactant son Service support OVH,
+(d) Par courrier postal à l’adresse : OVH SAS, Délégué à la Protection des Données, 2 rue Kellermann,
+59100 Roubaix.
+Partie 2 - Données à caractère personnel traitées par OVH en qualité de responsable de traitement
+La présente partie a pour objet de définir les conditions dans lesquelles OVH traite en exécution du
+Contrat des données à caractère personnel en qualité de responsable de traitement.
+1. Finalités des traitements
+Dans le cadre de l’exécution du Contrat, des données à caractère personnel relatives au Client et à
+l’utilisation des Services sont traitées par OVH en qualité de responsable de traitement afin de (a) gérer
+sa relation avec le Client (gestion des activités commerciales, information et support client, gestion
+des réclamations, facturation, tenue de la comptabilité, gestion des paiements, recouvrements,
+amélioration du process de commande, programme de fidélité, etc.), (b) fournir les Services (livraison,
+maintenance, développement et gestion de la qualité et de la sécurité des Services), (c) prévenir la
+fraude, les impayés et les utilisations de Services non-conformes à la réglementation ou aux Conditions
+de Service applicables, (d) se conformer à la réglementation en vigueur (obligation d’archivage,
+obligation de conservation de données comme les données de connexion et d’identification des
+utilisateurs) et (e) faire valoir ses droits.
+2. Types de données
+Les données ainsi traitées par OVH sont (i) les données d'identification du Client (nom, prénom,
+adresse postale, adresse email, numéro de téléphone, identifiant client OVH ou « NIC Handle »), (ii)
+les interactions entre le Client et OVH (contacts, tickets, échanges et comptes rendu établis par le
+support), (iii) les données comptables et financières (historique de commande, factures, avoir, moyen
+de paiement utilisé, y compris titulaire du moyen de paiement), (iv) les données techniques relatives
+à l’utilisation des Services (identifiants de connexion, identifiants des Services, historiques d’utilisation
+et de connexion aux Services, etc.).
+3. Conditions de traitement
+Ces traitements sont réalisés conformément à la réglementation en vigueur, notamment le RGDP, et
+la loi n°78-17 du 6 janvier 1978 relative à l’informatique, aux fichiers et aux libertés, modifiée par la
+Loi n°2019-828 du 6 août 2019.
+
+-- 9 of 10 --
+
+SAS OVH, 2 rue Kellermann – 59100 Roubaix – France
+RCS Lille Métropole 424 761 419 00045 Code APE 2620Z
+Les Sociétés Apparentées d’OVH peuvent participer aux activités de traitement de données
+susmentionnées et OVH peut avoir recours à des prestataires tiers tels que des services de sécurité,
+fournisseurs réseaux, prestataires de services paiement, et autres prestataires de services (courrier,
+emailing, enquêtes, transporteurs, analyses marché, analyses d’activités des sites web du groupe OVH,
+etc.) intervenant en qualité de sous-traitants et agissant sur instruction d’OVH. Dans ce cas, un contrat
+conforme à la réglementation en vigueur est établi entre OVH et le sous-traitant, et des mesures
+techniques et organisationnelles appropriées sont mises en place conformément aux articles 28 et 32
+du RGPD.
+Lorsque des données à caractère personnel sont transférées (y compris en cas d’accès à distance) vers
+un pays tiers à l’Union Européenne qui ne fait pas l’objet d’une Décision d’Adéquation, des garanties
+appropriées conformes au Chapitre V du RGPD sont mises en place notamment, au choix d’OVH, un
+contrat conforme aux clauses contractuelles types de protection des données adoptées par une
+autorité de protection des données et approuvées par la Commission en conformité avec la procédure
+d’examen visée à l’article 93(2) du RGPD ou adoptées par la Commission en conformité avec la
+procédure d’examen visée au même article, ou des Règles d’entreprise contraignantes approuvées par
+l’Autorité de contrôle compétente.
+Les conditions des traitements de données susvisés sont détaillées sur le site Internet d’OVH. OVH met
+régulièrement à jour ces conditions et communique sur le contenu desdites mises à jour.
+OVH s’engage à ne pas utiliser les données précitées à des fins non-compatibles à celles évoquées au
+présent article, étant toutefois précisé qu’OVH peut devoir communiquer lesdites données en réponse
+à des requêtes ou décisions d’autorités telles qu’autorités judiciaires ou administratives. Dans ce cas,
+OVH s’engage à en informer le Client (sauf si ceci n’est pas autorisée par la loi ou par l’autorité
+requérante), et à limiter la communication aux seules données requises.
+Nonobstant ce qui précède, OVH se réserve le droit de procéder à l’anonymisation des Données objet
+de la présente partie. Les données ainsi anonymisées sont conservées et traitées sous cette forme à
+quelque fin que ce soit (notamment mais non limitativement à des fins statistiques, de développement
+et d’amélioration des Services, d’analyse marketing ou de développement commercial, etc.).
+4. Droits des personnes concernées
+Conformément au RGDP, l’Utilisateur dispose du droit d’effectuer un recours auprès de l’autorité de
+protection des données. Le Client dispose également du droit d’accéder aux Données à caractère
+personnel susvisées le concernant, du droit de les rectifier, d’en demander la suppression et la
+portabilité, ainsi que du droit de limiter ou de s’opposer à certains de leurs traitements.
+Ces droits peuvent être exercés en utilisant le formulaire prévu à cet effet sur le Site Internet d’OVH,
+ou par courrier postal à l’adresse : OVH SAS, Délégué à la Protection des Données, 2 rue Kellermann,
+59100 Roubaix. Chaque demande doit être impérativement accompagnée d’un justificatif d’identité.
+Il y sera répondu dans un délai de trente (30) jours suivant réception.
+
+-- 10 of 10 --

@@ -9,19 +9,54 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "check:content": "tsx scripts/check-content.ts",
+    "check:vendors": "tsx scripts/check-vendors.ts",
+    "check:sources": "tsx scripts/check-sources.ts",
+    "check:glossary": "tsx scripts/check-glossary.ts",
+    "check:rules": "tsx scripts/check-rules.ts",
+    "check:scanner": "tsx scripts/check-scanner.ts",
+    "check:survey": "tsx scripts/check-survey.ts",
+    "check:survey-answers": "tsx scripts/check-survey-answers.ts",
+    "check:survey-aggregates": "tsx scripts/check-survey-aggregates.ts",
+    "check:classify": "tsx scripts/check-classify.ts",
+    "check:act": "tsx scripts/check-act.ts",
+    "check:links": "tsx scripts/check-links.ts",
+    "check:links-report": "tsx scripts/check-links-report.ts",
+    "aggregate:survey": "tsx scripts/aggregate-survey.ts",
+    "snapshot:sources": "tsx scripts/snapshot-sources.ts",
+    "classify:snapshots": "tsx scripts/classify-snapshots.ts",
+    "maintain:act": "tsx scripts/maintain-act.ts",
+    "changed-de-slugs": "tsx scripts/changed-de-slugs.ts",
+    "translate": "tsx scripts/translate.ts",
+    "dev:survey": "wrangler dev -c workers/survey/wrangler.jsonc",
+    "deploy:survey": "wrangler deploy -c workers/survey/wrangler.jsonc",
+    "db:survey:local": "wrangler d1 migrations apply swiss-ai-survey --local -c workers/survey/wrangler.jsonc",
+    "dev:scanner": "wrangler dev -c workers/scanner/wrangler.jsonc",
+    "deploy:scanner": "wrangler deploy -c workers/scanner/wrangler.jsonc"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.110.0",
+    "cheerio": "^1.2.0",
+    "diff": "^7.0.0",
+    "gray-matter": "^4.0.3",
+    "marked": "^18.0.6",
     "next": "16.2.10",
+    "pdf-parse": "^2.4.5",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "^5.20260714.1",
+    "@types/diff": "^7.0.2",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.10",
-    "typescript": "^5"
+    "tsx": "^4.23.0",
+    "typescript": "^5",
+    "wrangler": "^4.36.0"
   }
 }

@@ -1,0 +1,38 @@
+{
+  "classified_at": "2026-07-16T12:11:41.233Z",
+  "dry_run": true,
+  "model": "fixture",
+  "sources": [
+    {
+      "id": "anthropic-regional-compliance",
+      "status": "classified",
+      "classification": "material",
+      "rationale": "fixture for T18 material dry-run",
+      "confidence": "low",
+      "dependent_pages": []
+    },
+    {
+      "id": "google-cloud-ml-locations",
+      "status": "classified",
+      "classification": "material",
+      "rationale": "fixture for T18 material dry-run",
+      "confidence": "low",
+      "dependent_pages": []
+    },
+    {
+      "id": "ovhcloud-ai-endpoints",
+      "status": "classified",
+      "classification": "material",
+      "rationale": "fixture for T18 material dry-run",
+      "confidence": "low",
+      "dependent_pages": []
+    }
+  ],
+  "summary": {
+    "material": 3,
+    "cosmetic": 0,
+    "baseline": 0,
+    "skipped": 0,
+    "failed": 0
+  }
+}

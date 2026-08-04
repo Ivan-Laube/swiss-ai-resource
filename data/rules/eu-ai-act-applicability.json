@@ -1,0 +1,682 @@
+{
+  "id": "eu-ai-act-applicability",
+  "version": 1,
+  "title": {
+    "de": "Gilt der EU AI Act für mein Schweizer Unternehmen?",
+    "en": "Does the EU AI Act apply to my Swiss company?",
+    "fr": "Le règlement sur l'IA de l'UE s'applique-t-il à mon entreprise suisse ?",
+    "it": "Il regolamento sull'IA dell'UE si applica alla mia impresa svizzera?"
+  },
+  "description": {
+    "de": "Erste Orientierung zur räumlichen Anwendbarkeit der Verordnung (EU) 2024/1689 für Schweizer Firmen — Marktzugang, Output in der EU, Risikoklasse und Fristen (inkl. Digital Omnibus).",
+    "en": "Initial orientation on the territorial scope of Regulation (EU) 2024/1689 for Swiss firms — market access, output in the EU, risk class, and deadlines (incl. Digital Omnibus).",
+    "fr": "Première orientation sur l'applicabilité territoriale du règlement (UE) 2024/1689 pour les entreprises suisses — accès au marché, sortie dans l'UE, classe de risque et délais (y compris Digital Omnibus).",
+    "it": "Primo orientamento sull'applicabilità territoriale del regolamento (UE) 2024/1689 per le imprese svizzere — accesso al mercato, output nell'UE, classe di rischio e scadenze (incluso Digital Omnibus)."
+  },
+  "start": "q-eu-nexus",
+  "nodes": {
+    "q-eu-nexus": {
+      "type": "question",
+      "prompt": {
+        "de": "Gibt es einen EU-Bezug: KI-System oder GPAI-Modell in der Union in Verkehr bringen / in Betrieb nehmen, oder wird der Output in der Union verwendet?",
+        "en": "Is there an EU nexus: placing an AI system or GPAI model on the market / putting it into service in the Union, or is the output used in the Union?",
+        "fr": "Y a-t-il un lien avec l'UE : mise sur le marché / mise en service d'un système d'IA ou d'un modèle d'IA à usage général (GPAI) dans l'Union, ou la sortie y est-elle utilisée ?",
+        "it": "C'è un nesso con l'UE: immissione sul mercato / messa in servizio di un sistema di IA o di un modello di IA per finalità generali (GPAI) nell'Unione, oppure l'output vi è utilizzato?"
+      },
+      "help": {
+        "de": "Nach Art. 2 Abs. 1 AI Act können auch Anbieter und Betreiber in Drittstaaten (z. B. Schweiz) erfasst sein — insbesondere bei Marktzugang in die EU oder wenn der vom System erzeugte Output in der Union verwendet wird. Rein schweizerischer Einsatz ohne EU-Output bleibt typischerweise ausserhalb.",
+        "en": "Under Art. 2(1) AI Act, providers (Anbieter) and deployers (Betreiber) in third countries (e.g. Switzerland) can also be covered — especially with market access into the EU or when the system's output is used in the Union. Purely Swiss use without EU output typically remains outside.",
+        "fr": "Selon l'art. 2, par. 1, du règlement sur l'IA, les fournisseurs et déployeurs dans des pays tiers (p. ex. Suisse) peuvent aussi être couverts — notamment en cas d'accès au marché de l'UE ou si la sortie générée par le système est utilisée dans l'Union. Un usage purement suisse sans sortie dans l'UE reste en principe hors champ.",
+        "it": "Ai sensi dell'art. 2, par. 1, del regolamento sull'IA, anche fornitori e deployer in Paesi terzi (p. es. Svizzera) possono essere coperti — in particolare in caso di accesso al mercato UE o se l'output generato dal sistema è utilizzato nell'Unione. Un uso puramente svizzero senza output nell'UE resta tipicamente fuori campo."
+      },
+      "answers": [
+        {
+          "id": "no",
+          "label": {
+            "de": "Nein — kein Marktzugang und kein Output in der EU",
+            "en": "No — no market access and no output in the EU",
+            "fr": "Non — pas d'accès au marché ni de sortie dans l'UE",
+            "it": "No — nessun accesso al mercato né output nell'UE"
+          },
+          "next": "out-unlikely-outside"
+        },
+        {
+          "id": "yes",
+          "label": {
+            "de": "Ja — Marktzugang und/oder Output-Nutzung in der EU",
+            "en": "Yes — market access and/or output use in the EU",
+            "fr": "Oui — accès au marché et/ou utilisation de la sortie dans l'UE",
+            "it": "Sì — accesso al mercato e/o uso dell'output nell'UE"
+          },
+          "next": "q-role"
+        },
+        {
+          "id": "unsure",
+          "label": {
+            "de": "Unsicher / noch nicht geprüft",
+            "en": "Unsure / not yet checked",
+            "fr": "Incertain / pas encore vérifié",
+            "it": "Incerto / non ancora verificato"
+          },
+          "next": "out-unclear-nexus"
+        }
+      ]
+    },
+    "q-role": {
+      "type": "question",
+      "prompt": {
+        "de": "Welche Rolle beschreibt Ihr Unternehmen am besten?",
+        "en": "Which role best describes your company?",
+        "fr": "Quel rôle décrit le mieux votre entreprise ?",
+        "it": "Quale ruolo descrive meglio la vostra impresa?"
+      },
+      "help": {
+        "de": "Der AI Act unterscheidet u. a. Anbieter (entwickeln oder in Verkehr bringen), Betreiber (nutzen unter eigener Verantwortung), Einführer und Händler. Die Rolle bestimmt den Pflichtenkatalog — nicht der Firmensitz allein. Schweizer Anbieter ohne EU-Niederlassung können einen Bevollmächtigten in der Union brauchen.",
+        "en": "The AI Act distinguishes, among others, providers (Anbieter — develop or place on the market), deployers (Betreiber — use under their own responsibility), importers, and distributors. The role determines the duty catalogue — not the company seat alone. Swiss providers without an EU establishment may need an authorised representative (Bevollmächtigter) in the Union.",
+        "fr": "Le règlement sur l'IA distingue notamment les fournisseurs (développent ou mettent sur le marché), les déployeurs (utilisent sous leur propre responsabilité), les importateurs et les distributeurs. Le rôle détermine le catalogue d'obligations — pas le siège seul. Les fournisseurs suisses sans établissement dans l'UE peuvent avoir besoin d'un représentant dans l'Union.",
+        "it": "Il regolamento sull'IA distingue, tra l'altro, fornitori (sviluppano o immettono sul mercato), deployer (utilizzano sotto la propria responsabilità), importatori e distributori. Il ruolo determina il catalogo degli obblighi — non la sola sede. I fornitori svizzeri senza stabilimento nell'UE possono aver bisogno di un rappresentante nell'Unione."
+      },
+      "answers": [
+        {
+          "id": "provider",
+          "label": {
+            "de": "Anbieter (Provider)",
+            "en": "Provider (Anbieter)",
+            "fr": "Fournisseur (provider)",
+            "it": "Fornitore (provider)"
+          },
+          "next": "q-risk-class"
+        },
+        {
+          "id": "deployer",
+          "label": {
+            "de": "Betreiber (Deployer)",
+            "en": "Deployer (Betreiber)",
+            "fr": "Déployeur (deployer)",
+            "it": "Deployer (Betreiber)"
+          },
+          "next": "q-risk-class"
+        },
+        {
+          "id": "other",
+          "label": {
+            "de": "Einführer, Händler oder andere Rolle",
+            "en": "Importer, distributor, or other role",
+            "fr": "Importateur, distributeur ou autre rôle",
+            "it": "Importatore, distributore o altro ruolo"
+          },
+          "next": "q-risk-class"
+        },
+        {
+          "id": "unsure",
+          "label": {
+            "de": "Unklar",
+            "en": "Unclear",
+            "fr": "Pas clair",
+            "it": "Non chiaro"
+          },
+          "next": "out-unclear-role"
+        }
+      ]
+    },
+    "q-risk-class": {
+      "type": "question",
+      "prompt": {
+        "de": "Welche Einstufung passt am besten zu Ihrem System bzw. Modell?",
+        "en": "Which classification best fits your system or model?",
+        "fr": "Quelle classification correspond le mieux à votre système ou modèle ?",
+        "it": "Quale classificazione si adatta meglio al vostro sistema o modello?"
+      },
+      "help": {
+        "de": "Der AI Act unterscheidet verbotene Praktiken (Art. 5), Hochrisiko-KI-Systeme, Transparenzpflichten für bestimmte Systeme, Regeln für Modelle für allgemeine Zwecke (GPAI) sowie Systeme mit begrenzten oder keinen besonderen Pflichten. Die genaue Einstufung bestimmt den Pflichtenkatalog.",
+        "en": "The AI Act distinguishes prohibited practices (Art. 5), high-risk AI systems (Hochrisiko-KI-Systeme), transparency duties for certain systems, rules for general-purpose AI models (GPAI), and systems with limited or no special duties. The exact classification determines the duty catalogue.",
+        "fr": "Le règlement sur l'IA distingue les pratiques interdites en matière d'IA (art. 5), les systèmes d'IA à haut risque, les obligations de transparence pour certains systèmes, les règles pour les modèles d'IA à usage général (GPAI), ainsi que les systèmes à obligations limitées ou sans obligations particulières. La classification exacte détermine le catalogue d'obligations.",
+        "it": "Il regolamento sull'IA distingue le pratiche di IA vietate (art. 5), i sistemi di IA ad alto rischio, gli obblighi di trasparenza per determinati sistemi, le regole per i modelli di IA per finalità generali (GPAI), nonché i sistemi con obblighi limitati o senza obblighi particolari. La classificazione esatta determina il catalogo degli obblighi."
+      },
+      "answers": [
+        {
+          "id": "prohibited",
+          "label": {
+            "de": "Verbotene KI-Praktik (Art. 5)",
+            "en": "Prohibited AI practice (Art. 5)",
+            "fr": "Pratique d'IA interdite (art. 5)",
+            "it": "Pratica di IA vietata (art. 5)"
+          },
+          "next": "out-prohibited"
+        },
+        {
+          "id": "high-risk",
+          "label": {
+            "de": "Hochrisiko-KI-System",
+            "en": "High-risk AI system (Hochrisiko-KI-System)",
+            "fr": "Système d'IA à haut risque",
+            "it": "Sistema di IA ad alto rischio"
+          },
+          "next": "q-highrisk-annex"
+        },
+        {
+          "id": "transparency",
+          "label": {
+            "de": "Transparenzpflichten (z. B. Chatbot, Deepfake)",
+            "en": "Transparency duties (e.g. chatbot, deepfake)",
+            "fr": "Obligations de transparence (p. ex. chatbot, deepfake)",
+            "it": "Obblighi di trasparenza (p. es. chatbot, deepfake)"
+          },
+          "next": "out-transparency"
+        },
+        {
+          "id": "gpai",
+          "label": {
+            "de": "Modell für allgemeine Zwecke (GPAI)",
+            "en": "General-purpose AI model (GPAI)",
+            "fr": "Modèle d'IA à usage général (GPAI)",
+            "it": "Modello di IA per finalità generali (GPAI)"
+          },
+          "next": "out-gpai"
+        },
+        {
+          "id": "limited",
+          "label": {
+            "de": "Begrenzt / keine der genannten Kategorien",
+            "en": "Limited / none of the categories above",
+            "fr": "Limité / aucune des catégories ci-dessus",
+            "it": "Limitato / nessuna delle categorie sopra"
+          },
+          "next": "out-limited-or-none"
+        },
+        {
+          "id": "unsure",
+          "label": {
+            "de": "Unklar",
+            "en": "Unclear",
+            "fr": "Pas clair",
+            "it": "Non chiaro"
+          },
+          "next": "out-unclear-class"
+        }
+      ]
+    },
+    "q-highrisk-annex": {
+      "type": "question",
+      "prompt": {
+        "de": "Ist das Hochrisiko-System eigenständig (Anhang III) oder in ein Produkt eingebettet (Anhang I)?",
+        "en": "Is the high-risk system standalone (Annex III) or embedded in a product (Annex I)?",
+        "fr": "Le système d'IA à haut risque est-il autonome (annexe III) ou intégré dans un produit (annexe I) ?",
+        "it": "Il sistema di IA ad alto rischio è autonomo (allegato III) o integrato in un prodotto (allegato I)?"
+      },
+      "help": {
+        "de": "Anhang III erfasst u. a. eigenständige Hochrisiko-Anwendungsfälle. Anhang I betrifft Systeme, die Sicherheitsbauteile von Produkten unter bestehender Harmonisierungsgesetzgebung sind. Die Fristen unterscheiden sich — und der Digital Omnibus on AI (Rat 29. Juni 2026, Amtsblatt ausstehend) verschiebt sie weiter.",
+        "en": "Annex III covers, among other things, standalone high-risk use cases. Annex I concerns systems that are safety components of products under existing harmonisation legislation. Deadlines differ — and the Digital Omnibus on AI (Council 29 June 2026, Official Journal pending) shifts them further.",
+        "fr": "L'annexe III couvre notamment des cas d'usage à haut risque autonomes. L'annexe I concerne les systèmes qui sont des composants de sécurité de produits sous la législation d'harmonisation existante. Les délais diffèrent — et le Digital Omnibus on AI (Conseil du 29 juin 2026, Journal officiel en attente) les décale encore.",
+        "it": "L'allegato III copre, tra l'altro, casi d'uso ad alto rischio autonomi. L'allegato I riguarda sistemi che sono componenti di sicurezza di prodotti sotto la legislazione di armonizzazione esistente. Le scadenze differiscono — e il Digital Omnibus on AI (Consiglio 29 giugno 2026, Gazzetta ufficiale in sospeso) le sposta ulteriormente."
+      },
+      "answers": [
+        {
+          "id": "annex-iii",
+          "label": {
+            "de": "Anhang III — eigenständiges Hochrisiko-System",
+            "en": "Annex III — standalone high-risk system",
+            "fr": "Annexe III — système d'IA à haut risque autonome",
+            "it": "Allegato III — sistema di IA ad alto rischio autonomo"
+          },
+          "next": "out-highrisk-annex-iii"
+        },
+        {
+          "id": "annex-i",
+          "label": {
+            "de": "Anhang I — in ein Produkt eingebettet",
+            "en": "Annex I — embedded in a product",
+            "fr": "Annexe I — intégré dans un produit",
+            "it": "Allegato I — integrato in un prodotto"
+          },
+          "next": "out-highrisk-annex-i"
+        },
+        {
+          "id": "unsure",
+          "label": {
+            "de": "Unklar / noch nicht zugeordnet",
+            "en": "Unclear / not yet assigned",
+            "fr": "Pas clair / pas encore classé",
+            "it": "Non chiaro / non ancora assegnato"
+          },
+          "next": "out-unclear-annex"
+        }
+      ]
+    },
+    "out-unlikely-outside": {
+      "type": "outcome",
+      "verdict": "unlikely",
+      "summary": {
+        "de": "Ohne Marktzugang in die EU und ohne Output-Nutzung in der Union erscheint der AI Act für diesen Einsatz typischerweise nicht anwendbar.",
+        "en": "Without market access into the EU and without output use in the Union, the AI Act typically appears not applicable to this use.",
+        "fr": "Sans accès au marché de l'UE et sans utilisation de la sortie dans l'Union, le règlement sur l'IA n'apparaît en principe pas applicable à cet usage.",
+        "it": "Senza accesso al mercato UE e senza uso dell'output nell'Unione, il regolamento sull'IA in genere non appare applicabile a questo uso."
+      },
+      "caveats": [
+        {
+          "de": "Schweizer Datenschutz (DSG) und branchenbezogene Regeln (z. B. FINMA) können trotzdem gelten — der AI Act und das DSG sind verschiedene Regime.",
+          "en": "Swiss data protection (Federal Act on Data Protection / DSG) and sector rules (e.g. FINMA) may still apply — the AI Act and the DSG are different regimes.",
+          "fr": "La protection des données suisse (LPD) et les règles sectorielles (p. ex. FINMA) peuvent néanmoins s'appliquer — le règlement sur l'IA et la LPD sont des régimes distincts.",
+          "it": "La protezione dei dati svizzera (LPD) e le regole di settore (p. es. FINMA) possono comunque applicarsi — il regolamento sull'IA e la LPD sono regimi distinti."
+        },
+        {
+          "de": "Prüfen Sie fallbezogen, ob wirklich kein Output in der Union verwendet wird (z. B. durch EU-Kunden oder Partner).",
+          "en": "Check case by case whether output is really not used in the Union (e.g. by EU customers or partners).",
+          "fr": "Vérifiez au cas par cas qu'aucune sortie n'est vraiment utilisée dans l'Union (p. ex. par des clients ou partenaires de l'UE).",
+          "it": "Verificate caso per caso che nessun output sia davvero utilizzato nell'Unione (p. es. da clienti o partner UE)."
+        },
+        {
+          "de": "Dies ist eine Orientierungshilfe, keine Rechtsberatung — bei Unsicherheit Fachberatung einholen.",
+          "en": "This is orientation guidance, not legal advice — seek professional advice if unsure.",
+          "fr": "Ceci est une aide à l'orientation, pas un conseil juridique — en cas d'incertitude, consultez un spécialiste.",
+          "it": "Si tratta di un orientamento, non di consulenza legale — in caso di incertezza, rivolgersi a un professionista."
+        }
+      ],
+      "sources": [
+        {
+          "title": "EUR-Lex – Verordnung (EU) 2024/1689 (AI Act), DE",
+          "url": "https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX%3A32024R1689"
+        }
+      ],
+      "related_pages": ["eu-ai-act-swiss-exporters", "ndsg-ai-basics"]
+    },
+    "out-unclear-nexus": {
+      "type": "outcome",
+      "verdict": "unclear",
+      "summary": {
+        "de": "Ohne geklärten EU-Bezug (Marktzugang oder Output-Nutzung) lässt sich die Anwendbarkeit des AI Act nicht sinnvoll einschätzen.",
+        "en": "Without a clarified EU nexus (market access or output use), AI Act applicability cannot be meaningfully assessed.",
+        "fr": "Sans lien avec l'UE clarifié (accès au marché ou utilisation de la sortie), l'applicabilité du règlement sur l'IA ne peut pas être évaluée de façon pertinente.",
+        "it": "Senza un nesso UE chiarito (accesso al mercato o uso dell'output), l'applicabilità del regolamento sull'IA non può essere valutata in modo sensato."
+      },
+      "caveats": [
+        {
+          "de": "Klären Sie: Wird das System oder GPAI-Modell in der Union in Verkehr gebracht oder in Betrieb genommen? Wird der Output dort verwendet?",
+          "en": "Clarify: Is the system or GPAI model placed on the market or put into service in the Union? Is the output used there?",
+          "fr": "Clarifiez : le système ou le modèle d'IA à usage général est-il mis sur le marché ou mis en service dans l'Union ? La sortie y est-elle utilisée ?",
+          "it": "Chiarite: il sistema o il modello di IA per finalità generali è immesso sul mercato o messo in servizio nell'Unione? L'output vi è utilizzato?"
+        },
+        {
+          "de": "Dokumentieren Sie die Prüfung — auch ein negativer Befund ist für Compliance-Nachweise nützlich.",
+          "en": "Document the assessment — even a negative finding is useful for compliance evidence.",
+          "fr": "Documentez l'examen — même un constat négatif est utile pour les preuves de conformité.",
+          "it": "Documentate l'esame — anche un esito negativo è utile per le prove di conformità."
+        },
+        {
+          "de": "Dies ist eine Orientierungshilfe, keine Rechtsberatung.",
+          "en": "This is orientation guidance, not legal advice.",
+          "fr": "Ceci est une aide à l'orientation, pas un conseil juridique.",
+          "it": "Si tratta di un orientamento, non di consulenza legale."
+        }
+      ],
+      "sources": [
+        {
+          "title": "EUR-Lex – Verordnung (EU) 2024/1689 (AI Act), DE",
+          "url": "https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX%3A32024R1689"
+        }
+      ],
+      "related_pages": ["eu-ai-act-swiss-exporters"]
+    },
+    "out-unclear-role": {
+      "type": "outcome",
+      "verdict": "unclear",
+      "summary": {
+        "de": "Ein EU-Bezug scheint gegeben, aber ohne geklärte Rolle (Anbieter, Betreiber, Einführer, Händler) lässt sich der Pflichtenkatalog nicht zuordnen.",
+        "en": "An EU nexus appears present, but without a clarified role (provider, deployer, importer, distributor) the duty catalogue cannot be assigned.",
+        "fr": "Un lien avec l'UE semble présent, mais sans rôle clarifié (fournisseur, déployeur, importateur, distributeur) le catalogue d'obligations ne peut pas être attribué.",
+        "it": "Un nesso UE sembra presente, ma senza ruolo chiarito (fornitore, deployer, importatore, distributore) il catalogo degli obblighi non può essere assegnato."
+      },
+      "caveats": [
+        {
+          "de": "Ordnen Sie die Rolle nach Art. 3 AI Act zu; bei gemischten Tätigkeiten können mehrere Rollen gleichzeitig greifen.",
+          "en": "Assign the role under Art. 3 AI Act; with mixed activities, several roles may apply at once.",
+          "fr": "Attribuez le rôle selon l'art. 3 du règlement sur l'IA ; en cas d'activités mixtes, plusieurs rôles peuvent s'appliquer simultanément.",
+          "it": "Assegnate il ruolo ai sensi dell'art. 3 del regolamento sull'IA; con attività miste possono applicarsi più ruoli contemporaneamente."
+        },
+        {
+          "de": "Schweizer Anbieter ohne EU-Niederlassung sollten früh prüfen, ob ein Bevollmächtigter in der Union nötig ist.",
+          "en": "Swiss providers without an EU establishment should check early whether an authorised representative in the Union is needed.",
+          "fr": "Les fournisseurs suisses sans établissement dans l'UE devraient vérifier tôt si un représentant dans l'Union est nécessaire.",
+          "it": "I fornitori svizzeri senza stabilimento nell'UE dovrebbero verificare presto se è necessario un rappresentante nell'Unione."
+        },
+        {
+          "de": "Dies ist eine Orientierungshilfe, keine Rechtsberatung.",
+          "en": "This is orientation guidance, not legal advice.",
+          "fr": "Ceci est une aide à l'orientation, pas un conseil juridique.",
+          "it": "Si tratta di un orientamento, non di consulenza legale."
+        }
+      ],
+      "sources": [
+        {
+          "title": "EUR-Lex – Verordnung (EU) 2024/1689 (AI Act), DE",
+          "url": "https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX%3A32024R1689"
+        }
+      ],
+      "related_pages": [
+        "eu-ai-act-swiss-exporters",
+        "ai-procurement-checklist"
+      ]
+    },
+    "out-prohibited": {
+      "type": "outcome",
+      "verdict": "unlikely",
+      "summary": {
+        "de": "Verbotene KI-Praktiken nach Art. 5 AI Act sind seit dem 2. Februar 2025 unzulässig — ein Einsatz erscheint nicht vertretbar.",
+        "en": "Prohibited AI practices under Art. 5 AI Act have been unlawful since 2 February 2025 — use appears not defensible.",
+        "fr": "Les pratiques interdites en matière d'IA selon l'art. 5 du règlement sur l'IA sont illicites depuis le 2 février 2025 — un usage n'apparaît pas défendable.",
+        "it": "Le pratiche di IA vietate ai sensi dell'art. 5 del regolamento sull'IA sono illecite dal 2 febbraio 2025 — un uso non appare difendibile."
+      },
+      "caveats": [
+        {
+          "de": "Prüfen Sie, ob Ihr Anwendungsfall wirklich unter Art. 5 fällt; die Liste ist abschliessend, aber die Auslegung kann eng sein.",
+          "en": "Check whether your use case really falls under Art. 5; the list is exhaustive, but interpretation can be narrow.",
+          "fr": "Vérifiez si votre cas d'usage relève vraiment de l'art. 5 ; la liste est exhaustive, mais l'interprétation peut être étroite.",
+          "it": "Verificate se il vostro caso d'uso rientra davvero nell'art. 5; l'elenco è esaustivo, ma l'interpretazione può essere restrittiva."
+        },
+        {
+          "de": "KI-Kompetenz-Pflichten (Art. 4) gelten ebenfalls seit dem 2. Februar 2025 und sind vom Digital Omnibus unberührt.",
+          "en": "AI literacy duties (KI-Kompetenz, Art. 4) also apply since 2 February 2025 and are unaffected by the Digital Omnibus.",
+          "fr": "Les obligations de maîtrise de l'IA (art. 4) s'appliquent également depuis le 2 février 2025 et ne sont pas touchées par le Digital Omnibus.",
+          "it": "Gli obblighi di alfabetizzazione in materia di IA (art. 4) valgono pure dal 2 febbraio 2025 e non sono toccati dal Digital Omnibus."
+        },
+        {
+          "de": "Dies ist eine Orientierungshilfe, keine Rechtsberatung — bei Verdacht auf eine verbotene Praktik Fachberatung einholen.",
+          "en": "This is orientation guidance, not legal advice — if a prohibited practice is suspected, seek professional advice.",
+          "fr": "Ceci est une aide à l'orientation, pas un conseil juridique — en cas de soupçon de pratique interdite, consultez un spécialiste.",
+          "it": "Si tratta di un orientamento, non di consulenza legale — in caso di sospetto di pratica vietata, rivolgersi a un professionista."
+        }
+      ],
+      "sources": [
+        {
+          "title": "EUR-Lex – Verordnung (EU) 2024/1689 (AI Act), DE",
+          "url": "https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX%3A32024R1689"
+        }
+      ],
+      "related_pages": [
+        "eu-ai-act-swiss-exporters",
+        "ai-procurement-checklist"
+      ]
+    },
+    "out-transparency": {
+      "type": "outcome",
+      "verdict": "likely",
+      "summary": {
+        "de": "Bei EU-Bezug und Transparenzpflichten (z. B. Interaktion mit Menschen, Deepfakes) erscheint der AI Act anwendbar — mit Kennzeichnungs- und Informationspflichten.",
+        "en": "With an EU nexus and transparency duties (e.g. interaction with people, deepfakes), the AI Act appears applicable — with labelling and information duties.",
+        "fr": "Avec un lien avec l'UE et des obligations de transparence (p. ex. interaction avec des personnes, deepfakes), le règlement sur l'IA apparaît applicable — avec des obligations d'étiquetage et d'information.",
+        "it": "Con un nesso UE e obblighi di trasparenza (p. es. interazione con persone, deepfake), il regolamento sull'IA appare applicabile — con obblighi di etichettatura e informazione."
+      },
+      "caveats": [
+        {
+          "de": "Unter dem Digital Omnibus on AI (Rat 29. Juni 2026; Amtsblatt ausstehend) endet die Übergangsfrist für Transparenzlösungen voraussichtlich am 2. Dezember 2026.",
+          "en": "Under the Digital Omnibus on AI (Council 29 June 2026; Official Journal pending), the transitional period for transparency solutions is expected to end on 2 December 2026.",
+          "fr": "Sous le Digital Omnibus on AI (Conseil du 29 juin 2026 ; Journal officiel en attente), le délai transitoire pour les solutions de transparence devrait se terminer le 2 décembre 2026.",
+          "it": "Sotto il Digital Omnibus on AI (Consiglio 29 giugno 2026; Gazzetta ufficiale in sospeso), il periodo transitorio per le soluzioni di trasparenza dovrebbe terminare il 2 dicembre 2026."
+        },
+        {
+          "de": "Bis zur Amtsblatt-Veröffentlichung bleibt die bisherige Rechtslage formal massgeblich — planen Sie mit beiden Spuren.",
+          "en": "Until Official Journal publication, the prior legal situation remains formally decisive — plan with both tracks.",
+          "fr": "Jusqu'à la publication au Journal officiel, le droit antérieur reste formellement déterminant — planifiez avec les deux trajectoires.",
+          "it": "Fino alla pubblicazione in Gazzetta ufficiale, la situazione giuridica precedente resta formalmente determinante — pianificate con entrambe le tracce."
+        },
+        {
+          "de": "Dies ist eine Orientierungshilfe, keine Rechtsberatung.",
+          "en": "This is orientation guidance, not legal advice.",
+          "fr": "Ceci est une aide à l'orientation, pas un conseil juridique.",
+          "it": "Si tratta di un orientamento, non di consulenza legale."
+        }
+      ],
+      "sources": [
+        {
+          "title": "EUR-Lex – Verordnung (EU) 2024/1689 (AI Act), DE",
+          "url": "https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX%3A32024R1689"
+        },
+        {
+          "title": "Consilium – Council final green light to Digital Omnibus on AI (29 June 2026)",
+          "url": "https://www.consilium.europa.eu/en/press/press-releases/2026/06/29/artificial-intelligence-council-gives-final-green-light-to-simplify-and-streamline-rules/"
+        }
+      ],
+      "related_pages": ["eu-ai-act-swiss-exporters"]
+    },
+    "out-gpai": {
+      "type": "outcome",
+      "verdict": "likely",
+      "summary": {
+        "de": "Bei EU-Bezug und einem Modell für allgemeine Zwecke (GPAI) erscheinen die GPAI-Pflichten anwendbar — Governance und GPAI-Regeln gelten seit dem 2. August 2025.",
+        "en": "With an EU nexus and a general-purpose AI model (GPAI), GPAI duties appear applicable — governance and GPAI rules have applied since 2 August 2025.",
+        "fr": "Avec un lien avec l'UE et un modèle d'IA à usage général (GPAI), les obligations GPAI apparaissent applicables — gouvernance et règles GPAI s'appliquent depuis le 2 août 2025.",
+        "it": "Con un nesso UE e un modello di IA per finalità generali (GPAI), gli obblighi GPAI appaiono applicabili — governance e regole GPAI valgono dal 2 agosto 2025."
+      },
+      "caveats": [
+        {
+          "de": "Bei systemischem Risiko gelten zusätzliche Pflichten; prüfen Sie die Einstufung Ihres Modells.",
+          "en": "With systemic risk, additional duties apply; check your model's classification.",
+          "fr": "En cas de risque systémique, des obligations supplémentaires s'appliquent ; vérifiez la classification de votre modèle.",
+          "it": "In caso di rischio sistemico valgono obblighi aggiuntivi; verificate la classificazione del vostro modello."
+        },
+        {
+          "de": "Anbieter ohne EU-Niederlassung können einen Bevollmächtigten in der Union brauchen.",
+          "en": "Providers without an EU establishment may need an authorised representative in the Union.",
+          "fr": "Les fournisseurs sans établissement dans l'UE peuvent avoir besoin d'un représentant dans l'Union.",
+          "it": "I fornitori senza stabilimento nell'UE possono aver bisogno di un rappresentante nell'Unione."
+        },
+        {
+          "de": "Dies ist eine Orientierungshilfe, keine Rechtsberatung — fallbezogen prüfen.",
+          "en": "This is orientation guidance, not legal advice — assess case by case.",
+          "fr": "Ceci est une aide à l'orientation, pas un conseil juridique — examiner au cas par cas.",
+          "it": "Si tratta di un orientamento, non di consulenza legale — valutare caso per caso."
+        }
+      ],
+      "sources": [
+        {
+          "title": "EUR-Lex – Verordnung (EU) 2024/1689 (AI Act), DE",
+          "url": "https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX%3A32024R1689"
+        }
+      ],
+      "related_pages": [
+        "eu-ai-act-swiss-exporters",
+        "ai-procurement-checklist"
+      ]
+    },
+    "out-limited-or-none": {
+      "type": "outcome",
+      "verdict": "depends",
+      "summary": {
+        "de": "Bei EU-Bezug, aber ohne Hochrisiko-, Verbots- oder GPAI-Einstufung kann der AI Act dennoch greifen — oft mit begrenzten Pflichten (z. B. Art. 4 KI-Kompetenz).",
+        "en": "With an EU nexus but without high-risk, prohibited, or GPAI classification, the AI Act may still apply — often with limited duties (e.g. Art. 4 AI literacy / KI-Kompetenz).",
+        "fr": "Avec un lien avec l'UE, mais sans classification haut risque, interdite ou GPAI, le règlement sur l'IA peut néanmoins s'appliquer — souvent avec des obligations limitées (p. ex. art. 4 maîtrise de l'IA).",
+        "it": "Con un nesso UE ma senza classificazione ad alto rischio, vietata o GPAI, il regolamento sull'IA può comunque applicarsi — spesso con obblighi limitati (p. es. art. 4 alfabetizzazione in materia di IA)."
+      },
+      "caveats": [
+        {
+          "de": "Art. 4 (KI-Kompetenz) gilt seit dem 2. Februar 2025 und ist vom Digital Omnibus unberührt.",
+          "en": "Art. 4 (AI literacy / KI-Kompetenz) has applied since 2 February 2025 and is unaffected by the Digital Omnibus.",
+          "fr": "L'art. 4 (maîtrise de l'IA) s'applique depuis le 2 février 2025 et n'est pas touché par le Digital Omnibus.",
+          "it": "L'art. 4 (alfabetizzazione in materia di IA) vale dal 2 febbraio 2025 e non è toccato dal Digital Omnibus."
+        },
+        {
+          "de": "Prüfen Sie, ob die Einstufung wirklich «begrenzt» ist — eine Fehlklassifikation als Nicht-Hochrisiko ist ein häufiges Risiko.",
+          "en": "Check whether the classification is really «limited» — misclassifying as non-high-risk is a common risk.",
+          "fr": "Vérifiez si la classification est vraiment « limitée » — une mauvaise classification comme non-haut risque est un risque fréquent.",
+          "it": "Verificate se la classificazione è davvero «limitata» — una classificazione errata come non ad alto rischio è un rischio frequente."
+        },
+        {
+          "de": "Dies ist eine Orientierungshilfe, keine Rechtsberatung.",
+          "en": "This is orientation guidance, not legal advice.",
+          "fr": "Ceci est une aide à l'orientation, pas un conseil juridique.",
+          "it": "Si tratta di un orientamento, non di consulenza legale."
+        }
+      ],
+      "sources": [
+        {
+          "title": "EUR-Lex – Verordnung (EU) 2024/1689 (AI Act), DE",
+          "url": "https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX%3A32024R1689"
+        }
+      ],
+      "related_pages": [
+        "eu-ai-act-swiss-exporters",
+        "ai-procurement-checklist"
+      ]
+    },
+    "out-unclear-class": {
+      "type": "outcome",
+      "verdict": "unclear",
+      "summary": {
+        "de": "Ohne geklärte Risikoklasse (verboten / Hochrisiko / Transparenz / GPAI / begrenzt) lässt sich der Pflichtenkatalog nicht zuordnen.",
+        "en": "Without a clarified risk class (prohibited / high-risk / transparency / GPAI / limited), the duty catalogue cannot be assigned.",
+        "fr": "Sans classe de risque clarifiée (interdit / haut risque / transparence / GPAI / limité), le catalogue d'obligations ne peut pas être attribué.",
+        "it": "Senza classe di rischio chiarita (vietato / alto rischio / trasparenza / GPAI / limitato), il catalogo degli obblighi non può essere assegnato."
+      },
+      "caveats": [
+        {
+          "de": "Ordnen Sie den Anwendungsfall den Anhängen und Kapiteln des AI Act zu, bevor Sie Fristen und Massnahmen planen.",
+          "en": "Map the use case to the AI Act annexes and chapters before planning deadlines and measures.",
+          "fr": "Attribuez le cas d'usage aux annexes et chapitres du règlement sur l'IA avant de planifier délais et mesures.",
+          "it": "Assegnate il caso d'uso agli allegati e ai capitoli del regolamento sull'IA prima di pianificare scadenze e misure."
+        },
+        {
+          "de": "Dies ist eine Orientierungshilfe, keine Rechtsberatung.",
+          "en": "This is orientation guidance, not legal advice.",
+          "fr": "Ceci est une aide à l'orientation, pas un conseil juridique.",
+          "it": "Si tratta di un orientamento, non di consulenza legale."
+        }
+      ],
+      "sources": [
+        {
+          "title": "EUR-Lex – Verordnung (EU) 2024/1689 (AI Act), DE",
+          "url": "https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX%3A32024R1689"
+        }
+      ],
+      "related_pages": ["eu-ai-act-swiss-exporters"]
+    },
+    "out-highrisk-annex-iii": {
+      "type": "outcome",
+      "verdict": "likely",
+      "summary": {
+        "de": "Bei EU-Bezug und einem eigenständigen Hochrisiko-System (Anhang III) erscheint der AI Act anwendbar — mit umfangreichen Hochrisiko-Pflichten und zwei Planungsspuren für die Fristen.",
+        "en": "With an EU nexus and a standalone high-risk system (Annex III), the AI Act appears applicable — with extensive high-risk duties and two planning tracks for deadlines.",
+        "fr": "Avec un lien avec l'UE et un système d'IA à haut risque autonome (annexe III), le règlement sur l'IA apparaît applicable — avec d'importantes obligations à haut risque et deux trajectoires de planification pour les délais.",
+        "it": "Con un nesso UE e un sistema di IA ad alto rischio autonomo (allegato III), il regolamento sull'IA appare applicabile — con ampi obblighi ad alto rischio e due tracce di pianificazione per le scadenze."
+      },
+      "caveats": [
+        {
+          "de": "Bisherige Rechtslage (Verordnung 2024/1689): Grossteil der Hochrisiko-Pflichten ab 2. August 2026.",
+          "en": "Prior legal situation (Regulation 2024/1689): most high-risk duties from 2 August 2026.",
+          "fr": "Droit antérieur (règlement 2024/1689) : majeure partie des obligations à haut risque à partir du 2 août 2026.",
+          "it": "Situazione giuridica precedente (regolamento 2024/1689): gran parte degli obblighi ad alto rischio dal 2 agosto 2026."
+        },
+        {
+          "de": "Digital Omnibus on AI (Rat 29. Juni 2026; Amtsblatt ausstehend): Anhang-III-Frist voraussichtlich 2. Dezember 2027. Bis zur Amtsblatt-Veröffentlichung bleibt die bisherige Rechtslage formal massgeblich.",
+          "en": "Digital Omnibus on AI (Council 29 June 2026; Official Journal pending): Annex III deadline expected 2 December 2027. Until Official Journal publication, the prior legal situation remains formally decisive.",
+          "fr": "Digital Omnibus on AI (Conseil du 29 juin 2026 ; Journal officiel en attente) : délai annexe III prévu au 2 décembre 2027. Jusqu'à la publication au Journal officiel, le droit antérieur reste formellement déterminant.",
+          "it": "Digital Omnibus on AI (Consiglio 29 giugno 2026; Gazzetta ufficiale in sospeso): scadenza allegato III prevista al 2 dicembre 2027. Fino alla pubblicazione in Gazzetta ufficiale, la situazione giuridica precedente resta formalmente determinante."
+        },
+        {
+          "de": "Anbieter ohne EU-Niederlassung: Bevollmächtigten prüfen. Dies ist eine Orientierungshilfe, keine Rechtsberatung.",
+          "en": "Providers without an EU establishment: check authorised representative. This is orientation guidance, not legal advice.",
+          "fr": "Fournisseurs sans établissement dans l'UE : vérifier le représentant. Ceci est une aide à l'orientation, pas un conseil juridique.",
+          "it": "Fornitori senza stabilimento nell'UE: verificare il rappresentante. Si tratta di un orientamento, non di consulenza legale."
+        }
+      ],
+      "sources": [
+        {
+          "title": "EUR-Lex – Verordnung (EU) 2024/1689 (AI Act), DE",
+          "url": "https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX%3A32024R1689"
+        },
+        {
+          "title": "Consilium – Council final green light to Digital Omnibus on AI (29 June 2026)",
+          "url": "https://www.consilium.europa.eu/en/press/press-releases/2026/06/29/artificial-intelligence-council-gives-final-green-light-to-simplify-and-streamline-rules/"
+        }
+      ],
+      "related_pages": [
+        "eu-ai-act-swiss-exporters",
+        "ai-procurement-checklist"
+      ]
+    },
+    "out-highrisk-annex-i": {
+      "type": "outcome",
+      "verdict": "likely",
+      "summary": {
+        "de": "Bei EU-Bezug und einem in ein Produkt eingebetteten Hochrisiko-System (Anhang I) erscheint der AI Act anwendbar — mit späteren Fristen als bei Anhang III und zwei Planungsspuren.",
+        "en": "With an EU nexus and a high-risk system embedded in a product (Annex I), the AI Act appears applicable — with later deadlines than Annex III and two planning tracks.",
+        "fr": "Avec un lien avec l'UE et un système d'IA à haut risque intégré dans un produit (annexe I), le règlement sur l'IA apparaît applicable — avec des délais plus tardifs qu'à l'annexe III et deux trajectoires de planification.",
+        "it": "Con un nesso UE e un sistema di IA ad alto rischio integrato in un prodotto (allegato I), il regolamento sull'IA appare applicabile — con scadenze più tarde rispetto all'allegato III e due tracce di pianificazione."
+      },
+      "caveats": [
+        {
+          "de": "Bisherige Rechtslage: bestimmte eingebettete Hochrisiko-Systeme bis 2. August 2027.",
+          "en": "Prior legal situation: certain embedded high-risk systems until 2 August 2027.",
+          "fr": "Droit antérieur : certains systèmes d'IA à haut risque intégrés jusqu'au 2 août 2027.",
+          "it": "Situazione giuridica precedente: determinati sistemi di IA ad alto rischio integrati fino al 2 agosto 2027."
+        },
+        {
+          "de": "Digital Omnibus on AI (Rat 29. Juni 2026; Amtsblatt ausstehend): Anhang-I-Frist voraussichtlich 2. August 2028. Bis zur Amtsblatt-Veröffentlichung bleibt die bisherige Rechtslage formal massgeblich.",
+          "en": "Digital Omnibus on AI (Council 29 June 2026; Official Journal pending): Annex I deadline expected 2 August 2028. Until Official Journal publication, the prior legal situation remains formally decisive.",
+          "fr": "Digital Omnibus on AI (Conseil du 29 juin 2026 ; Journal officiel en attente) : délai annexe I prévu au 2 août 2028. Jusqu'à la publication au Journal officiel, le droit antérieur reste formellement déterminant.",
+          "it": "Digital Omnibus on AI (Consiglio 29 giugno 2026; Gazzetta ufficiale in sospeso): scadenza allegato I prevista al 2 agosto 2028. Fino alla pubblicazione in Gazzetta ufficiale, la situazione giuridica precedente resta formalmente determinante."
+        },
+        {
+          "de": "Dies ist eine Orientierungshilfe, keine Rechtsberatung — Produktklasse und Harmonisierungsrecht fallbezogen prüfen.",
+          "en": "This is orientation guidance, not legal advice — assess product class and harmonisation law case by case.",
+          "fr": "Ceci est une aide à l'orientation, pas un conseil juridique — examiner la classe de produit et le droit d'harmonisation au cas par cas.",
+          "it": "Si tratta di un orientamento, non di consulenza legale — valutare classe di prodotto e diritto di armonizzazione caso per caso."
+        }
+      ],
+      "sources": [
+        {
+          "title": "EUR-Lex – Verordnung (EU) 2024/1689 (AI Act), DE",
+          "url": "https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX%3A32024R1689"
+        },
+        {
+          "title": "Consilium – Council final green light to Digital Omnibus on AI (29 June 2026)",
+          "url": "https://www.consilium.europa.eu/en/press/press-releases/2026/06/29/artificial-intelligence-council-gives-final-green-light-to-simplify-and-streamline-rules/"
+        }
+      ],
+      "related_pages": [
+        "eu-ai-act-swiss-exporters",
+        "ai-procurement-checklist"
+      ]
+    },
+    "out-unclear-annex": {
+      "type": "outcome",
+      "verdict": "unclear",
+      "summary": {
+        "de": "Hochrisiko erscheint wahrscheinlich, aber ohne Anhang-Zuordnung (III vs. I) lassen sich die massgeblichen Fristen nicht festlegen.",
+        "en": "High-risk appears likely, but without annex assignment (III vs. I) the relevant deadlines cannot be set.",
+        "fr": "Le haut risque apparaît probable, mais sans attribution d'annexe (III vs. I) les délais déterminants ne peuvent pas être fixés.",
+        "it": "L'alto rischio appare probabile, ma senza assegnazione all'allegato (III vs. I) le scadenze rilevanti non possono essere fissate."
+      },
+      "caveats": [
+        {
+          "de": "Klären Sie, ob das System eigenständig (Anhang III) oder Produkt-Sicherheitsbauteil (Anhang I) ist — die Omnibus-Fristen unterscheiden sich (Dez 2027 vs. Aug 2028).",
+          "en": "Clarify whether the system is standalone (Annex III) or a product safety component (Annex I) — Omnibus deadlines differ (Dec 2027 vs. Aug 2028).",
+          "fr": "Clarifiez si le système est autonome (annexe III) ou composant de sécurité d'un produit (annexe I) — les délais Omnibus diffèrent (déc. 2027 vs août 2028).",
+          "it": "Chiarite se il sistema è autonomo (allegato III) o componente di sicurezza di un prodotto (allegato I) — le scadenze Omnibus differiscono (dic. 2027 vs ago. 2028)."
+        },
+        {
+          "de": "Planen Sie vorerst mit der früheren Spur (bisherige Rechtslage), bis die Amtsblatt-Fassung vorliegt.",
+          "en": "For now, plan with the earlier track (prior legal situation) until the Official Journal version is available.",
+          "fr": "Planifiez pour l'instant avec la trajectoire plus précoce (droit antérieur), jusqu'à la version au Journal officiel.",
+          "it": "Per ora pianificate con la traccia più precoce (situazione giuridica precedente), fino alla versione in Gazzetta ufficiale."
+        },
+        {
+          "de": "Dies ist eine Orientierungshilfe, keine Rechtsberatung.",
+          "en": "This is orientation guidance, not legal advice.",
+          "fr": "Ceci est une aide à l'orientation, pas un conseil juridique.",
+          "it": "Si tratta di un orientamento, non di consulenza legale."
+        }
+      ],
+      "sources": [
+        {
+          "title": "EUR-Lex – Verordnung (EU) 2024/1689 (AI Act), DE",
+          "url": "https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX%3A32024R1689"
+        },
+        {
+          "title": "Consilium – Council final green light to Digital Omnibus on AI (29 June 2026)",
+          "url": "https://www.consilium.europa.eu/en/press/press-releases/2026/06/29/artificial-intelligence-council-gives-final-green-light-to-simplify-and-streamline-rules/"
+        }
+      ],
+      "related_pages": ["eu-ai-act-swiss-exporters"]
+    }
+  }
+}

@@ -1,0 +1,127 @@
+Jump to content
+Jump to search
+Jump to page footer
+
+Swiss AI Platform
+
+The secure Swiss AI Platform with comprehensive
+data protection
+
+With the customised solution for GenAI
+applications you receive fast access to high-performance processing power for
+your AI calculations while protecting your data.
+
+Leverage our expertise to successfully develop your GenAI applications and use our AI platform to implement your machine learning projects.  The partnership between NVIDIA and Swisscom combines leading know how in artificial intelligence to offer effective support in realising your AI projects.
+
+Artificial intelligence offers significant efficiency advantages. However, data protection, IT security and the required processing power can prove problematic. The Swiss AI Platform offers high-performance, compliant tools and resources, and support for the successful development of your AI applications.
+
+Modular
+AI offering
+
+On our Swiss AI Platform, you will find a customised solution that caters to and grows with your needs. Take advantage of a secure environment where you can gain initial experience with generative AI. The AI platform also offers the reliable processing power you need for your AI calculations at attractive terms, short or long term.
+
+Use generative AI with confidence
+
+Rigorous data protection and a secure environment are a priority for our AI services. Your data and information remain in Switzerland at all times and cannot be used for development by international tech companies. You therefore maintain complete control over your data. Your privacy and intellectual property are fully protected.
+Our AI platform provides a secure Swiss environment for projects and the resources you need for your AI applications. You can also rely on our expertise in artificial intelligence as well as flexible and affordable processing power, which is assured by access to the first NVIDIA SuperPOD system in Switzerland.
+
+Partnership with NVIDIA
+
+Access world-leading expertise in AI implementation and great processing power with the NVIDIA SuperPOD system. 
+
+When is it the right solution?
+
+Do you want to adopt new technologies and respond to changing customer requirements? Increase your competitiveness, even without internal resources, expertise or infrastructure. Take advantage of a robust local solution for innovative technologies and rely on secure data processing and storage in Switzerland.
+
+Your benefits:
+
+Swiss solution with a focus on data protection and guaranteed data privacy
+
+Fast, on-demand access to high processing power
+
+A one-stop solution for AI development, from consulting to operation
+
+How to access the Swiss AI Platform
+
+Take the first step
+
+Wherever you are on your AI journey, we’re here to support you along the way.
+
+Contact us
+
+Downloads
+
+Swiss AI Platform factsheet
+
+The
+Swiss AI Platform modular offering
+
+Develop your GenAI applications independently (GenAI Studio), use our toolset to implement your ML projects collaboratively (AI Work Hub) or realise your AI projects with the support of our experts (centre of excellence). To help you achieve this, we offer flexible, high-performance and commercially attractive processing power (GPU as a service). Through our managed inference endpoints in the Digital Marketplace, you get seamless access to leading AI models – including the first Swiss LLM Apertus. Whether multimodal models, speech-to-text, or classic LLMs: we deliver the right solution. 
+
+Real-world
+use cases
+
+Typical real-world situations in which our AI platform and AI services can support you in your work and at the same time guarantee privacy despite the use of AI.
+
+Customer interaction chatbot
+
+With an easily configurable chatbot, you can provide your customers with information about products and services and respond to enquiries 24/7.  
+
+Knowledge bot for employees
+
+Your knowledge bot accesses internal data and information to provide specific employee assistance, such as summarising meetings, aggregating tickets, process documentation or policy compliance.
+
+Virtual assistant
+
+Support both customers and employees with a virtual assistant. Provide information, help resolve customer enquiries and support your employees with the initiation of transactions.
+
+Personalised customer care
+
+Customer satisfaction and sales can be increased with personalised sales and marketing activities. Use AI to group your customers, personalise services and run a sentiment analysis (automated analysis of user comments) for targeted communication and effective follow-ups.
+
+Production and delivery optimisation
+
+Leverage AI for demand forecasts and quality assurance, price and process optimisation and logistics fine-tuning to optimise product development and supply chain management.
+
+Secure GPU rental
+
+Let your in-house data scientists and data engineers run your AI applications securely, reliably and effectively on our high-performance Swiss infrastructure.  
+
+Why Swisscom?
+
+Maximum data security
+
+Your customer data remains in Switzerland and is not shared with anyone.
+
+Maximum flexibility
+
+Our local presence and customer proximity allow us to offer customised solutions.
+
+Unique centre of excellence
+
+Swisscom’s exclusive partnership with NVIDIA provides access to a global network of experts in a Swiss solution.
+
+What our customers say
+
+‘We can now access regulatory knowledge in seconds, and no longer have to spend hours on research.’
+
+Oliver Jaussi | CEO | Bank Zimmerberg
+
+Further information
+
+Are
+you ready for your digital journey?
+
+ReThink Conversational AI Workshop
+
+This workshop focuses on exploring ways to make your customer service more efficient and customer focused, while also being more resource efficient.
+
+Go to workshop
+
+About the Swiss AI Platform
+
+With the Swiss AI Platform, Swisscom is creating a powerful infrastructure for developing trustworthy AI applications.
+
+Our experts will be happy to answer your questions. Contact us. 
+
+Contact us

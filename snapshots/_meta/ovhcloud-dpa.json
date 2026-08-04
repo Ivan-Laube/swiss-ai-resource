@@ -1,0 +1,10 @@
+{
+  "id": "ovhcloud-dpa",
+  "url": "https://www.ovh.com/fr/support/documents_legaux/Annexe%20Traitement%20de%20donn%C3%A9es%20%C3%A0%20caract%C3%A8re%20personnel.pdf",
+  "fetched_at": "2026-07-16T09:44:10.526Z",
+  "http_status": 200,
+  "content_type": "application/pdf",
+  "sha256": "062a2efc825f6bb18b2c70533cf56b0076c18f50b695ac2a955ff0bf4e36ee59",
+  "byte_length": 33816,
+  "ok": true
+}

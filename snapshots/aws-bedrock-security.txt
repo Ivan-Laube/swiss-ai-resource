@@ -1,0 +1,157 @@
+Skip to main content
+
+Filter: All
+
+English
+
+Contact us
+AWS Marketplace
+
+Support
+
+My account
+
+Search
+
+Filter: All
+
+Sign in to console
+
+Create account
+
+Amazon Bedrock
+
+Overview
+Getting Started
+Capabilities
+
+Agents
+
+Pricing
+More
+
+Generative AI
+
+Amazon Bedrock
+
+Security and Privacy
+
+Amazon Bedrock Security and Privacy
+Amazon Bedrock helps you keep your data and applications secure and private
+
+Secure your generative AI applications
+
+With Amazon Bedrock, you have full control over the data you use to customize the foundation models for your generative AI applications. Your data is encrypted in transit and at rest. Additionally, you can create, manage, and control encryption keys using the AWS Key Management Service (AWS KMS). Identity-based policies provide further control over your data, helping you manage what actions users and roles can perform, on which resources, and under what conditions.
+
+Build with comprehensive data protection and privacy
+
+Amazon Bedrock helps ensure that your data stays under your control. When you tune a foundation model, we base it on a private copy of that model. This means your data is not shared with model providers, and is not used to improve the base models. You can use AWS PrivateLink to establish private connectivity from your Amazon Virtual Private Cloud (VPC) to Amazon Bedrock, without having to expose your VPC to internet traffic. Finally, Bedrock is in scope for common compliance standards including ISO, SOC, CSA STAR Level 2, is HIPAA eligible, and customers can use Bedrock in compliance with the GDPR. Amazon Bedrock is a FedRAMP High authorized service in the AWS GovCloud (US-West) Region.
+
+Implement governance, and auditability
+
+Amazon Bedrock offers comprehensive monitoring and logging capabilities that can support your governance and audit requirements. You can use Amazon CloudWatch to track usage metrics and build customized dashboards with metrics that can be used for your audit purposes. You can also use AWS CloudTrail to monitor API activity and troubleshoot issues as you integrate other systems into your generative AI applications. You can also choose to store the metadata, requests, and responses in your Amazon Simple Storage Service (Amazon S3) bucket, as well as to Amazon CloudWatch Logs. Finally, to prevent potential misuse, Amazon Bedrock implements automated abuse detection mechanisms.
+
+How to get started
+
+Video
+
+Get started with a step-by-step tutorial
+
+Watch the video
+
+Tutorial
+
+Explore common generative AI use cases with Amazon Bedrock Workshop
+
+Gain hands-on experience
+
+Video
+
+Securely build generative AI apps & control data with Amazon Bedrock
+
+Watch the video
+
+Did you find what you were looking for today?
+Let us know so we can improve the quality of the content on our pages
+
+Yes
+
+No
+
+Create an AWS account
+
+Learn
+
+What Is AWS?
+What Is Cloud Computing?
+What Is Agentic AI?
+Cloud Computing Concepts Hub
+AWS Cloud Security
+What's New
+Blogs
+Press Releases
+
+Resources
+
+Getting Started
+Training
+AWS Trust Center
+AWS Solutions Library
+Architecture Center
+Product and Technical FAQs
+Analyst Reports
+AWS Partners
+
+Developers
+
+Builder Center
+SDKs & Tools
+.NET on AWS
+Python on AWS
+Java on AWS
+PHP on AWS
+JavaScript on AWS
+
+Help
+
+Contact Us
+File a Support Ticket
+AWS re:Post
+Knowledge Center
+AWS Support Overview
+AWS Accessibility
+Legal
+Event Code of Conduct
+Event Terms & Conditions
+
+English
+
+Back to top
+
+Amazon is an equal opportunity employer and does not discriminate on the basis of protected veteran status, disability or other legally protected status. Veterans, military spouses, and people with disabilities are encouraged to apply.
+
+x
+
+facebook
+
+linkedin
+
+instagram
+
+twitch
+
+youtube
+
+podcasts
+
+email
+
+Privacy
+Site terms
+Your Privacy Choices
+
+California Consumer Privacy Act (CCPA) Opt-Out Icon
+
+Cookie Preferences
+
+© 2026, Amazon Web Services, Inc. or its affiliates. All rights reserved.

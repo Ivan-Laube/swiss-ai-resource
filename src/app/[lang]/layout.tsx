@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
-import { isLocale, locales } from "@/i18n";
+import { SiteFooter } from "@/components/SiteFooter";
+import { getMessages, isLocale, locales } from "@/i18n";
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -17,5 +18,12 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
     notFound();
   }
 
-  return <div lang={lang}>{children}</div>;
+  const messages = getMessages(lang);
+
+  return (
+    <div lang={lang} className="localeShell">
+      {children}
+      <SiteFooter activeLang={lang} messages={messages} />
+    </div>
+  );
 }

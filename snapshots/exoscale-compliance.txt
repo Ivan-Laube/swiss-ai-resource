@@ -1,0 +1,343 @@
+Newsletter
+Blog
+Partner Programs
+Academy
+Contact us
+
+Exoscale
+
+Products
+
+Compute Instances
+Concrete AI
+Managed Kubernetes
+DBaaS
+Object Storage
+Block Storage
+GPU Servers
+
+All products
+
+Marketplace
+
+Pricing
+
+Resources
+
+Documentation
+API
+Blog
+Integration
+Support
+
+Changelog
+
+Log in
+Register
+
+Menu
+
+Register
+Log in
+
+Products
+
+Compute Instances
+Concrete AI
+Managed Kubernetes
+DBaaS
+Object Storage
+Block Storage
+GPU Servers
+
+All products
+
+Marketplace
+
+Pricing
+
+Resources
+
+Documentation
+API
+Blog
+Integration
+Support
+
+What's new
+
+Newsletter
+Blog
+Partner Programs
+Academy
+Contact us
+
+Exoscale - European Cloud Hosting Services
+
+Compliance
+
+Compliance
+
+Security management, privacy, and processes assessed by global standards.
+
+Exoscale is committed to the highest standards of information security, privacy, and compliance.
+We are certified by world-leading auditors and comply with global and local security frameworks, empowering SaaS providers and enterprises in every sector to adopt cloud with total confidence.
+
+Log in to the compliance center
+
+Standards and RegulationsExoscale complies with leading standards and regulations such as GDPR and HIPAA, providing confidence in data protection and security.
+
+Certified ISMSOur Information Security Management System (ISMS) is certified to ISO 27001, the global gold standard for information security.
+
+Industry Specific ComplianceExoscale supports industry-specific compliance for verticals including banking, healthcare, government, and automotive—making cloud adoption simple for regulated sectors.
+
+Security Referential
+
+Keeping pace with evolving security frameworks and standards can be challenging. Exoscale provides extensive, up-to-date compliance documentation for a wide range of certifications and frameworks, making it easy for you to demonstrate compliance to your stakeholders.
+
+To maintain this transparency and agility, we have developed our own security referential based on the 32 Control Domains of the Secure Control Framework (SCF).
+This unified approach allows us to implement a single set of security controls mapped to multiple global standards—minimizing audit fatigue and streamlining compliance.
+
+Certified Security
+
+The security of your data is our highest priority.
+We continually invest in people, processes, and technology to ensure that our platform meets and exceeds the world’s strictest security requirements.
+
+We believe trust is the foundation of all partnerships. That’s why we submit to regular independent audits and provide you with direct access to our ISO certificates and comprehensive compliance reports helping you meet your own regulatory obligations with confidence.
+
+Encryption & Data Protection
+
+Exoscale protects data at rest and in transit across compute, local and block storage, snapshots, templates, APIs, and network communication. Centralized key management through Exoscale KMS extends this protection model with controlled key lifecycle operations.
+
+For more details, visit our encryption and data protection page.
+
+Datacenter Certifications
+
+Every Exoscale zone is hosted in rigorously vetted, state-of-the-art datacenters.
+Our data center partners must meet a strict set of security and quality standards and maintain relevant certifications.
+
+For a detailed list of available certifications by location, visit our datacenter page.
+
+National and international information security standards
+
+ISO/IEC 27001:2022Certified management of information security.
+
+ISO/IEC 27017:2015Certified cloud security controls.
+
+ISO/IEC 27018:2019Certified personal data protection for the cloud.
+
+BSI C5German standard for secure cloud operations.
+
+SOC-2Assured controls for managing customer data.
+
+HDSCertified French health data hosting.
+
+Security control frameworks
+
+CSA STARBest practices for cloud security, privacy, and transparency.
+
+SCFComprehensive control catalog for security and privacy.
+
+TisaxInformation security for the automotive industry.
+
+Laws and regulations
+
+GDPREuropean personal data protection regulation.
+
+Swiss FDPASwiss national standard for data protection.
+
+US HIPAAUS national standard for health information protection.
+
+DatacentersInformation SecurityQuality & Service ManagementEnvironment & EnergyHealth & SafetyBusiness ContinuityPayment & AuditSector & DC-specific
+
+AT-VIE-1ISO/IEC 27001:2013ISO 9001:2008ISO 9001:2015
+AT-VIE-2ISO/IEC 27001:2013ISO 9001:2008ISO 9001:2015
+BG-SOF-1ISO/IEC 27001:2013ISO 20000-1:2011ISO 9001:2015
+CH-DK-2ISO/IEC 27001:2013ISO 9001:2008PCI DSS 3.2SOC-1 type IISOC-2 type II
+CH-GVA-2ISO/IEC 27001:2013ISO 9001:2008PCI DSS 3.2SOC-1 type IISOC-2 type II
+DE-FRA-1ISO / IEC 27001:2022ISO 9001:2015ISO 14001:2015ISO 50001:2018ISO 45001:2018ISO 22301:2019PCI DSS v4.0Type 2 SOC 1Type 2 SOC 2TSI / EN50600TISAX
+DE-FRA-1-OLDISO/IEC 27001:2013ISO 9001:2008ISO 14001:2004ISO 50001:2011OHSAS 18001:2007PCI DSS 3.2
+DE-MUC-1ISO 27001ISO 9001ISO 14001ISO 50001ISO 45001ISO 22301PCI DSSSOC-1 type IISOC-2 type IITISAX
+DE-MUC-1-OLDISO/IEC 27001:2013ISO 9001:2015PCI DSS 3.2SOC-1 type IISOC-2 type II
+HR-ZAG-1ISO/IEC 27017:2015ISO 9001:2015ISO 14001:2015ISO 45001:2018ISO 22301:2019IPCI DSS 3.2.1
+
+Access additional compliance reports at the Exoscale Compliance Center.
+
+Our Security Control Domains
+
+Security & Privacy Governance
+
+Asset Management
+
+Business Continuity & Disaster Recovery
+
+Capacity & Performance Planning
+
+Change Management
+
+Cloud Security
+
+Compliance
+
+Configuration Management
+
+Continuous Monitoring
+
+Cryptographic Protections
+
+Data Classification & Handling
+
+Embedded Technology
+
+Endpoint Security
+
+Human Resources Security
+
+Identification & Authentication
+
+Incident Response
+
+Information Assurance
+
+Maintenance
+
+Mobile Device Management
+
+Network Security
+
+Physical & Environmental Security
+
+Privacy
+
+Project & Resource Management
+
+Risk Management
+
+Secure Engineering & Architecture
+
+Security Operations
+
+Security Awareness & Training
+
+Technology Development & Acquisition
+
+Third-Party Management
+
+Threat Management
+
+Vulnerability & Patch Management
+
+Web Security
+
+Contact our Compliance Team
+
+Have questions about compliance, certifications, or security standards?
+Contact our Compliance Team—we’re here to help you meet your regulatory and business requirements with confidence.
+
+Full Name
+
+Email Address
+
+Company Website (optional)
+
+Your Question
+
+Get in touch now!
+
+Thank you! We'll write back to you shortly!
+Something went wrong, please try again!
+
+Exoscale
+
+Company
+
+Jobs
+
+Sustainability
+
+Partner Programs
+
+Academy
+
+Events
+
+Contact
+
+Cloud Hosting
+
+Cloud Server
+
+Kubernetes
+
+DBaaS
+
+Object Storage
+
+Block Storage
+
+GPU
+
+Networking
+
+Virtual Private Cloud
+
+Cloud DNS
+
+CDN
+
+Infrastructure
+
+Templates
+
+Datacenters
+
+Security
+
+Compliance
+
+FAQ
+
+Status
+
+Resources
+
+Documentation
+
+API
+
+Blog
+
+Backup
+
+Integration
+
+Technology Providers
+
+Changelog
+
+Newsletter
+
+Support
+
+Data Portability
+
+Abuse
+
+Exoscale
+
+Boulevard de Grancy 19A
+1006
+–
+Lausanne
+Switzerland
+
+Contact us
+
+PrivacyTerms and ConditionsSLA
+
+Exoscale is a registered trademark
+of Akenes SA -
+Reg/VAT CHE-423.524.322
+© 2026 Exoscale
+
+Member of A1 Digital

@@ -1,0 +1,1273 @@
+{
+  "checked_at": "2026-07-16T13:00:02.114Z",
+  "dry_run": false,
+  "results": [
+    {
+      "url": "https://aleph-alpha.com/",
+      "ok": true,
+      "http_status": 200,
+      "reused_from_run": false,
+      "sources": [
+        {
+          "kind": "vendor",
+          "id": "aleph-alpha#website"
+        },
+        {
+          "kind": "vendor",
+          "id": "aleph-alpha#pricing_tier.source_url"
+        }
+      ]
+    },
+    {
+      "url": "https://aws.amazon.com/bedrock/",
+      "ok": true,
+      "http_status": 200,
+      "reused_from_run": false,
+      "sources": [
+        {
+          "kind": "vendor",
+          "id": "aws-bedrock#website"
+        },
+        {
+          "kind": "vendor",
+          "id": "aws-bedrock#pricing_tier.source_url"
+        }
+      ]
+    },
+    {
+      "url": "https://aws.amazon.com/bedrock/security-compliance/",
+      "ok": true,
+      "http_status": 200,
+      "reused_from_run": true,
+      "sources": [
+        {
+          "kind": "vendor",
+          "id": "aws-bedrock#training_opt_out.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "aws-bedrock#certifications.source_url"
+        }
+      ]
+    },
+    {
+      "url": "https://azure.microsoft.com/",
+      "ok": true,
+      "http_status": 200,
+      "reused_from_run": false,
+      "sources": [
+        {
+          "kind": "vendor",
+          "id": "microsoft-azure#website"
+        },
+        {
+          "kind": "vendor",
+          "id": "microsoft-azure#pricing_tier.source_url"
+        }
+      ]
+    },
+    {
+      "url": "https://claude.com/regional-compliance",
+      "ok": true,
+      "http_status": 200,
+      "reused_from_run": true,
+      "sources": [
+        {
+          "kind": "vendor",
+          "id": "anthropic#hosting_regions.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "anthropic#eu_hosting.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "anthropic#training_opt_out.source_url"
+        }
+      ]
+    },
+    {
+      "url": "https://cloud.google.com/",
+      "ok": true,
+      "http_status": 200,
+      "reused_from_run": false,
+      "sources": [
+        {
+          "kind": "vendor",
+          "id": "google-cloud#website"
+        },
+        {
+          "kind": "vendor",
+          "id": "google-cloud#pricing_tier.source_url"
+        }
+      ]
+    },
+    {
+      "url": "https://cloud.google.com/terms/data-processing-addendum",
+      "ok": true,
+      "http_status": 200,
+      "reused_from_run": true,
+      "sources": [
+        {
+          "kind": "vendor",
+          "id": "google-cloud#dpa_url.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "google-cloud#certifications.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "google-cloud#dpa_url.value"
+        }
+      ]
+    },
+    {
+      "url": "https://cohere.com/",
+      "ok": true,
+      "http_status": 200,
+      "reused_from_run": false,
+      "sources": [
+        {
+          "kind": "vendor",
+          "id": "cohere#website"
+        },
+        {
+          "kind": "vendor",
+          "id": "cohere#pricing_tier.source_url"
+        }
+      ]
+    },
+    {
+      "url": "https://cohere.com/enterprise-data-commitments",
+      "ok": true,
+      "http_status": 200,
+      "reused_from_run": true,
+      "sources": [
+        {
+          "kind": "vendor",
+          "id": "cohere#training_opt_out.source_url"
+        }
+      ]
+    },
+    {
+      "url": "https://d1.awsstatic.com/legal/aws-gdpr/AWS_GDPR_DPA.pdf",
+      "ok": true,
+      "http_status": 200,
+      "reused_from_run": true,
+      "sources": [
+        {
+          "kind": "vendor",
+          "id": "aws-bedrock#dpa_url.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "aws-bedrock#dpa_url.value"
+        }
+      ]
+    },
+    {
+      "url": "https://docs.aleph-alpha.com/verticals/pga.html",
+      "ok": true,
+      "http_status": 200,
+      "reused_from_run": true,
+      "sources": [
+        {
+          "kind": "vendor",
+          "id": "aleph-alpha#hosting_regions.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "aleph-alpha#swiss_hosting.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "aleph-alpha#eu_hosting.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "aleph-alpha#training_opt_out.source_url"
+        }
+      ]
+    },
+    {
+      "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/machine-learning/general/locations",
+      "ok": true,
+      "http_status": 200,
+      "reused_from_run": true,
+      "sources": [
+        {
+          "kind": "vendor",
+          "id": "google-cloud#hosting_regions.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "google-cloud#swiss_hosting.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "google-cloud#eu_hosting.source_url"
+        }
+      ]
+    },
+    {
+      "url": "https://docs.ovhcloud.com/en/guides/public-cloud/ai-machine-learning/ai-endpoints-capabilities",
+      "ok": true,
+      "http_status": 200,
+      "reused_from_run": true,
+      "sources": [
+        {
+          "kind": "vendor",
+          "id": "ovhcloud#hosting_regions.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "ovhcloud#swiss_hosting.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "ovhcloud#eu_hosting.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "ovhcloud#training_opt_out.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "ovhcloud#pricing_tier.source_url"
+        }
+      ]
+    },
+    {
+      "url": "https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX%3A32024R1689",
+      "ok": true,
+      "http_status": 202,
+      "reused_from_run": true,
+      "sources": [
+        {
+          "kind": "content",
+          "id": "de/ai-procurement-checklist#sources"
+        },
+        {
+          "kind": "content",
+          "id": "de/eu-ai-act-swiss-exporters#sources"
+        },
+        {
+          "kind": "content",
+          "id": "en/ai-procurement-checklist#sources"
+        },
+        {
+          "kind": "content",
+          "id": "en/eu-ai-act-swiss-exporters#sources"
+        },
+        {
+          "kind": "content",
+          "id": "fr/ai-procurement-checklist#sources"
+        },
+        {
+          "kind": "content",
+          "id": "fr/eu-ai-act-swiss-exporters#sources"
+        },
+        {
+          "kind": "content",
+          "id": "it/ai-procurement-checklist#sources"
+        },
+        {
+          "kind": "content",
+          "id": "it/eu-ai-act-swiss-exporters#sources"
+        },
+        {
+          "kind": "rule",
+          "id": "eu-ai-act-applicability#out-unlikely-outside"
+        },
+        {
+          "kind": "rule",
+          "id": "eu-ai-act-applicability#out-unclear-nexus"
+        },
+        {
+          "kind": "rule",
+          "id": "eu-ai-act-applicability#out-unclear-role"
+        },
+        {
+          "kind": "rule",
+          "id": "eu-ai-act-applicability#out-prohibited"
+        },
+        {
+          "kind": "rule",
+          "id": "eu-ai-act-applicability#out-transparency"
+        },
+        {
+          "kind": "rule",
+          "id": "eu-ai-act-applicability#out-gpai"
+        },
+        {
+          "kind": "rule",
+          "id": "eu-ai-act-applicability#out-limited-or-none"
+        },
+        {
+          "kind": "rule",
+          "id": "eu-ai-act-applicability#out-unclear-class"
+        },
+        {
+          "kind": "rule",
+          "id": "eu-ai-act-applicability#out-highrisk-annex-iii"
+        },
+        {
+          "kind": "rule",
+          "id": "eu-ai-act-applicability#out-highrisk-annex-i"
+        },
+        {
+          "kind": "rule",
+          "id": "eu-ai-act-applicability#out-unclear-annex"
+        }
+      ]
+    },
+    {
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689",
+      "ok": true,
+      "http_status": 202,
+      "reused_from_run": true,
+      "sources": [
+        {
+          "kind": "content",
+          "id": "de/eu-ai-act-swiss-exporters#sources"
+        },
+        {
+          "kind": "content",
+          "id": "en/eu-ai-act-swiss-exporters#sources"
+        },
+        {
+          "kind": "content",
+          "id": "fr/eu-ai-act-swiss-exporters#sources"
+        },
+        {
+          "kind": "content",
+          "id": "it/eu-ai-act-swiss-exporters#sources"
+        }
+      ]
+    },
+    {
+      "url": "https://huggingface.co/",
+      "ok": true,
+      "http_status": 200,
+      "reused_from_run": false,
+      "sources": [
+        {
+          "kind": "vendor",
+          "id": "huggingface#website"
+        }
+      ]
+    },
+    {
+      "url": "https://huggingface.co/docs/hub/main/security",
+      "ok": true,
+      "http_status": 200,
+      "reused_from_run": true,
+      "sources": [
+        {
+          "kind": "vendor",
+          "id": "huggingface#certifications.source_url"
+        }
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/ai-foundry/responsible-ai/openai/data-privacy",
+      "ok": true,
+      "http_status": 200,
+      "reused_from_run": true,
+      "sources": [
+        {
+          "kind": "vendor",
+          "id": "microsoft-azure#hosting_regions.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "microsoft-azure#eu_hosting.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "microsoft-azure#dpa_url.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "microsoft-azure#training_opt_out.source_url"
+        }
+      ]
+    },
+    {
+      "url": "https://legal.mistral.ai/terms/data-processing-addendum",
+      "ok": true,
+      "http_status": 200,
+      "reused_from_run": true,
+      "sources": [
+        {
+          "kind": "vendor",
+          "id": "mistral#dpa_url.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "mistral#swiss_entity.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "mistral#eu_entity.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "mistral#dpa_url.value"
+        }
+      ]
+    },
+    {
+      "url": "https://mistral.ai/",
+      "ok": true,
+      "http_status": 200,
+      "reused_from_run": true,
+      "sources": [
+        {
+          "kind": "vendor",
+          "id": "mistral#website"
+        },
+        {
+          "kind": "vendor",
+          "id": "mistral#hosting_regions.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "mistral#swiss_hosting.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "mistral#eu_hosting.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "mistral#pricing_tier.source_url"
+        }
+      ]
+    },
+    {
+      "url": "https://openai.com/",
+      "ok": true,
+      "http_status": 200,
+      "reused_from_run": false,
+      "sources": [
+        {
+          "kind": "vendor",
+          "id": "openai#website"
+        },
+        {
+          "kind": "vendor",
+          "id": "openai#pricing_tier.source_url"
+        }
+      ]
+    },
+    {
+      "url": "https://openai.com/business-data/",
+      "ok": false,
+      "http_status": 403,
+      "error": "HTTP 403 Forbidden",
+      "reused_from_run": true,
+      "sources": [
+        {
+          "kind": "vendor",
+          "id": "openai#hosting_regions.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "openai#swiss_hosting.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "openai#eu_hosting.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "openai#training_opt_out.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "openai#certifications.source_url"
+        }
+      ]
+    },
+    {
+      "url": "https://openai.com/policies/data-processing-addendum/",
+      "ok": false,
+      "http_status": 403,
+      "error": "HTTP 403 Forbidden",
+      "reused_from_run": true,
+      "sources": [
+        {
+          "kind": "vendor",
+          "id": "openai#dpa_url.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "openai#swiss_entity.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "openai#eu_entity.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "openai#dpa_url.value"
+        }
+      ]
+    },
+    {
+      "url": "https://privacy.claude.com/en/articles/10015870-what-certifications-has-anthropic-obtained",
+      "ok": true,
+      "http_status": 200,
+      "reused_from_run": true,
+      "sources": [
+        {
+          "kind": "vendor",
+          "id": "anthropic#certifications.source_url"
+        }
+      ]
+    },
+    {
+      "url": "https://support.deepl.com/hc/en-us/articles/26380849099932-DeepL-infrastructure-and-data-protection",
+      "ok": false,
+      "http_status": 403,
+      "error": "HTTP 403 Forbidden",
+      "reused_from_run": true,
+      "sources": [
+        {
+          "kind": "vendor",
+          "id": "deepl#hosting_regions.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "deepl#eu_hosting.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "deepl#training_opt_out.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "deepl#certifications.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "deepl#swiss_entity.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "deepl#eu_entity.source_url"
+        }
+      ]
+    },
+    {
+      "url": "https://trustcenter.cohere.com/",
+      "ok": true,
+      "http_status": 200,
+      "reused_from_run": true,
+      "sources": [
+        {
+          "kind": "vendor",
+          "id": "cohere#hosting_regions.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "cohere#swiss_hosting.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "cohere#eu_hosting.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "cohere#certifications.source_url"
+        }
+      ]
+    },
+    {
+      "url": "https://www.anthropic.com/",
+      "ok": true,
+      "http_status": 200,
+      "reused_from_run": false,
+      "sources": [
+        {
+          "kind": "vendor",
+          "id": "anthropic#website"
+        },
+        {
+          "kind": "vendor",
+          "id": "anthropic#pricing_tier.source_url"
+        }
+      ]
+    },
+    {
+      "url": "https://www.anthropic.com/ai-fluency",
+      "ok": true,
+      "http_status": 200,
+      "reused_from_run": true,
+      "sources": [
+        {
+          "kind": "content",
+          "id": "de/ai-procurement-checklist#sources"
+        },
+        {
+          "kind": "content",
+          "id": "de/ai-procurement-checklist#body"
+        },
+        {
+          "kind": "content",
+          "id": "en/ai-procurement-checklist#sources"
+        },
+        {
+          "kind": "content",
+          "id": "en/ai-procurement-checklist#body"
+        },
+        {
+          "kind": "content",
+          "id": "fr/ai-procurement-checklist#sources"
+        },
+        {
+          "kind": "content",
+          "id": "fr/ai-procurement-checklist#body"
+        },
+        {
+          "kind": "content",
+          "id": "it/ai-procurement-checklist#sources"
+        },
+        {
+          "kind": "content",
+          "id": "it/ai-procurement-checklist#body"
+        }
+      ]
+    },
+    {
+      "url": "https://www.consilium.europa.eu/en/press/press-releases/2026/06/29/artificial-intelligence-council-gives-final-green-light-to-simplify-and-streamline-rules/",
+      "ok": false,
+      "http_status": 403,
+      "error": "HTTP 403 Forbidden",
+      "reused_from_run": true,
+      "sources": [
+        {
+          "kind": "content",
+          "id": "de/eu-ai-act-swiss-exporters#sources"
+        },
+        {
+          "kind": "content",
+          "id": "en/eu-ai-act-swiss-exporters#sources"
+        },
+        {
+          "kind": "content",
+          "id": "fr/eu-ai-act-swiss-exporters#sources"
+        },
+        {
+          "kind": "content",
+          "id": "it/eu-ai-act-swiss-exporters#sources"
+        },
+        {
+          "kind": "rule",
+          "id": "eu-ai-act-applicability#out-transparency"
+        },
+        {
+          "kind": "rule",
+          "id": "eu-ai-act-applicability#out-highrisk-annex-iii"
+        },
+        {
+          "kind": "rule",
+          "id": "eu-ai-act-applicability#out-highrisk-annex-i"
+        },
+        {
+          "kind": "rule",
+          "id": "eu-ai-act-applicability#out-unclear-annex"
+        }
+      ]
+    },
+    {
+      "url": "https://www.dataprivacyframework.gov/list",
+      "ok": true,
+      "http_status": 200,
+      "reused_from_run": true,
+      "sources": [
+        {
+          "kind": "content",
+          "id": "de/us-hosted-llms-ndsg#sources"
+        },
+        {
+          "kind": "content",
+          "id": "en/us-hosted-llms-ndsg#sources"
+        },
+        {
+          "kind": "content",
+          "id": "fr/us-hosted-llms-ndsg#sources"
+        },
+        {
+          "kind": "content",
+          "id": "it/us-hosted-llms-ndsg#sources"
+        },
+        {
+          "kind": "rule",
+          "id": "us-hosted-llm-ndsg#out-no-transfer-basis"
+        },
+        {
+          "kind": "rule",
+          "id": "us-hosted-llm-ndsg#out-unclear-basis"
+        },
+        {
+          "kind": "rule",
+          "id": "us-hosted-llm-ndsg#out-likely-dpf"
+        },
+        {
+          "kind": "rule",
+          "id": "us-hosted-llm-ndsg#out-depends-training"
+        }
+      ]
+    },
+    {
+      "url": "https://www.deepl.com/",
+      "ok": true,
+      "http_status": 200,
+      "reused_from_run": false,
+      "sources": [
+        {
+          "kind": "vendor",
+          "id": "deepl#website"
+        }
+      ]
+    },
+    {
+      "url": "https://www.deepl.com/en/pro-data-security",
+      "ok": true,
+      "http_status": 200,
+      "reused_from_run": true,
+      "sources": [
+        {
+          "kind": "vendor",
+          "id": "deepl#pricing_tier.source_url"
+        }
+      ]
+    },
+    {
+      "url": "https://www.edoeb.admin.ch/de/04042023-einsatz-von-chatgpt-und-vergleichbaren-ki-gestuetzten-anwendungen",
+      "ok": true,
+      "http_status": 200,
+      "reused_from_run": true,
+      "sources": [
+        {
+          "kind": "content",
+          "id": "de/us-hosted-llms-ndsg#sources"
+        },
+        {
+          "kind": "content",
+          "id": "en/us-hosted-llms-ndsg#sources"
+        },
+        {
+          "kind": "content",
+          "id": "fr/us-hosted-llms-ndsg#sources"
+        },
+        {
+          "kind": "content",
+          "id": "it/us-hosted-llms-ndsg#sources"
+        },
+        {
+          "kind": "rule",
+          "id": "us-hosted-llm-ndsg#out-no-personal-data"
+        },
+        {
+          "kind": "rule",
+          "id": "us-hosted-llm-ndsg#out-depends-training"
+        },
+        {
+          "kind": "rule",
+          "id": "us-hosted-llm-ndsg#out-unclear-training"
+        },
+        {
+          "kind": "rule",
+          "id": "us-hosted-llm-ndsg#out-unlikely-scc-training"
+        }
+      ]
+    },
+    {
+      "url": "https://www.edoeb.admin.ch/de/bekanntgabe-von-personendaten-ins-ausland",
+      "ok": true,
+      "http_status": 200,
+      "reused_from_run": true,
+      "sources": [
+        {
+          "kind": "content",
+          "id": "de/ai-procurement-checklist#sources"
+        },
+        {
+          "kind": "content",
+          "id": "de/us-hosted-llms-ndsg#sources"
+        },
+        {
+          "kind": "content",
+          "id": "en/ai-procurement-checklist#sources"
+        },
+        {
+          "kind": "content",
+          "id": "en/us-hosted-llms-ndsg#sources"
+        },
+        {
+          "kind": "content",
+          "id": "fr/ai-procurement-checklist#sources"
+        },
+        {
+          "kind": "content",
+          "id": "fr/us-hosted-llms-ndsg#sources"
+        },
+        {
+          "kind": "content",
+          "id": "it/ai-procurement-checklist#sources"
+        },
+        {
+          "kind": "content",
+          "id": "it/us-hosted-llms-ndsg#sources"
+        },
+        {
+          "kind": "rule",
+          "id": "us-hosted-llm-ndsg#out-special-category"
+        },
+        {
+          "kind": "rule",
+          "id": "us-hosted-llm-ndsg#out-no-transfer-basis"
+        },
+        {
+          "kind": "rule",
+          "id": "us-hosted-llm-ndsg#out-unclear-basis"
+        },
+        {
+          "kind": "rule",
+          "id": "us-hosted-llm-ndsg#out-likely-dpf"
+        },
+        {
+          "kind": "rule",
+          "id": "us-hosted-llm-ndsg#out-depends-scc"
+        },
+        {
+          "kind": "rule",
+          "id": "us-hosted-llm-ndsg#out-unlikely-scc-training"
+        },
+        {
+          "kind": "rule",
+          "id": "us-hosted-llm-ndsg#out-unclear-scc"
+        }
+      ]
+    },
+    {
+      "url": "https://www.edoeb.admin.ch/de/ki-und-datenschutz",
+      "ok": true,
+      "http_status": 200,
+      "reused_from_run": true,
+      "sources": [
+        {
+          "kind": "content",
+          "id": "de/ai-procurement-checklist#sources"
+        },
+        {
+          "kind": "content",
+          "id": "de/ndsg-ai-basics#sources"
+        },
+        {
+          "kind": "content",
+          "id": "en/ai-procurement-checklist#sources"
+        },
+        {
+          "kind": "content",
+          "id": "en/ndsg-ai-basics#sources"
+        },
+        {
+          "kind": "content",
+          "id": "fr/ai-procurement-checklist#sources"
+        },
+        {
+          "kind": "content",
+          "id": "fr/ndsg-ai-basics#sources"
+        },
+        {
+          "kind": "content",
+          "id": "it/ai-procurement-checklist#sources"
+        },
+        {
+          "kind": "content",
+          "id": "it/ndsg-ai-basics#sources"
+        }
+      ]
+    },
+    {
+      "url": "https://www.edoeb.admin.ch/de/update-geltendes-datenschutzgesetz-ist-auf-ki-direkt-anwendbar",
+      "ok": true,
+      "http_status": 200,
+      "reused_from_run": true,
+      "sources": [
+        {
+          "kind": "content",
+          "id": "de/ndsg-ai-basics#sources"
+        },
+        {
+          "kind": "content",
+          "id": "en/ndsg-ai-basics#sources"
+        },
+        {
+          "kind": "content",
+          "id": "fr/ndsg-ai-basics#sources"
+        },
+        {
+          "kind": "content",
+          "id": "it/ndsg-ai-basics#sources"
+        }
+      ]
+    },
+    {
+      "url": "https://www.exoscale.com/",
+      "ok": true,
+      "http_status": 200,
+      "reused_from_run": false,
+      "sources": [
+        {
+          "kind": "vendor",
+          "id": "exoscale#website"
+        }
+      ]
+    },
+    {
+      "url": "https://www.exoscale.com/ai-cloud-infrastructure/",
+      "ok": true,
+      "http_status": 200,
+      "reused_from_run": true,
+      "sources": [
+        {
+          "kind": "vendor",
+          "id": "exoscale#eu_hosting.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "exoscale#pricing_tier.source_url"
+        }
+      ]
+    },
+    {
+      "url": "https://www.exoscale.com/compliance/",
+      "ok": true,
+      "http_status": 200,
+      "reused_from_run": true,
+      "sources": [
+        {
+          "kind": "vendor",
+          "id": "exoscale#hosting_regions.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "exoscale#swiss_hosting.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "exoscale#certifications.source_url"
+        }
+      ]
+    },
+    {
+      "url": "https://www.fedlex.admin.ch/eli/cc/2022/491/de",
+      "ok": true,
+      "http_status": 200,
+      "reused_from_run": true,
+      "sources": [
+        {
+          "kind": "content",
+          "id": "de/ndsg-ai-basics#sources"
+        },
+        {
+          "kind": "content",
+          "id": "de/us-hosted-llms-ndsg#sources"
+        },
+        {
+          "kind": "content",
+          "id": "en/ndsg-ai-basics#sources"
+        },
+        {
+          "kind": "content",
+          "id": "en/us-hosted-llms-ndsg#sources"
+        },
+        {
+          "kind": "content",
+          "id": "fr/ndsg-ai-basics#sources"
+        },
+        {
+          "kind": "content",
+          "id": "fr/us-hosted-llms-ndsg#sources"
+        },
+        {
+          "kind": "content",
+          "id": "it/ndsg-ai-basics#sources"
+        },
+        {
+          "kind": "content",
+          "id": "it/us-hosted-llms-ndsg#sources"
+        },
+        {
+          "kind": "rule",
+          "id": "us-hosted-llm-ndsg#out-no-personal-data"
+        },
+        {
+          "kind": "rule",
+          "id": "us-hosted-llm-ndsg#out-special-category"
+        },
+        {
+          "kind": "rule",
+          "id": "us-hosted-llm-ndsg#out-no-transfer-basis"
+        },
+        {
+          "kind": "rule",
+          "id": "us-hosted-llm-ndsg#out-likely-dpf"
+        },
+        {
+          "kind": "rule",
+          "id": "us-hosted-llm-ndsg#out-unclear-training"
+        },
+        {
+          "kind": "rule",
+          "id": "us-hosted-llm-ndsg#out-depends-scc"
+        },
+        {
+          "kind": "rule",
+          "id": "us-hosted-llm-ndsg#out-unclear-scc"
+        }
+      ]
+    },
+    {
+      "url": "https://www.finma.ch/en/news/2024/12/20241218-mm-finma-am-08-24/",
+      "ok": true,
+      "http_status": 200,
+      "reused_from_run": true,
+      "sources": [
+        {
+          "kind": "content",
+          "id": "de/finma-ai-expectations#sources"
+        },
+        {
+          "kind": "content",
+          "id": "en/finma-ai-expectations#sources"
+        },
+        {
+          "kind": "content",
+          "id": "fr/finma-ai-expectations#sources"
+        },
+        {
+          "kind": "content",
+          "id": "it/finma-ai-expectations#sources"
+        }
+      ]
+    },
+    {
+      "url": "https://www.finma.ch/en/~/media/finma/dokumente/dokumentencenter/myfinma/4dokumentation/finma-aufsichtsmitteilungen/20241218-finma-aufsichtsmitteilung-08-2024.pdf",
+      "ok": true,
+      "http_status": 200,
+      "reused_from_run": true,
+      "sources": [
+        {
+          "kind": "content",
+          "id": "de/ai-procurement-checklist#sources"
+        },
+        {
+          "kind": "content",
+          "id": "de/finma-ai-expectations#sources"
+        },
+        {
+          "kind": "content",
+          "id": "en/ai-procurement-checklist#sources"
+        },
+        {
+          "kind": "content",
+          "id": "en/finma-ai-expectations#sources"
+        },
+        {
+          "kind": "content",
+          "id": "fr/ai-procurement-checklist#sources"
+        },
+        {
+          "kind": "content",
+          "id": "fr/finma-ai-expectations#sources"
+        },
+        {
+          "kind": "content",
+          "id": "it/ai-procurement-checklist#sources"
+        },
+        {
+          "kind": "content",
+          "id": "it/finma-ai-expectations#sources"
+        }
+      ]
+    },
+    {
+      "url": "https://www.ibm.com/watsonx",
+      "ok": true,
+      "http_status": 200,
+      "reused_from_run": true,
+      "sources": [
+        {
+          "kind": "vendor",
+          "id": "ibm-watsonx#website"
+        },
+        {
+          "kind": "vendor",
+          "id": "ibm-watsonx#pricing_tier.source_url"
+        }
+      ]
+    },
+    {
+      "url": "https://www.infomaniak.com/",
+      "ok": true,
+      "http_status": 200,
+      "reused_from_run": false,
+      "sources": [
+        {
+          "kind": "vendor",
+          "id": "infomaniak#website"
+        },
+        {
+          "kind": "vendor",
+          "id": "infomaniak#pricing_tier.source_url"
+        }
+      ]
+    },
+    {
+      "url": "https://www.infomaniak.com/documents/privacy/DPA/Data_Processing_Agreement_(DPA).pdf",
+      "ok": true,
+      "http_status": 200,
+      "reused_from_run": true,
+      "sources": [
+        {
+          "kind": "vendor",
+          "id": "infomaniak#dpa_url.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "infomaniak#swiss_entity.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "infomaniak#dpa_url.value"
+        }
+      ]
+    },
+    {
+      "url": "https://www.infomaniak.com/en/trust-center",
+      "ok": true,
+      "http_status": 200,
+      "reused_from_run": true,
+      "sources": [
+        {
+          "kind": "vendor",
+          "id": "infomaniak#hosting_regions.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "infomaniak#swiss_hosting.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "infomaniak#eu_hosting.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "infomaniak#training_opt_out.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "infomaniak#certifications.source_url"
+        }
+      ]
+    },
+    {
+      "url": "https://www.microsoft.com/licensing/docs/view/Microsoft-Products-and-Services-Data-Protection-Addendum-DPA",
+      "ok": true,
+      "http_status": 200,
+      "reused_from_run": true,
+      "sources": [
+        {
+          "kind": "vendor",
+          "id": "microsoft-azure#dpa_url.value"
+        }
+      ]
+    },
+    {
+      "url": "https://www.ovh.com/fr/support/documents_legaux/Annexe%20Traitement%20de%20donn%C3%A9es%20%C3%A0%20caract%C3%A8re%20personnel.pdf",
+      "ok": true,
+      "http_status": 200,
+      "reused_from_run": true,
+      "sources": [
+        {
+          "kind": "vendor",
+          "id": "ovhcloud#dpa_url.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "ovhcloud#swiss_entity.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "ovhcloud#eu_entity.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "ovhcloud#dpa_url.value"
+        }
+      ]
+    },
+    {
+      "url": "https://www.ovhcloud.com/",
+      "ok": true,
+      "http_status": 200,
+      "reused_from_run": false,
+      "sources": [
+        {
+          "kind": "vendor",
+          "id": "ovhcloud#website"
+        }
+      ]
+    },
+    {
+      "url": "https://www.swisscom.ch/en/business/enterprise/offer/platforms-applications/data-driven-business/swiss-ai-platform.html",
+      "ok": true,
+      "http_status": 200,
+      "reused_from_run": true,
+      "sources": [
+        {
+          "kind": "vendor",
+          "id": "swisscom-ai#website"
+        },
+        {
+          "kind": "vendor",
+          "id": "swisscom-ai#hosting_regions.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "swisscom-ai#swiss_hosting.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "swisscom-ai#eu_hosting.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "swisscom-ai#training_opt_out.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "swisscom-ai#pricing_tier.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "swisscom-ai#swiss_entity.source_url"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "total": 50,
+    "ok": 46,
+    "broken": 4,
+    "reused": 38,
+    "probed": 12
+  }
+}

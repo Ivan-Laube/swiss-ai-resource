@@ -1,0 +1,24 @@
+.footer {
+  margin-top: auto;
+  padding: 1.25rem 1.5rem 1.75rem;
+  border-top: 1px solid color-mix(in srgb, var(--foreground) 12%, transparent);
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  list-style: none;
+  justify-content: center;
+}
+
+.list a {
+  font-size: 0.875rem;
+  opacity: 0.7;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.list a:hover {
+  opacity: 1;
+}

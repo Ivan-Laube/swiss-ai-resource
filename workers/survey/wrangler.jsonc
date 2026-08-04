@@ -1,0 +1,33 @@
+{
+  "name": "swiss-ai-survey",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-07-01",
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "swiss-ai-survey",
+      "database_id": "f98b464c-7aef-4319-86b2-7829b17f3c45",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "ratelimits": [
+    {
+      "name": "SURVEY_RATE_LIMITER",
+      "namespace_id": "2301",
+      "simple": {
+        "limit": 5,
+        "period": 60
+      }
+    }
+  ],
+  "triggers": {
+    // Publish anonymized survey aggregates every Monday at 05:00 UTC.
+    "crons": ["0 5 * * 1"]
+  },
+  "vars": {
+    "SITE_ORIGIN": "https://aicompliant.ch",
+    "GITHUB_REPO": "Ivan-Laube/swiss-ai-resource",
+    "GITHUB_BRANCH": "main",
+    "GITHUB_AGGREGATES_PATH": "data/survey-aggregates.json"
+  }
+}
