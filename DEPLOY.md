@@ -285,7 +285,7 @@ Provisioning used an interactive operator/agent session. `NEXT_PUBLIC_*` values 
 Worker-level smokes (curl) are done. Before announcing the survey or Quick-Check, confirm the **browser** paths on production:
 
 - [x] Open [https://aicompliant.ch/de/survey/](https://aicompliant.ch/de/survey/) — form renders (not the unavailable message); Turnstile widget present with v2 site key.
-- [ ] Complete Turnstile; submit once with a throwaway email + report opt-in → `201` / success UI; confirm remote D1 `responses` + unlinkable `report_signups` rows (see T23d queries above); delete the test signup email afterward. (Human Turnstile solve — last T41 click.)
+- [x] Complete Turnstile; submit once with a throwaway email + report opt-in → `201` / success UI; confirm remote D1 `responses` + unlinkable `report_signups` rows (see T23d queries above); delete the test signup email afterward.
 - [x] Open [https://aicompliant.ch/de/website-check/](https://aicompliant.ch/de/website-check/) — scan `https://www.admin.ch` → findings render with citations and disclaimer.
 - [x] Spot-check footer → Impressum / Datenschutz on `/de/`.
 - [x] Spot-check [https://aicompliant.ch/sitemap.xml](https://aicompliant.ch/sitemap.xml) and [https://aicompliant.ch/robots.txt](https://aicompliant.ch/robots.txt) (trailing-slash locale URLs; sitemap listed in robots).

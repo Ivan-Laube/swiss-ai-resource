@@ -264,7 +264,7 @@ Post-MVP, demand-driven (not built now):
 |---|---|---|---|
 | T39 | Legal pages: `impressum` + `datenschutz` (DE + EN/FR/IT drafts), site footer links, survey privacy link — see [content/README.md](content/README.md#legal-pages) | T3, T2, T24 (survey link) | Done |
 | T40 | Fill Impressum / Datenschutzerklärung with natural-person operator details; sync EN/FR/IT; confirm footer + survey links still resolve | T39 | Done |
-| T41 | Live browser smoke on `aicompliant.ch`: survey (real Turnstile) + website-check + footer legal links — see [DEPLOY.md](DEPLOY.md#live-ui-smoke-t41) | T23d, T37b, Pages deploy | Mostly done — one human Turnstile submit left |
+| T41 | Live browser smoke on `aicompliant.ch`: survey (real Turnstile) + website-check + footer legal links — see [DEPLOY.md](DEPLOY.md#live-ui-smoke-t41) | T23d, T37b, Pages deploy | Done |
 | T42 | Enable GitHub Actions “Allow GitHub Actions to create and approve pull requests” (monthly material `gh pr create`) — see [DEPLOY.md](DEPLOY.md#github-actions-repo-permission-t42) | T17 | Done |
 | T29 | Lawyer review of DE compliance pages (incl. filled legal pages from T40), badge wiring | T6, T17 (badge lifecycle), T40 | Not started |
 | T30 | Quarterly: new decision tool or page, demand-driven | T8 | |

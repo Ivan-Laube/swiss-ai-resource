@@ -46,7 +46,7 @@ German (`de`) is the canonical content language. See [swiss_ai_resource_implemen
 | T37b | Scanner Worker prod deploy + Pages `NEXT_PUBLIC_SCAN_API_URL` | Done |
 | T39 | Impressum + Datenschutzerklärung pages, footer + survey links | Done |
 | T40 | Fill Impressum/Datenschutz operator details (natural person); sync EN/FR/IT | Done |
-| T41 | Live browser smoke (survey + website-check on aicompliant.ch) | Mostly done — one human Turnstile submit left |
+| T41 | Live browser smoke (survey + website-check on aicompliant.ch) | Done |
 | T42 | GitHub Actions: allow Actions to create/approve PRs | Done |
 | T29 | Lawyer review of DE pages (incl. legal pages after T40) | Not started |
 
@@ -242,4 +242,4 @@ Impressum (`/[lang]/impressum/`) and Datenschutzerklärung (`/[lang]/datenschutz
 
 Live host, Pages/Worker env vars, and connect steps: [DEPLOY.md](DEPLOY.md) (see especially [Production host](DEPLOY.md#production-host) and [Production status (site)](DEPLOY.md#production-status-site)).
 
-**Outstanding before announce:** one human Turnstile survey submit (T41). Lawyer review remains **T29** (parallel).
+**Outstanding before announce:** none of the engineering blockers (T23e/T23f/T40/T41/T42 done). Lawyer review remains **T29** (parallel).
