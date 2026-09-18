@@ -234,6 +234,7 @@ Task IDs are referenced in the "Depends on" column. Tasks with no dependency can
 | T24 | Survey form page (4 languages) | T22, T23, T2 | Done |
 | T25 | Aggregation job with n<5 suppression, aggregates written to repo as JSON | T23 | Done |
 | T26 | Benchmark page rendering from aggregates, client-side "your band vs median" comparison | T25, T1 | Done |
+| T43 | Scope survey Worker `GITHUB_TOKEN` to a dedicated data-only repo (`swiss-ai-survey-data`) instead of `swiss-ai-resource`, so a leaked PAT can't touch published site content — see [DEPLOY.md](DEPLOY.md#pat-scoped-to-a-dedicated-data-repo-t43) | T23f, T25 | Done (pending first live write confirmation) |
 | T27 | Survey launch via LinkedIn + Swiss SME/startup communities | T24, T23e, T23f, T40, T41 | |
 | T28 | Benchmark report (ships when n reaches 30-50, not on a fixed date) | T25, T27 |
 
@@ -304,6 +305,10 @@ T1 → T3 → T6 → T9/T10 → T14 (public launch of the differentiated core), 
 | LLM translation injects raw HTML into auto-committed content | Translate write path rejects raw HTML outside code blocks; [`src/lib/markdown.ts`](src/lib/markdown.ts) sanitizes marked output with `sanitize-html` before `dangerouslySetInnerHTML` |
 | Incomplete Impressum / Datenschutz operator details | Mitigated by **T40** (natural-person operator filled in all locales); **T29** still reviews the filled DE text |
 | Survey Worker secrets provisioned in an operator/agent session | Mitigated by **T23e** (Turnstile widget `swiss-ai-survey-v2` + secret rotate) and **T23f** (fine-grained PAT on Worker `GITHUB_TOKEN`) |
+| Leaked survey Worker `GITHUB_TOKEN` could alter published site content, not just aggregate data (fine-grained PATs can't scope below "whole repo", and `main` auto-deploys) | Mitigated by **T43**: PAT rescoped to a dedicated, public, data-only repo (`swiss-ai-survey-data`) with no deploy hook; Next.js build fetches the aggregates back at build time via `npm run sync:survey-aggregates`, warning and falling back to the committed copy if that fetch fails rather than breaking the build |
+| Survey email stored even without report opt-in, contradicting the Datenschutzerklärung's consent basis | Fixed: `storeResponse` only inserts a `report_signups` row when `report_opt_in` is `true`; `created_at` written at date-only precision so it can't be joined back to a `responses` row by matching insert timestamp — see [DEPLOY.md](DEPLOY.md#email-retention-and-deletion) |
+| No Content-Security-Policy / HSTS / Permissions-Policy on the static site (only `X-Frame-Options` / `X-Content-Type-Options` / `Referrer-Policy`) | Added to [`public/_headers`](public/_headers); `script-src` needs `'unsafe-inline'` for Next.js's static-export hydration scripts (no per-request nonce available), but third-party script origins, `object-src`, `base-uri`, `form-action`, and `frame-ancestors` all stay locked down — see [DEPLOY.md](DEPLOY.md#security-headers-public_headers) |
+| Unbounded POST body on `/submit` and `/scan` before JSON parsing | Both Workers now reject oversized bodies (`413`) via a `Content-Length` pre-check plus a streamed byte cap (32 KiB / 8 KiB) before parsing — [`workers/survey/src/body-limit.ts`](workers/survey/src/body-limit.ts), [`workers/scanner/src/body-limit.ts`](workers/scanner/src/body-limit.ts) |
 | Live UI never exercised in a real browser after deploy | Mitigated by **T41** (survey Turnstile submit + website-check + sitemap/robots/404) |
 | Monthly material review PR fails with 403 | Mitigated by **T42** (Actions may create and approve pull requests) |
 | Translation drift across DE/EN/FR/IT | DE is canonical; EN/FR/IT regenerated on DE change by the build pipeline, flagged for review; FR/IT legal terms constrained by Fedlex glossary |

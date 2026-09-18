@@ -25,6 +25,21 @@ Both Workers **require** `SITE_ORIGIN`. There is no `*.pages.dev` fallback; an u
 | Node version | 20 |
 | Root directory | `/` |
 
+### Security headers ([`public/_headers`](public/_headers))
+
+Cloudflare Pages applies these to every response (copied to `out/_headers` by the static export build; verify with `curl -sD - https://aicompliant.ch/de/ | grep -i ^content-security-policy` after a deploy):
+
+| Header | Value | Notes |
+|---|---|---|
+| `Content-Security-Policy` | `default-src 'self'; script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://swiss-ai-survey.i-laube.workers.dev https://swiss-ai-scanner.i-laube.workers.dev https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'` | `script-src` needs `'unsafe-inline'`: Next.js's static export bootstraps hydration via inline `<script>` tags (`self.__next_f.push(...)`), and a static export has no per-request nonce to mint. `object-src`/`base-uri`/`form-action`/`frame-ancestors` stay locked down regardless. If either Worker's hostname changes, update `connect-src` here too. |
+| `Strict-Transport-Security` | `max-age=63072000; includeSubDomains; preload` | |
+| `Permissions-Policy` | `camera=(), microphone=(), geolocation=(), payment=()` | |
+| `X-Frame-Options` | `DENY` | |
+| `X-Content-Type-Options` | `nosniff` | |
+| `Referrer-Policy` | `strict-origin-when-cross-origin` | |
+
+**If you change this file, redeploy and re-check hydration** (browser console should show zero CSP violations, and clicking a radio button on `/de/survey/` should actually check it) before trusting the deploy — a too-strict `script-src` silently breaks React hydration site-wide without any 4xx/5xx to notice from a curl check alone.
+
 ### Pages environment variables (production)
 
 | Name | Value / notes |
@@ -96,6 +111,7 @@ Do not treat lawyer review as a soft gate for marketing announce if you accept t
 
 Every pull request and every push to `main` runs [`.github/workflows/ci.yml`](.github/workflows/ci.yml):
 
+- `npm run sync:survey-aggregates` (T43 — best-effort fetch of the latest `survey-aggregates.json` from [`swiss-ai-survey-data`](https://github.com/Ivan-Laube/swiss-ai-survey-data); warns and keeps the committed copy on failure rather than failing CI)
 - `npx tsc --noEmit`
 - `npm run lint`
 - Offline `check:*` validators (content, vendors, sources, glossary, rules, scanner, survey, survey-answers, survey-aggregates, classify, act, links-report)
@@ -217,7 +233,7 @@ That separation is what makes the UI/privacy claim (“emails stored separately 
      -d "{\"survey_id\":\"swiss-ai-adoption-2026\",\"survey_version\":2,\"locale\":\"de\",\"answers\":{\"company-size\":\"10-49\",\"sector\":\"ict-software\",\"language-region\":\"german-speaking\",\"ai-maturity\":\"piloting\",\"ai-tools\":[\"chatgpt\",\"deepl\"],\"primary-use-cases\":[\"translation\"],\"monthly-spend-chf\":\"1-500\",\"hosting-requirement\":\"switzerland\",\"personal-data-in-ai\":\"no\",\"eu-market-exposure\":\"no\",\"deployment-blockers\":[\"none\"],\"vendor-decision-factors\":[\"swiss-entity-support\"]},\"email\":\"bench@example.com\",\"report_opt_in\":true,\"website\":\"\",\"turnstile_token\":\"XXXX.DUMMY.TOKEN.XXXX\"}"
    ```
 
-   Expect `201` and `{ "ok": true, "id": "..." }`. Honeypot (`website` non-empty) → `204` and no D1 row. Invalid answers → `400`. Missing/wrong `Origin` → `403` (no CORS headers). Failed Turnstile → `403`. More than 5 POSTs/minute from one IP → `429`.
+   Expect `201` and `{ "ok": true, "id": "..." }`. Honeypot (`website` non-empty) → `204` and no D1 row. Invalid answers → `400`. Missing/wrong `Origin` → `403` (no CORS headers). Failed Turnstile → `403`. More than 5 POSTs/minute from one IP → `429`. Body over 32 KiB → `413` (checked via `Content-Length` and a streamed cap in [`workers/survey/src/body-limit.ts`](workers/survey/src/body-limit.ts), before JSON parsing).
 
    Or run the scripted smoke test (asserts all of the above) against the running Worker:
 
@@ -322,6 +338,8 @@ The survey Worker also runs a weekly cron (`0 5 * * 1`, Monday 05:00 UTC) that f
 
 Optional report emails live in `report_signups` with their **own** id and **no foreign key** to `responses`, so they cannot be joined back to an answer row. That matches the survey UI claim that emails are stored separately from answers.
 
+- **Opt-in gated:** `storeResponse` in [`workers/survey/src/store.ts`](workers/survey/src/store.ts) only inserts a `report_signups` row when `report_opt_in` is `true` — an email typed into the field without checking the box is never persisted. (Previously any non-empty email was stored regardless of the checkbox; fixed as it contradicted the Datenschutzerklärung's opt-in basis for email storage.)
+- **Timestamp unlinkability:** `report_signups.created_at` is written at date-only precision (`date('now')`), not the shared insert batch's second-precision `datetime('now')` — so it can't be joined back to a `responses` row by matching insert timestamp, on top of the separate-id/no-FK design.
 - **Public contact (T40):** deletion requests are directed to **i.laube@gmail.com** (Impressum / Datenschutzerklärung).
 - **Automatic retention:** the weekly cron deletes signup (and response) rows older than 24 months (`purgeExpiredSurveyData` in [`workers/survey/src/store.ts`](workers/survey/src/store.ts)).
 - **On-request deletion:** after a user emails the contact above, remove all signup rows for that address (case-insensitive):
@@ -379,6 +397,7 @@ Stateless website Quick-Check API. Code lives in [`workers/scanner/`](workers/sc
 | Worker | `https://swiss-ai-scanner.i-laube.workers.dev` (`POST /scan`) |
 | Origin / CORS | `SITE_ORIGIN=https://aicompliant.ch` — POST/OPTIONS enforce Origin; ACAO only for allowlisted origin |
 | Rate limit | `SCANNER_RATE_LIMITER` — 5 requests / 60s per IP (no secret) |
+| Body size cap | 8 KiB on `POST /scan` before JSON parsing — `413` over that (checked via `Content-Length` and a streamed cap in [`workers/scanner/src/body-limit.ts`](workers/scanner/src/body-limit.ts)) |
 | Pages | `NEXT_PUBLIC_SCAN_API_URL` set; UI live on [aicompliant.ch/de/website-check/](https://aicompliant.ch/de/website-check/) |
 
 Prod smoke (2026-08-04 API; **T41** browser 2026-09-18): `POST /scan` with `https://www.admin.ch` → `200` / `ok: true` / findings; missing Origin → `403`; UI on `/de/website-check/` renders severity-grouped findings with citations and disclaimer.
