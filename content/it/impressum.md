@@ -1,7 +1,7 @@
 ---
 title: "Note legali"
 description: "Identificazione del fornitore e dati di contatto per aicompliant.ch ai sensi dell'art. 3 cpv. 1 lett. s LCSl."
-last_verified: "2026-08-04"
+last_verified: "2026-09-18"
 volatility: "stable"
 translation_status: "draft"
 reviewed_by: null
@@ -12,32 +12,17 @@ sources:
     url: "https://www.fedlex.admin.ch/eli/cc/1988/223_223_223/de#art_3"
 ---
 
-Indicazioni ai sensi dell'**art. 3 cpv. 1 lett. s LCSl** (identificazione del fornitore nel commercio elettronico). I campi contrassegnati con `PLACEHOLDER` devono essere sostituiti con i dati definitivi prima della messa in produzione.
+Indicazioni ai sensi dell'**art. 3 cpv. 1 lett. s LCSl** (identificazione del fornitore nel commercio elettronico).
 
 ## Fornitore
 
 | | |
 |---|---|
-| **Nome / ragione sociale** | PLACEHOLDER_LEGAL_NAME |
-| **Forma giuridica** | PLACEHOLDER_LEGAL_FORM |
-| **Via / n.** | PLACEHOLDER_STREET |
-| **NPA / località** | PLACEHOLDER_POSTAL_CITY |
+| **Nome** | Ivan Laube |
+| **Via / n.** | Vorhaldenstrasse 10 |
+| **NPA / località** | 8049 Zürich |
 | **Paese** | Svizzera |
-| **E-mail** | PLACEHOLDER_CONTACT_EMAIL |
-| **Telefono** | PLACEHOLDER_PHONE (facoltativo) |
-
-## Rappresentanza
-
-**Persona/e autorizzata/e a rappresentare:** PLACEHOLDER_REPRESENTATIVE
-
-## Registro di commercio / IDI
-
-Se applicabile:
-
-| | |
-|---|---|
-| **Ufficio del registro di commercio** | PLACEHOLDER_COMMERCIAL_REGISTER |
-| **IDI / numero CHE** | PLACEHOLDER_UID |
+| **E-mail** | [i.laube@gmail.com](mailto:i.laube@gmail.com) |
 
 ## Sito web
 

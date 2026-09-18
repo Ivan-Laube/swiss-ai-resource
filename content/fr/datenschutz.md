@@ -1,7 +1,7 @@
 ---
 title: "Politique de confidentialité"
 description: "Informations sur le traitement des données personnelles sur aicompliant.ch (art. 19 LPD) : responsable, finalités, sous-traitants, conservation et suppression."
-last_verified: "2026-08-04"
+last_verified: "2026-09-18"
 volatility: "stable"
 translation_status: "draft"
 reviewed_by: null
@@ -14,7 +14,7 @@ sources:
     url: "https://www.edoeb.admin.ch/de/ki-und-datenschutz"
 ---
 
-La présente politique de confidentialité vous informe, conformément à l'**art. 19 LPD**, sur le traitement des données personnelles sur **aicompliant.ch**. Les champs marqués `PLACEHOLDER` doivent être remplacés par les données définitives avant la mise en production.
+La présente politique de confidentialité vous informe, conformément à l'**art. 19 LPD**, sur le traitement des données personnelles sur **aicompliant.ch**.
 
 ## 1. Responsable du traitement
 
@@ -22,9 +22,9 @@ Responsable du traitement :
 
 | | |
 |---|---|
-| **Nom / raison sociale** | PLACEHOLDER_LEGAL_NAME |
-| **Adresse** | PLACEHOLDER_STREET, PLACEHOLDER_POSTAL_CITY, Suisse |
-| **E-mail** | PLACEHOLDER_CONTACT_EMAIL |
+| **Nom** | Ivan Laube |
+| **Adresse** | Vorhaldenstrasse 10, 8049 Zürich, Suisse |
+| **E-mail** | [i.laube@gmail.com](mailto:i.laube@gmail.com) |
 
 Autres indications sur le fournisseur : [Mentions légales](/fr/impressum/).
 
@@ -85,7 +85,7 @@ Cloudflare agit comme **sous-traitant** dans le cadre des finalités que nous d�
 
 ## 6. Vos droits et la suppression
 
-Vous pouvez demander l'accès, la rectification et la suppression de vos données personnelles ainsi que vous opposer au traitement, dans la mesure où la LPD le prévoit. Pour un e-mail facultatif enregistré, un message à **PLACEHOLDER_CONTACT_EMAIL** demandant la suppression suffit en général ; nous supprimons alors l'adresse e-mail de la table d'inscription. Les réponses au sondage n'en sont pas affectées et ne sont pas liées à l'e-mail.
+Vous pouvez demander l'accès, la rectification et la suppression de vos données personnelles ainsi que vous opposer au traitement, dans la mesure où la LPD le prévoit. Pour un e-mail facultatif enregistré, un message à **[i.laube@gmail.com](mailto:i.laube@gmail.com)** demandant la suppression suffit en général ; nous supprimons alors l'adresse e-mail de la table d'inscription. Les réponses au sondage n'en sont pas affectées et ne sont pas liées à l'e-mail.
 
 Les réponses au sondage ne peuvent plus être attribuées à une personne (y compris via l'e-mail facultatif) et ne peuvent donc pas être supprimées de manière ciblée.
 

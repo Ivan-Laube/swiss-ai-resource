@@ -1,7 +1,7 @@
 ---
 title: "Informativa sulla privacy"
 description: "Informazioni sul trattamento dei dati personali su aicompliant.ch (art. 19 LPD): titolare, finalità, responsabili del trattamento, conservazione e cancellazione."
-last_verified: "2026-08-04"
+last_verified: "2026-09-18"
 volatility: "stable"
 translation_status: "draft"
 reviewed_by: null
@@ -14,7 +14,7 @@ sources:
     url: "https://www.edoeb.admin.ch/de/ki-und-datenschutz"
 ---
 
-La presente informativa sulla privacy La informa, ai sensi dell'**art. 19 LPD**, sul trattamento dei dati personali su **aicompliant.ch**. I campi contrassegnati con `PLACEHOLDER` devono essere sostituiti con i dati definitivi prima della messa in produzione.
+La presente informativa sulla privacy La informa, ai sensi dell'**art. 19 LPD**, sul trattamento dei dati personali su **aicompliant.ch**.
 
 ## 1. Titolare del trattamento
 
@@ -22,9 +22,9 @@ Titolare del trattamento:
 
 | | |
 |---|---|
-| **Nome / ragione sociale** | PLACEHOLDER_LEGAL_NAME |
-| **Indirizzo** | PLACEHOLDER_STREET, PLACEHOLDER_POSTAL_CITY, Svizzera |
-| **E-mail** | PLACEHOLDER_CONTACT_EMAIL |
+| **Nome** | Ivan Laube |
+| **Indirizzo** | Vorhaldenstrasse 10, 8049 Zürich, Svizzera |
+| **E-mail** | [i.laube@gmail.com](mailto:i.laube@gmail.com) |
 
 Ulteriori indicazioni sul fornitore: [Note legali](/it/impressum/).
 
@@ -85,7 +85,7 @@ Cloudflare agisce come **responsabile del trattamento** nell'ambito delle finali
 
 ## 6. I Suoi diritti e la cancellazione
 
-Può chiedere l'accesso, la rettifica e la cancellazione dei Suoi dati personali nonché opporsi al trattamento, nella misura in cui la LPD lo preveda. Per un'e-mail facoltativa registrata, di regola basta un messaggio a **PLACEHOLDER_CONTACT_EMAIL** con richiesta di cancellazione; cancelliamo quindi l'indirizzo e-mail dalla tabella di iscrizione. Le risposte al sondaggio non ne sono interessate e non sono collegate all'e-mail.
+Può chiedere l'accesso, la rettifica e la cancellazione dei Suoi dati personali nonché opporsi al trattamento, nella misura in cui la LPD lo preveda. Per un'e-mail facoltativa registrata, di regola basta un messaggio a **[i.laube@gmail.com](mailto:i.laube@gmail.com)** con richiesta di cancellazione; cancelliamo quindi l'indirizzo e-mail dalla tabella di iscrizione. Le risposte al sondaggio non ne sono interessate e non sono collegate all'e-mail.
 
 Le risposte al sondaggio non possono essere attribuite a una persona (nemmeno tramite l'e-mail facoltativa) e quindi non possono essere cancellate in modo mirato.
 

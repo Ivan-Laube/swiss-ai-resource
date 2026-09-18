@@ -1,7 +1,7 @@
 ---
 title: "Datenschutzerklärung"
 description: "Informationen zur Bearbeitung von Personendaten auf aicompliant.ch (Art. 19 DSG): Verantwortliche, Zwecke, Auftragsbearbeiter, Aufbewahrung und Löschung."
-last_verified: "2026-08-04"
+last_verified: "2026-09-18"
 volatility: "stable"
 translation_status: "canonical"
 reviewed_by: null
@@ -14,7 +14,7 @@ sources:
     url: "https://www.edoeb.admin.ch/de/ki-und-datenschutz"
 ---
 
-Diese Datenschutzerklärung informiert Sie gemäss **Art. 19 DSG** darüber, wie auf **aicompliant.ch** Personendaten bearbeitet werden. Felder mit `PLACEHOLDER` sind vor dem produktiven Betrieb durch die endgültigen Angaben zu ersetzen.
+Diese Datenschutzerklärung informiert Sie gemäss **Art. 19 DSG** darüber, wie auf **aicompliant.ch** Personendaten bearbeitet werden.
 
 ## 1. Verantwortliche Stelle
 
@@ -22,9 +22,9 @@ Verantwortlich für die Datenbearbeitung:
 
 | | |
 |---|---|
-| **Name / Firma** | PLACEHOLDER_LEGAL_NAME |
-| **Adresse** | PLACEHOLDER_STREET, PLACEHOLDER_POSTAL_CITY, Schweiz |
-| **E-Mail** | PLACEHOLDER_CONTACT_EMAIL |
+| **Name** | Ivan Laube |
+| **Adresse** | Vorhaldenstrasse 10, 8049 Zürich, Schweiz |
+| **E-Mail** | [i.laube@gmail.com](mailto:i.laube@gmail.com) |
 
 Weitere Anbieterangaben: [Impressum](/de/impressum/).
 
@@ -85,7 +85,7 @@ Cloudflare handelt dabei als **Auftragsbearbeiter** im Rahmen der von uns vorgeg
 
 ## 6. Ihre Rechte und Löschung
 
-Sie können Auskunft, Berichtigung und Löschung Ihrer Personendaten verlangen sowie der Bearbeitung widersprechen, soweit das DSG dies vorsieht. Bei optional hinterlegter E-Mail genügt in der Regel eine Nachricht an **PLACEHOLDER_CONTACT_EMAIL** mit dem Hinweis auf Löschung; wir löschen dann die E-Mail-Adresse aus der Anmeldetabelle. Die Umfrageantworten sind davon unberührt und nicht mit der E-Mail verknüpft.
+Sie können Auskunft, Berichtigung und Löschung Ihrer Personendaten verlangen sowie der Bearbeitung widersprechen, soweit das DSG dies vorsieht. Bei optional hinterlegter E-Mail genügt in der Regel eine Nachricht an **[i.laube@gmail.com](mailto:i.laube@gmail.com)** mit dem Hinweis auf Löschung; wir löschen dann die E-Mail-Adresse aus der Anmeldetabelle. Die Umfrageantworten sind davon unberührt und nicht mit der E-Mail verknüpft.
 
 Umfrageantworten lassen sich nachträglich nicht einer Person zuordnen (auch nicht über die optionale E-Mail) und können daher nicht gezielt gelöscht werden.
 

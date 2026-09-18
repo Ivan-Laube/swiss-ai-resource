@@ -2,7 +2,7 @@
 
 Goal: a multilingual (DE/EN/FR/IT) resource site providing Swiss-specific AI deployment information for local companies. Built once, maintained by automation, differentiated by proprietary benchmark data and interactive decision tools. Solo-buildable, low ongoing time cost.
 
-**Production host:** [https://aicompliant.ch](https://aicompliant.ch) on Cloudflare Pages (DNS + custom domain). Build-time site URL: `NEXT_PUBLIC_SITE_URL`. Worker CORS: `SITE_ORIGIN` (required in both Workers; no silent `*.pages.dev` fallback). Details: [DEPLOY.md](DEPLOY.md#production-host).
+**Production host:** [https://aicompliant.ch](https://aicompliant.ch) on Cloudflare Pages (DNS + custom domain). Build-time site URL: `NEXT_PUBLIC_SITE_URL`. Worker `SITE_ORIGIN` is required (no silent `*.pages.dev` fallback); POST/OPTIONS enforce that Origin (plus www ↔ apex). Details: [DEPLOY.md](DEPLOY.md#production-host).
 
 ---
 
@@ -52,7 +52,7 @@ Goal: a multilingual (DE/EN/FR/IT) resource site providing Swiss-specific AI dep
    │  2. Diff against stored snapshots                    │
    │  3. LLM classifies diffs: cosmetic / material        │
    │  4. Material → GitHub issue + draft PR for review    │
-   │  5. No change → bump last_verified date, auto-merge  │
+   │  5. Unchanged only → bump last_verified, auto-merge  │
    └─────────────────────────────────────────────────────┘
 ```
 
@@ -60,12 +60,12 @@ Everything static where possible. The only server-side components are the websit
 
 ### Stack choices and rationale
 
-- **Next.js (SSG mode) on Cloudflare Pages** at `aicompliant.ch`. You already use Next.js for Intriga and Cloudflare DNS for RightRanked. Static export means zero runtime cost and nothing to patch. Rebuild triggered by Git push. Canonical URLs use `NEXT_PUBLIC_SITE_URL`; survey/scanner Workers lock CORS to `SITE_ORIGIN` and fail closed if it is unset.
+- **Next.js (SSG mode) on Cloudflare Pages** at `aicompliant.ch`. You already use Next.js for Intriga and Cloudflare DNS for RightRanked. Static export means zero runtime cost and nothing to patch. Rebuild triggered by Git push. Canonical URLs use `NEXT_PUBLIC_SITE_URL`; survey/scanner Workers require `SITE_ORIGIN`, reject POST/OPTIONS with a missing or foreign `Origin`, and fail closed if `SITE_ORIGIN` is unset.
 - **Content as Markdown in Git.** No CMS. Frontmatter carries `last_verified`, `reviewed_by`, `review_date`, `sources[]`, `volatility` (stable / moderate / fast). Git history is the audit trail, which matters if a lawyer's name is attached to a page.
 - **Vendor data as JSON, not prose.** `vendors.json` holds one record per provider: hosting regions, DPA link, data-training opt-out, certifications (ISO 27001, SOC 2), pricing tier, Swiss/EU entity yes/no, source URLs, `last_checked`. The site renders it as a filterable table. The monthly job refreshes fields, not paragraphs.
 - **Decision tools as pure client-side JSON-driven logic.** Each tool is a decision tree defined in `/data/rules/*.json` (questions, branches, outcomes with caveats and source links). One generic React component renders any tree. Adding a new tool = adding a JSON file. No backend, no liability-heavy "advice engine", every outcome links to the underlying rule text.
 - **Survey via Cloudflare Worker + D1.** A single POST endpoint, honeypot + Turnstile for spam, no personal data beyond optional email. Emails go in a standalone `report_signups` table (own id, **no FK** to `responses`) so they cannot be joined back to answers; weekly cron purges both tables after 24 months and writes anonymized aggregates back to the content repo as JSON, so benchmark pages stay static. On-request deletion is `DELETE FROM report_signups WHERE email = …` (see [DEPLOY.md](DEPLOY.md#email-retention-and-deletion)).
-- **Website quick-check as a stateless Worker + heuristic checks JSON.** The browser cannot fetch third-party sites (CORS), so a Cloudflare Worker fetches the submitted URL's HTML and headers, runs deterministic checks defined in `/data/scanner-checks.json` (same versioned-JSON pattern as the decision trees), and returns findings without storing anything. Findings are facts with statuses `found / not_found / indeterminate` — never "compliant/non-compliant" — and every check carries its legal basis (Art. 19 nDSG, Art. 3 Abs. 1 lit. s UWG, Art. 45c FMG, Art. 16 nDSG) plus a link to the relevant cornerstone page. Per-IP rate limiting, SSRF guards (scheme allowlist, private-IP blocking, size/timeout caps), CORS locked to the site origin.
+- **Website quick-check as a stateless Worker + heuristic checks JSON.** The browser cannot fetch third-party sites (CORS), so a Cloudflare Worker fetches the submitted URL's HTML and headers, runs deterministic checks defined in `/data/scanner-checks.json` (same versioned-JSON pattern as the decision trees), and returns findings without storing anything. Findings are facts with statuses `found / not_found / indeterminate` — never "compliant/non-compliant" — and every check carries its legal basis (Art. 19 nDSG, Art. 3 Abs. 1 lit. s UWG, Art. 45c FMG, Art. 16 nDSG) plus a link to the relevant cornerstone page. Per-IP rate limiting, SSRF guards (scheme allowlist, private-IP blocking, size/timeout caps), one 8s wall-clock scan budget for DoH + all outbound fetches (hostname DoH memoized per request), HTML parse caps in `workers/scanner/src/html.ts` (512 KiB slice, 2000 anchors, one-shot lowercasing) against adversarial CPU burn, `Origin` header enforced against `SITE_ORIGIN` (CORS headers only for allowlisted origins — not a substitute for auth). DNS-rebinding between DoH check and `fetch` is an accepted residual risk on Workers (no loopback services to reach).
 
 ---
 
@@ -84,8 +84,8 @@ Everything static where possible. The only server-side components are the websit
 Required for a customer-facing launch (Art. 3 Abs. 1 lit. s UWG; Art. 19 DSG). The site’s own Quick-Check also flags missing impressum / privacy links.
 
 - **Shipped in T39:** `impressum` and `datenschutz` in DE/EN/FR/IT under [`content/`](content/). Linked from [`SiteFooter`](src/components/SiteFooter.tsx) on every locale page; Datenschutzerklärung also linked from the survey form (email/opt-in). Datenschutz describes unlinkable D1 storage (`responses` vs `report_signups`, no shared key), 24-month retention, and email deletion via the contact address.
-- Entity fields currently use `PLACEHOLDER_*` markers (name, address, contact email, etc.). **T40** replaces those with final details before public launch; then sync EN/FR/IT (translate pipeline or manual pass). Lawyer review of the filled text remains **T29**.
-- Conventions and placeholder list: [content/README.md](content/README.md#legal-pages-launch-requirement).
+- **Shipped in T40:** natural-person operator details (name, street, PLZ/Ort, email as `mailto:`) filled in all four locales; phone, Rechtsform, Vertretung, and Handelsregister/UID omitted as not applicable. Public contact for `report_signups` deletion: `i.laube@gmail.com`. Lawyer review of the filled text remains **T29**.
+- Conventions: [content/README.md](content/README.md#legal-pages).
 
 ### Vendor table (fast tier)
 - Start with 15-20 vendors relevant to Swiss SMEs (OpenAI, Anthropic, Google, Microsoft/Azure, Mistral, Aleph Alpha, AWS Bedrock, Swisscom AI offerings, local hosts like Infomaniak).
@@ -144,7 +144,7 @@ GitHub Actions, cron monthly. Steps:
 2. **Fetch + snapshot.** Download each source, store normalized text snapshot in the repo (`/snapshots/`). Diff against previous snapshot.
 3. **Classify.** LLM call per diff: cosmetic (typos, layout) vs. material (obligation, date, term, price changed). Prompt includes the dependent page's summary so classification is contextual.
 4. **Act.**
-   - No diff or cosmetic → bump `last_verified` on dependent pages, auto-commit.
+   - Unchanged (empty diff) → bump `last_verified` on dependent pages, auto-commit. Cosmetic diffs do **not** bump (avoids prompt-injection false freshness).
    - Material → open a GitHub issue with the diff, the affected pages, and a drafted content edit as a PR. You review and merge. Nothing material publishes without your eyes on it.
 5. **Vendor JSON refresh.** For vendor fields, the job attempts structured extraction (hosting regions, cert lists) from the fetched pages and updates `vendors.json` in the same PR-for-review pattern for material changes.
 6. **Dead link check** across all published pages, monthly, same run.
@@ -173,6 +173,7 @@ Expected steady-state cost to you: 30-60 minutes/month reviewing PRs, plus occas
 - Vendor table and decision tools are data-driven, so translation is a strings file per language, not duplicated content.
 - URL structure: `/de/...`, `/en/...`, `/fr/...`, `/it/...`, hreflang tags, DE default.
 - Content-page hreflang alternates are limited to locales that actually have the slug (`buildLanguageAlternates(path, localesWithSlug(slug))`). After T14, the five cornerstone slugs emit all four locales; never advertise 404 targets for missing translations.
+- Build-time [`src/app/sitemap.ts`](src/app/sitemap.ts) / [`src/app/robots.ts`](src/app/robots.ts) emit `sitemap.xml` and `robots.txt` into the static export (`NEXT_PUBLIC_SITE_URL` base; trailing slashes; all four locales × homes, content, tools, vendors, survey, benchmark, website-check). Sitemap hreflang mirrors page metadata; bare `/` is omitted (redirects to `/de/`). Root [`src/app/not-found.tsx`](src/app/not-found.tsx) emits `404.html` (pathname-based locale chrome via [`NotFoundView`](src/components/NotFoundView.tsx); Cloudflare Pages serves it for unknown paths with no extra config).
 - Lawyer review applies to the DE canonical text only; translated compliance pages carry a note that the reviewed version is the German one.
 
 ---
@@ -211,9 +212,9 @@ Task IDs are referenced in the "Depends on" column. Tasks with no dependency can
 |---|---|---|---|
 | T15 | Monthly job: fetch + snapshot tracked sources | T5 | Done |
 | T16 | Diff + LLM classification (cosmetic vs material) | T15 | Done |
-| T17 | PR/issue workflow for material changes; auto-bump `last_verified` otherwise; clear review badge on material merge; monthly job runs `npm run build` before push | T16, T3 | Done |
+| T17 | PR/issue workflow for material changes; auto-bump `last_verified` only on unchanged sources (not cosmetic); clear review badge on material merge; monthly job runs `npm run build` before push | T16, T3 | Done |
 | T18 | Vendor JSON field refresh within the same job | T16, T11 | Done |
-| T19 | Translation regeneration trigger on DE content merge (`check:content` + `npm run build` before bot commit) | T17, T13 | Done |
+| T19 | Translation regeneration trigger on DE content merge (`check:content` + `npm run build` before bot commit; dispatch/step values via `env:`; actions pinned by SHA) | T17, T13 | Done |
 | T20 | `last_verified` visible rendering on pages | T3, T1 | Done |
 | T21 | Dead link checker in monthly run | T15 | Done |
 | T38 | Snapshot fetch resilience for bot-blocked sources (e.g. OpenAI HTTP 403): bot/browser retry, HTTP 202 cookie retry, alternate URLs, JSON/PDF/HTML seedable snapshots, persistent failure brief/issues; seven failing sources from 2026-07-16 now have live recovery paths or seeded EUR-Lex baselines | T15, T18 | Done |
@@ -233,7 +234,7 @@ Task IDs are referenced in the "Depends on" column. Tasks with no dependency can
 | T24 | Survey form page (4 languages) | T22, T23, T2 | Done |
 | T25 | Aggregation job with n<5 suppression, aggregates written to repo as JSON | T23 | Done |
 | T26 | Benchmark page rendering from aggregates, client-side "your band vs median" comparison | T25, T1 | Done |
-| T27 | Survey launch via LinkedIn + Swiss SME/startup communities | T24, T23e, T23f, T40 |
+| T27 | Survey launch via LinkedIn + Swiss SME/startup communities | T24, T23e, T23f, T40, T41 | |
 | T28 | Benchmark report (ships when n reaches 30-50, not on a fixed date) | T25, T27 |
 
 ### Phase 5, website quick-check (independent; any time after T1/T2)
@@ -243,11 +244,12 @@ First server-side component of the project. The Worker is stateless (no storage 
 | ID | Task | Depends on | Status |
 |---|---|---|---|
 | T32 | Check definitions: `data/scanner-checks.json`, `src/scanner/schema.ts` (Zod), `scripts/check-scanner.ts` validator | T3 (pattern), T6 (cornerstone slugs to cite) | Done |
-| T33 | Worker scaffold `workers/scanner/`: `wrangler.jsonc`, POST `/scan` endpoint, CORS locked to `SITE_ORIGIN` (required; production `https://aicompliant.ch`), per-IP rate limiting (Workers Rate Limiting binding) | T1 | Done |
-| T34 | URL guards: scheme allowlist (http/https), private-IP/localhost blocking, response size cap (~2 MB), timeout (~8s) | T33 | Done |
-| T35 | Heuristic engine: fetch target HTML + headers, run all checks, HEAD-verify policy/impressum links, emit findings JSON | T32, T33, T34 | Done |
+| T33 | Worker scaffold `workers/scanner/`: `wrangler.jsonc`, POST `/scan` endpoint, `SITE_ORIGIN` required (production `https://aicompliant.ch`) with Origin enforcement on POST/OPTIONS + CORS reflect, per-IP rate limiting (Workers Rate Limiting binding) | T1 | Done |
+| T34 | URL guards: scheme allowlist (http/https), private-IP/localhost blocking, response size cap (~2 MB), shared 8s scan budget (DoH AbortSignal + per-request hostname memo; fetch/HEAD/probe share one deadline) | T33 | Done |
+| T35 | Heuristic engine: fetch target HTML + headers, run all checks, HEAD-verify policy/impressum links, emit findings JSON; HTML helpers cap slice/anchors and lowercase once (CPU hardening) | T32, T33, T34 | Done |
 | T36 | Frontend page `/[lang]/website-check/`: URL form, loading state, findings report grouped by severity with legal citations, disclaimer, static-scan caveat, reserved LLM slot. Client form must import `@/rules/schema` (not `@/rules`) so static export stays free of `node:fs` | T35, T2 | Done |
 | T37 | DE/EN/FR/IT strings for the tool; Worker deploy steps + `NEXT_PUBLIC_SCAN_API_URL` in DEPLOY.md | T36, T13 (translations only) | Done |
+| T37b | Deploy scanner Worker + set Pages `NEXT_PUBLIC_SCAN_API_URL`; Worker smoke-test | T37 | Done |
 
 Post-MVP, demand-driven (not built now):
 
@@ -260,19 +262,21 @@ Post-MVP, demand-driven (not built now):
 
 | ID | Task | Depends on | Status |
 |---|---|---|---|
-| T39 | Legal pages: `impressum` + `datenschutz` (DE + EN/FR/IT drafts), site footer links, survey privacy link — see [content/README.md](content/README.md#legal-pages-launch-requirement) | T3, T2, T24 (survey link) | Done |
-| T40 | Replace every `PLACEHOLDER_*` on Impressum / Datenschutzerklärung with final legal-entity details; sync EN/FR/IT; confirm footer + survey links still resolve | T39 | Not started — **blocks public launch** |
+| T39 | Legal pages: `impressum` + `datenschutz` (DE + EN/FR/IT drafts), site footer links, survey privacy link — see [content/README.md](content/README.md#legal-pages) | T3, T2, T24 (survey link) | Done |
+| T40 | Fill Impressum / Datenschutzerklärung with natural-person operator details; sync EN/FR/IT; confirm footer + survey links still resolve | T39 | Done |
+| T41 | Live browser smoke on `aicompliant.ch`: survey (real Turnstile) + website-check + footer legal links — see [DEPLOY.md](DEPLOY.md#live-ui-smoke-t41) | T23d, T37b, Pages deploy | Not started — **blocks survey / Quick-Check announce** |
+| T42 | Enable GitHub Actions “Allow GitHub Actions to create and approve pull requests” (monthly material `gh pr create`) — see [DEPLOY.md](DEPLOY.md#github-actions-repo-permission-t42) | T17 | Not started |
 | T29 | Lawyer review of DE compliance pages (incl. filled legal pages from T40), badge wiring | T6, T17 (badge lifecycle), T40 | Not started |
 | T30 | Quarterly: new decision tool or page, demand-driven | T8 | |
 | T31 | Yearly: survey re-run, benchmark refresh, lawyer re-review | T28, T29 | |
 
-**T40 details:** Fill `PLACEHOLDER_LEGAL_NAME`, `PLACEHOLDER_LEGAL_FORM`, `PLACEHOLDER_STREET`, `PLACEHOLDER_POSTAL_CITY`, `PLACEHOLDER_CONTACT_EMAIL`, `PLACEHOLDER_PHONE`, `PLACEHOLDER_REPRESENTATIVE`, `PLACEHOLDER_COMMERCIAL_REGISTER`, and `PLACEHOLDER_UID` in canonical DE (`content/de/impressum.md`, `content/de/datenschutz.md`), then update EN/FR/IT the same way (or re-run `npm run translate -- --slug=impressum --slug=datenschutz`). Do not announce the site or enable survey email collection in production until T40 is done. Checklist also in [DEPLOY.md](DEPLOY.md#legal-pages-t39t40).
+**T40 details (done):** Canonical DE and EN/FR/IT list the natural-person operator (name, street, PLZ/Ort, email as mailto — public deletion contact `i.laube@gmail.com`). Phone, Rechtsform, Vertretung, and Handelsregister/UID were omitted as not applicable. Do not announce the site or enable survey email collection in production until remaining pre-announce items (T23e/T23f, T41) are done. Notes: [DEPLOY.md](DEPLOY.md#legal-pages-t39t40).
 
 **T30 candidate (demand-driven):** a dedicated page on **KI-Kompetenz im Unternehmen** (AI literacy / staff competence). EU AI Act Art. 4 has been in force since 2 February 2025 and is unaffected by the Digital Omnibus; enforcement pressure will grow. The procurement checklist already carries a short competence callout (with the freely licensed AI Fluency 4D framework as one example). Promote to a full page only if search queries or inbound questions show real demand — do not invent a content cadence.
 
 ### Critical path
 
-T1 → T3 → T6 → T9/T10 → T14 (public launch of the differentiated core), with T15-T17 needed before the first `last_verified` claims are honest. Translation (T7, T13) sits on the critical path for a four-language launch; if timeline slips, launch DE-only and let T14 follow, since DE is canonical and the pipeline regenerates the rest. **T39/T40 (Impressum + Datenschutzerklärung with real entity details)** remain launch blockers for the site. Survey and scanner Workers are live (**T23a–T23d** + scanner deploy); Pages has both `NEXT_PUBLIC_*_API_URL` values. Before announcing the survey, finish **T23e/T23f** (rotate Turnstile secret + fine-grained `GITHUB_TOKEN`) and deploy current Pages so `/[lang]/survey/` and `/[lang]/website-check/` are live. Phase 5 code (T32–T37) is done; UI routes need that Pages deploy.
+T1 → T3 → T6 → T9/T10 → T14 (public launch of the differentiated core), with T15-T17 needed before the first `last_verified` claims are honest. Translation (T7, T13) sits on the critical path for a four-language launch; if timeline slips, launch DE-only and let T14 follow, since DE is canonical and the pipeline regenerates the rest. **T39/T40** legal pages are filled. Cloudflare side is live (survey + scanner Workers, Pages env, Git `main` → `aicompliant.ch`). Before announcing survey / Quick-Check: **T23e/T23f** (secret hygiene) and **T41** (browser smoke). Enable **T42** before relying on the monthly material-change PR path.
 
 ### Ongoing
 
@@ -291,13 +295,17 @@ T1 → T3 → T6 → T9/T10 → T14 (public launch of the differentiated core), 
 | Decision tools read as legal advice | Outcomes always phrased as "likely/unlikely, verify with counsel", every outcome cites sources, disclaimer on page |
 | Website quick-check read as a compliance verdict | Named "Quick-Check", statuses limited to found/not_found/indeterminate, findings phrased as facts with legal citations, disclaimer on every result |
 | Quick-check misses dynamically injected trackers/banners (static fetch) | Honesty flag: when GTM/SPA shell detected, report states the scan may be incomplete; Browser Rendering listed as post-MVP upgrade |
-| Scan endpoint abused (SSRF, scraping proxy, volume) | Scheme allowlist, private-IP blocking, size/timeout caps, per-IP rate limiting, CORS locked to site origin; Turnstile if abuse persists |
+| Scan endpoint abused (SSRF, scraping proxy, volume, CPU) | Scheme allowlist, private-IP blocking, size/timeout caps, shared 8s scan budget (DoH AbortSignal + per-request hostname memo; fetch/HEAD/probe share one deadline), HTML parse caps (512 KiB / 2000 anchors / one-shot lowercasing in `html.ts`), per-IP rate limiting, Origin header enforced against `SITE_ORIGIN` (browser CSRF / casual curl; forgeable from non-browsers), Turnstile if abuse persists. DNS rebinding after DoH check: accepted residual risk — [DEPLOY.md](DEPLOY.md#accepted-residual-risks-workers) |
 | Survey n too small to publish | Publish nothing below n=5 per cell; frame first report as "pilot benchmark"; recruitment via communities where you already have presence |
-| LLM diff classifier misses a material change | Sources are official pages that change rarely; quarterly manual spot-check of the highest-stakes pages; classifier errs toward "material" (false positives cost you a PR review, false negatives cost credibility) |
+| LLM diff classifier misses a material change / prompt injection coerces "cosmetic" | Classifier prompt biases toward material and ignores instructions inside the untrusted diff; Act bumps `last_verified` / `last_checked` only on byte-identical `unchanged` sources — never on non-empty (cosmetic) diffs; quarterly manual spot-check of highest-stakes pages |
 | Time creep beyond the "one-shot + automation" intent | Hard scope: no blog, no newsletter cadence commitment, no social feed. New content only quarterly and only demand-driven |
 | Broken static export reaches Pages via automation | `ci.yml` on PR/`main`; monthly + translate workflows run `npm run build` before push; see [DEPLOY.md](DEPLOY.md#continuous-integration) |
-| Shipping with Impressum/Datenschutz `PLACEHOLDER_*` fields | T39 drafts the pages; **T40** fills real entity details before public launch; T29 reviews the filled DE text |
+| Translate workflow shell injection via `run:` interpolation | `workflow_dispatch` inputs and step outputs pass through `env:` in [translate-on-de-merge.yml](.github/workflows/translate-on-de-merge.yml); `actions/checkout` + `actions/setup-node` pinned to commit SHAs |
+| LLM translation injects raw HTML into auto-committed content | Translate write path rejects raw HTML outside code blocks; [`src/lib/markdown.ts`](src/lib/markdown.ts) sanitizes marked output with `sanitize-html` before `dangerouslySetInnerHTML` |
+| Incomplete Impressum / Datenschutz operator details | Mitigated by **T40** (natural-person operator filled in all locales); **T29** still reviews the filled DE text |
 | Survey Worker secrets provisioned in an operator/agent session | **T23e** rotate Turnstile secret; **T23f** replace `GITHUB_TOKEN` with a fine-grained PAT before announcing the survey |
+| Live UI never exercised in a real browser after deploy | **T41** browser smoke on survey + website-check |
+| Monthly material review PR fails with 403 | **T42** enable Actions “create and approve pull requests” |
 | Translation drift across DE/EN/FR/IT | DE is canonical; EN/FR/IT regenerated on DE change by the build pipeline, flagged for review; FR/IT legal terms constrained by Fedlex glossary |
 | FR/IT legal terminology errors undermine credibility in Romandie/Ticino | Term mapping against official Fedlex multilingual law texts, not free translation; human pass prioritized DE > FR > IT > EN |
 

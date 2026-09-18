@@ -2,7 +2,7 @@
 
 Multilingual (DE / EN / FR / IT) static site with Swiss-specific AI deployment guidance for local companies. Built with Next.js static export, hosted on Cloudflare Pages.
 
-**Production:** [https://aicompliant.ch](https://aicompliant.ch) (also `www`). Canonical/hreflang base URL comes from `NEXT_PUBLIC_SITE_URL` (default in [`src/lib/site.ts`](src/lib/site.ts)). Worker CORS uses `SITE_ORIGIN` (required; default in wrangler vars is the same origin).
+**Production:** [https://aicompliant.ch](https://aicompliant.ch) (also `www`). Canonical/hreflang/sitemap base URL comes from `NEXT_PUBLIC_SITE_URL` (default in [`src/lib/site.ts`](src/lib/site.ts)). Static export also emits [`/sitemap.xml`](src/app/sitemap.ts) and [`/robots.txt`](src/app/robots.ts) (all four locales × homes, content slugs, tools, vendors, survey, benchmark, website-check; bare `/` omitted), plus [`404.html`](src/app/not-found.tsx) for unknown paths (Cloudflare Pages; locale from URL path, default `de`). Workers require `SITE_ORIGIN` (default in wrangler vars is the same origin) and reject POST/OPTIONS whose `Origin` does not match it (or the www ↔ apex sibling).
 
 German (`de`) is the canonical content language. See [swiss_ai_resource_implementation_plan.md](swiss_ai_resource_implementation_plan.md) for the full architecture and task plan.
 
@@ -40,11 +40,14 @@ German (`de`) is the canonical content language. See [swiss_ai_resource_implemen
 | T24 | Survey form page (4 languages) | Done |
 | T25 | Aggregation job with n<5 suppression, aggregates written to repo as JSON | Done |
 | T32 | Scanner check definitions (`scanner-checks.json` + Zod) | Done |
-| T33–T35 | Scanner Worker: `/scan`, SSRF guards, heuristic engine | Done |
+| T33–T35 | Scanner Worker: `/scan`, SSRF guards, heuristic engine + HTML CPU caps | Done |
 | T36 | Website Quick-Check page `/[lang]/website-check/` | Done |
 | T37 | Quick-Check i18n + scanner deploy docs (`NEXT_PUBLIC_SCAN_API_URL`) | Done |
+| T37b | Scanner Worker prod deploy + Pages `NEXT_PUBLIC_SCAN_API_URL` | Done |
 | T39 | Impressum + Datenschutzerklärung pages, footer + survey links | Done |
-| T40 | Fill legal `PLACEHOLDER_*` entity details; sync EN/FR/IT | Not started — blocks launch |
+| T40 | Fill Impressum/Datenschutz operator details (natural person); sync EN/FR/IT | Done |
+| T41 | Live browser smoke (survey + website-check on aicompliant.ch) | Not started — blocks announce |
+| T42 | GitHub Actions: allow Actions to create/approve PRs | Not started |
 | T29 | Lawyer review of DE pages (incl. legal pages after T40) | Not started |
 
 ## Local development
@@ -93,8 +96,8 @@ PR and `main` CI ([`.github/workflows/ci.yml`](.github/workflows/ci.yml)): typec
 ```
 content/{de,en,fr,it}/   # Markdown pages (DE canonical)
 data/                    # vendors.json, sources.json, glossary.json, rules/, survey-*, scanner-checks.json
-src/app/                 # App Router (locale, content, tools, survey, website-check, …)
-src/components/          # Shared UI (SiteHeader, DecisionTree, VendorTable, WebsiteCheckForm, …)
+src/app/                 # App Router (locale routes + sitemap.ts / robots.ts / not-found.tsx → out/)
+src/components/          # Shared UI (SiteHeader, NotFoundView, DecisionTree, VendorTable, WebsiteCheckForm, …)
 src/content/             # Frontmatter Zod schema + loader
 src/vendors/             # Vendor Zod schema + loader
 src/sources/             # Source registry Zod schema + loader
@@ -110,7 +113,7 @@ src/classify/            # LLM diff classification (T16)
 src/maintain/            # last_verified bump + material brief (T17)
 src/links/               # Published URL dead-link check (T21)
 src/i18n/                # Locale config + UI string files
-src/lib/markdown.ts      # Markdown → HTML (marked)
+src/lib/markdown.ts      # Markdown → HTML (marked + sanitize-html)
 snapshots/               # Normalized source text + meta (monthly GHA)
 ```
 
@@ -122,7 +125,7 @@ Compliance pages are Markdown with YAML frontmatter (`last_verified`, `volatilit
 - Schema + loader: [`src/content/`](src/content/)
 - Fixture used by `check:content`: [`content/de/_fixture-schema.md`](content/de/_fixture-schema.md)
 
-Same filename slug across locales (e.g. `ndsg-ai-basics.md`) so hreflang pairing stays simple. Content routes: `/[lang]/[slug]/` (T6). Internal fixtures use a `_` prefix (e.g. `_fixture-schema.md`) and are not published.
+Same filename slug across locales (e.g. `ndsg-ai-basics.md`) so hreflang pairing stays simple. Content routes: `/[lang]/[slug]/` (T6). Internal fixtures use a `_` prefix (e.g. `_fixture-schema.md`) and are not published (excluded from routes and from `sitemap.xml`).
 
 ### Published cornerstone pages (T6 + T14)
 
@@ -174,11 +177,11 @@ Current registry covers the DE cornerstone pages (EDÖB, Fedlex, EUR-Lex AI Act,
 
 Flags for `snapshot:sources`: `--dry-run` (no writes), `--id=<sourceId>` (single source), `--seed-file=<path>` (T38: seed from a local HTML/PDF/JSON; requires `--id`). Per-source failures keep the previous `.txt`, record `ok: false` + `consecutive_failures` in meta, and list under `_run.json` `failures[]` — the run does not abort. Fetch tries the bot User-Agent first; HTTP 202 responses get short cookie-forwarding soft-challenge retries; then a browser-profile retry runs on 403/202/429/timeout; then each `fallback_urls` entry is tried.
 
-**T16 — classify diffs:** after a snapshot run with changes, `npm run classify:snapshots` reads `_run.json` `changed[]`, loads each `_diffs/{id}.patch`, and calls Anthropic with dependent DE page context (`dependent_pages` in `sources.json`). Output: `snapshots/_classify.json` (`cosmetic` / `material`; new snapshots → `baseline`). Flags: `--dry-run`, `--id=<sourceId>`. Optional `CLASSIFY_MODEL` (default same Sonnet family as translate).
+**T16 — classify diffs:** after a snapshot run with changes, `npm run classify:snapshots` reads `_run.json` `changed[]`, loads each `_diffs/{id}.patch`, and calls Anthropic with dependent DE page context (`dependent_pages` in `sources.json`). Output: `snapshots/_classify.json` (`cosmetic` / `material`; new snapshots → `baseline`). The prompt biases toward material and treats the diff as untrusted evidence (ignore embedded instructions). Flags: `--dry-run`, `--id=<sourceId>`. Optional `CLASSIFY_MODEL` (default same Sonnet family as translate).
 
-**T17 — act:** `npm run maintain:act -- --write` reads `_run.json` + `_classify.json`. Unchanged (ok) and cosmetic sources bump `last_verified` on all locales for their `dependent_pages` (committed to `main`). Material sources open a GitHub issue + review PR that clears DE lawyer review fields and ships an editorial brief — no auto prose rewrite, no auto-bump. If a slug is both bump-eligible and material, material wins. Fetch failures are listed in the material brief; persistent failures (≥2 consecutive) also write `snapshots/_act/fetch-failures.md`.
+**T17 — act:** `npm run maintain:act -- --write` reads `_run.json` + `_classify.json`. Only byte-identical successful fetches (`unchanged`) bump `last_verified` on all locales for their `dependent_pages` (committed to `main`). Cosmetic classifications do **not** bump — a non-empty diff must not mint a freshness claim (source-page prompt injection could coerce "cosmetic"). Material sources open a GitHub issue + review PR that clears DE lawyer review fields and ships an editorial brief — no auto prose rewrite, no auto-bump. If a slug is both bump-eligible and material, material wins. Fetch failures are listed in the material brief; persistent failures (≥2 consecutive) also write `snapshots/_act/fetch-failures.md`.
 
-**T18 — vendor refresh:** the same `maintain:act` step groups sources by `vendor_id`. Unchanged/cosmetic vendor sources bump `last_checked` on `data/vendors.json` (committed to `main`). Material vendor sources LLM-extract claim-field patches (hosting, DPA, certs, etc.) into `vendors.json` for the same review issue/PR — evidence-only, identity fields never auto-changed. Material wins over bump per vendor. Optional `VENDOR_EXTRACT_MODEL` (falls back to `CLASSIFY_MODEL` / Sonnet).
+**T18 — vendor refresh:** the same `maintain:act` step groups sources by `vendor_id`. Only `unchanged` vendor sources bump `last_checked` on `data/vendors.json` (committed to `main`); cosmetic diffs do not. Material vendor sources LLM-extract claim-field patches (hosting, DPA, certs, etc.) into `vendors.json` for the same review issue/PR — evidence-only, identity fields never auto-changed. Material wins over bump per vendor. Optional `VENDOR_EXTRACT_MODEL` (falls back to `CLASSIFY_MODEL` / Sonnet).
 
 **T21 — dead links:** `npm run check:links -- --write` inventories unique `https://` URLs from publishable content, `vendors.json`, and decision rules; reuses T15 `_run.json` reachability when the same URL was already fetched; otherwise probes (HEAD, GET fallback). Writes `snapshots/_links.json` + `snapshots/_links/brief.md`. Broken links open a soft-fail GitHub issue — no `last_verified` bump, no review-badge clear, no PR.
 
@@ -195,7 +198,7 @@ The first T38 hardening pass recovered the seven failing sources from the 2026-0
 | `dpf-participant-list` | Official SPA list retained; FTC DPF overview fallback used for snapshot text |
 | `eur-lex-ai-act-en` / `eur-lex-ai-act-de` | EUR-Lex still returns HTTP 202 to CI-style fetches; seeded snapshots are committed (`seeded: true`) until live fetch succeeds |
 
-Dates protect the published claims: content `last_verified` and vendor `last_checked` are bumped only from successful unchanged/cosmetic sources. A failed source stays `kept`, preserves the previous `.txt`, and records `last_ok_at` / `consecutive_failures`; it does **not** make the site look freshly verified.
+Dates protect the published claims: content `last_verified` and vendor `last_checked` are bumped only from successful **unchanged** sources (empty diff). Cosmetic or material diffs never auto-bump freshness. A failed source stays `kept`, preserves the previous `.txt`, and records `last_ok_at` / `consecutive_failures`; it does **not** make the site look freshly verified.
 
 Monthly cron: [`.github/workflows/monthly-sources.yml`](.github/workflows/monthly-sources.yml) (1st of month 06:00 UTC + `workflow_dispatch`); after validators it runs `npm run build`, then snapshot/classify artifacts, link report, `last_verified` bumps, and vendor `last_checked` bumps land on `main`; broken citation links and persistent fetch failures open issues; material content/vendor changes open a `review/material-YYYY-MM-DD` PR. Enable **Allow GitHub Actions to create and approve pull requests** in the repo Actions settings or that PR step 403s.
 
@@ -213,7 +216,7 @@ Fedlex / EUR-Lex DE↔FR↔IT legal-term map lives in [`data/glossary.json`](dat
 
 Interactive decision trees are JSON files under [`data/rules/`](data/rules/) (one file per tool). Schema and loader: [`src/rules/`](src/rules/). Field reference: [data/README.md](data/README.md). Generic client renderer: [`src/components/DecisionTree.tsx`](src/components/DecisionTree.tsx).
 
-Routes: `/[lang]/tools/` (index) and `/[lang]/tools/[toolId]/`. Tool ids are shared across all locales (hreflang lists all four). Node copy uses locale maps with **de + en + fr + it** required on launch trees (T14); UI chrome lives in `src/i18n/messages/`.
+Routes: `/[lang]/tools/` (index) and `/[lang]/tools/[toolId]/`. Tool ids are shared across all locales (hreflang lists all four) and are included in `sitemap.xml` via `listRuleIds()`. Node copy uses locale maps with **de + en + fr + it** required on launch trees (T14); UI chrome lives in `src/i18n/messages/`.
 
 Current trees: `us-hosted-llm-ndsg` (T9), `eu-ai-act-applicability` (T10).
 
@@ -221,20 +224,22 @@ Current trees: `us-hosted-llm-ndsg` (T9), `eu-ai-act-applicability` (T10).
 
 Adoption questionnaire: [`data/survey-questions.json`](data/survey-questions.json) (**version 2**, 12 questions, full DE/EN/FR/IT). Schema and loader: [`src/survey/`](src/survey/). Intake validation: `validateIntake` / `validateAnswers` in [`src/survey/answers.ts`](src/survey/answers.ts). Field reference: [data/README.md](data/README.md#survey-questions-survey-questionsjson). Validate with `npm run check:survey` and `npm run check:survey-answers`.
 
-Instrument covers company size, sector, language region, AI maturity/tools/use cases, CHF spend, hosting, personal data in AI, EU market exposure, blockers, and vendor decision factors. **T23** Worker intake: [`workers/survey/`](workers/survey/) (`POST /submit`, D1, Turnstile, honeypot; CORS via required `SITE_ORIGIN`) — production Worker `https://swiss-ai-survey.i-laube.workers.dev`; see [DEPLOY.md](DEPLOY.md#survey-worker-t23). Optional emails land in `report_signups` (own id, no FK to `responses`) so they are unlinkable from answers; retention purge + deletion path: [DEPLOY.md](DEPLOY.md#email-retention-and-deletion). **T24** form UI: [`/[lang]/survey/`](src/app/[lang]/survey/page.tsx) (needs a Pages deploy of current `main` to appear on `aicompliant.ch`). **T25** aggregation: a weekly Worker cron purges rows older than 24 months, then computes n&lt;5-suppressed aggregates from `responses` only (never `report_signups`) and commits [`data/survey-aggregates.json`](data/survey-aggregates.json) via the GitHub Contents API for T26; run locally with `npm run aggregate:survey -- --local`. See [DEPLOY.md](DEPLOY.md#survey-aggregation-t25). Before public survey launch: **T23e** (rotate Turnstile secret) and **T23f** (fine-grained `GITHUB_TOKEN`) — [DEPLOY.md](DEPLOY.md#pre-launch-secret-hygiene-t23e--t23f).
+Instrument covers company size, sector, language region, AI maturity/tools/use cases, CHF spend, hosting, personal data in AI, EU market exposure, blockers, and vendor decision factors. **T23** Worker intake: [`workers/survey/`](workers/survey/) (`POST /submit`, D1, Turnstile, honeypot; `Origin` must match required `SITE_ORIGIN` or its www sibling) — production Worker `https://swiss-ai-survey.i-laube.workers.dev`; see [DEPLOY.md](DEPLOY.md#survey-worker-t23). Optional emails land in `report_signups` (own id, no FK to `responses`) so they are unlinkable from answers; retention purge + deletion path (public contact on Datenschutz): [DEPLOY.md](DEPLOY.md#email-retention-and-deletion). **T24** form UI: [`/[lang]/survey/`](src/app/[lang]/survey/page.tsx) — live at [aicompliant.ch/de/survey/](https://aicompliant.ch/de/survey/). **T25** aggregation: a weekly Worker cron purges rows older than 24 months, then computes n&lt;5-suppressed aggregates from `responses` only (never `report_signups`) and commits [`data/survey-aggregates.json`](data/survey-aggregates.json) via the GitHub Contents API for T26; run locally with `npm run aggregate:survey -- --local`. See [DEPLOY.md](DEPLOY.md#survey-aggregation-t25). Before public survey launch: **T23e** / **T23f** (secret hygiene) and **T41** (browser smoke) — [DEPLOY.md](DEPLOY.md#pre-launch-secret-hygiene-t23e--t23f).
 
 ## Website Quick-Check (T32–T37)
 
 Heuristic first assessment of a public URL against Swiss-facing signals (HTTPS, privacy/impressum links, cookie tooling, trackers, security headers). Check definitions: [`data/scanner-checks.json`](data/scanner-checks.json). Schema/loader: [`src/scanner/`](src/scanner/). Validate with `npm run check:scanner`. Field reference: [data/README.md](data/README.md#scanner-checks-scanner-checksjson).
 
-**Worker (T33–T35):** [`workers/scanner/`](workers/scanner/) — production `https://swiss-ai-scanner.i-laube.workers.dev` (`POST /scan`), SSRF guards, per-IP rate limit, CORS locked to `SITE_ORIGIN` (missing/empty → HTTP 500). **UI (T36):** [`/[lang]/website-check/`](src/app/[lang]/website-check/page.tsx) posts to `{NEXT_PUBLIC_SCAN_API_URL}/scan`, groups findings by severity, shows legal citations, static-scan caveat, and disclaimer (never a compliance verdict). UI chrome is DE/EN/FR/IT in `src/i18n/messages/`; finding copy comes from the Worker. The client form imports `pickLocalized` from `@/rules/schema` (not the `@/rules` barrel, which loads `node:fs` and breaks static export). Local + deploy: [DEPLOY.md](DEPLOY.md#scanner-worker-t33t37). Pages has `NEXT_PUBLIC_SCAN_API_URL` set; the live form appears after a Pages deploy of current `main`.
+**Worker (T33–T35):** [`workers/scanner/`](workers/scanner/) — production `https://swiss-ai-scanner.i-laube.workers.dev` (`POST /scan`), SSRF guards, per-IP rate limit, `Origin` enforced against `SITE_ORIGIN` (missing/empty env → HTTP 500; missing/wrong Origin → 403). Link detection in [`workers/scanner/src/html.ts`](workers/scanner/src/html.ts) caps the HTML slice (512 KiB), extracted anchors (2000), and lowercases text/href once before pattern matching so adversarial pages cannot burn Worker CPU. Outbound work shares one 8s wall-clock budget ([`scan-budget.ts`](workers/scanner/src/scan-budget.ts)): DoH lookups use that `AbortSignal`, hostname resolutions are memoized per request, and `fetchTarget` / `headTarget` / `probeHttpRedirectToHttps` no longer each start a fresh 8s timer. DNS-rebinding residual risk is accepted — [DEPLOY.md](DEPLOY.md#accepted-residual-risks-workers). **UI (T36):** [`/[lang]/website-check/`](src/app/[lang]/website-check/page.tsx) posts to `{NEXT_PUBLIC_SCAN_API_URL}/scan`, groups findings by severity, shows legal citations, static-scan caveat, and disclaimer (never a compliance verdict). UI chrome is DE/EN/FR/IT in `src/i18n/messages/`; finding copy comes from the Worker. The client form imports `pickLocalized` from `@/rules/schema` (not the `@/rules` barrel, which loads `node:fs` and breaks static export). Live: [aicompliant.ch/de/website-check/](https://aicompliant.ch/de/website-check/). Local + deploy: [DEPLOY.md](DEPLOY.md#scanner-worker-t33t37). Browser confirmation is **T41**.
 
 ## Legal pages (T39 / T40)
 
-Impressum (`/[lang]/impressum/`) and Datenschutzerklärung (`/[lang]/datenschutz/`) are Markdown content pages in all four locales. Footer links: [`SiteFooter`](src/components/SiteFooter.tsx). Survey form links Datenschutzerklärung next to the optional email field. Datenschutz documents unlinkable D1 storage (`responses` vs `report_signups`), retention, and deletion. Conventions and `PLACEHOLDER_*` list: [content/README.md](content/README.md#legal-pages-launch-requirement).
+Impressum (`/[lang]/impressum/`) and Datenschutzerklärung (`/[lang]/datenschutz/`) are Markdown content pages in all four locales. Footer links: [`SiteFooter`](src/components/SiteFooter.tsx). Survey form links Datenschutzerklärung next to the optional email field. Datenschutz documents unlinkable D1 storage (`responses` vs `report_signups`), retention, and deletion via the public contact email. Conventions: [content/README.md](content/README.md#legal-pages).
 
-**T39** (done): draft pages + UI links. **T40** (not started, launch blocker): replace placeholders with final legal-entity details and sync translations. Checklist: [DEPLOY.md](DEPLOY.md#legal-pages-t39t40). Lawyer review of the filled DE text is T29.
+**T39** (done): draft pages + UI links. **T40** (done): natural-person operator (name, street, PLZ/Ort, email) in DE/EN/FR/IT; phone, Rechtsform, Vertretung, and Handelsregister/UID omitted as not applicable. Notes: [DEPLOY.md](DEPLOY.md#legal-pages-t39t40). Lawyer review of the filled DE text is T29.
 
 ## Deploy
 
-Live host, Pages/Worker env vars, and connect steps: [DEPLOY.md](DEPLOY.md) (see especially [Production host](DEPLOY.md#production-host)).
+Live host, Pages/Worker env vars, and connect steps: [DEPLOY.md](DEPLOY.md) (see especially [Production host](DEPLOY.md#production-host) and [Production status (site)](DEPLOY.md#production-status-site)).
+
+**Outstanding before announce:** T23e/T23f (secret hygiene), T41 (browser smoke), T42 (Actions PR permission).

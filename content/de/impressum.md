@@ -1,7 +1,7 @@
 ---
 title: "Impressum"
 description: "Anbieterkennzeichnung und Kontaktangaben für aicompliant.ch gemäss Art. 3 Abs. 1 lit. s UWG."
-last_verified: "2026-08-04"
+last_verified: "2026-09-18"
 volatility: "stable"
 translation_status: "canonical"
 reviewed_by: null
@@ -12,32 +12,17 @@ sources:
     url: "https://www.fedlex.admin.ch/eli/cc/1988/223_223_223/de#art_3"
 ---
 
-Angaben gemäss **Art. 3 Abs. 1 lit. s UWG** (Anbieterkennzeichnung im elektronischen Geschäftsverkehr). Felder mit `PLACEHOLDER` sind vor dem produktiven Betrieb durch die endgültigen Angaben zu ersetzen.
+Angaben gemäss **Art. 3 Abs. 1 lit. s UWG** (Anbieterkennzeichnung im elektronischen Geschäftsverkehr).
 
 ## Anbieter
 
 | | |
 |---|---|
-| **Name / Firma** | PLACEHOLDER_LEGAL_NAME |
-| **Rechtsform** | PLACEHOLDER_LEGAL_FORM |
-| **Strasse / Nr.** | PLACEHOLDER_STREET |
-| **PLZ / Ort** | PLACEHOLDER_POSTAL_CITY |
+| **Name** | Ivan Laube |
+| **Strasse / Nr.** | Vorhaldenstrasse 10 |
+| **PLZ / Ort** | 8049 Zürich |
 | **Land** | Schweiz |
-| **E-Mail** | PLACEHOLDER_CONTACT_EMAIL |
-| **Telefon** | PLACEHOLDER_PHONE (optional) |
-
-## Vertretung
-
-**Vertretungsberechtigte Person(en):** PLACEHOLDER_REPRESENTATIVE
-
-## Handelsregister / UID
-
-Falls anwendbar:
-
-| | |
-|---|---|
-| **Handelsregisteramt** | PLACEHOLDER_COMMERCIAL_REGISTER |
-| **UID / CHE-Nummer** | PLACEHOLDER_UID |
+| **E-Mail** | [i.laube@gmail.com](mailto:i.laube@gmail.com) |
 
 ## Website
 

@@ -6,12 +6,14 @@
 |---|---|
 | Live site | [https://aicompliant.ch](https://aicompliant.ch) (`www` CNAME → same Pages project) |
 | Pages project hostname | `swiss-ai-resource.pages.dev` (still valid; custom domain is canonical) |
-| Site URL (build) | `NEXT_PUBLIC_SITE_URL=https://aicompliant.ch` — Pages env; code default in [`src/lib/site.ts`](src/lib/site.ts) |
-| Worker CORS | `SITE_ORIGIN=https://aicompliant.ch` in both Worker `wrangler.jsonc` `vars` |
+| Site URL (build) | `NEXT_PUBLIC_SITE_URL=https://aicompliant.ch` — Pages env; code default in [`src/lib/site.ts`](src/lib/site.ts); used for canonical tags, hreflang, `sitemap.xml`, and `robots.txt` |
+| Worker origin allowlist | `SITE_ORIGIN=https://aicompliant.ch` in both Worker `wrangler.jsonc` `vars` |
 
 DNS for `aicompliant.ch` is on Cloudflare. Apex and `www` are proxied CNAMEs to `swiss-ai-resource.pages.dev`.
 
 Both Workers **require** `SITE_ORIGIN`. There is no `*.pages.dev` fallback; an unset/empty value returns HTTP 500 with `{ "error": "SITE_ORIGIN is not configured" }`. For local UI testing, override with `--var SITE_ORIGIN:http://localhost:3000`.
+
+**Origin enforcement (not CORS-as-ACL):** `POST` and `OPTIONS` on `/submit` and `/scan` require an `Origin` header that matches `SITE_ORIGIN` exactly, or the www ↔ apex sibling of that host (same scheme/port). Missing or foreign Origin → **403** with no `Access-Control-Allow-*` headers. Matching requests get CORS headers reflecting the **request** Origin. Non-browser clients can forge `Origin`; volume abuse is limited by per-IP rate limiting (survey also has Turnstile). See [Accepted residual risks](#accepted-residual-risks-workers).
 
 ## Build settings
 
@@ -27,12 +29,23 @@ Both Workers **require** `SITE_ORIGIN`. There is no `*.pages.dev` fallback; an u
 
 | Name | Value / notes |
 |---|---|
-| `NEXT_PUBLIC_SITE_URL` | `https://aicompliant.ch` (canonical + hreflang base) |
+| `NEXT_PUBLIC_SITE_URL` | `https://aicompliant.ch` (canonical + hreflang + sitemap/robots base) |
 | `NEXT_PUBLIC_SURVEY_API_URL` | `https://swiss-ai-survey.i-laube.workers.dev` (no trailing slash; set at T23c) |
 | `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | Production Turnstile site key (widget for `aicompliant.ch` / `www` / localhost; set at T23b — public by design) |
 | `NEXT_PUBLIC_SCAN_API_URL` | `https://swiss-ai-scanner.i-laube.workers.dev` (no trailing slash; set with scanner deploy) |
 
-These `NEXT_PUBLIC_*` values are baked in at **Pages build time**. After changing them, trigger a new production deployment of current `main` (Git push or Dashboard → Retry deployment). As of the survey + scanner Worker deploys, all four public env vars above are set on the Pages project; `/[lang]/survey/` and `/[lang]/website-check/` go live once that build includes the T24/T36 forms.
+These `NEXT_PUBLIC_*` values are baked in at **Pages build time**. After changing them, push to `main` (or Dashboard → Retry deployment) so the next production build picks them up.
+
+### Production status (site)
+
+| Item | Value |
+|---|---|
+| Git | `main` on [`Ivan-Laube/swiss-ai-resource`](https://github.com/Ivan-Laube/swiss-ai-resource) (site ship commit `29290e7`, 2026-08-04) |
+| Pages project | `swiss-ai-resource` — Git-connected; production branch `main` |
+| Live host | [https://aicompliant.ch](https://aicompliant.ch) (`/de/survey/`, `/de/website-check/`, legal pages → **200**) |
+| Workers | Survey + scanner deployed; see [Survey Worker](#survey-worker-t23) and [Scanner Worker](#scanner-worker-t33t37) |
+
+Direct upload (`npx wrangler pages deploy out --project-name=swiss-ai-resource --commit-dirty=true`) can publish a local `out/` without waiting for Git; prefer **push to `main`** so GitHub and Pages stay aligned. The Git build for `29290e7` completed successfully after the initial direct upload.
 
 ## Manual setup (~10 minutes)
 
@@ -49,7 +62,7 @@ These `NEXT_PUBLIC_*` values are baked in at **Pages build time**. After changin
 4. Select the repository and apply the build settings above.
 5. Deploy. The root path redirects to `/de/` via `public/_redirects`.
 6. Add custom domain under the Pages project (**Custom domains** → `aicompliant.ch` and optionally `www`). Point the zone’s DNS at Cloudflare if needed, then attach the domain so Pages creates the proxied CNAMEs.
-7. Set Pages env `NEXT_PUBLIC_SITE_URL=https://aicompliant.ch` and trigger a rebuild so canonical/hreflang tags use the custom host.
+7. Set Pages env `NEXT_PUBLIC_SITE_URL=https://aicompliant.ch` and trigger a rebuild so canonical/hreflang tags and `sitemap.xml` / `robots.txt` use the custom host.
 
 ## Local verification
 
@@ -61,21 +74,23 @@ npx tsc --noEmit
 npm run build
 ```
 
-`check:content` validates Markdown frontmatter under `content/{locale}/` (see [content/README.md](content/README.md)). A successful build writes static files to `out/`.
+`check:content` validates Markdown frontmatter under `content/{locale}/` (see [content/README.md](content/README.md)). A successful build writes static files to `out/`, including `out/sitemap.xml` and `out/robots.txt` from [`src/app/sitemap.ts`](src/app/sitemap.ts) / [`src/app/robots.ts`](src/app/robots.ts) (`export const dynamic = "force-static"` required for `output: "export"`), plus `out/404.html` from [`src/app/not-found.tsx`](src/app/not-found.tsx). Sitemap URLs use trailing slashes and enumerate locale homes, publishable content slugs, tools (index + `listRuleIds()`), vendors, survey, benchmark, and website-check — not the redirect-only `/`. Cloudflare Pages serves `404.html` for unknown paths with no extra config; the page picks locale chrome from the URL path (`de` / `en` / `fr` / `it`, else default `de`). After deploy, spot-check [https://aicompliant.ch/sitemap.xml](https://aicompliant.ch/sitemap.xml), [https://aicompliant.ch/robots.txt](https://aicompliant.ch/robots.txt), and a missing path (e.g. `/de/does-not-exist/`) for the custom 404.
 
 ## Legal pages (T39/T40)
 
-Impressum and Datenschutzerklärung are required before a customer-facing launch (Art. 3 Abs. 1 lit. s UWG; Art. 19 DSG). Routes: `/[lang]/impressum/`, `/[lang]/datenschutz/`. Footer + survey links ship with **T39**.
+Impressum and Datenschutzerklärung are required for a customer-facing site (Art. 3 Abs. 1 lit. s UWG; Art. 19 DSG). Routes: `/[lang]/impressum/`, `/[lang]/datenschutz/`. Footer + survey links ship with **T39**. Conventions: [content/README.md](content/README.md#legal-pages).
 
-### Production checklist (T40) — fill before announcing the site
+**T40 (done):** natural-person operator filled in DE/EN/FR/IT — name, street, PLZ/Ort, contact email (`mailto:`). Phone, Rechtsform, Vertretung, and Handelsregister/UID omitted as not applicable. Public deletion contact on Datenschutz matches the Impressum email (`i.laube@gmail.com`).
 
-- [ ] Replace every `PLACEHOLDER_*` in [`content/de/impressum.md`](content/de/impressum.md) and [`content/de/datenschutz.md`](content/de/datenschutz.md) with final legal name, address, contact email, and related fields (marker list: [content/README.md](content/README.md#legal-pages-launch-requirement))
-- [ ] Sync EN/FR/IT (`npm run translate -- --slug=impressum --slug=datenschutz` or manual edit of the same markers)
-- [ ] Confirm no `PLACEHOLDER_` string remains: e.g. `rg PLACEHOLDER_ content/`
-- [ ] Spot-check footer links and survey privacy link on `/de/`, `/de/survey/`
+### Production checklist (T40)
+
+- [x] Fill operator details in [`content/de/impressum.md`](content/de/impressum.md) and [`content/de/datenschutz.md`](content/de/datenschutz.md)
+- [x] Sync EN/FR/IT by hand (same structure; no LLM rewrite of legal copy)
+- [x] Confirm no `PLACEHOLDER_` string remains under `content/` (except historical notes in docs)
+- [x] Spot-check footer links and survey privacy link on `/de/`, `/de/survey/`
 - [ ] Hand filled DE pages to lawyer review (**T29**)
 
-Do not enable production survey email collection or publicly announce the site until T40 is complete.
+Do not enable production survey email collection or publicly announce the site until remaining pre-announce items (T23e/T23f, T41) are done.
 
 ## Continuous integration
 
@@ -101,7 +116,7 @@ Site hosting is Cloudflare Pages; the monthly source job is **not** a Cloudflare
 
 **GitHub secret:** add `ANTHROPIC_API_KEY` for the classify step (T16). Optional: set `CLASSIFY_MODEL` to override the default Claude Sonnet model. T15 fetch/snapshot and T17 act alone do not need an API key (T17 uses the classify report; T18 material vendor extract needs the key). The same `ANTHROPIC_API_KEY` secret is used by the T19 translation workflow below. Optional: set repository variable `TRANSLATE_MODEL` to override the default Claude Sonnet model for translation.
 
-**Repo setting (required for material PRs):** under **Settings → Actions → General → Workflow permissions**, enable **Allow GitHub Actions to create and approve pull requests**. Without this, `gh pr create` in the monthly job returns 403 and the material-change review path never opens a PR.
+**Repo setting (required for material PRs) — outstanding T42:** under **Settings → Actions → General → Workflow permissions**, enable **Allow GitHub Actions to create and approve pull requests**. Without this, `gh pr create` in the monthly job returns 403 and the material-change review path never opens a PR.
 
 ### Source-fetch operations
 
@@ -114,6 +129,8 @@ The snapshot fetcher is defensive against common source-site failures:
 
 If a source fails, the previous snapshot text is kept and `last_verified` / `last_checked` are **not** bumped from that source. Persistent failures produce `snapshots/_act/fetch-failures.md` and a GitHub issue from the second consecutive failed month.
 
+**Freshness rule:** Act bumps `last_verified` / `last_checked` only when a dependent source is successfully fetched with an empty diff (`unchanged`). Cosmetic classifications (non-empty diffs the LLM judged non-substantive) do **not** bump — that closes the prompt-injection path where a third-party page could instruct the classifier to answer "cosmetic" and mint a false freshness claim. Material changes still open a review PR with no auto-bump. The classifier prompt biases toward material and tells the model to ignore instructions inside the untrusted diff.
+
 ## Translation regeneration on DE merge (GitHub Actions)
 
 When canonical DE prose merges to `main`, EN/FR/IT drafts are regenerated automatically:
@@ -122,6 +139,8 @@ When canonical DE prose merges to `main`, EN/FR/IT drafts are regenerated automa
 - Trigger: push to `main` with paths under `content/de/**/*.md`, plus `workflow_dispatch` (optional slug list)
 - Filter: only `title` / `description` / body changes count; T17 `last_verified` bumps on DE files do not retranslate
 - Commands: `changed-de-slugs` → `translate --strict` → `check:content` → **`npm run build`** → bot commit of `content/{en,fr,it}/`
+- Hardening: `workflow_dispatch` slugs and step outputs are passed via `env:` (never interpolated into `run:`), and `actions/checkout` / `actions/setup-node` are pinned to commit SHAs
+- XSS hardening: LLM drafts must not contain raw HTML tags outside code blocks (`assertNoRawHtmlInTranslation` refuses the write); rendered pages run marked output through `sanitize-html` in [`src/lib/markdown.ts`](src/lib/markdown.ts) before `dangerouslySetInnerHTML`
 
 Requires the same `ANTHROPIC_API_KEY` repository secret as the monthly job.
 
@@ -135,11 +154,11 @@ Intake API for the Swiss AI adoption survey. Code lives in [`workers/survey/`](w
 |---|---|
 | Worker | `https://swiss-ai-survey.i-laube.workers.dev` (`POST /submit`, cron `0 5 * * 1`) |
 | D1 | `swiss-ai-survey` — `database_id` in [`workers/survey/wrangler.jsonc`](workers/survey/wrangler.jsonc); tables `responses` + `report_signups` (no FK) |
-| CORS | `SITE_ORIGIN=https://aicompliant.ch` in Worker `vars` |
+| Origin / CORS | `SITE_ORIGIN=https://aicompliant.ch` — POST/OPTIONS enforce Origin; ACAO only for allowlisted origin |
 | Worker secrets | `TURNSTILE_SECRET_KEY`, `GITHUB_TOKEN` (never in git) |
-| Pages | `NEXT_PUBLIC_SURVEY_API_URL` + `NEXT_PUBLIC_TURNSTILE_SITE_KEY` set (see [Pages environment variables](#pages-environment-variables-production)) |
+| Pages | `NEXT_PUBLIC_SURVEY_API_URL` + `NEXT_PUBLIC_TURNSTILE_SITE_KEY` set; form live on [aicompliant.ch/de/survey/](https://aicompliant.ch/de/survey/) |
 
-**Before public survey launch:** rotate secrets that were provisioned in an agent/operator session — [T23e / T23f](#pre-launch-secret-hygiene-t23e--t23f).
+**Before public survey launch:** rotate secrets that were provisioned in an agent/operator session — [T23e / T23f](#pre-launch-secret-hygiene-t23e--t23f). Confirm the live form end-to-end — [T41](#live-ui-smoke-t41).
 
 **D1 tables** ([`migrations/0001_init.sql`](workers/survey/migrations/0001_init.sql)):
 
@@ -198,7 +217,7 @@ That separation is what makes the UI/privacy claim (“emails stored separately 
      -d "{\"survey_id\":\"swiss-ai-adoption-2026\",\"survey_version\":2,\"locale\":\"de\",\"answers\":{\"company-size\":\"10-49\",\"sector\":\"ict-software\",\"language-region\":\"german-speaking\",\"ai-maturity\":\"piloting\",\"ai-tools\":[\"chatgpt\",\"deepl\"],\"primary-use-cases\":[\"translation\"],\"monthly-spend-chf\":\"1-500\",\"hosting-requirement\":\"switzerland\",\"personal-data-in-ai\":\"no\",\"eu-market-exposure\":\"no\",\"deployment-blockers\":[\"none\"],\"vendor-decision-factors\":[\"swiss-entity-support\"]},\"email\":\"bench@example.com\",\"report_opt_in\":true,\"website\":\"\",\"turnstile_token\":\"XXXX.DUMMY.TOKEN.XXXX\"}"
    ```
 
-   Expect `201` and `{ "ok": true, "id": "..." }`. Honeypot (`website` non-empty) → `204` and no D1 row. Invalid answers → `400`. Failed Turnstile → `403`. More than 5 POSTs/minute from one IP → `429`.
+   Expect `201` and `{ "ok": true, "id": "..." }`. Honeypot (`website` non-empty) → `204` and no D1 row. Invalid answers → `400`. Missing/wrong `Origin` → `403` (no CORS headers). Failed Turnstile → `403`. More than 5 POSTs/minute from one IP → `429`.
 
    Or run the scripted smoke test (asserts all of the above) against the running Worker:
 
@@ -242,7 +261,7 @@ Open `http://localhost:3000/de/survey/`. Complete the form → expect `201` and 
 | `NEXT_PUBLIC_SURVEY_API_URL` | Pages / `.env` | Worker base URL (prod: see above; local: `http://127.0.0.1:8787`) |
 | `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | Pages / `.env` | Turnstile site key (test key for local; production widget on Pages) |
 | `TURNSTILE_SECRET_KEY` | Worker secret / `.dev.vars` | Siteverify secret (never in git) |
-| `SITE_ORIGIN` | Worker `vars` | CORS allowlist (required; default in wrangler is `https://aicompliant.ch`; use `http://localhost:3000` when testing the form UI locally; missing → 500) |
+| `SITE_ORIGIN` | Worker `vars` | Allowed browser Origin + CORS reflect value (required; default `https://aicompliant.ch`; www sibling also accepted; use `http://localhost:3000` for local form UI; missing → 500) |
 
 ### Production checklist (T23a–T23d) — completed
 
@@ -273,6 +292,22 @@ Provisioning used an interactive operator/agent session. `NEXT_PUBLIC_*` values 
 
   Optionally revoke or leave the old `gh` session token for local CLI only — do not leave a broad `repo`-scoped token on the Worker. Verify with a forced cron/scheduled run (see below) that aggregates can still commit.
 
+### Live UI smoke (T41)
+
+Worker-level smokes (curl) are done. Before announcing the survey or Quick-Check, confirm the **browser** paths on production:
+
+- [ ] Open [https://aicompliant.ch/de/survey/](https://aicompliant.ch/de/survey/) — form renders (not the unavailable message); complete Turnstile; submit once with a throwaway email + report opt-in → `201` / success UI; confirm remote D1 `responses` + unlinkable `report_signups` rows (see T23d queries above); delete the test signup email afterward.
+- [ ] Open [https://aicompliant.ch/de/website-check/](https://aicompliant.ch/de/website-check/) — scan `https://www.admin.ch` → findings render with citations and disclaimer.
+- [ ] Spot-check footer → Impressum / Datenschutz on `/de/`.
+- [ ] Spot-check [https://aicompliant.ch/sitemap.xml](https://aicompliant.ch/sitemap.xml) and [https://aicompliant.ch/robots.txt](https://aicompliant.ch/robots.txt) (trailing-slash locale URLs; sitemap listed in robots).
+- [ ] Spot-check a missing URL (e.g. [https://aicompliant.ch/de/does-not-exist/](https://aicompliant.ch/de/does-not-exist/)) for the custom locale-aware 404 (header + home link, not Next’s default).
+
+Do this after **T23e** if you rotated the Turnstile secret/site key (Pages rebuild required when the site key changes).
+
+### GitHub Actions repo permission (T42)
+
+- [ ] Repo **Settings → Actions → General → Workflow permissions**: enable **Allow GitHub Actions to create and approve pull requests** (needed for monthly material-change `gh pr create`).
+
 ## Survey aggregation (T25)
 
 The survey Worker also runs a weekly cron (`0 5 * * 1`, Monday 05:00 UTC) that first purges `responses` / `report_signups` older than 24 months, then reads only `responses.answers_json` — never `report_signups` — computes anonymized aggregates with n&lt;5 cell suppression, and commits [`data/survey-aggregates.json`](data/survey-aggregates.json) to the repo via the GitHub Contents API. T26 renders the benchmark page from that static file.
@@ -281,8 +316,9 @@ The survey Worker also runs a weekly cron (`0 5 * * 1`, Monday 05:00 UTC) that f
 
 Optional report emails live in `report_signups` with their **own** id and **no foreign key** to `responses`, so they cannot be joined back to an answer row. That matches the survey UI claim that emails are stored separately from answers.
 
+- **Public contact (T40):** deletion requests are directed to **i.laube@gmail.com** (Impressum / Datenschutzerklärung).
 - **Automatic retention:** the weekly cron deletes signup (and response) rows older than 24 months (`purgeExpiredSurveyData` in [`workers/survey/src/store.ts`](workers/survey/src/store.ts)).
-- **On-request deletion:** remove all signup rows for an address (case-insensitive):
+- **On-request deletion:** after a user emails the contact above, remove all signup rows for that address (case-insensitive):
 
   ```bash
   npx wrangler d1 execute swiss-ai-survey --remote -c workers/survey/wrangler.jsonc \
@@ -335,13 +371,13 @@ Stateless website Quick-Check API. Code lives in [`workers/scanner/`](workers/sc
 | Item | Value |
 |---|---|
 | Worker | `https://swiss-ai-scanner.i-laube.workers.dev` (`POST /scan`) |
-| CORS | `SITE_ORIGIN=https://aicompliant.ch` in Worker `vars` |
+| Origin / CORS | `SITE_ORIGIN=https://aicompliant.ch` — POST/OPTIONS enforce Origin; ACAO only for allowlisted origin |
 | Rate limit | `SCANNER_RATE_LIMITER` — 5 requests / 60s per IP (no secret) |
-| Pages | `NEXT_PUBLIC_SCAN_API_URL` set (bake in via Pages rebuild of current `main`) |
+| Pages | `NEXT_PUBLIC_SCAN_API_URL` set; UI live on [aicompliant.ch/de/website-check/](https://aicompliant.ch/de/website-check/) |
 
-Prod smoke (2026-08-04): `POST /scan` with `https://www.admin.ch` → `200` / `ok: true` / findings; `http://127.0.0.1/` → `400`; CORS preflight allows `https://aicompliant.ch`.
+Prod smoke (2026-08-04): `POST /scan` with `https://www.admin.ch` → `200` / `ok: true` / findings; `http://127.0.0.1/` → `400`; CORS preflight allows `https://aicompliant.ch`. Origin enforcement landed later (missing/wrong Origin → `403`). Browser confirmation is **T41**.
 
-Together with the [survey Worker](#survey-worker-t23), both Workers from production-launch readiness item 4 are deployed and Pages has both `NEXT_PUBLIC_*_API_URL` values. The UI routes go live after a Pages deploy of current `main`.
+Together with the [survey Worker](#survey-worker-t23), both Workers from production-launch readiness item 4 are deployed; Pages env + Git `main` (`29290e7`) ship the UIs.
 
 ### Local development
 
@@ -370,10 +406,11 @@ Together with the [survey Worker](#survey-worker-t23), both Workers from product
    ```bash
    curl -s -X POST http://127.0.0.1:8787/scan \
      -H "Content-Type: application/json" \
+     -H "Origin: https://aicompliant.ch" \
      -d "{\"url\":\"https://www.admin.ch\"}"
    ```
 
-   Expect `200` with `ok: true`, `findings[]`, and `static_scan_incomplete`. Or run:
+   Expect `200` with `ok: true`, `findings[]`, and `static_scan_incomplete`. Omit `Origin` (or send a foreign one) → `403`. Or run:
 
    ```bash
    node workers/scanner/smoke-test.mjs
@@ -411,17 +448,62 @@ Open `http://localhost:3000/de/website-check/`. Submit a public `https://` URL �
 |---|---|---|
 | `NEXT_PUBLIC_SITE_URL` | Pages / `.env` | Canonical site origin (`https://aicompliant.ch` in production) |
 | `NEXT_PUBLIC_SCAN_API_URL` | Pages / `.env` | Scanner Worker base URL (prod: `https://swiss-ai-scanner.i-laube.workers.dev`; local: `http://127.0.0.1:8787`) |
-| `SITE_ORIGIN` | Worker `vars` | CORS allowlist (required; default in wrangler is `https://aicompliant.ch`; use `http://localhost:3000` when testing the form UI locally; missing → 500) |
+| `SITE_ORIGIN` | Worker `vars` | Allowed browser Origin + CORS reflect value (required; default `https://aicompliant.ch`; www sibling also accepted; use `http://localhost:3000` for local form UI; missing → 500) |
 
 Rate limiting uses the Workers Rate Limiting binding `SCANNER_RATE_LIMITER` (5 requests / 60s per IP) configured in [`workers/scanner/wrangler.jsonc`](workers/scanner/wrangler.jsonc) — no secret.
+
+### HTML / CPU bounds (link checks)
+
+Fetch still caps the response body at ~2 MB ([`fetch-target.ts`](workers/scanner/src/fetch-target.ts)), but anchor extraction must not run unbounded regex / string work over that body. [`workers/scanner/src/html.ts`](workers/scanner/src/html.ts):
+
+| Bound | Value | Why |
+|---|---|---|
+| HTML slice scanned for `<a>` | First 512 KiB | Caps work even when the body is larger |
+| Extracted anchors | 2000 | Link checks only need the first match |
+| Open-tag attempts | 4000 | Floods of unclosed `<a` stay cheap |
+| Max chars between `<a…>` and `</a>` | 8 KiB | Normal link text is far smaller |
+| Pattern matching | Lowercase text/href/patterns once | Avoids `toLowerCase()` inside locale × pattern × anchor loops |
+
+Closing tags are found with a bounded linear scan (not a lazy `[\s\S]*?</a>`), and pages with no `</a>` at all fast-reject. Redeploy the Worker after changing these helpers: `npm run deploy:scanner`.
+
+### Scan budget (DoH + outbound fetches)
+
+One wall-clock deadline covers the whole `POST /scan` network path (DoH, target GET, redirect hops, TLS HTTP→HTTPS probe, link HEAD verifies). [`workers/scanner/src/scan-budget.ts`](workers/scanner/src/scan-budget.ts):
+
+| Bound | Value | Why |
+|---|---|---|
+| Shared AbortSignal | 8s from request start | Stops independent 8s timers stacking across fetch / HEAD / probe |
+| DoH `fetch` | Same signal | Untimed Cloudflare DoH lookups cannot outlive the budget |
+| DoH hostname memo | Per request (`Map`) | Redirects + link checks reuse A/AAAA answers for the same host |
+
+A+AAAA lookups for one hostname run in parallel (still two subrequests, one RTT). Redeploy after changing these helpers: `npm run deploy:scanner`.
+
+### Origin enforcement (POST / OPTIONS)
+
+Both Workers share the same rule in [`workers/scanner/src/cors.ts`](workers/scanner/src/cors.ts) / [`workers/survey/src/cors.ts`](workers/survey/src/cors.ts):
+
+| Request | Behavior |
+|---|---|
+| `Origin` = `SITE_ORIGIN` | Allowed; response includes `Access-Control-Allow-Origin` reflecting that Origin |
+| `Origin` = www ↔ apex sibling of `SITE_ORIGIN` | Allowed (same scheme/port); ACAO reflects the **request** Origin |
+| Missing or other `Origin` | **403** `{ "error": "Origin not allowed" }` with **no** CORS headers |
+
+This stops browser cross-site POSTs and casual curl without `Origin`. Forged `Origin` from non-browser clients remains possible — rate limiting (and Turnstile on survey) covers volume abuse.
+
+### Accepted residual risks (Workers)
+
+| Risk | Decision |
+|---|---|
+| **DNS rebinding on scan targets** | `assertSafeScanUrl` validates DoH answers, then `fetch()` resolves the hostname again. A short-TTL attacker domain can pass validation and be fetched at a different address. On Workers there are no loopback services to reach, so practical impact is low. **Accepted** — document only; no TOCTOU pin of resolved IPs. |
+| **Forgeable Origin from curl** | Origin checks are browser CSRF / casual-script controls, not proof of the site UI. Rely on per-IP rate limits; add Turnstile on the scan form if abuse persists (post-MVP). |
 
 ### Production checklist — completed
 
 - [x] Confirm Worker `SITE_ORIGIN` is `https://aicompliant.ch` (no pages.dev fallback).
 - [x] Deploy: `npm run deploy:scanner` → `https://swiss-ai-scanner.i-laube.workers.dev`.
 - [x] Set Pages env `NEXT_PUBLIC_SCAN_API_URL` to that Worker URL (no trailing slash).
-- [x] Smoke-test `POST /scan` (public URL → findings; private IP → `400`; CORS origin `https://aicompliant.ch`).
+- [x] Smoke-test `POST /scan` (public URL → findings; private IP → `400`; Origin `https://aicompliant.ch`; missing Origin → `403`).
 
-After the next Pages deploy of current `main`, confirm `/de/website-check/` from the live site. Optionally burst past the rate limit and confirm `429`.
+Browser confirmation of `/de/website-check/` is **T41**. Optionally burst past the rate limit and confirm `429`.
 
 Redeploy: `npm run deploy:scanner`.

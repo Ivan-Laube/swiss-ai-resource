@@ -1,7 +1,7 @@
 ---
 title: "Privacy policy"
 description: "Information on the processing of personal data on aicompliant.ch (Art. 19 FADP): controller, purposes, processors, retention, and deletion."
-last_verified: "2026-08-04"
+last_verified: "2026-09-18"
 volatility: "stable"
 translation_status: "draft"
 reviewed_by: null
@@ -14,7 +14,7 @@ sources:
     url: "https://www.edoeb.admin.ch/de/ki-und-datenschutz"
 ---
 
-This privacy policy informs you under **Art. 19 of the Federal Act on Data Protection (FADP / DSG)** how personal data is processed on **aicompliant.ch**. Fields marked `PLACEHOLDER` must be replaced with final details before production launch.
+This privacy policy informs you under **Art. 19 of the Federal Act on Data Protection (FADP / DSG)** how personal data is processed on **aicompliant.ch**.
 
 ## 1. Controller
 
@@ -22,9 +22,9 @@ Controller of the processing:
 
 | | |
 |---|---|
-| **Name / company** | PLACEHOLDER_LEGAL_NAME |
-| **Address** | PLACEHOLDER_STREET, PLACEHOLDER_POSTAL_CITY, Switzerland |
-| **Email** | PLACEHOLDER_CONTACT_EMAIL |
+| **Name** | Ivan Laube |
+| **Address** | Vorhaldenstrasse 10, 8049 Zürich, Switzerland |
+| **Email** | [i.laube@gmail.com](mailto:i.laube@gmail.com) |
 
 Further provider details: [Legal notice](/en/impressum/).
 
@@ -85,7 +85,7 @@ Cloudflare acts as a **processor** for the purposes we define. Depending on Clou
 
 ## 6. Your rights and deletion
 
-You may request access, rectification, and deletion of your personal data and object to processing where the FADP so provides. For an optional email on file, a message to **PLACEHOLDER_CONTACT_EMAIL** requesting deletion is usually sufficient; we then delete the email address from the signup table. Survey answers are unaffected and are not linked to the email.
+You may request access, rectification, and deletion of your personal data and object to processing where the FADP so provides. For an optional email on file, a message to **[i.laube@gmail.com](mailto:i.laube@gmail.com)** requesting deletion is usually sufficient; we then delete the email address from the signup table. Survey answers are unaffected and are not linked to the email.
 
 Survey answers cannot later be linked to a person (including via the optional email) and therefore cannot be deleted on request in a targeted way.
 

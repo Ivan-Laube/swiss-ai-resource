@@ -15,7 +15,7 @@ content/
 - Filename stem = URL slug (`ndsg-ai-basics.md` → slug `ndsg-ai-basics`).
 - Do not put a `slug` field in frontmatter.
 - Use the same slug across locales so hreflang pairing stays trivial.
-- Slugs starting with `_` (e.g. `_fixture-schema.md`) are internal fixtures: validated by `check:content`, but not published as routes.
+- Slugs starting with `_` (e.g. `_fixture-schema.md`) are internal fixtures: validated by `check:content`, but not published as routes and not listed in `sitemap.xml`.
 
 ## Published DE pages (T6)
 
@@ -27,32 +27,18 @@ content/
 | `finma-ai-expectations` | moderate | FINMA Guidance 08/2024 |
 | `ai-procurement-checklist` | stable | Buyer checklist; §7 competence / Art. 4 + AI Fluency 4D example |
 
-### Legal pages (launch requirement)
+### Legal pages
 
 | Slug | Volatility | Notes |
 |---|---|---|
-| `impressum` | stable | Art. 3 Abs. 1 lit. s UWG; `PLACEHOLDER_*` fields for legal entity |
+| `impressum` | stable | Art. 3 Abs. 1 lit. s UWG; natural-person operator (T40) |
 | `datenschutz` | stable | Art. 19 DSG; controller, Cloudflare/D1 (`responses` + unlinkable `report_signups`), retention, deletion |
 
-Legal pages ship in DE/EN/FR/IT (**T39**) and are linked from the site footer (and the survey form for `datenschutz`). They are excluded from the home “Compliance basics” list.
+Legal pages ship in DE/EN/FR/IT (**T39** drafts + **T40** filled operator details) and are linked from the site footer (and the survey form for `datenschutz`). They are excluded from the home “Compliance basics” list.
 
-**T40 (blocks public launch):** replace every `PLACEHOLDER_*` marker with final details in canonical DE, then sync EN/FR/IT. Markers in use:
+**Operator (T40, natural person):** name, street, PLZ/Ort, and contact email appear on Impressum and Datenschutz in all four locales (email as `mailto:`). Phone, Rechtsform, Vertretung, and Handelsregister/UID are omitted as not applicable. Do not re-introduce `PLACEHOLDER_*` markers. Lawyer review of the filled DE text is **T29**. Deploy notes: [DEPLOY.md](../DEPLOY.md#legal-pages-t39t40).
 
-| Marker | Where |
-|---|---|
-| `PLACEHOLDER_LEGAL_NAME` | Impressum + Datenschutz |
-| `PLACEHOLDER_LEGAL_FORM` | Impressum |
-| `PLACEHOLDER_STREET` | Impressum + Datenschutz |
-| `PLACEHOLDER_POSTAL_CITY` | Impressum + Datenschutz |
-| `PLACEHOLDER_CONTACT_EMAIL` | Impressum + Datenschutz (incl. `report_signups` deletion contact) |
-| `PLACEHOLDER_PHONE` | Impressum (optional) |
-| `PLACEHOLDER_REPRESENTATIVE` | Impressum |
-| `PLACEHOLDER_COMMERCIAL_REGISTER` | Impressum (if applicable) |
-| `PLACEHOLDER_UID` | Impressum (if applicable) |
-
-Lawyer review of the filled pages is **T29**. Deploy checklist: [DEPLOY.md](../DEPLOY.md#legal-pages-t39t40).
-
-Routes: `/[lang]/[slug]/`. `hreflang` alternates are limited to locales that have the file (`localesWithSlug`). After T14, the five cornerstone slugs exist in DE/EN/FR/IT (`translation_status: draft` for non-DE). Legal pages also exist in all four locales (`translation_status: draft` for non-DE).
+Routes: `/[lang]/[slug]/`. `hreflang` alternates are limited to locales that have the file (`localesWithSlug`). Publishable slugs are also enumerated in [`src/app/sitemap.ts`](../src/app/sitemap.ts) via `listPublishableContentSlugs` / `localesWithSlug`. After T14, the five cornerstone slugs exist in DE/EN/FR/IT (`translation_status: draft` for non-DE). Legal pages also exist in all four locales (`translation_status: draft` for non-DE; DE `canonical`).
 
 ## Frontmatter
 
@@ -70,7 +56,7 @@ Routes: `/[lang]/[slug]/`. `hreflang` alternates are limited to locales that hav
 
 Lawyer fields are all-or-nothing: if any of `reviewed_by`, `review_date`, or `review_scope` is set, all three are required. The monthly act step (T17) clears all three on DE pages when a dependent source is classified **material**. Omit them or set them to `null` when there is no review yet.
 
-`last_verified` is bumped by T17 on all locales that have the slug when dependent sources are unchanged or cosmetic (not when material). Writer helpers: [`src/content/write.ts`](../src/content/write.ts). Rendered on each compliance page (header + after sources) via [`formatIsoDate`](../src/lib/format-date.ts).
+`last_verified` is bumped by T17 on all locales that have the slug when dependent sources are **unchanged** (byte-identical successful fetch). Cosmetic and material diffs do not auto-bump — only a human sets the date after reviewing material changes. Writer helpers: [`src/content/write.ts`](../src/content/write.ts). Rendered on each compliance page (header + after sources) via [`formatIsoDate`](../src/lib/format-date.ts).
 
 Implementation: Zod schema and parse helpers live in [`src/content/`](../src/content/) (`schema.ts`, `load.ts`, `write.ts`). Export barrel: `@/content`.
 
@@ -103,7 +89,7 @@ npm run translate -- --all
 npm run translate -- --slug=ndsg-ai-basics --strict
 ```
 
-Requires `ANTHROPIC_API_KEY` (optional local `.env`). Override model with `TRANSLATE_MODEL` (default `claude-sonnet-4-20250514`).
+Requires `ANTHROPIC_API_KEY` (optional local `.env`). Override model with `TRANSLATE_MODEL` (default `claude-sonnet-5`).
 
 ### Generated frontmatter rules
 
@@ -112,6 +98,7 @@ Requires `ANTHROPIC_API_KEY` (optional local `.env`). Override model with `TRANS
 - Pipeline forces: `translation_status: "draft"`; `reviewed_by` / `review_date` / `review_scope` = `null` (lawyer review is DE-only).
 - FR/IT prompts inject matched Fedlex glossary rows; `--strict` fails if official terms are missing from the output.
 - EN prompts require conventional phrasing with the German term in parentheses on first use for matched glossary terms.
+- Raw HTML outside Markdown code blocks is rejected before write (`assertNoRawHtmlInTranslation`); pages additionally sanitize marked HTML at render (`src/lib/markdown.ts`).
 - Overwrites existing target files (regeneration on DE change intentionally resets `reviewed` → `draft`).
 
 **T14** (done): first full pass over all cornerstone pages plus tool LocalizedStrings (EN/FR/IT). Vendor/table UI chrome was already covered by T12 i18n messages.
