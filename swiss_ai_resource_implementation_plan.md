@@ -270,13 +270,13 @@ Post-MVP, demand-driven (not built now):
 | T30 | Quarterly: new decision tool or page, demand-driven | T8 | |
 | T31 | Yearly: survey re-run, benchmark refresh, lawyer re-review | T28, T29 | |
 
-**T40 details (done):** Canonical DE and EN/FR/IT list the natural-person operator (name, street, PLZ/Ort, email as mailto — public deletion contact `i.laube@gmail.com`). Phone, Rechtsform, Vertretung, and Handelsregister/UID were omitted as not applicable. Do not announce the site or enable survey email collection in production until remaining pre-announce items (T23e/T23f, T41) are done. Notes: [DEPLOY.md](DEPLOY.md#legal-pages-t39t40).
+**T40 details (done):** Canonical DE and EN/FR/IT list the natural-person operator (name, street, PLZ/Ort, email as mailto — public deletion contact `i.laube@gmail.com`). Phone, Rechtsform, Vertretung, and Handelsregister/UID were omitted as not applicable. Engineering pre-announce items **T23e / T23f / T41 / T42** are done — the site is announce-ready from an engineering standpoint. Lawyer review of filled DE text remains **T29**. Notes: [DEPLOY.md](DEPLOY.md#legal-pages-t39t40).
 
 **T30 candidate (demand-driven):** a dedicated page on **KI-Kompetenz im Unternehmen** (AI literacy / staff competence). EU AI Act Art. 4 has been in force since 2 February 2025 and is unaffected by the Digital Omnibus; enforcement pressure will grow. The procurement checklist already carries a short competence callout (with the freely licensed AI Fluency 4D framework as one example). Promote to a full page only if search queries or inbound questions show real demand — do not invent a content cadence.
 
 ### Critical path
 
-T1 → T3 → T6 → T9/T10 → T14 (public launch of the differentiated core), with T15-T17 needed before the first `last_verified` claims are honest. Translation (T7, T13) sits on the critical path for a four-language launch; if timeline slips, launch DE-only and let T14 follow, since DE is canonical and the pipeline regenerates the rest. **T39/T40** legal pages are filled. Cloudflare side is live (survey + scanner Workers, Pages env, Git `main` → `aicompliant.ch`). Before announcing survey / Quick-Check: **T23e/T23f** (secret hygiene) and **T41** (browser smoke). Enable **T42** before relying on the monthly material-change PR path.
+T1 → T3 → T6 → T9/T10 → T14 (public launch of the differentiated core), with T15-T17 needed before the first `last_verified` claims are honest. Translation (T7, T13) sits on the critical path for a four-language launch; if timeline slips, launch DE-only and let T14 follow, since DE is canonical and the pipeline regenerates the rest. **T39/T40** legal pages are filled. Cloudflare side is live (survey + scanner Workers, Pages env, Git `main` → `aicompliant.ch`). **T23e/T23f**, **T41**, and **T42** are done — survey / Quick-Check announce is unblocked from an engineering standpoint. Remaining parallel: **T29** lawyer review; demand-driven **T27** community launch.
 
 ### Ongoing
 
@@ -303,9 +303,9 @@ T1 → T3 → T6 → T9/T10 → T14 (public launch of the differentiated core), 
 | Translate workflow shell injection via `run:` interpolation | `workflow_dispatch` inputs and step outputs pass through `env:` in [translate-on-de-merge.yml](.github/workflows/translate-on-de-merge.yml); `actions/checkout` + `actions/setup-node` pinned to commit SHAs |
 | LLM translation injects raw HTML into auto-committed content | Translate write path rejects raw HTML outside code blocks; [`src/lib/markdown.ts`](src/lib/markdown.ts) sanitizes marked output with `sanitize-html` before `dangerouslySetInnerHTML` |
 | Incomplete Impressum / Datenschutz operator details | Mitigated by **T40** (natural-person operator filled in all locales); **T29** still reviews the filled DE text |
-| Survey Worker secrets provisioned in an operator/agent session | **T23e** rotate Turnstile secret; **T23f** replace `GITHUB_TOKEN` with a fine-grained PAT before announcing the survey |
-| Live UI never exercised in a real browser after deploy | **T41** browser smoke on survey + website-check |
-| Monthly material review PR fails with 403 | **T42** enable Actions “create and approve pull requests” |
+| Survey Worker secrets provisioned in an operator/agent session | Mitigated by **T23e** (Turnstile widget `swiss-ai-survey-v2` + secret rotate) and **T23f** (fine-grained PAT on Worker `GITHUB_TOKEN`) |
+| Live UI never exercised in a real browser after deploy | Mitigated by **T41** (survey Turnstile submit + website-check + sitemap/robots/404) |
+| Monthly material review PR fails with 403 | Mitigated by **T42** (Actions may create and approve pull requests) |
 | Translation drift across DE/EN/FR/IT | DE is canonical; EN/FR/IT regenerated on DE change by the build pipeline, flagged for review; FR/IT legal terms constrained by Fedlex glossary |
 | FR/IT legal terminology errors undermine credibility in Romandie/Ticino | Term mapping against official Fedlex multilingual law texts, not free translation; human pass prioritized DE > FR > IT > EN |
 

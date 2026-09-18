@@ -40,12 +40,12 @@ These `NEXT_PUBLIC_*` values are baked in at **Pages build time**. After changin
 
 | Item | Value |
 |---|---|
-| Git | `main` on [`Ivan-Laube/swiss-ai-resource`](https://github.com/Ivan-Laube/swiss-ai-resource) (site ship commit `29290e7`, 2026-08-04) |
+| Git | `main` on [`Ivan-Laube/swiss-ai-resource`](https://github.com/Ivan-Laube/swiss-ai-resource) (engineering launch readiness: T40 + launch hardening + T23e/T23f/T41/T42) |
 | Pages project | `swiss-ai-resource` — Git-connected; production branch `main` |
-| Live host | [https://aicompliant.ch](https://aicompliant.ch) (`/de/survey/`, `/de/website-check/`, legal pages → **200**) |
-| Workers | Survey + scanner deployed; see [Survey Worker](#survey-worker-t23) and [Scanner Worker](#scanner-worker-t33t37) |
+| Live host | [https://aicompliant.ch](https://aicompliant.ch) (`/de/survey/`, `/de/website-check/`, legal pages, `/sitemap.xml`, `/robots.txt` → **200**; custom locale 404) |
+| Workers | Survey + scanner deployed; Origin fail-closed; see [Survey Worker](#survey-worker-t23) and [Scanner Worker](#scanner-worker-t33t37) |
 
-Direct upload (`npx wrangler pages deploy out --project-name=swiss-ai-resource --commit-dirty=true`) can publish a local `out/` without waiting for Git; prefer **push to `main`** so GitHub and Pages stay aligned. The Git build for `29290e7` completed successfully after the initial direct upload.
+Direct upload (`npx wrangler pages deploy out --project-name=swiss-ai-resource --commit-dirty=true`) can publish a local `out/` without waiting for Git; prefer **push to `main`** so GitHub and Pages stay aligned.
 
 ## Manual setup (~10 minutes)
 
@@ -90,7 +90,7 @@ Impressum and Datenschutzerklärung are required for a customer-facing site (Art
 - [x] Spot-check footer links and survey privacy link on `/de/`, `/de/survey/`
 - [ ] Hand filled DE pages to lawyer review (**T29**)
 
-Do not enable production survey email collection or publicly announce the site until remaining pre-announce items (T23e/T23f, T41) are done.
+Do not treat lawyer review as a soft gate for marketing announce if you accept that risk: hand filled DE pages to lawyer review (**T29**) remains open. Engineering pre-announce items (T23e/T23f/T41/T42) are done.
 
 ## Continuous integration
 
@@ -114,9 +114,9 @@ Site hosting is Cloudflare Pages; the monthly source job is **not** a Cloudflare
 - Commands: `snapshot:sources` (T15/T38) → `classify:snapshots` (T16) → `maintain:act -- --write` (T17/T18) → `check:links -- --write` (T21) → `check:content` → `check:vendors` → **`npm run build`** → commits / issues / review PR
 - Commits snapshot artifacts (including `_links.json` and `_act/fetch-failures.md` when present), `last_verified` bumps to `main`; opens a GitHub issue for broken citation links (T21, soft-fail); opens a GitHub issue for persistent snapshot fetch failures (T38, ≥2 consecutive months); opens a GitHub issue + `review/material-YYYY-MM-DD` PR when material changes are classified
 
-**GitHub secret:** add `ANTHROPIC_API_KEY` for the classify step (T16). Optional: set `CLASSIFY_MODEL` to override the default Claude Sonnet model. T15 fetch/snapshot and T17 act alone do not need an API key (T17 uses the classify report; T18 material vendor extract needs the key). The same `ANTHROPIC_API_KEY` secret is used by the T19 translation workflow below. Optional: set repository variable `TRANSLATE_MODEL` to override the default Claude Sonnet model for translation.
+**GitHub secret:** add `ANTHROPIC_API_KEY` for the classify step (T16). Optional: set `CLASSIFY_MODEL` to override the default (`claude-sonnet-5`). T15 fetch/snapshot and T17 act alone do not need an API key (T17 uses the classify report; T18 material vendor extract needs the key). The same `ANTHROPIC_API_KEY` secret is used by the T19 translation workflow below. Optional: set repository variable `TRANSLATE_MODEL` to override the default (`claude-sonnet-5`) for translation.
 
-**Repo setting (required for material PRs) — outstanding T42:** under **Settings → Actions → General → Workflow permissions**, enable **Allow GitHub Actions to create and approve pull requests**. Without this, `gh pr create` in the monthly job returns 403 and the material-change review path never opens a PR.
+**Repo setting (T42 — done):** Actions → General → Workflow permissions has **Allow GitHub Actions to create and approve pull requests** enabled (`default_workflow_permissions: write`, `can_approve_pull_request_reviews: true`). Required so monthly `gh pr create` for material changes does not 403.
 
 ### Source-fetch operations
 
@@ -158,7 +158,7 @@ Intake API for the Swiss AI adoption survey. Code lives in [`workers/survey/`](w
 | Worker secrets | `TURNSTILE_SECRET_KEY`, `GITHUB_TOKEN` (never in git) |
 | Pages | `NEXT_PUBLIC_SURVEY_API_URL` + `NEXT_PUBLIC_TURNSTILE_SITE_KEY` set; form live on [aicompliant.ch/de/survey/](https://aicompliant.ch/de/survey/) |
 
-**Before public survey launch:** rotate secrets that were provisioned in an agent/operator session — [T23e / T23f](#pre-launch-secret-hygiene-t23e--t23f). Confirm the live form end-to-end — [T41](#live-ui-smoke-t41).
+**Pre-launch hygiene (done):** Turnstile widget rotated to `swiss-ai-survey-v2` and Worker `GITHUB_TOKEN` replaced with fine-grained PAT — [T23e / T23f](#pre-launch-secret-hygiene-t23e--t23f). Live form + Quick-Check browser smoke — [T41](#live-ui-smoke-t41).
 
 **D1 tables** ([`migrations/0001_init.sql`](workers/survey/migrations/0001_init.sql)):
 
@@ -274,7 +274,7 @@ Redeploy Worker after config changes: `npm run deploy:survey`.
 
 ### Pre-launch secret hygiene (T23e / T23f)
 
-Provisioning used an interactive operator/agent session. `NEXT_PUBLIC_*` values are public and do **not** need rotation. Rotate Worker secrets before announcing the survey:
+Provisioning used an interactive operator/agent session. `NEXT_PUBLIC_*` values are public and do **not** need rotation. **T23e / T23f are done** (keep this section as the runbook if secrets must be rotated again):
 
 - [x] **T23e — Turnstile secret:** Replaced widget with `swiss-ai-survey-v2` (site key on Pages `NEXT_PUBLIC_TURNSTILE_SITE_KEY`); secret set via `wrangler secret put TURNSTILE_SECRET_KEY`; old widget deleted. Dummy token against production `/submit` returns `403`.
 
@@ -328,9 +328,9 @@ npm run check:survey-aggregates              # validate committed file + fixture
 
 ### Production setup (aggregation)
 
-A Worker `GITHUB_TOKEN` is already present (provisional; replace via **T23f** before public launch). Remaining checks:
+Worker `GITHUB_TOKEN` is a fine-grained PAT (**T23f** done: Contents R/W on this repo only). Remaining checks:
 
-1. Prefer a fine-grained PAT scoped to this repo only, with **Contents: Read and write** ([T23f](#pre-launch-secret-hygiene-t23e--t23f)):
+1. If rotating the PAT later:
 
    ```powershell
    "FINE_GRAINED_PAT" | npx wrangler secret put GITHUB_TOKEN -c workers/survey/wrangler.jsonc
@@ -344,7 +344,7 @@ A Worker `GITHUB_TOKEN` is already present (provisional; replace via **T23f** be
 
 | Name | Where | Purpose |
 |---|---|---|
-| `GITHUB_TOKEN` | Worker secret / `.dev.vars` | Contents API write auth (never in git; use fine-grained PAT — T23f) |
+| `GITHUB_TOKEN` | Worker secret / `.dev.vars` | Contents API write auth (never in git; fine-grained PAT — T23f done) |
 | `GITHUB_REPO` | Worker `vars` | Target `owner/repo` |
 | `GITHUB_BRANCH` | Worker `vars` | Commit branch (default `main`) |
 | `GITHUB_AGGREGATES_PATH` | Worker `vars` | Committed file path |
@@ -362,9 +362,9 @@ Stateless website Quick-Check API. Code lives in [`workers/scanner/`](workers/sc
 | Rate limit | `SCANNER_RATE_LIMITER` — 5 requests / 60s per IP (no secret) |
 | Pages | `NEXT_PUBLIC_SCAN_API_URL` set; UI live on [aicompliant.ch/de/website-check/](https://aicompliant.ch/de/website-check/) |
 
-Prod smoke (2026-08-04): `POST /scan` with `https://www.admin.ch` → `200` / `ok: true` / findings; `http://127.0.0.1/` → `400`; CORS preflight allows `https://aicompliant.ch`. Origin enforcement landed later (missing/wrong Origin → `403`). Browser confirmation is **T41**.
+Prod smoke (2026-08-04 API; **T41** browser 2026-09-18): `POST /scan` with `https://www.admin.ch` → `200` / `ok: true` / findings; missing Origin → `403`; UI on `/de/website-check/` renders severity-grouped findings with citations and disclaimer.
 
-Together with the [survey Worker](#survey-worker-t23), both Workers from production-launch readiness item 4 are deployed; Pages env + Git `main` (`29290e7`) ship the UIs.
+Together with the [survey Worker](#survey-worker-t23), both Workers are deployed; Pages env + Git `main` ship the UIs (including sitemap/robots/404 from the launch-hardening release).
 
 ### Local development
 
@@ -491,6 +491,6 @@ This stops browser cross-site POSTs and casual curl without `Origin`. Forged `Or
 - [x] Set Pages env `NEXT_PUBLIC_SCAN_API_URL` to that Worker URL (no trailing slash).
 - [x] Smoke-test `POST /scan` (public URL → findings; private IP → `400`; Origin `https://aicompliant.ch`; missing Origin → `403`).
 
-Browser confirmation of `/de/website-check/` is **T41**. Optionally burst past the rate limit and confirm `429`.
+Browser confirmation of `/de/website-check/` is **T41** (done 2026-09-18). Optionally burst past the rate limit and confirm `429`.
 
 Redeploy: `npm run deploy:scanner`.
