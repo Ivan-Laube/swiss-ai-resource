@@ -25,7 +25,7 @@ import {
   type SourceClassification,
 } from "./schema";
 
-const DEFAULT_CLASSIFY_MODEL = "claude-sonnet-4-20250514";
+const DEFAULT_CLASSIFY_MODEL = "claude-sonnet-5";
 
 export function getClassifyModel(): string {
   return getModel("CLASSIFY_MODEL", DEFAULT_CLASSIFY_MODEL);

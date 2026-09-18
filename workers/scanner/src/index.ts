@@ -1,10 +1,16 @@
 import checksJson from "../../../data/scanner-checks.json";
 import { parseScannerChecks } from "../../../src/scanner/schema";
 
-import { jsonResponse, optionsResponse } from "./cors";
+import {
+  isAllowedOrigin,
+  jsonResponse,
+  optionsResponse,
+  rejectIfDisallowedOrigin,
+} from "./cors";
 import { runChecks } from "./engine";
 import type { Env } from "./env";
 import { FetchTargetError, fetchTarget } from "./fetch-target";
+import { createScanBudget } from "./scan-budget";
 import { assertSafeScanUrl } from "./url-guard";
 
 const checksFile = parseScannerChecks(checksJson);
@@ -97,29 +103,38 @@ async function handleScan(
     return jsonResponse({ error: parsed.error }, 400, origin);
   }
 
-  const guarded = await assertSafeScanUrl(parsed.url);
-  if (!guarded.ok) {
-    return jsonResponse({ error: guarded.error }, 400, origin);
-  }
-
-  let fetched;
+  const budget = createScanBudget();
   try {
-    fetched = await fetchTarget(guarded.url);
-  } catch (error) {
-    if (error instanceof FetchTargetError) {
-      return fetchErrorResponse(error, origin);
+    const guarded = await assertSafeScanUrl(parsed.url, budget);
+    if (!guarded.ok) {
+      if (guarded.timedOut) {
+        return jsonResponse({ error: guarded.error }, 504, origin);
+      }
+      return jsonResponse({ error: guarded.error }, 400, origin);
     }
-    const message = error instanceof Error ? error.message : String(error);
-    return jsonResponse({ error: message }, 502, origin);
-  }
 
-  const result = await runChecks(
-    fetched,
-    checksFile,
-    guarded.url,
-    guarded.url.href,
-  );
-  return jsonResponse(result, 200, origin);
+    let fetched;
+    try {
+      fetched = await fetchTarget(guarded.url, budget);
+    } catch (error) {
+      if (error instanceof FetchTargetError) {
+        return fetchErrorResponse(error, origin);
+      }
+      const message = error instanceof Error ? error.message : String(error);
+      return jsonResponse({ error: message }, 502, origin);
+    }
+
+    const result = await runChecks(
+      fetched,
+      checksFile,
+      guarded.url,
+      guarded.url.href,
+      budget,
+    );
+    return jsonResponse(result, 200, origin);
+  } finally {
+    budget.dispose();
+  }
 }
 
 const worker = {
@@ -134,14 +149,25 @@ const worker = {
     const url = new URL(request.url);
 
     if (request.method === "OPTIONS" && url.pathname === "/scan") {
-      return optionsResponse(origin);
+      const rejected = rejectIfDisallowedOrigin(request, origin);
+      if (rejected) return rejected;
+      // Reflect the request Origin (SITE_ORIGIN or www ↔ apex sibling).
+      return optionsResponse(request.headers.get("Origin")!);
     }
 
     if (request.method === "POST" && url.pathname === "/scan") {
-      return handleScan(request, env, origin);
+      const rejected = rejectIfDisallowedOrigin(request, origin);
+      if (rejected) return rejected;
+      return handleScan(request, env, request.headers.get("Origin")!);
     }
 
-    return jsonResponse({ error: "Not found" }, 404, origin);
+    // Non-CORS routes: no Origin required; if present and allowed, reflect it.
+    const requestOrigin = request.headers.get("Origin");
+    const corsOrigin =
+      requestOrigin && isAllowedOrigin(requestOrigin, origin)
+        ? requestOrigin
+        : origin;
+    return jsonResponse({ error: "Not found" }, 404, corsOrigin);
   },
 } satisfies ExportedHandler<Env>;
 

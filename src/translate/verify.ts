@@ -53,3 +53,51 @@ export function verifyGlossaryTermsInTranslation(
 
   return { missing, checked };
 }
+
+/** Opening/closing HTML tags that marked would pass through into the page. */
+const RAW_HTML_TAG = /<\/?[a-zA-Z][a-zA-Z0-9]*(?:\s[^<>]*)?>/g;
+
+/**
+ * Remove fenced (``` / ~~~) and indented code blocks so HTML-looking text
+ * inside examples does not trip the raw-HTML guard.
+ */
+function withoutCodeBlocks(markdown: string): string {
+  const noFenced = markdown.replace(
+    /^(?:```|~~~)[^\n]*\n[\s\S]*?^(?:```|~~~)[ \t]*$/gm,
+    "",
+  );
+  return noFenced.replace(/^(?: {4}|\t).+$/gm, "");
+}
+
+/** Distinct raw HTML tags found outside Markdown code blocks. */
+export function findRawHtmlOutsideCode(markdown: string): string[] {
+  const matches = withoutCodeBlocks(markdown).match(RAW_HTML_TAG);
+  if (!matches) {
+    return [];
+  }
+  return [...new Set(matches)];
+}
+
+/**
+ * Refuse LLM translations that embed raw HTML. Render-time sanitization in
+ * `renderMarkdown` is the last line of defense; this keeps auto-committed
+ * `content/{en,fr,it}` free of HTML the model might inject.
+ */
+export function assertNoRawHtmlInTranslation(
+  title: string,
+  description: string,
+  body: string,
+): void {
+  const hits = [
+    ...findRawHtmlOutsideCode(title),
+    ...findRawHtmlOutsideCode(description),
+    ...findRawHtmlOutsideCode(body),
+  ];
+  if (hits.length === 0) {
+    return;
+  }
+  const preview = hits.slice(0, 5).join(", ");
+  throw new Error(
+    `LLM translation contains raw HTML (refusing to write): ${preview}`,
+  );
+}

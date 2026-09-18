@@ -1,10 +1,12 @@
 /** SSRF guards for scanner target URLs (T34). */
 
+import { FETCH_TIMEOUT_MS, type ScanBudget } from "./scan-budget";
+
 const DOH_ENDPOINT = "https://cloudflare-dns.com/dns-query";
 
 export type SafeUrlResult =
   | { ok: true; url: URL }
-  | { ok: false; error: string };
+  | { ok: false; error: string; timedOut?: boolean };
 
 /**
  * Returns true for loopback, private, link-local, CGNAT, ULA, metadata,
@@ -155,48 +157,87 @@ function isLiteralIp(hostname: string): boolean {
   return false;
 }
 
+function isAbortError(error: unknown, signal: AbortSignal): boolean {
+  return (
+    (error instanceof Error && error.name === "AbortError") || signal.aborted
+  );
+}
+
 type DohAnswer = { data?: string; type?: number };
 
-async function resolveViaDoh(hostname: string): Promise<string[]> {
+function collectIpsFromAnswers(answers: DohAnswer[] | undefined): string[] {
   const ips: string[] = [];
-
-  for (const type of ["A", "AAAA"] as const) {
-    const url = `${DOH_ENDPOINT}?name=${encodeURIComponent(hostname)}&type=${type}`;
-    const res = await fetch(url, {
-      headers: { Accept: "application/dns-json" },
-    });
-    if (!res.ok) {
-      throw new Error(`DoH lookup failed (${res.status})`);
-    }
-    const json = (await res.json()) as {
-      Status?: number;
-      Answer?: DohAnswer[];
-    };
-    // Status 0 = NOERROR; 3 = NXDOMAIN (no answers is fine)
-    if (json.Status !== undefined && json.Status !== 0 && json.Status !== 3) {
-      throw new Error(`DoH lookup status ${json.Status}`);
-    }
-    for (const ans of json.Answer ?? []) {
-      if (typeof ans.data === "string" && ans.data.length > 0) {
-        // A records: dotted quad; AAAA: colon hex. CNAME answers may appear — skip non-IP.
-        const data = ans.data.trim();
-        if (isLiteralIp(data) || /^\d{1,3}(?:\.\d{1,3}){3}$/.test(data)) {
-          ips.push(data);
-        } else if (data.includes(":") && !data.includes(" ")) {
-          ips.push(data);
-        }
+  for (const ans of answers ?? []) {
+    if (typeof ans.data === "string" && ans.data.length > 0) {
+      // A records: dotted quad; AAAA: colon hex. CNAME answers may appear — skip non-IP.
+      const data = ans.data.trim();
+      if (isLiteralIp(data) || /^\d{1,3}(?:\.\d{1,3}){3}$/.test(data)) {
+        ips.push(data);
+      } else if (data.includes(":") && !data.includes(" ")) {
+        ips.push(data);
       }
     }
   }
-
   return ips;
+}
+
+async function lookupDohType(
+  hostname: string,
+  type: "A" | "AAAA",
+  signal: AbortSignal,
+): Promise<string[]> {
+  const url = `${DOH_ENDPOINT}?name=${encodeURIComponent(hostname)}&type=${type}`;
+  const res = await fetch(url, {
+    headers: { Accept: "application/dns-json" },
+    signal,
+  });
+  if (!res.ok) {
+    throw new Error(`DoH lookup failed (${res.status})`);
+  }
+  const json = (await res.json()) as {
+    Status?: number;
+    Answer?: DohAnswer[];
+  };
+  // Status 0 = NOERROR; 3 = NXDOMAIN (no answers is fine)
+  if (json.Status !== undefined && json.Status !== 0 && json.Status !== 3) {
+    throw new Error(`DoH lookup status ${json.Status}`);
+  }
+  return collectIpsFromAnswers(json.Answer);
+}
+
+async function resolveViaDoh(
+  hostname: string,
+  signal: AbortSignal,
+): Promise<string[]> {
+  // A and AAAA in parallel — still two subrequests, but one RTT within the budget.
+  const [aRecords, aaaaRecords] = await Promise.all([
+    lookupDohType(hostname, "A", signal),
+    lookupDohType(hostname, "AAAA", signal),
+  ]);
+  return [...aRecords, ...aaaaRecords];
+}
+
+function resolveHostnameCached(
+  hostname: string,
+  budget: ScanBudget,
+): Promise<string[]> {
+  const existing = budget.dnsCache.get(hostname);
+  if (existing) return existing;
+
+  const pending = resolveViaDoh(hostname, budget.signal);
+  budget.dnsCache.set(hostname, pending);
+  return pending;
 }
 
 /**
  * Validate a scan target URL: http(s) only, no userinfo, no localhost/private IPs.
- * Non-literal hosts are resolved via Cloudflare DoH and every answer must be public.
+ * Non-literal hosts are resolved via Cloudflare DoH (AbortSignal + per-budget memo)
+ * and every answer must be public.
  */
-export async function assertSafeScanUrl(raw: string): Promise<SafeUrlResult> {
+export async function assertSafeScanUrl(
+  raw: string,
+  budget: ScanBudget,
+): Promise<SafeUrlResult> {
   let parsed: URL;
   try {
     parsed = new URL(raw);
@@ -230,10 +271,25 @@ export async function assertSafeScanUrl(raw: string): Promise<SafeUrlResult> {
     return { ok: true, url: safe };
   }
 
+  if (budget.signal.aborted) {
+    return {
+      ok: false,
+      error: `Timed out after ${FETCH_TIMEOUT_MS}ms`,
+      timedOut: true,
+    };
+  }
+
   let resolved: string[];
   try {
-    resolved = await resolveViaDoh(hostname);
-  } catch {
+    resolved = await resolveHostnameCached(hostname, budget);
+  } catch (error) {
+    if (isAbortError(error, budget.signal)) {
+      return {
+        ok: false,
+        error: `Timed out after ${FETCH_TIMEOUT_MS}ms`,
+        timedOut: true,
+      };
+    }
     return { ok: false, error: "Could not resolve hostname for safety check" };
   }
 

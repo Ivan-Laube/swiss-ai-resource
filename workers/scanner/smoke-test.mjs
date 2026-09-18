@@ -96,6 +96,42 @@ check(
   `status ${opt.status} allow-origin ${opt.headers.get("access-control-allow-origin")}`,
 );
 
+const noOrigin = await fetch(`${base}/scan`, {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ url: "https://example.com" }),
+});
+check(
+  "POST without Origin -> 403",
+  noOrigin.status === 403 && !noOrigin.headers.get("access-control-allow-origin"),
+  `status ${noOrigin.status} allow-origin ${noOrigin.headers.get("access-control-allow-origin")}`,
+);
+
+const badOrigin = await fetch(`${base}/scan`, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    Origin: "https://evil.example",
+  },
+  body: JSON.stringify({ url: "https://example.com" }),
+});
+check(
+  "POST wrong Origin -> 403",
+  badOrigin.status === 403 && !badOrigin.headers.get("access-control-allow-origin"),
+  `status ${badOrigin.status} allow-origin ${badOrigin.headers.get("access-control-allow-origin")}`,
+);
+
+const wwwOrigin = "https://www.aicompliant.ch";
+const wwwOk = await fetch(`${base}/scan`, {
+  method: "OPTIONS",
+  headers: { Origin: wwwOrigin },
+});
+check(
+  "OPTIONS www sibling -> 204",
+  wwwOk.status === 204 && wwwOk.headers.get("access-control-allow-origin") === wwwOrigin,
+  `status ${wwwOk.status} allow-origin ${wwwOk.headers.get("access-control-allow-origin")}`,
+);
+
 const nf = await fetch(`${base}/scan`, { method: "GET", headers: { Origin: origin } });
 check("GET /scan -> 404", nf.status === 404, `status ${nf.status}`);
 const nope = await fetch(`${base}/nope`, { method: "GET", headers: { Origin: origin } });

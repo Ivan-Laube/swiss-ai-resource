@@ -6,7 +6,13 @@ import {
 import { parseSurvey } from "../../../src/survey/schema";
 
 import { runAggregateJob } from "./aggregate-job";
-import { emptyResponse, jsonResponse, optionsResponse } from "./cors";
+import {
+  emptyResponse,
+  isAllowedOrigin,
+  jsonResponse,
+  optionsResponse,
+  rejectIfDisallowedOrigin,
+} from "./cors";
 import type { Env } from "./env";
 import { purgeExpiredSurveyData, storeResponse } from "./store";
 import { verifyTurnstile } from "./turnstile";
@@ -115,14 +121,23 @@ const worker = {
     const url = new URL(request.url);
 
     if (request.method === "OPTIONS" && url.pathname === "/submit") {
-      return optionsResponse(origin);
+      const rejected = rejectIfDisallowedOrigin(request, origin);
+      if (rejected) return rejected;
+      return optionsResponse(request.headers.get("Origin")!);
     }
 
     if (request.method === "POST" && url.pathname === "/submit") {
-      return handleSubmit(request, env, origin);
+      const rejected = rejectIfDisallowedOrigin(request, origin);
+      if (rejected) return rejected;
+      return handleSubmit(request, env, request.headers.get("Origin")!);
     }
 
-    return jsonResponse({ error: "Not found" }, 404, origin);
+    const requestOrigin = request.headers.get("Origin");
+    const corsOrigin =
+      requestOrigin && isAllowedOrigin(requestOrigin, origin)
+        ? requestOrigin
+        : origin;
+    return jsonResponse({ error: "Not found" }, 404, corsOrigin);
   },
   scheduled(
     controller: ScheduledController,

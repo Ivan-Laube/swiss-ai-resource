@@ -12,6 +12,7 @@ import {
 import { stripCodeFence } from "@/lib/llm-output";
 
 import type { TranslateTargetLocale } from "./prompt";
+import { assertNoRawHtmlInTranslation } from "./verify";
 
 export type LlmTranslationParts = {
   title: string;
@@ -47,6 +48,8 @@ export function assembleTranslationMarkdown(
   dePage: ContentPage,
   parts: LlmTranslationParts,
 ): string {
+  assertNoRawHtmlInTranslation(parts.title, parts.description, parts.body);
+
   const frontmatter: ContentFrontmatter = {
     title: parts.title,
     description: parts.description,
@@ -81,6 +84,8 @@ export function writeTranslation(
   locale: TranslateTargetLocale,
   parts: LlmTranslationParts,
 ): string {
+  assertNoRawHtmlInTranslation(parts.title, parts.description, parts.body);
+
   const frontmatter: ContentFrontmatter = {
     title: parts.title,
     description: parts.description,

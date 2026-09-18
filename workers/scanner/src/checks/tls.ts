@@ -4,6 +4,7 @@ import {
   probeHttpRedirectToHttps,
   type FetchTargetResult,
 } from "../fetch-target";
+import type { ScanBudget } from "../scan-budget";
 import type { Finding, TlsEvidence } from "../types";
 
 function baseFinding(
@@ -31,6 +32,7 @@ export async function runTlsCheck(
   check: TlsCheck,
   fetched: FetchTargetResult,
   startUrl: URL,
+  budget: ScanBudget,
 ): Promise<Finding> {
   let finalUrl: URL;
   try {
@@ -67,7 +69,7 @@ export async function runTlsCheck(
   }
 
   try {
-    const probe = await probeHttpRedirectToHttps(finalUrl);
+    const probe = await probeHttpRedirectToHttps(finalUrl, budget);
     if (probe.redirectsToHttps) {
       return baseFinding(check, "found", {
         https: true,

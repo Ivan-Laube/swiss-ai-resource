@@ -45,6 +45,10 @@ function toActions(
 /**
  * Decide which content slugs to bump vs clear review fields for.
  * Material wins over bump when a slug appears in both sets.
+ *
+ * Freshness bumps require a byte-identical successful fetch (`unchanged`).
+ * Cosmetic classifications do not bump — a non-empty diff must not mint a
+ * freshness claim (prompt injection on the source page could coerce "cosmetic").
  */
 export function decideActActions(
   runReport: RunReport,
@@ -52,7 +56,6 @@ export function decideActActions(
 ): ActDecision {
   const materialMap = new Map<string, Set<string>>();
   const bumpUnchangedMap = new Map<string, Set<string>>();
-  const bumpCosmeticMap = new Map<string, Set<string>>();
   const skipped = new Set<string>();
 
   for (const result of runReport.results) {
@@ -84,33 +87,13 @@ export function decideActActions(
       for (const slug of pages) {
         addSlugSource(materialMap, slug, entry.id);
       }
-      continue;
-    }
-
-    if (
-      entry.status === "classified" &&
-      entry.classification === "cosmetic" &&
-      pages.length > 0
-    ) {
-      for (const slug of pages) {
-        addSlugSource(bumpCosmeticMap, slug, entry.id);
-      }
     }
   }
 
   const materialSlugs = new Set(materialMap.keys());
 
-  // Merge unchanged + cosmetic bump maps, excluding material slugs.
   const bumpMap = new Map<string, Set<string>>();
   for (const [slug, ids] of bumpUnchangedMap) {
-    if (materialSlugs.has(slug)) {
-      continue;
-    }
-    for (const id of ids) {
-      addSlugSource(bumpMap, slug, id);
-    }
-  }
-  for (const [slug, ids] of bumpCosmeticMap) {
     if (materialSlugs.has(slug)) {
       continue;
     }
@@ -126,17 +109,12 @@ export function decideActActions(
     }
   }
 
-  // Prefer a single reason label: cosmetic if any cosmetic source, else unchanged.
   const bumped: ActPageAction[] = [...bumpMap.entries()]
-    .map(([slug, ids]) => {
-      const idList = [...ids].sort();
-      const hasCosmetic = idList.some((id) => bumpCosmeticMap.get(slug)?.has(id));
-      return {
-        slug,
-        source_ids: idList,
-        reason: (hasCosmetic ? "cosmetic" : "unchanged") as ActPageAction["reason"],
-      };
-    })
+    .map(([slug, ids]) => ({
+      slug,
+      source_ids: [...ids].sort(),
+      reason: "unchanged" as const,
+    }))
     .sort((a, b) => a.slug.localeCompare(b.slug));
 
   return {
@@ -162,6 +140,9 @@ function addVendorSource(
 /**
  * Decide which vendors to bump last_checked vs extract field patches for.
  * Material wins over bump when a vendor appears in both sets.
+ *
+ * Same freshness rule as content: only `unchanged` sources bump `last_checked`.
+ * Cosmetic diffs do not bump.
  */
 export function decideVendorActions(
   runReport: RunReport,
@@ -177,7 +158,6 @@ export function decideVendorActions(
 
   const materialMap = new Map<string, Set<string>>();
   const bumpUnchangedMap = new Map<string, Set<string>>();
-  const bumpCosmeticMap = new Map<string, Set<string>>();
   const skipped = new Set<string>();
 
   for (const result of runReport.results) {
@@ -212,14 +192,6 @@ export function decideVendorActions(
       entry.classification === "material"
     ) {
       addVendorSource(materialMap, vendorId, entry.id);
-      continue;
-    }
-
-    if (
-      entry.status === "classified" &&
-      entry.classification === "cosmetic"
-    ) {
-      addVendorSource(bumpCosmeticMap, vendorId, entry.id);
     }
   }
 
@@ -227,14 +199,6 @@ export function decideVendorActions(
 
   const bumpMap = new Map<string, Set<string>>();
   for (const [vendorId, ids] of bumpUnchangedMap) {
-    if (materialIds.has(vendorId)) {
-      continue;
-    }
-    for (const id of ids) {
-      addVendorSource(bumpMap, vendorId, id);
-    }
-  }
-  for (const [vendorId, ids] of bumpCosmeticMap) {
     if (materialIds.has(vendorId)) {
       continue;
     }
@@ -250,17 +214,11 @@ export function decideVendorActions(
   }
 
   const bumped: ActVendorBump[] = [...bumpMap.entries()]
-    .map(([vendor_id, ids]) => {
-      const idList = [...ids].sort();
-      const hasCosmetic = idList.some((id) =>
-        bumpCosmeticMap.get(vendor_id)?.has(id),
-      );
-      return {
-        vendor_id,
-        source_ids: idList,
-        reason: (hasCosmetic ? "cosmetic" : "unchanged") as ActVendorBump["reason"],
-      };
-    })
+    .map(([vendor_id, ids]) => ({
+      vendor_id,
+      source_ids: [...ids].sort(),
+      reason: "unchanged" as const,
+    }))
     .sort((a, b) => a.vendor_id.localeCompare(b.vendor_id));
 
   const material = [...materialMap.entries()]

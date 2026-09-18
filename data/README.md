@@ -17,7 +17,7 @@ Implementation: Zod schema and loaders in [`src/vendors/`](../src/vendors/) (`sc
 | `id` | string | Kebab-case slug, unique in the file (`openai`, `swisscom-ai`) |
 | `name` | string | Display name |
 | `website` | `https://` URL | Vendor homepage |
-| `last_checked` | `YYYY-MM-DD` | Bumped by monthly Act (T18) on unchanged/cosmetic vendor sources; also set when material extract succeeds |
+| `last_checked` | `YYYY-MM-DD` | Bumped by monthly Act (T18) on unchanged vendor sources only; also set when material extract succeeds |
 
 ### Sourced cells
 
@@ -99,7 +99,8 @@ Sources with `category: "vendor"` and `vendor_id` set are handled by `npm run ma
 
 | Snapshot + classify | Action |
 |---|---|
-| unchanged or cosmetic | Bump `last_checked` → commit to `main` |
+| unchanged | Bump `last_checked` → commit to `main` |
+| cosmetic | No bump (non-empty diff must not mint freshness) |
 | material | LLM extract claim fields into `vendors.json` → same review PR as content material |
 | kept / failed / baseline | Skip |
 
@@ -158,7 +159,7 @@ Fetch resilience (T38):
 5. `--seed-file` escape hatch for permanently blocked pages (requires `--id`; writes `seeded: true` meta)
 6. Failed runs keep the previous `.txt`, increment `consecutive_failures`, and surface in `_run.json` `failures[]` + the monthly brief / issue
 
-On fetch/extract failure the previous `.txt` is kept and meta is written with `ok: false`. This protects freshness claims: content `last_verified` and vendor `last_checked` are not bumped from failed/`kept` sources, and the meta preserves `last_ok_at` plus `consecutive_failures`. Monthly GitHub Action: [`.github/workflows/monthly-sources.yml`](../.github/workflows/monthly-sources.yml).
+On fetch/extract failure the previous `.txt` is kept and meta is written with `ok: false`. This protects freshness claims: content `last_verified` and vendor `last_checked` are bumped only from successful unchanged sources (not cosmetic, material, failed, or `kept`), and the meta preserves `last_ok_at` plus `consecutive_failures`. Monthly GitHub Action: [`.github/workflows/monthly-sources.yml`](../.github/workflows/monthly-sources.yml).
 
 ### Current resilience notes
 
@@ -182,7 +183,7 @@ npm run classify:snapshots -- --dry-run
 npm run classify:snapshots -- --id=edoeb-ki-und-datenschutz
 ```
 
-Implementation: [`src/classify/`](../src/classify/). Requires `snapshots/_run.json` from a snapshot run and `_diffs/{id}.patch` for changed sources. Uses `dependent_pages` plus DE cornerstone `title`/`description` in the LLM prompt.
+Implementation: [`src/classify/`](../src/classify/). Requires `snapshots/_run.json` from a snapshot run and `_diffs/{id}.patch` for changed sources. Uses `dependent_pages` plus DE cornerstone `title`/`description` in the LLM prompt. The prompt biases toward material and treats the diff as untrusted evidence (ignore embedded instructions).
 
 ### Act (T17)
 
@@ -196,7 +197,7 @@ Implementation: [`src/maintain/`](../src/maintain/). Requires `_run.json` and `_
 | Input | Action |
 |---|---|
 | `_run` `unchanged` (ok) with `dependent_pages` | Bump `last_verified` on all locales |
-| classify `cosmetic` | Bump `last_verified` on all locales |
+| classify `cosmetic` | No bump (non-empty diff must not mint freshness; classifier bias is toward material) |
 | classify `material` | Issue + PR; clear DE `reviewed_by` / `review_date` / `review_scope`; no auto-bump |
 | `baseline` / `kept` / failed / empty `dependent_pages` | No content mutation |
 
@@ -606,6 +607,8 @@ Each finding copies `id`, `method`, `severity`, `title`, `description`, `legal_b
 |---|---|---|---|
 | `tls` | HTTPS final URL + (if `require_https_redirect`) HTTP→HTTPS redirect observed | Final URL not HTTPS, or redirect required but HTTP stays on HTTP / fails to HTTPS | Redirect probe timed out / blocked / upstream error |
 | `link` | Pattern match + (`!verify_link` or HEAD 2xx/3xx) | No matching `<a>` | Match found but HEAD fails (timeout/4xx/5xx/SSRF block) |
+
+Link detection scans at most the first **512 KiB** of HTML and at most **2000** anchors ([`workers/scanner/src/html.ts`](../workers/scanner/src/html.ts)); patterns and anchor text/href are lowercased once before matching. Oversized or adversarial pages may therefore miss a late privacy/impressum link and report `not_found` — an accepted trade-off against Worker CPU exhaustion. See [DEPLOY.md](../DEPLOY.md#html--cpu-bounds-link-checks). Outbound DoH + fetch/HEAD/probe share one **8s** wall-clock budget with per-request hostname memoization ([`scan-budget.ts`](../workers/scanner/src/scan-budget.ts)); see [DEPLOY.md](../DEPLOY.md#scan-budget-doh--outbound-fetches).
 | `script_signature` | ≥1 signature pattern hits HTML | None | — |
 | `response_header` | All listed headers present | None present | Some but not all |
 | `static_scan_flag` | ≥1 honesty signature hits | None | — |

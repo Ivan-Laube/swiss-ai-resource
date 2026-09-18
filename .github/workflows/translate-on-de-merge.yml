@@ -25,12 +25,12 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
         with:
           fetch-depth: 0
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: "20"
           cache: npm
@@ -43,11 +43,13 @@ jobs:
         env:
           GITHUB_EVENT_BEFORE: ${{ github.event.before }}
           GITHUB_SHA: ${{ github.sha }}
+          EVENT_NAME: ${{ github.event_name }}
+          INPUT_SLUGS: ${{ github.event.inputs.slugs }}
         run: |
           set -euo pipefail
 
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            INPUT="${{ github.event.inputs.slugs }}"
+          if [ "${EVENT_NAME}" = "workflow_dispatch" ]; then
+            INPUT="${INPUT_SLUGS:-}"
             if [ -z "${INPUT// }" ]; then
               mapfile -t SLUGS < <(npx tsx scripts/changed-de-slugs.ts --all)
             else
@@ -87,10 +89,11 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           TRANSLATE_MODEL: ${{ vars.TRANSLATE_MODEL }}
+          SLUG_LIST: ${{ steps.slugs.outputs.list }}
         run: |
           set -euo pipefail
           ARGS=()
-          IFS=',' read -ra PARTS <<< "${{ steps.slugs.outputs.list }}"
+          IFS=',' read -ra PARTS <<< "${SLUG_LIST}"
           for slug in "${PARTS[@]}"; do
             [ -n "$slug" ] || continue
             ARGS+=("--slug=$slug")
@@ -120,6 +123,8 @@ jobs:
 
       - name: Commit regenerated translations
         if: steps.slugs.outputs.count != '0'
+        env:
+          SLUG_LIST: ${{ steps.slugs.outputs.list }}
         run: |
           set -euo pipefail
 
@@ -129,6 +134,6 @@ jobs:
             exit 0
           fi
 
-          SLUG_LABEL="${{ steps.slugs.outputs.list }}"
+          SLUG_LABEL="${SLUG_LIST}"
           git commit -m "chore(content): regenerate translations (${SLUG_LABEL})"
           git push

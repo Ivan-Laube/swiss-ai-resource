@@ -215,4 +215,10 @@ export const it: Messages = {
     message: "Reindirizzamento alla homepage tedesca …",
     link: "Vai alla homepage (DE)",
   },
+  notFound: {
+    title: "Pagina non trovata",
+    message:
+      "La pagina richiesta non esiste o è stata spostata.",
+    homeLink: "Vai alla homepage",
+  },
 };

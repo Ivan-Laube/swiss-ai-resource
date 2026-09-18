@@ -6,7 +6,7 @@ import type { TranslationPrompt } from "./prompt";
 
 
 
-const DEFAULT_MODEL = "claude-sonnet-4-20250514";
+const DEFAULT_MODEL = "claude-sonnet-5";
 
 
 

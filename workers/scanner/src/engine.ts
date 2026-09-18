@@ -1,5 +1,6 @@
 import type { ScannerChecksFile } from "../../../src/scanner/schema";
 import type { FetchTargetResult } from "./fetch-target";
+import type { ScanBudget } from "./scan-budget";
 import { runResponseHeaderCheck } from "./checks/headers";
 import { runLinkCheck } from "./checks/link";
 import {
@@ -17,17 +18,18 @@ export async function runChecks(
   checksFile: ScannerChecksFile,
   startUrl: URL,
   requestUrl: string,
+  budget: ScanBudget,
 ): Promise<ScanResult> {
   const findings: Finding[] = [];
 
   for (const check of checksFile.checks) {
     switch (check.method) {
       case "tls":
-        findings.push(await runTlsCheck(check, fetched, startUrl));
+        findings.push(await runTlsCheck(check, fetched, startUrl, budget));
         break;
       case "link":
         findings.push(
-          await runLinkCheck(check, fetched.body, fetched.finalUrl),
+          await runLinkCheck(check, fetched.body, fetched.finalUrl, budget),
         );
         break;
       case "script_signature":

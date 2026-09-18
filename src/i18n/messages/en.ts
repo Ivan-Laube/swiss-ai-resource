@@ -214,4 +214,9 @@ export const en: Messages = {
     message: "Redirecting to the German homepage …",
     link: "Go to homepage (DE)",
   },
+  notFound: {
+    title: "Page not found",
+    message: "The page you requested does not exist or has been moved.",
+    homeLink: "Go to homepage",
+  },
 };

@@ -214,4 +214,10 @@ export const de = {
     message: "Weiterleitung zur deutschen Startseite …",
     link: "Zur Startseite (DE)",
   },
+  notFound: {
+    title: "Seite nicht gefunden",
+    message:
+      "Die angeforderte Seite existiert nicht oder wurde verschoben.",
+    homeLink: "Zur Startseite",
+  },
 } as const;

@@ -3,7 +3,7 @@ import { z } from "zod";
 export const actPageActionSchema = z.object({
   slug: z.string().min(1),
   source_ids: z.array(z.string().min(1)),
-  reason: z.enum(["unchanged", "cosmetic", "material"]),
+  reason: z.enum(["unchanged", "material"]),
 });
 
 export type ActPageAction = z.infer<typeof actPageActionSchema>;
@@ -11,7 +11,7 @@ export type ActPageAction = z.infer<typeof actPageActionSchema>;
 export const actVendorBumpSchema = z.object({
   vendor_id: z.string().min(1),
   source_ids: z.array(z.string().min(1)),
-  reason: z.enum(["unchanged", "cosmetic"]),
+  reason: z.enum(["unchanged"]),
 });
 
 export type ActVendorBump = z.infer<typeof actVendorBumpSchema>;

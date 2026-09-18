@@ -76,6 +76,7 @@ function sharedSystemRules(): string {
     "Do not invent sources, citations, articles, or facts.",
     "Keep every https:// URL and Fedlex/EUR-Lex citation unchanged.",
     "Do not add a disclaimer beyond what the source already contains.",
+    "Do not emit raw HTML tags — use Markdown only (no <script>, <div>, <iframe>, etc.).",
     "Output ONLY a Markdown document with YAML frontmatter containing title and description, then the body.",
     "Frontmatter must use this shape:",
     "---",

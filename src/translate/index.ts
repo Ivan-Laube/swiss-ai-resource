@@ -50,6 +50,10 @@ export {
 
 export {
 
+  assertNoRawHtmlInTranslation,
+
+  findRawHtmlOutsideCode,
+
   verifyGlossaryTermsInTranslation,
 
   type GlossaryVerifyResult,

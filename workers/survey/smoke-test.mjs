@@ -77,6 +77,32 @@ check(
   `status ${opt.status} allow-origin ${opt.headers.get("access-control-allow-origin")}`,
 );
 
+// 6b. Origin enforcement (missing / wrong → 403, no CORS headers)
+const noOrigin = await fetch(`${base}/submit`, {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify(payload()),
+});
+check(
+  "POST without Origin -> 403",
+  noOrigin.status === 403 && !noOrigin.headers.get("access-control-allow-origin"),
+  `status ${noOrigin.status} allow-origin ${noOrigin.headers.get("access-control-allow-origin")}`,
+);
+
+const badOrigin = await fetch(`${base}/submit`, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    Origin: "https://evil.example",
+  },
+  body: JSON.stringify(payload()),
+});
+check(
+  "POST wrong Origin -> 403",
+  badOrigin.status === 403 && !badOrigin.headers.get("access-control-allow-origin"),
+  `status ${badOrigin.status} allow-origin ${badOrigin.headers.get("access-control-allow-origin")}`,
+);
+
 // 7. Unknown route -> 404
 const nf = await fetch(`${base}/nope`, { method: "GET", headers: { Origin: origin } });
 check("unknown route -> 404", nf.status === 404, `status ${nf.status}`);

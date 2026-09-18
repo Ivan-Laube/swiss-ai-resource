@@ -1,8 +1,13 @@
 /** Guarded outbound fetch for scanner targets (T34 + T35 HEAD/redirect probe). */
 
+import {
+  FETCH_TIMEOUT_MS,
+  type ScanBudget,
+} from "./scan-budget";
 import { assertSafeScanUrl } from "./url-guard";
 
-export const FETCH_TIMEOUT_MS = 8_000;
+export { FETCH_TIMEOUT_MS } from "./scan-budget";
+
 export const FETCH_SIZE_CAP_BYTES = 2 * 1024 * 1024;
 export const MAX_REDIRECTS = 5;
 
@@ -67,6 +72,13 @@ function isAbortError(error: unknown, signal: AbortSignal): boolean {
   );
 }
 
+function timeoutError(): FetchTargetError {
+  return new FetchTargetError(
+    "timeout",
+    `Timed out after ${FETCH_TIMEOUT_MS}ms`,
+  );
+}
+
 async function readBodyCapped(
   response: Response,
   signal: AbortSignal,
@@ -93,10 +105,7 @@ async function readBodyCapped(
   try {
     while (true) {
       if (signal.aborted) {
-        throw new FetchTargetError(
-          "timeout",
-          `Timed out after ${FETCH_TIMEOUT_MS}ms`,
-        );
+        throw timeoutError();
       }
       const { done, value } = await reader.read();
       if (done) break;
@@ -136,6 +145,7 @@ async function resolveRedirect(
   response: Response,
   current: URL,
   redirects: number,
+  budget: ScanBudget,
 ): Promise<{ next: URL; redirects: number }> {
   const location = response.headers.get("Location");
   if (!location) {
@@ -164,8 +174,11 @@ async function resolveRedirect(
     );
   }
 
-  const guarded = await assertSafeScanUrl(next.href);
+  const guarded = await assertSafeScanUrl(next.href, budget);
   if (!guarded.ok) {
+    if (guarded.timedOut) {
+      throw timeoutError();
+    }
     throw new FetchTargetError("blocked", guarded.error);
   }
   return { next: guarded.url, redirects: nextCount };
@@ -186,10 +199,7 @@ async function fetchOnce(
     });
   } catch (error) {
     if (isAbortError(error, signal)) {
-      throw new FetchTargetError(
-        "timeout",
-        `Timed out after ${FETCH_TIMEOUT_MS}ms`,
-      );
+      throw timeoutError();
     }
     const message = error instanceof Error ? error.message : String(error);
     throw new FetchTargetError("upstream", message);
@@ -197,129 +207,133 @@ async function fetchOnce(
 }
 
 /**
- * GET a validated URL with 8s timeout, 2 MB body cap, and SSRF-safe redirect following.
+ * GET a validated URL using the scan budget signal, 2 MB body cap, and
+ * SSRF-safe redirect following.
  */
-export async function fetchTarget(startUrl: URL): Promise<FetchTargetResult> {
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
+export async function fetchTarget(
+  startUrl: URL,
+  budget: ScanBudget,
+): Promise<FetchTargetResult> {
+  let current = startUrl;
+  let redirects = 0;
 
-  try {
-    let current = startUrl;
-    let redirects = 0;
+  while (true) {
+    const response = await fetchOnce(current, "GET", budget.signal);
 
-    while (true) {
-      const response = await fetchOnce(current, "GET", controller.signal);
-
-      if (isRedirectStatus(response.status)) {
-        const resolved = await resolveRedirect(response, current, redirects);
-        current = resolved.next;
-        redirects = resolved.redirects;
-        continue;
-      }
-
-      if (response.status < 200 || response.status >= 300) {
-        throw new FetchTargetError(
-          "upstream",
-          `Upstream returned HTTP ${response.status}`,
-          response.status,
-        );
-      }
-
-      const { body, byteLength } = await readBodyCapped(
+    if (isRedirectStatus(response.status)) {
+      const resolved = await resolveRedirect(
         response,
-        controller.signal,
-      );
-
-      return {
-        finalUrl: current.href,
-        status: response.status,
-        headers: response.headers,
-        body,
-        byteLength,
-        contentType: response.headers.get("Content-Type"),
-      };
-    }
-  } finally {
-    clearTimeout(timer);
-  }
-}
-
-/**
- * HEAD (with GET fallback on 405/501) a validated URL. Follows redirects SSRF-safely.
- * Does not read response bodies except a zero-length Range GET fallback.
- */
-export async function headTarget(startUrl: URL): Promise<HeadTargetResult> {
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
-
-  try {
-    let current = startUrl;
-    let redirects = 0;
-    let useGetFallback = false;
-
-    while (true) {
-      const response = await fetchOnce(
         current,
-        useGetFallback ? "GET" : "HEAD",
-        controller.signal,
-        useGetFallback ? { Range: "bytes=0-0" } : undefined,
+        redirects,
+        budget,
       );
+      current = resolved.next;
+      redirects = resolved.redirects;
+      continue;
+    }
 
-      // Some origins reject HEAD — fall back once to a tiny GET.
-      if (
-        !useGetFallback &&
-        (response.status === 405 || response.status === 501)
-      ) {
-        useGetFallback = true;
-        // Drain/cancel any body on the rejected HEAD (usually empty).
-        try {
-          await response.body?.cancel();
-        } catch {
-          // ignore
-        }
-        continue;
-      }
-
-      if (isRedirectStatus(response.status)) {
-        const resolved = await resolveRedirect(response, current, redirects);
-        current = resolved.next;
-        redirects = resolved.redirects;
-        try {
-          await response.body?.cancel();
-        } catch {
-          // ignore
-        }
-        continue;
-      }
-
-      // Accept 2xx and 3xx that aren't redirect statuses we already handled;
-      // also accept 206 Partial Content from Range GET fallback.
-      if (response.status >= 200 && response.status < 400) {
-        try {
-          await response.body?.cancel();
-        } catch {
-          // ignore
-        }
-        return {
-          finalUrl: current.href,
-          status: response.status,
-          headers: response.headers,
-        };
-      }
-
-      try {
-        await response.body?.cancel();
-      } catch {
-        // ignore
-      }
+    if (response.status < 200 || response.status >= 300) {
       throw new FetchTargetError(
         "upstream",
         `Upstream returned HTTP ${response.status}`,
         response.status,
       );
     }
-  } finally {
-    clearTimeout(timer);
+
+    const { body, byteLength } = await readBodyCapped(
+      response,
+      budget.signal,
+    );
+
+    return {
+      finalUrl: current.href,
+      status: response.status,
+      headers: response.headers,
+      body,
+      byteLength,
+      contentType: response.headers.get("Content-Type"),
+    };
+  }
+}
+
+/**
+ * HEAD (with GET fallback on 405/501) a validated URL. Follows redirects
+ * SSRF-safely under the shared scan budget. Does not read response bodies
+ * except a zero-length Range GET fallback.
+ */
+export async function headTarget(
+  startUrl: URL,
+  budget: ScanBudget,
+): Promise<HeadTargetResult> {
+  let current = startUrl;
+  let redirects = 0;
+  let useGetFallback = false;
+
+  while (true) {
+    const response = await fetchOnce(
+      current,
+      useGetFallback ? "GET" : "HEAD",
+      budget.signal,
+      useGetFallback ? { Range: "bytes=0-0" } : undefined,
+    );
+
+    // Some origins reject HEAD — fall back once to a tiny GET.
+    if (
+      !useGetFallback &&
+      (response.status === 405 || response.status === 501)
+    ) {
+      useGetFallback = true;
+      // Drain/cancel any body on the rejected HEAD (usually empty).
+      try {
+        await response.body?.cancel();
+      } catch {
+        // ignore
+      }
+      continue;
+    }
+
+    if (isRedirectStatus(response.status)) {
+      const resolved = await resolveRedirect(
+        response,
+        current,
+        redirects,
+        budget,
+      );
+      current = resolved.next;
+      redirects = resolved.redirects;
+      try {
+        await response.body?.cancel();
+      } catch {
+        // ignore
+      }
+      continue;
+    }
+
+    // Accept 2xx and 3xx that aren't redirect statuses we already handled;
+    // also accept 206 Partial Content from Range GET fallback.
+    if (response.status >= 200 && response.status < 400) {
+      try {
+        await response.body?.cancel();
+      } catch {
+        // ignore
+      }
+      return {
+        finalUrl: current.href,
+        status: response.status,
+        headers: response.headers,
+      };
+    }
+
+    try {
+      await response.body?.cancel();
+    } catch {
+      // ignore
+    }
+    throw new FetchTargetError(
+      "upstream",
+      `Upstream returned HTTP ${response.status}`,
+      response.status,
+    );
   }
 }
 
@@ -333,35 +347,70 @@ export type HttpRedirectProbeResult = {
  */
 export async function probeHttpRedirectToHttps(
   httpsFinalUrl: URL,
+  budget: ScanBudget,
 ): Promise<HttpRedirectProbeResult> {
   const httpUrl = new URL(httpsFinalUrl.href);
   httpUrl.protocol = "http:";
 
-  const guarded = await assertSafeScanUrl(httpUrl.href);
+  const guarded = await assertSafeScanUrl(httpUrl.href, budget);
   if (!guarded.ok) {
+    if (guarded.timedOut) {
+      throw timeoutError();
+    }
     throw new FetchTargetError("blocked", guarded.error);
   }
 
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
+  let current = guarded.url;
+  let redirects = 0;
 
-  try {
-    let current = guarded.url;
-    let redirects = 0;
+  while (true) {
+    if (current.protocol === "https:") {
+      return { redirectsToHttps: true };
+    }
 
-    while (true) {
+    const response = await fetchOnce(current, "HEAD", budget.signal);
+
+    if (isRedirectStatus(response.status)) {
+      const resolved = await resolveRedirect(
+        response,
+        current,
+        redirects,
+        budget,
+      );
+      current = resolved.next;
+      redirects = resolved.redirects;
+      try {
+        await response.body?.cancel();
+      } catch {
+        // ignore
+      }
       if (current.protocol === "https:") {
         return { redirectsToHttps: true };
       }
+      continue;
+    }
 
-      const response = await fetchOnce(current, "HEAD", controller.signal);
-
-      if (isRedirectStatus(response.status)) {
-        const resolved = await resolveRedirect(response, current, redirects);
+    // HEAD rejected — try GET with Range for redirect Location.
+    if (response.status === 405 || response.status === 501) {
+      try {
+        await response.body?.cancel();
+      } catch {
+        // ignore
+      }
+      const getRes = await fetchOnce(current, "GET", budget.signal, {
+        Range: "bytes=0-0",
+      });
+      if (isRedirectStatus(getRes.status)) {
+        const resolved = await resolveRedirect(
+          getRes,
+          current,
+          redirects,
+          budget,
+        );
         current = resolved.next;
         redirects = resolved.redirects;
         try {
-          await response.body?.cancel();
+          await getRes.body?.cancel();
         } catch {
           // ignore
         }
@@ -370,53 +419,25 @@ export async function probeHttpRedirectToHttps(
         }
         continue;
       }
-
-      // HEAD rejected — try GET with Range for redirect Location.
-      if (response.status === 405 || response.status === 501) {
-        try {
-          await response.body?.cancel();
-        } catch {
-          // ignore
-        }
-        const getRes = await fetchOnce(current, "GET", controller.signal, {
-          Range: "bytes=0-0",
-        });
-        if (isRedirectStatus(getRes.status)) {
-          const resolved = await resolveRedirect(getRes, current, redirects);
-          current = resolved.next;
-          redirects = resolved.redirects;
-          try {
-            await getRes.body?.cancel();
-          } catch {
-            // ignore
-          }
-          if (current.protocol === "https:") {
-            return { redirectsToHttps: true };
-          }
-          continue;
-        }
-        try {
-          await getRes.body?.cancel();
-        } catch {
-          // ignore
-        }
-        // Non-redirect response on HTTP → does not redirect to HTTPS.
-        return { redirectsToHttps: false };
-      }
-
       try {
-        await response.body?.cancel();
+        await getRes.body?.cancel();
       } catch {
         // ignore
       }
-
-      // Got a final HTTP response without upgrading.
-      if (current.protocol === "http:") {
-        return { redirectsToHttps: false };
-      }
-      return { redirectsToHttps: current.protocol === "https:" };
+      // Non-redirect response on HTTP → does not redirect to HTTPS.
+      return { redirectsToHttps: false };
     }
-  } finally {
-    clearTimeout(timer);
+
+    try {
+      await response.body?.cancel();
+    } catch {
+      // ignore
+    }
+
+    // Got a final HTTP response without upgrading.
+    if (current.protocol === "http:") {
+      return { redirectsToHttps: false };
+    }
+    return { redirectsToHttps: current.protocol === "https:" };
   }
 }

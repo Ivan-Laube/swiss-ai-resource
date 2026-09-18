@@ -31,7 +31,7 @@ export async function callAnthropic(
   options: CallAnthropicOptions,
 ): Promise<string> {
   const apiKey = requireAnthropicApiKey();
-  const model = options.model ?? getModel("TRANSLATE_MODEL", "claude-sonnet-4-20250514");
+  const model = options.model ?? getModel("TRANSLATE_MODEL", "claude-sonnet-5");
   const client = new Anthropic({ apiKey });
 
   const response = await client.messages.create({

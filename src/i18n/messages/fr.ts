@@ -215,4 +215,10 @@ export const fr: Messages = {
     message: "Redirection vers la page d'accueil allemande …",
     link: "Vers la page d'accueil (DE)",
   },
+  notFound: {
+    title: "Page introuvable",
+    message:
+      "La page demandée n'existe pas ou a été déplacée.",
+    homeLink: "Vers la page d'accueil",
+  },
 };
