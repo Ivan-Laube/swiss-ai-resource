@@ -276,37 +276,24 @@ Redeploy Worker after config changes: `npm run deploy:survey`.
 
 Provisioning used an interactive operator/agent session. `NEXT_PUBLIC_*` values are public and do **not** need rotation. Rotate Worker secrets before announcing the survey:
 
-- [ ] **T23e — Turnstile secret:** In Cloudflare Dashboard → **Turnstile** → the `swiss-ai-survey` widget → rotate/reveal a new secret (or create a replacement widget and update the Pages site key). Then:
+- [x] **T23e — Turnstile secret:** Replaced widget with `swiss-ai-survey-v2` (site key on Pages `NEXT_PUBLIC_TURNSTILE_SITE_KEY`); secret set via `wrangler secret put TURNSTILE_SECRET_KEY`; old widget deleted. Dummy token against production `/submit` returns `403`.
 
-  ```powershell
-  "NEW_TURNSTILE_SECRET" | npx wrangler secret put TURNSTILE_SECRET_KEY -c workers/survey/wrangler.jsonc
-  ```
-
-  If the **site key** changes, update Pages `NEXT_PUBLIC_TURNSTILE_SITE_KEY` and rebuild. Smoke-check: dummy token `XXXX.DUMMY.TOKEN.XXXX` against production `/submit` must return `403`; a real widget solve on the live form must return `201`.
-
-- [ ] **T23f — GitHub PAT:** Replace the provisional Worker `GITHUB_TOKEN` (initially a broad `gh` OAuth token) with a **fine-grained PAT** scoped to `Ivan-Laube/swiss-ai-resource` only, permission **Contents: Read and write**, no other repos. Then:
-
-  ```powershell
-  "NEW_FINE_GRAINED_PAT" | npx wrangler secret put GITHUB_TOKEN -c workers/survey/wrangler.jsonc
-  ```
-
-  Optionally revoke or leave the old `gh` session token for local CLI only — do not leave a broad `repo`-scoped token on the Worker. Verify with a forced cron/scheduled run (see below) that aggregates can still commit.
+- [x] **T23f — GitHub PAT:** Fine-grained PAT `swiss-ai-survey-aggregates` (Contents R/W, this repo only) stored as Worker `GITHUB_TOKEN` via `wrangler secret put`. Optionally revoke any older broad `gh` OAuth token that was previously on the Worker. Confirm aggregates write on the next weekly cron (or a forced scheduled run below).
 
 ### Live UI smoke (T41)
 
 Worker-level smokes (curl) are done. Before announcing the survey or Quick-Check, confirm the **browser** paths on production:
 
-- [ ] Open [https://aicompliant.ch/de/survey/](https://aicompliant.ch/de/survey/) — form renders (not the unavailable message); complete Turnstile; submit once with a throwaway email + report opt-in → `201` / success UI; confirm remote D1 `responses` + unlinkable `report_signups` rows (see T23d queries above); delete the test signup email afterward.
-- [ ] Open [https://aicompliant.ch/de/website-check/](https://aicompliant.ch/de/website-check/) — scan `https://www.admin.ch` → findings render with citations and disclaimer.
-- [ ] Spot-check footer → Impressum / Datenschutz on `/de/`.
-- [ ] Spot-check [https://aicompliant.ch/sitemap.xml](https://aicompliant.ch/sitemap.xml) and [https://aicompliant.ch/robots.txt](https://aicompliant.ch/robots.txt) (trailing-slash locale URLs; sitemap listed in robots).
-- [ ] Spot-check a missing URL (e.g. [https://aicompliant.ch/de/does-not-exist/](https://aicompliant.ch/de/does-not-exist/)) for the custom locale-aware 404 (header + home link, not Next’s default).
-
-Do this after **T23e** if you rotated the Turnstile secret/site key (Pages rebuild required when the site key changes).
+- [x] Open [https://aicompliant.ch/de/survey/](https://aicompliant.ch/de/survey/) — form renders (not the unavailable message); Turnstile widget present with v2 site key.
+- [ ] Complete Turnstile; submit once with a throwaway email + report opt-in → `201` / success UI; confirm remote D1 `responses` + unlinkable `report_signups` rows (see T23d queries above); delete the test signup email afterward. (Human Turnstile solve — last T41 click.)
+- [x] Open [https://aicompliant.ch/de/website-check/](https://aicompliant.ch/de/website-check/) — scan `https://www.admin.ch` → findings render with citations and disclaimer.
+- [x] Spot-check footer → Impressum / Datenschutz on `/de/`.
+- [x] Spot-check [https://aicompliant.ch/sitemap.xml](https://aicompliant.ch/sitemap.xml) and [https://aicompliant.ch/robots.txt](https://aicompliant.ch/robots.txt) (trailing-slash locale URLs; sitemap listed in robots).
+- [x] Spot-check a missing URL (e.g. [https://aicompliant.ch/de/does-not-exist/](https://aicompliant.ch/de/does-not-exist/)) for the custom locale-aware 404 (header + home link, not Next’s default).
 
 ### GitHub Actions repo permission (T42)
 
-- [ ] Repo **Settings → Actions → General → Workflow permissions**: enable **Allow GitHub Actions to create and approve pull requests** (needed for monthly material-change `gh pr create`).
+- [x] Repo **Settings → Actions → General → Workflow permissions**: **Allow GitHub Actions to create and approve pull requests** enabled (`default_workflow_permissions: write`, `can_approve_pull_request_reviews: true`).
 
 ## Survey aggregation (T25)
 

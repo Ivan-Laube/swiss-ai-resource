@@ -229,8 +229,8 @@ Task IDs are referenced in the "Depends on" column. Tasks with no dependency can
 | T23b | Create Turnstile widget (domains include `aicompliant.ch`); Pages site key + Worker secret | T23 | Done |
 | T23c | Deploy Worker; confirm `SITE_ORIGIN=https://aicompliant.ch` + set `NEXT_PUBLIC_SURVEY_API_URL` | T23a, T23b | Done |
 | T23d | Production smoke-test of `POST /submit` + unlinkable `report_signups` (no FK to `responses`) | T23c | Done |
-| T23e | Rotate production Turnstile secret (and site key if widget replaced) before public survey launch — see [DEPLOY.md](DEPLOY.md#pre-launch-secret-hygiene-t23e--t23f) | T23b, T23d | Not started — **blocks survey launch** |
-| T23f | Replace Worker `GITHUB_TOKEN` with fine-grained PAT (Contents R/W, this repo only) — see [DEPLOY.md](DEPLOY.md#pre-launch-secret-hygiene-t23e--t23f) | T23c | Not started — **blocks survey launch** |
+| T23e | Rotate production Turnstile secret (and site key if widget replaced) before public survey launch — see [DEPLOY.md](DEPLOY.md#pre-launch-secret-hygiene-t23e--t23f) | T23b, T23d | Done |
+| T23f | Replace Worker `GITHUB_TOKEN` with fine-grained PAT (Contents R/W, this repo only) — see [DEPLOY.md](DEPLOY.md#pre-launch-secret-hygiene-t23e--t23f) | T23c | Done |
 | T24 | Survey form page (4 languages) | T22, T23, T2 | Done |
 | T25 | Aggregation job with n<5 suppression, aggregates written to repo as JSON | T23 | Done |
 | T26 | Benchmark page rendering from aggregates, client-side "your band vs median" comparison | T25, T1 | Done |
@@ -264,8 +264,8 @@ Post-MVP, demand-driven (not built now):
 |---|---|---|---|
 | T39 | Legal pages: `impressum` + `datenschutz` (DE + EN/FR/IT drafts), site footer links, survey privacy link — see [content/README.md](content/README.md#legal-pages) | T3, T2, T24 (survey link) | Done |
 | T40 | Fill Impressum / Datenschutzerklärung with natural-person operator details; sync EN/FR/IT; confirm footer + survey links still resolve | T39 | Done |
-| T41 | Live browser smoke on `aicompliant.ch`: survey (real Turnstile) + website-check + footer legal links — see [DEPLOY.md](DEPLOY.md#live-ui-smoke-t41) | T23d, T37b, Pages deploy | Not started — **blocks survey / Quick-Check announce** |
-| T42 | Enable GitHub Actions “Allow GitHub Actions to create and approve pull requests” (monthly material `gh pr create`) — see [DEPLOY.md](DEPLOY.md#github-actions-repo-permission-t42) | T17 | Not started |
+| T41 | Live browser smoke on `aicompliant.ch`: survey (real Turnstile) + website-check + footer legal links — see [DEPLOY.md](DEPLOY.md#live-ui-smoke-t41) | T23d, T37b, Pages deploy | Mostly done — one human Turnstile submit left |
+| T42 | Enable GitHub Actions “Allow GitHub Actions to create and approve pull requests” (monthly material `gh pr create`) — see [DEPLOY.md](DEPLOY.md#github-actions-repo-permission-t42) | T17 | Done |
 | T29 | Lawyer review of DE compliance pages (incl. filled legal pages from T40), badge wiring | T6, T17 (badge lifecycle), T40 | Not started |
 | T30 | Quarterly: new decision tool or page, demand-driven | T8 | |
 | T31 | Yearly: survey re-run, benchmark refresh, lawyer re-review | T28, T29 | |
