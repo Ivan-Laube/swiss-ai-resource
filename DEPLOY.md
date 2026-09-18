@@ -291,12 +291,13 @@ How it fits together:
 - Wired in as `npm run sync:survey-aggregates`, as a `prebuild` hook (covers `npm run build`, i.e. Cloudflare Pages' build command, automatically), and as its own step in [`.github/workflows/ci.yml`](.github/workflows/ci.yml) before the `check:*` steps.
 - `data/survey-aggregates.json` stays committed in `swiss-ai-resource` as the offline/local-dev fallback; it's no longer the bot-committed source of truth, so it won't receive the weekly `chore(survey): refresh anonymized aggregates` commits any more (those now land in the data repo instead) and will look increasingly stale in `git log` — that's expected, the live copy is fetched at build time.
 
-**Remaining manual steps (not done by an agent — GitHub blocks creating public repos and fine-grained PATs from automation):**
+**Status (T43):**
 
-- [ ] Create the `Ivan-Laube/swiss-ai-survey-data` repo (public; seed with a `survey-aggregates.json` matching the current empty snapshot and a short README).
-- [ ] Create a new fine-grained PAT scoped to **only** that repo (Contents R/W), e.g. named `swiss-ai-survey-data-aggregates`.
-- [ ] `echo NEW_PAT | npx wrangler secret put GITHUB_TOKEN -c workers/survey/wrangler.jsonc`, then `npm run deploy:survey` to pick up the new `GITHUB_REPO` var.
-- [ ] Revoke or narrow the old `swiss-ai-survey-aggregates` PAT's access to `swiss-ai-resource` once the above is confirmed working (next Monday cron, or a forced scheduled run — see below).
+- [x] Created the [`Ivan-Laube/swiss-ai-survey-data`](https://github.com/Ivan-Laube/swiss-ai-survey-data) repo (public; seeded with a `survey-aggregates.json` matching the then-current empty snapshot and a short README).
+- [x] Created a new fine-grained PAT `swiss-ai-survey-data-aggregates`, scoped to **only** that repo (Contents R/W).
+- [x] `wrangler secret put GITHUB_TOKEN -c workers/survey/wrangler.jsonc`, then `npm run deploy:survey` — deployed, `env.GITHUB_REPO` confirmed as `Ivan-Laube/swiss-ai-survey-data`.
+- [ ] Confirm a real write succeeds (next Monday cron, or a forced scheduled run — see below) before treating this as fully verified end-to-end.
+- [ ] Revoke or narrow the old `swiss-ai-survey-aggregates` PAT's access to `swiss-ai-resource` once the above is confirmed working.
 
 ### Live UI smoke (T41)
 
