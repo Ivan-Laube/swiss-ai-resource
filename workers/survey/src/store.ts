@@ -40,10 +40,17 @@ export async function storeResponse(
   ];
 
   // Separate id, no FK — email cannot be joined back to the response row.
-  if (input.email) {
+  // Gated on reportOptIn: the privacy policy grounds email storage in
+  // consent (Datenschutzerklärung §2.2/§3), so an address without opt-in
+  // must not be persisted even if the client sent one.
+  if (input.email && input.reportOptIn) {
     statements.push(
+      // created_at is date-only (not the shared batch's second-precision
+      // datetime) so it cannot be joined back to a `responses` row by
+      // matching insert timestamp — see privacy policy §2.2 unlinkability.
       env.DB.prepare(
-        `INSERT INTO report_signups (id, email, locale) VALUES (?, ?, ?)`,
+        `INSERT INTO report_signups (id, email, locale, created_at)
+         VALUES (?, ?, ?, date('now'))`,
       ).bind(crypto.randomUUID(), input.email, input.locale),
     );
   }

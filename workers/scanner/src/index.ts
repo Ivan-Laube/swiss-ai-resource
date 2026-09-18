@@ -2,6 +2,11 @@ import checksJson from "../../../data/scanner-checks.json";
 import { parseScannerChecks } from "../../../src/scanner/schema";
 
 import {
+  BodyTooLargeError,
+  MAX_SCAN_BODY_BYTES,
+  readJsonWithLimit,
+} from "./body-limit";
+import {
   isAllowedOrigin,
   jsonResponse,
   optionsResponse,
@@ -93,8 +98,11 @@ async function handleScan(
 
   let body: unknown;
   try {
-    body = await request.json();
-  } catch {
+    body = await readJsonWithLimit(request, MAX_SCAN_BODY_BYTES);
+  } catch (error) {
+    if (error instanceof BodyTooLargeError) {
+      return jsonResponse({ error: "Request body too large" }, 413, origin);
+    }
     return jsonResponse({ error: "Invalid JSON body" }, 400, origin);
   }
 

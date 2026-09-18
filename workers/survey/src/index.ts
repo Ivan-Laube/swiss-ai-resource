@@ -7,6 +7,11 @@ import { parseSurvey } from "../../../src/survey/schema";
 
 import { runAggregateJob } from "./aggregate-job";
 import {
+  BodyTooLargeError,
+  MAX_SUBMIT_BODY_BYTES,
+  readJsonWithLimit,
+} from "./body-limit";
+import {
   emptyResponse,
   isAllowedOrigin,
   jsonResponse,
@@ -57,8 +62,11 @@ async function handleSubmit(
 
   let body: unknown;
   try {
-    body = await request.json();
-  } catch {
+    body = await readJsonWithLimit(request, MAX_SUBMIT_BODY_BYTES);
+  } catch (error) {
+    if (error instanceof BodyTooLargeError) {
+      return jsonResponse({ error: "Request body too large" }, 413, origin);
+    }
     return jsonResponse({ error: "Invalid JSON body" }, 400, origin);
   }
 
