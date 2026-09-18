@@ -7,6 +7,7 @@
   },
   "scripts": {
     "dev": "next dev",
+    "prebuild": "tsx scripts/sync-survey-aggregates.ts",
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
@@ -19,6 +20,7 @@
     "check:survey": "tsx scripts/check-survey.ts",
     "check:survey-answers": "tsx scripts/check-survey-answers.ts",
     "check:survey-aggregates": "tsx scripts/check-survey-aggregates.ts",
+    "sync:survey-aggregates": "tsx scripts/sync-survey-aggregates.ts",
     "check:classify": "tsx scripts/check-classify.ts",
     "check:act": "tsx scripts/check-act.ts",
     "check:links": "tsx scripts/check-links.ts",

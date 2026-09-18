@@ -280,7 +280,23 @@ Provisioning used an interactive operator/agent session. `NEXT_PUBLIC_*` values 
 
 - [x] **T23f — GitHub PAT:** Fine-grained PAT `swiss-ai-survey-aggregates` (Contents R/W, this repo only) stored as Worker `GITHUB_TOKEN` via `wrangler secret put`. Optionally revoke any older broad `gh` OAuth token that was previously on the Worker. Confirm aggregates write on the next weekly cron (or a forced scheduled run below).
 
-**Accepted risk — PAT blast radius:** fine-grained PATs cannot be scoped below "whole repo," so a leak of this Worker's `GITHUB_TOKEN` grants Contents R/W on the entire `swiss-ai-resource` repo, not just `data/survey-aggregates.json` — and because `main` auto-deploys to Cloudflare Pages on push, that includes the ability to alter published site content (e.g. `content/**`, `public/_headers`). The Worker itself only ever writes one path (`writeGitHubFile` in [`workers/survey/src/github.ts`](workers/survey/src/github.ts) targets `GITHUB_AGGREGATES_PATH`); the excess scope is a property of GitHub's PAT model, not of the Worker code. Accepted for now given this is a single-operator repo. If tightened later, options in rough order of effort: (1) move `data/survey-aggregates.json` to a separate, dedicated data-only repo the PAT is scoped to; (2) drop the GitHub-write step entirely and have the Next.js build read aggregates from Workers KV at build time instead of a committed file; (3) a GitHub App installation scoped to one repo + fine path permissions (Apps support finer contents scoping than PATs in some configurations) in place of a PAT.
+### PAT scoped to a dedicated data repo (T43)
+
+Fine-grained PATs cannot be scoped below "whole repo," so the T23f PAT (Contents R/W on `swiss-ai-resource`) could alter published site content (`content/**`, `public/_headers`, …) if leaked, since `main` auto-deploys to Cloudflare Pages on push — not just `data/survey-aggregates.json`, the only path the Worker actually writes (`writeGitHubFile` in [`workers/survey/src/github.ts`](workers/survey/src/github.ts)). **T43 narrows this**: the weekly cron now writes to a separate, public, data-only repo — [`Ivan-Laube/swiss-ai-survey-data`](https://github.com/Ivan-Laube/swiss-ai-survey-data) — so a leaked `GITHUB_TOKEN` can only rewrite that one JSON file in a repo with no deploy hook of its own. The data is already fully public via the benchmark page, so making its source repo public too discloses nothing new, and lets the Next.js build fetch it unauthenticated (no second secret to manage).
+
+How it fits together:
+
+- [`workers/survey/wrangler.jsonc`](workers/survey/wrangler.jsonc) `GITHUB_REPO` now points at `Ivan-Laube/swiss-ai-survey-data` (`GITHUB_AGGREGATES_PATH: "survey-aggregates.json"` at that repo's root); `aggregate-job.ts` / `github.ts` needed no code changes, they were already fully parameterized by env vars.
+- [`scripts/sync-survey-aggregates.ts`](scripts/sync-survey-aggregates.ts) fetches that repo's `survey-aggregates.json` over `raw.githubusercontent.com` (unauthenticated), validates it against the survey schema and instrument, and overwrites the local `data/survey-aggregates.json` — the file [`src/survey/aggregate-load.ts`](src/survey/aggregate-load.ts) reads at build time is unchanged. On any fetch/parse/validation failure it logs a warning and leaves the existing committed copy in place rather than failing the build.
+- Wired in as `npm run sync:survey-aggregates`, as a `prebuild` hook (covers `npm run build`, i.e. Cloudflare Pages' build command, automatically), and as its own step in [`.github/workflows/ci.yml`](.github/workflows/ci.yml) before the `check:*` steps.
+- `data/survey-aggregates.json` stays committed in `swiss-ai-resource` as the offline/local-dev fallback; it's no longer the bot-committed source of truth, so it won't receive the weekly `chore(survey): refresh anonymized aggregates` commits any more (those now land in the data repo instead) and will look increasingly stale in `git log` — that's expected, the live copy is fetched at build time.
+
+**Remaining manual steps (not done by an agent — GitHub blocks creating public repos and fine-grained PATs from automation):**
+
+- [ ] Create the `Ivan-Laube/swiss-ai-survey-data` repo (public; seed with a `survey-aggregates.json` matching the current empty snapshot and a short README).
+- [ ] Create a new fine-grained PAT scoped to **only** that repo (Contents R/W), e.g. named `swiss-ai-survey-data-aggregates`.
+- [ ] `echo NEW_PAT | npx wrangler secret put GITHUB_TOKEN -c workers/survey/wrangler.jsonc`, then `npm run deploy:survey` to pick up the new `GITHUB_REPO` var.
+- [ ] Revoke or narrow the old `swiss-ai-survey-aggregates` PAT's access to `swiss-ai-resource` once the above is confirmed working (next Monday cron, or a forced scheduled run — see below).
 
 ### Live UI smoke (T41)
 
@@ -340,14 +356,14 @@ Worker `GITHUB_TOKEN` is a fine-grained PAT (**T23f** done: Contents R/W on this
 
 2. Confirm the non-secret targets in [`workers/survey/wrangler.jsonc`](workers/survey/wrangler.jsonc): `GITHUB_REPO`, `GITHUB_BRANCH`, `GITHUB_AGGREGATES_PATH`.
 3. `npm run deploy:survey` registers the cron trigger (already deployed with T23c; re-run after secret changes if needed — secrets apply without redeploy).
-4. Force a run to verify: trigger from the Cloudflare dashboard on the deployed Worker (Schedules / Cron Triggers), or locally `wrangler dev -c workers/survey/wrangler.jsonc --test-scheduled` then `curl "http://127.0.0.1:8787/__scheduled?cron=0+5+*+*+1"` (requires remote D1 + `GITHUB_TOKEN` in `.dev.vars`). Confirm a `chore(survey): refresh anonymized aggregates` commit on `main`; the write is skipped when only `generated_at` would change.
+4. Force a run to verify: trigger from the Cloudflare dashboard on the deployed Worker (Schedules / Cron Triggers), or locally `wrangler dev -c workers/survey/wrangler.jsonc --test-scheduled` then `curl "http://127.0.0.1:8787/__scheduled?cron=0+5+*+*+1"` (requires remote D1 + `GITHUB_TOKEN` in `.dev.vars`). Confirm a `chore(survey): refresh anonymized aggregates` commit on `main` of the **`swiss-ai-survey-data`** repo (T43 — not `swiss-ai-resource`); the write is skipped when only `generated_at` would change.
 
 ### Environment variables (aggregation)
 
 | Name | Where | Purpose |
 |---|---|---|
-| `GITHUB_TOKEN` | Worker secret / `.dev.vars` | Contents API write auth (never in git; fine-grained PAT — T23f done) |
-| `GITHUB_REPO` | Worker `vars` | Target `owner/repo` |
+| `GITHUB_TOKEN` | Worker secret / `.dev.vars` | Contents API write auth (never in git; fine-grained PAT scoped to `GITHUB_REPO` only — T23f / T43) |
+| `GITHUB_REPO` | Worker `vars` | Target `owner/repo` — the dedicated `swiss-ai-survey-data` repo, not `swiss-ai-resource` (T43) |
 | `GITHUB_BRANCH` | Worker `vars` | Commit branch (default `main`) |
 | `GITHUB_AGGREGATES_PATH` | Worker `vars` | Committed file path |
 

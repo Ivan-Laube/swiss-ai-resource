@@ -26,8 +26,10 @@
   },
   "vars": {
     "SITE_ORIGIN": "https://aicompliant.ch",
-    "GITHUB_REPO": "Ivan-Laube/swiss-ai-resource",
+    // Dedicated data-only repo (see DEPLOY.md "PAT blast radius" note):
+    // GITHUB_TOKEN is scoped to just this repo, not swiss-ai-resource.
+    "GITHUB_REPO": "Ivan-Laube/swiss-ai-survey-data",
     "GITHUB_BRANCH": "main",
-    "GITHUB_AGGREGATES_PATH": "data/survey-aggregates.json"
+    "GITHUB_AGGREGATES_PATH": "survey-aggregates.json"
   }
 }

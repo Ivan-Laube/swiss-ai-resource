@@ -29,6 +29,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Sync survey aggregates
+        run: npm run sync:survey-aggregates
+
       - name: Typecheck
         run: npx tsc --noEmit
 
