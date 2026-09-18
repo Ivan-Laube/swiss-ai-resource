@@ -1,6 +1,13 @@
 import * as cheerio from "cheerio";
 import { PDFParse } from "pdf-parse";
 
+// TextDecoder, not Buffer#toString(encoding): the single project-wide tsconfig
+// also type-checks workers/**, whose `/// <reference types="@cloudflare/workers-types" />`
+// (nodejs_compat) declares a global `Buffer: any` that clobbers @types/node's
+// Buffer#toString overloads here. TextDecoder sidesteps that ambient conflict
+// and is the same idiom already used in workers/scanner/src/fetch-target.ts.
+const utf8Decoder = new TextDecoder("utf-8");
+
 export class ExtractError extends Error {
   constructor(message: string) {
     super(message);
@@ -94,7 +101,7 @@ export async function extractPdfText(data: Buffer): Promise<string> {
 export function extractJsonText(data: Buffer): string {
   let parsed: unknown;
   try {
-    parsed = JSON.parse(data.toString("utf8")) as unknown;
+    parsed = JSON.parse(utf8Decoder.decode(data)) as unknown;
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
     throw new ExtractError(`Invalid JSON body: ${message}`);
@@ -197,5 +204,5 @@ export async function extractText(options: {
     return extractJsonText(body);
   }
 
-  return extractHtmlText(body.toString("utf8"), selector);
+  return extractHtmlText(utf8Decoder.decode(body), selector);
 }

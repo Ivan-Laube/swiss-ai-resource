@@ -280,6 +280,8 @@ Provisioning used an interactive operator/agent session. `NEXT_PUBLIC_*` values 
 
 - [x] **T23f — GitHub PAT:** Fine-grained PAT `swiss-ai-survey-aggregates` (Contents R/W, this repo only) stored as Worker `GITHUB_TOKEN` via `wrangler secret put`. Optionally revoke any older broad `gh` OAuth token that was previously on the Worker. Confirm aggregates write on the next weekly cron (or a forced scheduled run below).
 
+**Accepted risk — PAT blast radius:** fine-grained PATs cannot be scoped below "whole repo," so a leak of this Worker's `GITHUB_TOKEN` grants Contents R/W on the entire `swiss-ai-resource` repo, not just `data/survey-aggregates.json` — and because `main` auto-deploys to Cloudflare Pages on push, that includes the ability to alter published site content (e.g. `content/**`, `public/_headers`). The Worker itself only ever writes one path (`writeGitHubFile` in [`workers/survey/src/github.ts`](workers/survey/src/github.ts) targets `GITHUB_AGGREGATES_PATH`); the excess scope is a property of GitHub's PAT model, not of the Worker code. Accepted for now given this is a single-operator repo. If tightened later, options in rough order of effort: (1) move `data/survey-aggregates.json` to a separate, dedicated data-only repo the PAT is scoped to; (2) drop the GitHub-write step entirely and have the Next.js build read aggregates from Workers KV at build time instead of a committed file; (3) a GitHub App installation scoped to one repo + fine path permissions (Apps support finer contents scoping than PATs in some configurations) in place of a PAT.
+
 ### Live UI smoke (T41)
 
 Worker-level smokes (curl) are done. Before announcing the survey or Quick-Check, confirm the **browser** paths on production:

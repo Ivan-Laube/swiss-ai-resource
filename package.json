@@ -38,10 +38,10 @@
   "dependencies": {
     "@anthropic-ai/sdk": "^0.110.0",
     "cheerio": "^1.2.0",
-    "diff": "^7.0.0",
+    "diff": "^9.0.0",
     "gray-matter": "^4.0.3",
     "marked": "^18.0.6",
-    "next": "16.2.10",
+    "next": "16.3.5",
     "pdf-parse": "^2.4.5",
     "react": "19.2.4",
     "react-dom": "19.2.4",
@@ -50,13 +50,12 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^5.20260714.1",
-    "@types/diff": "^7.0.2",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@types/sanitize-html": "^2.16.1",
     "eslint": "^9",
-    "eslint-config-next": "16.2.10",
+    "eslint-config-next": "16.3.5",
     "tsx": "^4.23.0",
     "typescript": "^5",
     "wrangler": "^4.36.0"
