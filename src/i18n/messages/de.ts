@@ -55,6 +55,9 @@ export const de = {
       "Die Verbindung zum Scanner ist fehlgeschlagen. Bitte prüfen Sie Ihre Verbindung und versuchen Sie es erneut.",
     errorServer:
       "Beim Scan ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.",
+    turnstileLabel: "Sicherheitsprüfung",
+    errorTurnstile:
+      "Sicherheitsprüfung fehlgeschlagen. Bitte versuchen Sie es erneut.",
     statusFound: "Gefunden",
     statusNotFound: "Nicht gefunden",
     statusIndeterminate: "Unklar",

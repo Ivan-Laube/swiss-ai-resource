@@ -56,6 +56,9 @@ export const it: Messages = {
       "Impossibile raggiungere lo scanner. Controlli la connessione e riprovi.",
     errorServer:
       "Si è verificato un errore durante la scansione. Riprovi.",
+    turnstileLabel: "Verifica di sicurezza",
+    errorTurnstile:
+      "Verifica di sicurezza non riuscita. Riprovi.",
     statusFound: "Trovato",
     statusNotFound: "Non trovato",
     statusIndeterminate: "Indeterminato",

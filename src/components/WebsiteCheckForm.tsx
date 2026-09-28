@@ -1,9 +1,15 @@
 "use client";
+
 import Link from "next/link";
-import { useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import type { Locale, Messages } from "@/i18n";
+import {
+  loadTurnstileScript,
+  TURNSTILE_ACTION_SCAN,
+} from "@/lib/turnstile-client";
 import { pickLocalized, type LocalizedString } from "@/rules/schema";
 import styles from "./WebsiteCheckForm.module.css";
+
 type WebsiteCheckMessages = Messages["websiteCheck"];
 type Severity = "high" | "medium" | "low" | "info";
 type FindingStatus = "found" | "not_found" | "indeterminate";
@@ -118,7 +124,9 @@ function evidenceLines(
 ): string[] {
   const lines: string[] = [];
   if (typeof evidence.https === "boolean") {
-    lines.push(`HTTPS: ${evidence.https ? messages.statusFound : messages.statusNotFound}`);
+    lines.push(
+      `HTTPS: ${evidence.https ? messages.statusFound : messages.statusNotFound}`,
+    );
     if (evidence.http_redirects_to_https !== undefined) {
       const redirect =
         evidence.http_redirects_to_https === null
@@ -147,7 +155,9 @@ function evidenceLines(
   }
   if (evidence.headers?.length) {
     for (const header of evidence.headers) {
-      const mark = header.present ? messages.statusFound : messages.statusNotFound;
+      const mark = header.present
+        ? messages.statusFound
+        : messages.statusNotFound;
       lines.push(`${header.name}: ${mark}`);
     }
   }
@@ -171,11 +181,73 @@ export function WebsiteCheckForm({ locale, messages }: Props) {
     /\/$/,
     "",
   );
-  const scanReady = apiUrl.length > 0;
+  const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "";
+  const scanReady = apiUrl.length > 0 && siteKey.length > 0;
   const [urlInput, setUrlInput] = useState("");
   const [scanning, setScanning] = useState(false);
   const [formError, setFormError] = useState<string | null>(null);
   const [result, setResult] = useState<ScanResult | null>(null);
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const turnstileHostRef = useRef<HTMLDivElement | null>(null);
+  const widgetIdRef = useRef<string | number | null>(null);
+
+  useEffect(() => {
+    if (!scanReady || result) {
+      return;
+    }
+
+    let cancelled = false;
+
+    void (async () => {
+      try {
+        await loadTurnstileScript();
+        if (cancelled || !turnstileHostRef.current || !window.turnstile) {
+          return;
+        }
+        if (widgetIdRef.current !== null) {
+          return;
+        }
+        widgetIdRef.current = window.turnstile.render(turnstileHostRef.current, {
+          sitekey: siteKey,
+          action: TURNSTILE_ACTION_SCAN,
+          callback: (token) => {
+            setTurnstileToken(token);
+            setFormError(null);
+          },
+          "expired-callback": () => setTurnstileToken(""),
+          "error-callback": () => setTurnstileToken(""),
+        });
+      } catch {
+        if (!cancelled) {
+          setFormError(messages.errorTurnstile);
+        }
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+      if (widgetIdRef.current !== null && window.turnstile) {
+        try {
+          window.turnstile.remove(widgetIdRef.current);
+        } catch {
+          // ignore cleanup errors
+        }
+        widgetIdRef.current = null;
+      }
+    };
+  }, [scanReady, result, siteKey, messages.errorTurnstile]);
+
+  function resetTurnstile() {
+    setTurnstileToken("");
+    if (widgetIdRef.current !== null && window.turnstile) {
+      try {
+        window.turnstile.reset(widgetIdRef.current);
+      } catch {
+        // ignore
+      }
+    }
+  }
+
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setFormError(null);
@@ -184,38 +256,54 @@ export function WebsiteCheckForm({ locale, messages }: Props) {
       setFormError(messages.errorBadUrl);
       return;
     }
+    if (!turnstileToken) {
+      setFormError(messages.errorTurnstile);
+      return;
+    }
     setScanning(true);
     setResult(null);
     try {
       const response = await fetch(`${apiUrl}/scan`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ url }),
+        body: JSON.stringify({ url, turnstile_token: turnstileToken }),
       });
       if (response.status === 429) {
         setFormError(messages.errorRateLimit);
+        resetTurnstile();
+        return;
+      }
+      if (response.status === 403) {
+        setFormError(messages.errorTurnstile);
+        resetTurnstile();
         return;
       }
       if (response.status === 400) {
         setFormError(messages.errorBadUrl);
+        resetTurnstile();
         return;
       }
       if (response.status === 502 || response.status === 504) {
         setFormError(messages.errorUpstream);
+        resetTurnstile();
         return;
       }
       if (!response.ok) {
         setFormError(messages.errorServer);
+        resetTurnstile();
         return;
       }
       const payload: unknown = await response.json();
       if (!isScanResult(payload)) {
         setFormError(messages.errorServer);
+        resetTurnstile();
         return;
       }
       setResult(payload);
+      setTurnstileToken("");
     } catch {
       setFormError(messages.errorNetwork);
+      resetTurnstile();
     } finally {
       setScanning(false);
     }
@@ -223,6 +311,7 @@ export function WebsiteCheckForm({ locale, messages }: Props) {
   function resetReport() {
     setResult(null);
     setFormError(null);
+    setTurnstileToken("");
   }
   if (!scanReady) {
     return (
@@ -360,11 +449,15 @@ export function WebsiteCheckForm({ locale, messages }: Props) {
             required
           />
         </div>
+        <div className={styles.field}>
+          <span className={styles.fieldLabel}>{messages.turnstileLabel}</span>
+          <div className={styles.turnstileWrap} ref={turnstileHostRef} />
+        </div>
         <div className={styles.actions}>
           <button
             type="submit"
             className={styles.submit}
-            disabled={scanning}
+            disabled={scanning || !turnstileToken}
           >
             {scanning ? messages.scanning : messages.submit}
           </button>

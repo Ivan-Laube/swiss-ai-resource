@@ -55,6 +55,8 @@ export const en: Messages = {
     errorNetwork:
       "Could not reach the scanner. Check your connection and try again.",
     errorServer: "Something went wrong during the scan. Please try again.",
+    turnstileLabel: "Security check",
+    errorTurnstile: "Security check failed. Please try again.",
     statusFound: "Found",
     statusNotFound: "Not found",
     statusIndeterminate: "Indeterminate",

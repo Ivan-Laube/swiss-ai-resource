@@ -5,6 +5,10 @@ import Link from "next/link";
 import type { Messages } from "@/i18n/types";
 import type { Locale } from "@/i18n";
 import {
+  loadTurnstileScript,
+  TURNSTILE_ACTION_SURVEY,
+} from "@/lib/turnstile-client";
+import {
   exclusiveNoneQuestionIds,
   validateAnswers,
   type AnswerValue,
@@ -24,63 +28,8 @@ type SurveyFormProps = {
   messages: SurveyMessages;
 };
 
-type TurnstileApi = {
-  render: (
-    container: HTMLElement,
-    options: {
-      sitekey: string;
-      callback: (token: string) => void;
-      "expired-callback"?: () => void;
-      "error-callback"?: () => void;
-    },
-  ) => string | number;
-  reset: (widgetId?: string | number) => void;
-  remove: (widgetId?: string | number) => void;
-};
-
-declare global {
-  interface Window {
-    turnstile?: TurnstileApi;
-  }
-}
-
-const TURNSTILE_SCRIPT =
-  "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
-
 function isExclusiveNoneQuestion(questionId: string): boolean {
   return (exclusiveNoneQuestionIds as readonly string[]).includes(questionId);
-}
-
-function loadTurnstileScript(): Promise<void> {
-  if (typeof window === "undefined") {
-    return Promise.resolve();
-  }
-  if (window.turnstile) {
-    return Promise.resolve();
-  }
-
-  const existing = document.querySelector<HTMLScriptElement>(
-    `script[src="${TURNSTILE_SCRIPT}"]`,
-  );
-  if (existing) {
-    return new Promise((resolve, reject) => {
-      existing.addEventListener("load", () => resolve(), { once: true });
-      existing.addEventListener(
-        "error",
-        () => reject(new Error("Turnstile script failed to load")),
-        { once: true },
-      );
-    });
-  }
-
-  return new Promise((resolve, reject) => {
-    const script = document.createElement("script");
-    script.src = TURNSTILE_SCRIPT;
-    script.async = true;
-    script.onload = () => resolve();
-    script.onerror = () => reject(new Error("Turnstile script failed to load"));
-    document.head.appendChild(script);
-  });
 }
 
 export function SurveyForm({ survey, locale, messages }: SurveyFormProps) {
@@ -123,6 +72,7 @@ export function SurveyForm({ survey, locale, messages }: SurveyFormProps) {
         }
         widgetIdRef.current = window.turnstile.render(turnstileHostRef.current, {
           sitekey: siteKey,
+          action: TURNSTILE_ACTION_SURVEY,
           callback: (token) => {
             setTurnstileToken(token);
             setFormError(null);

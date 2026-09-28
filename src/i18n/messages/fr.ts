@@ -56,6 +56,9 @@ export const fr: Messages = {
       "Impossible de joindre le scanner. Vérifiez votre connexion et réessayez.",
     errorServer:
       "Une erreur s'est produite pendant l'analyse. Veuillez réessayer.",
+    turnstileLabel: "Vérification de sécurité",
+    errorTurnstile:
+      "La vérification de sécurité a échoué. Veuillez réessayer.",
     statusFound: "Trouvé",
     statusNotFound: "Non trouvé",
     statusIndeterminate: "Indéterminé",
