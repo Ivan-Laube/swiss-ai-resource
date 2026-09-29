@@ -256,7 +256,14 @@ export function WebsiteCheckForm({ locale, messages }: Props) {
       setFormError(messages.errorBadUrl);
       return;
     }
-    if (!turnstileToken) {
+    // Prefer React state; fall back to Turnstile's hidden input (widget can
+    // look "passed" briefly while state is empty after reset/expiry).
+    const domToken =
+      document
+        .querySelector<HTMLInputElement>('input[name="cf-turnstile-response"]')
+        ?.value?.trim() ?? "";
+    const token = (turnstileToken || domToken).trim();
+    if (!token) {
       setFormError(messages.errorTurnstile);
       return;
     }
@@ -266,7 +273,7 @@ export function WebsiteCheckForm({ locale, messages }: Props) {
       const response = await fetch(`${apiUrl}/scan`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ url, turnstile_token: turnstileToken }),
+        body: JSON.stringify({ url, turnstile_token: token }),
       });
       if (response.status === 429) {
         setFormError(messages.errorRateLimit);
@@ -279,7 +286,19 @@ export function WebsiteCheckForm({ locale, messages }: Props) {
         return;
       }
       if (response.status === 400) {
-        setFormError(messages.errorBadUrl);
+        const payload: unknown = await response.json().catch(() => null);
+        const serverError =
+          payload &&
+          typeof payload === "object" &&
+          "error" in payload &&
+          typeof (payload as { error: unknown }).error === "string"
+            ? (payload as { error: string }).error
+            : "";
+        setFormError(
+          serverError.includes("turnstile")
+            ? messages.errorTurnstile
+            : messages.errorBadUrl,
+        );
         resetTurnstile();
         return;
       }
