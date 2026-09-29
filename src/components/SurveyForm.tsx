@@ -91,6 +91,8 @@ export function SurveyForm({ survey, locale, messages }: SurveyFormProps) {
       if (question.input === "text") continue;
       map.set(question.id, orderOptions(question));
     }
+    // Shuffle after mount only — avoids SSR/client option-order hydration mismatch.
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional post-mount shuffle
     setOrderedOptionsByQuestion(map);
   }, [survey]);
 

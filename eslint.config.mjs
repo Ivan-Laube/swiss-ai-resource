@@ -14,6 +14,12 @@ const eslintConfig = defineConfig([
     "next-env.d.ts",
     // Wrangler local build artifacts (not source):
     "workers/**/.wrangler/**",
+    // Playwright e2e (fixture `use` is not React):
+    "e2e/**",
+    "out-e2e/**",
+    "out-e2e-unconfigured/**",
+    "playwright-report/**",
+    "test-results/**",
   ]),
 ]);
 

@@ -26,6 +26,8 @@ export function BenchmarkComparison({
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
+    // Mark client hydration for CSS that must not apply during SSR.
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional hydration flag
     setHydrated(true);
   }, []);
 
