@@ -19,8 +19,15 @@ import {
   rejectIfDisallowedOrigin,
 } from "./cors";
 import type { Env } from "./env";
-import { purgeExpiredSurveyData, storeResponse } from "./store";
+import {
+  consumeDailySubmitQuota,
+  purgeExpiredSurveyData,
+  storeResponse,
+} from "./store";
 import { verifyTurnstile } from "./turnstile";
+
+/** Must match TURNSTILE_ACTION_SURVEY in src/lib/turnstile-client.ts */
+const TURNSTILE_ACTION = "survey-submit";
 
 const survey = parseSurvey(surveyJson);
 
@@ -86,16 +93,24 @@ async function handleSubmit(
 
   const { intake, answers, email } = validated;
 
-  const turnstile = await verifyTurnstile(
-    env.TURNSTILE_SECRET_KEY,
-    intake.turnstile_token,
-    ip === "unknown" ? undefined : ip,
-  );
+  const turnstile = await verifyTurnstile({
+    secret: env.TURNSTILE_SECRET_KEY,
+    token: intake.turnstile_token,
+    siteOrigin: origin,
+    expectedAction: TURNSTILE_ACTION,
+    remoteip: ip === "unknown" ? undefined : ip,
+  });
   if (!turnstile.ok) {
     if (turnstile.reason === "missing_secret") {
       return jsonResponse({ error: "Server misconfigured" }, 500, origin);
     }
     return jsonResponse({ error: "Turnstile verification failed" }, 403, origin);
+  }
+
+  // Daily cap after Turnstile so invalid / bot traffic does not burn slots.
+  const withinDaily = await consumeDailySubmitQuota(env, ip);
+  if (!withinDaily) {
+    return jsonResponse({ error: "Too many requests" }, 429, origin);
   }
 
   const id = crypto.randomUUID();

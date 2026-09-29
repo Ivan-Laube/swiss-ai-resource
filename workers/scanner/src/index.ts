@@ -16,9 +16,13 @@ import { runChecks } from "./engine";
 import type { Env } from "./env";
 import { FetchTargetError, fetchTarget } from "./fetch-target";
 import { createScanBudget } from "./scan-budget";
+import { verifyTurnstile } from "./turnstile";
 import { assertSafeScanUrl } from "./url-guard";
 
 const checksFile = parseScannerChecks(checksJson);
+
+/** Must match TURNSTILE_ACTION_SCAN in src/lib/turnstile-client.ts */
+const TURNSTILE_ACTION = "website-scan";
 
 function clientIp(request: Request): string {
   return request.headers.get("CF-Connecting-IP") ?? "unknown";
@@ -42,14 +46,17 @@ function misconfiguredSiteOrigin(): Response {
   );
 }
 
-function parseScanUrl(
+function parseScanBody(
   body: unknown,
-): { ok: true; url: string } | { ok: false; error: string } {
+):
+  | { ok: true; url: string; turnstileToken: string }
+  | { ok: false; error: string } {
   if (body === null || typeof body !== "object" || Array.isArray(body)) {
     return { ok: false, error: "Request body must be a JSON object" };
   }
 
-  const url = (body as { url?: unknown }).url;
+  const record = body as { url?: unknown; turnstile_token?: unknown };
+  const url = record.url;
   if (typeof url !== "string") {
     return { ok: false, error: "url is required and must be a string" };
   }
@@ -59,7 +66,15 @@ function parseScanUrl(
     return { ok: false, error: "url must be a non-empty string" };
   }
 
-  return { ok: true, url: trimmed };
+  const token = record.turnstile_token;
+  if (typeof token !== "string" || token.trim().length === 0) {
+    return {
+      ok: false,
+      error: "turnstile_token is required and must be a non-empty string",
+    };
+  }
+
+  return { ok: true, url: trimmed, turnstileToken: token.trim() };
 }
 
 function fetchErrorResponse(
@@ -70,13 +85,13 @@ function fetchErrorResponse(
     case "blocked":
       return jsonResponse({ error: error.message }, 400, origin);
     case "timeout":
-      return jsonResponse({ error: error.message }, 504, origin);
+      return jsonResponse({ error: "Timed out fetching target" }, 504, origin);
     case "oversized":
-      return jsonResponse({ error: error.message }, 502, origin);
+      return jsonResponse({ error: "Upstream response too large" }, 502, origin);
     case "redirects":
-      return jsonResponse({ error: error.message }, 502, origin);
+      return jsonResponse({ error: "Too many redirects" }, 502, origin);
     case "upstream":
-      return jsonResponse({ error: error.message }, 502, origin);
+      return jsonResponse({ error: "Upstream fetch failed" }, 502, origin);
     default:
       return jsonResponse({ error: "Fetch failed" }, 502, origin);
   }
@@ -106,10 +121,34 @@ async function handleScan(
     return jsonResponse({ error: "Invalid JSON body" }, 400, origin);
   }
 
-  const parsed = parseScanUrl(body);
+  const parsed = parseScanBody(body);
   if (!parsed.ok) {
     return jsonResponse({ error: parsed.error }, 400, origin);
   }
+
+  const turnstile = await verifyTurnstile({
+    secret: env.TURNSTILE_SECRET_KEY,
+    token: parsed.turnstileToken,
+    siteOrigin: origin,
+    expectedAction: TURNSTILE_ACTION,
+    remoteip: ip === "unknown" ? undefined : ip,
+  });
+  if (!turnstile.ok) {
+    if (turnstile.reason === "missing_secret") {
+      return jsonResponse({ error: "Server misconfigured" }, 500, origin);
+    }
+    console.error(
+      JSON.stringify({
+        event: "scanner_turnstile_failed",
+        reason: turnstile.reason,
+      }),
+    );
+    return jsonResponse({ error: "Turnstile verification failed" }, 403, origin);
+  }
+
+  console.log(
+    JSON.stringify({ event: "scanner_turnstile_ok", action: TURNSTILE_ACTION }),
+  );
 
   const budget = createScanBudget();
   try {
@@ -128,8 +167,7 @@ async function handleScan(
       if (error instanceof FetchTargetError) {
         return fetchErrorResponse(error, origin);
       }
-      const message = error instanceof Error ? error.message : String(error);
-      return jsonResponse({ error: message }, 502, origin);
+      return jsonResponse({ error: "Fetch failed" }, 502, origin);
     }
 
     const result = await runChecks(

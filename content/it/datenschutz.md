@@ -1,7 +1,7 @@
 ---
 title: "Informativa sulla privacy"
 description: "Informazioni sul trattamento dei dati personali su aicompliant.ch (art. 19 LPD): titolare, finalità, responsabili del trattamento, conservazione e cancellazione."
-last_verified: "2026-09-18"
+last_verified: "2026-09-28"
 volatility: "stable"
 translation_status: "draft"
 reviewed_by: null
@@ -43,13 +43,15 @@ Se partecipa al sondaggio sull'adozione dell'IA, memorizziamo:
 
 Le risposte e gli indirizzi e-mail sono memorizzati in **tabelle separate** in un database Cloudflare D1, ciascuna con **identificativi propri e senza chiave condivisa**. Un collegamento tecnico tra e-mail e singola risposta non è quindi possibile. Le risposte **senza** e-mail sono anonime; anche con opt-in la risposta resta separata dall'indirizzo e-mail e non collegabile.
 
-### 2.3 Protezione antispam (Turnstile)
+### 2.3 Protezione antispam (Turnstile e limitazione della frequenza)
 
-All'invio del sondaggio, Cloudflare Turnstile può eseguire un controllo di sicurezza. Dati tecnici possono essere trasmessi a Cloudflare per limitare gli invii automatizzati.
+All'invio del sondaggio o di un Quick-Check, Cloudflare Turnstile può eseguire un controllo di sicurezza. Dati tecnici possono essere trasmessi a Cloudflare per limitare gli invii automatizzati.
+
+Per limitare gli abusi sul sondaggio, memorizziamo per breve tempo un **hash unidirezionale dell'IP client** (SHA-256, senza IP in chiaro) con il giorno UTC e un contatore (al massimo 20 invii riusciti per giorno e hash). Queste righe di quota sono cancellate automaticamente dopo pochi giorni e servono solo alla prevenzione degli abusi — non sono collegate alle risposte né alle e-mail.
 
 ### 2.4 Quick-Check del sito web
 
-Se fa verificare un URL, il Suo browser invia l'URL al nostro Worker di scansione. Il Worker recupera la pagina di destinazione e valuta segnali pubblicamente visibili. **Non memorizziamo in modo permanente i risultati della scansione né gli URL inviati.**
+Se fa verificare un URL, il Suo browser invia l'URL e un token Turnstile al nostro Worker di scansione. Il Worker recupera la pagina di destinazione e valuta segnali pubblicamente visibili. **Non memorizziamo in modo permanente i risultati della scansione né gli URL inviati.**
 
 ## 3. Finalità del trattamento
 
@@ -58,7 +60,7 @@ Se fa verificare un URL, il Suo browser invia l'URL al nostro Worker di scansion
 | Dati tecnici di connessione | Consegna, esercizio e sicurezza del sito |
 | Risposte al sondaggio | Statistiche anonimizzate e benchmark (aggregazione; le celle con meno di cinque risposte non sono pubblicate) |
 | E-mail facoltativa | Notifica una tantum o secondo necessità quando il rapporto di benchmark è disponibile |
-| Turnstile | Protezione da abusi / spam |
+| Turnstile / limitazione frequenza | Protezione da abusi / spam (incluse quote hash IP di breve durata) |
 | URL Quick-Check | Valutazione una tantum dell'URL inviato; nessuna memorizzazione permanente da parte nostra |
 
 La base giuridica è in particolare il trattamento per l'esecuzione di un contratto o di misure precontrattuali, ovvero il nostro interesse legittimo a gestire le offerte informative e a prevenire abusi, nella misura in cui la LPD lo richieda. L'e-mail facoltativa si basa sul Suo **consenso** (opt-in), che può revocare in qualsiasi momento.
@@ -80,6 +82,7 @@ Cloudflare agisce come **responsabile del trattamento** nell'ambito delle finali
 |---|---|
 | Risposte al sondaggio | Fino alla valutazione e pubblicazione di aggregati anonimizzati; le risposte grezze non sono conservate più a lungo del necessario per il benchmark (obiettivo: cancellazione o anonimizzazione al più tardi **24 mesi** dopo l'invio, salvo obblighi di legge più lunghi) |
 | E-mail facoltative | Fino all'invio della notifica del rapporto o fino alla Sua richiesta di cancellazione; cancellazione automatica al più tardi dopo **24 mesi**; cancellazione manuale dalla tabella di iscrizione su richiesta |
+| Quote hash IP (sondaggio) | Pochi giorni (cancellazione automatica dei giorni più vecchi); solo prevenzione abusi |
 | Quick-Check | Nessuna memorizzazione permanente da parte nostra |
 | Log server/CDN | Secondo le impostazioni standard di Cloudflare; di norma a breve termine per esercizio e sicurezza |
 

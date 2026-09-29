@@ -10,6 +10,9 @@ export const RESPONSE_RETENTION_MONTHS = 24;
  */
 export const SIGNUP_RETENTION_MONTHS = 24;
 
+/** Max survey POSTs per client IP (hashed) per UTC day. */
+export const DAILY_SUBMIT_LIMIT = 20;
+
 export async function storeResponse(
   env: Env,
   input: {
@@ -73,13 +76,14 @@ export async function deleteReportSignupByEmail(
 export interface RetentionPurgeResult {
   responsesDeleted: number;
   signupsDeleted: number;
+  quotasDeleted: number;
 }
 
 /** Drop rows past the retention window (SQLite datetime modifiers). */
 export async function purgeExpiredSurveyData(
   env: Env,
 ): Promise<RetentionPurgeResult> {
-  const [responses, signups] = await env.DB.batch([
+  const [responses, signups, quotas] = await env.DB.batch([
     env.DB.prepare(
       `DELETE FROM responses
        WHERE created_at < datetime('now', ?)`,
@@ -88,10 +92,66 @@ export async function purgeExpiredSurveyData(
       `DELETE FROM report_signups
        WHERE created_at < datetime('now', ?)`,
     ).bind(`-${SIGNUP_RETENTION_MONTHS} months`),
+    // Quota rows only matter for the current UTC day — drop older days.
+    env.DB.prepare(
+      `DELETE FROM submission_quotas
+       WHERE day < date('now', '-2 days')`,
+    ),
   ]);
 
   return {
     responsesDeleted: responses.meta.changes ?? 0,
     signupsDeleted: signups.meta.changes ?? 0,
+    quotasDeleted: quotas.meta.changes ?? 0,
   };
+}
+
+async function sha256Hex(value: string): Promise<string> {
+  const bytes = new TextEncoder().encode(value);
+  const digest = await crypto.subtle.digest("SHA-256", bytes);
+  return [...new Uint8Array(digest)]
+    .map((b) => b.toString(16).padStart(2, "0"))
+    .join("");
+}
+
+/**
+ * Atomically consume one daily submission slot for a hashed client IP.
+ * Returns false when the UTC-day cap is already reached (no increment).
+ * Does not store the raw IP — only SHA-256 hex.
+ */
+export async function consumeDailySubmitQuota(
+  env: Env,
+  ip: string,
+  limit: number = DAILY_SUBMIT_LIMIT,
+): Promise<boolean> {
+  const day = new Date().toISOString().slice(0, 10);
+  const ipHash = await sha256Hex(ip === "unknown" ? `unknown:${day}` : ip);
+
+  const existing = await env.DB.prepare(
+    `SELECT count AS count FROM submission_quotas WHERE day = ? AND ip_hash = ?`,
+  )
+    .bind(day, ipHash)
+    .first<{ count: number }>();
+
+  if (existing && existing.count >= limit) {
+    return false;
+  }
+
+  if (!existing) {
+    await env.DB.prepare(
+      `INSERT INTO submission_quotas (day, ip_hash, count) VALUES (?, ?, 1)`,
+    )
+      .bind(day, ipHash)
+      .run();
+    return true;
+  }
+
+  const updated = await env.DB.prepare(
+    `UPDATE submission_quotas SET count = count + 1
+     WHERE day = ? AND ip_hash = ? AND count < ?`,
+  )
+    .bind(day, ipHash, limit)
+    .run();
+
+  return (updated.meta.changes ?? 0) > 0;
 }

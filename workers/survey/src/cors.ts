@@ -7,6 +7,8 @@ export function corsHeaders(origin: string): CorsHeaders {
     "Access-Control-Allow-Headers": "Content-Type",
     "Access-Control-Max-Age": "86400",
     Vary: "Origin",
+    "X-Content-Type-Options": "nosniff",
+    "Cache-Control": "no-store",
   };
 }
 
@@ -42,7 +44,11 @@ export function isAllowedOrigin(
 export function forbiddenOriginResponse(): Response {
   return new Response(JSON.stringify({ error: "Origin not allowed" }), {
     status: 403,
-    headers: { "Content-Type": "application/json; charset=utf-8" },
+    headers: {
+      "Content-Type": "application/json; charset=utf-8",
+      "X-Content-Type-Options": "nosniff",
+      "Cache-Control": "no-store",
+    },
   });
 }
 

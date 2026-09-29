@@ -5,4 +5,5 @@ export interface Env {
     limit: (options: { key: string }) => Promise<{ success: boolean }>;
   };
   SITE_ORIGIN: string;
+  TURNSTILE_SECRET_KEY: string;
 }

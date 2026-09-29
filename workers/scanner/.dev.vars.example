@@ -1,0 +1,3 @@
+# Cloudflare Turnstile test secret (always-passes).
+# See https://developers.cloudflare.com/turnstile/troubleshooting/testing/
+TURNSTILE_SECRET_KEY=1x0000000000000000000000000000000AA

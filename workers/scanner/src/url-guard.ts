@@ -45,8 +45,20 @@ function isPrivateOrLocalIpv4(ip: string): boolean {
   if (a === 192 && b === 168) return true;
   // 100.64.0.0/10 (CGNAT)
   if (a === 100 && b >= 64 && b <= 127) return true;
-  // 255.255.255.255 broadcast
-  if (octets.every((n) => n === 255)) return true;
+  // 192.0.0.0/24 (IETF protocol assignments)
+  if (a === 192 && b === 0 && octets[2] === 0) return true;
+  // 192.0.2.0/24 (TEST-NET-1)
+  if (a === 192 && b === 0 && octets[2] === 2) return true;
+  // 198.18.0.0/15 (benchmarking)
+  if (a === 198 && (b === 18 || b === 19)) return true;
+  // 198.51.100.0/24 (TEST-NET-2)
+  if (a === 198 && b === 51 && octets[2] === 100) return true;
+  // 203.0.113.0/24 (TEST-NET-3)
+  if (a === 203 && b === 0 && octets[2] === 113) return true;
+  // 224.0.0.0/4 (multicast)
+  if (a >= 224 && a <= 239) return true;
+  // 240.0.0.0/4 (reserved / future use) + 255.255.255.255
+  if (a >= 240) return true;
 
   return false;
 }
@@ -123,6 +135,40 @@ function isPrivateOrLocalIpv6(ip: string): boolean {
     const c = (groups[7]! >> 8) & 0xff;
     const d = groups[7]! & 0xff;
     return isPrivateOrLocalIpv4(`${a}.${b}.${c}.${d}`);
+  }
+
+  // NAT64 64:ff9b::/96 → check embedded IPv4
+  if (groups[0] === 0x64 && groups[1] === 0xff9b && groups[2] === 0 && groups[3] === 0 && groups[4] === 0 && groups[5] === 0) {
+    const a = (groups[6]! >> 8) & 0xff;
+    const b = groups[6]! & 0xff;
+    const c = (groups[7]! >> 8) & 0xff;
+    const d = groups[7]! & 0xff;
+    return isPrivateOrLocalIpv4(`${a}.${b}.${c}.${d}`);
+  }
+
+  // 6to4 2002::/16 → check embedded IPv4 in groups[1]/groups[2]
+  if (groups[0] === 0x2002) {
+    const a = (groups[1]! >> 8) & 0xff;
+    const b = groups[1]! & 0xff;
+    const c = (groups[2]! >> 8) & 0xff;
+    const d = groups[2]! & 0xff;
+    return isPrivateOrLocalIpv4(`${a}.${b}.${c}.${d}`);
+  }
+
+  // Teredo 2001::/32 — treat as non-public (client-side tunnel)
+  if (groups[0] === 0x2001 && groups[1] === 0) return true;
+
+  // Documentation 2001:db8::/32
+  if (groups[0] === 0x2001 && groups[1] === 0xdb8) return true;
+
+  // Discard-Only Prefix 100::/64
+  if (
+    groups[0] === 0x100 &&
+    groups[1] === 0 &&
+    groups[2] === 0 &&
+    groups[3] === 0
+  ) {
+    return true;
   }
 
   // ULA fc00::/7

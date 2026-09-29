@@ -1,7 +1,7 @@
 ---
 title: "Datenschutzerklärung"
 description: "Informationen zur Bearbeitung von Personendaten auf aicompliant.ch (Art. 19 DSG): Verantwortliche, Zwecke, Auftragsbearbeiter, Aufbewahrung und Löschung."
-last_verified: "2026-09-18"
+last_verified: "2026-09-28"
 volatility: "stable"
 translation_status: "canonical"
 reviewed_by: null
@@ -43,13 +43,15 @@ Wenn Sie an der KI-Adoptionsumfrage teilnehmen, speichern wir:
 
 Antworten und E-Mail-Adressen werden in **getrennten Tabellen** in einer Cloudflare-D1-Datenbank abgelegt, jeweils mit **eigenen Kennungen und ohne gemeinsamen Schlüssel**. Eine technische Zuordnung von E-Mail und Einzelantwort ist damit nicht möglich. Antworten **ohne** E-Mail sind anonym; auch bei Opt-in bleibt die Antwort von der E-Mail-Adresse getrennt und nicht verknüpfbar.
 
-### 2.3 Spam-Schutz (Turnstile)
+### 2.3 Spam-Schutz (Turnstile und Ratenbegrenzung)
 
-Beim Absenden der Umfrage kann Cloudflare Turnstile eine Sicherheitsprüfung durchführen. Dabei können technische Daten an Cloudflare übermittelt werden, um automatisierte Einsendungen zu erschweren.
+Beim Absenden der Umfrage und beim Website Quick-Check kann Cloudflare Turnstile eine Sicherheitsprüfung durchführen. Dabei können technische Daten an Cloudflare übermittelt werden, um automatisierte Einsendungen zu erschweren.
+
+Zur Begrenzung von Missbrauch speichern wir für die Umfrage kurzzeitig einen **Einweg-Hash der Client-IP** (SHA-256, ohne Klartext-IP) zusammen mit dem UTC-Tag und einem Zähler (höchstens 20 erfolgreiche Einsendungen pro Tag und Hash). Diese Quoten-Einträge werden nach wenigen Tagen automatisch gelöscht und dienen ausschliesslich der Missbrauchsabwehr — sie sind nicht mit Umfrageantworten oder E-Mail-Adressen verknüpft.
 
 ### 2.4 Website Quick-Check
 
-Wenn Sie eine URL prüfen lassen, sendet Ihr Browser die URL an unseren Scanner-Worker. Der Worker ruft die Zielseite ab und wertet öffentlich sichtbare Signale aus. **Es werden keine Scan-Ergebnisse und keine eingegebenen URLs dauerhaft bei uns gespeichert.**
+Wenn Sie eine URL prüfen lassen, sendet Ihr Browser die URL und ein Turnstile-Token an unseren Scanner-Worker. Der Worker ruft die Zielseite ab und wertet öffentlich sichtbare Signale aus. **Es werden keine Scan-Ergebnisse und keine eingegebenen URLs dauerhaft bei uns gespeichert.**
 
 ## 3. Zwecke der Bearbeitung
 
@@ -58,7 +60,7 @@ Wenn Sie eine URL prüfen lassen, sendet Ihr Browser die URL an unseren Scanner-
 | Technische Verbindungsdaten | Auslieferung, Betrieb und Absicherung der Website |
 | Umfrageantworten | Anonymisierte Statistik und Benchmark (Aggregation; Zellen mit weniger als fünf Antworten werden nicht veröffentlicht) |
 | Optionale E-Mail | Einmalige oder bedarfsweise Benachrichtigung, sobald der Benchmark-Bericht verfügbar ist |
-| Turnstile | Schutz vor Missbrauch / Spam |
+| Turnstile / Ratenbegrenzung | Schutz vor Missbrauch / Spam (inkl. kurzlebiger IP-Hash-Quoten) |
 | Quick-Check-URL | Einmalige Auswertung der eingereichten URL; kein dauerhafter Speicher bei uns |
 
 Rechtsgrundlage ist insbesondere die Bearbeitung zur Erfüllung eines Vertrags bzw. vorvertraglicher Massnahmen bzw. unser berechtigtes Interesse am Betrieb der Informationsangebote und an der Missbrauchsabwehr, soweit das DSG dies erfordert. Die optionale E-Mail stützt sich auf Ihre **Einwilligung** (Opt-in), die Sie jederzeit widerrufen können.
@@ -80,6 +82,7 @@ Cloudflare handelt dabei als **Auftragsbearbeiter** im Rahmen der von uns vorgeg
 |---|---|
 | Umfrageantworten | Bis zur Auswertung und Veröffentlichung anonymisierter Aggregate; Rohantworten werden nicht länger als für den Benchmark-Zweck erforderlich aufbewahrt (Ziel: Löschung oder Anonymisierung spätestens **24 Monate** nach Einreichung, sofern keine längere gesetzliche Pflicht besteht) |
 | Optionale E-Mails | Bis zum Versand der Bericht-Benachrichtigung bzw. bis zu Ihrem Löschbegehren; automatische Löschung spätestens nach **24 Monaten**; manuelle Löschung aus der Anmeldetabelle auf Anfrage |
+| IP-Hash-Quoten (Umfrage) | Wenige Tage (automatische Löschung älterer Tages-Einträge); nur Missbrauchsabwehr |
 | Quick-Check | Keine dauerhafte Speicherung bei uns |
 | Server-/CDN-Logs | Nach den Standard-Einstellungen von Cloudflare; typischerweise kurzfristig für Betrieb und Sicherheit |
 

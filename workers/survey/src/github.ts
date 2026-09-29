@@ -13,12 +13,14 @@ interface GitHubFile {
   encoding: "base64";
 }
 
-const API_VERSION = "2026-03-10";
+const API_VERSION = "2022-11-28";
 
 function apiHeaders(token: string): HeadersInit {
   return {
     Accept: "application/vnd.github+json",
     Authorization: `Bearer ${token}`,
+    // GitHub rejects requests without a User-Agent (often as HTTP 403).
+    "User-Agent": "swiss-ai-survey-worker (https://aicompliant.ch)",
     "X-GitHub-Api-Version": API_VERSION,
   };
 }
@@ -48,10 +50,15 @@ function base64ToUtf8(value: string): string {
 async function errorMessage(response: Response): Promise<string> {
   const body = (await response.json().catch(() => null)) as {
     message?: unknown;
+    documentation_url?: unknown;
   } | null;
-  return typeof body?.message === "string"
-    ? body.message
-    : `HTTP ${response.status}`;
+  const message =
+    typeof body?.message === "string" ? body.message : `HTTP ${response.status}`;
+  const docs =
+    typeof body?.documentation_url === "string"
+      ? ` (${body.documentation_url})`
+      : "";
+  return `${message}${docs}`;
 }
 
 async function getFile(

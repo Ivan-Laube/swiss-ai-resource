@@ -9,6 +9,7 @@
     "dev": "next dev",
     "prebuild": "tsx scripts/sync-survey-aggregates.ts",
     "build": "next build",
+    "postbuild": "tsx scripts/csp-hashes.ts",
     "start": "next start",
     "lint": "eslint .",
     "check:content": "tsx scripts/check-content.ts",

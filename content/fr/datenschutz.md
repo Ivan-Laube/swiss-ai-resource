@@ -1,7 +1,7 @@
 ---
 title: "Politique de confidentialité"
 description: "Informations sur le traitement des données personnelles sur aicompliant.ch (art. 19 LPD) : responsable, finalités, sous-traitants, conservation et suppression."
-last_verified: "2026-09-18"
+last_verified: "2026-09-28"
 volatility: "stable"
 translation_status: "draft"
 reviewed_by: null
@@ -43,13 +43,15 @@ Si vous participez au sondage sur l'adoption de l'IA, nous enregistrons :
 
 Les réponses et les adresses e-mail sont stockées dans des **tables distinctes** d'une base Cloudflare D1, chacune avec **ses propres identifiants et sans clé commune**. Une association technique entre e-mail et réponse individuelle n'est donc pas possible. Les réponses **sans** e-mail sont anonymes ; même avec opt-in, la réponse reste séparée de l'adresse e-mail et non associable.
 
-### 2.3 Protection anti-spam (Turnstile)
+### 2.3 Protection anti-spam (Turnstile et limitation de débit)
 
-Lors de l'envoi du sondage, Cloudflare Turnstile peut effectuer un contrôle de sécurité. Des données techniques peuvent être transmises à Cloudflare pour limiter les envois automatisés.
+Lors de l'envoi du sondage ou d'un Quick-Check, Cloudflare Turnstile peut effectuer un contrôle de sécurité. Des données techniques peuvent être transmises à Cloudflare pour limiter les envois automatisés.
+
+Pour limiter les abus sur le sondage, nous stockons brièvement un **hash unidirectionnel de l'IP client** (SHA-256, sans IP en clair) avec le jour UTC et un compteur (au plus 20 envois réussis par jour et par hash). Ces lignes de quota sont supprimées automatiquement après quelques jours et servent uniquement à la prévention des abus — elles ne sont pas liées aux réponses ni aux e-mails.
 
 ### 2.4 Quick-Check du site web
 
-Si vous faites vérifier une URL, votre navigateur envoie l'URL à notre Worker de scan. Le Worker récupère la page cible et évalue des signaux publiquement visibles. **Nous ne stockons pas durablement les résultats de scan ni les URL soumises.**
+Si vous faites vérifier une URL, votre navigateur envoie l'URL et un jeton Turnstile à notre Worker de scan. Le Worker récupère la page cible et évalue des signaux publiquement visibles. **Nous ne stockons pas durablement les résultats de scan ni les URL soumises.**
 
 ## 3. Finalités du traitement
 
@@ -58,7 +60,7 @@ Si vous faites vérifier une URL, votre navigateur envoie l'URL à notre Worker 
 | Données techniques de connexion | Livraison, exploitation et sécurisation du site |
 | Réponses au sondage | Statistiques anonymisées et benchmark (agrégation ; les cellules avec moins de cinq réponses ne sont pas publiées) |
 | E-mail facultatif | Notification ponctuelle ou selon besoin lorsque le rapport de benchmark est disponible |
-| Turnstile | Protection contre les abus / le spam |
+| Turnstile / limitation de débit | Protection contre les abus / le spam (y compris quotas d'hash IP de courte durée) |
 | URL Quick-Check | Évaluation ponctuelle de l'URL soumise ; pas de stockage durable de notre côté |
 
 La base juridique est notamment le traitement pour l'exécution d'un contrat ou de mesures précontractuelles, ou notre intérêt légitime à exploiter les offres d'information et à prévenir les abus, dans la mesure où la LPD l'exige. L'e-mail facultatif repose sur votre **consentement** (opt-in), que vous pouvez retirer à tout moment.
@@ -80,6 +82,7 @@ Cloudflare agit comme **sous-traitant** dans le cadre des finalités que nous d�
 |---|---|
 | Réponses au sondage | Jusqu'à l'évaluation et la publication d'agrégats anonymisés ; les réponses brutes ne sont pas conservées plus longtemps que nécessaire pour le benchmark (objectif : suppression ou anonymisation au plus tard **24 mois** après l'envoi, sauf obligation légale plus longue) |
 | E-mails facultatifs | Jusqu'à l'envoi de la notification du rapport ou jusqu'à votre demande de suppression ; suppression automatique au plus tard après **24 mois** ; suppression manuelle de la table d'inscription sur demande |
+| Quotas hash IP (sondage) | Quelques jours (suppression automatique des jours plus anciens) ; prévention des abus uniquement |
 | Quick-Check | Pas de stockage durable de notre côté |
 | Journaux serveur/CDN | Selon les paramètres standard de Cloudflare ; en règle générale à court terme pour l'exploitation et la sécurité |
 

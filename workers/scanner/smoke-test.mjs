@@ -4,6 +4,12 @@
 const base = process.argv[2] ?? "http://127.0.0.1:8787";
 const origin = "https://aicompliant.ch";
 const FINDING_STATUSES = new Set(["found", "not_found", "indeterminate"]);
+/** Always-pass dummy token — requires TURNSTILE_SECRET_KEY test secret in .dev.vars */
+const TURNSTILE_TOKEN = "XXXX.DUMMY.TOKEN.XXXX";
+
+function scanBody(overrides = {}) {
+  return { url: "https://example.com", turnstile_token: TURNSTILE_TOKEN, ...overrides };
+}
 
 async function post(body, raw) {
   const res = await fetch(`${base}/scan`, {
@@ -39,42 +45,42 @@ function check(name, cond, detail) {
 
 // --- T34 URL guards first (before burning the 5/60s budget on other cases) ---
 
-const ftp = await postAllowingRateLimit({ url: "ftp://example.com/" });
+const ftp = await postAllowingRateLimit(scanBody({ url: "ftp://example.com/" }));
 check(
   "ftp scheme -> 400",
   ftp.status === 400 && typeof ftp.json?.error === "string",
   `status ${ftp.status} ${ftp.text}`,
 );
 
-const fileScheme = await postAllowingRateLimit({ url: "file:///etc/passwd" });
+const fileScheme = await postAllowingRateLimit(scanBody({ url: "file:///etc/passwd" }));
 check(
   "file scheme -> 400",
   fileScheme.status === 400 && typeof fileScheme.json?.error === "string",
   `status ${fileScheme.status} ${fileScheme.text}`,
 );
 
-const loopback = await postAllowingRateLimit({ url: "http://127.0.0.1/" });
+const loopback = await postAllowingRateLimit(scanBody({ url: "http://127.0.0.1/" }));
 check(
   "127.0.0.1 -> 400",
   loopback.status === 400 && typeof loopback.json?.error === "string",
   `status ${loopback.status} ${loopback.text}`,
 );
 
-const localhost = await postAllowingRateLimit({ url: "http://localhost/" });
+const localhost = await postAllowingRateLimit(scanBody({ url: "http://localhost/" }));
 check(
   "localhost -> 400",
   localhost.status === 400 && typeof localhost.json?.error === "string",
   `status ${localhost.status} ${localhost.text}`,
 );
 
-const ipv6Loop = await postAllowingRateLimit({ url: "http://[::1]/" });
+const ipv6Loop = await postAllowingRateLimit(scanBody({ url: "http://[::1]/" }));
 check(
   "[::1] -> 400",
   ipv6Loop.status === 400 && typeof ipv6Loop.json?.error === "string",
   `status ${ipv6Loop.status} ${ipv6Loop.text}`,
 );
 
-const rfc1918 = await postAllowingRateLimit({ url: "http://192.168.1.1/" });
+const rfc1918 = await postAllowingRateLimit(scanBody({ url: "http://192.168.1.1/" }));
 check(
   "192.168.1.1 -> 400",
   rfc1918.status === 400 && typeof rfc1918.json?.error === "string",
@@ -83,8 +89,15 @@ check(
 
 // --- Body / routing (T33) ---
 
-const missing = await postAllowingRateLimit({});
+const missing = await postAllowingRateLimit(scanBody({ url: undefined }));
 check("missing url -> 400", missing.status === 400, `status ${missing.status} ${missing.text}`);
+
+const missingToken = await postAllowingRateLimit({ url: "https://example.com" });
+check(
+  "missing turnstile_token -> 400",
+  missingToken.status === 400,
+  `status ${missingToken.status} ${missingToken.text}`,
+);
 
 const badJson = await postAllowingRateLimit(undefined, "{not-json");
 check("invalid JSON -> 400", badJson.status === 400, `status ${badJson.status} ${badJson.text}`);
@@ -99,7 +112,7 @@ check(
 const noOrigin = await fetch(`${base}/scan`, {
   method: "POST",
   headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({ url: "https://example.com" }),
+  body: JSON.stringify(scanBody()),
 });
 check(
   "POST without Origin -> 403",
@@ -113,7 +126,7 @@ const badOrigin = await fetch(`${base}/scan`, {
     "Content-Type": "application/json",
     Origin: "https://evil.example",
   },
-  body: JSON.stringify({ url: "https://example.com" }),
+  body: JSON.stringify(scanBody()),
 });
 check(
   "POST wrong Origin -> 403",
@@ -138,7 +151,7 @@ const nope = await fetch(`${base}/nope`, { method: "GET", headers: { Origin: ori
 check("unknown route -> 404", nope.status === 404, `status ${nope.status}`);
 
 // Valid public fetch + heuristic findings (T35)
-const ok = await postAllowingRateLimit({ url: "https://example.com" });
+const ok = await postAllowingRateLimit(scanBody({ url: "https://example.com" }));
 const findings = Array.isArray(ok.json?.findings) ? ok.json.findings : [];
 const httpsFinding = findings.find((f) => f?.id === "https");
 const allStatusesOk = findings.every(
@@ -168,7 +181,7 @@ check(
 // Rate limit soft check last (limit 5/60s per IP)
 let got429 = false;
 for (let i = 0; i < 10; i++) {
-  const r = await post({ url: "https://example.com" });
+  const r = await post(scanBody());
   if (r.status === 429) {
     got429 = true;
     break;

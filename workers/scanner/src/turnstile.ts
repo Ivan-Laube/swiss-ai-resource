@@ -1,4 +1,4 @@
-/** Re-export shared Turnstile verify (kept for stable import paths). */
+/** Re-export shared Turnstile verify. */
 export {
   isAllowedTurnstileHostname,
   verifyTurnstile,

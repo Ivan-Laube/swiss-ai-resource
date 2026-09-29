@@ -10,6 +10,9 @@ import { writeGitHubFile, type GitHubWriteResult } from "./github";
 
 const survey = parseSurvey(surveyJson);
 
+/** Page size for D1 reads — keeps cron memory bounded as n grows. */
+const AGGREGATE_PAGE_SIZE = 5_000;
+
 export interface AggregateJobResult {
   responses: number;
   write: GitHubWriteResult;
@@ -27,22 +30,43 @@ function targetFromEnv(env: Env) {
   };
 }
 
+async function loadAllResponseRows(
+  env: Env,
+): Promise<AggregateResponseRow[]> {
+  const rows: AggregateResponseRow[] = [];
+  let offset = 0;
+
+  while (true) {
+    const page = await env.DB.prepare(
+      `SELECT id, answers_json
+       FROM responses
+       WHERE survey_id = ? AND survey_version = ?
+       ORDER BY created_at, id
+       LIMIT ? OFFSET ?`,
+    )
+      .bind(survey.id, survey.version, AGGREGATE_PAGE_SIZE, offset)
+      .all<AggregateResponseRow>();
+
+    const batch = page.results ?? [];
+    rows.push(...batch);
+    if (batch.length < AGGREGATE_PAGE_SIZE) {
+      break;
+    }
+    offset += AGGREGATE_PAGE_SIZE;
+  }
+
+  return rows;
+}
+
 export async function runAggregateJob(
   env: Env,
   scheduledTime: number,
 ): Promise<AggregateJobResult> {
-  const query = await env.DB.prepare(
-    `SELECT id, answers_json
-     FROM responses
-     WHERE survey_id = ? AND survey_version = ?
-     ORDER BY created_at, id`,
-  )
-    .bind(survey.id, survey.version)
-    .all<AggregateResponseRow>();
+  const results = await loadAllResponseRows(env);
 
   const aggregates = aggregateResponses(
     survey,
-    query.results,
+    results,
     new Date(scheduledTime).toISOString(),
   );
   const content = `${JSON.stringify(aggregates, null, 2)}\n`;

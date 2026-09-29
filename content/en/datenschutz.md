@@ -1,7 +1,7 @@
 ---
 title: "Privacy policy"
 description: "Information on the processing of personal data on aicompliant.ch (Art. 19 FADP): controller, purposes, processors, retention, and deletion."
-last_verified: "2026-09-18"
+last_verified: "2026-09-28"
 volatility: "stable"
 translation_status: "draft"
 reviewed_by: null
@@ -43,13 +43,15 @@ If you take part in the AI adoption survey, we store:
 
 Answers and email addresses are stored in **separate tables** in a Cloudflare D1 database, each with **its own identifiers and no shared key**. Email and an individual response therefore cannot be linked technically. Answers **without** email are anonymous; even with opt-in, the answer remains separate from and unlinkable to the email address.
 
-### 2.3 Spam protection (Turnstile)
+### 2.3 Spam protection (Turnstile and rate limiting)
 
-When you submit the survey, Cloudflare Turnstile may run a security check. Technical data may be sent to Cloudflare to limit automated submissions.
+When you submit the survey or run a Website Quick-Check, Cloudflare Turnstile may run a security check. Technical data may be sent to Cloudflare to limit automated submissions.
+
+To limit abuse of the survey, we briefly store a **one-way hash of the client IP** (SHA-256, no plaintext IP) together with the UTC day and a counter (at most 20 successful submissions per day and hash). These quota rows are deleted automatically after a few days and are used only for abuse prevention — they are not linked to survey answers or email addresses.
 
 ### 2.4 Website Quick-Check
 
-If you submit a URL for checking, your browser sends the URL to our scanner Worker. The Worker fetches the target page and evaluates publicly visible signals. **We do not permanently store scan results or submitted URLs.**
+If you submit a URL for checking, your browser sends the URL and a Turnstile token to our scanner Worker. The Worker fetches the target page and evaluates publicly visible signals. **We do not permanently store scan results or submitted URLs.**
 
 ## 3. Purposes of processing
 
@@ -58,7 +60,7 @@ If you submit a URL for checking, your browser sends the URL to our scanner Work
 | Technical connection data | Delivery, operation, and protection of the website |
 | Survey answers | Anonymised statistics and benchmark (aggregation; cells with fewer than five answers are not published) |
 | Optional email | One-time or as-needed notification when the benchmark report is available |
-| Turnstile | Abuse / spam protection |
+| Turnstile / rate limiting | Abuse / spam protection (including short-lived IP-hash quotas) |
 | Quick-Check URL | One-off evaluation of the submitted URL; no permanent storage on our side |
 
 The legal basis is in particular processing to perform a contract or pre-contractual measures, or our legitimate interest in operating the information services and preventing abuse, insofar as the FADP requires such a basis. The optional email relies on your **consent** (opt-in), which you may withdraw at any time.
@@ -80,6 +82,7 @@ Cloudflare acts as a **processor** for the purposes we define. Depending on Clou
 |---|---|
 | Survey answers | Until evaluation and publication of anonymised aggregates; raw answers are not kept longer than needed for the benchmark purpose (target: deletion or anonymisation at the latest **24 months** after submission, unless a longer legal duty applies) |
 | Optional emails | Until the report notification is sent or until you request deletion; automatic deletion after at most **24 months**; manual deletion from the signup table on request |
+| IP-hash quotas (survey) | A few days (older day rows deleted automatically); abuse prevention only |
 | Quick-Check | No permanent storage on our side |
 | Server/CDN logs | Per Cloudflare’s standard settings; typically short-term for operations and security |
 
