@@ -1,6 +1,6 @@
 ---
-title: "Informativa sulla privacy"
-description: "Informazioni sul trattamento dei dati personali su aicompliant.ch (art. 19 LPD): titolare, finalità, responsabili del trattamento, conservazione e cancellazione."
+title: "Informativa sulla protezione dei dati"
+description: "Informazioni sul trattamento dei dati personali su aicompliant.ch (art. 19 LPD): responsabile, finalità, responsabile del trattamento, conservazione e cancellazione."
 last_verified: "2026-09-28"
 volatility: "stable"
 translation_status: "draft"
@@ -14,11 +14,11 @@ sources:
     url: "https://www.edoeb.admin.ch/de/ki-und-datenschutz"
 ---
 
-La presente informativa sulla privacy La informa, ai sensi dell'**art. 19 LPD**, sul trattamento dei dati personali su **aicompliant.ch**.
+La presente informativa sulla protezione dei dati vi informa, conformemente all'**art. 19 LPD**, su come vengono trattati i dati personali su **aicompliant.ch**.
 
-## 1. Titolare del trattamento
+## 1. Responsabile del trattamento
 
-Titolare del trattamento:
+Responsabile del trattamento dei dati:
 
 | | |
 |---|---|
@@ -26,78 +26,78 @@ Titolare del trattamento:
 | **Indirizzo** | Vorhaldenstrasse 10, 8049 Zürich, Svizzera |
 | **E-mail** | [i.laube@gmail.com](mailto:i.laube@gmail.com) |
 
-Ulteriori indicazioni sul fornitore: [Note legali](/it/impressum/).
+Ulteriori indicazioni sul fornitore: [Impressum](/de/impressum/).
 
 ## 2. Quali dati trattiamo
 
-### 2.1 Visita del sito (tecnico)
+### 2.1 Accesso al sito web (tecnico)
 
-Durante la visita del sito possono essere generati dati tecnici di connessione (p. es. indirizzo IP, timestamp, user-agent) nella misura in cui il fornitore di hosting/CDN (Cloudflare) ne abbia bisogno per la consegna e la sicurezza del sito. Il sito stesso è un **export statico** e **non** memorizza profili visitatori nel nostro codice applicativo.
+Al momento dell'accesso al sito web possono essere generati dati tecnici di connessione (ad es. indirizzo IP, timestamp, user agent), nella misura in cui ciò sia necessario al fornitore di hosting/CDN (Cloudflare) per la fornitura e la protezione del sito. Il sito web stesso è strutturato come **export statico** e nel nostro codice applicativo **non** memorizza profili dei visitatori.
 
-### 2.2 Sondaggio (e-mail facoltativa)
+### 2.2 Sondaggio (opzionale, incl. e-mail)
 
-Se partecipa al sondaggio sull'adozione dell'IA, memorizziamo:
+Se partecipate al sondaggio sull'adozione dell'IA, memorizziamo:
 
-- le Sue **risposte** (senza identificazione), insieme a lingua, versione del sondaggio e timestamp;
-- eventualmente il Suo **indirizzo e-mail**, se richiede il rapporto di benchmark (opt-in).
+- le vostre **risposte** (senza identificazione), insieme a lingua, versione del sondaggio e timestamp;
+- facoltativamente il vostro **indirizzo e-mail**, se richiedete il rapporto di benchmark (opt-in).
 
-Le risposte e gli indirizzi e-mail sono memorizzati in **tabelle separate** in un database Cloudflare D1, ciascuna con **identificativi propri e senza chiave condivisa**. Un collegamento tecnico tra e-mail e singola risposta non è quindi possibile. Le risposte **senza** e-mail sono anonime; anche con opt-in la risposta resta separata dall'indirizzo e-mail e non collegabile.
+Le risposte e gli indirizzi e-mail vengono archiviati in **tabelle separate** in un database Cloudflare D1, ciascuna con **identificatori propri e senza chiave comune**. Non è quindi tecnicamente possibile associare l'e-mail alla singola risposta. Le risposte **senza** e-mail sono anonime; anche in caso di opt-in, la risposta rimane separata dall'indirizzo e-mail e non collegabile.
 
 ### 2.3 Protezione antispam (Turnstile e limitazione della frequenza)
 
-All'invio del sondaggio o di un Quick-Check, Cloudflare Turnstile può eseguire un controllo di sicurezza. Dati tecnici possono essere trasmessi a Cloudflare per limitare gli invii automatizzati.
+Al momento dell'invio del sondaggio e durante il Website Quick-Check, Cloudflare Turnstile può effettuare un controllo di sicurezza. In tale contesto possono essere trasmessi dati tecnici a Cloudflare per rendere più difficili gli invii automatizzati.
 
-Per limitare gli abusi sul sondaggio, memorizziamo per breve tempo un **hash unidirezionale dell'IP client** (SHA-256, senza IP in chiaro) con il giorno UTC e un contatore (al massimo 20 invii riusciti per giorno e hash). Queste righe di quota sono cancellate automaticamente dopo pochi giorni e servono solo alla prevenzione degli abusi — non sono collegate alle risposte né alle e-mail.
+Per limitare gli abusi, per il sondaggio memorizziamo temporaneamente un **hash monodirezionale dell'IP del client** (SHA-256, senza IP in chiaro) insieme alla data UTC e a un contatore (al massimo 20 invii riusciti al giorno per hash). Queste voci di quota vengono cancellate automaticamente dopo pochi giorni e servono esclusivamente alla prevenzione degli abusi — non sono collegate alle risposte del sondaggio né agli indirizzi e-mail.
 
-### 2.4 Quick-Check del sito web
+### 2.4 Website Quick-Check
 
-Se fa verificare un URL, il Suo browser invia l'URL e un token Turnstile al nostro Worker di scansione. Il Worker recupera la pagina di destinazione e valuta segnali pubblicamente visibili. **Non memorizziamo in modo permanente i risultati della scansione né gli URL inviati.**
+Se fate verificare un URL, il vostro browser invia l'URL e un token Turnstile al nostro scanner-worker. Il worker recupera la pagina di destinazione e valuta i segnali pubblicamente visibili. **Non vengono memorizzati in modo permanente presso di noi né i risultati della scansione né gli URL inseriti.**
 
 ## 3. Finalità del trattamento
 
 | Dati | Finalità |
 |---|---|
-| Dati tecnici di connessione | Consegna, esercizio e sicurezza del sito |
-| Risposte al sondaggio | Statistiche anonimizzate e benchmark (aggregazione; le celle con meno di cinque risposte non sono pubblicate) |
-| E-mail facoltativa | Notifica una tantum o secondo necessità quando il rapporto di benchmark è disponibile |
-| Turnstile / limitazione frequenza | Protezione da abusi / spam (incluse quote hash IP di breve durata) |
-| URL Quick-Check | Valutazione una tantum dell'URL inviato; nessuna memorizzazione permanente da parte nostra |
+| Dati tecnici di connessione | Fornitura, funzionamento e protezione del sito web |
+| Risposte al sondaggio | Statistiche anonimizzate e benchmark (aggregazione; le celle con meno di cinque risposte non vengono pubblicate) |
+| E-mail opzionale | Notifica singola o su richiesta non appena il rapporto di benchmark è disponibile |
+| Turnstile / limitazione della frequenza | Protezione da abusi/spam (incl. quote basate su hash IP di breve durata) |
+| URL del Quick-Check | Valutazione singola dell'URL inviato; nessuna memorizzazione permanente presso di noi |
 
-La base giuridica è in particolare il trattamento per l'esecuzione di un contratto o di misure precontrattuali, ovvero il nostro interesse legittimo a gestire le offerte informative e a prevenire abusi, nella misura in cui la LPD lo richieda. L'e-mail facoltativa si basa sul Suo **consenso** (opt-in), che può revocare in qualsiasi momento.
+La base giuridica è in particolare il trattamento per l'esecuzione di un contratto o di misure precontrattuali, ovvero il nostro interesse legittimo al funzionamento delle offerte informative e alla prevenzione degli abusi, nella misura in cui la LPD lo richieda. L'e-mail opzionale si basa sul vostro **consenso** (opt-in), che potete revocare in qualsiasi momento.
 
-## 4. Responsabili del trattamento e Cloudflare
+## 4. Responsabile del trattamento e Cloudflare
 
-Utilizziamo servizi di **Cloudflare, Inc.** (e società affiliate) per:
+Utilizziamo servizi di **Cloudflare, Inc.** (e società collegate) per:
 
-- hosting / CDN del sito (Cloudflare Pages);
-- l'API del sondaggio e la memorizzazione in **Cloudflare D1**;
-- lo scanner del sito (Cloudflare Worker, senza memorizzazione permanente);
-- eventualmente **Cloudflare Turnstile**.
+- l'hosting/CDN del sito web (Cloudflare Pages);
+- l'API del sondaggio e l'archiviazione in **Cloudflare D1**;
+- lo scanner del sito web (Cloudflare Worker, senza archiviazione permanente);
+- facoltativamente **Cloudflare Turnstile**.
 
-Cloudflare agisce come **responsabile del trattamento** nell'ambito delle finalità da noi definite. A seconda della configurazione Cloudflare, i trattamenti possono anche avvenire fuori dalla Svizzera o dall'UE/SEE. Scegliamo fornitori e impostazioni mirando a un livello di protezione adeguato (incluse le garanzie contrattuali del fornitore).
+Cloudflare agisce in tal caso come **responsabile del trattamento** nell'ambito delle finalità da noi definite. A seconda della configurazione di Cloudflare, i trattamenti possono avvenire anche al di fuori della Svizzera o dello SEE/UE. Selezioniamo i fornitori e le impostazioni in modo da perseguire un livello di protezione adeguato (tra l'altro tramite garanzie contrattuali del fornitore).
 
 ## 5. Conservazione
 
 | Dati | Conservazione |
 |---|---|
-| Risposte al sondaggio | Fino alla valutazione e pubblicazione di aggregati anonimizzati; le risposte grezze non sono conservate più a lungo del necessario per il benchmark (obiettivo: cancellazione o anonimizzazione al più tardi **24 mesi** dopo l'invio, salvo obblighi di legge più lunghi) |
-| E-mail facoltative | Fino all'invio della notifica del rapporto o fino alla Sua richiesta di cancellazione; cancellazione automatica al più tardi dopo **24 mesi**; cancellazione manuale dalla tabella di iscrizione su richiesta |
-| Quote hash IP (sondaggio) | Pochi giorni (cancellazione automatica dei giorni più vecchi); solo prevenzione abusi |
-| Quick-Check | Nessuna memorizzazione permanente da parte nostra |
-| Log server/CDN | Secondo le impostazioni standard di Cloudflare; di norma a breve termine per esercizio e sicurezza |
+| Risposte al sondaggio | Fino alla valutazione e pubblicazione degli aggregati anonimizzati; le risposte grezze non vengono conservate oltre quanto necessario per lo scopo di benchmark (obiettivo: cancellazione o anonimizzazione al più tardi **24 mesi** dopo l'invio, salvo obblighi legali di conservazione più lunga) |
+| E-mail opzionali | Fino all'invio della notifica del rapporto ovvero fino alla vostra richiesta di cancellazione; cancellazione automatica al più tardi dopo **24 mesi**; cancellazione manuale dalla tabella di iscrizione su richiesta |
+| Quote hash IP (sondaggio) | Alcuni giorni (cancellazione automatica delle voci giornaliere più vecchie); solo per la prevenzione degli abusi |
+| Quick-Check | Nessuna memorizzazione permanente presso di noi |
+| Log del server/CDN | Secondo le impostazioni standard di Cloudflare; tipicamente a breve termine per il funzionamento e la sicurezza |
 
-## 6. I Suoi diritti e la cancellazione
+## 6. I vostri diritti e la cancellazione
 
-Può chiedere l'accesso, la rettifica e la cancellazione dei Suoi dati personali nonché opporsi al trattamento, nella misura in cui la LPD lo preveda. Per un'e-mail facoltativa registrata, di regola basta un messaggio a **[i.laube@gmail.com](mailto:i.laube@gmail.com)** con richiesta di cancellazione; cancelliamo quindi l'indirizzo e-mail dalla tabella di iscrizione. Le risposte al sondaggio non ne sono interessate e non sono collegate all'e-mail.
+Potete richiedere informazioni, rettifica e cancellazione dei vostri dati personali, nonché opporvi al trattamento, nella misura in cui la LPD lo preveda. Per l'e-mail eventualmente registrata è di norma sufficiente un messaggio a **[i.laube@gmail.com](mailto:i.laube@gmail.com)** con la richiesta di cancellazione; provvederemo quindi a cancellare l'indirizzo e-mail dalla tabella di iscrizione. Le risposte al sondaggio non ne sono interessate e non sono collegate all'e-mail.
 
-Le risposte al sondaggio non possono essere attribuite a una persona (nemmeno tramite l'e-mail facoltativa) e quindi non possono essere cancellate in modo mirato.
+Le risposte al sondaggio non possono successivamente essere associate a una persona (nemmeno tramite l'e-mail opzionale) e non possono pertanto essere cancellate in modo mirato.
 
-Può inoltre presentare reclamo al **Incaricato federale della protezione dei dati e della trasparenza (IFPDT / EDÖB)**.
+Potete inoltre presentare reclamo presso l'**Incaricato federale della protezione dei dati e della trasparenza (IFPDT)**.
 
-## 7. Nessun obbligo di fornire dati / conseguenze
+## 7. Nessun obbligo di indicazione / conseguenze
 
-Può utilizzare il sito e la maggior parte delle funzioni senza indicare dati personali. Senza opt-in e-mail non riceverà la notifica sul rapporto di benchmark; la partecipazione anonima al sondaggio resta possibile.
+L'utilizzo del sito web e della maggior parte delle funzioni è possibile senza fornire dati personali. Senza l'opt-in per l'e-mail non riceverete alcuna notifica relativa al rapporto di benchmark; la partecipazione anonima al sondaggio rimane possibile.
 
 ## 8. Modifiche
 
-Possiamo aggiornare la presente informativa se l'offerta o il diritto cambiano. Fa fede la versione pubblicata su questa pagina (`last_verified` nell'intestazione della pagina).
+Possiamo adattare la presente informativa sulla protezione dei dati qualora l'offerta o la situazione giuridica cambino. Fa fede la versione di volta in volta pubblicata su questa pagina (`last_verified` nell'intestazione della pagina).

@@ -1,6 +1,6 @@
 ---
-title: "Privacy policy"
-description: "Information on the processing of personal data on aicompliant.ch (Art. 19 FADP): controller, purposes, processors, retention, and deletion."
+title: "Privacy Policy"
+description: "Information on the processing of personal data (Personendaten) on aicompliant.ch (Art. 19 DSG): controller, purposes, processors, retention and deletion."
 last_verified: "2026-09-28"
 volatility: "stable"
 translation_status: "draft"
@@ -14,11 +14,11 @@ sources:
     url: "https://www.edoeb.admin.ch/de/ki-und-datenschutz"
 ---
 
-This privacy policy informs you under **Art. 19 of the Federal Act on Data Protection (FADP / DSG)** how personal data is processed on **aicompliant.ch**.
+This privacy policy informs you, in accordance with **Art. 19** of the Federal Act on Data Protection (Bundesgesetz über den Datenschutz, DSG), about how personal data (Personendaten) is processed on **aicompliant.ch**.
 
 ## 1. Controller
 
-Controller of the processing:
+Responsible for the data processing:
 
 | | |
 |---|---|
@@ -26,78 +26,78 @@ Controller of the processing:
 | **Address** | Vorhaldenstrasse 10, 8049 Zürich, Switzerland |
 | **Email** | [i.laube@gmail.com](mailto:i.laube@gmail.com) |
 
-Further provider details: [Legal notice](/en/impressum/).
+Further provider (Anbieter) details: [Legal Notice](/de/impressum/).
 
 ## 2. What data we process
 
-### 2.1 Website visits (technical)
+### 2.1 Website access (technical)
 
-When you visit the website, technical connection data may arise (e.g. IP address, timestamp, user agent) insofar as this is required by the hosting/CDN provider (Cloudflare) to deliver and protect the site. The site itself is a **static export** and does **not** store visitor profiles in our application code.
+When the website is accessed, technical connection data may be generated (e.g. IP address, timestamp, user agent), to the extent required by our hosting/CDN provider (Cloudflare) to deliver and secure the site. The website itself is built as a **static export** and does not store any visitor profiles in our application code.
 
-### 2.2 Survey (optional email)
+### 2.2 Survey (optional, including email)
 
 If you take part in the AI adoption survey, we store:
 
 - your **answers** (without identification), together with language, survey version, and timestamp;
-- optionally your **email address**, if you request the benchmark report (opt-in).
+- optionally, your **email address**, if you request the benchmark report (opt-in).
 
-Answers and email addresses are stored in **separate tables** in a Cloudflare D1 database, each with **its own identifiers and no shared key**. Email and an individual response therefore cannot be linked technically. Answers **without** email are anonymous; even with opt-in, the answer remains separate from and unlinkable to the email address.
+Answers and email addresses are stored in **separate tables** in a Cloudflare D1 database, each with its **own identifiers and without a shared key**. It is therefore not technically possible to link an email address to an individual answer. Answers submitted **without** an email are anonymous; even with opt-in, the answer remains separate from the email address and cannot be linked to it.
 
 ### 2.3 Spam protection (Turnstile and rate limiting)
 
-When you submit the survey or run a Website Quick-Check, Cloudflare Turnstile may run a security check. Technical data may be sent to Cloudflare to limit automated submissions.
+When submitting the survey and when using the website quick-check, Cloudflare Turnstile may perform a security check. In doing so, technical data may be transmitted to Cloudflare to make automated submissions more difficult.
 
-To limit abuse of the survey, we briefly store a **one-way hash of the client IP** (SHA-256, no plaintext IP) together with the UTC day and a counter (at most 20 successful submissions per day and hash). These quota rows are deleted automatically after a few days and are used only for abuse prevention — they are not linked to survey answers or email addresses.
+To limit abuse, we temporarily store, for the survey, a **one-way hash of the client IP** (SHA-256, without the plaintext IP) together with the UTC date and a counter (a maximum of 20 successful submissions per day and hash). These quota entries are automatically deleted after a few days and serve solely to prevent abuse — they are not linked to survey answers or email addresses.
 
-### 2.4 Website Quick-Check
+### 2.4 Website quick-check
 
-If you submit a URL for checking, your browser sends the URL and a Turnstile token to our scanner Worker. The Worker fetches the target page and evaluates publicly visible signals. **We do not permanently store scan results or submitted URLs.**
+If you have a URL checked, your browser sends the URL and a Turnstile token to our scanner worker. The worker retrieves the target page and evaluates publicly visible signals. **No scan results and no submitted URLs are stored by us on a permanent basis.**
 
 ## 3. Purposes of processing
 
 | Data | Purpose |
 |---|---|
-| Technical connection data | Delivery, operation, and protection of the website |
-| Survey answers | Anonymised statistics and benchmark (aggregation; cells with fewer than five answers are not published) |
-| Optional email | One-time or as-needed notification when the benchmark report is available |
-| Turnstile / rate limiting | Abuse / spam protection (including short-lived IP-hash quotas) |
-| Quick-Check URL | One-off evaluation of the submitted URL; no permanent storage on our side |
+| Technical connection data | Delivery, operation, and security of the website |
+| Survey answers | Anonymized statistics and benchmarking (aggregation; cells with fewer than five answers are not published) |
+| Optional email | One-time or as-needed notification once the benchmark report becomes available |
+| Turnstile / rate limiting | Protection against abuse/spam (including short-lived IP-hash quotas) |
+| Quick-check URL | One-time evaluation of the submitted URL; no permanent storage by us |
 
-The legal basis is in particular processing to perform a contract or pre-contractual measures, or our legitimate interest in operating the information services and preventing abuse, insofar as the FADP requires such a basis. The optional email relies on your **consent** (opt-in), which you may withdraw at any time.
+The legal basis is, in particular, processing for the performance of a contract or pre-contractual measures, or our legitimate interest in operating our information services and preventing abuse, to the extent required by the DSG. The optional email is based on your **consent** (opt-in), which you may withdraw at any time.
 
-## 4. Processors and Cloudflare
+## 4. Processors (Auftragsbearbeiter) and Cloudflare
 
-We use services of **Cloudflare, Inc.** (and affiliates) for:
+We use services from **Cloudflare, Inc.** (and affiliated companies) for:
 
-- hosting / CDN of the website (Cloudflare Pages);
+- hosting/CDN of the website (Cloudflare Pages);
 - the survey API and storage in **Cloudflare D1**;
 - the website scanner (Cloudflare Worker, without permanent storage);
-- optionally **Cloudflare Turnstile**.
+- optionally, **Cloudflare Turnstile**.
 
-Cloudflare acts as a **processor** for the purposes we define. Depending on Cloudflare configuration, processing may also take place outside Switzerland or the EU/EEA. We select providers and settings with a view to an adequate level of protection (including the provider’s contractual safeguards).
+Cloudflare acts as a processor (Auftragsbearbeiter) within the scope of the purposes we specify. Depending on Cloudflare's configuration, processing may also take place outside Switzerland or the EU/EEA. We select providers and settings with the aim of ensuring an adequate level of protection (including contractual safeguards from the provider).
 
 ## 5. Retention
 
-| Data | Retention |
+| Data | Retention period |
 |---|---|
-| Survey answers | Until evaluation and publication of anonymised aggregates; raw answers are not kept longer than needed for the benchmark purpose (target: deletion or anonymisation at the latest **24 months** after submission, unless a longer legal duty applies) |
-| Optional emails | Until the report notification is sent or until you request deletion; automatic deletion after at most **24 months**; manual deletion from the signup table on request |
-| IP-hash quotas (survey) | A few days (older day rows deleted automatically); abuse prevention only |
-| Quick-Check | No permanent storage on our side |
-| Server/CDN logs | Per Cloudflare’s standard settings; typically short-term for operations and security |
+| Survey answers | Until evaluation and publication of anonymized aggregates; raw answers are not retained longer than necessary for the benchmark purpose (goal: deletion or anonymization no later than **24 months** after submission, unless a longer statutory retention obligation applies) |
+| Optional emails | Until the report notification is sent or until you request deletion; automatic deletion no later than after **24 months**; manual deletion from the signup table upon request |
+| IP-hash quotas (survey) | A few days (automatic deletion of older daily entries); used solely for abuse prevention |
+| Quick-check | No permanent storage by us |
+| Server/CDN logs | According to Cloudflare's standard settings; typically retained briefly for operations and security |
 
 ## 6. Your rights and deletion
 
-You may request access, rectification, and deletion of your personal data and object to processing where the FADP so provides. For an optional email on file, a message to **[i.laube@gmail.com](mailto:i.laube@gmail.com)** requesting deletion is usually sufficient; we then delete the email address from the signup table. Survey answers are unaffected and are not linked to the email.
+You may request information, correction, and deletion of your personal data, and may object to processing, to the extent provided by the DSG. If you have provided an optional email address, it is generally sufficient to send a message to **[i.laube@gmail.com](mailto:i.laube@gmail.com)** requesting deletion; we will then delete the email address from the signup table. Survey answers are unaffected by this and are not linked to the email address.
 
-Survey answers cannot later be linked to a person (including via the optional email) and therefore cannot be deleted on request in a targeted way.
+Survey answers cannot subsequently be attributed to a specific person (not even via the optional email) and therefore cannot be deleted on a targeted basis.
 
-You may also lodge a complaint with the **Federal Data Protection and Information Commissioner (FDPIC / EDÖB)**.
+You may also file a complaint with the **Federal Data Protection and Information Commissioner (Eidgenössischer Datenschutz- und Öffentlichkeitsbeauftragter, EDÖB)**.
 
 ## 7. No obligation to provide data / consequences
 
-You can use the website and most features without providing personal data. Without an email opt-in you will not receive a benchmark report notification; anonymous survey participation remains possible.
+The website and most of its functions can be used without providing any personal data. Without email opt-in, you will not receive a notification about the benchmark report; anonymous participation in the survey remains possible.
 
 ## 8. Changes
 
-We may update this privacy policy if the offering or the law changes. The version published on this page is authoritative (`last_verified` in the page header).
+We may amend this privacy policy if our offering or the legal situation changes. The version published on this page at any given time is authoritative (see `last_verified` in the page header).
