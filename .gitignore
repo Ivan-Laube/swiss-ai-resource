@@ -28,6 +28,9 @@
 .DS_Store
 *.pem
 
+# Design-source dump (Stitch); keep local, never commit
+stitch_ai_compliant_website_redesign.zip
+
 # debug
 npm-debug.log*
 yarn-debug.log*
