@@ -1,7 +1,6 @@
 # Pre-traffic operator checklist — aicompliant.ch
 
-Follow this **in order** before announcing or expecting high traffic.  
-Code/config for these items is already in the repo. This file covers what **you** must do in Cloudflare, GitHub, DNS, and the terminal.
+**Status (2026-09-29): all items complete.** This file is the historical runbook for Cloudflare / GitHub / DNS / terminal steps that shipped launch hardening. Re-run individual sections when rotating secrets or re-verifying production.
 
 **Related:** [DEPLOY.md](DEPLOY.md) (full deploy runbook) · repo [`Ivan-Laube/swiss-ai-resource`](https://github.com/Ivan-Laube/swiss-ai-resource)
 
@@ -231,7 +230,7 @@ Verified 2026-09-29:
 - Headers: HSTS preload, COOP/CORP `same-origin`, CSP `connect-src` includes `api.aicompliant.ch`, no `ACAO *`
 - Survey hydration OK (radio sticks); Turnstile token present
 - Website-check Turnstile ready
-- Note: live CSP still uses `script-src ... 'unsafe-inline'` (sha256 postbuild `scripts/csp-hashes.ts` not on `main` yet) — acceptable for launch; ship hashes in a follow-up deploy for stricter CSP
+- `scripts/csp-hashes.ts` is on `main` (`postbuild`); after each Pages deploy, confirm `Content-Security-Policy` uses `sha256-...` (not only `'unsafe-inline'`) and that survey radios still hydrate
 
 ---
 
@@ -262,6 +261,7 @@ npm run build
 
 ## After everything is green
 
-1. Tick all rows in the progress tracker at the top of this file.
-2. Tick remaining T43 boxes in [DEPLOY.md](DEPLOY.md).
+1. Progress tracker above is fully checked (2026-09-29).
+2. T43 boxes in [DEPLOY.md](DEPLOY.md#pat-scoped-to-a-dedicated-data-repo-t43) are checked.
 3. Optional launch risk (not security): lawyer review of Impressum / Datenschutz (**T29**).
+4. After each future production Pages deploy, re-run §8 CSP / hydration smoke (especially if `public/_headers` or `scripts/csp-hashes.ts` changed).

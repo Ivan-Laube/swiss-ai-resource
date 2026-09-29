@@ -39,7 +39,7 @@ German (`de`) is the canonical content language. See [swiss_ai_resource_implemen
 | T23f | Replace Worker `GITHUB_TOKEN` with fine-grained PAT | Done |
 | T24 | Survey form page (4 languages) | Done |
 | T25 | Aggregation job with n<5 suppression, aggregates written to repo as JSON | Done |
-| T43 | Scope survey Worker's GitHub PAT to a dedicated data-only repo | Done (pending first live write confirmation) |
+| T43 | Scope survey Worker's GitHub PAT to a dedicated data-only repo | Done |
 | T32 | Scanner check definitions (`scanner-checks.json` + Zod) | Done |
 | T33–T35 | Scanner Worker: `/scan`, SSRF guards, heuristic engine + HTML CPU caps | Done |
 | T36 | Website Quick-Check page `/[lang]/website-check/` | Done |
@@ -49,6 +49,7 @@ German (`de`) is the canonical content language. See [swiss_ai_resource_implemen
 | T40 | Fill Impressum/Datenschutz operator details (natural person); sync EN/FR/IT | Done |
 | T41 | Live browser smoke (survey + website-check on aicompliant.ch) | Done |
 | T42 | GitHub Actions: allow Actions to create/approve PRs | Done |
+| T44 | Pre-traffic operator hardening (`api.aicompliant.ch`, Turnstile, DNSSEC, Access, CSP hashes, …) | Done — see [OPERATOR_CHECKLIST.md](OPERATOR_CHECKLIST.md) |
 | T29 | Lawyer review of DE pages (incl. legal pages after T40) | Not started |
 
 ## Local development
@@ -63,7 +64,7 @@ Open [http://localhost:3000](http://localhost:3000) (root redirects to `/de/`).
 | Script | Purpose |
 |---|---|
 | `npm run dev` | Next.js dev server |
-| `npm run build` | Static export to `out/` |
+| `npm run build` | Static export to `out/` (`prebuild` syncs survey aggregates; `postbuild` rewrites CSP hashes) |
 | `npm run lint` | ESLint |
 | `npx tsc --noEmit` | Typecheck (also run in CI) |
 | `npm run check:content` | Validate all `content/{locale}/*.md` frontmatter |
@@ -107,8 +108,9 @@ src/translate/           # LLM translation pipeline (T13)
 src/rules/               # Decision-tree Zod schema + loader
 src/survey/              # Survey questions Zod schema + intake validation (T22/T23)
 src/scanner/             # Website quick-check Zod schema + loader (T32)
-workers/survey/          # Survey intake Worker + D1 (`responses` / unlinkable `report_signups`)
-workers/scanner/         # Stateless website scan Worker (T33–T35)
+workers/survey/          # Survey intake Worker + D1 (`responses` / unlinkable `report_signups` / `submission_quotas`)
+workers/scanner/         # Stateless website scan Worker (T33–T35; Turnstile-gated)
+workers/_shared/         # Shared Worker helpers (Turnstile siteverify)
 src/snapshot/            # Fetch + normalize source snapshots (T15)
 src/classify/            # LLM diff classification (T16)
 src/maintain/            # last_verified bump + material brief (T17)
@@ -225,13 +227,13 @@ Current trees: `us-hosted-llm-ndsg` (T9), `eu-ai-act-applicability` (T10).
 
 Adoption questionnaire: [`data/survey-questions.json`](data/survey-questions.json) (**version 2**, 12 questions, full DE/EN/FR/IT). Schema and loader: [`src/survey/`](src/survey/). Intake validation: `validateIntake` / `validateAnswers` in [`src/survey/answers.ts`](src/survey/answers.ts). Field reference: [data/README.md](data/README.md#survey-questions-survey-questionsjson). Validate with `npm run check:survey` and `npm run check:survey-answers`.
 
-Instrument covers company size, sector, language region, AI maturity/tools/use cases, CHF spend, hosting, personal data in AI, EU market exposure, blockers, and vendor decision factors. **T23** Worker intake: [`workers/survey/`](workers/survey/) (`POST /submit`, D1, Turnstile with hostname/action checks, honeypot, hashed per-IP daily cap; `Origin` must match required `SITE_ORIGIN` or its www sibling) — production API `https://api.aicompliant.ch`; see [DEPLOY.md](DEPLOY.md#survey-worker-t23). Optional emails land in `report_signups` only when `report_opt_in` is true, with their own id (no FK to `responses`) and a date-only `created_at`, so they are unlinkable from answers; retention purge + deletion path (public contact on Datenschutz): [DEPLOY.md](DEPLOY.md#email-retention-and-deletion). **T24** form UI: [`/[lang]/survey/`](src/app/[lang]/survey/page.tsx) — live at [aicompliant.ch/de/survey/](https://aicompliant.ch/de/survey/). **T25** aggregation: a weekly Worker cron purges rows older than 24 months, then computes n&lt;5-suppressed aggregates from `responses` only (never `report_signups`) and commits `survey-aggregates.json` to the dedicated [`swiss-ai-survey-data`](https://github.com/Ivan-Laube/swiss-ai-survey-data) repo via the GitHub Contents API (**T43** — moved out of this repo to shrink the Worker PAT's blast radius); the Next.js build fetches it back into [`data/survey-aggregates.json`](data/survey-aggregates.json) via `npm run sync:survey-aggregates` (a `prebuild` hook) before rendering T26. Run locally with `npm run aggregate:survey -- --local`. See [DEPLOY.md](DEPLOY.md#survey-aggregation-t25) and [DEPLOY.md](DEPLOY.md#pat-scoped-to-a-dedicated-data-repo-t43). Secret hygiene **T23e** / **T23f** / **T43** and browser smoke **T41** are done — [DEPLOY.md](DEPLOY.md#pre-launch-secret-hygiene-t23e--t23f).
+Instrument covers company size, sector, language region, AI maturity/tools/use cases, CHF spend, hosting, personal data in AI, EU market exposure, blockers, and vendor decision factors. **T23** Worker intake: [`workers/survey/`](workers/survey/) (`POST /submit`, D1, Turnstile with hostname/action checks, honeypot, hashed per-IP daily cap; `Origin` must match required `SITE_ORIGIN` or its www sibling) — production API `https://api.aicompliant.ch` (`workers_dev` off); see [DEPLOY.md](DEPLOY.md#survey-worker-t23). Optional emails land in `report_signups` only when `report_opt_in` is true, with their own id (no FK to `responses`) and a date-only `created_at`, so they are unlinkable from answers; retention purge + deletion path (public contact on Datenschutz): [DEPLOY.md](DEPLOY.md#email-retention-and-deletion). **T24** form UI: [`/[lang]/survey/`](src/app/[lang]/survey/page.tsx) — live at [aicompliant.ch/de/survey/](https://aicompliant.ch/de/survey/). **T25** aggregation: a weekly Worker cron purges rows older than 24 months, then computes n&lt;5-suppressed aggregates from `responses` only (never `report_signups`) and commits `survey-aggregates.json` to the dedicated [`swiss-ai-survey-data`](https://github.com/Ivan-Laube/swiss-ai-survey-data) repo via the GitHub Contents API (**T43** — data-repo classic PAT; old site-repo PAT revoked); the Next.js build fetches it back into [`data/survey-aggregates.json`](data/survey-aggregates.json) via `npm run sync:survey-aggregates` (a `prebuild` hook) before rendering T26. Run locally with `npm run aggregate:survey -- --local`. See [DEPLOY.md](DEPLOY.md#survey-aggregation-t25) and [DEPLOY.md](DEPLOY.md#pat-scoped-to-a-dedicated-data-repo-t43). Secret hygiene **T23e** / **T23f** / **T43**, browser smoke **T41**, and operator cutover **T44** are done — [DEPLOY.md](DEPLOY.md#pre-launch-secret-hygiene-t23e--t23f) · [OPERATOR_CHECKLIST.md](OPERATOR_CHECKLIST.md).
 
 ## Website Quick-Check (T32–T37)
 
 Heuristic first assessment of a public URL against Swiss-facing signals (HTTPS, privacy/impressum links, cookie tooling, trackers, security headers). Check definitions: [`data/scanner-checks.json`](data/scanner-checks.json). Schema/loader: [`src/scanner/`](src/scanner/). Validate with `npm run check:scanner`. Field reference: [data/README.md](data/README.md#scanner-checks-scanner-checksjson).
 
-**Worker (T33–T35):** [`workers/scanner/`](workers/scanner/) — production `https://api.aicompliant.ch` (`POST /scan` + Turnstile), SSRF guards, per-IP rate limit, `Origin` enforced against `SITE_ORIGIN` (missing/empty env → HTTP 500; missing/wrong Origin → 403). Link detection in [`workers/scanner/src/html.ts`](workers/scanner/src/html.ts) caps the HTML slice (512 KiB), extracted anchors (2000), and lowercases text/href once before pattern matching so adversarial pages cannot burn Worker CPU. Outbound work shares one 8s wall-clock budget ([`scan-budget.ts`](workers/scanner/src/scan-budget.ts)): DoH lookups use that `AbortSignal`, hostname resolutions are memoized per request, and `fetchTarget` / `headTarget` / `probeHttpRedirectToHttps` no longer each start a fresh 8s timer. DNS-rebinding residual risk is accepted — [DEPLOY.md](DEPLOY.md#accepted-residual-risks-workers). **UI (T36):** [`/[lang]/website-check/`](src/app/[lang]/website-check/page.tsx) posts to `{NEXT_PUBLIC_SCAN_API_URL}/scan`, groups findings by severity, shows legal citations, static-scan caveat, and disclaimer (never a compliance verdict). UI chrome is DE/EN/FR/IT in `src/i18n/messages/`; finding copy comes from the Worker. The client form imports `pickLocalized` from `@/rules/schema` (not the `@/rules` barrel, which loads `node:fs` and breaks static export). Live: [aicompliant.ch/de/website-check/](https://aicompliant.ch/de/website-check/). Local + deploy: [DEPLOY.md](DEPLOY.md#scanner-worker-t33t37). Browser confirmation is **T41**.
+**Worker (T33–T35):** [`workers/scanner/`](workers/scanner/) — production `https://api.aicompliant.ch` (`POST /scan` + Turnstile action `website-scan`; `workers_dev` off), SSRF guards, per-IP rate limit, `Origin` enforced against `SITE_ORIGIN` (missing/empty env → HTTP 500; missing/wrong Origin → 403). Link detection in [`workers/scanner/src/html.ts`](workers/scanner/src/html.ts) caps the HTML slice (512 KiB), extracted anchors (2000), and lowercases text/href once before pattern matching so adversarial pages cannot burn Worker CPU. Outbound work shares one 8s wall-clock budget ([`scan-budget.ts`](workers/scanner/src/scan-budget.ts)): DoH lookups use that `AbortSignal`, hostname resolutions are memoized per request, and `fetchTarget` / `headTarget` / `probeHttpRedirectToHttps` no longer each start a fresh 8s timer. DNS-rebinding residual risk is accepted — [DEPLOY.md](DEPLOY.md#accepted-residual-risks-workers). **UI (T36):** [`/[lang]/website-check/`](src/app/[lang]/website-check/page.tsx) posts to `{NEXT_PUBLIC_SCAN_API_URL}/scan`, groups findings by severity, shows legal citations, static-scan caveat, and disclaimer (never a compliance verdict). UI chrome is DE/EN/FR/IT in `src/i18n/messages/`; finding copy comes from the Worker. The client form imports `pickLocalized` from `@/rules/schema` (not the `@/rules` barrel, which loads `node:fs` and breaks static export). Live: [aicompliant.ch/de/website-check/](https://aicompliant.ch/de/website-check/). Local + deploy: [DEPLOY.md](DEPLOY.md#scanner-worker-t33t37). Browser confirmation is **T41**.
 
 ## Legal pages (T39 / T40)
 
@@ -241,6 +243,6 @@ Impressum (`/[lang]/impressum/`) and Datenschutzerklärung (`/[lang]/datenschutz
 
 ## Deploy
 
-Live host, Pages/Worker env vars, and connect steps: [DEPLOY.md](DEPLOY.md) (see especially [Production host](DEPLOY.md#production-host) and [Production status (site)](DEPLOY.md#production-status-site)).
+Live host, Pages/Worker env vars, and connect steps: [DEPLOY.md](DEPLOY.md) (see especially [Production host](DEPLOY.md#production-host) and [Production status (site)](DEPLOY.md#production-status-site)). Pre-traffic operator cutover (completed): [OPERATOR_CHECKLIST.md](OPERATOR_CHECKLIST.md).
 
-**Announce readiness:** engineering blockers **T23e / T23f / T40 / T41 / T42** are done. Remaining parallel: lawyer review **T29**; community survey launch **T27**.
+**Announce readiness:** engineering blockers **T23e / T23f / T40 / T41 / T42 / T43 / T44** are done. Remaining parallel: lawyer review **T29**; community survey launch **T27**.

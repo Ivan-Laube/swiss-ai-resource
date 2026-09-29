@@ -230,11 +230,11 @@ Task IDs are referenced in the "Depends on" column. Tasks with no dependency can
 | T23c | Deploy Worker; confirm `SITE_ORIGIN=https://aicompliant.ch` + set `NEXT_PUBLIC_SURVEY_API_URL` | T23a, T23b | Done |
 | T23d | Production smoke-test of `POST /submit` + unlinkable `report_signups` (no FK to `responses`) | T23c | Done |
 | T23e | Rotate production Turnstile secret (and site key if widget replaced) before public survey launch — see [DEPLOY.md](DEPLOY.md#pre-launch-secret-hygiene-t23e--t23f) | T23b, T23d | Done |
-| T23f | Replace Worker `GITHUB_TOKEN` with fine-grained PAT (Contents R/W, this repo only) — see [DEPLOY.md](DEPLOY.md#pre-launch-secret-hygiene-t23e--t23f) | T23c | Done |
+| T23f | Replace Worker `GITHUB_TOKEN` with fine-grained PAT (Contents R/W, this repo only) — later superseded by T43 classic PAT on data repo — see [DEPLOY.md](DEPLOY.md#pre-launch-secret-hygiene-t23e--t23f) | T23c | Done |
 | T24 | Survey form page (4 languages) | T22, T23, T2 | Done |
 | T25 | Aggregation job with n<5 suppression, aggregates written to repo as JSON | T23 | Done |
 | T26 | Benchmark page rendering from aggregates, client-side "your band vs median" comparison | T25, T1 | Done |
-| T43 | Scope survey Worker `GITHUB_TOKEN` to a dedicated data-only repo (`swiss-ai-survey-data`) instead of `swiss-ai-resource`, so a leaked PAT can't touch published site content — see [DEPLOY.md](DEPLOY.md#pat-scoped-to-a-dedicated-data-repo-t43) | T23f, T25 | Done (pending first live write confirmation) |
+| T43 | Scope survey Worker `GITHUB_TOKEN` to a dedicated data-only repo (`swiss-ai-survey-data`) instead of `swiss-ai-resource`, so a leaked PAT can't touch published site content — see [DEPLOY.md](DEPLOY.md#pat-scoped-to-a-dedicated-data-repo-t43) | T23f, T25 | Done |
 | T27 | Survey launch via LinkedIn + Swiss SME/startup communities | T24, T23e, T23f, T40, T41 | |
 | T28 | Benchmark report (ships when n reaches 30-50, not on a fixed date) | T25, T27 |
 
@@ -257,7 +257,8 @@ Post-MVP, demand-driven (not built now):
 - **Anonymized aggregate counters in D1** (per-check found/not-found tallies, no URLs stored) — feeds future benchmark content like "x% of scanned Swiss sites lack a privacy policy"
 - Browser Rendering (headless Chrome) second pass for accurate tracker/banner detection on JS-heavy sites
 - Optional LLM policy-content reader filling the reserved report slot (assesses Art. 19 disclosure coverage)
-- Turnstile on the scan form if abuse appears despite rate limiting
+
+**Already shipped beyond original MVP notes:** Turnstile on `/scan` (same widget as survey), shared siteverify helper, zone WAF rate rule on `api.aicompliant.ch`, `workers_dev` disabled.
 
 ### Post-launch / parallel (no phase)
 
@@ -267,17 +268,18 @@ Post-MVP, demand-driven (not built now):
 | T40 | Fill Impressum / Datenschutzerklärung with natural-person operator details; sync EN/FR/IT; confirm footer + survey links still resolve | T39 | Done |
 | T41 | Live browser smoke on `aicompliant.ch`: survey (real Turnstile) + website-check + footer legal links — see [DEPLOY.md](DEPLOY.md#live-ui-smoke-t41) | T23d, T37b, Pages deploy | Done |
 | T42 | Enable GitHub Actions “Allow GitHub Actions to create and approve pull requests” (monthly material `gh pr create`) — see [DEPLOY.md](DEPLOY.md#github-actions-repo-permission-t42) | T17 | Done |
+| T44 | Pre-traffic operator hardening: `api.aicompliant.ch` cutover, Turnstile domains, DNS anti-spoof/DNSSEC, GitHub supply chain, Pages preview Access, HSTS preload, CSP hash postbuild — see [OPERATOR_CHECKLIST.md](OPERATOR_CHECKLIST.md) | T23e, T37b, T43 | Done |
 | T29 | Lawyer review of DE compliance pages (incl. filled legal pages from T40), badge wiring | T6, T17 (badge lifecycle), T40 | Not started |
 | T30 | Quarterly: new decision tool or page, demand-driven | T8 | |
 | T31 | Yearly: survey re-run, benchmark refresh, lawyer re-review | T28, T29 | |
 
-**T40 details (done):** Canonical DE and EN/FR/IT list the natural-person operator (name, street, PLZ/Ort, email as mailto — public deletion contact `i.laube@gmail.com`). Phone, Rechtsform, Vertretung, and Handelsregister/UID were omitted as not applicable. Engineering pre-announce items **T23e / T23f / T41 / T42** are done — the site is announce-ready from an engineering standpoint. Lawyer review of filled DE text remains **T29**. Notes: [DEPLOY.md](DEPLOY.md#legal-pages-t39t40).
+**T40 details (done):** Canonical DE and EN/FR/IT list the natural-person operator (name, street, PLZ/Ort, email as mailto — public deletion contact `i.laube@gmail.com`). Phone, Rechtsform, Vertretung, and Handelsregister/UID were omitted as not applicable. Engineering pre-announce items **T23e / T23f / T41 / T42 / T43 / T44** are done — the site is announce-ready from an engineering standpoint. Lawyer review of filled DE text remains **T29**. Notes: [DEPLOY.md](DEPLOY.md#legal-pages-t39t40).
 
 **T30 candidate (demand-driven):** a dedicated page on **KI-Kompetenz im Unternehmen** (AI literacy / staff competence). EU AI Act Art. 4 has been in force since 2 February 2025 and is unaffected by the Digital Omnibus; enforcement pressure will grow. The procurement checklist already carries a short competence callout (with the freely licensed AI Fluency 4D framework as one example). Promote to a full page only if search queries or inbound questions show real demand — do not invent a content cadence.
 
 ### Critical path
 
-T1 → T3 → T6 → T9/T10 → T14 (public launch of the differentiated core), with T15-T17 needed before the first `last_verified` claims are honest. Translation (T7, T13) sits on the critical path for a four-language launch; if timeline slips, launch DE-only and let T14 follow, since DE is canonical and the pipeline regenerates the rest. **T39/T40** legal pages are filled. Cloudflare side is live (survey + scanner Workers, Pages env, Git `main` → `aicompliant.ch`). **T23e/T23f**, **T41**, and **T42** are done — survey / Quick-Check announce is unblocked from an engineering standpoint. Remaining parallel: **T29** lawyer review; demand-driven **T27** community launch.
+T1 → T3 → T6 → T9/T10 → T14 (public launch of the differentiated core), with T15-T17 needed before the first `last_verified` claims are honest. Translation (T7, T13) sits on the critical path for a four-language launch; if timeline slips, launch DE-only and let T14 follow, since DE is canonical and the pipeline regenerates the rest. **T39/T40** legal pages are filled. Cloudflare side is live (survey + scanner Workers on `api.aicompliant.ch`, Pages env, Git `main` → `aicompliant.ch`; operator checklist **T44** complete). **T23e/T23f**, **T41**, **T42**, and **T43** are done — survey / Quick-Check announce is unblocked from an engineering standpoint. Remaining parallel: **T29** lawyer review; demand-driven **T27** community launch.
 
 ### Ongoing
 
@@ -305,7 +307,8 @@ T1 → T3 → T6 → T9/T10 → T14 (public launch of the differentiated core), 
 | LLM translation injects raw HTML into auto-committed content | Translate write path rejects raw HTML outside code blocks; [`src/lib/markdown.ts`](src/lib/markdown.ts) sanitizes marked output with `sanitize-html` before `dangerouslySetInnerHTML` |
 | Incomplete Impressum / Datenschutz operator details | Mitigated by **T40** (natural-person operator filled in all locales); **T29** still reviews the filled DE text |
 | Survey Worker secrets provisioned in an operator/agent session | Mitigated by **T23e** (Turnstile widget `swiss-ai-survey-v2` + secret rotate) and **T23f** (fine-grained PAT on Worker `GITHUB_TOKEN`) |
-| Leaked survey Worker `GITHUB_TOKEN` could alter published site content, not just aggregate data (fine-grained PATs can't scope below "whole repo", and `main` auto-deploys) | Mitigated by **T43**: PAT rescoped to a dedicated, public, data-only repo (`swiss-ai-survey-data`) with no deploy hook; Next.js build fetches the aggregates back at build time via `npm run sync:survey-aggregates`, warning and falling back to the committed copy if that fetch fails rather than breaking the build |
+| Leaked survey Worker `GITHUB_TOKEN` could alter published site content, not just aggregate data (fine-grained PATs can't scope below "whole repo", and `main` auto-deploys) | Mitigated by **T43**: Worker writes only to dedicated public data repo (`swiss-ai-survey-data`) via classic PAT; old site-repo PAT revoked; Next.js build fetches aggregates via `npm run sync:survey-aggregates`, warning and falling back to the committed copy if that fetch fails rather than breaking the build |
+| Public `*.workers.dev` Worker URLs / open preview URLs | Mitigated by **T44**: custom hostname `api.aicompliant.ch`, `workers_dev`/`preview_urls` false, zone WAF rate rule, Pages preview behind Access |
 | Survey email stored even without report opt-in, contradicting the Datenschutzerklärung's consent basis | Fixed: `storeResponse` only inserts a `report_signups` row when `report_opt_in` is `true`; `created_at` written at date-only precision so it can't be joined back to a `responses` row by matching insert timestamp — see [DEPLOY.md](DEPLOY.md#email-retention-and-deletion) |
 | No Content-Security-Policy / HSTS / Permissions-Policy on the static site (only `X-Frame-Options` / `X-Content-Type-Options` / `Referrer-Policy`) | Added to [`public/_headers`](public/_headers); `script-src` needs `'unsafe-inline'` for Next.js's static-export hydration scripts (no per-request nonce available), but third-party script origins, `object-src`, `base-uri`, `form-action`, and `frame-ancestors` all stay locked down — see [DEPLOY.md](DEPLOY.md#security-headers-public_headers) |
 | Unbounded POST body on `/submit` and `/scan` before JSON parsing | Both Workers now reject oversized bodies (`413`) via a `Content-Length` pre-check plus a streamed byte cap (32 KiB / 8 KiB) before parsing — [`workers/survey/src/body-limit.ts`](workers/survey/src/body-limit.ts), [`workers/scanner/src/body-limit.ts`](workers/scanner/src/body-limit.ts) |
