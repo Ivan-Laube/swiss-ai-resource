@@ -35,13 +35,13 @@ const baseAnswers: Record<string, string | string[]> = {
   "company-size": "10-49",
   sector: "ict-software",
   "language-region": "german-speaking",
-  "ai-maturity": "piloting",
+  "ai-maturity": "piloting-custom",
   "ai-tools": ["chatgpt", "deepl"],
   "primary-use-cases": ["translation"],
-  "monthly-spend-chf": "1-500",
+  "monthly-spend-chf": "101-500",
   "hosting-requirement": "switzerland",
-  "personal-data-in-ai": "no",
-  "eu-market-exposure": "no",
+  "ai-governance-measures": ["none"],
+  "eu-market-exposure": "no-eu",
   "deployment-blockers": ["none"],
   "vendor-decision-factors": ["swiss-entity-support"],
 };
@@ -105,7 +105,7 @@ assert(
 );
 assert(
   atThreshold.cross_tabs.spend_by_company_size["10-49"].median_band ===
-    "1-500",
+    "101-500",
   "n=5 usable spend answers should publish an ordinal median",
 );
 assert(
@@ -138,11 +138,11 @@ assert(
 
 const medianLookup = buildSpendMedianLookup(survey, atThreshold, "en");
 assert(
-  medianLookup["10-49"]?.medianBandId === "1-500",
+  medianLookup["10-49"]?.medianBandId === "101-500",
   "median lookup must expose published median band id",
 );
 assert(
-  medianLookup["10-49"]?.medianBandLabel === "CHF 1–500",
+  medianLookup["10-49"]?.medianBandLabel === "CHF 101–500",
   "median lookup must localize the spend band label",
 );
 assert(
@@ -153,7 +153,7 @@ assert(
 const preferNotRows = [
   ...Array.from({ length: 5 }, (_, index) =>
     row(index, {
-      "monthly-spend-chf": index === 0 ? "0" : "1-500",
+      "monthly-spend-chf": index === 0 ? "0" : "101-500",
     }),
   ),
   ...Array.from({ length: 5 }, (_, index) =>
@@ -163,8 +163,23 @@ const preferNotRows = [
 const preferNot = aggregateResponses(survey, preferNotRows, generatedAt);
 assert(
   preferNot.cross_tabs.spend_by_company_size["10-49"].median_band ===
-    "1-500",
+    "101-500",
   "prefer-not answers must not influence the median band",
+);
+
+const dontKnowRows = [
+  ...Array.from({ length: 5 }, (_, index) =>
+    row(index, { "monthly-spend-chf": "501-2000" }),
+  ),
+  ...Array.from({ length: 5 }, (_, index) =>
+    row(index + 5, { "monthly-spend-chf": "dont-know" }),
+  ),
+];
+const dontKnow = aggregateResponses(survey, dontKnowRows, generatedAt);
+assert(
+  dontKnow.cross_tabs.spend_by_company_size["10-49"].median_band ===
+    "501-2000",
+  "dont-know answers must not influence the median band",
 );
 
 let exclusiveNoneRejected = false;

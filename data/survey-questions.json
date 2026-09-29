@@ -1,6 +1,6 @@
 {
   "id": "swiss-ai-adoption-2026",
-  "version": 2,
+  "version": 3,
   "estimated_minutes": 5,
   "title": {
     "de": "Schweizer KI-Adoption 2026",
@@ -66,6 +66,7 @@
       "input": "single",
       "required": true,
       "aggregate": true,
+      "shuffle_options": true,
       "options": [
         {
           "id": "manufacturing",
@@ -106,19 +107,10 @@
         {
           "id": "retail-trade",
           "label": {
-            "de": "Detailhandel / Handel",
-            "en": "Retail / trade",
-            "fr": "Commerce de détail / négoce",
-            "it": "Commercio al dettaglio / commercio"
-          }
-        },
-        {
-          "id": "hospitality-tourism",
-          "label": {
-            "de": "Gastgewerbe / Tourismus",
-            "en": "Hospitality / tourism",
-            "fr": "Hôtellerie-restauration / tourisme",
-            "it": "Alberghiero-ristorazione / turismo"
+            "de": "Detailhandel / Handel / Gastgewerbe / Tourismus",
+            "en": "Retail / trade / hospitality / tourism",
+            "fr": "Commerce de détail / négoce / hôtellerie-restauration / tourisme",
+            "it": "Commercio al dettaglio / commercio / alberghiero-ristorazione / turismo"
           }
         },
         {
@@ -131,12 +123,21 @@
           }
         },
         {
-          "id": "professional-services",
+          "id": "legal-fiduciary",
           "label": {
-            "de": "Unternehmensnahe Dienstleistungen",
-            "en": "Professional services",
-            "fr": "Services professionnels",
-            "it": "Servizi professionali"
+            "de": "Recht / Treuhand / Revisionswesen",
+            "en": "Legal / fiduciary / audit",
+            "fr": "Droit / fiduciaire / audit",
+            "it": "Diritto / fiduciario / revisione"
+          }
+        },
+        {
+          "id": "consulting-agencies",
+          "label": {
+            "de": "Beratung / Agenturen",
+            "en": "Consulting / agencies",
+            "fr": "Conseil / agences",
+            "it": "Consulenza / agenzie"
           }
         },
         {
@@ -246,30 +247,39 @@
           }
         },
         {
-          "id": "exploring",
+          "id": "individual-ad-hoc",
           "label": {
-            "de": "Abklären / Experimentieren",
-            "en": "Exploring / experimenting",
-            "fr": "Exploration / expérimentation",
-            "it": "Esplorazione / sperimentazione"
+            "de": "Mitarbeitende nutzen Tools selbstständig, ohne Firmenrichtlinie",
+            "en": "Employees use tools on their own, no company policy",
+            "fr": "Les employés utilisent des outils de leur propre initiative, sans politique d'entreprise",
+            "it": "I dipendenti usano strumenti in autonomia, senza policy aziendale"
           }
         },
         {
-          "id": "piloting",
+          "id": "sanctioned-tools",
           "label": {
-            "de": "Pilotprojekte",
-            "en": "Piloting",
-            "fr": "Projets pilotes",
-            "it": "Progetti pilota"
+            "de": "Firmenseitig freigegebene oder lizenzierte Tools",
+            "en": "Company-approved or licensed tools",
+            "fr": "Outils approuvés ou sous licence par l'entreprise",
+            "it": "Strumenti approvati o con licenza aziendale"
+          }
+        },
+        {
+          "id": "piloting-custom",
+          "label": {
+            "de": "Eigene Use Cases in Pilotprojekten",
+            "en": "Building or piloting custom use cases",
+            "fr": "Cas d'usage propres en projets pilotes",
+            "it": "Casi d'uso propri in progetti pilota"
           }
         },
         {
           "id": "production",
           "label": {
-            "de": "Produktiv im Einsatz",
-            "en": "In production use",
-            "fr": "En usage productif",
-            "it": "In uso produttivo"
+            "de": "KI in Kernprozessen oder Produkten eingebettet",
+            "en": "AI embedded in core processes or products",
+            "fr": "IA intégrée aux processus ou produits clés",
+            "it": "IA integrata nei processi o prodotti principali"
           }
         }
       ]
@@ -283,14 +293,15 @@
         "it": "Quali strumenti di IA usa oggi la vostra azienda? (Scelta multipla)"
       },
       "help": {
-        "de": "Alle zutreffenden. «Keine» schliesst andere Optionen aus (Formlogik T24).",
-        "en": "Select all that apply. “None” excludes other options (form logic in T24).",
-        "fr": "Toutes les options pertinentes. « Aucun » exclut les autres options (logique du formulaire T24).",
-        "it": "Tutte le opzioni pertinenti. «Nessuno» esclude le altre opzioni (logica del form T24)."
+        "de": "Alle zutreffenden. «Keine» schliesst andere Optionen aus.",
+        "en": "Select all that apply. “None” excludes other options.",
+        "fr": "Toutes les options pertinentes. « Aucun » exclut les autres options.",
+        "it": "Tutte le opzioni pertinenti. «Nessuno» esclude le altre opzioni."
       },
       "input": "multi",
       "required": true,
       "aggregate": true,
+      "shuffle_options": true,
       "options": [
         {
           "id": "chatgpt",
@@ -365,12 +376,21 @@
           }
         },
         {
-          "id": "swiss-eu-host",
+          "id": "apertus",
           "label": {
-            "de": "Schweizer / EU-Anbieter (z. B. Infomaniak, Exoscale, Swisscom, Aleph Alpha)",
-            "en": "Swiss / EU host (e.g. Infomaniak, Exoscale, Swisscom, Aleph Alpha)",
-            "fr": "Hébergeur suisse / UE (p. ex. Infomaniak, Exoscale, Swisscom, Aleph Alpha)",
-            "it": "Host svizzero / UE (p. es. Infomaniak, Exoscale, Swisscom, Aleph Alpha)"
+            "de": "Apertus (Schweizer öffentliches LLM)",
+            "en": "Apertus (Swiss public LLM)",
+            "fr": "Apertus (LLM public suisse)",
+            "it": "Apertus (LLM pubblico svizzero)"
+          }
+        },
+        {
+          "id": "embedded-features",
+          "label": {
+            "de": "KI in bestehender Software (z. B. Bexio, Abacus, Notion, Adobe, Salesforce)",
+            "en": "AI built into existing software (e.g. Bexio, Abacus, Notion, Adobe, Salesforce)",
+            "fr": "IA intégrée dans des logiciels existants (p. ex. Bexio, Abacus, Notion, Adobe, Salesforce)",
+            "it": "IA integrata in software esistenti (p. es. Bexio, Abacus, Notion, Adobe, Salesforce)"
           }
         },
         {
@@ -405,14 +425,22 @@
     {
       "id": "primary-use-cases",
       "prompt": {
-        "de": "Wofür setzt Ihr Unternehmen KI hauptsächlich ein? (Mehrfachauswahl)",
-        "en": "What does your company mainly use AI for? (Multiple choice)",
-        "fr": "À quelles fins votre entreprise utilise-t-elle principalement l'IA ? (Choix multiple)",
-        "it": "Per cosa usa principalmente l'IA la vostra azienda? (Scelta multipla)"
+        "de": "Wofür setzt Ihr Unternehmen KI hauptsächlich ein? (Mehrfachauswahl, max. 3)",
+        "en": "What does your company mainly use AI for? (Multiple choice, max. 3)",
+        "fr": "À quelles fins votre entreprise utilise-t-elle principalement l'IA ? (Choix multiple, max. 3)",
+        "it": "Per cosa usa principalmente l'IA la vostra azienda? (Scelta multipla, max. 3)"
+      },
+      "help": {
+        "de": "Bis zu drei Optionen. «Noch keine» schliesst andere Optionen aus.",
+        "en": "Up to three options. “None yet” excludes other options.",
+        "fr": "Jusqu'à trois options. « Pas encore » exclut les autres options.",
+        "it": "Fino a tre opzioni. «Nessuno ancora» esclude le altre opzioni."
       },
       "input": "multi",
       "required": true,
       "aggregate": true,
+      "max_select": 3,
+      "shuffle_options": true,
       "options": [
         {
           "id": "content",
@@ -494,6 +522,15 @@
             "fr": "Autre",
             "it": "Altro"
           }
+        },
+        {
+          "id": "none-yet",
+          "label": {
+            "de": "Noch keine",
+            "en": "None yet",
+            "fr": "Pas encore",
+            "it": "Nessuno ancora"
+          }
         }
       ]
     },
@@ -520,12 +557,21 @@
           "label": { "de": "CHF 0", "en": "CHF 0", "fr": "CHF 0", "it": "CHF 0" }
         },
         {
-          "id": "1-500",
+          "id": "1-100",
           "label": {
-            "de": "CHF 1–500",
-            "en": "CHF 1–500",
-            "fr": "CHF 1–500",
-            "it": "CHF 1–500"
+            "de": "CHF 1–100",
+            "en": "CHF 1–100",
+            "fr": "CHF 1–100",
+            "it": "CHF 1–100"
+          }
+        },
+        {
+          "id": "101-500",
+          "label": {
+            "de": "CHF 101–500",
+            "en": "CHF 101–500",
+            "fr": "CHF 101–500",
+            "it": "CHF 101–500"
           }
         },
         {
@@ -547,12 +593,30 @@
           }
         },
         {
-          "id": "10000-plus",
+          "id": "10001-50000",
           "label": {
-            "de": "CHF 10'000+",
-            "en": "CHF 10,000+",
-            "fr": "CHF 10 000+",
-            "it": "CHF 10'000+"
+            "de": "CHF 10'001–50'000",
+            "en": "CHF 10,001–50,000",
+            "fr": "CHF 10 001–50 000",
+            "it": "CHF 10'001–50'000"
+          }
+        },
+        {
+          "id": "50000-plus",
+          "label": {
+            "de": "CHF 50'000+",
+            "en": "CHF 50,000+",
+            "fr": "CHF 50 000+",
+            "it": "CHF 50'000+"
+          }
+        },
+        {
+          "id": "dont-know",
+          "label": {
+            "de": "Weiss nicht",
+            "en": "Don't know",
+            "fr": "Ne sait pas",
+            "it": "Non so"
           }
         },
         {
@@ -573,6 +637,12 @@
         "en": "What hosting requirement applies to AI data processing in your company?",
         "fr": "Quelle exigence d'hébergement s'applique au traitement de données par l'IA dans votre entreprise ?",
         "it": "Quale requisito di hosting si applica al trattamento dei dati con l'IA nella vostra azienda?"
+      },
+      "help": {
+        "de": "Formale Vorgabe (Policy, Vertrag, Aufsicht) — nicht nur Präferenz.",
+        "en": "Formal requirement (policy, contract, regulator) — not merely preference.",
+        "fr": "Exigence formelle (politique, contrat, autorité) — pas seulement une préférence.",
+        "it": "Requisito formale (policy, contratto, autorità) — non solo una preferenza."
       },
       "input": "single",
       "required": true,
@@ -597,6 +667,15 @@
           }
         },
         {
+          "id": "depends-on-data",
+          "label": {
+            "de": "Abhängig von den Daten (z. B. sensible nur CH, übrige überall)",
+            "en": "Depends on the data (e.g. sensitive in CH only, rest anywhere)",
+            "fr": "Selon les données (p. ex. sensibles en CH uniquement, le reste partout)",
+            "it": "Dipende dai dati (p. es. sensibili solo in CH, resto ovunque)"
+          }
+        },
+        {
           "id": "any",
           "label": {
             "de": "Kein geografischer Zwang",
@@ -617,38 +696,76 @@
       ]
     },
     {
-      "id": "personal-data-in-ai",
+      "id": "ai-governance-measures",
       "prompt": {
-        "de": "Verarbeitet Ihr Unternehmen Personendaten mit KI-Tools?",
-        "en": "Does your company process personal data with AI tools?",
-        "fr": "Votre entreprise traite-t-elle des données personnelles avec des outils d'IA ?",
-        "it": "La vostra azienda tratta dati personali con strumenti di IA?"
+        "de": "Welche KI-Governance-Massnahmen hat Ihr Unternehmen? (Mehrfachauswahl)",
+        "en": "Which AI governance measures does your company have? (Multiple choice)",
+        "fr": "Quelles mesures de gouvernance de l'IA votre entreprise a-t-elle ? (Choix multiple)",
+        "it": "Quali misure di governance dell'IA ha la vostra azienda? (Scelta multipla)"
       },
       "help": {
-        "de": "Z. B. Kunden- oder Mitarbeitendendaten in Prompts, Tickets oder Trainingskontexten (DSG).",
-        "en": "E.g. customer or employee data in prompts, tickets, or training contexts (Swiss FADP / DSG).",
-        "fr": "P. ex. données clients ou d'employés dans des prompts, tickets ou contextes d'entraînement (LPD).",
-        "it": "P. es. dati di clienti o dipendenti in prompt, ticket o contesti di addestramento (LPD)."
+        "de": "Alle zutreffenden. «Keine» schliesst andere Optionen aus.",
+        "en": "Select all that apply. “None” excludes other options.",
+        "fr": "Toutes les options pertinentes. « Aucune » exclut les autres options.",
+        "it": "Tutte le opzioni pertinenti. «Nessuna» esclude le altre opzioni."
       },
-      "input": "single",
+      "input": "multi",
       "required": true,
       "aggregate": true,
+      "shuffle_options": true,
       "options": [
         {
-          "id": "yes",
-          "label": { "de": "Ja", "en": "Yes", "fr": "Oui", "it": "Sì" }
-        },
-        {
-          "id": "no",
-          "label": { "de": "Nein", "en": "No", "fr": "Non", "it": "No" }
-        },
-        {
-          "id": "unsure",
+          "id": "usage-policy",
           "label": {
-            "de": "Unsicher",
-            "en": "Unsure",
-            "fr": "Incertain",
-            "it": "Incerto"
+            "de": "KI-Nutzungsrichtlinie",
+            "en": "AI usage policy",
+            "fr": "Politique d'utilisation de l'IA",
+            "it": "Policy di utilizzo dell'IA"
+          }
+        },
+        {
+          "id": "staff-training",
+          "label": {
+            "de": "Schulung zur KI-Kompetenz der Mitarbeitenden",
+            "en": "Staff AI-literacy training",
+            "fr": "Formation à la littératie IA du personnel",
+            "it": "Formazione del personale sull'alfabetizzazione IA"
+          }
+        },
+        {
+          "id": "tool-inventory",
+          "label": {
+            "de": "Inventar der eingesetzten KI-Tools",
+            "en": "Inventory of AI tools in use",
+            "fr": "Inventaire des outils d'IA utilisés",
+            "it": "Inventario degli strumenti di IA in uso"
+          }
+        },
+        {
+          "id": "dpia",
+          "label": {
+            "de": "Datenschutz-Folgenabschätzung (DSFA / DPIA) für KI-Einsätze",
+            "en": "Data protection impact assessment (DPIA/DSFA) for AI uses",
+            "fr": "Analyse d'impact relative à la protection des données (AIPD / DPIA) pour les usages d'IA",
+            "it": "Valutazione d'impatto sulla protezione dei dati (DPIA/DSFA) per usi di IA"
+          }
+        },
+        {
+          "id": "business-dpa",
+          "label": {
+            "de": "Business-Konten mit Auftragsbearbeitungsvertrag (AVV / DPA)",
+            "en": "Business accounts with a data processing agreement (DPA)",
+            "fr": "Comptes professionnels avec accord de sous-traitance (DPA)",
+            "it": "Account business con contratto di elaborazione dati (DPA)"
+          }
+        },
+        {
+          "id": "none",
+          "label": {
+            "de": "Keine",
+            "en": "None",
+            "fr": "Aucune",
+            "it": "Nessuna"
           }
         }
       ]
@@ -656,28 +773,47 @@
     {
       "id": "eu-market-exposure",
       "prompt": {
-        "de": "Bietet Ihr Unternehmen KI-Systeme oder KI-gestützte Produkte/Dienstleistungen auf dem EU-Markt an bzw. an EU-Nutzerinnen und Nutzer?",
-        "en": "Does your company offer AI systems or AI-enabled products/services on the EU market or to EU users?",
-        "fr": "Votre entreprise propose-t-elle des systèmes d'IA ou des produits/services assistés par l'IA sur le marché de l'UE ou à des utilisateurs de l'UE ?",
-        "it": "La vostra azienda offre sistemi di IA o prodotti/servizi supportati dall'IA sul mercato UE o a utenti UE?"
+        "de": "Wie ist Ihr Unternehmen gegenüber dem EU-Markt und dem EU AI Act positioniert?",
+        "en": "How is your company positioned relative to the EU market and the EU AI Act?",
+        "fr": "Comment votre entreprise se positionne-t-elle par rapport au marché de l'UE et à l'AI Act de l'UE ?",
+        "it": "Come si posiziona la vostra azienda rispetto al mercato UE e all'AI Act UE?"
       },
       "help": {
-        "de": "Relevant für die mögliche Anwendbarkeit des EU AI Act auf Schweizer Anbieter.",
-        "en": "Relevant to possible EU AI Act applicability for Swiss providers.",
-        "fr": "Pertinent pour l'applicabilité éventuelle de l'AI Act de l'UE aux fournisseurs suisses.",
-        "it": "Rilevante per la possibile applicabilità dell'AI Act UE ai fornitori svizzeri."
+        "de": "Relevant für die mögliche Anwendbarkeit des EU AI Act auf Schweizer Anbieter und Betreiber.",
+        "en": "Relevant to possible EU AI Act applicability for Swiss providers and deployers.",
+        "fr": "Pertinent pour l'applicabilité éventuelle de l'AI Act de l'UE aux fournisseurs et déployeurs suisses.",
+        "it": "Rilevante per la possibile applicabilità dell'AI Act UE a fornitori e deployer svizzeri."
       },
       "input": "single",
       "required": true,
       "aggregate": true,
       "options": [
         {
-          "id": "yes",
-          "label": { "de": "Ja", "en": "Yes", "fr": "Oui", "it": "Sì" }
+          "id": "provider-eu",
+          "label": {
+            "de": "Wir bieten KI-Systeme oder KI-Produkte auf dem EU-Markt an (Anbieter)",
+            "en": "We offer AI systems or AI products on the EU market (provider)",
+            "fr": "Nous proposons des systèmes ou produits d'IA sur le marché de l'UE (fournisseur)",
+            "it": "Offriamo sistemi o prodotti di IA sul mercato UE (fornitore)"
+          }
         },
         {
-          "id": "no",
-          "label": { "de": "Nein", "en": "No", "fr": "Non", "it": "No" }
+          "id": "deployer-eu-customers",
+          "label": {
+            "de": "Wir setzen KI für EU-Kunden oder -Nutzer ein (Betreiber)",
+            "en": "We deploy AI for EU customers or users (deployer)",
+            "fr": "Nous déployons de l'IA pour des clients ou utilisateurs de l'UE (déployeur)",
+            "it": "Dispieghiamo IA per clienti o utenti UE (deployer)"
+          }
+        },
+        {
+          "id": "no-eu",
+          "label": {
+            "de": "Kein wesentlicher EU-Bezug",
+            "en": "No material EU exposure",
+            "fr": "Pas d'exposition matérielle à l'UE",
+            "it": "Nessuna esposizione rilevante all'UE"
+          }
         },
         {
           "id": "unsure",
@@ -693,20 +829,22 @@
     {
       "id": "deployment-blockers",
       "prompt": {
-        "de": "Was bremst den KI-Einsatz in Ihrem Unternehmen am stärksten? (Mehrfachauswahl)",
-        "en": "What most holds back AI deployment in your company? (Multiple choice)",
-        "fr": "Qu'est-ce qui freine le plus le déploiement de l'IA dans votre entreprise ? (Choix multiple)",
-        "it": "Cosa frena di più l'adozione dell'IA nella vostra azienda? (Scelta multipla)"
+        "de": "Was bremst den KI-Einsatz in Ihrem Unternehmen am stärksten? (Mehrfachauswahl, max. 3)",
+        "en": "What most holds back AI deployment in your company? (Multiple choice, max. 3)",
+        "fr": "Qu'est-ce qui freine le plus le déploiement de l'IA dans votre entreprise ? (Choix multiple, max. 3)",
+        "it": "Cosa frena di più l'adozione dell'IA nella vostra azienda? (Scelta multipla, max. 3)"
       },
       "help": {
-        "de": "Alle zutreffenden. «Keine wesentlichen Bremsen» schliesst andere Optionen aus (Formlogik T24).",
-        "en": "Select all that apply. “No major blockers” excludes other options (form logic in T24).",
-        "fr": "Toutes les options pertinentes. « Pas de freins majeurs » exclut les autres options (logique du formulaire T24).",
-        "it": "Tutte le opzioni pertinenti. «Nessun freno rilevante» esclude le altre opzioni (logica del form T24)."
+        "de": "Bis zu drei Optionen. «Keine wesentlichen Bremsen» schliesst andere Optionen aus.",
+        "en": "Up to three options. “No major blockers” excludes other options.",
+        "fr": "Jusqu'à trois options. « Pas de freins majeurs » exclut les autres options.",
+        "it": "Fino a tre opzioni. «Nessun freno rilevante» esclude le altre opzioni."
       },
       "input": "multi",
       "required": true,
       "aggregate": true,
+      "max_select": 3,
+      "shuffle_options": true,
       "options": [
         {
           "id": "cost",
@@ -803,14 +941,22 @@
     {
       "id": "vendor-decision-factors",
       "prompt": {
-        "de": "Was ist bei der Wahl eines KI-Anbieters für Sie am wichtigsten? (Mehrfachauswahl)",
-        "en": "What matters most when choosing an AI vendor? (Multiple choice)",
-        "fr": "Qu'est-ce qui compte le plus lors du choix d'un fournisseur d'IA ? (Choix multiple)",
-        "it": "Cosa conta di più nella scelta di un fornitore di IA? (Scelta multipla)"
+        "de": "Was ist (oder wäre) bei der Wahl eines KI-Anbieters für Sie am wichtigsten? (Mehrfachauswahl, max. 3)",
+        "en": "What matters most (or would matter) when choosing an AI vendor? (Multiple choice, max. 3)",
+        "fr": "Qu'est-ce qui compte le plus (ou compterait) lors du choix d'un fournisseur d'IA ? (Choix multiple, max. 3)",
+        "it": "Cosa conta di più (o conterebbe) nella scelta di un fornitore di IA? (Scelta multipla, max. 3)"
+      },
+      "help": {
+        "de": "Bis zu drei Optionen — auch wenn Sie derzeit keinen Anbieter wählen.",
+        "en": "Up to three options — even if you are not choosing a vendor right now.",
+        "fr": "Jusqu'à trois options — même si vous ne choisissez pas de fournisseur actuellement.",
+        "it": "Fino a tre opzioni — anche se al momento non state scegliendo un fornitore."
       },
       "input": "multi",
       "required": true,
       "aggregate": true,
+      "max_select": 3,
+      "shuffle_options": true,
       "options": [
         {
           "id": "price",
@@ -873,6 +1019,24 @@
             "en": "Swiss legal entity / local support",
             "fr": "Entité juridique suisse / support local",
             "it": "Soggetto giuridico svizzero / supporto locale"
+          }
+        },
+        {
+          "id": "fits-existing-stack",
+          "label": {
+            "de": "Passt in bestehende IT / Software-Suite",
+            "en": "Fits existing IT / software suite",
+            "fr": "S'intègre à l'informatique / suite logicielle existante",
+            "it": "Si adatta all'IT / suite software esistente"
+          }
+        },
+        {
+          "id": "no-training-on-data",
+          "label": {
+            "de": "Kein Training auf unseren Daten",
+            "en": "No training on our data",
+            "fr": "Pas d'entraînement sur nos données",
+            "it": "Nessun training sui nostri dati"
           }
         }
       ]

@@ -12,8 +12,6 @@ const kebabId = z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, {
   message: "Must be kebab-case (e.g. company-size, 10-49, 1000-plus)",
 });
 
-const nonEmptyString = z.string().min(1);
-
 export const surveyInputs = ["single", "multi", "text"] as const;
 export type SurveyInput = (typeof surveyInputs)[number];
 
@@ -38,6 +36,14 @@ const choiceQuestionSchema = surveyQuestionBaseSchema
   .extend({
     input: z.enum(["single", "multi"]),
     options: z.array(surveyOptionSchema).min(2),
+    /** Cap multi-select selections (ignored for single). */
+    max_select: z.number().int().positive().optional(),
+    /**
+     * When true, shuffle nominal options per session (client-side).
+     * Ordinal scales should leave this unset/false.
+     * Options with ids `other`, `none`, or `none-yet` stay pinned last.
+     */
+    shuffle_options: z.boolean().optional(),
   })
   .strict();
 
@@ -66,7 +72,20 @@ export const surveySchema = z
     description: localizedStringSchema,
     questions: z.array(surveyQuestionSchema).min(10).max(12),
   })
-  .strict();
+  .strict()
+  .superRefine((survey, ctx) => {
+    for (const question of survey.questions) {
+      if (question.input !== "multi") continue;
+      if (question.max_select === undefined) continue;
+      if (question.max_select > question.options.length) {
+        ctx.addIssue({
+          code: "custom",
+          message: `Question "${question.id}": max_select exceeds option count`,
+          path: ["questions"],
+        });
+      }
+    }
+  });
 
 export type Survey = z.infer<typeof surveySchema>;
 

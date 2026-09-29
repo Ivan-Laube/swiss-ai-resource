@@ -9,13 +9,15 @@ import {
   TURNSTILE_ACTION_SURVEY,
 } from "@/lib/turnstile-client";
 import {
-  exclusiveNoneQuestionIds,
+  exclusiveOptionId,
   validateAnswers,
   type AnswerValue,
 } from "@/survey/answers";
 import {
   pickLocalized,
   type Survey,
+  type SurveyChoiceQuestion,
+  type SurveyOption,
   type SurveyQuestion,
 } from "@/survey/schema";
 import styles from "./SurveyForm.module.css";
@@ -28,8 +30,26 @@ type SurveyFormProps = {
   messages: SurveyMessages;
 };
 
-function isExclusiveNoneQuestion(questionId: string): boolean {
-  return (exclusiveNoneQuestionIds as readonly string[]).includes(questionId);
+const PINNED_LAST = new Set(["other", "none", "none-yet"]);
+
+function shuffleInPlace<T>(items: T[]): T[] {
+  for (let i = items.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const tmp = items[i]!;
+    items[i] = items[j]!;
+    items[j] = tmp;
+  }
+  return items;
+}
+
+/** Shuffle nominal options; pin other/none/none-yet last in instrument order. */
+function orderOptions(question: SurveyChoiceQuestion): SurveyOption[] {
+  if (!question.shuffle_options) {
+    return question.options;
+  }
+  const movable = question.options.filter((o) => !PINNED_LAST.has(o.id));
+  const pinned = question.options.filter((o) => PINNED_LAST.has(o.id));
+  return [...shuffleInPlace([...movable]), ...pinned];
 }
 
 export function SurveyForm({ survey, locale, messages }: SurveyFormProps) {
@@ -50,9 +70,29 @@ export function SurveyForm({ survey, locale, messages }: SurveyFormProps) {
   const [formError, setFormError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
   const [optInOnSuccess, setOptInOnSuccess] = useState(false);
+  // Instrument order on SSR/first paint; shuffle after mount to avoid hydration mismatch.
+  const [orderedOptionsByQuestion, setOrderedOptionsByQuestion] = useState(
+    () => {
+      const map = new Map<string, SurveyOption[]>();
+      for (const question of survey.questions) {
+        if (question.input === "text") continue;
+        map.set(question.id, question.options);
+      }
+      return map;
+    },
+  );
 
   const turnstileHostRef = useRef<HTMLDivElement | null>(null);
   const widgetIdRef = useRef<string | number | null>(null);
+
+  useEffect(() => {
+    const map = new Map<string, SurveyOption[]>();
+    for (const question of survey.questions) {
+      if (question.input === "text") continue;
+      map.set(question.id, orderOptions(question));
+    }
+    setOrderedOptionsByQuestion(map);
+  }, [survey]);
 
   useEffect(() => {
     if (!intakeReady || success) {
@@ -116,34 +156,56 @@ export function SurveyForm({ survey, locale, messages }: SurveyFormProps) {
     setFormError(null);
   }
 
-  function toggleMultiAnswer(questionId: string, optionId: string) {
+  function toggleMultiAnswer(
+    question: SurveyChoiceQuestion,
+    optionId: string,
+  ) {
+    const questionId = question.id;
+    const exclusive = exclusiveOptionId(questionId);
+    const maxSelect = question.max_select;
+
     setAnswers((prev) => {
       const current = prev[questionId];
       const selected = Array.isArray(current) ? [...current] : [];
 
-      if (isExclusiveNoneQuestion(questionId)) {
-        if (optionId === "none") {
-          return { ...prev, [questionId]: ["none"] };
+      if (exclusive) {
+        if (optionId === exclusive) {
+          // Toggle exclusive option off when clicked again.
+          if (selected.includes(exclusive)) {
+            const next = { ...prev };
+            delete next[questionId];
+            return next;
+          }
+          return { ...prev, [questionId]: [exclusive] };
         }
-        const withoutNone = selected.filter((id) => id !== "none");
-        const idx = withoutNone.indexOf(optionId);
+        const withoutExclusive = selected.filter((id) => id !== exclusive);
+        const idx = withoutExclusive.indexOf(optionId);
         if (idx >= 0) {
-          withoutNone.splice(idx, 1);
+          withoutExclusive.splice(idx, 1);
         } else {
-          withoutNone.push(optionId);
+          if (
+            maxSelect !== undefined &&
+            withoutExclusive.length >= maxSelect
+          ) {
+            return prev;
+          }
+          withoutExclusive.push(optionId);
         }
-        if (withoutNone.length === 0) {
+        if (withoutExclusive.length === 0) {
           const next = { ...prev };
           delete next[questionId];
           return next;
         }
-        return { ...prev, [questionId]: withoutNone };
+        return { ...prev, [questionId]: withoutExclusive };
       }
 
       const idx = selected.indexOf(optionId);
       if (idx >= 0) {
         selected.splice(idx, 1);
       } else {
+        if (maxSelect !== undefined && selected.length >= maxSelect) {
+          return prev;
+        }
         selected.push(optionId);
       }
       if (selected.length === 0) {
@@ -157,17 +219,25 @@ export function SurveyForm({ survey, locale, messages }: SurveyFormProps) {
   }
 
   function isOptionDisabled(question: SurveyQuestion, optionId: string): boolean {
-    if (!isExclusiveNoneQuestion(question.id) || question.input !== "multi") {
-      return false;
-    }
+    if (question.input !== "multi") return false;
+    const exclusive = exclusiveOptionId(question.id);
     const current = answers[question.id];
     const selected = Array.isArray(current) ? current : [];
-    if (selected.includes("none") && optionId !== "none") {
+
+    if (exclusive && selected.includes(exclusive) && optionId !== exclusive) {
       return true;
     }
-    if (selected.length > 0 && !selected.includes("none") && optionId === "none") {
-      return false;
+
+    const maxSelect = question.max_select;
+    if (
+      maxSelect !== undefined &&
+      !selected.includes(optionId) &&
+      selected.length >= maxSelect &&
+      !(exclusive && optionId === exclusive)
+    ) {
+      return true;
     }
+
     return false;
   }
 
@@ -283,62 +353,64 @@ export function SurveyForm({ survey, locale, messages }: SurveyFormProps) {
 
             {question.input === "text" ? null : (
               <ul className={styles.options}>
-                {question.options.map((option) => {
-                  const disabled = isOptionDisabled(question, option.id);
-                  const inputId = `${formId}-${question.id}-${option.id}`;
-                  const current = answers[question.id];
+                {(orderedOptionsByQuestion.get(question.id) ?? question.options).map(
+                  (option) => {
+                    const disabled = isOptionDisabled(question, option.id);
+                    const inputId = `${formId}-${question.id}-${option.id}`;
+                    const current = answers[question.id];
 
-                  if (question.input === "single") {
+                    if (question.input === "single") {
+                      return (
+                        <li key={option.id}>
+                          <label
+                            className={styles.option}
+                            htmlFor={inputId}
+                          >
+                            <input
+                              id={inputId}
+                              type="radio"
+                              name={question.id}
+                              value={option.id}
+                              checked={current === option.id}
+                              onChange={() =>
+                                setSingleAnswer(question.id, option.id)
+                              }
+                              required={question.required}
+                            />
+                            <span>{pickLocalized(option.label, locale)}</span>
+                          </label>
+                        </li>
+                      );
+                    }
+
+                    const selected = Array.isArray(current) ? current : [];
                     return (
                       <li key={option.id}>
                         <label
-                          className={styles.option}
+                          className={
+                            disabled
+                              ? `${styles.option} ${styles.disabled}`
+                              : styles.option
+                          }
                           htmlFor={inputId}
                         >
                           <input
                             id={inputId}
-                            type="radio"
+                            type="checkbox"
                             name={question.id}
                             value={option.id}
-                            checked={current === option.id}
+                            checked={selected.includes(option.id)}
+                            disabled={disabled}
                             onChange={() =>
-                              setSingleAnswer(question.id, option.id)
+                              toggleMultiAnswer(question, option.id)
                             }
-                            required={question.required}
                           />
                           <span>{pickLocalized(option.label, locale)}</span>
                         </label>
                       </li>
                     );
-                  }
-
-                  const selected = Array.isArray(current) ? current : [];
-                  return (
-                    <li key={option.id}>
-                      <label
-                        className={
-                          disabled
-                            ? `${styles.option} ${styles.disabled}`
-                            : styles.option
-                        }
-                        htmlFor={inputId}
-                      >
-                        <input
-                          id={inputId}
-                          type="checkbox"
-                          name={question.id}
-                          value={option.id}
-                          checked={selected.includes(option.id)}
-                          disabled={disabled}
-                          onChange={() =>
-                            toggleMultiAnswer(question.id, option.id)
-                          }
-                        />
-                        <span>{pickLocalized(option.label, locale)}</span>
-                      </label>
-                    </li>
-                  );
-                })}
+                  },
+                )}
               </ul>
             )}
           </fieldset>

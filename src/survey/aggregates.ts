@@ -123,13 +123,16 @@ function aggregatableQuestions(survey: Survey): SurveyChoiceQuestion[] {
   );
 }
 
+/** Spend options excluded from ordinal median (non-comparable / unknown). */
+const SPEND_MEDIAN_EXCLUDED = new Set(["prefer-not", "dont-know"]);
+
 function orderedMedianBand(
   spendQuestion: SurveyChoiceQuestion,
   counts: Map<string, number>,
 ): string | undefined {
   const ordered = spendQuestion.options
     .map((option) => option.id)
-    .filter((optionId) => optionId !== "prefer-not");
+    .filter((optionId) => !SPEND_MEDIAN_EXCLUDED.has(optionId));
   const usableN = ordered.reduce(
     (total, optionId) => total + (counts.get(optionId) ?? 0),
     0,

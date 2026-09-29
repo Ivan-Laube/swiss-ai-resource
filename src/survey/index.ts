@@ -17,6 +17,7 @@ export {
 
 export {
   exclusiveNoneQuestionIds,
+  exclusiveOptionId,
   isHoneypotTriggered,
   surveyIntakeSchema,
   surveyLocales,

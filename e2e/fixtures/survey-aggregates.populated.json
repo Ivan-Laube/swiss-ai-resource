@@ -1,0 +1,171 @@
+{
+  "survey_id": "swiss-ai-adoption-2026",
+  "survey_version": 3,
+  "generated_at": "2026-09-29T12:00:00.000Z",
+  "n": 39,
+  "questions": {
+    "company-size": {
+      "n": 39,
+      "counts": {
+        "1-9": 11,
+        "10-49": 12,
+        "50-249": 6,
+        "1000-plus": 6
+      }
+    },
+    "sector": {
+      "n": 39,
+      "counts": {
+        "legal-fiduciary": 6,
+        "ict-software": 6,
+        "finance-insurance": 6,
+        "healthcare-life-sciences": 6,
+        "consulting-agencies": 6,
+        "retail-trade": 5
+      }
+    },
+    "language-region": {
+      "n": 39,
+      "counts": {
+        "german-speaking": 16,
+        "french-speaking": 11,
+        "italian-speaking": 6,
+        "multilingual": 6
+      }
+    },
+    "ai-maturity": {
+      "n": 39,
+      "counts": {
+        "individual-ad-hoc": 12,
+        "sanctioned-tools": 6,
+        "piloting-custom": 6,
+        "production": 10,
+        "not-using": 5
+      }
+    },
+    "ai-tools": {
+      "n": 39,
+      "counts": {
+        "chatgpt": 18,
+        "microsoft-copilot": 10,
+        "deepl": 6,
+        "azure-openai": 6,
+        "claude": 6,
+        "aws-bedrock": 6,
+        "apertus": 6,
+        "google-gemini": 6,
+        "none": 5
+      }
+    },
+    "primary-use-cases": {
+      "n": 39,
+      "counts": {
+        "content": 12,
+        "coding": 6,
+        "translation": 6,
+        "analysis": 12,
+        "knowledge": 12,
+        "automation": 10,
+        "sales": 6,
+        "none-yet": 5
+      }
+    },
+    "monthly-spend-chf": {
+      "n": 39,
+      "counts": {
+        "0": 5,
+        "1-100": 6,
+        "101-500": 6,
+        "501-2000": 6,
+        "prefer-not": 6,
+        "dont-know": 6
+      }
+    },
+    "hosting-requirement": {
+      "n": 39,
+      "counts": {
+        "switzerland": 12,
+        "eu-eea": 10,
+        "depends-on-data": 6,
+        "undecided": 11
+      }
+    },
+    "ai-governance-measures": {
+      "n": 39,
+      "counts": {
+        "none": 17,
+        "usage-policy": 18,
+        "business-dpa": 16,
+        "dpia": 12,
+        "tool-inventory": 6
+      }
+    },
+    "eu-market-exposure": {
+      "n": 39,
+      "counts": {
+        "no-eu": 11,
+        "deployer-eu-customers": 10,
+        "provider-eu": 12,
+        "unsure": 6
+      }
+    },
+    "deployment-blockers": {
+      "n": 39,
+      "counts": {
+        "cost": 6,
+        "skills": 12,
+        "data-protection": 6,
+        "regulation": 6,
+        "integration": 6,
+        "vendor-lock-in": 6,
+        "management-buy-in": 6,
+        "none": 5
+      }
+    },
+    "vendor-decision-factors": {
+      "n": 39,
+      "counts": {
+        "price": 17,
+        "hosting-region": 12,
+        "fits-existing-stack": 6,
+        "dpa-terms": 6,
+        "certifications": 6,
+        "no-training-on-data": 12,
+        "local-language-support": 6
+      }
+    }
+  },
+  "cross_tabs": {
+    "spend_by_company_size": {
+      "1-9": {
+        "n": 11,
+        "counts": {
+          "0": 5,
+          "1-100": 6
+        },
+        "median_band": "1-100"
+      },
+      "10-49": {
+        "n": 12,
+        "counts": {
+          "101-500": 6,
+          "dont-know": 6
+        },
+        "median_band": "101-500"
+      },
+      "50-249": {
+        "n": 6,
+        "counts": {
+          "501-2000": 6
+        },
+        "median_band": "501-2000"
+      },
+      "1000-plus": {
+        "n": 6,
+        "counts": {
+          "prefer-not": 6
+        }
+      }
+    }
+  }
+}

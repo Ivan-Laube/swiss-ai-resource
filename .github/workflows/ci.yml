@@ -65,6 +65,9 @@ jobs:
       - name: Validate survey aggregates
         run: npm run check:survey-aggregates
 
+      - name: Evaluate survey instrument (synthetic priors)
+        run: npm run evaluate:survey
+
       - name: Validate classify report (when present)
         run: npm run check:classify
 
@@ -76,3 +79,80 @@ jobs:
 
       - name: Build static export
         run: npm run build
+
+  e2e:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+
+      - name: Setup Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Build e2e static exports
+        run: npm run build:e2e
+
+      - name: Run e2e tests
+        run: npm run test:e2e
+
+      - name: Upload Playwright report
+        if: failure()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 7
+
+  survey-worker:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+
+      - name: Setup Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Survey Worker integration (wrangler + local D1)
+        run: npm run test:survey-worker
+
+  survey-pipeline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+
+      - name: Setup Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Seed local D1 and write aggregates
+        run: npm run seed:survey-pipeline -- --n 6 --write --port 8787
+
+      - name: Validate aggregates after pipeline write
+        run: npm run check:survey-aggregates

@@ -1,9 +1,58 @@
 {
   "survey_id": "swiss-ai-adoption-2026",
-  "survey_version": 2,
-  "generated_at": null,
+  "survey_version": 3,
+  "generated_at": "2026-09-28T14:22:13.000Z",
   "n": 0,
-  "questions": {},
+  "questions": {
+    "company-size": {
+      "n": 0,
+      "counts": {}
+    },
+    "sector": {
+      "n": 0,
+      "counts": {}
+    },
+    "language-region": {
+      "n": 0,
+      "counts": {}
+    },
+    "ai-maturity": {
+      "n": 0,
+      "counts": {}
+    },
+    "ai-tools": {
+      "n": 0,
+      "counts": {}
+    },
+    "primary-use-cases": {
+      "n": 0,
+      "counts": {}
+    },
+    "monthly-spend-chf": {
+      "n": 0,
+      "counts": {}
+    },
+    "hosting-requirement": {
+      "n": 0,
+      "counts": {}
+    },
+    "ai-governance-measures": {
+      "n": 0,
+      "counts": {}
+    },
+    "eu-market-exposure": {
+      "n": 0,
+      "counts": {}
+    },
+    "deployment-blockers": {
+      "n": 0,
+      "counts": {}
+    },
+    "vendor-decision-factors": {
+      "n": 0,
+      "counts": {}
+    }
+  },
   "cross_tabs": {
     "spend_by_company_size": {}
   }

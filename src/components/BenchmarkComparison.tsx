@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useState } from "react";
+import { useEffect, useId, useState } from "react";
 import type { Messages } from "@/i18n/types";
 import type {
   BenchmarkComparisonOption,
@@ -23,6 +23,11 @@ export function BenchmarkComparison({
 }: BenchmarkComparisonProps) {
   const selectId = useId();
   const [selectedSize, setSelectedSize] = useState("");
+  const [hydrated, setHydrated] = useState(false);
+
+  useEffect(() => {
+    setHydrated(true);
+  }, []);
 
   const row = selectedSize ? medianBySize[selectedSize] : undefined;
   let result: string | null = null;
@@ -37,25 +42,37 @@ export function BenchmarkComparison({
   }
 
   return (
-    <section className={styles.section} aria-labelledby={`${selectId}-heading`}>
+    <section
+      className={styles.section}
+      aria-labelledby={`${selectId}-heading`}
+      data-hydrated={hydrated ? "true" : "false"}
+    >
       <h2 id={`${selectId}-heading`}>{messages.comparisonHeading}</h2>
       <p className={styles.lead}>{messages.comparisonLead}</p>
 
-      <div className={styles.field}>
-        <label htmlFor={selectId}>{messages.comparisonSelectLabel}</label>
-        <select
-          id={selectId}
-          value={selectedSize}
-          onChange={(event) => setSelectedSize(event.target.value)}
-        >
-          <option value="">{messages.comparisonSelectPlaceholder}</option>
-          {sizeOptions.map((option) => (
-            <option key={option.id} value={option.id}>
-              {option.label}
-            </option>
-          ))}
-        </select>
-      </div>
+      <fieldset className={styles.field}>
+        <legend>{messages.comparisonSelectLabel}</legend>
+        <ul className={styles.options}>
+          {sizeOptions.map((option) => {
+            const inputId = `${selectId}-${option.id}`;
+            return (
+              <li key={option.id}>
+                <label className={styles.option} htmlFor={inputId}>
+                  <input
+                    id={inputId}
+                    type="radio"
+                    name={`${selectId}-size`}
+                    value={option.id}
+                    checked={selectedSize === option.id}
+                    onChange={() => setSelectedSize(option.id)}
+                  />
+                  <span>{option.label}</span>
+                </label>
+              </li>
+            );
+          })}
+        </ul>
+      </fieldset>
 
       {selectedSize && result ? (
         <div

@@ -1,4 +1,5 @@
 // Ad-hoc smoke test for the local survey Worker (T23). Not part of CI.
+// Prefer: npm run test:survey-worker (CI-ready script).
 // Usage: node workers/survey/smoke-test.mjs [baseUrl]
 const base = process.argv[2] ?? "http://127.0.0.1:8787";
 const origin = "https://aicompliant.ch";
@@ -7,13 +8,13 @@ const validAnswers = {
   "company-size": "10-49",
   sector: "ict-software",
   "language-region": "german-speaking",
-  "ai-maturity": "piloting",
+  "ai-maturity": "piloting-custom",
   "ai-tools": ["chatgpt", "deepl"],
   "primary-use-cases": ["translation"],
-  "monthly-spend-chf": "1-500",
+  "monthly-spend-chf": "101-500",
   "hosting-requirement": "switzerland",
-  "personal-data-in-ai": "no",
-  "eu-market-exposure": "no",
+  "ai-governance-measures": ["none"],
+  "eu-market-exposure": "no-eu",
   "deployment-blockers": ["none"],
   "vendor-decision-factors": ["swiss-entity-support"],
 };
@@ -21,7 +22,7 @@ const validAnswers = {
 function payload(overrides = {}) {
   return {
     survey_id: "swiss-ai-adoption-2026",
-    survey_version: 2,
+    survey_version: 3,
     locale: "de",
     answers: validAnswers,
     email: "bench@example.com",

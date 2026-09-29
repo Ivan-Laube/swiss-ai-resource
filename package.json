@@ -21,7 +21,11 @@
     "check:survey": "tsx scripts/check-survey.ts",
     "check:survey-answers": "tsx scripts/check-survey-answers.ts",
     "check:survey-aggregates": "tsx scripts/check-survey-aggregates.ts",
+    "evaluate:survey": "tsx scripts/evaluate-survey-instrument.ts",
+    "test:survey-worker": "tsx scripts/test-survey-worker.ts",
+    "seed:survey-pipeline": "tsx scripts/seed-survey-pipeline.ts",
     "sync:survey-aggregates": "tsx scripts/sync-survey-aggregates.ts",
+    "generate:e2e-survey-aggregates": "tsx scripts/generate-e2e-survey-aggregates.ts",
     "check:classify": "tsx scripts/check-classify.ts",
     "check:act": "tsx scripts/check-act.ts",
     "check:links": "tsx scripts/check-links.ts",
@@ -36,7 +40,9 @@
     "deploy:survey": "wrangler deploy -c workers/survey/wrangler.jsonc",
     "db:survey:local": "wrangler d1 migrations apply swiss-ai-survey --local -c workers/survey/wrangler.jsonc",
     "dev:scanner": "wrangler dev -c workers/scanner/wrangler.jsonc",
-    "deploy:scanner": "wrangler deploy -c workers/scanner/wrangler.jsonc"
+    "deploy:scanner": "wrangler deploy -c workers/scanner/wrangler.jsonc",
+    "build:e2e": "tsx scripts/build-e2e.ts",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.110.0",
@@ -53,6 +59,7 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^5.20260714.1",
+    "@playwright/test": "^1.63.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

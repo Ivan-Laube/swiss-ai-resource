@@ -26,15 +26,15 @@ const validAnswers: Record<string, unknown> = {
   "company-size": "10-49",
   sector: "ict-software",
   "language-region": "german-speaking",
-  "ai-maturity": "piloting",
+  "ai-maturity": "piloting-custom",
   "ai-tools": ["chatgpt", "deepl"],
-  "primary-use-cases": ["translation"],
-  "monthly-spend-chf": "1-500",
+  "primary-use-cases": ["translation", "content"],
+  "monthly-spend-chf": "101-500",
   "hosting-requirement": "switzerland",
-  "personal-data-in-ai": "no",
-  "eu-market-exposure": "no",
+  "ai-governance-measures": ["usage-policy"],
+  "eu-market-exposure": "no-eu",
   "deployment-blockers": ["none"],
-  "vendor-decision-factors": ["swiss-entity-support"],
+  "vendor-decision-factors": ["swiss-entity-support", "hosting-region"],
 };
 
 const ok = validateAnswers(survey, validAnswers);
@@ -45,6 +45,21 @@ const exclusiveBad = validateAnswers(survey, {
   "ai-tools": ["chatgpt", "none"],
 });
 assert(!exclusiveBad.ok, "expected exclusive none rejection for ai-tools");
+
+const exclusiveNoneYet = validateAnswers(survey, {
+  ...validAnswers,
+  "primary-use-cases": ["content", "none-yet"],
+});
+assert(
+  !exclusiveNoneYet.ok,
+  "expected exclusive none-yet rejection for primary-use-cases",
+);
+
+const maxSelectBad = validateAnswers(survey, {
+  ...validAnswers,
+  "primary-use-cases": ["content", "translation", "coding", "support"],
+});
+assert(!maxSelectBad.ok, "expected max_select rejection for primary-use-cases");
 
 const unknownOpt = validateAnswers(survey, {
   ...validAnswers,

@@ -5,11 +5,27 @@ import type { Survey, SurveyQuestion } from "./schema";
 export const surveyLocales = ["de", "en", "fr", "it"] as const;
 export type SurveyLocale = (typeof surveyLocales)[number];
 
-/** Questions where option `none` is exclusive (cannot combine with other ids). */
+/**
+ * Questions where a designated exclusive option cannot combine with others.
+ * Value is the exclusive option id (`none` or `none-yet`).
+ */
 export const exclusiveNoneQuestionIds = [
   "ai-tools",
   "deployment-blockers",
+  "primary-use-cases",
+  "ai-governance-measures",
 ] as const;
+
+/** Exclusive option id for a question, if any. */
+export function exclusiveOptionId(questionId: string): string | null {
+  if (questionId === "primary-use-cases") return "none-yet";
+  if (
+    (exclusiveNoneQuestionIds as readonly string[]).includes(questionId)
+  ) {
+    return "none";
+  }
+  return null;
+}
 
 const emailSchema = z
   .string()
@@ -51,17 +67,32 @@ function optionIds(question: SurveyQuestion): Set<string> {
   return new Set(question.options.map((o) => o.id));
 }
 
-function isExclusiveNoneQuestion(questionId: string): boolean {
-  return (exclusiveNoneQuestionIds as readonly string[]).includes(questionId);
-}
-
 function assertExclusiveNone(
   questionId: string,
   selected: string[],
 ): string | null {
-  if (!isExclusiveNoneQuestion(questionId)) return null;
-  if (selected.includes("none") && selected.length > 1) {
-    return `Question "${questionId}": option "none" cannot be combined with other options`;
+  const exclusive = exclusiveOptionId(questionId);
+  if (!exclusive) return null;
+  if (selected.includes(exclusive) && selected.length > 1) {
+    return `Question "${questionId}": option "${exclusive}" cannot be combined with other options`;
+  }
+  return null;
+}
+
+function assertMaxSelect(
+  question: SurveyQuestion,
+  selected: string[],
+): string | null {
+  if (question.input !== "multi") return null;
+  const max = question.max_select;
+  if (max === undefined) return null;
+  const exclusive = exclusiveOptionId(question.id);
+  // Exclusive-none alone is always allowed even if max_select is set.
+  if (exclusive && selected.length === 1 && selected[0] === exclusive) {
+    return null;
+  }
+  if (selected.length > max) {
+    return `Question "${question.id}": at most ${max} options may be selected`;
   }
   return null;
 }
@@ -131,6 +162,8 @@ export function validateAnswers(
       }
       const exclusiveErr = assertExclusiveNone(question.id, unique);
       if (exclusiveErr) return { ok: false, error: exclusiveErr };
+      const maxErr = assertMaxSelect(question, unique);
+      if (maxErr) return { ok: false, error: maxErr };
       normalized[question.id] = unique;
       continue;
     }
