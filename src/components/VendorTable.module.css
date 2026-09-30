@@ -225,3 +225,9 @@
     display: none;
   }
 }
+
+/* VendorFilters hides filtered-out rows/cards with the `hidden` attribute;
+   make sure it wins over the display rules above. */
+.root [hidden] {
+  display: none !important;
+}
