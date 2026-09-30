@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SiteHeader } from "@/components/SiteHeader";
+import { Container } from "@/components/ui";
 import {
   buildLanguageAlternates,
   getMessages,
@@ -53,26 +54,28 @@ export default async function ToolsIndexPage({ params }: PageProps) {
 
   return (
     <>
-      <SiteHeader activeLang={lang} messages={messages} />
-      <main className={styles.main} lang={lang}>
-        <Link href={`/${lang}/`} className={styles.back}>
-          {messages.tools.backHome}
-        </Link>
-        <h1>{messages.tools.indexTitle}</h1>
-        <p className={styles.lead}>{messages.tools.indexLead}</p>
+      <SiteHeader activeLang={lang} nav={messages.nav} />
+      <main id="main" className={styles.main} lang={lang}>
+        <Container>
+          <Link href={`/${lang}/`} className={styles.back}>
+            {messages.tools.backHome}
+          </Link>
+          <h1>{messages.tools.indexTitle}</h1>
+          <p className={styles.lead}>{messages.tools.indexLead}</p>
 
-        {trees.length > 0 ? (
-          <ul className={styles.toolList}>
-            {trees.map((tree) => (
-              <li key={tree.id}>
-                <Link href={`/${lang}/tools/${tree.id}/`}>
-                  {pickLocalized(tree.title, lang)}
-                </Link>
-                <p>{pickLocalized(tree.description, lang)}</p>
-              </li>
-            ))}
-          </ul>
-        ) : null}
+          {trees.length > 0 ? (
+            <ul className={styles.toolList}>
+              {trees.map((tree) => (
+                <li key={tree.id}>
+                  <Link href={`/${lang}/tools/${tree.id}/`}>
+                    {pickLocalized(tree.title, lang)}
+                  </Link>
+                  <p>{pickLocalized(tree.description, lang)}</p>
+                </li>
+              ))}
+            </ul>
+          ) : null}
+        </Container>
       </main>
     </>
   );

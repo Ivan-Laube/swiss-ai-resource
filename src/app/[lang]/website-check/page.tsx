@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SiteHeader } from "@/components/SiteHeader";
 import { WebsiteCheckForm } from "@/components/WebsiteCheckForm";
+import { Container } from "@/components/ui";
 import {
   buildLanguageAlternates,
   getMessages,
@@ -52,14 +53,16 @@ export default async function WebsiteCheckPage({ params }: PageProps) {
 
   return (
     <>
-      <SiteHeader activeLang={lang} messages={messages} />
-      <main className={styles.main} lang={lang}>
-        <Link href={`/${lang}/`} className={styles.back}>
-          {messages.websiteCheck.backHome}
-        </Link>
-        <h1>{messages.websiteCheck.title}</h1>
-        <p className={styles.lead}>{messages.websiteCheck.lead}</p>
-        <WebsiteCheckForm locale={lang} messages={messages.websiteCheck} />
+      <SiteHeader activeLang={lang} nav={messages.nav} />
+      <main id="main" className={styles.main} lang={lang}>
+        <Container>
+          <Link href={`/${lang}/`} className={styles.back}>
+            {messages.websiteCheck.backHome}
+          </Link>
+          <h1>{messages.websiteCheck.title}</h1>
+          <p className={styles.lead}>{messages.websiteCheck.lead}</p>
+          <WebsiteCheckForm locale={lang} messages={messages.websiteCheck} />
+        </Container>
       </main>
     </>
   );

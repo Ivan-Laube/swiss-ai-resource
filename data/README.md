@@ -385,7 +385,7 @@ Loader API (build-time): `listRuleIds`, `getRule`, `getAllRules`, `validateRules
 
 ## Survey questions (`survey-questions.json`)
 
-Single versioned questionnaire for the Swiss AI adoption survey (T22). **Current: `id` `swiss-ai-adoption-2026`, `version` 2, 12 questions.** One instrument file — not one file per question. Aggregates (T25) will live in a separate file (e.g. `survey-aggregates.json`); do not mix them here.
+Single versioned questionnaire for the Swiss AI adoption survey (T22). **Current: `id` `swiss-ai-adoption-2026`, `version` 3, 12 questions.** One instrument file — not one file per question. Aggregates (T25) will live in a separate file (e.g. `survey-aggregates.json`); do not mix them here.
 
 Implementation: Zod schema and loaders in [`src/survey/`](../src/survey/) (`schema.ts`, `load.ts`). Export barrel: `@/survey`. Reuses `localizedStringSchema` / `pickLocalized` from `@/rules`.
 
@@ -421,32 +421,36 @@ Same shape as decision rules:
 | `required` | boolean | Form validation (T24) |
 | `aggregate` | boolean | T25 only counts `aggregate: true` |
 | `options` | `{ id, label }[]` | Required for `single` / `multi` (≥2); omitted for `text` |
+| `max_select` | positive int (optional) | `multi` only: cap on selections; must not exceed the option count |
+| `shuffle_options` | boolean (optional) | Shuffle nominal options per session (client-side). Leave unset for ordinal scales. Options `other`, `none` and `none-yet` stay pinned last |
 | `max_length` | positive int (optional) | Only for `text` |
 
 Loader rules: unique question ids; unique option ids within a question; choice questions must have `aggregate: true`; text questions must have `aggregate: false`.
 
-### Current instrument (12 questions, version 2)
+### Current instrument (12 questions, version 3)
 
 | id | input | Topics |
 |---|---|---|
 | `company-size` | single | Employee bands (BFS/EU SME thresholds) |
-| `sector` | single | Industry (incl. Bau, Tourismus, Logistik) |
+| `sector` | single, shuffled | Industry (incl. Bau, Logistik, Recht/Treuhand, Beratung/Agenturen) |
 | `language-region` | single | DE / FR / IT / multilingual Switzerland |
-| `ai-maturity` | single | Not using → production |
-| `ai-tools` | multi | Tools in use (incl. DeepL; `none` exclusive in T24) |
-| `primary-use-cases` | multi | Use cases (incl. translation, sales) |
-| `monthly-spend-chf` | single | Spend bands (CHF); licenses/API/cloud only |
-| `hosting-requirement` | single | CH / EU / any / undecided |
-| `personal-data-in-ai` | single | Personendaten with AI (DSG) |
-| `eu-market-exposure` | single | EU market / users (AI Act reach) |
-| `deployment-blockers` | multi | Blockers (incl. integration, buy-in; `none` exclusive in T24) |
-| `vendor-decision-factors` | multi | Vendor choice (incl. Swiss entity / local support) |
+| `ai-maturity` | single | Not using → individual ad hoc → sanctioned tools → piloting custom → production |
+| `ai-tools` | multi, shuffled | Tools in use (incl. DeepL, Apertus, embedded features; `none` exclusive) |
+| `primary-use-cases` | multi, max 3, shuffled | Use cases (incl. translation, sales; `none-yet` exclusive) |
+| `monthly-spend-chf` | single | Spend bands (CHF); licenses/API/cloud only; incl. `dont-know` |
+| `hosting-requirement` | single | CH / EU / depends on data / any / undecided |
+| `ai-governance-measures` | multi, shuffled | Usage policy, staff training, tool inventory, DPIA, business DPA (`none` exclusive) |
+| `eu-market-exposure` | single | EU provider / deployer with EU customers / no EU / unsure (AI Act reach) |
+| `deployment-blockers` | multi, max 3, shuffled | Blockers (incl. integration, buy-in; `none` exclusive) |
+| `vendor-decision-factors` | multi, max 3, shuffled | Vendor choice (incl. Swiss entity, fits existing stack, no training on data) |
 
 Option ids such as `1000-plus` / `10000-plus` stay kebab-case (no `+` in ids); display labels may show `1000+`.
 
+**v3 vs v2:** replaced `personal-data-in-ai` with multi-select `ai-governance-measures`; widened `ai-maturity`, `monthly-spend-chf`, `hosting-requirement` and `eu-market-exposure` into more discriminative bands (so benchmarks survive n<5 suppression); reworked sectors and tools (e.g. `apertus`, `embedded-features`); added `none-yet`, `max_select` caps and option shuffling. Response-quality and pilot gates: [docs/survey-pilot-gates.md](../docs/survey-pilot-gates.md).
+
 **v2 vs v1:** dropped free-text `biggest-challenge`; added `language-region` and `eu-market-exposure`; expanded sectors; DeepL + clearer Copilot label; translation/sales use cases; Swiss-specific blockers/factors. Bump `version` again if option meanings change.
 
-**T24 form rules (document now, implement later):** for `ai-tools` and `deployment-blockers`, selecting `none` must clear / disable other options (and vice versa).
+**T24 form rules:** for `ai-tools`, `deployment-blockers` and `ai-governance-measures` (`none`) and `primary-use-cases` (`none-yet`), selecting the exclusive option clears the others and vice versa (`exclusiveOptionId` in [`src/survey/answers.ts`](../src/survey/answers.ts); enforced server-side too).
 
 ### Out of this file (T23 / T24)
 
@@ -455,13 +459,13 @@ Optional email, report opt-in, honeypot, and Turnstile are **form chrome**, not 
 ```json
 {
   "survey_id": "swiss-ai-adoption-2026",
-  "survey_version": 2,
+  "survey_version": 3,
   "locale": "de",
   "answers": {
     "company-size": "10-49",
     "language-region": "german-speaking",
     "ai-tools": ["chatgpt", "deepl"],
-    "eu-market-exposure": "no"
+    "eu-market-exposure": "no-eu"
   },
   "email": null,
   "report_opt_in": false,
@@ -519,6 +523,11 @@ Validate the committed snapshot with:
 ```bash
 npm run check:survey-aggregates
 ```
+
+Never commit [`e2e/fixtures/survey-aggregates.populated.json`](../e2e/fixtures/survey-aggregates.populated.json)
+here: it holds fabricated responses for the benchmark e2e tests. `check:survey-aggregates`,
+the `prebuild` sync and `build:e2e` all refuse it; see
+[DEPLOY.md](../DEPLOY.md#e2e-survey-fixture-guard).
 
 ## Scanner checks (`scanner-checks.json`)
 

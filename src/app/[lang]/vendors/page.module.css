@@ -1,8 +1,13 @@
 .main {
   flex: 1;
-  width: min(72rem, 100%);
-  margin: 0 auto;
-  padding: 3rem 1.5rem 4rem;
+  width: 100%;
+  padding-block: var(--space-7) var(--space-8);
+}
+
+@media (min-width: 768px) {
+  .main {
+    padding-block: var(--space-8);
+  }
 }
 
 .back {
@@ -34,8 +39,8 @@
 .disclaimer {
   margin-top: 2rem;
   padding: 1rem 1.25rem;
-  border-radius: 0.5rem;
+  border-radius: var(--radius-panel);
   font-size: 0.875rem;
   line-height: 1.5;
-  background: color-mix(in srgb, var(--foreground) 6%, transparent);
+  background: var(--surface-muted);
 }

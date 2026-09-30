@@ -2,8 +2,8 @@
   margin-top: 2.5rem;
   padding: 1.25rem 1.35rem;
   border-radius: 0.65rem;
-  border: 1px solid color-mix(in srgb, var(--foreground) 12%, transparent);
-  background: color-mix(in srgb, var(--foreground) 3%, transparent);
+  border: 1px solid color-mix(in srgb, var(--text) 12%, transparent);
+  background: color-mix(in srgb, var(--text) 3%, transparent);
 }
 
 .section h2 {
@@ -50,20 +50,20 @@
   gap: 0.5rem;
   padding: 0.45rem 0.65rem;
   border-radius: 0.4rem;
-  border: 1px solid color-mix(in srgb, var(--foreground) 18%, transparent);
+  border: 1px solid color-mix(in srgb, var(--text) 18%, transparent);
   font-size: 0.9375rem;
   cursor: pointer;
 }
 
 .option:hover {
-  background: color-mix(in srgb, var(--foreground) 6%, transparent);
+  background: color-mix(in srgb, var(--text) 6%, transparent);
 }
 
 .result {
   margin-top: 1.15rem;
   padding: 0.9rem 1rem;
   border-radius: 0.5rem;
-  background: color-mix(in srgb, var(--foreground) 6%, transparent);
+  background: color-mix(in srgb, var(--text) 6%, transparent);
 }
 
 .resultLabel {

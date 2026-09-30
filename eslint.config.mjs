@@ -13,6 +13,7 @@ const eslintConfig = defineConfig([
     "build/**",
     "next-env.d.ts",
     // Wrangler local build artifacts (not source):
+    ".wrangler/**",
     "workers/**/.wrangler/**",
     // Playwright e2e (fixture `use` is not React):
     "e2e/**",

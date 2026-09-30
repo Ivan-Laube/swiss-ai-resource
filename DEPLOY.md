@@ -101,7 +101,7 @@ npx tsc --noEmit
 npm run build
 ```
 
-`check:content` validates Markdown frontmatter under `content/{locale}/` (see [content/README.md](content/README.md)). A successful build writes static files to `out/`, including `out/sitemap.xml` and `out/robots.txt` from [`src/app/sitemap.ts`](src/app/sitemap.ts) / [`src/app/robots.ts`](src/app/robots.ts) (`export const dynamic = "force-static"` required for `output: "export"`), plus `out/404.html` from [`src/app/not-found.tsx`](src/app/not-found.tsx). Sitemap URLs use trailing slashes and enumerate locale homes, publishable content slugs, tools (index + `listRuleIds()`), vendors, survey, benchmark, and website-check — not the redirect-only `/`. Cloudflare Pages serves `404.html` for unknown paths with no extra config; the page picks locale chrome from the URL path (`de` / `en` / `fr` / `it`, else default `de`). After deploy, spot-check [https://aicompliant.ch/sitemap.xml](https://aicompliant.ch/sitemap.xml), [https://aicompliant.ch/robots.txt](https://aicompliant.ch/robots.txt), and a missing path (e.g. `/de/does-not-exist/`) for the custom 404.
+`check:content` validates Markdown frontmatter under `content/{locale}/` (see [content/README.md](content/README.md)). A successful build writes static files to `out/`, including `out/sitemap.xml` and `out/robots.txt` from [`src/app/sitemap.ts`](src/app/sitemap.ts) / [`src/app/robots.ts`](src/app/robots.ts) (`export const dynamic = "force-static"` required for `output: "export"`), plus `out/404.html` from [`src/app/global-not-found.tsx`](src/app/global-not-found.tsx) (`experimental.globalNotFound` in [`next.config.ts`](next.config.ts); in-locale `notFound()` uses [`src/app/[lang]/not-found.tsx`](src/app/[lang]/not-found.tsx)). Sitemap URLs use trailing slashes and enumerate locale homes, guides index, publishable content slugs, tools (index + `listRuleIds()`), vendors, survey, benchmark, and website-check — not the redirect-only `/`. Cloudflare Pages serves `404.html` for unknown paths with no extra config; document language defaults to `de` and an early inline script (CSP-hashed) plus chrome follow the URL path (`de` / `en` / `fr` / `it`). Locale pages set `<html lang>` from the `[lang]` root layout. After deploy, spot-check [https://aicompliant.ch/sitemap.xml](https://aicompliant.ch/sitemap.xml), [https://aicompliant.ch/robots.txt](https://aicompliant.ch/robots.txt), and a missing path (e.g. `/de/does-not-exist/`) for the custom 404.
 
 ## Legal pages (T39/T40)
 
@@ -125,11 +125,39 @@ Every pull request and every push to `main` runs [`.github/workflows/ci.yml`](.g
 
 - Workflow `permissions: contents: read` (default; monthly/translate jobs request write only where needed)
 - Actions pinned to commit SHAs
-- `npm run sync:survey-aggregates` (T43 — best-effort fetch of the latest `survey-aggregates.json` from [`swiss-ai-survey-data`](https://github.com/Ivan-Laube/swiss-ai-survey-data); warns and keeps the committed copy on failure rather than failing CI)
+- `npm run sync:survey-aggregates` (T43 — best-effort fetch of the latest `survey-aggregates.json` from [`swiss-ai-survey-data`](https://github.com/Ivan-Laube/swiss-ai-survey-data); warns and keeps the committed copy on failure rather than failing CI. **Exception:** it hard-fails when the local file is the e2e test fixture — see [E2E survey fixture guard](#e2e-survey-fixture-guard))
 - `npx tsc --noEmit`
 - `npm run lint`
-- Offline `check:*` validators (content, vendors, sources, glossary, rules, scanner, survey, survey-answers, survey-aggregates, classify, act, links-report)
+- Offline `check:*` validators (content, vendors, sources, glossary, rules, scanner, survey, survey-answers, survey-aggregates, classify, act, links-report, contrast)
 - `npm run build` (static export to `out/` + `postbuild` CSP hash rewrite)
+- Playwright e2e job (`build:e2e` + `test:e2e`, 45 min timeout), run **inside the `mcr.microsoft.com/playwright:v1.63.0-jammy` container**, the same image as `scripts/docker-visual.sh`, so visual baselines match pixel-for-pixel. Keep the image tag in sync with `@playwright/test` in `package.json`. Projects (see [`playwright.config.ts`](playwright.config.ts)):
+  - `configured` / `unconfigured`: functional specs for website-check, survey and benchmark, plus [`e2e/website-check/headers.spec.ts`](e2e/website-check/headers.spec.ts), which locks the full CSP (only `script-src` sha256 hashes may vary) and the other security headers in both `out-e2e` and `out-e2e-unconfigured` (**R53**)
+  - `layout`: [`e2e/layout/header.spec.ts`](e2e/layout/header.spec.ts), single-row header, no horizontal overflow, mobile menu and `aria-current` across all locales × 320–1280px
+  - `privacy`: no third-party requests on any public route or the 404 page, DE + FR (**R52**)
+  - `a11y-light` / `a11y-dark`: axe scan, no serious or critical violations (**R51**)
+  - `visual-{375,768,1280}-{light,dark}`: **R50** full-page snapshots for all public routes × {de, fr}. Dates, copyright year, and Turnstile hosts are masked.
+
+  On failure CI uploads `playwright-report/` and `test-results/` (diff images).
+
+**Updating visual baselines (R50):** always regenerate in the **same Playwright Docker image CI uses**. Native Playwright on Linux, Windows or macOS is not authoritative, because font rendering differs. After intentional UI changes, with Docker available:
+
+```bash
+npm run build:e2e
+bash scripts/docker-visual.sh --update   # write baselines
+bash scripts/docker-visual.sh            # compare only; run once more to confirm they're stable
+```
+
+The helper reuses an existing `out-e2e/` (it only builds when it's missing), so run `build:e2e` first after source changes. In Git Bash on Windows, prefix the commands with `MSYS_NO_PATHCONV=1` if Docker mangles the volume paths. Commit the PNGs under `e2e/visual/routes.spec.ts-snapshots/`. `npm run test:visual` runs the visual projects natively, which is only useful for a quick local look, not for baselines.
+
+### E2E survey fixture guard
+
+`build:e2e` temporarily swaps `data/survey-aggregates.json` for [`e2e/fixtures/survey-aggregates.populated.json`](e2e/fixtures/survey-aggregates.populated.json) (fabricated responses, so the benchmark page has data to test) and restores it afterwards, including on Ctrl-C or a failed step. A leaked fixture would publish fabricated benchmark numbers, so three places refuse it (shared check in [`scripts/e2e-fixture-guard.ts`](scripts/e2e-fixture-guard.ts)):
+
+- `build:e2e` won't start if the working-tree file already equals the fixture
+- `sync:survey-aggregates` (the `prebuild` hook, so every production build) fails instead of falling back to the local copy
+- `check:survey-aggregates` fails in CI
+
+Recovery: `git checkout data/survey-aggregates.json`.
 
 Live citation probing (`npm run check:links`) stays in the monthly job — it needs the network and is soft-fail by design. The CI workflow validates a committed `snapshots/_links.json` via `check:links-report` when present.
 

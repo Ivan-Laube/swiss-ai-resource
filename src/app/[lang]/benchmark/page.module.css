@@ -1,8 +1,13 @@
 .main {
   flex: 1;
-  width: min(48rem, 100%);
-  margin: 0 auto;
-  padding: 3rem 1.5rem 4rem;
+  width: 100%;
+  padding-block: var(--space-7) var(--space-8);
+}
+
+@media (min-width: 768px) {
+  .main {
+    padding-block: var(--space-8);
+  }
 }
 
 .back {
@@ -40,16 +45,16 @@
 .note {
   margin-bottom: 1.75rem;
   padding: 0.85rem 1rem;
-  border-radius: 0.5rem;
+  border-radius: var(--radius-panel);
   font-size: 0.875rem;
   line-height: 1.5;
-  background: color-mix(in srgb, var(--foreground) 6%, transparent);
+  background: var(--surface-muted);
 }
 
 .empty {
   padding: 1.35rem 1.4rem;
-  border-radius: 0.65rem;
-  border: 1px dashed color-mix(in srgb, var(--foreground) 22%, transparent);
+  border-radius: var(--radius-panel);
+  border: 1px dashed var(--border-strong);
 }
 
 .empty h2 {
@@ -71,8 +76,8 @@
 
 .card {
   padding: 1.15rem 1.25rem;
-  border-radius: 0.65rem;
-  border: 1px solid color-mix(in srgb, var(--foreground) 12%, transparent);
+  border-radius: var(--radius-card);
+  border: 1px solid var(--border);
 }
 
 .cardHeader {
@@ -118,15 +123,15 @@
 
 .barTrack {
   height: 0.45rem;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--foreground) 10%, transparent);
+  border-radius: var(--radius-pill);
+  background: var(--surface-muted);
   overflow: hidden;
 }
 
 .barFill {
   height: 100%;
   border-radius: inherit;
-  background: color-mix(in srgb, var(--foreground) 55%, transparent);
+  background: var(--text-muted);
 }
 
 .cta {
@@ -142,8 +147,8 @@
 .disclaimer {
   margin-top: 1.5rem;
   padding: 1rem 1.25rem;
-  border-radius: 0.5rem;
+  border-radius: var(--radius-panel);
   font-size: 0.875rem;
   line-height: 1.5;
-  background: color-mix(in srgb, var(--foreground) 6%, transparent);
+  background: var(--surface-muted);
 }

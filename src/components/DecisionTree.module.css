@@ -11,7 +11,7 @@
 
 .controlButton {
   appearance: none;
-  border: 1px solid color-mix(in srgb, var(--foreground) 22%, transparent);
+  border: 1px solid color-mix(in srgb, var(--text) 22%, transparent);
   background: transparent;
   color: inherit;
   font: inherit;
@@ -22,7 +22,7 @@
 }
 
 .controlButton:hover:not(:disabled) {
-  background: color-mix(in srgb, var(--foreground) 6%, transparent);
+  background: color-mix(in srgb, var(--text) 6%, transparent);
 }
 
 .controlButton:disabled {
@@ -56,8 +56,8 @@
   appearance: none;
   width: 100%;
   text-align: left;
-  border: 1px solid color-mix(in srgb, var(--foreground) 18%, transparent);
-  background: color-mix(in srgb, var(--foreground) 4%, transparent);
+  border: 1px solid color-mix(in srgb, var(--text) 18%, transparent);
+  background: color-mix(in srgb, var(--text) 4%, transparent);
   color: inherit;
   font: inherit;
   font-size: 1rem;
@@ -68,7 +68,7 @@
 }
 
 .answerButton:hover {
-  background: color-mix(in srgb, var(--foreground) 8%, transparent);
+  background: color-mix(in srgb, var(--text) 8%, transparent);
 }
 
 .verdict {
@@ -116,5 +116,5 @@
   border-radius: 0.5rem;
   font-size: 0.875rem;
   line-height: 1.5;
-  background: color-mix(in srgb, var(--foreground) 6%, transparent);
+  background: color-mix(in srgb, var(--text) 6%, transparent);
 }

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SiteHeader } from "@/components/SiteHeader";
 import { VendorTable } from "@/components/VendorTable";
+import { Container } from "@/components/ui";
 import {
   buildLanguageAlternates,
   getMessages,
@@ -54,21 +55,23 @@ export default async function VendorsPage({ params }: PageProps) {
 
   return (
     <>
-      <SiteHeader activeLang={lang} messages={messages} />
-      <main className={styles.main} lang={lang}>
-        <Link href={`/${lang}/`} className={styles.back}>
-          {messages.vendors.backHome}
-        </Link>
-        <h1>{messages.vendors.indexTitle}</h1>
-        <p className={styles.lead}>{messages.vendors.indexLead}</p>
+      <SiteHeader activeLang={lang} nav={messages.nav} />
+      <main id="main" className={styles.main} lang={lang}>
+        <Container>
+          <Link href={`/${lang}/`} className={styles.back}>
+            {messages.vendors.backHome}
+          </Link>
+          <h1>{messages.vendors.indexTitle}</h1>
+          <p className={styles.lead}>{messages.vendors.indexLead}</p>
 
-        <VendorTable
-          vendors={vendors}
-          vendorsMessages={messages.vendors}
-          lang={lang}
-        />
+          <VendorTable
+            vendors={vendors}
+            vendorsMessages={messages.vendors}
+            lang={lang}
+          />
 
-        <p className={styles.disclaimer}>{messages.vendors.disclaimer}</p>
+          <p className={styles.disclaimer}>{messages.vendors.disclaimer}</p>
+        </Container>
       </main>
     </>
   );

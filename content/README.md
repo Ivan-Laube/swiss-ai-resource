@@ -34,11 +34,11 @@ content/
 | `impressum` | stable | Art. 3 Abs. 1 lit. s UWG; natural-person operator (T40) |
 | `datenschutz` | stable | Art. 19 DSG; controller, Cloudflare/D1 (`responses` + unlinkable `report_signups`), retention, deletion |
 
-Legal pages ship in DE/EN/FR/IT (**T39** drafts + **T40** filled operator details) and are linked from the site footer (and the survey form for `datenschutz`). They are excluded from the home “Compliance basics” list.
+Legal pages ship in DE/EN/FR/IT (**T39** drafts + **T40** filled operator details) and are linked from the site footer (and the survey form for `datenschutz`). They are excluded from guide listings (`listGuidePages`: home “Compliance basics”, footer Leitfäden column, and `/[lang]/guides/`).
 
 **Operator (T40, natural person):** name, street, PLZ/Ort, and contact email appear on Impressum and Datenschutz in all four locales (email as `mailto:`). Phone, Rechtsform, Vertretung, and Handelsregister/UID are omitted as not applicable. Do not re-introduce `PLACEHOLDER_*` markers. Lawyer review of the filled DE text is **T29**. Deploy notes: [DEPLOY.md](../DEPLOY.md#legal-pages-t39t40).
 
-Routes: `/[lang]/[slug]/`. `hreflang` alternates are limited to locales that have the file (`localesWithSlug`). Publishable slugs are also enumerated in [`src/app/sitemap.ts`](../src/app/sitemap.ts) via `listPublishableContentSlugs` / `localesWithSlug`. After T14, the five cornerstone slugs exist in DE/EN/FR/IT (`translation_status: draft` for non-DE). Legal pages also exist in all four locales (`translation_status: draft` for non-DE; DE `canonical`).
+Routes: individual pages at `/[lang]/[slug]/`; guides index at `/[lang]/guides/` (**R19**, [`src/app/[lang]/guides/page.tsx`](../src/app/[lang]/guides/page.tsx)). Per-page `hreflang` alternates are limited to locales that have the file (`localesWithSlug`). Publishable slugs are enumerated in [`src/app/sitemap.ts`](../src/app/sitemap.ts) via `listPublishableContentSlugs` / `localesWithSlug`; the guides index is a fixed segment (all four locales), same pattern as tools/vendors. After T14, the five cornerstone slugs exist in DE/EN/FR/IT (`translation_status: draft` for non-DE). Legal pages also exist in all four locales (`translation_status: draft` for non-DE; DE `canonical`).
 
 ## Frontmatter
 

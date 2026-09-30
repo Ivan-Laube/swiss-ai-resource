@@ -2,16 +2,38 @@ import type { Messages } from "../types";
 
 export const en: Messages = {
   meta: {
-    title: "Swiss AI Deployment Resource",
+    title: "aicompliant.ch",
     description:
       "Practical guidance on AI deployment in Switzerland: compliance, vendor comparison, and interactive decision tools.",
   },
   nav: {
-    brand: "Swiss AI Resource",
+    brand: "aicompliant.ch",
+    brandSubtitle: "Swiss AI Resource",
+    wordmark: "aicompliant",
+    wordmarkTld: ".ch",
     languagesLabel: "Languages",
+    mainLabel: "Main navigation",
+    skipToContent: "Skip to content",
+    menu: "Menu",
+    guides: "Guides",
+    tools: "Decision tools",
+    vendors: "Vendor comparison",
+    survey: "Survey & Benchmark",
+    websiteCheck: "Check website",
   },
   footer: {
-    navLabel: "Legal",
+    navLabel: "Footer",
+    brandDescription:
+      "Guides, decision tools, and a source-based vendor comparison for AI use in Switzerland.",
+    lastSourceCheck: "Last source check: {date}",
+    colGuides: "Guides",
+    colTools: "Tools",
+    colData: "Data",
+    colLegal: "Legal",
+    benchmark: "Benchmark",
+    disclaimer:
+      "This content is for information only and is not legal advice. Check the sources and seek professional advice where needed.",
+    copyright: "© {year} aicompliant.ch",
     impressum: "Legal notice",
     privacy: "Privacy policy",
   },
@@ -34,7 +56,7 @@ export const en: Messages = {
       "A first look at a website from publicly visible signals (HTTPS, privacy link, trackers). Not a compliance audit.",
   },
   websiteCheck: {
-    metaTitle: "Website Quick-Check · Swiss AI Resource",
+    metaTitle: "Website Quick-Check",
     metaDescription:
       "A first look at a website: HTTPS, privacy link, impressum, cookie tools, trackers, and security headers — with legal citations. Not legal advice.",
     title: "Website Quick-Check",
@@ -76,7 +98,7 @@ export const en: Messages = {
     scanAgain: "Check another URL",
   },
   benchmark: {
-    metaTitle: "Benchmark · Swiss AI Resource",
+    metaTitle: "Benchmark",
     metaDescription:
       "Anonymized aggregate results from the Swiss AI adoption survey. Cells with fewer than five responses are not shown.",
     indexTitle: "AI adoption benchmark",
@@ -106,7 +128,7 @@ export const en: Messages = {
       "This benchmark is an anonymized pilot snapshot and is not legal advice. Results describe the sample, not the whole Swiss economy.",
   },
   survey: {
-    metaTitle: "Survey · Swiss AI Resource",
+    metaTitle: "Survey",
     metaDescription:
       "A short survey on AI use, spend, and hosting requirements in Swiss companies.",
     backHome: "← Back to home",
@@ -151,6 +173,12 @@ export const en: Messages = {
       "This translation is an LLM draft and has not yet been human-reviewed.",
     translationCanonicalNote:
       "The German version is canonical; translations may differ.",
+  },
+  guides: {
+    indexTitle: "Guides",
+    indexLead:
+      "Source-based guides on Swiss data protection, the EU AI Act, FINMA, and procurement. Not legal advice.",
+    backHome: "← Back to home",
   },
   tools: {
     indexTitle: "Decision tools",

@@ -1,15 +1,37 @@
 export const de = {
   meta: {
-    title: "Swiss AI Deployment Resource",
+    title: "aicompliant.ch",
     description:
       "Praxisnahe Informationen zum KI-Einsatz in der Schweiz: Compliance, Anbietervergleich und interaktive Entscheidungshilfen.",
   },
   nav: {
-    brand: "Swiss AI Resource",
+    brand: "aicompliant.ch",
+    brandSubtitle: "Swiss AI Resource",
+    wordmark: "aicompliant",
+    wordmarkTld: ".ch",
     languagesLabel: "Sprachen",
+    mainLabel: "Hauptnavigation",
+    skipToContent: "Zum Inhalt springen",
+    menu: "Menü",
+    guides: "Leitfäden",
+    tools: "Entscheidungshilfen",
+    vendors: "Anbietervergleich",
+    survey: "Umfrage & Benchmark",
+    websiteCheck: "Website prüfen",
   },
   footer: {
-    navLabel: "Rechtliche Hinweise",
+    navLabel: "Fusszeile",
+    brandDescription:
+      "Leitfäden, Entscheidungshilfen und ein quellenbasierter Anbietervergleich für den KI-Einsatz in der Schweiz.",
+    lastSourceCheck: "Letzte Quellenprüfung: {date}",
+    colGuides: "Leitfäden",
+    colTools: "Tools",
+    colData: "Daten",
+    colLegal: "Rechtliches",
+    benchmark: "Benchmark",
+    disclaimer:
+      "Die Inhalte dienen nur der Information und stellen keine Rechtsberatung dar. Prüfen Sie die Quellen und holen Sie bei Bedarf Fachberatung ein.",
+    copyright: "© {year} aicompliant.ch",
     impressum: "Impressum",
     privacy: "Datenschutzerklärung",
   },
@@ -32,7 +54,7 @@ export const de = {
       "Erste Einschätzung einer Website anhand öffentlich sichtbarer Signale (HTTPS, Datenschutzlink, Tracker). Keine Compliance-Prüfung.",
   },
   websiteCheck: {
-    metaTitle: "Website Quick-Check · Swiss AI Resource",
+    metaTitle: "Website Quick-Check",
     metaDescription:
       "Erste Einschätzung einer Website: HTTPS, Datenschutzlink, Impressum, Cookie-Tools, Tracker und Sicherheitsheader — mit rechtlichen Bezügen. Keine Rechtsberatung.",
     title: "Website Quick-Check",
@@ -77,7 +99,7 @@ export const de = {
     scanAgain: "Andere URL prüfen",
   },
   benchmark: {
-    metaTitle: "Benchmark · Swiss AI Resource",
+    metaTitle: "Benchmark",
     metaDescription:
       "Anonymisierte Aggregatergebnisse der Schweizer KI-Adoptionsumfrage. Zellen mit weniger als fünf Antworten werden nicht ausgewiesen.",
     indexTitle: "KI-Adoptions-Benchmark",
@@ -107,7 +129,7 @@ export const de = {
       "Dieser Benchmark ist eine anonymisierte Pilotauswertung und stellt keine Rechtsberatung dar. Ergebnisse beschreiben die Stichprobe, nicht die gesamte Schweizer Wirtschaft.",
   },
   survey: {
-    metaTitle: "Umfrage · Swiss AI Resource",
+    metaTitle: "Umfrage",
     metaDescription:
       "Kurze Umfrage zu KI-Nutzung, Ausgaben und Hosting-Anforderungen in Schweizer Unternehmen.",
     backHome: "← Zur Startseite",
@@ -152,6 +174,12 @@ export const de = {
       "Diese Übersetzung ist ein LLM-Entwurf und wurde noch nicht menschlich geprüft.",
     translationCanonicalNote:
       "Massgeblich ist die deutsche Fassung; Übersetzungen können abweichen.",
+  },
+  guides: {
+    indexTitle: "Leitfäden",
+    indexLead:
+      "Quellenbasierte Leitfäden zu DSG, EU AI Act, FINMA und Beschaffung. Keine Rechtsberatung.",
+    backHome: "← Zur Startseite",
   },
   tools: {
     indexTitle: "Entscheidungshilfen",

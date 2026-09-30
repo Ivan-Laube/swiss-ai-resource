@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SurveyForm } from "@/components/SurveyForm";
+import { Container } from "@/components/ui";
 import {
   buildLanguageAlternates,
   getMessages,
@@ -62,19 +63,21 @@ export default async function SurveyPage({ params }: PageProps) {
 
   return (
     <>
-      <SiteHeader activeLang={lang} messages={messages} />
-      <main className={styles.main} lang={lang}>
-        <Link href={`/${lang}/`} className={styles.back}>
-          {messages.survey.backHome}
-        </Link>
-        <h1>{title}</h1>
-        <p className={styles.lead}>{description}</p>
-        <p className={styles.meta}>{estimatedTime}</p>
-        <SurveyForm
-          survey={survey}
-          locale={lang}
-          messages={messages.survey}
-        />
+      <SiteHeader activeLang={lang} nav={messages.nav} />
+      <main id="main" className={styles.main} lang={lang}>
+        <Container>
+          <Link href={`/${lang}/`} className={styles.back}>
+            {messages.survey.backHome}
+          </Link>
+          <h1>{title}</h1>
+          <p className={styles.lead}>{description}</p>
+          <p className={styles.meta}>{estimatedTime}</p>
+          <SurveyForm
+            survey={survey}
+            locale={lang}
+            messages={messages.survey}
+          />
+        </Container>
       </main>
     </>
   );

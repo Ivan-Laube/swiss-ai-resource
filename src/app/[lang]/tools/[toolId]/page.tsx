@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { DecisionTree } from "@/components/DecisionTree";
 import { SiteHeader } from "@/components/SiteHeader";
+import { Container } from "@/components/ui";
 import {
   buildLanguageAlternates,
   getMessages,
@@ -71,20 +72,22 @@ export default async function ToolPage({ params }: PageProps) {
 
   return (
     <>
-      <SiteHeader activeLang={lang} messages={messages} />
-      <main className={styles.main} lang={lang}>
-        <Link href={`/${lang}/tools/`} className={styles.back}>
-          {messages.tools.backToIndex}
-        </Link>
-        <h1>{pickLocalized(tree.title, lang)}</h1>
-        <p className={styles.lead}>
-          {pickLocalized(tree.description, lang)}
-        </p>
-        <DecisionTree
-          tree={tree}
-          locale={lang}
-          toolsMessages={messages.tools}
-        />
+      <SiteHeader activeLang={lang} nav={messages.nav} />
+      <main id="main" className={styles.main} lang={lang}>
+        <Container>
+          <Link href={`/${lang}/tools/`} className={styles.back}>
+            {messages.tools.backToIndex}
+          </Link>
+          <h1>{pickLocalized(tree.title, lang)}</h1>
+          <p className={styles.lead}>
+            {pickLocalized(tree.description, lang)}
+          </p>
+          <DecisionTree
+            tree={tree}
+            locale={lang}
+            toolsMessages={messages.tools}
+          />
+        </Container>
       </main>
     </>
   );

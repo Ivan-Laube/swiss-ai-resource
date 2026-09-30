@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SiteHeader } from "@/components/SiteHeader";
+import { Container } from "@/components/ui";
 import {
   getContentPage,
   isPublishableSlug,
@@ -85,44 +86,50 @@ export default async function ContentPage({ params }: PageProps) {
 
   return (
     <>
-      <SiteHeader activeLang={lang} messages={messages} />
-      <main className={styles.main} lang={lang}>
-        <Link href={`/${lang}/`} className={styles.back}>
-          {messages.content.backHome}
-        </Link>
-        <h1>{page.frontmatter.title}</h1>
-        <p className={styles.meta}>{lastVerifiedLabel}</p>
-        {lang !== "de" ? (
-          <div className={styles.translationNotes}>
-            <p className={styles.translationNote}>
-              {messages.content.translationCanonicalNote}
-            </p>
-            {page.frontmatter.translation_status === "draft" ? (
+      <SiteHeader
+        activeLang={lang}
+        nav={messages.nav}
+        availableLocales={localesWithSlug(slug)}
+      />
+      <main id="main" className={styles.main} lang={lang}>
+        <Container>
+          <Link href={`/${lang}/`} className={styles.back}>
+            {messages.content.backHome}
+          </Link>
+          <h1>{page.frontmatter.title}</h1>
+          <p className={styles.meta}>{lastVerifiedLabel}</p>
+          {lang !== "de" ? (
+            <div className={styles.translationNotes}>
               <p className={styles.translationNote}>
-                {messages.content.translationDraft}
+                {messages.content.translationCanonicalNote}
               </p>
-            ) : null}
-          </div>
-        ) : null}
-        <p className={styles.lead}>{page.frontmatter.description}</p>
-        <article
-          className={styles.prose}
-          dangerouslySetInnerHTML={{ __html: html }}
-        />
-        <section className={styles.sources} aria-labelledby="sources-heading">
-          <h2 id="sources-heading">{messages.content.sources}</h2>
-          <ul>
-            {page.frontmatter.sources.map((source) => (
-              <li key={source.url}>
-                <a href={source.url} rel="noopener noreferrer">
-                  {source.title}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </section>
-        <p className={styles.metaFooter}>{lastVerifiedLabel}</p>
-        <p className={styles.disclaimer}>{messages.content.disclaimer}</p>
+              {page.frontmatter.translation_status === "draft" ? (
+                <p className={styles.translationNote}>
+                  {messages.content.translationDraft}
+                </p>
+              ) : null}
+            </div>
+          ) : null}
+          <p className={styles.lead}>{page.frontmatter.description}</p>
+          <article
+            className="prose"
+            dangerouslySetInnerHTML={{ __html: html }}
+          />
+          <section className={styles.sources} aria-labelledby="sources-heading">
+            <h2 id="sources-heading">{messages.content.sources}</h2>
+            <ul>
+              {page.frontmatter.sources.map((source) => (
+                <li key={source.url}>
+                  <a href={source.url} rel="noopener noreferrer">
+                    {source.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+          <p className={styles.metaFooter}>{lastVerifiedLabel}</p>
+          <p className={styles.disclaimer}>{messages.content.disclaimer}</p>
+        </Container>
       </main>
     </>
   );

@@ -2,7 +2,7 @@
 
 Multilingual (DE / EN / FR / IT) static site with Swiss-specific AI deployment guidance for local companies. Built with Next.js static export, hosted on Cloudflare Pages.
 
-**Production:** [https://aicompliant.ch](https://aicompliant.ch) (also `www`). Canonical/hreflang/sitemap base URL comes from `NEXT_PUBLIC_SITE_URL` (default in [`src/lib/site.ts`](src/lib/site.ts)). Static export also emits [`/sitemap.xml`](src/app/sitemap.ts) and [`/robots.txt`](src/app/robots.ts) (all four locales × homes, content slugs, tools, vendors, survey, benchmark, website-check; bare `/` omitted), plus [`404.html`](src/app/not-found.tsx) for unknown paths (Cloudflare Pages; locale from URL path, default `de`). Workers require `SITE_ORIGIN` (default in wrangler vars is the same origin) and reject POST/OPTIONS whose `Origin` does not match it (or the www ↔ apex sibling).
+**Production:** [https://aicompliant.ch](https://aicompliant.ch) (also `www`). Canonical/hreflang/sitemap base URL comes from `NEXT_PUBLIC_SITE_URL` (default in [`src/lib/site.ts`](src/lib/site.ts)). Static export also emits [`/sitemap.xml`](src/app/sitemap.ts) and [`/robots.txt`](src/app/robots.ts) (all four locales × homes, guides index, content slugs, tools, vendors, survey, benchmark, website-check; bare `/` omitted), plus [`404.html`](src/app/global-not-found.tsx) for unknown paths (Cloudflare Pages; `<html lang>` defaults to `de`, early script + chrome follow the URL path). Locale pages set `<html lang>` from the `[lang]` root layout (**R1A**). Workers require `SITE_ORIGIN` (default in wrangler vars is the same origin) and reject POST/OPTIONS whose `Origin` does not match it (or the www ↔ apex sibling).
 
 German (`de`) is the canonical content language. See [swiss_ai_resource_implementation_plan.md](swiss_ai_resource_implementation_plan.md) for the full architecture and task plan.
 
@@ -51,6 +51,7 @@ German (`de`) is the canonical content language. See [swiss_ai_resource_implemen
 | T42 | GitHub Actions: allow Actions to create/approve PRs | Done |
 | T44 | Pre-traffic operator hardening (`api.aicompliant.ch`, Turnstile, DNSSEC, Access, CSP hashes, …) | Done — see [OPERATOR_CHECKLIST.md](OPERATOR_CHECKLIST.md) |
 | T29 | Lawyer review of DE pages (incl. legal pages after T40) | Not started |
+| Redesign | Visual system + site shell (tokens, header, language control, guides index, …) | In progress — PR 1 (R00–R1F, R50–R53) done; PR 2–4 open. See [website_redesign_plan.md](website_redesign_plan.md), [docs/design-system.md](docs/design-system.md) |
 
 ## Local development
 
@@ -74,9 +75,10 @@ Open [http://localhost:3000](http://localhost:3000) (root redirects to `/de/`).
 | `npm run check:rules` | Validate `data/rules/*.json` decision trees |
 | `npm run check:survey` | Validate `data/survey-questions.json` |
 | `npm run check:survey-answers` | Validate intake answer helpers (T23) |
-| `npm run check:survey-aggregates` | Validate `data/survey-aggregates.json` + aggregation fixtures (T25) |
+| `npm run check:survey-aggregates` | Validate `data/survey-aggregates.json` + aggregation fixtures (T25); fails if the file is the e2e test fixture |
 | `npm run aggregate:survey -- --local [--write]` | Build aggregates from local D1 (T25) |
 | `npm run check:scanner` | Validate `data/scanner-checks.json` |
+| `npm run check:contrast` | WCAG AA contrast of the design-system token pairs, light and dark (R51) |
 | `npm run dev:survey` | Survey Worker local (`wrangler dev`) |
 | `npm run db:survey:local` | Apply survey D1 migrations locally |
 | `npm run dev:scanner` | Scanner Worker local (`wrangler dev`) |
@@ -90,16 +92,19 @@ Open [http://localhost:3000](http://localhost:3000) (root redirects to `/de/`).
 | `npm run maintain:act` | Bump `last_verified` / `last_checked`, material brief + vendor extract (T17/T18; pass `--write`) |
 | `npm run changed-de-slugs` | List DE slugs with canonical prose changes (T19; used by translate workflow) |
 | `npm run translate` | Draft EN/FR/IT content from DE (`ANTHROPIC_API_KEY` required unless `--dry-run`) |
+| `npm run build:e2e` | Dual static exports for Playwright (`out-e2e` / `out-e2e-unconfigured`); temporarily installs the populated survey fixture ([guard](DEPLOY.md#e2e-survey-fixture-guard)) |
+| `npm run test:e2e` | All Playwright projects: functional, CSP/headers, layout, privacy, a11y, visual |
+| `npm run test:visual` | Visual snapshots only, run natively (quick look; baselines must come from `scripts/docker-visual.sh`) |
 
-PR and `main` CI ([`.github/workflows/ci.yml`](.github/workflows/ci.yml)): typecheck, lint, offline `check:*`, and `npm run build`. Details and the required GitHub Actions PR-permission setting: [DEPLOY.md](DEPLOY.md#continuous-integration).
+PR and `main` CI ([`.github/workflows/ci.yml`](.github/workflows/ci.yml)): typecheck, lint, offline `check:*`, `npm run build`, and Playwright e2e (inside the Playwright Docker image, so visual baselines match). Baselines are regenerated with `scripts/docker-visual.sh`; see [DEPLOY.md](DEPLOY.md#continuous-integration).
 
 ## Project layout
 
 ```
 content/{de,en,fr,it}/   # Markdown pages (DE canonical)
 data/                    # vendors.json, sources.json, glossary.json, rules/, survey-*, scanner-checks.json
-src/app/                 # App Router (locale routes + sitemap.ts / robots.ts / not-found.tsx → out/)
-src/components/          # Shared UI (SiteHeader, NotFoundView, DecisionTree, VendorTable, WebsiteCheckForm, …)
+src/app/                 # App Router: (root)/ for `/`, [lang]/ root layout (per-locale html lang), global-not-found → 404.html, sitemap.ts / robots.ts
+src/components/          # Shared UI (SiteHeader, LanguageControl, NotFoundView, DecisionTree, VendorTable, WebsiteCheckForm, …)
 src/content/             # Frontmatter Zod schema + loader
 src/vendors/             # Vendor Zod schema + loader
 src/sources/             # Source registry Zod schema + loader
@@ -115,7 +120,7 @@ src/snapshot/            # Fetch + normalize source snapshots (T15)
 src/classify/            # LLM diff classification (T16)
 src/maintain/            # last_verified bump + material brief (T17)
 src/links/               # Published URL dead-link check (T21)
-src/i18n/                # Locale config + UI string files
+src/i18n/                # Locale config, UI strings, pathForLocale (same-path language switch)
 src/lib/markdown.ts      # Markdown → HTML (marked + sanitize-html)
 snapshots/               # Normalized source text + meta (monthly GHA)
 ```
@@ -128,7 +133,7 @@ Compliance pages are Markdown with YAML frontmatter (`last_verified`, `volatilit
 - Schema + loader: [`src/content/`](src/content/)
 - Fixture used by `check:content`: [`content/de/_fixture-schema.md`](content/de/_fixture-schema.md)
 
-Same filename slug across locales (e.g. `ndsg-ai-basics.md`) so hreflang pairing stays simple. Content routes: `/[lang]/[slug]/` (T6). Internal fixtures use a `_` prefix (e.g. `_fixture-schema.md`) and are not published (excluded from routes and from `sitemap.xml`).
+Same filename slug across locales (e.g. `ndsg-ai-basics.md`) so hreflang pairing stays simple. Content routes: `/[lang]/[slug]/` (T6). Guides index: [`/[lang]/guides/`](src/app/[lang]/guides/page.tsx) (**R19**) — Card grid of publishable guides (excludes legal pages via `listGuidePages`); fixed-segment hreflang + sitemap entry like tools/vendors. Internal fixtures use a `_` prefix (e.g. `_fixture-schema.md`) and are not published (excluded from routes and from `sitemap.xml`).
 
 ### Published cornerstone pages (T6 + T14)
 
@@ -152,7 +157,7 @@ npm run translate -- --slug=ndsg-ai-basics
 # Optional: TRANSLATE_MODEL overrides the default Claude Sonnet model
 ```
 
-Generated files always get `translation_status: draft`. Non-DE content pages show a canonical-DE note and a draft note. Content-page `hreflang` alternates list all locales that have the slug (`localesWithSlug`). Homepage lists compliance pages per locale when translations exist.
+Generated files always get `translation_status: draft`. Non-DE content pages show a canonical-DE note and a draft note. Content-page `hreflang` alternates list all locales that have the slug (`localesWithSlug`). The header [`LanguageControl`](src/components/LanguageControl.tsx) uses the same set via `availableLocales` (passed from content pages; all four locales on fixed routes such as `/guides/`), links to the same path through [`pathForLocale`](src/i18n/path.ts), keeps BCP 47 `hrefLang`, and preserves the URL hash. The guides index and homepage list the same publishable guides per locale (`listGuidePages`).
 
 Decision-tool node copy (`data/rules/*.json`) also ships `de` + `en` + `fr` + `it` on every LocalizedString; `npm run check:rules` enforces that. Vendor table chrome strings were already in `src/i18n/messages/` (T12).
 
@@ -227,7 +232,7 @@ Current trees: `us-hosted-llm-ndsg` (T9), `eu-ai-act-applicability` (T10).
 
 Adoption questionnaire: [`data/survey-questions.json`](data/survey-questions.json) (**version 2**, 12 questions, full DE/EN/FR/IT). Schema and loader: [`src/survey/`](src/survey/). Intake validation: `validateIntake` / `validateAnswers` in [`src/survey/answers.ts`](src/survey/answers.ts). Field reference: [data/README.md](data/README.md#survey-questions-survey-questionsjson). Validate with `npm run check:survey` and `npm run check:survey-answers`.
 
-Instrument covers company size, sector, language region, AI maturity/tools/use cases, CHF spend, hosting, personal data in AI, EU market exposure, blockers, and vendor decision factors. **T23** Worker intake: [`workers/survey/`](workers/survey/) (`POST /submit`, D1, Turnstile with hostname/action checks, honeypot, hashed per-IP daily cap; `Origin` must match required `SITE_ORIGIN` or its www sibling) — production API `https://api.aicompliant.ch` (`workers_dev` off); see [DEPLOY.md](DEPLOY.md#survey-worker-t23). Optional emails land in `report_signups` only when `report_opt_in` is true, with their own id (no FK to `responses`) and a date-only `created_at`, so they are unlinkable from answers; retention purge + deletion path (public contact on Datenschutz): [DEPLOY.md](DEPLOY.md#email-retention-and-deletion). **T24** form UI: [`/[lang]/survey/`](src/app/[lang]/survey/page.tsx) — live at [aicompliant.ch/de/survey/](https://aicompliant.ch/de/survey/). **T25** aggregation: a weekly Worker cron purges rows older than 24 months, then computes n&lt;5-suppressed aggregates from `responses` only (never `report_signups`) and commits `survey-aggregates.json` to the dedicated [`swiss-ai-survey-data`](https://github.com/Ivan-Laube/swiss-ai-survey-data) repo via the GitHub Contents API (**T43** — data-repo classic PAT; old site-repo PAT revoked); the Next.js build fetches it back into [`data/survey-aggregates.json`](data/survey-aggregates.json) via `npm run sync:survey-aggregates` (a `prebuild` hook) before rendering T26. Run locally with `npm run aggregate:survey -- --local`. See [DEPLOY.md](DEPLOY.md#survey-aggregation-t25) and [DEPLOY.md](DEPLOY.md#pat-scoped-to-a-dedicated-data-repo-t43). Secret hygiene **T23e** / **T23f** / **T43**, browser smoke **T41**, and operator cutover **T44** are done — [DEPLOY.md](DEPLOY.md#pre-launch-secret-hygiene-t23e--t23f) · [OPERATOR_CHECKLIST.md](OPERATOR_CHECKLIST.md).
+Instrument covers company size, sector, language region, AI maturity/tools/use cases, CHF spend, hosting, AI governance measures, EU market exposure, blockers, and vendor decision factors. **T23** Worker intake: [`workers/survey/`](workers/survey/) (`POST /submit`, D1, Turnstile with hostname/action checks, honeypot, hashed per-IP daily cap; `Origin` must match required `SITE_ORIGIN` or its www sibling) — production API `https://api.aicompliant.ch` (`workers_dev` off); see [DEPLOY.md](DEPLOY.md#survey-worker-t23). Optional emails land in `report_signups` only when `report_opt_in` is true, with their own id (no FK to `responses`) and a date-only `created_at`, so they are unlinkable from answers; retention purge + deletion path (public contact on Datenschutz): [DEPLOY.md](DEPLOY.md#email-retention-and-deletion). **T24** form UI: [`/[lang]/survey/`](src/app/[lang]/survey/page.tsx) — live at [aicompliant.ch/de/survey/](https://aicompliant.ch/de/survey/). **T25** aggregation: a weekly Worker cron purges rows older than 24 months, then computes n&lt;5-suppressed aggregates from `responses` only (never `report_signups`) and commits `survey-aggregates.json` to the dedicated [`swiss-ai-survey-data`](https://github.com/Ivan-Laube/swiss-ai-survey-data) repo via the GitHub Contents API (**T43** — data-repo classic PAT; old site-repo PAT revoked); the Next.js build fetches it back into [`data/survey-aggregates.json`](data/survey-aggregates.json) via `npm run sync:survey-aggregates` (a `prebuild` hook) before rendering T26. Run locally with `npm run aggregate:survey -- --local`. See [DEPLOY.md](DEPLOY.md#survey-aggregation-t25) and [DEPLOY.md](DEPLOY.md#pat-scoped-to-a-dedicated-data-repo-t43). Secret hygiene **T23e** / **T23f** / **T43**, browser smoke **T41**, and operator cutover **T44** are done — [DEPLOY.md](DEPLOY.md#pre-launch-secret-hygiene-t23e--t23f) · [OPERATOR_CHECKLIST.md](OPERATOR_CHECKLIST.md).
 
 ## Website Quick-Check (T32–T37)
 

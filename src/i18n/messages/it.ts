@@ -2,16 +2,38 @@ import type { Messages } from "../types";
 
 export const it: Messages = {
   meta: {
-    title: "Swiss AI Deployment Resource",
+    title: "aicompliant.ch",
     description:
       "Informazioni pratiche sul deployment dell'IA in Svizzera: conformità, confronto fornitori e strumenti decisionali interattivi.",
   },
   nav: {
-    brand: "Swiss AI Resource",
+    brand: "aicompliant.ch",
+    brandSubtitle: "Swiss AI Resource",
+    wordmark: "aicompliant",
+    wordmarkTld: ".ch",
     languagesLabel: "Lingue",
+    mainLabel: "Navigazione principale",
+    skipToContent: "Vai al contenuto",
+    menu: "Menu",
+    guides: "Guide",
+    tools: "Strumenti decisionali",
+    vendors: "Confronto fornitori",
+    survey: "Sondaggio & Benchmark",
+    websiteCheck: "Controlla sito",
   },
   footer: {
-    navLabel: "Informazioni legali",
+    navLabel: "Piè di pagina",
+    brandDescription:
+      "Guide, strumenti decisionali e un confronto fornitori basato su fonti per l'uso dell'IA in Svizzera.",
+    lastSourceCheck: "Ultimo controllo delle fonti: {date}",
+    colGuides: "Guide",
+    colTools: "Strumenti",
+    colData: "Dati",
+    colLegal: "Note legali",
+    benchmark: "Benchmark",
+    disclaimer:
+      "I contenuti hanno solo scopo informativo e non costituiscono consulenza legale. Verificate le fonti e consultate specialisti se necessario.",
+    copyright: "© {year} aicompliant.ch",
     impressum: "Note legali",
     privacy: "Informativa sulla privacy",
   },
@@ -34,7 +56,7 @@ export const it: Messages = {
       "Prima stima di un sito da segnali pubblici (HTTPS, link privacy, tracker). Non è un audit di conformità.",
   },
   websiteCheck: {
-    metaTitle: "Quick-Check sito web · Swiss AI Resource",
+    metaTitle: "Quick-Check sito web",
     metaDescription:
       "Prima stima di un sito: HTTPS, link privacy, impressum, strumenti cookie, tracker e header di sicurezza — con citazioni legali. Non è consulenza legale.",
     title: "Quick-Check sito web",
@@ -78,7 +100,7 @@ export const it: Messages = {
     scanAgain: "Controlla un altro URL",
   },
   benchmark: {
-    metaTitle: "Benchmark · Swiss AI Resource",
+    metaTitle: "Benchmark",
     metaDescription:
       "Risultati aggregati anonimi del sondaggio sull'adozione dell'IA in Svizzera. Le celle con meno di cinque risposte non vengono mostrate.",
     indexTitle: "Benchmark di adozione dell'IA",
@@ -108,7 +130,7 @@ export const it: Messages = {
       "Questo benchmark è uno snapshot pilota anonimo e non costituisce consulenza legale. I risultati descrivono il campione, non l'intera economia svizzera.",
   },
   survey: {
-    metaTitle: "Sondaggio · Swiss AI Resource",
+    metaTitle: "Sondaggio",
     metaDescription:
       "Breve sondaggio su utilizzo dell'IA, spesa e requisiti di hosting nelle aziende svizzere.",
     backHome: "← Torna alla home",
@@ -153,6 +175,12 @@ export const it: Messages = {
       "Questa traduzione è una bozza generata da LLM e non è ancora stata revisionata da una persona.",
     translationCanonicalNote:
       "Fa fede la versione tedesca; le traduzioni possono differire.",
+  },
+  guides: {
+    indexTitle: "Guide",
+    indexLead:
+      "Guide basate su fonti su protezione dei dati, EU AI Act, FINMA e appalti. Non costituiscono consulenza legale.",
+    backHome: "← Torna alla home",
   },
   tools: {
     indexTitle: "Strumenti decisionali",

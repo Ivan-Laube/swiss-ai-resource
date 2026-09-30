@@ -32,6 +32,8 @@ export {
 
   listContentSlugs,
 
+  listGuidePages,
+
   listPublishableContentSlugs,
 
   localesWithSlug,
@@ -41,6 +43,8 @@ export {
   type ContentPage,
 
 } from "./load";
+
+export { LEGAL_SLUGS } from "./legal";
 
 
 

@@ -469,6 +469,7 @@ export function SurveyForm({ survey, locale, messages }: SurveyFormProps) {
             <div
               className={styles.turnstileWrap}
               ref={turnstileHostRef}
+              data-turnstile-host
             />
           </div>
         </div>

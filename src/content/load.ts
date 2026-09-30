@@ -5,6 +5,7 @@ import matter from "gray-matter";
 
 import { locales, type Locale } from "@/i18n/config";
 
+import { LEGAL_SLUGS } from "./legal";
 import {
   parseContentFrontmatter,
   type ContentFrontmatter,
@@ -131,6 +132,14 @@ export function getAllContentPages(locale?: Locale): ContentPage[] {
   }
 
   return pages;
+}
+
+/** Publishable guide pages for a locale (excludes legal pages and `_` fixtures). */
+export function listGuidePages(locale: Locale): ContentPage[] {
+  return getAllContentPages(locale).filter(
+    (page) =>
+      isPublishableSlug(page.slug) && !LEGAL_SLUGS.has(page.slug),
+  );
 }
 
 /** Validate every markdown file under content/{locale}/. Returns page count. */

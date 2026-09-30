@@ -7,6 +7,7 @@ import { listRuleIds } from "@/rules";
 export const dynamic = "force-static";
 
 const FIXED_SEGMENTS = [
+  "guides",
   "tools",
   "vendors",
   "survey",

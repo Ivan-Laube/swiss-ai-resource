@@ -470,7 +470,11 @@ export function WebsiteCheckForm({ locale, messages }: Props) {
         </div>
         <div className={styles.field}>
           <span className={styles.fieldLabel}>{messages.turnstileLabel}</span>
-          <div className={styles.turnstileWrap} ref={turnstileHostRef} />
+          <div
+            className={styles.turnstileWrap}
+            ref={turnstileHostRef}
+            data-turnstile-host
+          />
         </div>
         <div className={styles.actions}>
           <button

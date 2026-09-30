@@ -36,8 +36,9 @@ This plan turns the reviewed Stitch proposal ("Helvetia Precision GovTech") into
 | D6 | The survey is promoted **after a result**, not in the hero | Survey prompt at the end of Quick-Check results and decision-tool outcomes, plus a band on the homepage. |
 | D7 | **Dark mode is kept** | Every token has a dark value. It follows `prefers-color-scheme`, with no manual toggle in this scope. |
 | D8 | "Reviewed by counsel" badge **appears only when the review fields are complete** | Uses `reviewFieldsComplete()`. There is no "not yet reviewed" label. Lawyer review (T29) is due before full launch. |
-| D9 | Mobile-first layout with breakpoints at **768px** and **1024px** | No horizontal page scroll anywhere. Tap targets are at least 44px. |
+| D9 | Mobile-first layout with breakpoints at **768px** and **1024px** | No horizontal page scroll anywhere. Tap targets are at least 44px. Exception: the header switches to the desktop nav at **1200px** (the DE/FR/IT nav needs ~1150px), and the header CTA moves into the menu below **480px**. |
 | D10 | Quick-Check and decision-tool state live in the **URL fragment** (`#…`) | The fragment is never sent to the server or written to logs, and it works with the static export. |
+| D11 | **`<html lang>` per locale** via a `[lang]` root layout + `(root)` for `/` + `global-not-found` | Next 16 i18n pattern (**R1A**). Shared font/metadata in `src/app/document.ts`. Single `404.html` defaults to `de` and sets `document.documentElement.lang` from the path when the first segment is a known locale (CSP-hashed). |
 
 ## 4. Stitch proposal: adopted vs rejected
 
@@ -155,7 +156,7 @@ The existing message strings take precedence over the labels in this table. Conf
 - Nav: Leitfäden (`/guides/`), Entscheidungshilfen (`/tools/`), Anbietervergleich (`/vendors/`), Umfrage & Benchmark (`/survey/`)
 - Language control
 - Primary CTA "Website prüfen" (`/website-check/`)
-- Below 1024px everything except the logo and the CTA moves into a `<details>` menu. The breakpoint may shift if FR/IT labels need it; see R54.
+- Below **1200px** everything except the logo, the CTA and the menu toggle moves into a `<details>` menu (the panel drops down full width under the header). Below **480px** the CTA also moves into the menu, so the header stays one row. Covered by `e2e/layout/header.spec.ts` (all locales × 320–1280px).
 
 **Footer:**
 
@@ -192,28 +193,28 @@ Task status is `Todo`, `In progress` or `Done`. The "Depends on" column refers t
 |---|---|---|---|
 | R00 | Commit or land the pending work on `main` (survey v3 schema/answers/aggregates, `SurveyForm.tsx`, `e2e/`, `playwright.config.ts`, `scripts/build-e2e.ts`, `scripts/evaluate-survey-instrument.ts`, CI changes) so the redesign branch starts clean | — | Done |
 | R01 | Keep `stitch_ai_compliant_website_redesign.zip` out of the repo (move it out of the working tree or add it to `.gitignore`) | — | Done |
-| R02 | Create the branch `redesign/foundation` from the updated `main` | R00 | Todo |
+| R02 | Create the branch `redesign/foundation` from the updated `main` | R00 | Done |
 
 ### PR 1: Foundation and site shell (L)
 
 | ID | Task | Depends on | Status |
 |---|---|---|---|
-| R10 | Design tokens from §5.1–5.4 in `globals.css` (light and dark, status tones, spacing, radii, shadows). Remove the old `--background` / `--foreground` tokens once all pages are migrated | R02 | Todo |
-| R11 | Instrument Sans through `next/font` (read the Next 16 font docs in `node_modules/next/dist/docs/` first). Variable weights 400–700, subsets `latin` and `latin-ext`. Remove Geist / Geist Mono. Check `tnum` support and fall back to a documented alternative if it's missing. Confirm the built site makes no request to `fonts.googleapis.com` / `fonts.gstatic.com` | R10 | Todo |
-| R12 | Base element styles: headings, links (underline on hover/focus), `:focus-visible` rings, `::selection`, form controls. Shared `.prose` styles for rendered Markdown (lists, tables, blockquotes, code) | R10 | Todo |
-| R13 | UI building blocks in `src/components/ui/`: `Container`, `Button` (primary / secondary / ghost; renders as `Link` or `button`), `StatusPill` (tone + dot), `Card` (static / interactive), `Callout` (info / warning / neutral, left accent), `SectionHeader` (kicker, title, lead, optional action link), and inline SVG `Icon`s | R10 | Todo |
-| R14 | Logo: a `BrandMark` SVG component (Appendix A) and a `BrandLockup` (mark + "aicompliant**.ch**" + "Swiss AI Resource"). App icons: `icon.svg` (large-star-only variant), `favicon.ico`, `apple-icon.png`. Delete the default favicon and the create-next-app leftovers in `public/` (`next.svg`, `vercel.svg`, `file.svg`, `globe.svg`, `window.svg`) after checking nothing references them | R10 | Todo |
-| R15 | Rewrite `SiteHeader`: white sticky header with a hairline border; light shadow on scroll through scroll-driven CSS animation (progressive enhancement, border only as fallback); nav items from §5.5; "Website prüfen" CTA; `aria-current` on the active section | R13, R14 | Todo |
-| R16 | Language control that stays on the same page: each page passes the locales it exists in (e.g. via `localesWithSlug()`), and the switcher links to the same path in those locales and hides the rest. Segmented-control styling, `hrefLang` kept | R15 | Todo |
-| R17 | Mobile menu (< 1024px) built with `<details>`/`<summary>`, no JS dependency for opening. Closes after client-side navigation (small effect keyed on pathname, or plain `<a>` links; decide during implementation). Tap targets ≥ 44px | R15 | Todo |
-| R18 | Rewrite `SiteFooter` with the columns from §5.5 and the computed "last source check" date (latest of `last_verified` across published DE guides and `last_checked` across vendors), disclaimer and copyright | R13, R14 | Todo |
-| R19 | New route `/[lang]/guides/`: guide index built from `Card`s, with hreflang alternates and a sitemap entry. It's the target of the "Leitfäden" nav item | R13 | Todo |
-| R1A | Correct `<html lang>` per locale. Investigate the Next 16 options (multiple root layouts through a route group for `[lang]` vs root, `global-not-found`). Fallback: set `document.documentElement.lang` early, with its hash picked up by `csp-hashes.ts`. Root `/` redirect and `404.html` must keep working | R02 | Todo |
-| R1B | Metadata rebrand: title template `%s \| aicompliant.ch`, per-locale default title/description from messages, `metadataBase` from `siteUrl`, `applicationName` | R02 | Todo |
-| R1C | Accessibility baseline: "skip to content" link, `<main id>` on every page, `prefers-reduced-motion` handling, landmark labels | R12 | Todo |
-| R1D | `docs/design-system.md`: tokens, building blocks, status mapping (§5.2), and usage rules (red restraint, no verdict colours on legal outcomes, no third-party assets). This replaces the Stitch `DESIGN.md` as the reference | R10–R13 | Todo |
-| R1E | New UI strings (nav, footer, menu, skip link, brand) added to `Messages` / `de.ts`, drafted in `en.ts` / `fr.ts` / `it.ts` | R15–R18 | Todo |
-| R1F | Apply the new shell to every route (home, guides, legal, tools, vendors, website-check, survey, benchmark, 404). Page bodies may keep interim styling until PR 3/4, but must use the tokens so dark mode doesn't break | R15–R19 | Todo |
+| R10 | Design tokens from §5.1–5.4 in `globals.css` (light and dark, status tones, spacing, radii, shadows). Remove the old `--background` / `--foreground` tokens once all pages are migrated | R02 | Done |
+| R11 | Instrument Sans through `next/font` (read the Next 16 font docs in `node_modules/next/dist/docs/` first). Variable weights 400–700, subsets `latin` and `latin-ext`. Remove Geist / Geist Mono. Check `tnum` support and fall back to a documented alternative if it's missing. Confirm the built site makes no request to `fonts.googleapis.com` / `fonts.gstatic.com` | R10 | Done |
+| R12 | Base element styles: headings, links (underline on hover/focus), `:focus-visible` rings, `::selection`, form controls. Shared `.prose` styles for rendered Markdown (lists, tables, blockquotes, code) | R10 | Done |
+| R13 | UI building blocks in `src/components/ui/`: `Container`, `Button` (primary / secondary / ghost; renders as `Link` or `button`), `StatusPill` (tone + dot), `Card` (static / interactive), `Callout` (info / warning / neutral, left accent), `SectionHeader` (kicker, title, lead, optional action link), and inline SVG `Icon`s | R10 | Done |
+| R14 | Logo: a `BrandMark` SVG component (Appendix A) and a `BrandLockup` (mark + "aicompliant**.ch**" + "Swiss AI Resource"). App icons: `icon.svg` (large-star-only variant), `favicon.ico`, `apple-icon.png`. Delete the default favicon and the create-next-app leftovers in `public/` (`next.svg`, `vercel.svg`, `file.svg`, `globe.svg`, `window.svg`) after checking nothing references them | R10 | Done |
+| R15 | Rewrite `SiteHeader`: white sticky header with a hairline border; light shadow on scroll through scroll-driven CSS animation (progressive enhancement, border only as fallback); nav items from §5.5; "Website prüfen" CTA; `aria-current` on the active section | R13, R14 | Done |
+| R16 | Language control that stays on the same page: each page passes the locales it exists in (e.g. via `localesWithSlug()`), and the switcher links to the same path in those locales and hides the rest. Segmented-control styling, `hrefLang` kept | R15 | Done |
+| R17 | Mobile menu (< 1200px) built with `<details>`/`<summary>`, no JS dependency for opening. Closes after client-side navigation (small effect keyed on pathname, or plain `<a>` links; decide during implementation). Tap targets ≥ 44px | R15 | Done |
+| R18 | Rewrite `SiteFooter` with the columns from §5.5 and the computed "last source check" date (latest of `last_verified` across published DE guides and `last_checked` across vendors), disclaimer and copyright | R13, R14 | Done |
+| R19 | New route `/[lang]/guides/`: guide index built from `Card`s, with hreflang alternates and a sitemap entry. It's the target of the "Leitfäden" nav item | R13 | Done |
+| R1A | Correct `<html lang>` per locale. Investigate the Next 16 options (multiple root layouts through a route group for `[lang]` vs root, `global-not-found`). Fallback: set `document.documentElement.lang` early, with its hash picked up by `csp-hashes.ts`. Root `/` redirect and `404.html` must keep working | R02 | Done |
+| R1B | Metadata rebrand: title template `%s \| aicompliant.ch`, per-locale default title/description from messages, `metadataBase` from `siteUrl`, `applicationName` | R02 | Done |
+| R1C | Accessibility baseline: "skip to content" link, `<main id>` on every page, `prefers-reduced-motion` handling, landmark labels | R12 | Done |
+| R1D | `docs/design-system.md`: tokens, building blocks, status mapping (§5.2), and usage rules (red restraint, no verdict colours on legal outcomes, no third-party assets). This replaces the Stitch `DESIGN.md` as the reference | R10–R13 | Done |
+| R1E | New UI strings (nav, footer, menu, skip link, brand) added to `Messages` / `de.ts`, drafted in `en.ts` / `fr.ts` / `it.ts` | R15–R18 | Done |
+| R1F | Apply the new shell to every route (home, guides, legal, tools, vendors, website-check, survey, benchmark, 404). Page bodies may keep interim styling until PR 3/4, but must use the tokens so dark mode doesn't break | R15–R19 | Done |
 
 ### PR 2: Homepage (M)
 
@@ -267,10 +268,10 @@ Task status is `Todo`, `In progress` or `Done`. The "Depends on" column refers t
 
 | ID | Task | Depends on | Status |
 |---|---|---|---|
-| R50 | Playwright visual snapshots: all routes × {375, 768, 1280} × {light, dark} × {de, fr}. Dates and live data are masked. Baselines are created in PR 1 and updated per PR | R1F | Todo |
-| R51 | Automated accessibility checks with `@axe-core/playwright` (new dev dependency): no serious or critical violations on any route, both themes; contrast pairs from §5.1 pass AA | R1F | Todo |
-| R52 | E2E test "no third-party requests": record network requests per route. Allowed: same origin; `api.aicompliant.ch` + `challenges.cloudflare.com` only on `/website-check/` and `/survey/` | R11 | Todo |
-| R53 | The CSP header is unchanged apart from regenerated hashes; the existing `e2e/website-check/headers.spec.ts` stays green | R1A | Todo |
+| R50 | Playwright visual snapshots: all routes × {375, 768, 1280} × {light, dark} × {de, fr}. Dates and live data are masked. Baselines are created in PR 1 and updated per PR | R1F | Done |
+| R51 | Automated accessibility checks with `@axe-core/playwright` (new dev dependency): no serious or critical violations on any route, both themes; contrast pairs from §5.1 pass AA | R1F | Done |
+| R52 | E2E test "no third-party requests": record network requests per route (DE + FR, including the 404 page). Allowed: same origin; `api.aicompliant.ch` + `challenges.cloudflare.com` only on `/website-check/` and `/survey/` | R11 | Done |
+| R53 | `e2e/website-check/headers.spec.ts` locks the full CSP (exact directive set; only `script-src` sha256 hashes may vary, no `unsafe-inline`/`unsafe-eval`/extra origins) and the other security headers, in both `out-e2e` and `out-e2e-unconfigured` | R1A | Done |
 | R54 | Translation and overflow review: Ivan reviews the drafted EN/FR/IT strings; manual check that nav, buttons and cards don't overflow in FR/IT at every breakpoint (adjust the menu breakpoint if needed) | each PR | Todo |
 | R55 | Performance check: Lighthouse mobile on home, one guide, vendors and website-check. Targets: performance ≥ 90, accessibility = 100, CLS < 0.05. Guide pages ship no client JS apart from framework basics | PR 2, PR 3 | Todo |
 | R56 | Manual check on real devices (iOS Safari, Android Chrome) on the Cloudflare Pages preview (behind Access) before each merge | each PR | Todo |
@@ -304,7 +305,7 @@ PR 2, 3 and 4 depend only on PR 1 and can be done in any order. The one cross-de
 |---|---|
 | The pending survey/e2e work on `main` conflicts with the redesign (`SurveyForm.tsx`, CI) | R00 lands it first; R43 only restyles and doesn't change behaviour |
 | Next 16 APIs differ from older docs (fonts, metadata, root layouts, OG images) | Read `node_modules/next/dist/docs/` before each related task (per `AGENTS.md`); R1A and R46 have documented fallbacks |
-| Instrument Sans lacks tabular figures | R11 verifies; fallback is `tabular-nums` where supported, plus fixed-width number containers in the stats bar and tables |
+| Instrument Sans lacks tabular figures | R11 verified: GSUB includes `tnum`; `font-variant-numeric: tabular-nums` is set on `body`. Fixed-width number containers remain available for stats bar / table layout (R23, R40) |
 | Scroll-shadow CSS isn't supported in every browser | Progressive enhancement only; the hairline border always gives the separation |
 | FR/IT labels overflow the desktop nav | R54 check; the menu breakpoint can move up; nav labels are kept short in messages |
 | Visual snapshots are flaky (fonts, dates, live data) | Self-hosted font, masked dates/counts, fixed viewport and colour scheme per project |
