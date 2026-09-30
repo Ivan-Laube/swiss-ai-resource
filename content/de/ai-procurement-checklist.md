@@ -4,6 +4,7 @@ description: "Praktische Fragen an Anbieter und intern, bevor Sie ein KI-Tool ei
 last_verified: "2026-07-10"
 volatility: "stable"
 translation_status: "canonical"
+category: "beschaffung"
 reviewed_by: null
 review_date: null
 review_scope: null

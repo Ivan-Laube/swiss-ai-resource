@@ -1,45 +1,49 @@
 .section {
-  margin-top: 2.5rem;
-  padding: 1.25rem 1.35rem;
-  border-radius: 0.65rem;
-  border: 1px solid color-mix(in srgb, var(--foreground) 12%, transparent);
-  background: color-mix(in srgb, var(--foreground) 3%, transparent);
+  margin-top: var(--space-7);
+  padding: var(--space-5);
+  border-radius: var(--radius-panel);
+  border: 1px solid var(--border);
+  background: var(--surface);
 }
 
 .section h2 {
-  margin-bottom: 0.65rem;
-  font-size: 1.2rem;
-  letter-spacing: -0.02em;
+  margin: 0 0 var(--space-3);
+  font-size: var(--font-h3);
+  line-height: var(--leading-h3);
+  letter-spacing: var(--tracking-h3);
+  font-weight: var(--weight-semibold);
 }
 
 .lead {
-  margin-bottom: 1.1rem;
-  font-size: 0.9375rem;
-  line-height: 1.5;
-  opacity: 0.85;
+  margin: 0 0 var(--space-4);
+  font-size: var(--font-small);
+  line-height: var(--leading-small);
+  color: var(--text-muted);
 }
 
 .field {
   display: flex;
   flex-direction: column;
-  gap: 0.55rem;
+  gap: var(--space-2);
   margin: 0;
   padding: 0;
   border: none;
-  max-width: 22rem;
+  max-width: 28rem;
 }
 
 .field legend {
   padding: 0;
-  font-size: 0.875rem;
-  font-weight: 600;
+  margin-bottom: var(--space-2);
+  font-size: var(--font-small);
+  font-weight: var(--weight-semibold);
+  color: var(--text);
 }
 
 .options {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: var(--space-2);
   margin: 0;
   padding: 0;
 }
@@ -47,45 +51,64 @@
 .option {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.45rem 0.65rem;
-  border-radius: 0.4rem;
-  border: 1px solid color-mix(in srgb, var(--foreground) 18%, transparent);
-  font-size: 0.9375rem;
+  gap: var(--space-2);
+  min-height: 44px;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-card);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  font-size: var(--font-small);
+  color: var(--text);
   cursor: pointer;
+  transition:
+    border-color var(--duration) var(--ease),
+    background-color var(--duration) var(--ease);
 }
 
 .option:hover {
-  background: color-mix(in srgb, var(--foreground) 6%, transparent);
+  border-color: var(--border-strong);
+  background: var(--surface-muted);
+}
+
+.option:has(input:checked) {
+  border-color: var(--border-strong);
+  background: var(--surface-muted);
+}
+
+.option input {
+  accent-color: var(--text);
+  flex-shrink: 0;
 }
 
 .result {
-  margin-top: 1.15rem;
-  padding: 0.9rem 1rem;
-  border-radius: 0.5rem;
-  background: color-mix(in srgb, var(--foreground) 6%, transparent);
+  margin-top: var(--space-4);
 }
 
 .resultLabel {
-  margin-bottom: 0.35rem;
-  font-size: 0.8125rem;
-  opacity: 0.75;
+  margin: 0 0 var(--space-1);
+  font-size: var(--font-caption);
+  color: var(--text-subtle);
 }
 
 .resultValue {
-  font-size: 1.25rem;
-  font-weight: 650;
-  letter-spacing: -0.02em;
+  margin: 0;
+  font-size: var(--font-h3);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-h3);
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
 }
 
 .resultMeta {
-  margin-top: 0.35rem;
-  font-size: 0.8125rem;
-  opacity: 0.7;
+  margin: var(--space-1) 0 0;
+  font-size: var(--font-caption);
+  color: var(--text-subtle);
+  font-variant-numeric: tabular-nums;
 }
 
 .resultEmpty {
-  font-size: 0.9375rem;
-  line-height: 1.5;
-  opacity: 0.9;
+  margin: 0;
+  font-size: var(--font-small);
+  line-height: var(--leading-small);
+  color: var(--text-muted);
 }

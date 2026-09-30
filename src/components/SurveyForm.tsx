@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useId, useRef, useState, type FormEvent } from "react";
+import { useEffect, useId, useMemo, useRef, useState, type FormEvent } from "react";
 import Link from "next/link";
 import type { Messages } from "@/i18n/types";
-import type { Locale } from "@/i18n";
+import type { Locale } from "@/i18n/config";
 import {
   loadTurnstileScript,
   TURNSTILE_ACTION_SURVEY,
@@ -20,6 +20,7 @@ import {
   type SurveyOption,
   type SurveyQuestion,
 } from "@/survey/schema";
+import { Button, Callout } from "@/components/ui";
 import styles from "./SurveyForm.module.css";
 
 type SurveyMessages = Messages["survey"];
@@ -312,6 +313,24 @@ export function SurveyForm({ survey, locale, messages }: SurveyFormProps) {
     }
   }
 
+  const choiceQuestions = useMemo(
+    () => survey.questions.filter((q) => q.input !== "text"),
+    [survey.questions],
+  );
+  const answeredChoiceCount = choiceQuestions.filter((q) => {
+    const value = answers[q.id];
+    if (value === undefined) return false;
+    if (Array.isArray(value)) return value.length > 0;
+    return value.length > 0;
+  }).length;
+  const progressLabel = messages.progress
+    .replace("{answered}", String(answeredChoiceCount))
+    .replace("{total}", String(choiceQuestions.length));
+  const progressPercent =
+    choiceQuestions.length === 0
+      ? 0
+      : Math.round((answeredChoiceCount / choiceQuestions.length) * 100);
+
   if (!intakeReady) {
     return (
       <div className={styles.root}>
@@ -325,16 +344,32 @@ export function SurveyForm({ survey, locale, messages }: SurveyFormProps) {
   if (success) {
     return (
       <div className={styles.root}>
-        <div className={styles.success} role="status">
+        <Callout tone="info" className={styles.success}>
           <p>{messages.success}</p>
           {optInOnSuccess ? <p>{messages.successOptIn}</p> : null}
-        </div>
+        </Callout>
       </div>
     );
   }
 
   return (
     <div className={styles.root}>
+      <div className={styles.progress} aria-live="polite">
+        <p className={styles.progressLabel}>{progressLabel}</p>
+        <div
+          className={styles.progressTrack}
+          role="progressbar"
+          aria-valuemin={0}
+          aria-valuemax={choiceQuestions.length}
+          aria-valuenow={answeredChoiceCount}
+          aria-label={progressLabel}
+        >
+          <div
+            className={styles.progressFill}
+            style={{ width: `${progressPercent}%` }}
+          />
+        </div>
+      </div>
       <form className={styles.form} onSubmit={onSubmit} noValidate>
         {survey.questions.map((question) => (
           <fieldset key={question.id} className={styles.question}>
@@ -469,6 +504,7 @@ export function SurveyForm({ survey, locale, messages }: SurveyFormProps) {
             <div
               className={styles.turnstileWrap}
               ref={turnstileHostRef}
+              data-turnstile-host
             />
           </div>
         </div>
@@ -480,13 +516,9 @@ export function SurveyForm({ survey, locale, messages }: SurveyFormProps) {
         ) : null}
 
         <div className={styles.actions}>
-          <button
-            type="submit"
-            className={styles.submit}
-            disabled={submitting}
-          >
+          <Button type="submit" variant="primary" disabled={submitting}>
             {submitting ? messages.submitting : messages.submit}
-          </button>
+          </Button>
         </div>
 
         <p className={styles.disclaimer}>

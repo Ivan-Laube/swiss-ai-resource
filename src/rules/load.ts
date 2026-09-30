@@ -265,3 +265,16 @@ export function getAllRules(): DecisionTree[] {
 export function validateRules(): number {
   return getAllRules().length;
 }
+
+/**
+ * Decision tools whose outcomes list `slug` in `related_pages`
+ * (R3A reverse lookup for guide pages).
+ */
+export function toolsForContentSlug(slug: string): DecisionTree[] {
+  return getAllRules().filter((tree) =>
+    Object.values(tree.nodes).some(
+      (node) =>
+        node.type === "outcome" && node.related_pages.includes(slug),
+    ),
+  );
+}

@@ -1,38 +1,105 @@
 export const de = {
   meta: {
-    title: "Swiss AI Deployment Resource",
+    title: "aicompliant.ch",
     description:
       "Praxisnahe Informationen zum KI-Einsatz in der Schweiz: Compliance, Anbietervergleich und interaktive Entscheidungshilfen.",
   },
   nav: {
-    brand: "Swiss AI Resource",
+    brand: "aicompliant.ch",
+    brandSubtitle: "Swiss AI Resource",
+    wordmark: "aicompliant",
+    wordmarkTld: ".ch",
     languagesLabel: "Sprachen",
+    mainLabel: "Hauptnavigation",
+    skipToContent: "Zum Inhalt springen",
+    menu: "Menü",
+    guides: "Leitfäden",
+    tools: "Entscheidungshilfen",
+    vendors: "Anbietervergleich",
+    survey: "Umfrage & Benchmark",
+    websiteCheck: "Website prüfen",
   },
   footer: {
-    navLabel: "Rechtliche Hinweise",
+    navLabel: "Fusszeile",
+    brandDescription:
+      "Leitfäden, Entscheidungshilfen und ein quellenbasierter Anbietervergleich für den KI-Einsatz in der Schweiz.",
+    lastSourceCheck: "Letzte Quellenprüfung: {date}",
+    colGuides: "Leitfäden",
+    colTools: "Tools",
+    colData: "Daten",
+    colLegal: "Rechtliches",
+    survey: "Umfrage",
+    benchmark: "Benchmark",
+    disclaimer:
+      "Die Inhalte dienen nur der Information und stellen keine Rechtsberatung dar. Prüfen Sie die Quellen und holen Sie bei Bedarf Fachberatung ein.",
+    copyright: "© {year} aicompliant.ch",
     impressum: "Impressum",
     privacy: "Datenschutzerklärung",
   },
   home: {
     eyebrow: "Schweizer KMU · KI-Einsatz",
-    title: "Swiss AI Deployment Resource",
+    title: "KI in der Schweiz einsetzen – auf belegter Grundlage.",
     lead:
-      "Praxisnahe Informationen zu KI-Deployment in der Schweiz: Compliance, Anbietervergleich und interaktive Entscheidungshilfen.",
+      "Leitfäden zu DSG, EU AI Act und FINMA, Entscheidungshilfen, ein quellenbasierter Anbietervergleich und ein Website-Check. Unabhängig, ohne Tracking, monatlich gegen die Quellen geprüft.",
     note:
       "Deutsch ist die kanonische Sprache dieses Projekts. Übersetzungen in EN, FR und IT sind Entwürfe, bis sie geprüft wurden.",
-    complianceHeading: "Compliance-Grundlagen",
+    ctaTools: "Entscheidungshilfe starten",
+    ctaVendors: "Anbieter vergleichen",
+    quickCheckTitle: "Website Quick-Check",
+    quickCheckLead:
+      "Prüft öffentlich sichtbare Signale Ihrer Website – Datenschutzerklärung, Impressum, Cookie-Tools, Tracker, Sicherheitsheader. Keine Compliance-Bewertung.",
+    quickCheckUrlLabel: "Website-URL",
+    quickCheckSubmit: "Website prüfen",
+    quickCheckPrivacy:
+      "Die URL wird einmalig an unseren Scanner gesendet und nicht dauerhaft gespeichert.",
+    quickCheckChecksHeading: "Was geprüft wird",
+    statsHeading: "Überblick",
+    statsGuides: "Leitfäden",
+    statsTools: "Entscheidungshilfen",
+    statsVendors: "Anbieter",
+    statsLastSource: "Letzte Quellenprüfung",
+    guidesHeading: "Leitfäden",
+    guidesLead:
+      "Quellenbasierte Grundlagen zu Datenschutz, EU AI Act, FINMA und Beschaffung.",
+    guidesAction: "Alle Leitfäden",
+    categoryDatenschutz: "Datenschutz",
+    categoryEuAiAct: "EU AI Act",
+    categoryFinanzmarkt: "Finanzmarkt",
+    categoryBeschaffung: "Beschaffung",
+    readingTime: "{n} Min. Lesezeit",
     toolsHeading: "Entscheidungshilfen",
+    toolsLead:
+      "Interaktive Bäume mit belegten Quellen. Keine Compliance-Ampel.",
+    toolsMaxQuestions: "max. {n} Fragen",
+    toolsAction: "Alle Entscheidungshilfen",
     vendorsHeading: "Anbietervergleich",
-    surveyHeading: "Umfrage",
+    vendorsLead:
+      "Fakten zu Hosting, DPA und Zertifizierungen — nur mit Quelle, sonst ungeprüft.",
+    vendorsListed: "{n} Anbieter gelistet",
+    vendorsSwissHosting: "{n} mit belegtem Schweizer Hosting",
+    vendorsDpa: "{n} mit belegter DPA",
+    vendorsUnverifiedNote:
+      "Zellen ohne Quelle gelten als ungeprüft. Keine Empfehlungen oder Bewertungen.",
+    vendorsAction: "Zum Anbietervergleich",
+    surveyHeading: "Umfrage & Benchmark",
     surveyLead:
-      "Kurze Umfrage zur KI-Adoption in Schweizer Unternehmen. Ergebnisse fliessen anonymisiert in den Benchmark-Bericht ein.",
+      "Kurze Umfrage zur KI-Adoption in Schweizer Unternehmen. Ergebnisse fliessen anonymisiert in den Benchmark ein.",
+    surveyCta: "Zur Umfrage",
     benchmarkLink: "Zum Benchmark",
-    websiteCheckHeading: "Website Quick-Check",
-    websiteCheckLead:
-      "Erste Einschätzung einer Website anhand öffentlich sichtbarer Signale (HTTPS, Datenschutzlink, Tracker). Keine Compliance-Prüfung.",
+    benchmarkPending: "Ergebnisse ab n ≥ {n}",
+    methodologyHeading: "Methode",
+    methodologySourcesTitle: "Offizielle Quellen",
+    methodologySourcesBody:
+      "Leitfäden und Entscheidungshilfen stützen sich auf behördliche und gesetzliche Primärquellen — mit Angabe der URL.",
+    methodologyChecksTitle: "Monatliche Quellenprüfung",
+    methodologyChecksBody:
+      "Ein automatisierter Lauf prüft die hinterlegten Quellen monatlich und aktualisiert Verifikationsdaten im Repository.",
+    methodologyIndependenceTitle: "Unabhängig",
+    methodologyIndependenceBody:
+      "Keine Affiliate- oder Sponsor-Links, kein Tracking auf der Website, und keine Rechtsberatung.",
   },
   websiteCheck: {
-    metaTitle: "Website Quick-Check · Swiss AI Resource",
+    metaTitle: "Website Quick-Check",
     metaDescription:
       "Erste Einschätzung einer Website: HTTPS, Datenschutzlink, Impressum, Cookie-Tools, Tracker und Sicherheitsheader — mit rechtlichen Bezügen. Keine Rechtsberatung.",
     title: "Website Quick-Check",
@@ -74,10 +141,13 @@ export const de = {
       "Die Seite wirkt dynamisch (z. B. GTM oder SPA-Shell). Ein statischer Scan sieht möglicherweise nicht alle Skripte und Banner — die Ergebnisse können unvollständig sein.",
     disclaimer:
       "Dieser Quick-Check ist eine erste Einschätzung anhand öffentlich sichtbarer Signale und stellt keine Rechtsberatung oder Compliance-Prüfung dar. Prüfen Sie die Quellen und holen Sie bei Bedarf Fachberatung ein.",
-    scanAgain: "Andere URL prüfen",
+    scanAgain: "Neue Prüfung",
+    surveyPrompt:
+      "Helfen Sie beim Schweizer Benchmark — ca. {minutes} Minuten.",
+    surveyPromptCta: "Zur Umfrage",
   },
   benchmark: {
-    metaTitle: "Benchmark · Swiss AI Resource",
+    metaTitle: "Benchmark",
     metaDescription:
       "Anonymisierte Aggregatergebnisse der Schweizer KI-Adoptionsumfrage. Zellen mit weniger als fünf Antworten werden nicht ausgewiesen.",
     indexTitle: "KI-Adoptions-Benchmark",
@@ -107,11 +177,12 @@ export const de = {
       "Dieser Benchmark ist eine anonymisierte Pilotauswertung und stellt keine Rechtsberatung dar. Ergebnisse beschreiben die Stichprobe, nicht die gesamte Schweizer Wirtschaft.",
   },
   survey: {
-    metaTitle: "Umfrage · Swiss AI Resource",
+    metaTitle: "Umfrage",
     metaDescription:
       "Kurze Umfrage zu KI-Nutzung, Ausgaben und Hosting-Anforderungen in Schweizer Unternehmen.",
     backHome: "← Zur Startseite",
     estimatedTime: "Geschätzte Dauer: ca. {minutes} Minuten",
+    progress: "Frage {answered} von {total}",
     submit: "Absenden",
     submitting: "Wird gesendet …",
     success:
@@ -144,14 +215,27 @@ export const de = {
   },
   content: {
     lastVerified: "Zuletzt geprüft",
+    readingTime: "Lesezeit ca. {minutes} Min.",
     sources: "Quellen",
     disclaimer:
       "Diese Seite dient nur der Information und stellt keine Rechtsberatung dar. Für konkrete Vorhaben empfiehlt sich die Prüfung durch Fachpersonen.",
     backHome: "← Zur Startseite",
+    breadcrumbLabel: "Brotkrumen",
+    breadcrumbHome: "Start",
+    tocLabel: "Inhalt",
+    tocNavLabel: "Inhaltsverzeichnis",
+    relatedTools: "Passende Entscheidungshilfe",
+    counselBadge: "Anwaltlich geprüft · {date}",
     translationDraft:
       "Diese Übersetzung ist ein LLM-Entwurf und wurde noch nicht menschlich geprüft.",
     translationCanonicalNote:
       "Massgeblich ist die deutsche Fassung; Übersetzungen können abweichen.",
+  },
+  guides: {
+    indexTitle: "Leitfäden",
+    indexLead:
+      "Quellenbasierte Leitfäden zu DSG, EU AI Act, FINMA und Beschaffung. Keine Rechtsberatung.",
+    backHome: "← Zur Startseite",
   },
   tools: {
     indexTitle: "Entscheidungshilfen",
@@ -161,9 +245,18 @@ export const de = {
     backToIndex: "← Alle Entscheidungshilfen",
     back: "Zurück",
     restart: "Von vorn",
+    progress: "Frage {n} · max. {m}",
+    maxQuestions: "max. {count} Fragen",
     caveats: "Hinweise",
     sources: "Quellen",
     relatedPages: "Weiterführende Seiten",
+    answerRecap: "Ihre Antworten",
+    copyLink: "Link kopieren",
+    copyLinkDone: "Kopiert",
+    print: "Drucken / als PDF",
+    surveyPrompt:
+      "Helfen Sie beim Schweizer Benchmark — ca. {minutes} Minuten",
+    surveyCta: "Zur Umfrage",
     disclaimer:
       "Dieses Tool dient nur der Information und stellt keine Rechtsberatung dar. Ergebnisse sind Orientierungshilfen — prüfen Sie die Quellen und holen Sie bei Bedarf Fachberatung ein.",
     verdictLikely: "Eher vertretbar",

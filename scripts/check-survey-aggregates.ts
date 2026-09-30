@@ -20,6 +20,7 @@ import {
   hasPublishableBenchmarkData,
 } from "../src/survey/benchmark";
 import { parseSurvey } from "../src/survey/schema";
+import { isPopulatedFixture, LEAKED_FIXTURE_MESSAGE } from "./e2e-fixture-guard";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const survey = parseSurvey(
@@ -197,8 +198,13 @@ assert(
   "stored exclusive-none violations must fail aggregation",
 );
 
+const committedText = readFileSync(
+  join(root, "data", "survey-aggregates.json"),
+  "utf8",
+);
+assert(!isPopulatedFixture(committedText), LEAKED_FIXTURE_MESSAGE);
 const committed = parseSurveyAggregates(
-  JSON.parse(readFileSync(join(root, "data", "survey-aggregates.json"), "utf8")),
+  JSON.parse(committedText),
 );
 assertAggregatesMatchSurvey(committed, survey);
 assert(

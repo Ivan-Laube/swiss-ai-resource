@@ -3,13 +3,15 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SiteHeader } from "@/components/SiteHeader";
 import { WebsiteCheckForm } from "@/components/WebsiteCheckForm";
+import { Container } from "@/components/ui";
 import {
   buildLanguageAlternates,
   getMessages,
   isLocale,
   locales,
 } from "@/i18n";
-import { siteUrl } from "@/lib/site";
+import { buildPageMetadata } from "@/lib/metadata";
+import { getSurvey } from "@/survey";
 import styles from "./page.module.css";
 
 type PageProps = {
@@ -31,14 +33,13 @@ export async function generateMetadata({
 
   const messages = getMessages(lang);
 
-  return {
+  return buildPageMetadata({
+    locale: lang,
     title: messages.websiteCheck.metaTitle,
     description: messages.websiteCheck.metaDescription,
-    alternates: {
-      canonical: `${siteUrl}/${lang}/website-check/`,
-      languages: buildLanguageAlternates("/website-check"),
-    },
-  };
+    path: "website-check",
+    languages: buildLanguageAlternates("/website-check"),
+  });
 }
 
 export default async function WebsiteCheckPage({ params }: PageProps) {
@@ -49,17 +50,24 @@ export default async function WebsiteCheckPage({ params }: PageProps) {
   }
 
   const messages = getMessages(lang);
+  const survey = getSurvey();
 
   return (
     <>
-      <SiteHeader activeLang={lang} messages={messages} />
-      <main className={styles.main} lang={lang}>
-        <Link href={`/${lang}/`} className={styles.back}>
-          {messages.websiteCheck.backHome}
-        </Link>
-        <h1>{messages.websiteCheck.title}</h1>
-        <p className={styles.lead}>{messages.websiteCheck.lead}</p>
-        <WebsiteCheckForm locale={lang} messages={messages.websiteCheck} />
+      <SiteHeader activeLang={lang} nav={messages.nav} />
+      <main id="main" className={styles.main} lang={lang}>
+        <Container>
+          <Link href={`/${lang}/`} className={styles.back}>
+            {messages.websiteCheck.backHome}
+          </Link>
+          <h1>{messages.websiteCheck.title}</h1>
+          <p className={styles.lead}>{messages.websiteCheck.lead}</p>
+          <WebsiteCheckForm
+            locale={lang}
+            messages={messages.websiteCheck}
+            surveyEstimatedMinutes={survey.estimated_minutes}
+          />
+        </Container>
       </main>
     </>
   );

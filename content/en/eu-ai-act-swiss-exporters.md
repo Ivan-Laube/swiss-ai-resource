@@ -4,6 +4,7 @@ description: "When the EU Artificial Intelligence Regulation (AI Act) hits Swiss
 last_verified: "2026-07-10"
 volatility: "fast"
 translation_status: "draft"
+category: "eu-ai-act"
 reviewed_by: null
 review_date: null
 review_scope: null

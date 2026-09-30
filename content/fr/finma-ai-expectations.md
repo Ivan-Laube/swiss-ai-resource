@@ -4,6 +4,7 @@ description: "Ce que la communication sur la surveillance 08/2024 de la FINMA at
 last_verified: "2026-07-10"
 volatility: "moderate"
 translation_status: "draft"
+category: "finanzmarkt"
 reviewed_by: null
 review_date: null
 review_scope: null

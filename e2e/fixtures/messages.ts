@@ -32,6 +32,8 @@ type WebsiteCheckCopy = {
   staticScanCaveat: string;
   disclaimer: string;
   scanAgain: string;
+  surveyPrompt: string;
+  surveyPromptCta: string;
 };
 
 export const copy: Record<Locale, WebsiteCheckCopy> = {
@@ -68,7 +70,9 @@ export const copy: Record<Locale, WebsiteCheckCopy> = {
       "The page looks dynamic (e.g. GTM or an SPA shell). A static scan may miss injected scripts and banners — results may be incomplete.",
     disclaimer:
       "This Quick-Check is a first assessment from publicly visible signals and is not legal advice or a compliance audit. Check the sources and consult qualified professionals when needed.",
-    scanAgain: "Check another URL",
+    scanAgain: "New check",
+    surveyPrompt: "Help build the Swiss benchmark — about {minutes} minutes.",
+    surveyPromptCta: "Go to survey",
   },
   de: {
     title: "Website Quick-Check",
@@ -106,7 +110,10 @@ export const copy: Record<Locale, WebsiteCheckCopy> = {
       "Die Seite wirkt dynamisch (z. B. GTM oder SPA-Shell). Ein statischer Scan sieht möglicherweise nicht alle Skripte und Banner — die Ergebnisse können unvollständig sein.",
     disclaimer:
       "Dieser Quick-Check ist eine erste Einschätzung anhand öffentlich sichtbarer Signale und stellt keine Rechtsberatung oder Compliance-Prüfung dar. Prüfen Sie die Quellen und holen Sie bei Bedarf Fachberatung ein.",
-    scanAgain: "Andere URL prüfen",
+    scanAgain: "Neue Prüfung",
+    surveyPrompt:
+      "Helfen Sie beim Schweizer Benchmark — ca. {minutes} Minuten.",
+    surveyPromptCta: "Zur Umfrage",
   },
   fr: {
     title: "Quick-Check site web",
@@ -144,7 +151,10 @@ export const copy: Record<Locale, WebsiteCheckCopy> = {
       "La page semble dynamique (p. ex. GTM ou coquille SPA). Un scan statique peut manquer des scripts et bannières injectés — les résultats peuvent être incomplets.",
     disclaimer:
       "Ce Quick-Check est une première estimation à partir de signaux publics et ne constitue ni un conseil juridique ni un audit de conformité. Vérifiez les sources et consultez des professionnels si nécessaire.",
-    scanAgain: "Analyser une autre URL",
+    scanAgain: "Nouvelle analyse",
+    surveyPrompt:
+      "Aidez à constituer le benchmark suisse — environ {minutes} minutes.",
+    surveyPromptCta: "Aller à l'enquête",
   },
   it: {
     title: "Quick-Check sito web",
@@ -180,7 +190,10 @@ export const copy: Record<Locale, WebsiteCheckCopy> = {
       "La pagina sembra dinamica (es. GTM o shell SPA). Una scansione statica può non vedere script e banner iniettati — i risultati possono essere incompleti.",
     disclaimer:
       "Questo Quick-Check è una prima stima da segnali pubblici e non costituisce consulenza legale né un audit di conformità. Verifichi le fonti e consulti professionisti se necessario.",
-    scanAgain: "Controlla un altro URL",
+    scanAgain: "Nuova verifica",
+    surveyPrompt:
+      "Aiuti a costruire il benchmark svizzero — circa {minutes} minuti.",
+    surveyPromptCta: "Vai al sondaggio",
   },
 };
 

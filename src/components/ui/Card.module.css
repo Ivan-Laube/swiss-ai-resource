@@ -1,0 +1,24 @@
+.root {
+  display: block;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: var(--space-4) var(--space-5);
+  color: inherit;
+  text-decoration: none;
+  box-shadow: none;
+  transition:
+    border-color var(--duration) var(--ease),
+    box-shadow var(--duration) var(--ease);
+}
+
+.interactive {
+  cursor: pointer;
+}
+
+.interactive:hover,
+.interactive:focus-visible {
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-micro);
+  text-decoration: none;
+}

@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from "@/lib/zod";
 
 export const llmClassificationSchema = z.object({
   classification: z.enum(["cosmetic", "material"]),

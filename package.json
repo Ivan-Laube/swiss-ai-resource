@@ -30,6 +30,9 @@
     "check:act": "tsx scripts/check-act.ts",
     "check:links": "tsx scripts/check-links.ts",
     "check:links-report": "tsx scripts/check-links-report.ts",
+    "check:contrast": "tsx scripts/check-contrast.ts",
+    "check:live-headers": "tsx scripts/check-live-headers.ts",
+    "test:unit": "node --import tsx --test \"src/**/*.test.ts\"",
     "aggregate:survey": "tsx scripts/aggregate-survey.ts",
     "snapshot:sources": "tsx scripts/snapshot-sources.ts",
     "classify:snapshots": "tsx scripts/classify-snapshots.ts",
@@ -42,7 +45,8 @@
     "dev:scanner": "wrangler dev -c workers/scanner/wrangler.jsonc",
     "deploy:scanner": "wrangler deploy -c workers/scanner/wrangler.jsonc",
     "build:e2e": "tsx scripts/build-e2e.ts",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "test:visual": "playwright test e2e/visual"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.110.0",
@@ -58,6 +62,7 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
     "@cloudflare/workers-types": "^5.20260714.1",
     "@playwright/test": "^1.63.0",
     "@types/node": "^20",
@@ -66,6 +71,7 @@
     "@types/sanitize-html": "^2.16.1",
     "eslint": "^9",
     "eslint-config-next": "16.3.5",
+    "sharp": "0.35.4",
     "tsx": "^4.23.0",
     "typescript": "^5",
     "wrangler": "^4.36.0"

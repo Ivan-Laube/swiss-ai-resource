@@ -16,7 +16,7 @@
  *
  * Run: npm run sync:survey-aggregates
  */
-import { writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -26,6 +26,11 @@ import {
 } from "../src/survey/aggregates";
 import { parseSurvey } from "../src/survey/schema";
 import surveyJson from "../data/survey-questions.json";
+import {
+  FIXTURE_ALLOWED_ENV,
+  isPopulatedFixture,
+  LEAKED_FIXTURE_MESSAGE,
+} from "./e2e-fixture-guard";
 
 const SOURCE_URL =
   "https://raw.githubusercontent.com/Ivan-Laube/swiss-ai-survey-data/main/survey-aggregates.json";
@@ -39,6 +44,16 @@ function warn(message: string): void {
 }
 
 async function main(): Promise<void> {
+  // Hard fail (not best-effort): a leaked e2e fixture must never be deployed,
+  // even when the remote fetch below fails and the local copy would be kept.
+  if (
+    process.env[FIXTURE_ALLOWED_ENV] !== "1" &&
+    isPopulatedFixture(readFileSync(outputPath, "utf8"))
+  ) {
+    console.error(`sync:survey-aggregates: ${LEAKED_FIXTURE_MESSAGE}`);
+    process.exit(1);
+  }
+
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
 

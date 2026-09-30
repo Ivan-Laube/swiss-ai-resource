@@ -4,6 +4,7 @@ description: "Wann Schweizer Unternehmen Personendaten an US-gehostete Sprachmod
 last_verified: "2026-07-10"
 volatility: "fast"
 translation_status: "canonical"
+category: "datenschutz"
 reviewed_by: null
 review_date: null
 review_scope: null

@@ -1,19 +1,46 @@
 /**
- * Post-build: replace CSP script-src 'unsafe-inline' with sha256 hashes of
- * every inline script tag under out/ (Next static export hydration).
- * Also injects COOP/CORP and detaches Access-Control-Allow-Origin if present.
+ * Post-build CSP for the static export (wired as `postbuild`).
  *
- * Run after `next build` (wired as `postbuild`).
+ * Cloudflare Pages silently drops `_headers` values longer than 2,000
+ * characters. A single site-wide policy listing every page's inline-script
+ * hashes grew past that (6k+ chars), so production served no CSP at all.
+ * The policy is therefore split:
+ *
+ * - Per page: a `<meta http-equiv="Content-Security-Policy">` injected into
+ *   each HTML file, holding only that page's inline-script sha256 hashes
+ *   (a few hundred chars). This is the policy that locks down scripts.
+ * - Site-wide header in `out/_headers`: the short, header-only directives
+ *   that a meta policy cannot express (`frame-ancestors`) plus a few
+ *   hardening ones. Both policies are enforced together by the browser.
+ *
+ * Also injects COOP/CORP and detaches Access-Control-Allow-Origin.
+ * The script is idempotent: re-running replaces the injected meta tags.
  */
 import { createHash } from "node:crypto";
 import { readdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 const OUT_DIR = path.join(process.cwd(), "out");
 const HEADERS_PATH = path.join(OUT_DIR, "_headers");
 
+/** Cloudflare Pages drops header values longer than this. */
+export const PAGES_HEADER_VALUE_LIMIT = 2000;
+
 const INLINE_SCRIPT_RE =
   /<script(?![^>]*\bsrc=)[^>]*>([\s\S]*?)<\/script>/gi;
+const META_CSP_RE =
+  /<meta http-equiv="Content-Security-Policy" content="[^"]*"\s*\/?>/gi;
+const CHARSET_META_RE = /<meta charSet="utf-8"\s*\/?>/i;
+const HEAD_OPEN_RE = /<head(\s[^>]*)?>/i;
+
+/** Header policy: directives that must (or may) live in the HTTP header. */
+export const HEADER_CSP = [
+  "frame-ancestors 'none'",
+  "object-src 'none'",
+  "base-uri 'self'",
+  "form-action 'self'",
+].join("; ");
 
 async function* walkHtml(dir: string): AsyncGenerator<string> {
   const entries = await readdir(dir, { withFileTypes: true });
@@ -32,26 +59,25 @@ function sha256Csp(content: string): string {
   return `'sha256-${digest}'`;
 }
 
-async function collectInlineScriptHashes(): Promise<string[]> {
+export function inlineScriptHashes(html: string): string[] {
   const hashes = new Set<string>();
-  for await (const file of walkHtml(OUT_DIR)) {
-    const html = await readFile(file, "utf8");
-    INLINE_SCRIPT_RE.lastIndex = 0;
-    let match: RegExpExecArray | null;
-    while ((match = INLINE_SCRIPT_RE.exec(html)) !== null) {
-      const body = match[1] ?? "";
-      if (body.length === 0) continue;
-      hashes.add(sha256Csp(body));
-    }
+  INLINE_SCRIPT_RE.lastIndex = 0;
+  let match: RegExpExecArray | null;
+  while ((match = INLINE_SCRIPT_RE.exec(html)) !== null) {
+    const body = match[1] ?? "";
+    if (body.length === 0) continue;
+    hashes.add(sha256Csp(body));
   }
   return [...hashes].sort();
 }
 
-function buildCsp(scriptHashes: string[]): string {
-  const scriptSrc =
-    scriptHashes.length > 0
-      ? `script-src 'self' ${scriptHashes.join(" ")} https://challenges.cloudflare.com`
-      : `script-src 'self' https://challenges.cloudflare.com`;
+/** Per-page policy delivered via <meta>. No frame-ancestors (ignored in meta). */
+export function buildMetaCsp(scriptHashes: string[]): string {
+  const scriptSrc = [
+    "script-src 'self'",
+    ...scriptHashes,
+    "https://challenges.cloudflare.com",
+  ].join(" ");
 
   return [
     "default-src 'self'",
@@ -64,9 +90,26 @@ function buildCsp(scriptHashes: string[]): string {
     "object-src 'none'",
     "base-uri 'self'",
     "form-action 'self'",
-    "frame-ancestors 'none'",
     "upgrade-insecure-requests",
   ].join("; ");
+}
+
+/** Insert (or replace) the meta CSP right after <meta charset>, before any script. */
+export function injectMetaCsp(html: string, csp: string): string {
+  const tag = `<meta http-equiv="Content-Security-Policy" content="${csp}"/>`;
+  const cleaned = html.replace(META_CSP_RE, "");
+
+  const charset = CHARSET_META_RE.exec(cleaned);
+  if (charset) {
+    const at = charset.index + charset[0].length;
+    return cleaned.slice(0, at) + tag + cleaned.slice(at);
+  }
+  const head = HEAD_OPEN_RE.exec(cleaned);
+  if (!head) {
+    throw new Error("csp-hashes: HTML without <head>");
+  }
+  const at = head.index + head[0].length;
+  return cleaned.slice(0, at) + tag + cleaned.slice(at);
 }
 
 function rewriteHeaders(raw: string, csp: string): string {
@@ -133,17 +176,36 @@ function rewriteHeaders(raw: string, csp: string): string {
   return out.join("\n");
 }
 
-async function main(): Promise<void> {
-  const hashes = await collectInlineScriptHashes();
-  if (hashes.length === 0) {
-    console.warn(
-      "csp-hashes: no inline scripts found under out/ — leaving script-src without hashes.",
-    );
-  } else {
-    console.log(
-      `csp-hashes: ${hashes.length} unique inline script hash${hashes.length === 1 ? "" : "es"}`,
-    );
+/** Fail the build if any header value would be dropped by Cloudflare Pages. */
+function assertHeaderValuesFit(headers: string): void {
+  for (const line of headers.split(/\r?\n/)) {
+    const match = /^\s+([A-Za-z-]+):\s*(.*)$/.exec(line);
+    if (match && match[2]!.length > PAGES_HEADER_VALUE_LIMIT) {
+      throw new Error(
+        `csp-hashes: ${match[1]} value is ${match[2]!.length} chars; ` +
+          `Cloudflare Pages drops values over ${PAGES_HEADER_VALUE_LIMIT}.`,
+      );
+    }
   }
+}
+
+async function main(): Promise<void> {
+  let pages = 0;
+  let maxHashes = 0;
+  let maxMetaLength = 0;
+  for await (const file of walkHtml(OUT_DIR)) {
+    const html = await readFile(file, "utf8");
+    const hashes = inlineScriptHashes(html);
+    const csp = buildMetaCsp(hashes);
+    await writeFile(file, injectMetaCsp(html, csp), "utf8");
+    pages += 1;
+    maxHashes = Math.max(maxHashes, hashes.length);
+    maxMetaLength = Math.max(maxMetaLength, csp.length);
+  }
+  console.log(
+    `csp-hashes: meta CSP in ${pages} HTML files ` +
+      `(max ${maxHashes} script hashes, max ${maxMetaLength} chars)`,
+  );
 
   let raw: string;
   try {
@@ -152,13 +214,19 @@ async function main(): Promise<void> {
     throw new Error(`Missing ${HEADERS_PATH} — run next build first`);
   }
 
-  const csp = buildCsp(hashes);
-  const next = rewriteHeaders(raw, csp);
+  const next = rewriteHeaders(raw, HEADER_CSP);
+  assertHeaderValuesFit(next);
   await writeFile(HEADERS_PATH, next.endsWith("\n") ? next : `${next}\n`, "utf8");
-  console.log("csp-hashes: wrote out/_headers");
+  console.log("csp-hashes: wrote out/_headers (header CSP: frame-ancestors etc.)");
 }
 
-main().catch((error) => {
-  console.error(error instanceof Error ? error.message : error);
-  process.exit(1);
-});
+// Only run when executed directly (the helpers are imported by tests).
+if (
+  process.argv[1] &&
+  path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)
+) {
+  main().catch((error) => {
+    console.error(error instanceof Error ? error.message : error);
+    process.exit(1);
+  });
+}

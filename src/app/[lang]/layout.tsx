@@ -1,6 +1,11 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { SiteFooter } from "@/components/SiteFooter";
+import { SkipLink } from "@/components/SkipLink";
 import { getMessages, isLocale, locales } from "@/i18n";
+import { buildRootMetadata } from "@/lib/metadata";
+import { instrumentSans } from "../document";
+import "../globals.css";
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -9,6 +14,20 @@ type LayoutProps = {
 
 export function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}): Promise<Metadata> {
+  const { lang } = await params;
+
+  if (!isLocale(lang)) {
+    return {};
+  }
+
+  return buildRootMetadata(lang);
 }
 
 export default async function LocaleLayout({ children, params }: LayoutProps) {
@@ -21,9 +40,14 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
   const messages = getMessages(lang);
 
   return (
-    <div lang={lang} className="localeShell">
-      {children}
-      <SiteFooter activeLang={lang} messages={messages} />
-    </div>
+    <html lang={lang} className={instrumentSans.variable}>
+      <body>
+        <div className="localeShell">
+          <SkipLink label={messages.nav.skipToContent} />
+          {children}
+          <SiteFooter activeLang={lang} messages={messages} />
+        </div>
+      </body>
+    </html>
   );
 }

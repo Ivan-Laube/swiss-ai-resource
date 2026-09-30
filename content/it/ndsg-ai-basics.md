@@ -4,6 +4,7 @@ description: "Cosa significa la Legge federale rivista sulla protezione dei dati
 last_verified: "2026-07-10"
 volatility: "moderate"
 translation_status: "draft"
+category: "datenschutz"
 reviewed_by: null
 review_date: null
 review_scope: null

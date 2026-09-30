@@ -11,7 +11,10 @@ import { de } from "./messages/de";
 import { en } from "./messages/en";
 import { fr } from "./messages/fr";
 import { it } from "./messages/it";
+import { pathForLocale } from "./path";
 import type { Messages } from "./types";
+
+export { pathForLocale };
 
 const messagesByLocale: Record<Locale, Messages> = {
   de,

@@ -2,12 +2,16 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState, type FormEvent } from "react";
-import type { Locale, Messages } from "@/i18n";
+import type { Locale } from "@/i18n/config";
+import type { Messages } from "@/i18n/types";
+import { normalizeUrlInput } from "@/lib/normalize-url-input";
+import { consumeQuickCheckHandoff } from "@/lib/quick-check-handoff";
 import {
   loadTurnstileScript,
   TURNSTILE_ACTION_SCAN,
 } from "@/lib/turnstile-client";
 import { pickLocalized, type LocalizedString } from "@/rules/schema";
+import { Button, Callout, Card, StatusPill, type StatusTone } from "@/components/ui";
 import styles from "./WebsiteCheckForm.module.css";
 
 type WebsiteCheckMessages = Messages["websiteCheck"];
@@ -58,25 +62,31 @@ const SEVERITY_ORDER: Severity[] = ["high", "medium", "low", "info"];
 type Props = {
   locale: Locale;
   messages: WebsiteCheckMessages;
+  /** From survey.estimated_minutes — used in the post-result survey prompt. */
+  surveyEstimatedMinutes: number;
 };
-function normalizeUrlInput(raw: string): string | null {
-  const trimmed = raw.trim();
-  if (!trimmed) {
+
+function clearUrlFragment(): void {
+  const { pathname, search } = window.location;
+  window.history.replaceState(null, "", `${pathname}${search}`);
+}
+
+function readUrlFromFragment(): string | null {
+  const hash = window.location.hash;
+  if (!hash.startsWith("#url=")) {
     return null;
   }
-  const withScheme = /^[a-zA-Z][a-zA-Z0-9+.-]*:/.test(trimmed)
-    ? trimmed
-    : `https://${trimmed}`;
+  const encoded = hash.slice("#url=".length);
+  if (!encoded) {
+    return "";
+  }
   try {
-    const parsed = new URL(withScheme);
-    if (parsed.protocol !== "http:" && parsed.protocol !== "https:") {
-      return null;
-    }
-    return parsed.href;
+    return decodeURIComponent(encoded);
   } catch {
-    return null;
+    return "";
   }
 }
+
 function isScanResult(value: unknown): value is ScanResult {
   if (!value || typeof value !== "object") {
     return false;
@@ -102,6 +112,17 @@ function statusLabel(
     case "indeterminate":
       return messages.statusIndeterminate;
   }
+}
+
+function statusTone(
+  status: FindingStatus,
+  severity: Severity,
+): StatusTone {
+  if (status === "found") return "success";
+  if (status === "indeterminate") return "info";
+  if (severity === "high") return "danger";
+  if (severity === "medium") return "warning";
+  return "neutral";
 }
 function severityLabel(
   severity: Severity,
@@ -176,7 +197,11 @@ function groupBySeverity(findings: Finding[]): Map<Severity, Finding[]> {
   }
   return groups;
 }
-export function WebsiteCheckForm({ locale, messages }: Props) {
+export function WebsiteCheckForm({
+  locale,
+  messages,
+  surveyEstimatedMinutes,
+}: Props) {
   const apiUrl = (process.env.NEXT_PUBLIC_SCAN_API_URL ?? "").replace(
     /\/$/,
     "",
@@ -190,6 +215,63 @@ export function WebsiteCheckForm({ locale, messages }: Props) {
   const [turnstileToken, setTurnstileToken] = useState("");
   const turnstileHostRef = useRef<HTMLDivElement | null>(null);
   const widgetIdRef = useRef<string | number | null>(null);
+  const autoScanUrlRef = useRef<string | null>(null);
+  const autoScanStartedRef = useRef(false);
+  const turnstileTokenRef = useRef("");
+
+  useEffect(() => {
+    turnstileTokenRef.current = turnstileToken;
+  }, [turnstileToken]);
+
+  const fragmentAppliedRef = useRef(false);
+
+  // Hash is not available during SSR; soft nav may apply it after first paint.
+  useEffect(() => {
+    function applyFromHash(): boolean {
+      if (fragmentAppliedRef.current) {
+        return true;
+      }
+      const raw = readUrlFromFragment();
+      if (raw === null) {
+        return false;
+      }
+
+      fragmentAppliedRef.current = true;
+      const normalized = normalizeUrlInput(raw);
+      if (!normalized) {
+        setFormError(messages.errorBadUrl);
+        if (raw) {
+          setUrlInput(raw);
+        }
+        clearUrlFragment();
+        return true;
+      }
+
+      setUrlInput(normalized);
+      // Auto-scan only for our own homepage handoff; external #url= links
+      // just prefill and wait for the visitor to click.
+      if (scanReady && consumeQuickCheckHandoff(normalized)) {
+        autoScanUrlRef.current = normalized;
+      } else {
+        clearUrlFragment();
+      }
+      return true;
+    }
+
+    if (applyFromHash()) {
+      return undefined;
+    }
+
+    const onHashChange = () => {
+      applyFromHash();
+    };
+    window.addEventListener("hashchange", onHashChange);
+    const retryId = window.setTimeout(onHashChange, 0);
+    return () => {
+      window.removeEventListener("hashchange", onHashChange);
+      window.clearTimeout(retryId);
+    };
+  }, [messages.errorBadUrl, scanReady]);
 
   useEffect(() => {
     if (!scanReady || result) {
@@ -212,7 +294,9 @@ export function WebsiteCheckForm({ locale, messages }: Props) {
           action: TURNSTILE_ACTION_SCAN,
           callback: (token) => {
             setTurnstileToken(token);
-            setFormError(null);
+            setFormError((current) =>
+              current === messages.errorTurnstile ? null : current,
+            );
           },
           "expired-callback": () => setTurnstileToken(""),
           "error-callback": () => setTurnstileToken(""),
@@ -248,25 +332,7 @@ export function WebsiteCheckForm({ locale, messages }: Props) {
     }
   }
 
-  async function onSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    setFormError(null);
-    const url = normalizeUrlInput(urlInput);
-    if (!url) {
-      setFormError(messages.errorBadUrl);
-      return;
-    }
-    // Prefer React state; fall back to Turnstile's hidden input (widget can
-    // look "passed" briefly while state is empty after reset/expiry).
-    const domToken =
-      document
-        .querySelector<HTMLInputElement>('input[name="cf-turnstile-response"]')
-        ?.value?.trim() ?? "";
-    const token = (turnstileToken || domToken).trim();
-    if (!token) {
-      setFormError(messages.errorTurnstile);
-      return;
-    }
+  async function runScan(url: string, token: string) {
     setScanning(true);
     setResult(null);
     try {
@@ -327,6 +393,48 @@ export function WebsiteCheckForm({ locale, messages }: Props) {
       setScanning(false);
     }
   }
+
+  useEffect(() => {
+    if (!scanReady || result || scanning) {
+      return;
+    }
+    if (autoScanStartedRef.current) {
+      return;
+    }
+    const pendingUrl = autoScanUrlRef.current;
+    if (!pendingUrl || !turnstileToken) {
+      return;
+    }
+
+    autoScanStartedRef.current = true;
+    autoScanUrlRef.current = null;
+    clearUrlFragment();
+    void runScan(pendingUrl, turnstileToken);
+    // Intentionally only re-run when token / readiness changes.
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- one-shot auto-scan from #url=
+  }, [scanReady, turnstileToken, result, scanning]);
+
+  async function onSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setFormError(null);
+    const url = normalizeUrlInput(urlInput);
+    if (!url) {
+      setFormError(messages.errorBadUrl);
+      return;
+    }
+    // Prefer React state; fall back to Turnstile's hidden input (widget can
+    // look "passed" briefly while state is empty after reset/expiry).
+    const domToken =
+      document
+        .querySelector<HTMLInputElement>('input[name="cf-turnstile-response"]')
+        ?.value?.trim() ?? "";
+    const token = (turnstileTokenRef.current || turnstileToken || domToken).trim();
+    if (!token) {
+      setFormError(messages.errorTurnstile);
+      return;
+    }
+    await runScan(url, token);
+  }
   function resetReport() {
     setResult(null);
     setFormError(null);
@@ -343,6 +451,10 @@ export function WebsiteCheckForm({ locale, messages }: Props) {
   }
   if (result) {
     const groups = groupBySeverity(result.findings);
+    const surveyPrompt = messages.surveyPrompt.replace(
+      "{minutes}",
+      String(surveyEstimatedMinutes),
+    );
     return (
       <div className={styles.root}>
         <div className={styles.report} aria-live="polite">
@@ -357,9 +469,9 @@ export function WebsiteCheckForm({ locale, messages }: Props) {
             ) : null}
           </dl>
           {result.static_scan_incomplete ? (
-            <p className={styles.caveat} role="status">
+            <Callout tone="warning" className={styles.caveat}>
               {messages.staticScanCaveat}
-            </p>
+            </Callout>
           ) : null}
           {SEVERITY_ORDER.map((severity) => {
             const findings = groups.get(severity) ?? [];
@@ -380,52 +492,56 @@ export function WebsiteCheckForm({ locale, messages }: Props) {
                   {findings.map((finding) => {
                     const evidence = evidenceLines(finding.evidence, messages);
                     return (
-                      <li key={finding.id} className={styles.finding}>
-                        <div className={styles.findingHeader}>
-                          <h3 className={styles.findingTitle}>
-                            {pickLocalized(finding.title, locale)}
-                          </h3>
-                          <span className={styles.findingStatus}>
-                            {statusLabel(finding.status, messages)}
-                          </span>
-                        </div>
-                        <p className={styles.findingDescription}>
-                          {pickLocalized(finding.description, locale)}
-                        </p>
-                        <ul className={styles.metaList}>
-                          <li>
-                            {messages.legalBasis}:{" "}
-                            <a
-                              href={finding.legal_basis.url}
-                              target="_blank"
-                              rel="noopener noreferrer"
+                      <li key={finding.id}>
+                        <Card className={styles.finding}>
+                          <div className={styles.findingHeader}>
+                            <h3 className={styles.findingTitle}>
+                              {pickLocalized(finding.title, locale)}
+                            </h3>
+                            <StatusPill
+                              tone={statusTone(finding.status, finding.severity)}
                             >
-                              {finding.legal_basis.reference}
-                            </a>
-                          </li>
-                          {finding.related_page ? (
-                            <li>
-                              {messages.relatedPage}:{" "}
-                              <Link
-                                href={`/${locale}/${finding.related_page}/`}
-                              >
-                                {finding.related_page}
-                              </Link>
-                            </li>
-                          ) : null}
-                        </ul>
-                        {evidence.length > 0 ? (
-                          <div className={styles.evidence}>
-                            <p className={styles.evidenceTitle}>
-                              {messages.evidence}
-                            </p>
-                            <ul className={styles.evidenceList}>
-                              {evidence.map((line) => (
-                                <li key={line}>{line}</li>
-                              ))}
-                            </ul>
+                              {statusLabel(finding.status, messages)}
+                            </StatusPill>
                           </div>
-                        ) : null}
+                          <p className={styles.findingDescription}>
+                            {pickLocalized(finding.description, locale)}
+                          </p>
+                          <ul className={styles.metaList}>
+                            <li>
+                              {messages.legalBasis}:{" "}
+                              <a
+                                href={finding.legal_basis.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                {finding.legal_basis.reference}
+                              </a>
+                            </li>
+                            {finding.related_page ? (
+                              <li>
+                                {messages.relatedPage}:{" "}
+                                <Link
+                                  href={`/${locale}/${finding.related_page}/`}
+                                >
+                                  {finding.related_page}
+                                </Link>
+                              </li>
+                            ) : null}
+                          </ul>
+                          {evidence.length > 0 ? (
+                            <div className={styles.evidence}>
+                              <p className={styles.evidenceTitle}>
+                                {messages.evidence}
+                              </p>
+                              <ul className={styles.evidenceList}>
+                                {evidence.map((line) => (
+                                  <li key={line}>{line}</li>
+                                ))}
+                              </ul>
+                            </div>
+                          ) : null}
+                        </Card>
                       </li>
                     );
                   })}
@@ -435,14 +551,22 @@ export function WebsiteCheckForm({ locale, messages }: Props) {
           })}
           {/* T36: reserved for future LLM policy-content pass */}
           {null}
-          <p className={styles.disclaimer}>{messages.disclaimer}</p>
-          <button
-            type="button"
-            className={styles.secondary}
-            onClick={resetReport}
-          >
-            {messages.scanAgain}
-          </button>
+          <Callout tone="neutral">{messages.disclaimer}</Callout>
+          <div className={styles.reportActions}>
+            <Button type="button" variant="secondary" onClick={resetReport}>
+              {messages.scanAgain}
+            </Button>
+          </div>
+          <Callout tone="info" className={styles.surveyPrompt}>
+            <p>{surveyPrompt}</p>
+            <Button
+              variant="primary"
+              href={`/${locale}/survey/`}
+              className={styles.surveyPromptCta}
+            >
+              {messages.surveyPromptCta}
+            </Button>
+          </Callout>
         </div>
       </div>
     );
@@ -470,16 +594,20 @@ export function WebsiteCheckForm({ locale, messages }: Props) {
         </div>
         <div className={styles.field}>
           <span className={styles.fieldLabel}>{messages.turnstileLabel}</span>
-          <div className={styles.turnstileWrap} ref={turnstileHostRef} />
+          <div
+            className={styles.turnstileWrap}
+            ref={turnstileHostRef}
+            data-turnstile-host
+          />
         </div>
         <div className={styles.actions}>
-          <button
+          <Button
             type="submit"
-            className={styles.submit}
+            variant="primary"
             disabled={scanning || !turnstileToken}
           >
             {scanning ? messages.scanning : messages.submit}
-          </button>
+          </Button>
           {formError ? (
             <p className={`${styles.status} ${styles.error}`} role="alert">
               {formError}
@@ -487,7 +615,9 @@ export function WebsiteCheckForm({ locale, messages }: Props) {
           ) : null}
         </div>
       </form>
-      <p className={styles.disclaimer}>{messages.disclaimer}</p>
+      <Callout tone="neutral" className={styles.formDisclaimer}>
+        {messages.disclaimer}
+      </Callout>
     </div>
   );
 }

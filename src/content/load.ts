@@ -5,6 +5,7 @@ import matter from "gray-matter";
 
 import { locales, type Locale } from "@/i18n/config";
 
+import { LEGAL_SLUGS } from "./legal";
 import {
   parseContentFrontmatter,
   type ContentFrontmatter,
@@ -133,6 +134,50 @@ export function getAllContentPages(locale?: Locale): ContentPage[] {
   return pages;
 }
 
+/** Publishable guide pages for a locale (excludes legal pages and `_` fixtures). */
+export function listGuidePages(locale: Locale): ContentPage[] {
+  return getAllContentPages(locale).filter(
+    (page) =>
+      isPublishableSlug(page.slug) && !LEGAL_SLUGS.has(page.slug),
+  );
+}
+
+/**
+ * Guide pages must declare `category`. The same slug must share one category
+ * across all locales that publish it. Legal pages and `_` fixtures omit it.
+ */
+function validateGuideCategories(): void {
+  const bySlug = new Map<string, { locale: Locale; category: string | undefined }[]>();
+
+  for (const locale of locales) {
+    for (const page of listGuidePages(locale)) {
+      const entries = bySlug.get(page.slug) ?? [];
+      entries.push({ locale, category: page.frontmatter.category });
+      bySlug.set(page.slug, entries);
+
+      if (page.frontmatter.category == null) {
+        throw new Error(
+          `Guide page content/${locale}/${page.slug}.md must set frontmatter.category`,
+        );
+      }
+    }
+  }
+
+  for (const [slug, entries] of bySlug) {
+    const categories = new Set(
+      entries.map((entry) => entry.category).filter((value) => value != null),
+    );
+    if (categories.size > 1) {
+      const detail = entries
+        .map((entry) => `${entry.locale}=${entry.category ?? "(missing)"}`)
+        .join(", ");
+      throw new Error(
+        `Guide slug "${slug}" has inconsistent category across locales: ${detail}`,
+      );
+    }
+  }
+}
+
 /** Validate every markdown file under content/{locale}/. Returns page count. */
 export function validateAllContent(): number {
   let count = 0;
@@ -143,6 +188,8 @@ export function validateAllContent(): number {
       count += 1;
     }
   }
+
+  validateGuideCategories();
 
   return count;
 }

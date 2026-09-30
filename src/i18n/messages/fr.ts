@@ -2,39 +2,106 @@ import type { Messages } from "../types";
 
 export const fr: Messages = {
   meta: {
-    title: "Swiss AI Deployment Resource",
+    title: "aicompliant.ch",
     description:
       "Informations pratiques sur le déploiement de l'IA en Suisse : conformité, comparatif des fournisseurs et outils d'aide à la décision.",
   },
   nav: {
-    brand: "Swiss AI Resource",
+    brand: "aicompliant.ch",
+    brandSubtitle: "Swiss AI Resource",
+    wordmark: "aicompliant",
+    wordmarkTld: ".ch",
     languagesLabel: "Langues",
+    mainLabel: "Navigation principale",
+    skipToContent: "Aller au contenu",
+    menu: "Menu",
+    guides: "Guides",
+    tools: "Aides à la décision",
+    vendors: "Comparatif fournisseurs",
+    survey: "Enquête & Benchmark",
+    websiteCheck: "Vérifier un site",
   },
   footer: {
-    navLabel: "Mentions légales",
+    navLabel: "Pied de page",
+    brandDescription:
+      "Guides, aides à la décision et comparatif des fournisseurs fondé sur des sources pour l'utilisation de l'IA en Suisse.",
+    lastSourceCheck: "Dernière vérification des sources : {date}",
+    colGuides: "Guides",
+    colTools: "Outils",
+    colData: "Données",
+    colLegal: "Mentions légales",
+    survey: "Enquête",
+    benchmark: "Benchmark",
+    disclaimer:
+      "Ces contenus sont fournis à titre informatif uniquement et ne constituent pas un conseil juridique. Vérifiez les sources et consultez un spécialiste si nécessaire.",
+    copyright: "© {year} aicompliant.ch",
     impressum: "Mentions légales",
     privacy: "Politique de confidentialité",
   },
   home: {
-    eyebrow: "PME suisses · adoption de l'IA",
-    title: "Swiss AI Deployment Resource",
+    eyebrow: "PME suisses · usage de l'IA",
+    title: "Déployer l'IA en Suisse — sur des bases sourcées.",
     lead:
-      "Informations pratiques sur le déploiement de l'IA en Suisse : conformité, comparatif des fournisseurs et outils d'aide à la décision.",
+      "Guides sur la LPD, l'AI Act de l'UE et la FINMA, aides à la décision, comparatif d'offres sourcé et contrôle de site. Indépendant, sans suivi, vérifié chaque mois contre les sources.",
     note:
       "L'allemand est la langue de référence de ce projet. Les traductions EN, FR et IT sont des brouillons jusqu'à relecture.",
-    complianceHeading: "Bases de conformité",
-    toolsHeading: "Outils d'aide à la décision",
+    ctaTools: "Lancer une aide à la décision",
+    ctaVendors: "Comparer les fournisseurs",
+    quickCheckTitle: "Quick-Check site web",
+    quickCheckLead:
+      "Vérifie des signaux publics de votre site — déclaration de confidentialité, mentions légales, outils cookies, trackers, en-têtes de sécurité. Pas une évaluation de conformité.",
+    quickCheckUrlLabel: "URL du site",
+    quickCheckSubmit: "Vérifier le site",
+    quickCheckPrivacy:
+      "L'URL est envoyée une seule fois à notre scanner et n'est pas conservée de façon durable.",
+    quickCheckChecksHeading: "Ce qui est vérifié",
+    statsHeading: "En un coup d'œil",
+    statsGuides: "Guides",
+    statsTools: "Aides à la décision",
+    statsVendors: "Fournisseurs",
+    statsLastSource: "Dernière vérification des sources",
+    guidesHeading: "Guides",
+    guidesLead:
+      "Bases sourcées sur la protection des données, l'AI Act de l'UE, la FINMA et les achats.",
+    guidesAction: "Tous les guides",
+    categoryDatenschutz: "Protection des données",
+    categoryEuAiAct: "AI Act de l'UE",
+    categoryFinanzmarkt: "Marchés financiers",
+    categoryBeschaffung: "Achats",
+    readingTime: "{n} min de lecture",
+    toolsHeading: "Aides à la décision",
+    toolsLead:
+      "Arbres interactifs avec sources citées. Pas de feu de conformité.",
+    toolsMaxQuestions: "max. {n} questions",
+    toolsAction: "Toutes les aides",
     vendorsHeading: "Comparatif des fournisseurs",
-    surveyHeading: "Enquête",
+    vendorsLead:
+      "Faits sur l'hébergement, les DPA et les certifications — uniquement avec source, sinon non vérifié.",
+    vendorsListed: "{n} fournisseurs listés",
+    vendorsSwissHosting: "{n} avec hébergement suisse sourcé",
+    vendorsDpa: "{n} avec DPA sourcée",
+    vendorsUnverifiedNote:
+      "Les cellules sans source sont non vérifiées. Pas de recommandations ni de notes.",
+    vendorsAction: "Ouvrir le comparatif",
+    surveyHeading: "Enquête & benchmark",
     surveyLead:
-      "Courte enquête sur l'adoption de l'IA dans les entreprises suisses. Les résultats anonymisés alimentent le rapport de référence.",
+      "Courte enquête sur l'adoption de l'IA dans les entreprises suisses. Les résultats anonymisés alimentent le benchmark.",
+    surveyCta: "Participer à l'enquête",
     benchmarkLink: "Voir le benchmark",
-    websiteCheckHeading: "Quick-Check site web",
-    websiteCheckLead:
-      "Première estimation d'un site à partir de signaux publics (HTTPS, lien vie privée, trackers). Pas un audit de conformité.",
+    benchmarkPending: "Résultats dès n ≥ {n}",
+    methodologyHeading: "Méthode",
+    methodologySourcesTitle: "Sources officielles",
+    methodologySourcesBody:
+      "Les guides et aides s'appuient sur des sources réglementaires et légales primaires — avec l'URL indiquée.",
+    methodologyChecksTitle: "Vérification mensuelle des sources",
+    methodologyChecksBody:
+      "Un job automatisé contrôle chaque mois les sources enregistrées et met à jour les dates de vérification dans le dépôt.",
+    methodologyIndependenceTitle: "Indépendant",
+    methodologyIndependenceBody:
+      "Pas de liens d'affiliation ou de sponsoring, pas de suivi sur le site, et pas de conseil juridique.",
   },
   websiteCheck: {
-    metaTitle: "Quick-Check site web · Swiss AI Resource",
+    metaTitle: "Quick-Check site web",
     metaDescription:
       "Première estimation d'un site : HTTPS, lien vie privée, mentions légales, outils cookies, trackers et en-têtes de sécurité — avec références légales. Pas un conseil juridique.",
     title: "Quick-Check site web",
@@ -75,10 +142,13 @@ export const fr: Messages = {
       "La page semble dynamique (p. ex. GTM ou coquille SPA). Un scan statique peut manquer des scripts et bannières injectés — les résultats peuvent être incomplets.",
     disclaimer:
       "Ce Quick-Check est une première estimation à partir de signaux publics et ne constitue ni un conseil juridique ni un audit de conformité. Vérifiez les sources et consultez des professionnels si nécessaire.",
-    scanAgain: "Analyser une autre URL",
+    scanAgain: "Nouvelle analyse",
+    surveyPrompt:
+      "Aidez à constituer le benchmark suisse — environ {minutes} minutes.",
+    surveyPromptCta: "Aller à l'enquête",
   },
   benchmark: {
-    metaTitle: "Benchmark · Swiss AI Resource",
+    metaTitle: "Benchmark",
     metaDescription:
       "Résultats agrégés anonymisés de l'enquête d'adoption de l'IA en Suisse. Les cellules avec moins de cinq réponses ne sont pas affichées.",
     indexTitle: "Benchmark d'adoption de l'IA",
@@ -108,11 +178,12 @@ export const fr: Messages = {
       "Ce benchmark est un aperçu pilote anonymisé et ne constitue pas un conseil juridique. Les résultats décrivent l'échantillon, pas l'ensemble de l'économie suisse.",
   },
   survey: {
-    metaTitle: "Enquête · Swiss AI Resource",
+    metaTitle: "Enquête",
     metaDescription:
       "Courte enquête sur l'utilisation de l'IA, les dépenses et les exigences d'hébergement dans les entreprises suisses.",
     backHome: "← Retour à l'accueil",
     estimatedTime: "Durée estimée : environ {minutes} minutes",
+    progress: "Question {answered} sur {total}",
     submit: "Envoyer",
     submitting: "Envoi en cours …",
     success:
@@ -145,14 +216,27 @@ export const fr: Messages = {
   },
   content: {
     lastVerified: "Dernière vérification",
+    readingTime: "Temps de lecture env. {minutes} min.",
     sources: "Sources",
     disclaimer:
       "Cette page est fournie à titre informatif et ne constitue pas un conseil juridique. Pour un projet concret, consultez des professionnels qualifiés.",
     backHome: "← Retour à l'accueil",
+    breadcrumbLabel: "Fil d'Ariane",
+    breadcrumbHome: "Accueil",
+    tocLabel: "Sommaire",
+    tocNavLabel: "Table des matières",
+    relatedTools: "Outil d'aide à la décision associé",
+    counselBadge: "Revu par un conseil · {date}",
     translationDraft:
       "Cette traduction est un brouillon généré par LLM et n'a pas encore été relue par un humain.",
     translationCanonicalNote:
       "La version allemande fait foi ; les traductions peuvent différer.",
+  },
+  guides: {
+    indexTitle: "Guides",
+    indexLead:
+      "Guides fondés sur des sources concernant la protection des données, l'AI Act de l'UE, la FINMA et les marchés publics. Pas un conseil juridique.",
+    backHome: "← Retour à l'accueil",
   },
   tools: {
     indexTitle: "Outils d'aide à la décision",
@@ -162,9 +246,18 @@ export const fr: Messages = {
     backToIndex: "← Tous les outils",
     back: "Retour",
     restart: "Recommencer",
+    progress: "Question {n} · max. {m}",
+    maxQuestions: "max. {count} questions",
     caveats: "Mises en garde",
     sources: "Sources",
     relatedPages: "Pages associées",
+    answerRecap: "Vos réponses",
+    copyLink: "Copier le lien",
+    copyLinkDone: "Copié",
+    print: "Imprimer / en PDF",
+    surveyPrompt:
+      "Aidez à construire le benchmark suisse — environ {minutes} minutes",
+    surveyCta: "Aller au sondage",
     disclaimer:
       "Cet outil est fourni à titre informatif et ne constitue pas un conseil juridique. Les résultats sont des aides à l'orientation — consultez les sources et des professionnels qualifiés si nécessaire.",
     verdictLikely: "Plutôt envisageable",

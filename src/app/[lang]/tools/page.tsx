@@ -2,14 +2,16 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SiteHeader } from "@/components/SiteHeader";
+import { ToolCard } from "@/components/ToolCard";
+import { Container } from "@/components/ui";
 import {
   buildLanguageAlternates,
   getMessages,
   isLocale,
   locales,
 } from "@/i18n";
-import { siteUrl } from "@/lib/site";
-import { getAllRules, pickLocalized } from "@/rules";
+import { buildPageMetadata } from "@/lib/metadata";
+import { getAllRules } from "@/rules";
 import styles from "./page.module.css";
 
 type PageProps = {
@@ -31,14 +33,13 @@ export async function generateMetadata({
 
   const messages = getMessages(lang);
 
-  return {
+  return buildPageMetadata({
+    locale: lang,
     title: messages.tools.indexTitle,
     description: messages.tools.indexLead,
-    alternates: {
-      canonical: `${siteUrl}/${lang}/tools/`,
-      languages: buildLanguageAlternates("/tools"),
-    },
-  };
+    path: "tools",
+    languages: buildLanguageAlternates("/tools"),
+  });
 }
 
 export default async function ToolsIndexPage({ params }: PageProps) {
@@ -53,26 +54,29 @@ export default async function ToolsIndexPage({ params }: PageProps) {
 
   return (
     <>
-      <SiteHeader activeLang={lang} messages={messages} />
-      <main className={styles.main} lang={lang}>
-        <Link href={`/${lang}/`} className={styles.back}>
-          {messages.tools.backHome}
-        </Link>
-        <h1>{messages.tools.indexTitle}</h1>
-        <p className={styles.lead}>{messages.tools.indexLead}</p>
+      <SiteHeader activeLang={lang} nav={messages.nav} />
+      <main id="main" className={styles.main} lang={lang}>
+        <Container>
+          <Link href={`/${lang}/`} className={styles.back}>
+            {messages.tools.backHome}
+          </Link>
+          <h1 className={styles.title}>{messages.tools.indexTitle}</h1>
+          <p className={styles.lead}>{messages.tools.indexLead}</p>
 
-        {trees.length > 0 ? (
-          <ul className={styles.toolList}>
-            {trees.map((tree) => (
-              <li key={tree.id}>
-                <Link href={`/${lang}/tools/${tree.id}/`}>
-                  {pickLocalized(tree.title, lang)}
-                </Link>
-                <p>{pickLocalized(tree.description, lang)}</p>
-              </li>
-            ))}
-          </ul>
-        ) : null}
+          {trees.length > 0 ? (
+            <ul className={styles.grid}>
+              {trees.map((tree) => (
+                <li key={tree.id} className={styles.gridItem}>
+                  <ToolCard
+                    tree={tree}
+                    locale={lang}
+                    maxQuestionsLabel={messages.tools.maxQuestions}
+                  />
+                </li>
+              ))}
+            </ul>
+          ) : null}
+        </Container>
       </main>
     </>
   );

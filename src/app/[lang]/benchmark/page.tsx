@@ -3,13 +3,14 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BenchmarkComparison } from "@/components/BenchmarkComparison";
 import { SiteHeader } from "@/components/SiteHeader";
+import { Button, Callout, Card, Container } from "@/components/ui";
 import {
   buildLanguageAlternates,
   getMessages,
   isLocale,
   locales,
 } from "@/i18n";
-import { siteUrl } from "@/lib/site";
+import { buildPageMetadata } from "@/lib/metadata";
 import {
   buildBenchmarkQuestionViews,
   buildCompanySizeOptions,
@@ -39,14 +40,13 @@ export async function generateMetadata({
 
   const messages = getMessages(lang);
 
-  return {
+  return buildPageMetadata({
+    locale: lang,
     title: messages.benchmark.metaTitle,
     description: messages.benchmark.metaDescription,
-    alternates: {
-      canonical: `${siteUrl}/${lang}/benchmark/`,
-      languages: buildLanguageAlternates("/benchmark"),
-    },
-  };
+    path: "benchmark",
+    languages: buildLanguageAlternates("/benchmark"),
+  });
 }
 
 function formatGeneratedAt(iso: string | null, locale: string): string | null {
@@ -80,98 +80,115 @@ export default async function BenchmarkPage({ params }: PageProps) {
 
   return (
     <>
-      <SiteHeader activeLang={lang} messages={messages} />
-      <main className={styles.main} lang={lang}>
-        <Link href={`/${lang}/`} className={styles.back}>
-          {messages.benchmark.backHome}
-        </Link>
-        <h1>{messages.benchmark.indexTitle}</h1>
-        <p className={styles.lead}>{messages.benchmark.indexLead}</p>
-        <p className={styles.meta}>
-          {messages.benchmark.sampleSize.replace(
-            "{n}",
-            String(aggregates.n),
-          )}
-          {generatedLabel
-            ? ` · ${messages.benchmark.generatedAt.replace("{date}", generatedLabel)}`
-            : null}
-        </p>
-        <p className={styles.note}>{messages.benchmark.suppressionNote}</p>
-
-        {!publishable || questionViews.length === 0 ? (
-          <section className={styles.empty} aria-labelledby="empty-heading">
-            <h2 id="empty-heading">{messages.benchmark.emptyTitle}</h2>
-            <p>{messages.benchmark.emptyLead}</p>
-            <p className={styles.cta}>
-              <Link href={`/${lang}/survey/`}>
-                {messages.benchmark.surveyCta}
-              </Link>
+      <SiteHeader activeLang={lang} nav={messages.nav} />
+      <main id="main" className={styles.main} lang={lang}>
+        <Container>
+          <Link href={`/${lang}/`} className={styles.back}>
+            {messages.benchmark.backHome}
+          </Link>
+          <header className={styles.pageHeader}>
+            <h1>{messages.benchmark.indexTitle}</h1>
+            <p className={styles.lead}>{messages.benchmark.indexLead}</p>
+            <p className={styles.meta}>
+              {messages.benchmark.sampleSize.replace(
+                "{n}",
+                String(aggregates.n),
+              )}
+              {generatedLabel
+                ? ` · ${messages.benchmark.generatedAt.replace("{date}", generatedLabel)}`
+                : null}
             </p>
-          </section>
-        ) : (
-          <div className={styles.questions}>
-            {questionViews.map((question) => {
-              const maxCount = Math.max(
-                ...question.rows.map((row) => row.count),
-                1,
-              );
-              return (
-                <section
-                  key={question.questionId}
-                  className={styles.card}
-                  aria-labelledby={`q-${question.questionId}`}
-                >
-                  <div className={styles.cardHeader}>
-                    <h2 id={`q-${question.questionId}`}>{question.prompt}</h2>
-                    <span className={styles.cardN}>
-                      {messages.benchmark.questionSample.replace(
-                        "{n}",
-                        String(question.n),
-                      )}
-                    </span>
-                  </div>
-                  <ul className={styles.bars}>
-                    {question.rows.map((row) => (
-                      <li key={row.optionId}>
-                        <div className={styles.barMeta}>
-                          <span>{row.label}</span>
-                          <span>
-                            {row.count} · {row.percent}%
-                          </span>
-                        </div>
-                        <div
-                          className={styles.barTrack}
-                          role="presentation"
-                        >
+          </header>
+          <Callout tone="neutral" className={styles.note}>
+            {messages.benchmark.suppressionNote}
+          </Callout>
+
+          {!publishable || questionViews.length === 0 ? (
+            <Card
+              className={styles.empty}
+              as="section"
+              aria-labelledby="empty-heading"
+            >
+              <h2 id="empty-heading">{messages.benchmark.emptyTitle}</h2>
+              <p>{messages.benchmark.emptyLead}</p>
+              <Button
+                variant="primary"
+                href={`/${lang}/survey/`}
+                className={styles.emptyCta}
+              >
+                {messages.benchmark.surveyCta}
+              </Button>
+            </Card>
+          ) : (
+            <div className={styles.questions}>
+              {questionViews.map((question) => {
+                const maxCount = Math.max(
+                  ...question.rows.map((row) => row.count),
+                  1,
+                );
+                return (
+                  <Card
+                    key={question.questionId}
+                    as="section"
+                    className={styles.card}
+                    aria-labelledby={`q-${question.questionId}`}
+                  >
+                    <div className={styles.cardHeader}>
+                      <h2 id={`q-${question.questionId}`}>{question.prompt}</h2>
+                      <span className={styles.cardN}>
+                        {messages.benchmark.questionSample.replace(
+                          "{n}",
+                          String(question.n),
+                        )}
+                      </span>
+                    </div>
+                    <ul className={styles.bars}>
+                      {question.rows.map((row) => (
+                        <li key={row.optionId}>
+                          <div className={styles.barMeta}>
+                            <span>{row.label}</span>
+                            <span>
+                              {row.count} · {row.percent}%
+                            </span>
+                          </div>
                           <div
-                            className={styles.barFill}
-                            style={{
-                              width: `${Math.max(
-                                (row.count / maxCount) * 100,
-                                2,
-                              )}%`,
-                            }}
-                          />
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-                </section>
-              );
-            })}
-          </div>
-        )}
+                            className={styles.barTrack}
+                            role="presentation"
+                          >
+                            <div
+                              className={styles.barFill}
+                              style={{
+                                width: `${Math.max(
+                                  (row.count / maxCount) * 100,
+                                  2,
+                                )}%`,
+                              }}
+                            />
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  </Card>
+                );
+              })}
+            </div>
+          )}
 
-        <BenchmarkComparison
-          messages={messages.benchmark}
-          sizeOptions={sizeOptions}
-          medianBySize={medianBySize}
-        />
+          <BenchmarkComparison
+            messages={messages.benchmark}
+            sizeOptions={sizeOptions}
+            medianBySize={medianBySize}
+          />
 
-        <p className={styles.cta}>
-          <Link href={`/${lang}/survey/`}>{messages.benchmark.surveyCta}</Link>
-        </p>
-        <p className={styles.disclaimer}>{messages.benchmark.disclaimer}</p>
+          <p className={styles.cta}>
+            <Button variant="secondary" href={`/${lang}/survey/`}>
+              {messages.benchmark.surveyCta}
+            </Button>
+          </p>
+          <Callout tone="neutral" className={styles.disclaimer}>
+            {messages.benchmark.disclaimer}
+          </Callout>
+        </Container>
       </main>
     </>
   );

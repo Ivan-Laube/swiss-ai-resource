@@ -4,6 +4,7 @@ description: "When Swiss companies may disclose personal data to US-hosted langu
 last_verified: "2026-07-10"
 volatility: "fast"
 translation_status: "draft"
+category: "datenschutz"
 reviewed_by: null
 review_date: null
 review_scope: null

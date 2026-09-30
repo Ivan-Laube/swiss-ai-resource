@@ -4,6 +4,7 @@ description: "Cosa si aspetta la comunicazione di vigilanza 08/2024 della FINMA 
 last_verified: "2026-07-10"
 volatility: "moderate"
 translation_status: "draft"
+category: "finanzmarkt"
 reviewed_by: null
 review_date: null
 review_scope: null

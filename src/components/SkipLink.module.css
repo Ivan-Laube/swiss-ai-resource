@@ -1,0 +1,37 @@
+.skipLink {
+  position: fixed;
+  inset-inline-start: var(--space-4);
+  top: var(--space-4);
+  z-index: 200;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding-inline: var(--space-4);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-control);
+  background: var(--surface);
+  color: var(--text);
+  font-size: var(--font-small);
+  font-weight: var(--weight-medium);
+  line-height: var(--leading-small);
+  text-decoration: none;
+  box-shadow: var(--shadow-micro);
+  /* Visually hide until keyboard focus without removing from the tab order. */
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.skipLink:focus,
+.skipLink:focus-visible {
+  clip-path: none;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  white-space: normal;
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+  text-decoration: none;
+}

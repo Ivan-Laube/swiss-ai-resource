@@ -23,16 +23,16 @@ import {
 } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import {
+  AGGREGATES_PATH,
+  FIXTURE_ALLOWED_ENV,
+  isPopulatedFixture,
+  LEAKED_FIXTURE_MESSAGE,
+  POPULATED_FIXTURE,
+} from "./e2e-fixture-guard";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const OUT = path.join(ROOT, "out");
-const AGGREGATES_PATH = path.join(ROOT, "data", "survey-aggregates.json");
-const POPULATED_FIXTURE = path.join(
-  ROOT,
-  "e2e",
-  "fixtures",
-  "survey-aggregates.populated.json",
-);
 const NEXT_BIN = path.join(
   ROOT,
   "node_modules",
@@ -73,6 +73,16 @@ const TARGETS: BuildTarget[] = [
   },
 ];
 
+/** Restores the real aggregates if the process is interrupted mid-build. */
+let restoreOnInterrupt: (() => void) | null = null;
+
+for (const signal of ["SIGINT", "SIGTERM", "SIGHUP"] as const) {
+  process.on(signal, () => {
+    restoreOnInterrupt?.();
+    process.exit(130);
+  });
+}
+
 function run(command: string, args: string[], env: NodeJS.ProcessEnv): void {
   // Avoid shell:true with absolute paths that contain spaces (e.g. "Swiss AI").
   const result = spawnSync(command, args, {
@@ -82,6 +92,7 @@ function run(command: string, args: string[], env: NodeJS.ProcessEnv): void {
     shell: false,
   });
   if (result.status !== 0) {
+    restoreOnInterrupt?.();
     process.exit(result.status ?? 1);
   }
 }
@@ -92,6 +103,7 @@ function buildOne(target: BuildTarget): void {
   const env: NodeJS.ProcessEnv = {
     ...process.env,
     ...target.env,
+    ...(target.usePopulatedAggregates ? { [FIXTURE_ALLOWED_ENV]: "1" } : {}),
   };
 
   let aggregatesBackup: string | null = null;
@@ -103,6 +115,8 @@ function buildOne(target: BuildTarget): void {
       process.exit(1);
     }
     aggregatesBackup = readFileSync(AGGREGATES_PATH, "utf8");
+    const backup = aggregatesBackup;
+    restoreOnInterrupt = () => writeFileSync(AGGREGATES_PATH, backup);
     copyFileSync(POPULATED_FIXTURE, AGGREGATES_PATH);
     console.log("Installed populated survey-aggregates fixture for build");
   }
@@ -131,6 +145,7 @@ function buildOne(target: BuildTarget): void {
   } finally {
     if (aggregatesBackup !== null) {
       writeFileSync(AGGREGATES_PATH, aggregatesBackup);
+      restoreOnInterrupt = null;
       console.log("Restored committed survey-aggregates.json");
     }
   }
@@ -149,6 +164,11 @@ function buildOne(target: BuildTarget): void {
 function main(): void {
   if (!existsSync(NEXT_BIN)) {
     console.error(`next binary not found at ${NEXT_BIN}; run npm ci first`);
+    process.exit(1);
+  }
+
+  if (isPopulatedFixture(readFileSync(AGGREGATES_PATH, "utf8"))) {
+    console.error(LEAKED_FIXTURE_MESSAGE);
     process.exit(1);
   }
 

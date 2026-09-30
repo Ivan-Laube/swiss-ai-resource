@@ -4,6 +4,7 @@ description: "What the revised Federal Act on Data Protection means for AI-suppo
 last_verified: "2026-07-10"
 volatility: "moderate"
 translation_status: "draft"
+category: "datenschutz"
 reviewed_by: null
 review_date: null
 review_scope: null

@@ -34,11 +34,11 @@ content/
 | `impressum` | stable | Art. 3 Abs. 1 lit. s UWG; natural-person operator (T40) |
 | `datenschutz` | stable | Art. 19 DSG; controller, Cloudflare/D1 (`responses` + unlinkable `report_signups`), retention, deletion |
 
-Legal pages ship in DE/EN/FR/IT (**T39** drafts + **T40** filled operator details) and are linked from the site footer (and the survey form for `datenschutz`). They are excluded from the home “Compliance basics” list.
+Legal pages ship in DE/EN/FR/IT (**T39** drafts + **T40** filled operator details) and are linked from the site footer (and the survey form for `datenschutz`). They are excluded from guide listings (`listGuidePages`: home “Compliance basics”, footer Leitfäden column, and `/[lang]/guides/`).
 
 **Operator (T40, natural person):** name, street, PLZ/Ort, and contact email appear on Impressum and Datenschutz in all four locales (email as `mailto:`). Phone, Rechtsform, Vertretung, and Handelsregister/UID are omitted as not applicable. Do not re-introduce `PLACEHOLDER_*` markers. Lawyer review of the filled DE text is **T29**. Deploy notes: [DEPLOY.md](../DEPLOY.md#legal-pages-t39t40).
 
-Routes: `/[lang]/[slug]/`. `hreflang` alternates are limited to locales that have the file (`localesWithSlug`). Publishable slugs are also enumerated in [`src/app/sitemap.ts`](../src/app/sitemap.ts) via `listPublishableContentSlugs` / `localesWithSlug`. After T14, the five cornerstone slugs exist in DE/EN/FR/IT (`translation_status: draft` for non-DE). Legal pages also exist in all four locales (`translation_status: draft` for non-DE; DE `canonical`).
+Routes: individual pages at `/[lang]/[slug]/`; guides index at `/[lang]/guides/` (**R19**, [`src/app/[lang]/guides/page.tsx`](../src/app/[lang]/guides/page.tsx)). Per-page `hreflang` alternates are limited to locales that have the file (`localesWithSlug`). Publishable slugs are enumerated in [`src/app/sitemap.ts`](../src/app/sitemap.ts) via `listPublishableContentSlugs` / `localesWithSlug`; the guides index is a fixed segment (all four locales), same pattern as tools/vendors. After T14, the five cornerstone slugs exist in DE/EN/FR/IT (`translation_status: draft` for non-DE). Legal pages also exist in all four locales (`translation_status: draft` for non-DE; DE `canonical`).
 
 ## Frontmatter
 
@@ -49,6 +49,7 @@ Routes: `/[lang]/[slug]/`. `hreflang` alternates are limited to locales that hav
 | `last_verified` | `YYYY-MM-DD` | Bumped by the monthly job (T17) |
 | `volatility` | `stable` \| `moderate` \| `fast` | How often sources move |
 | `translation_status` | `canonical` \| `draft` \| `reviewed` | DE must be `canonical`; EN/FR/IT must be `draft` or `reviewed` |
+| `category` | `datenschutz` \| `eu-ai-act` \| `finanzmarkt` \| `beschaffung` | Required on guide pages; omit on legal pages and `_` fixtures. Same slug must share one value across locales |
 | `reviewed_by` | string \| null | Lawyer name; default `null` |
 | `review_date` | `YYYY-MM-DD` \| null | Badge only if set and fresh (T29) |
 | `review_scope` | string \| null | Git commit SHA of the reviewed DE version |
@@ -69,6 +70,7 @@ description: "Kurzüberblick für Schweizer KMU."
 last_verified: "2026-07-10"
 volatility: "moderate"
 translation_status: "canonical"
+category: "datenschutz"
 reviewed_by: null
 review_date: null
 review_scope: null
@@ -94,7 +96,7 @@ Requires `ANTHROPIC_API_KEY` (optional local `.env`). Override model with `TRANS
 ### Generated frontmatter rules
 
 - LLM supplies translated `title`, `description`, and body only.
-- Pipeline copies from DE: `last_verified`, `volatility`, `sources`.
+- Pipeline copies from DE: `last_verified`, `volatility`, `category`, `sources`.
 - Pipeline forces: `translation_status: "draft"`; `reviewed_by` / `review_date` / `review_scope` = `null` (lawyer review is DE-only).
 - FR/IT prompts inject matched Fedlex glossary rows; `--strict` fails if official terms are missing from the output.
 - EN prompts require conventional phrasing with the German term in parentheses on first use for matched glossary terms.
@@ -108,7 +110,7 @@ Requires `ANTHROPIC_API_KEY` (optional local `.env`). Override model with `TRANS
 Workflow: [`.github/workflows/translate-on-de-merge.yml`](../.github/workflows/translate-on-de-merge.yml).
 
 - **Trigger:** push to `main` that touches `content/de/**/*.md`, plus manual `workflow_dispatch` (optional comma-separated slugs; empty = all publishable DE pages).
-- **Canonical-change filter:** only regenerates when DE `title`, `description`, or body changed. Metadata-only DE edits (`last_verified`, lawyer review fields, `sources`, `volatility`) are skipped so monthly T17 bumps do not burn API calls.
+- **Canonical-change filter:** only regenerates when DE `title`, `description`, or body changed. Metadata-only DE edits (`last_verified`, lawyer review fields, `sources`, `volatility`, `category`) are skipped so monthly T17 bumps do not burn API calls.
 - **Engine:** `changed-de-slugs` → `translate --strict` → `check:content` → `npm run build` → bot commit of `content/{en,fr,it}/`.
 - **Landing:** commits regenerated `content/{en,fr,it}/*.md` to `main` with `translation_status: draft`. Translation-only commits do not re-trigger the workflow (path filter is DE-only).
 

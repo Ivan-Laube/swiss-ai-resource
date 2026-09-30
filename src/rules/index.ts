@@ -20,5 +20,17 @@ export {
   getAllRules,
   getRule,
   listRuleIds,
+  toolsForContentSlug,
   validateRules,
 } from "./load";
+
+export {
+  formatAnswerHash,
+  longestQuestionCount,
+  parseAnswerHash,
+  replayPath,
+  type ParseAnswerHashResult,
+  type PathStep,
+  type ReplayPathResult,
+} from "./path";
+

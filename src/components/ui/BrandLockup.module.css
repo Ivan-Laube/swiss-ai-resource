@@ -1,0 +1,33 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  text-decoration: none;
+  color: inherit;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  line-height: 1.2;
+}
+
+.wordmark {
+  font-size: var(--font-small);
+  line-height: var(--leading-small);
+  font-weight: var(--weight-bold);
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+
+.tld {
+  color: var(--accent);
+}
+
+.subtitle {
+  font-size: var(--font-caption);
+  line-height: var(--leading-caption);
+  font-weight: var(--weight-medium);
+  color: var(--text-subtle);
+}

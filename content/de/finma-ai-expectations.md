@@ -4,6 +4,7 @@ description: "Was die FINMA-Aufsichtsmitteilung 08/2024 zu Governance und Risiko
 last_verified: "2026-07-10"
 volatility: "moderate"
 translation_status: "canonical"
+category: "finanzmarkt"
 reviewed_by: null
 review_date: null
 review_scope: null

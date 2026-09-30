@@ -4,6 +4,7 @@ description: "Quand les entreprises suisses peuvent communiquer des données per
 last_verified: "2026-07-10"
 volatility: "fast"
 translation_status: "draft"
+category: "datenschutz"
 reviewed_by: null
 review_date: null
 review_scope: null

@@ -4,6 +4,7 @@ description: "Was das revidierte Datenschutzgesetz für KI-gestützte Datenbearb
 last_verified: "2026-07-10"
 volatility: "moderate"
 translation_status: "canonical"
+category: "datenschutz"
 reviewed_by: null
 review_date: null
 review_scope: null
