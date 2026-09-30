@@ -95,7 +95,7 @@ export default defineConfig({
   projects: [
     {
       name: "configured",
-      testMatch: /(?:website-check|survey|benchmark)\/(?!unconfigured).*\.spec\.ts/,
+      testMatch: /(?:website-check|survey|benchmark|tools)\/(?!unconfigured).*\.spec\.ts/,
       use: {
         baseURL: "http://127.0.0.1:8799",
       },

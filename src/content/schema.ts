@@ -12,6 +12,15 @@ export const translationStatuses = [
 ] as const;
 export type TranslationStatus = (typeof translationStatuses)[number];
 
+/** Language-neutral guide topic for homepage / index cards. */
+export const guideCategories = [
+  "datenschutz",
+  "eu-ai-act",
+  "finanzmarkt",
+  "beschaffung",
+] as const;
+export type GuideCategory = (typeof guideCategories)[number];
+
 const isoDate = z.iso.date();
 
 const httpsUrl = z.url().refine(
@@ -32,13 +41,16 @@ const contentFrontmatterBaseSchema = z.object({
   last_verified: isoDate,
   volatility: z.enum(volatilities),
   translation_status: z.enum(translationStatuses),
+  /** Present on guide pages; omitted on legal pages and fixtures. */
+  category: z.enum(guideCategories).optional(),
   reviewed_by: z.string().min(1).nullable().default(null),
   review_date: isoDate.nullable().default(null),
   review_scope: z.string().min(1).nullable().default(null),
   sources: z.array(contentSourceSchema).min(1),
 });
 
-function reviewFieldsComplete(data: {
+/** Zod all-or-nothing: every review field null, or all three set. */
+function reviewFieldsConsistent(data: {
   reviewed_by: string | null;
   review_date: string | null;
   review_scope: string | null;
@@ -48,9 +60,26 @@ function reviewFieldsComplete(data: {
   return setCount === 0 || setCount === 3;
 }
 
+/**
+ * True only when counsel review fields are fully populated.
+ * Used for the “Reviewed by counsel” badge (R3C). All-null is valid
+ * frontmatter but must not show the badge.
+ */
+export function counselReviewComplete(data: {
+  reviewed_by: string | null;
+  review_date: string | null;
+  review_scope: string | null;
+}): boolean {
+  return (
+    data.reviewed_by != null &&
+    data.review_date != null &&
+    data.review_scope != null
+  );
+}
+
 /** Frontmatter shape without locale-specific translation_status rules. */
 export const contentFrontmatterSchema = contentFrontmatterBaseSchema.refine(
-  reviewFieldsComplete,
+  reviewFieldsConsistent,
   {
     message:
       "reviewed_by, review_date, and review_scope must all be set together, or all null",

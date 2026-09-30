@@ -1,6 +1,6 @@
 # aicompliant.ch website redesign: plan and task list
 
-**Status:** Approved, not started · **Created:** 2026-09-29 · **Owner:** Ivan Laube
+**Status:** PR 1–4 done · **Created:** 2026-09-29 · **Owner:** Ivan Laube
 **Related:** [swiss_ai_resource_implementation_plan.md](swiss_ai_resource_implementation_plan.md) · [README.md](README.md) · [OPERATOR_CHECKLIST.md](OPERATOR_CHECKLIST.md)
 
 This plan turns the reviewed Stitch proposal ("Helvetia Precision GovTech") into a delivery plan that fits the existing stack: Next.js static export, CSS modules, strict CSP, four locales and sourced data. It covers what we adopt, what we reject, the design system spec, and the task list, grouped into four PRs.
@@ -36,7 +36,7 @@ This plan turns the reviewed Stitch proposal ("Helvetia Precision GovTech") into
 | D6 | The survey is promoted **after a result**, not in the hero | Survey prompt at the end of Quick-Check results and decision-tool outcomes, plus a band on the homepage. |
 | D7 | **Dark mode is kept** | Every token has a dark value. It follows `prefers-color-scheme`, with no manual toggle in this scope. |
 | D8 | "Reviewed by counsel" badge **appears only when the review fields are complete** | Uses `reviewFieldsComplete()`. There is no "not yet reviewed" label. Lawyer review (T29) is due before full launch. |
-| D9 | Mobile-first layout with breakpoints at **768px** and **1024px** | No horizontal page scroll anywhere. Tap targets are at least 44px. Exception: the header switches to the desktop nav at **1200px** (the DE/FR/IT nav needs ~1150px), and the header CTA moves into the menu below **480px**. |
+| D9 | Mobile-first layout with breakpoints at **768px** and **1024px** | No horizontal page scroll anywhere. Tap targets are at least 44px. |
 | D10 | Quick-Check and decision-tool state live in the **URL fragment** (`#…`) | The fragment is never sent to the server or written to logs, and it works with the static export. |
 | D11 | **`<html lang>` per locale** via a `[lang]` root layout + `(root)` for `/` + `global-not-found` | Next 16 i18n pattern (**R1A**). Shared font/metadata in `src/app/document.ts`. Single `404.html` defaults to `de` and sets `document.documentElement.lang` from the path when the first segment is a known locale (CSP-hashed). |
 
@@ -156,7 +156,7 @@ The existing message strings take precedence over the labels in this table. Conf
 - Nav: Leitfäden (`/guides/`), Entscheidungshilfen (`/tools/`), Anbietervergleich (`/vendors/`), Umfrage & Benchmark (`/survey/`)
 - Language control
 - Primary CTA "Website prüfen" (`/website-check/`)
-- Below **1200px** everything except the logo, the CTA and the menu toggle moves into a `<details>` menu (the panel drops down full width under the header). Below **480px** the CTA also moves into the menu, so the header stays one row. Covered by `e2e/layout/header.spec.ts` (all locales × 320–1280px).
+- Below 1024px everything except the logo and the CTA moves into a `<details>` menu. The breakpoint may shift if FR/IT labels need it; see R54.
 
 **Footer:**
 
@@ -206,7 +206,7 @@ Task status is `Todo`, `In progress` or `Done`. The "Depends on" column refers t
 | R14 | Logo: a `BrandMark` SVG component (Appendix A) and a `BrandLockup` (mark + "aicompliant**.ch**" + "Swiss AI Resource"). App icons: `icon.svg` (large-star-only variant), `favicon.ico`, `apple-icon.png`. Delete the default favicon and the create-next-app leftovers in `public/` (`next.svg`, `vercel.svg`, `file.svg`, `globe.svg`, `window.svg`) after checking nothing references them | R10 | Done |
 | R15 | Rewrite `SiteHeader`: white sticky header with a hairline border; light shadow on scroll through scroll-driven CSS animation (progressive enhancement, border only as fallback); nav items from §5.5; "Website prüfen" CTA; `aria-current` on the active section | R13, R14 | Done |
 | R16 | Language control that stays on the same page: each page passes the locales it exists in (e.g. via `localesWithSlug()`), and the switcher links to the same path in those locales and hides the rest. Segmented-control styling, `hrefLang` kept | R15 | Done |
-| R17 | Mobile menu (< 1200px) built with `<details>`/`<summary>`, no JS dependency for opening. Closes after client-side navigation (small effect keyed on pathname, or plain `<a>` links; decide during implementation). Tap targets ≥ 44px | R15 | Done |
+| R17 | Mobile menu (< 1024px) built with `<details>`/`<summary>`, no JS dependency for opening. Closes after client-side navigation (small effect keyed on pathname, or plain `<a>` links; decide during implementation). Tap targets ≥ 44px | R15 | Done |
 | R18 | Rewrite `SiteFooter` with the columns from §5.5 and the computed "last source check" date (latest of `last_verified` across published DE guides and `last_checked` across vendors), disclaimer and copyright | R13, R14 | Done |
 | R19 | New route `/[lang]/guides/`: guide index built from `Card`s, with hreflang alternates and a sitemap entry. It's the target of the "Leitfäden" nav item | R13 | Done |
 | R1A | Correct `<html lang>` per locale. Investigate the Next 16 options (multiple root layouts through a route group for `[lang]` vs root, `global-not-found`). Fallback: set `document.documentElement.lang` early, with its hash picked up by `csp-hashes.ts`. Root `/` redirect and `404.html` must keep working | R02 | Done |
@@ -220,49 +220,49 @@ Task status is `Todo`, `In progress` or `Done`. The "Depends on" column refers t
 
 | ID | Task | Depends on | Status |
 |---|---|---|---|
-| R20 | Hero layout and copy (Appendix B draft → final DE → EN/FR/IT). Canonical-language `Callout` on non-DE locales only | PR 1 | Todo |
-| R21 | Hero Quick-Check panel: `type="url"` input (`inputmode="url"`, `autocomplete="url"`) and a submit button that navigates to `/[lang]/website-check/#url=<encoded>`. Compact list of checks generated from `data/scanner-checks.json` (localized labels). Privacy line whose wording is checked against actual scanner behaviour (stateless Worker, no storage). No Turnstile and no third-party script on the homepage | R20 | Todo |
-| R22 | `WebsiteCheckForm`: read the `#url=` fragment, prefill the field, start the scan automatically once the Turnstile token is available, then remove the fragment with `history.replaceState`. Invalid URLs show the normal validation message | R21 | Todo |
-| R23 | Stats bar computed at build: number of published guides, number of decision tools, number of vendors, last source check date (same helper as R18) | R18 | Todo |
-| R24 | Guide cards: category kicker, title, description, `last_verified`, reading time (word count ÷ 200, rounded). Add an optional language-neutral `category` enum to the content frontmatter schema (e.g. `datenschutz`, `eu-ai-act`, `finanzmarkt`, `beschaffung`), set it on the guides in all four locales, localize labels in messages, update `check:content`. Make sure the translation pipeline keeps the field | R13 | Todo |
-| R25 | Decision-tool cards: title, description, "max. N Fragen" computed from the longest path in the tree, link to the tool | R13 | Todo |
-| R26 | Vendor teaser: factual counts computed from `vendors.json` (vendors listed, with sourced Swiss hosting, with sourced DPA) + the "unverified cells" note + link. No per-vendor verdicts | R13 | Todo |
-| R27 | Survey & benchmark band: survey CTA. The benchmark link says "Ergebnisse ab n ≥ 5" while below `SURVEY_SUPPRESSION_THRESHOLD`, and shows the live benchmark link once published data exists | R13 | Todo |
-| R28 | Methodology trio (official sources + monthly source checks; no affiliate or sponsor links; no legal advice). **Check each claim** against the repo before publishing (monthly job T15–T17 active; `vendors.json` has no affiliate/tracking parameters; no analytics on the site) | R13 | Todo |
-| R29 | Homepage responsive pass at 375 / 768 / 1024 / 1280 in both themes and all four locales | R20–R28 | Todo |
+| R20 | Hero layout and copy (Appendix B draft → final DE → EN/FR/IT). Canonical-language `Callout` on non-DE locales only | PR 1 | Done |
+| R21 | Hero Quick-Check panel: `type="url"` input (`inputmode="url"`, `autocomplete="url"`) and a submit button that navigates to `/[lang]/website-check/#url=<encoded>`. Compact list of checks generated from `data/scanner-checks.json` (localized labels). Privacy line whose wording is checked against actual scanner behaviour (stateless Worker, no storage). No Turnstile and no third-party script on the homepage | R20 | Done |
+| R22 | `WebsiteCheckForm`: read the `#url=` fragment, prefill the field, start the scan automatically once the Turnstile token is available, then remove the fragment with `history.replaceState`. Invalid URLs show the normal validation message. Auto-start happens only for the homepage panel's own handoff (one-time `sessionStorage` mark, `src/lib/quick-check-handoff.ts`); `#url=` links from elsewhere only prefill | R21 | Done |
+| R23 | Stats bar computed at build: number of published guides, number of decision tools, number of vendors, last source check date (same helper as R18) | R18 | Done |
+| R24 | Guide cards: category kicker, title, description, `last_verified`, reading time (word count ÷ 200, rounded). Add an optional language-neutral `category` enum to the content frontmatter schema (e.g. `datenschutz`, `eu-ai-act`, `finanzmarkt`, `beschaffung`), set it on the guides in all four locales, localize labels in messages, update `check:content`. Make sure the translation pipeline keeps the field | R13 | Done |
+| R25 | Decision-tool cards: title, description, "max. N Fragen" computed from the longest path in the tree, link to the tool | R13 | Done |
+| R26 | Vendor teaser: factual counts computed from `vendors.json` (vendors listed, with sourced Swiss hosting, with sourced DPA) + the "unverified cells" note + link. No per-vendor verdicts | R13 | Done |
+| R27 | Survey & benchmark band: survey CTA. The benchmark link says "Ergebnisse ab n ≥ 5" while below `SURVEY_SUPPRESSION_THRESHOLD`, and shows the live benchmark link once published data exists | R13 | Done |
+| R28 | Methodology trio (official sources + monthly source checks; no affiliate or sponsor links; no legal advice). **Check each claim** against the repo before publishing (monthly job T15–T17 active; `vendors.json` has no affiliate/tracking parameters; no analytics on the site) | R13 | Done |
+| R29 | Homepage responsive pass at 375 / 768 / 1024 / 1280 in both themes and all four locales | R20–R28 | Done |
 
 ### PR 3: Decision tools and guides (M)
 
 | ID | Task | Depends on | Status |
 |---|---|---|---|
-| R30 | `DecisionTree` URL state: answer path in the fragment (`#a=<answerId>.<answerId>…`), rebuilt on load, browser back/forward through `hashchange`. An invalid or stale path restarts cleanly | PR 1 | Todo |
-| R31 | Progress indicator: "Frage n · max. m" (remaining steps computed as the longest path from the current node) with a slim progress bar | R30 | Todo |
-| R32 | Outcome view: recap of the answers (question → chosen answer), "Link kopieren" (Clipboard API, hidden where unsupported), "Drucken / als PDF" (`window.print()` + print CSS from R3D) | R30 | Todo |
-| R33 | Accessibility: move focus to the new question heading on each step, `aria-live` announcement, keyboard-only walkthrough tested | R30 | Todo |
-| R34 | Outcome styling: verdict `StatusPill` per §5.2 (never green/red), summary in a `Callout`, caveats / sources / related pages as sections | R13 | Todo |
-| R35 | Related pages show **titles** instead of slugs: resolve titles at build in the tool page and pass them to the client component | — | Todo |
-| R36 | Survey prompt after an outcome ("Helfen Sie beim Schweizer Benchmark, 3 Minuten") | R34 | Todo |
-| R37 | Tools index page restyled with tool cards (reuses the R25 card) | R25 | Todo |
-| R38 | Guide page layout: breadcrumbs (Start › Leitfäden › Titel), meta row (`last_verified`, reading time), translation notes as a `Callout`, lead styling | R19 | Todo |
-| R39 | Table of contents from the H2s: add stable heading ids in `renderMarkdown` (slugify with umlaut / diacritic handling, deduplicated). Sticky sidebar at ≥ 1024px, collapsible `<details>` above the content on mobile | R38 | Todo |
-| R3A | "Passende Entscheidungshilfe" box: reverse lookup of the trees whose outcomes list this slug in `related_pages` | R38 | Todo |
-| R3B | Sources section styled as a reference list (title, domain, external-link icon) | R38 | Todo |
-| R3C | "Reviewed by counsel · {date}" badge, rendered only when `reviewFieldsComplete()` is true for the page | R38 | Todo |
-| R3D | Print stylesheet: hide header, footer, nav and TOC; print source URLs; sensible page breaks; checklist items print with boxes (useful for `ai-procurement-checklist`) | R38 | Todo |
-| R3E | Legal pages (`impressum`, `datenschutz`) use the guide layout without TOC, badge or related tools | R38 | Todo |
+| R30 | `DecisionTree` URL state: answer path in the fragment (`#a=<answerId>.<answerId>…`), rebuilt on load, browser back/forward through `hashchange` / `popstate`. An invalid or stale path restarts cleanly | PR 1 | Done |
+| R31 | Progress indicator: "Frage n · max. m" (remaining steps computed as the longest path from the current node) with a slim progress bar | R30 | Done |
+| R32 | Outcome view: recap of the answers (question → chosen answer), "Link kopieren" (Clipboard API, hidden where unsupported), "Drucken / als PDF" (`window.print()` + print CSS from R3D) | R30 | Done |
+| R33 | Accessibility: move focus to the new question heading on each step, `aria-live` announcement, keyboard-only walkthrough tested | R30 | Done |
+| R34 | Outcome styling: verdict `StatusPill` per §5.2 (never green/red), summary in a `Callout`, caveats / sources / related pages as sections | R13 | Done |
+| R35 | Related pages show **titles** instead of slugs: resolve titles at build in the tool page and pass them to the client component | — | Done |
+| R36 | Survey prompt after an outcome (copy interpolates `survey.estimated_minutes`, currently 5) | R34 | Done |
+| R37 | Tools index page restyled with tool cards (reuses the R25 card) | R25 | Done |
+| R38 | Guide page layout: breadcrumbs (Start › Leitfäden › Titel), meta row (`last_verified`, reading time), translation notes as a `Callout`, lead styling | R19 | Done |
+| R39 | Table of contents from the H2s: add stable heading ids in `renderMarkdown` (slugify with umlaut / diacritic handling, deduplicated). Sticky sidebar at ≥ 1024px, collapsible `<details>` above the content on mobile | R38 | Done |
+| R3A | "Passende Entscheidungshilfe" box: reverse lookup of the trees whose outcomes list this slug in `related_pages` | R38 | Done |
+| R3B | Sources section styled as a reference list (title, domain, external-link icon) | R38 | Done |
+| R3C | "Reviewed by counsel · {date}" badge, rendered only when `counselReviewComplete()` is true (all three review fields set; all-null does not show the badge) | R38 | Done |
+| R3D | Print stylesheet: hide header, footer, nav and TOC; print source URLs; sensible page breaks; checklist items print with boxes (useful for `ai-procurement-checklist`) | R38 | Done |
+| R3E | Legal pages (`impressum`, `datenschutz`) use the guide layout without TOC, badge or related tools | R38 | Done |
 
 ### PR 4: Remaining pages (M)
 
 | ID | Task | Depends on | Status |
 |---|---|---|---|
-| R40 | `VendorTable` restyle: cell `StatusPill`s per §5.2, per-cell source links kept, sticky header row on desktop, filter controls using the building blocks | PR 1 | Todo |
-| R41 | `VendorTable` mobile layout (< 768px): one card per vendor with a `<dl>` of fields, same filters, no horizontal scroll | R40 | Todo |
-| R42 | `WebsiteCheckForm` results: grouped by severity, status pills (confirm the mapping against `scanner-checks.json`), legal references, "Neue Prüfung" action, survey prompt after results | R22 | Todo |
-| R43 | `SurveyForm` restyle: progress indicator, radio/checkbox options as ≥ 44px tappable cards, clear error and success states. Must not change the survey schema or submission behaviour | R00 | Todo |
-| R44 | Benchmark page: designed empty state below the n ≥ 5 threshold (explains the threshold, survey CTA). `BenchmarkComparison` charts use tokens and work in dark mode | R13 | Todo |
-| R45 | `NotFoundView` restyle, with links to guides, tools and home | R13 | Todo |
-| R46 | OpenGraph / Twitter metadata on all pages, and a per-locale OG image (1200×630, logo lockup + title). Check the Next 16 static-export support for `opengraph-image`; fall back to committed static PNGs | R14 | Todo |
-| R47 | Cleanup: remove obsolete per-page CSS, grep for hard-coded colours / `Arial` / old tokens, no unused CSS modules left | R40–R46 | Todo |
+| R40 | `VendorTable` restyle: cell `StatusPill`s per §5.2, per-cell source links kept, sticky header row on desktop, filter controls using the building blocks | PR 1 | Done |
+| R41 | `VendorTable` mobile layout (< 768px): one card per vendor with a `<dl>` of fields, same filters, no horizontal scroll | R40 | Done |
+| R42 | `WebsiteCheckForm` results: grouped by severity, status pills (confirm the mapping against `scanner-checks.json`), legal references, "Neue Prüfung" action, survey prompt after results | R22 | Done |
+| R43 | `SurveyForm` restyle: progress indicator, radio/checkbox options as ≥ 44px tappable cards, clear error and success states. Must not change the survey schema or submission behaviour | R00 | Done |
+| R44 | Benchmark page: designed empty state below the n ≥ 5 threshold (explains the threshold, survey CTA). `BenchmarkComparison` charts use tokens and work in dark mode | R13 | Done |
+| R45 | `NotFoundView` restyle, with links to guides, tools and home | R13 | Done |
+| R46 | OpenGraph / Twitter metadata on all pages, and a per-locale OG image (1200×630, logo lockup + title). Check the Next 16 static-export support for `opengraph-image`; fall back to committed static PNGs. Per-page OG/Twitter title, description and `og:url` via `buildPageMetadata()`; homepage `<title>` uses the hero headline | R14 | Done |
+| R47 | Cleanup: remove obsolete per-page CSS, grep for hard-coded colours / `Arial` / old tokens, no unused CSS modules left | R40–R46 | Done |
 
 ### Quality assurance (runs in every PR; set up in PR 1)
 
@@ -270,12 +270,12 @@ Task status is `Todo`, `In progress` or `Done`. The "Depends on" column refers t
 |---|---|---|---|
 | R50 | Playwright visual snapshots: all routes × {375, 768, 1280} × {light, dark} × {de, fr}. Dates and live data are masked. Baselines are created in PR 1 and updated per PR | R1F | Done |
 | R51 | Automated accessibility checks with `@axe-core/playwright` (new dev dependency): no serious or critical violations on any route, both themes; contrast pairs from §5.1 pass AA | R1F | Done |
-| R52 | E2E test "no third-party requests": record network requests per route (DE + FR, including the 404 page). Allowed: same origin; `api.aicompliant.ch` + `challenges.cloudflare.com` only on `/website-check/` and `/survey/` | R11 | Done |
-| R53 | `e2e/website-check/headers.spec.ts` locks the full CSP (exact directive set; only `script-src` sha256 hashes may vary, no `unsafe-inline`/`unsafe-eval`/extra origins) and the other security headers, in both `out-e2e` and `out-e2e-unconfigured` | R1A | Done |
+| R52 | E2E test "no third-party requests": record network requests per route. Allowed: same origin; `api.aicompliant.ch` + `challenges.cloudflare.com` only on `/website-check/` and `/survey/` | R11 | Done |
+| R53 | The CSP header is unchanged apart from regenerated hashes; the existing `e2e/website-check/headers.spec.ts` stays green | R1A | Done |
 | R54 | Translation and overflow review: Ivan reviews the drafted EN/FR/IT strings; manual check that nav, buttons and cards don't overflow in FR/IT at every breakpoint (adjust the menu breakpoint if needed) | each PR | Todo |
 | R55 | Performance check: Lighthouse mobile on home, one guide, vendors and website-check. Targets: performance ≥ 90, accessibility = 100, CLS < 0.05. Guide pages ship no client JS apart from framework basics | PR 2, PR 3 | Todo |
-| R56 | Manual check on real devices (iOS Safari, Android Chrome): mobile menu open/close, header, forms. **Deferred to the production launch** (decision 2026-09-30: little traffic until then); done once on production, not per PR. Automated coverage per PR: `e2e/layout/header.spec.ts` + visual snapshots | Production launch | Todo |
-| R57 | Docs: add a redesign section to the README status table, link this plan, update `docs/design-system.md` as the building blocks change | PR 4 | Todo |
+| R56 | Manual check on real devices (iOS Safari, Android Chrome) on the Cloudflare Pages preview (behind Access) before each merge | each PR | Todo |
+| R57 | Docs: add a redesign section to the README status table, link this plan, update `docs/design-system.md` as the building blocks change | PR 4 | Done |
 
 ### Sequencing
 
@@ -297,7 +297,7 @@ PR 2, 3 and 4 depend only on PR 1 and can be done in any order. The one cross-de
 - [ ] All four locales render. New strings exist in DE/EN/FR/IT, with EN/FR/IT reviewed by Ivan
 - [ ] Checked at 375 / 768 / 1280 in light and dark; no horizontal page scroll; tap targets ≥ 44px
 - [ ] No invented numbers, verdict colours or overclaiming copy (§2)
-- [ ] Reviewed on the Cloudflare Pages preview (real-device check R56 is deferred to the production launch)
+- [ ] Reviewed on the Cloudflare Pages preview, including a real-device check (R56)
 
 ## 8. Risks and mitigations
 

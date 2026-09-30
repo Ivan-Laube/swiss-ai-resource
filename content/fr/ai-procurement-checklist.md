@@ -4,6 +4,7 @@ description: "Questions pratiques aux fournisseurs et en interne avant d'acheter
 last_verified: "2026-07-10"
 volatility: "stable"
 translation_status: "draft"
+category: "beschaffung"
 reviewed_by: null
 review_date: null
 review_scope: null

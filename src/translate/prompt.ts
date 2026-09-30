@@ -84,7 +84,7 @@ function sharedSystemRules(): string {
     'description: "..."',
     "---",
     "",
-    "Do not include last_verified, volatility, translation_status, reviewed_*, or sources — those are filled by the pipeline.",
+    "Do not include last_verified, volatility, translation_status, category, reviewed_*, or sources — those are filled by the pipeline.",
     "Do not wrap the output in code fences or add commentary before/after the document.",
   ].join("\n");
 }

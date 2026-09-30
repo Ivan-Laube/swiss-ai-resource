@@ -3,14 +3,14 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BenchmarkComparison } from "@/components/BenchmarkComparison";
 import { SiteHeader } from "@/components/SiteHeader";
-import { Container } from "@/components/ui";
+import { Button, Callout, Card, Container } from "@/components/ui";
 import {
   buildLanguageAlternates,
   getMessages,
   isLocale,
   locales,
 } from "@/i18n";
-import { siteUrl } from "@/lib/site";
+import { buildPageMetadata } from "@/lib/metadata";
 import {
   buildBenchmarkQuestionViews,
   buildCompanySizeOptions,
@@ -40,14 +40,13 @@ export async function generateMetadata({
 
   const messages = getMessages(lang);
 
-  return {
+  return buildPageMetadata({
+    locale: lang,
     title: messages.benchmark.metaTitle,
     description: messages.benchmark.metaDescription,
-    alternates: {
-      canonical: `${siteUrl}/${lang}/benchmark/`,
-      languages: buildLanguageAlternates("/benchmark"),
-    },
-  };
+    path: "benchmark",
+    languages: buildLanguageAlternates("/benchmark"),
+  });
 }
 
 function formatGeneratedAt(iso: string | null, locale: string): string | null {
@@ -87,29 +86,39 @@ export default async function BenchmarkPage({ params }: PageProps) {
           <Link href={`/${lang}/`} className={styles.back}>
             {messages.benchmark.backHome}
           </Link>
-          <h1>{messages.benchmark.indexTitle}</h1>
-          <p className={styles.lead}>{messages.benchmark.indexLead}</p>
-          <p className={styles.meta}>
-            {messages.benchmark.sampleSize.replace(
-              "{n}",
-              String(aggregates.n),
-            )}
-            {generatedLabel
-              ? ` · ${messages.benchmark.generatedAt.replace("{date}", generatedLabel)}`
-              : null}
-          </p>
-          <p className={styles.note}>{messages.benchmark.suppressionNote}</p>
+          <header className={styles.pageHeader}>
+            <h1>{messages.benchmark.indexTitle}</h1>
+            <p className={styles.lead}>{messages.benchmark.indexLead}</p>
+            <p className={styles.meta}>
+              {messages.benchmark.sampleSize.replace(
+                "{n}",
+                String(aggregates.n),
+              )}
+              {generatedLabel
+                ? ` · ${messages.benchmark.generatedAt.replace("{date}", generatedLabel)}`
+                : null}
+            </p>
+          </header>
+          <Callout tone="neutral" className={styles.note}>
+            {messages.benchmark.suppressionNote}
+          </Callout>
 
           {!publishable || questionViews.length === 0 ? (
-            <section className={styles.empty} aria-labelledby="empty-heading">
+            <Card
+              className={styles.empty}
+              as="section"
+              aria-labelledby="empty-heading"
+            >
               <h2 id="empty-heading">{messages.benchmark.emptyTitle}</h2>
               <p>{messages.benchmark.emptyLead}</p>
-              <p className={styles.cta}>
-                <Link href={`/${lang}/survey/`}>
-                  {messages.benchmark.surveyCta}
-                </Link>
-              </p>
-            </section>
+              <Button
+                variant="primary"
+                href={`/${lang}/survey/`}
+                className={styles.emptyCta}
+              >
+                {messages.benchmark.surveyCta}
+              </Button>
+            </Card>
           ) : (
             <div className={styles.questions}>
               {questionViews.map((question) => {
@@ -118,8 +127,9 @@ export default async function BenchmarkPage({ params }: PageProps) {
                   1,
                 );
                 return (
-                  <section
+                  <Card
                     key={question.questionId}
+                    as="section"
                     className={styles.card}
                     aria-labelledby={`q-${question.questionId}`}
                   >
@@ -158,7 +168,7 @@ export default async function BenchmarkPage({ params }: PageProps) {
                         </li>
                       ))}
                     </ul>
-                  </section>
+                  </Card>
                 );
               })}
             </div>
@@ -171,9 +181,13 @@ export default async function BenchmarkPage({ params }: PageProps) {
           />
 
           <p className={styles.cta}>
-            <Link href={`/${lang}/survey/`}>{messages.benchmark.surveyCta}</Link>
+            <Button variant="secondary" href={`/${lang}/survey/`}>
+              {messages.benchmark.surveyCta}
+            </Button>
           </p>
-          <p className={styles.disclaimer}>{messages.benchmark.disclaimer}</p>
+          <Callout tone="neutral" className={styles.disclaimer}>
+            {messages.benchmark.disclaimer}
+          </Callout>
         </Container>
       </main>
     </>

@@ -12,19 +12,12 @@ import {
   needsTurnstile,
   visualPath,
   VISUAL_LOCALES,
-  type VisualRoute,
 } from "../visual/routes";
 import {
   allowedHosts,
   hostFromRequestUrl,
   unexpectedHosts,
 } from "./network";
-
-/** Unknown path → global 404.html (not in the sitemap-derived route list). */
-const NOT_FOUND_ROUTE: VisualRoute = {
-  id: "404",
-  segment: "__privacy-missing__",
-};
 
 async function stubTurnstile(page: Page): Promise<void> {
   await page.addInitScript(() => {
@@ -60,7 +53,8 @@ async function settlePage(
 
 for (const LANG of VISUAL_LOCALES) {
   test.describe(`no third-party requests (${LANG})`, () => {
-    const routes = [...listVisualRoutes(LANG), NOT_FOUND_ROUTE];
+    /** Includes 404 via VISUAL_404_ROUTE in listVisualRoutes. */
+    const routes = listVisualRoutes(LANG);
 
     for (const route of routes) {
       test(`${route.id}`, async ({ page, baseURL }) => {

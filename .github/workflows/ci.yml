@@ -80,6 +80,9 @@ jobs:
       - name: Validate design-system contrast pairs (WCAG AA)
         run: npm run check:contrast
 
+      - name: Unit tests (node:test)
+        run: npm run test:unit
+
       - name: Build static export
         run: npm run build
 

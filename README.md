@@ -51,7 +51,7 @@ German (`de`) is the canonical content language. See [swiss_ai_resource_implemen
 | T42 | GitHub Actions: allow Actions to create/approve PRs | Done |
 | T44 | Pre-traffic operator hardening (`api.aicompliant.ch`, Turnstile, DNSSEC, Access, CSP hashes, …) | Done — see [OPERATOR_CHECKLIST.md](OPERATOR_CHECKLIST.md) |
 | T29 | Lawyer review of DE pages (incl. legal pages after T40) | Not started |
-| Redesign | Visual system + site shell (tokens, header, language control, guides index, …) | In progress — PR 1 (R00–R1F, R50–R53) done; PR 2–4 open. See [website_redesign_plan.md](website_redesign_plan.md), [docs/design-system.md](docs/design-system.md) |
+| Redesign | Visual system + site shell, homepage, decision tools/guides, remaining pages | Done — PR 1–4 landed (cleanup R47 / Lighthouse R55 / docs R57 may still follow). See [website_redesign_plan.md](website_redesign_plan.md), [docs/design-system.md](docs/design-system.md) |
 
 ## Local development
 

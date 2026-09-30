@@ -31,6 +31,7 @@
     "check:links": "tsx scripts/check-links.ts",
     "check:links-report": "tsx scripts/check-links-report.ts",
     "check:contrast": "tsx scripts/check-contrast.ts",
+    "test:unit": "node --import tsx --test \"src/**/*.test.ts\"",
     "aggregate:survey": "tsx scripts/aggregate-survey.ts",
     "snapshot:sources": "tsx scripts/snapshot-sources.ts",
     "classify:snapshots": "tsx scripts/classify-snapshots.ts",
@@ -69,6 +70,7 @@
     "@types/sanitize-html": "^2.16.1",
     "eslint": "^9",
     "eslint-config-next": "16.3.5",
+    "sharp": "0.35.4",
     "tsx": "^4.23.0",
     "typescript": "^5",
     "wrangler": "^4.36.0"

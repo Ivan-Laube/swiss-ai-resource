@@ -4,6 +4,7 @@ description: "What FINMA Guidance 08/2024 expects from supervised institutions o
 last_verified: "2026-07-10"
 volatility: "moderate"
 translation_status: "draft"
+category: "finanzmarkt"
 reviewed_by: null
 review_date: null
 review_scope: null

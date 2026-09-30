@@ -31,13 +31,16 @@
 
 .body p {
   margin: 0;
+  max-width: 40ch;
   font-size: var(--font-body);
   line-height: var(--leading-body);
   color: var(--text-muted);
 }
 
-.body a {
-  color: var(--text);
-  text-decoration: underline;
-  text-underline-offset: 0.15em;
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
 }

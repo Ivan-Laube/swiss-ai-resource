@@ -12,26 +12,28 @@
 
 .back {
   display: inline-block;
-  margin-bottom: 1.5rem;
-  font-size: 0.875rem;
-  opacity: 0.75;
+  margin-bottom: var(--space-5);
+  font-size: var(--font-small);
+  color: var(--text-muted);
 }
 
 .back:hover {
-  opacity: 1;
+  color: var(--text);
   text-decoration: underline;
 }
 
 .main h1 {
-  margin-bottom: 0.75rem;
-  font-size: clamp(1.75rem, 3.5vw, 2.35rem);
-  line-height: 1.15;
-  letter-spacing: -0.03em;
+  margin: 0 0 var(--space-3);
+  font-size: var(--font-h1);
+  line-height: var(--leading-h1);
+  font-weight: 700;
+  letter-spacing: var(--tracking-h1);
 }
 
 .lead {
-  margin-bottom: 1.5rem;
-  font-size: 1.0625rem;
-  line-height: 1.55;
-  opacity: 0.85;
+  margin: 0 0 var(--space-5);
+  max-width: 72ch;
+  font-size: var(--font-lead);
+  line-height: var(--leading-lead);
+  color: var(--text-muted);
 }

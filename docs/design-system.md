@@ -156,6 +156,7 @@ Surface with hairline border. Flat at rest; `interactive` (or `href`) adds hover
 | `as` | `"div" \| "section" \| "article"` | `"div"` |
 | `href` | `string` | — (renders as `Link` when set) |
 | `interactive` | `boolean` | inferred from `href` |
+| `id`, `aria-*` | — | forwarded to the element (use `aria-labelledby` with `as="section"` so the section is exposed as a named region) |
 | `children`, `className` | — | — |
 
 Use cards for interactive destinations (guide/tool cards), not as decorative boxes in a hero.
@@ -191,6 +192,8 @@ Section title block: optional kicker, title, lead, optional ghost action link.
 
 App icons: `src/app/icon.svg` (large-star-only), `favicon.ico`, `apple-icon.png`.
 
+Open Graph: per-locale static PNGs in `public/og/{de,en,fr,it}.png` (1200×630), wired through `buildRootMetadata` (`openGraph` + `twitter.card: summary_large_image`). Regenerated with `npx tsx scripts/generate-og-images.ts`. Dynamic `opengraph-image.tsx` is not used with `output: "export"`.
+
 ### Icons
 
 Inline SVG components in `@/components/ui`: `IconArrowRight`, `IconChevronDown`, `IconChevronRight`, `IconExternalLink`, `IconMenu`, `IconX`. Stroke 1.5, `currentColor`, default size 20. Optional `title` for a11y; otherwise decorative (`aria-hidden`). No icon font.
@@ -201,7 +204,7 @@ Class-name helper: `cx(...parts: Array<string | false | null | undefined>)`. Imp
 
 ## Status mapping
 
-Factual states only. Existing i18n message strings take precedence over the sample DE labels in this table. Confirm Quick-Check severity against `data/scanner-checks.json` when wiring results (R42).
+Factual states only. Existing i18n message strings take precedence over the sample DE labels in this table. Quick-Check severity mapping is confirmed against `data/scanner-checks.json` (R42).
 
 | Where | State | Tone | Sample label (DE) |
 |---|---|---|---|
@@ -217,7 +220,7 @@ Factual states only. Existing i18n message strings take precedence over the samp
 | | `unlikely` | `neutral` | (messages) |
 | | `depends` / `unclear` | `warning` | Kommt darauf an / Unklar |
 
-**Implementation note:** `StatusPill` ships with the foundation (R13). Consumers wire it in R34 (decision outcomes), R40 (vendor table), and R42 (Quick-Check results). Until then, those surfaces may still use interim text styling, but must not introduce green/red “compliant” framing.
+**Wired consumers:** `DecisionTree` outcomes (R34), `VendorTable` (R40), and `WebsiteCheckForm` results (R42) use `StatusPill` with the mapping above. Do not introduce green/red “compliant” framing on legal outcomes.
 
 ## Trust claims that must stay true
 
@@ -238,3 +241,4 @@ Homepage methodology copy and related UI depend on these remaining accurate. If 
 5. Do not invent status tones outside the five listed above without a product decision and AA contrast check.
 6. In client components (`"use client"`), import from `@/i18n/config` / `@/i18n/path`, never the `@/i18n` barrel: it pulls every locale's message catalogue into the browser bundle. Pass only the message slice a component needs (e.g. `SiteHeader` takes `nav={messages.nav}`), not the whole `Messages` object.
 7. After changing tokens or check pairs, also update the copied values in `scripts/check-contrast.ts` (`npm run check:contrast`).
+8. Every page's `generateMetadata` returns `buildPageMetadata()` from `src/lib/metadata.ts`. Next.js does not merge a page's title/description into the layout's Open Graph data, so a page that sets only `title`/`description` shares with the site-wide preview.

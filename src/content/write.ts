@@ -24,36 +24,47 @@ export function serializeContentMarkdown(
   frontmatter: ContentFrontmatter,
   body: string,
 ): string {
-  const yaml = [
+  const lines = [
     "---",
     `title: ${JSON.stringify(frontmatter.title)}`,
     `description: ${JSON.stringify(frontmatter.description)}`,
     `last_verified: ${JSON.stringify(frontmatter.last_verified)}`,
     `volatility: ${JSON.stringify(frontmatter.volatility)}`,
     `translation_status: ${JSON.stringify(frontmatter.translation_status)}`,
-    "reviewed_by: null",
-    "review_date: null",
-    "review_scope: null",
+  ];
+
+  if (frontmatter.category != null) {
+    lines.push(`category: ${JSON.stringify(frontmatter.category)}`);
+  }
+
+  if (
+    frontmatter.reviewed_by != null &&
+    frontmatter.review_date != null &&
+    frontmatter.review_scope != null
+  ) {
+    lines.push(
+      `reviewed_by: ${JSON.stringify(frontmatter.reviewed_by)}`,
+      `review_date: ${JSON.stringify(frontmatter.review_date)}`,
+      `review_scope: ${JSON.stringify(frontmatter.review_scope)}`,
+    );
+  } else {
+    lines.push(
+      "reviewed_by: null",
+      "review_date: null",
+      "review_scope: null",
+    );
+  }
+
+  lines.push(
     "sources:",
     formatSourcesYaml(frontmatter.sources),
     "---",
     "",
     body.replace(/\s+$/, ""),
     "",
-  ];
+  );
 
-  // Preserve non-null review fields when set (lawyer badge / T29).
-  if (
-    frontmatter.reviewed_by != null &&
-    frontmatter.review_date != null &&
-    frontmatter.review_scope != null
-  ) {
-    yaml[6] = `reviewed_by: ${JSON.stringify(frontmatter.reviewed_by)}`;
-    yaml[7] = `review_date: ${JSON.stringify(frontmatter.review_date)}`;
-    yaml[8] = `review_scope: ${JSON.stringify(frontmatter.review_scope)}`;
-  }
-
-  return yaml.join("\n");
+  return lines.join("\n");
 }
 
 export function contentPagePath(locale: Locale, slug: string): string {

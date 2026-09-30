@@ -4,6 +4,7 @@ description: "Ce que la Loi fédérale révisée sur la protection des données 
 last_verified: "2026-07-10"
 volatility: "moderate"
 translation_status: "draft"
+category: "datenschutz"
 reviewed_by: null
 review_date: null
 review_scope: null

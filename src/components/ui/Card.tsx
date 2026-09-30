@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { ReactNode } from "react";
+import type { AriaAttributes, ReactNode } from "react";
 import { cx } from "./cx";
 import styles from "./Card.module.css";
 
@@ -9,7 +9,8 @@ type CardProps = {
   href?: string;
   interactive?: boolean;
   as?: "div" | "section" | "article";
-};
+  id?: string;
+} & AriaAttributes;
 
 export function Card({
   children,
@@ -17,6 +18,7 @@ export function Card({
   href,
   interactive,
   as: Tag = "div",
+  ...rest
 }: CardProps) {
   const isInteractive = Boolean(href) || interactive === true;
   const classes = cx(
@@ -27,11 +29,17 @@ export function Card({
 
   if (href) {
     return (
-      <Link href={href} className={classes}>
+      <Link href={href} className={classes} {...rest}>
         {children}
       </Link>
     );
   }
 
-  return <Tag className={classes}>{children}</Tag>;
+  // Forwarding aria-* matters for `as="section"`: without an accessible
+  // name (aria-labelledby) a <section> is not exposed as a region.
+  return (
+    <Tag className={classes} {...rest}>
+      {children}
+    </Tag>
+  );
 }

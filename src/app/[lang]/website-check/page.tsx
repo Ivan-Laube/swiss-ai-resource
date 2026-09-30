@@ -10,7 +10,8 @@ import {
   isLocale,
   locales,
 } from "@/i18n";
-import { siteUrl } from "@/lib/site";
+import { buildPageMetadata } from "@/lib/metadata";
+import { getSurvey } from "@/survey";
 import styles from "./page.module.css";
 
 type PageProps = {
@@ -32,14 +33,13 @@ export async function generateMetadata({
 
   const messages = getMessages(lang);
 
-  return {
+  return buildPageMetadata({
+    locale: lang,
     title: messages.websiteCheck.metaTitle,
     description: messages.websiteCheck.metaDescription,
-    alternates: {
-      canonical: `${siteUrl}/${lang}/website-check/`,
-      languages: buildLanguageAlternates("/website-check"),
-    },
-  };
+    path: "website-check",
+    languages: buildLanguageAlternates("/website-check"),
+  });
 }
 
 export default async function WebsiteCheckPage({ params }: PageProps) {
@@ -50,6 +50,7 @@ export default async function WebsiteCheckPage({ params }: PageProps) {
   }
 
   const messages = getMessages(lang);
+  const survey = getSurvey();
 
   return (
     <>
@@ -61,7 +62,11 @@ export default async function WebsiteCheckPage({ params }: PageProps) {
           </Link>
           <h1>{messages.websiteCheck.title}</h1>
           <p className={styles.lead}>{messages.websiteCheck.lead}</p>
-          <WebsiteCheckForm locale={lang} messages={messages.websiteCheck} />
+          <WebsiteCheckForm
+            locale={lang}
+            messages={messages.websiteCheck}
+            surveyEstimatedMinutes={survey.estimated_minutes}
+          />
         </Container>
       </main>
     </>

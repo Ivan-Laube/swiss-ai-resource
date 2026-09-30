@@ -26,7 +26,13 @@ const FIXED_ROUTES: readonly VisualRoute[] = [
   { id: "website-check", segment: "website-check" },
 ];
 
-/** All visual routes for a locale (fixed + content slugs + decision tools). */
+/** Unknown path → 404 / NotFoundView (same masking rules as other visual routes). */
+export const VISUAL_404_ROUTE: VisualRoute = {
+  id: "404",
+  segment: "__visual-missing__",
+};
+
+/** All visual routes for a locale (fixed + content slugs + decision tools + 404). */
 export function listVisualRoutes(lang: VisualLocale): VisualRoute[] {
   const contentRoutes = listPublishableContentSlugs(lang).map((slug) => ({
     id: slug,
@@ -38,7 +44,7 @@ export function listVisualRoutes(lang: VisualLocale): VisualRoute[] {
     segment: `tools/${toolId}`,
   }));
 
-  return [...FIXED_ROUTES, ...contentRoutes, ...toolRoutes];
+  return [...FIXED_ROUTES, ...contentRoutes, ...toolRoutes, VISUAL_404_ROUTE];
 }
 
 export function visualPath(lang: VisualLocale, route: VisualRoute): string {

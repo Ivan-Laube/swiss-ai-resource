@@ -45,6 +45,8 @@
   /* Layout */
   --container-max: 1200px;
   --gutter: 16px;
+  /* SiteHeader: padding-block (--space-3 × 2) + brand min-height (44px) */
+  --header-sticky-offset: calc(var(--space-3) * 2 + 44px);
 
   /* Radii */
   --radius-control: 4px;
@@ -480,4 +482,58 @@ input[type="radio"] {
 .prose :where(img) {
   max-width: 100%;
   height: auto;
+}
+
+/* Print (R3D): guides, tools, legal — hide chrome; keep content readable */
+@media print {
+  header,
+  footer,
+  a[href="#main"],
+  .print-hide-toc,
+  .decision-tree-controls,
+  .decision-tree-progress {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+  }
+
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.85em;
+    word-break: break-all;
+  }
+
+  .prose :where(h2),
+  .prose :where(h3) {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  .prose :where(table),
+  .prose :where(pre),
+  .prose :where(blockquote),
+  .prose :where(img) {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Checklist print boxes — screen stays as plain bullets */
+  main[data-slug="ai-procurement-checklist"] .prose > ul > li {
+    list-style: none;
+    position: relative;
+    padding-left: 1.5em;
+  }
+
+  main[data-slug="ai-procurement-checklist"] .prose > ul > li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.35em;
+    width: 0.85em;
+    height: 0.85em;
+    border: 1px solid #000;
+  }
 }

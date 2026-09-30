@@ -3,14 +3,14 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SiteHeader } from "@/components/SiteHeader";
 import { VendorTable } from "@/components/VendorTable";
-import { Container } from "@/components/ui";
+import { Callout, Container } from "@/components/ui";
 import {
   buildLanguageAlternates,
   getMessages,
   isLocale,
   locales,
 } from "@/i18n";
-import { siteUrl } from "@/lib/site";
+import { buildPageMetadata } from "@/lib/metadata";
 import { getVendors } from "@/vendors";
 import styles from "./page.module.css";
 
@@ -33,14 +33,13 @@ export async function generateMetadata({
 
   const messages = getMessages(lang);
 
-  return {
+  return buildPageMetadata({
+    locale: lang,
     title: messages.vendors.indexTitle,
     description: messages.vendors.indexLead,
-    alternates: {
-      canonical: `${siteUrl}/${lang}/vendors/`,
-      languages: buildLanguageAlternates("/vendors"),
-    },
-  };
+    path: "vendors",
+    languages: buildLanguageAlternates("/vendors"),
+  });
 }
 
 export default async function VendorsPage({ params }: PageProps) {
@@ -61,8 +60,10 @@ export default async function VendorsPage({ params }: PageProps) {
           <Link href={`/${lang}/`} className={styles.back}>
             {messages.vendors.backHome}
           </Link>
-          <h1>{messages.vendors.indexTitle}</h1>
-          <p className={styles.lead}>{messages.vendors.indexLead}</p>
+          <header className={styles.pageHeader}>
+            <h1>{messages.vendors.indexTitle}</h1>
+            <p className={styles.lead}>{messages.vendors.indexLead}</p>
+          </header>
 
           <VendorTable
             vendors={vendors}
@@ -70,7 +71,9 @@ export default async function VendorsPage({ params }: PageProps) {
             lang={lang}
           />
 
-          <p className={styles.disclaimer}>{messages.vendors.disclaimer}</p>
+          <Callout tone="neutral" className={styles.disclaimer}>
+            {messages.vendors.disclaimer}
+          </Callout>
         </Container>
       </main>
     </>

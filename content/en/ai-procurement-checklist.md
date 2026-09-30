@@ -4,6 +4,7 @@ description: "Practical questions for vendors and internally before you buy an A
 last_verified: "2026-07-10"
 volatility: "stable"
 translation_status: "draft"
+category: "beschaffung"
 reviewed_by: null
 review_date: null
 review_scope: null

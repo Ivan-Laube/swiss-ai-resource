@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 
 import type { Locale } from "@/i18n/config";
 import type { Messages } from "@/i18n/types";
@@ -10,6 +10,7 @@ import {
   type Certification,
   type Vendor,
 } from "@/vendors/schema";
+import { Button, StatusPill } from "@/components/ui";
 
 import styles from "./VendorTable.module.css";
 
@@ -120,8 +121,29 @@ function SourceLink({
   );
 }
 
-function Unverified({ label }: { label: string }) {
-  return <span className={styles.unverified}>{label}</span>;
+function UnverifiedPill({ label }: { label: string }) {
+  return (
+    <StatusPill tone="neutral" dashed>
+      {label}
+    </StatusPill>
+  );
+}
+
+function CellWithSource({
+  children,
+  sourceUrl,
+  sourceLabel,
+}: {
+  children: ReactNode;
+  sourceUrl: string;
+  sourceLabel: string;
+}) {
+  return (
+    <span className={styles.cellWithSource}>
+      {children}
+      <SourceLink href={sourceUrl} label={sourceLabel} />
+    </span>
+  );
 }
 
 function BooleanCell({
@@ -132,14 +154,18 @@ function BooleanCell({
   messages: VendorsMessages;
 }) {
   if (cell.value === null || cell.source_url === null) {
-    return <Unverified label={messages.unverified} />;
+    return <UnverifiedPill label={messages.unverified} />;
   }
 
   return (
-    <span className={styles.cellWithSource}>
-      <span>{cell.value ? messages.yes : messages.no}</span>
-      <SourceLink href={cell.source_url} label={messages.sourceLink} />
-    </span>
+    <CellWithSource
+      sourceUrl={cell.source_url}
+      sourceLabel={messages.sourceLink}
+    >
+      <StatusPill tone={cell.value ? "success" : "neutral"}>
+        {cell.value ? messages.yes : messages.no}
+      </StatusPill>
+    </CellWithSource>
   );
 }
 
@@ -151,14 +177,16 @@ function RegionsCell({
   messages: VendorsMessages;
 }) {
   if (cell.value === null || cell.source_url === null) {
-    return <Unverified label={messages.unverified} />;
+    return <UnverifiedPill label={messages.unverified} />;
   }
 
   return (
-    <span className={styles.cellWithSource}>
+    <CellWithSource
+      sourceUrl={cell.source_url}
+      sourceLabel={messages.sourceLink}
+    >
       <span>{cell.value.length > 0 ? cell.value.join(", ") : "—"}</span>
-      <SourceLink href={cell.source_url} label={messages.sourceLink} />
-    </span>
+    </CellWithSource>
   );
 }
 
@@ -170,11 +198,14 @@ function DpaCell({
   messages: VendorsMessages;
 }) {
   if (cell.value === null || cell.source_url === null) {
-    return <Unverified label={messages.unverified} />;
+    return <UnverifiedPill label={messages.unverified} />;
   }
 
   return (
-    <span className={styles.cellWithSource}>
+    <CellWithSource
+      sourceUrl={cell.source_url}
+      sourceLabel={messages.sourceLink}
+    >
       <a
         href={cell.value}
         className={styles.valueLink}
@@ -183,8 +214,7 @@ function DpaCell({
       >
         {messages.dpaLink}
       </a>
-      <SourceLink href={cell.source_url} label={messages.sourceLink} />
-    </span>
+    </CellWithSource>
   );
 }
 
@@ -196,16 +226,18 @@ function CertificationsCell({
   messages: VendorsMessages;
 }) {
   if (cell.value === null || cell.source_url === null) {
-    return <Unverified label={messages.unverified} />;
+    return <UnverifiedPill label={messages.unverified} />;
   }
 
   const labels = cell.value.map((cert) => certificationLabel(cert, messages));
 
   return (
-    <span className={styles.cellWithSource}>
+    <CellWithSource
+      sourceUrl={cell.source_url}
+      sourceLabel={messages.sourceLink}
+    >
       <span>{labels.length > 0 ? labels.join(", ") : "—"}</span>
-      <SourceLink href={cell.source_url} label={messages.sourceLink} />
-    </span>
+    </CellWithSource>
   );
 }
 
@@ -217,14 +249,108 @@ function PricingCell({
   messages: VendorsMessages;
 }) {
   if (cell.value === null || cell.source_url === null) {
-    return <Unverified label={messages.unverified} />;
+    return <UnverifiedPill label={messages.unverified} />;
   }
 
   return (
-    <span className={styles.cellWithSource}>
+    <CellWithSource
+      sourceUrl={cell.source_url}
+      sourceLabel={messages.sourceLink}
+    >
       <span>{pricingLabel(cell.value, messages)}</span>
-      <SourceLink href={cell.source_url} label={messages.sourceLink} />
-    </span>
+    </CellWithSource>
+  );
+}
+
+function VendorCard({
+  vendor,
+  messages,
+  lang,
+}: {
+  vendor: Vendor;
+  messages: VendorsMessages;
+  lang: Locale;
+}) {
+  return (
+    <article className={styles.card}>
+      <h3 className={styles.cardTitle}>
+        <a
+          href={vendor.website}
+          className={styles.valueLink}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {vendor.name}
+        </a>
+      </h3>
+      <dl className={styles.cardDl}>
+        <div>
+          <dt>{messages.colHostingRegions}</dt>
+          <dd>
+            <RegionsCell cell={vendor.hosting_regions} messages={messages} />
+          </dd>
+        </div>
+        <div>
+          <dt>{messages.colSwissHosting}</dt>
+          <dd>
+            <BooleanCell cell={vendor.swiss_hosting} messages={messages} />
+          </dd>
+        </div>
+        <div>
+          <dt>{messages.colEuHosting}</dt>
+          <dd>
+            <BooleanCell cell={vendor.eu_hosting} messages={messages} />
+          </dd>
+        </div>
+        <div>
+          <dt>{messages.colDpa}</dt>
+          <dd>
+            <DpaCell cell={vendor.dpa_url} messages={messages} />
+          </dd>
+        </div>
+        <div>
+          <dt>{messages.colTrainingOptOut}</dt>
+          <dd>
+            <BooleanCell cell={vendor.training_opt_out} messages={messages} />
+          </dd>
+        </div>
+        <div>
+          <dt>{messages.colCertifications}</dt>
+          <dd>
+            <CertificationsCell
+              cell={vendor.certifications}
+              messages={messages}
+            />
+          </dd>
+        </div>
+        <div>
+          <dt>{messages.colPricingTier}</dt>
+          <dd>
+            <PricingCell cell={vendor.pricing_tier} messages={messages} />
+          </dd>
+        </div>
+        <div>
+          <dt>{messages.colSwissEntity}</dt>
+          <dd>
+            <BooleanCell cell={vendor.swiss_entity} messages={messages} />
+          </dd>
+        </div>
+        <div>
+          <dt>{messages.colEuEntity}</dt>
+          <dd>
+            <BooleanCell cell={vendor.eu_entity} messages={messages} />
+          </dd>
+        </div>
+        <div>
+          <dt>{messages.colLastChecked}</dt>
+          <dd>
+            <time dateTime={vendor.last_checked}>
+              {formatIsoDate(vendor.last_checked, lang)}
+            </time>
+          </dd>
+        </div>
+      </dl>
+    </article>
   );
 }
 
@@ -365,111 +491,128 @@ export function VendorTable({
               sortedVendors.length,
             )}
           </p>
-          <button
+          <Button
             type="button"
-            className={styles.clearButton}
+            variant="ghost"
             onClick={clearFilters}
             disabled={!hasActiveFilters}
           >
             {vendorsMessages.clearFilters}
-          </button>
+          </Button>
         </div>
       </fieldset>
 
       {filtered.length === 0 ? (
         <p className={styles.empty}>{vendorsMessages.emptyFiltered}</p>
       ) : (
-        <div className={styles.tableScroll}>
-          <table className={styles.table}>
-            <thead>
-              <tr>
-                <th scope="col">{vendorsMessages.colName}</th>
-                <th scope="col">{vendorsMessages.colHostingRegions}</th>
-                <th scope="col">{vendorsMessages.colSwissHosting}</th>
-                <th scope="col">{vendorsMessages.colEuHosting}</th>
-                <th scope="col">{vendorsMessages.colDpa}</th>
-                <th scope="col">{vendorsMessages.colTrainingOptOut}</th>
-                <th scope="col">{vendorsMessages.colCertifications}</th>
-                <th scope="col">{vendorsMessages.colPricingTier}</th>
-                <th scope="col">{vendorsMessages.colSwissEntity}</th>
-                <th scope="col">{vendorsMessages.colEuEntity}</th>
-                <th scope="col">{vendorsMessages.colLastChecked}</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filtered.map((vendor) => (
-                <tr key={vendor.id}>
-                  <th scope="row">
-                    <a
-                      href={vendor.website}
-                      className={styles.valueLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {vendor.name}
-                    </a>
-                  </th>
-                  <td>
-                    <RegionsCell
-                      cell={vendor.hosting_regions}
-                      messages={vendorsMessages}
-                    />
-                  </td>
-                  <td>
-                    <BooleanCell
-                      cell={vendor.swiss_hosting}
-                      messages={vendorsMessages}
-                    />
-                  </td>
-                  <td>
-                    <BooleanCell
-                      cell={vendor.eu_hosting}
-                      messages={vendorsMessages}
-                    />
-                  </td>
-                  <td>
-                    <DpaCell cell={vendor.dpa_url} messages={vendorsMessages} />
-                  </td>
-                  <td>
-                    <BooleanCell
-                      cell={vendor.training_opt_out}
-                      messages={vendorsMessages}
-                    />
-                  </td>
-                  <td>
-                    <CertificationsCell
-                      cell={vendor.certifications}
-                      messages={vendorsMessages}
-                    />
-                  </td>
-                  <td>
-                    <PricingCell
-                      cell={vendor.pricing_tier}
-                      messages={vendorsMessages}
-                    />
-                  </td>
-                  <td>
-                    <BooleanCell
-                      cell={vendor.swiss_entity}
-                      messages={vendorsMessages}
-                    />
-                  </td>
-                  <td>
-                    <BooleanCell
-                      cell={vendor.eu_entity}
-                      messages={vendorsMessages}
-                    />
-                  </td>
-                  <td>
-                    <time dateTime={vendor.last_checked}>
-                      {formatIsoDate(vendor.last_checked, lang)}
-                    </time>
-                  </td>
+        <>
+          <div className={styles.tableWrap}>
+            <table className={styles.table}>
+              <thead>
+                <tr>
+                  <th scope="col">{vendorsMessages.colName}</th>
+                  <th scope="col">{vendorsMessages.colHostingRegions}</th>
+                  <th scope="col">{vendorsMessages.colSwissHosting}</th>
+                  <th scope="col">{vendorsMessages.colEuHosting}</th>
+                  <th scope="col">{vendorsMessages.colDpa}</th>
+                  <th scope="col">{vendorsMessages.colTrainingOptOut}</th>
+                  <th scope="col">{vendorsMessages.colCertifications}</th>
+                  <th scope="col">{vendorsMessages.colPricingTier}</th>
+                  <th scope="col">{vendorsMessages.colSwissEntity}</th>
+                  <th scope="col">{vendorsMessages.colEuEntity}</th>
+                  <th scope="col">{vendorsMessages.colLastChecked}</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+              </thead>
+              <tbody>
+                {filtered.map((vendor) => (
+                  <tr key={vendor.id}>
+                    <th scope="row">
+                      <a
+                        href={vendor.website}
+                        className={styles.valueLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {vendor.name}
+                      </a>
+                    </th>
+                    <td>
+                      <RegionsCell
+                        cell={vendor.hosting_regions}
+                        messages={vendorsMessages}
+                      />
+                    </td>
+                    <td>
+                      <BooleanCell
+                        cell={vendor.swiss_hosting}
+                        messages={vendorsMessages}
+                      />
+                    </td>
+                    <td>
+                      <BooleanCell
+                        cell={vendor.eu_hosting}
+                        messages={vendorsMessages}
+                      />
+                    </td>
+                    <td>
+                      <DpaCell
+                        cell={vendor.dpa_url}
+                        messages={vendorsMessages}
+                      />
+                    </td>
+                    <td>
+                      <BooleanCell
+                        cell={vendor.training_opt_out}
+                        messages={vendorsMessages}
+                      />
+                    </td>
+                    <td>
+                      <CertificationsCell
+                        cell={vendor.certifications}
+                        messages={vendorsMessages}
+                      />
+                    </td>
+                    <td>
+                      <PricingCell
+                        cell={vendor.pricing_tier}
+                        messages={vendorsMessages}
+                      />
+                    </td>
+                    <td>
+                      <BooleanCell
+                        cell={vendor.swiss_entity}
+                        messages={vendorsMessages}
+                      />
+                    </td>
+                    <td>
+                      <BooleanCell
+                        cell={vendor.eu_entity}
+                        messages={vendorsMessages}
+                      />
+                    </td>
+                    <td>
+                      <time dateTime={vendor.last_checked}>
+                        {formatIsoDate(vendor.last_checked, lang)}
+                      </time>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <ul className={styles.cardList}>
+            {filtered.map((vendor) => (
+              <li key={vendor.id}>
+                <VendorCard
+                  vendor={vendor}
+                  messages={vendorsMessages}
+                  lang={lang}
+                />
+              </li>
+            ))}
+          </ul>
+        </>
       )}
     </div>
   );

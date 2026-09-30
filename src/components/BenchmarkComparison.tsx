@@ -6,6 +6,7 @@ import type {
   BenchmarkComparisonOption,
   BenchmarkMedianRow,
 } from "@/survey/benchmark";
+import { Callout } from "@/components/ui";
 import styles from "./BenchmarkComparison.module.css";
 
 type BenchmarkMessages = Messages["benchmark"];
@@ -77,25 +78,26 @@ export function BenchmarkComparison({
       </fieldset>
 
       {selectedSize && result ? (
-        <div
+        <Callout
+          tone={row?.medianBandLabel ? "info" : "neutral"}
           className={styles.result}
-          role="status"
-          aria-live="polite"
         >
-          {row?.medianBandLabel ? (
-            <>
-              <p className={styles.resultLabel}>
-                {messages.comparisonMedianLabel}
-              </p>
-              <p className={styles.resultValue}>{result}</p>
-              <p className={styles.resultMeta}>
-                {messages.questionSample.replace("{n}", String(row.n))}
-              </p>
-            </>
-          ) : (
-            <p className={styles.resultEmpty}>{result}</p>
-          )}
-        </div>
+          <div role="status" aria-live="polite">
+            {row?.medianBandLabel ? (
+              <>
+                <p className={styles.resultLabel}>
+                  {messages.comparisonMedianLabel}
+                </p>
+                <p className={styles.resultValue}>{result}</p>
+                <p className={styles.resultMeta}>
+                  {messages.questionSample.replace("{n}", String(row.n))}
+                </p>
+              </>
+            ) : (
+              <p className={styles.resultEmpty}>{result}</p>
+            )}
+          </div>
+        </Callout>
       ) : null}
     </section>
   );

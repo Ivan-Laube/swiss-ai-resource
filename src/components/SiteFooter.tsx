@@ -45,7 +45,7 @@ export function buildSiteFooterModel(
     },
     {
       href: `/${activeLang}/survey/`,
-      label: messages.nav.survey,
+      label: messages.footer.survey,
     },
     {
       href: `/${activeLang}/benchmark/`,

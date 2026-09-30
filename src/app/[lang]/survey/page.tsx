@@ -10,7 +10,7 @@ import {
   isLocale,
   locales,
 } from "@/i18n";
-import { siteUrl } from "@/lib/site";
+import { buildPageMetadata } from "@/lib/metadata";
 import { getSurvey, pickLocalized } from "@/survey";
 import styles from "./page.module.css";
 
@@ -34,15 +34,14 @@ export async function generateMetadata({
   const messages = getMessages(lang);
   const survey = getSurvey();
 
-  return {
+  return buildPageMetadata({
+    locale: lang,
     title: messages.survey.metaTitle,
     description:
       pickLocalized(survey.description, lang) || messages.survey.metaDescription,
-    alternates: {
-      canonical: `${siteUrl}/${lang}/survey/`,
-      languages: buildLanguageAlternates("/survey"),
-    },
-  };
+    path: "survey",
+    languages: buildLanguageAlternates("/survey"),
+  });
 }
 
 export default async function SurveyPage({ params }: PageProps) {

@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { defaultLocale, isLocale, type Locale } from "@/i18n/config";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -9,7 +8,7 @@ import {
   type SiteFooterModel,
 } from "@/components/SiteFooterView";
 import { SkipLink } from "@/components/SkipLink";
-import { Container } from "@/components/ui";
+import { Button, Container } from "@/components/ui";
 import type { NotFoundStrings } from "@/components/not-found-strings";
 import styles from "./NotFoundView.module.css";
 
@@ -40,9 +39,17 @@ export function NotFoundView({
         <Container className={styles.body}>
           <h1>{messages.notFound.title}</h1>
           <p>{messages.notFound.message}</p>
-          <p>
-            <Link href={`/${lang}/`}>{messages.notFound.homeLink}</Link>
-          </p>
+          <nav className={styles.actions} aria-label={messages.notFound.title}>
+            <Button variant="primary" href={`/${lang}/`}>
+              {messages.notFound.homeLink}
+            </Button>
+            <Button variant="secondary" href={`/${lang}/guides/`}>
+              {messages.nav.guides}
+            </Button>
+            <Button variant="secondary" href={`/${lang}/tools/`}>
+              {messages.nav.tools}
+            </Button>
+          </nav>
         </Container>
       </main>
     </>

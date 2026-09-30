@@ -11,7 +11,7 @@ import {
   locales,
 } from "@/i18n";
 import { formatIsoDate } from "@/lib/format-date";
-import { siteUrl } from "@/lib/site";
+import { buildPageMetadata } from "@/lib/metadata";
 import styles from "./page.module.css";
 
 type PageProps = {
@@ -33,14 +33,13 @@ export async function generateMetadata({
 
   const messages = getMessages(lang);
 
-  return {
+  return buildPageMetadata({
+    locale: lang,
     title: messages.guides.indexTitle,
     description: messages.guides.indexLead,
-    alternates: {
-      canonical: `${siteUrl}/${lang}/guides/`,
-      languages: buildLanguageAlternates("/guides"),
-    },
-  };
+    path: "guides",
+    languages: buildLanguageAlternates("/guides"),
+  });
 }
 
 export default async function GuidesIndexPage({ params }: PageProps) {

@@ -30,6 +30,7 @@ export const en: Messages = {
     colTools: "Tools",
     colData: "Data",
     colLegal: "Legal",
+    survey: "Survey",
     benchmark: "Benchmark",
     disclaimer:
       "This content is for information only and is not legal advice. Check the sources and seek professional advice where needed.",
@@ -38,22 +39,66 @@ export const en: Messages = {
     privacy: "Privacy policy",
   },
   home: {
-    eyebrow: "Swiss SMEs · AI adoption",
-    title: "Swiss AI Deployment Resource",
+    eyebrow: "Swiss SMEs · AI use",
+    title: "Deploy AI in Switzerland — on a sourced footing.",
     lead:
-      "Practical information on AI deployment in Switzerland: compliance, vendor comparison, and interactive decision tools.",
+      "Guides on the FADP, EU AI Act and FINMA, decision tools, a source-based vendor comparison, and a website check. Independent, no tracking, checked monthly against the sources.",
     note:
       "German is the canonical language of this project. EN, FR, and IT translations are drafts until reviewed.",
-    complianceHeading: "Compliance basics",
+    ctaTools: "Start a decision tool",
+    ctaVendors: "Compare vendors",
+    quickCheckTitle: "Website Quick-Check",
+    quickCheckLead:
+      "Checks publicly visible signals on your site — privacy notice, impressum, cookie tools, trackers, security headers. Not a compliance assessment.",
+    quickCheckUrlLabel: "Website URL",
+    quickCheckSubmit: "Check website",
+    quickCheckPrivacy:
+      "The URL is sent once to our scanner and is not stored permanently.",
+    quickCheckChecksHeading: "What it checks",
+    statsHeading: "At a glance",
+    statsGuides: "Guides",
+    statsTools: "Decision tools",
+    statsVendors: "Vendors",
+    statsLastSource: "Last source check",
+    guidesHeading: "Guides",
+    guidesLead:
+      "Source-based primers on data protection, the EU AI Act, FINMA, and procurement.",
+    guidesAction: "All guides",
+    categoryDatenschutz: "Data protection",
+    categoryEuAiAct: "EU AI Act",
+    categoryFinanzmarkt: "Financial markets",
+    categoryBeschaffung: "Procurement",
+    readingTime: "{n} min read",
     toolsHeading: "Decision tools",
+    toolsLead:
+      "Interactive trees with cited sources. No compliance traffic lights.",
+    toolsMaxQuestions: "up to {n} questions",
+    toolsAction: "All decision tools",
     vendorsHeading: "Vendor comparison",
-    surveyHeading: "Survey",
+    vendorsLead:
+      "Facts on hosting, DPAs and certifications — only with a source, otherwise unverified.",
+    vendorsListed: "{n} vendors listed",
+    vendorsSwissHosting: "{n} with sourced Swiss hosting",
+    vendorsDpa: "{n} with a sourced DPA",
+    vendorsUnverifiedNote:
+      "Cells without a source count as unverified. No recommendations or scores.",
+    vendorsAction: "Open vendor comparison",
+    surveyHeading: "Survey & benchmark",
     surveyLead:
-      "A short survey on AI adoption in Swiss companies. Anonymized results feed the benchmark report.",
+      "A short survey on AI adoption in Swiss companies. Anonymized results feed the benchmark.",
+    surveyCta: "Take the survey",
     benchmarkLink: "View benchmark",
-    websiteCheckHeading: "Website Quick-Check",
-    websiteCheckLead:
-      "A first look at a website from publicly visible signals (HTTPS, privacy link, trackers). Not a compliance audit.",
+    benchmarkPending: "Results from n ≥ {n}",
+    methodologyHeading: "Method",
+    methodologySourcesTitle: "Official sources",
+    methodologySourcesBody:
+      "Guides and decision tools rely on primary regulatory and statutory sources — with the URL stated.",
+    methodologyChecksTitle: "Monthly source checks",
+    methodologyChecksBody:
+      "An automated job checks registered sources each month and updates verification dates in the repository.",
+    methodologyIndependenceTitle: "Independent",
+    methodologyIndependenceBody:
+      "No affiliate or sponsor links, no tracking on the site, and no legal advice.",
   },
   websiteCheck: {
     metaTitle: "Website Quick-Check",
@@ -95,7 +140,10 @@ export const en: Messages = {
       "The page looks dynamic (e.g. GTM or an SPA shell). A static scan may miss injected scripts and banners — results may be incomplete.",
     disclaimer:
       "This Quick-Check is a first assessment from publicly visible signals and is not legal advice or a compliance audit. Check the sources and consult qualified professionals when needed.",
-    scanAgain: "Check another URL",
+    scanAgain: "New check",
+    surveyPrompt:
+      "Help build the Swiss benchmark — about {minutes} minutes.",
+    surveyPromptCta: "Go to survey",
   },
   benchmark: {
     metaTitle: "Benchmark",
@@ -133,6 +181,7 @@ export const en: Messages = {
       "A short survey on AI use, spend, and hosting requirements in Swiss companies.",
     backHome: "← Back to home",
     estimatedTime: "Estimated time: about {minutes} minutes",
+    progress: "Question {answered} of {total}",
     submit: "Submit",
     submitting: "Submitting …",
     success:
@@ -165,10 +214,17 @@ export const en: Messages = {
   },
   content: {
     lastVerified: "Last verified",
+    readingTime: "Reading time about {minutes} min.",
     sources: "Sources",
     disclaimer:
       "This page is for information only and is not legal advice. For specific projects, consult qualified professionals.",
     backHome: "← Back to home",
+    breadcrumbLabel: "Breadcrumb",
+    breadcrumbHome: "Home",
+    tocLabel: "Contents",
+    tocNavLabel: "Table of contents",
+    relatedTools: "Related decision tool",
+    counselBadge: "Reviewed by counsel · {date}",
     translationDraft:
       "This translation is an LLM draft and has not yet been human-reviewed.",
     translationCanonicalNote:
@@ -188,9 +244,18 @@ export const en: Messages = {
     backToIndex: "← All decision tools",
     back: "Back",
     restart: "Start over",
+    progress: "Question {n} · max. {m}",
+    maxQuestions: "max. {count} questions",
     caveats: "Caveats",
     sources: "Sources",
     relatedPages: "Related pages",
+    answerRecap: "Your answers",
+    copyLink: "Copy link",
+    copyLinkDone: "Copied",
+    print: "Print / save as PDF",
+    surveyPrompt:
+      "Help build the Swiss benchmark — about {minutes} minutes",
+    surveyCta: "Go to survey",
     disclaimer:
       "This tool is for information only and is not legal advice. Outcomes are orientation aids — check the sources and consult qualified professionals when needed.",
     verdictLikely: "Likely workable",

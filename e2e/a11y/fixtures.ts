@@ -28,12 +28,6 @@ const A11Y_LOCALE = "de" as const;
 /** Locale used for axe route coverage (structure is locale-independent). */
 export { A11Y_LOCALE };
 
-/** Dedicated 404 path so NotFoundView is scanned (not in listVisualRoutes). */
-export const A11Y_404_ROUTE: VisualRoute = {
-  id: "404",
-  segment: "__a11y-missing__",
-};
-
 function formatViolations(violations: Result[]): string {
   if (violations.length === 0) return "no violations";
   return violations

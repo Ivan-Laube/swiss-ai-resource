@@ -4,6 +4,7 @@ description: "Wann die EU-Verordnung über künstliche Intelligenz (AI Act) Schw
 last_verified: "2026-07-10"
 volatility: "fast"
 translation_status: "canonical"
+category: "eu-ai-act"
 reviewed_by: null
 review_date: null
 review_scope: null
