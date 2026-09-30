@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from "@/lib/zod";
 
 const httpsUrl = z.url().refine(
   (value) => value.startsWith("https://"),

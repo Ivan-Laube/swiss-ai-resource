@@ -36,11 +36,18 @@ Both Workers **require** `SITE_ORIGIN`. There is no `*.pages.dev` fallback; an u
 
 ### Security headers ([`public/_headers`](public/_headers))
 
-Cloudflare Pages applies these to every response (copied to `out/_headers` by the static export build; verify with `curl -sD - https://aicompliant.ch/de/ | grep -i ^content-security-policy` after a deploy):
+Cloudflare Pages applies these to every response (copied to `out/_headers` by the static export build). Verify after a deploy with `npm run check:live-headers` (see below).
+
+**Cloudflare Pages silently drops `_headers` values longer than 2,000 characters.** Until 2026-09-30 the CSP was one site-wide header listing every page's script hashes (6,182 chars), so production served **no CSP at all**. The CSP is now split in two:
+
+- **Per-page `<meta http-equiv="Content-Security-Policy">`:** injected into every HTML file by the postbuild step. It carries only that page's inline-script hashes (currently at most 11, under 1,000 chars) and is the policy that restricts scripts, styles, connections and frames.
+- **Short header policy:** `frame-ancestors 'none'; object-src 'none'; base-uri 'self'; form-action 'self'`. These are directives a meta policy can't express (`frame-ancestors`) plus some hardening. The browser enforces both policies together.
+
+`csp-hashes.ts` fails the build if any header value would exceed the limit.
 
 | Header | Value | Notes |
 |---|---|---|
-| `Content-Security-Policy` | Built by [`scripts/csp-hashes.ts`](scripts/csp-hashes.ts) into `out/_headers` on every `npm run build` (`postbuild`). Source template in [`public/_headers`](public/_headers) still lists `'unsafe-inline'` as a bootstrap; the postbuild step replaces `script-src` with sha256 hashes of inline Next hydration scripts, sets `connect-src` to `'self' https://api.aicompliant.ch https://challenges.cloudflare.com`, and adds `upgrade-insecure-requests`. Also emits COOP/CORP and detaches `Access-Control-Allow-Origin`. | Verify with `curl -sD - https://aicompliant.ch/de/ \| grep -iE 'content-security-policy\|cross-origin'` after deploy. |
+| `Content-Security-Policy` (header) | `frame-ancestors 'none'; object-src 'none'; base-uri 'self'; form-action 'self'` | The full per-page policy is a `<meta>` tag written by [`scripts/csp-hashes.ts`](scripts/csp-hashes.ts) (`postbuild`): `default-src 'self'`, `script-src 'self'` + that page's sha256 hashes + Turnstile, `connect-src 'self' https://api.aicompliant.ch https://challenges.cloudflare.com`, `frame-src` Turnstile, `upgrade-insecure-requests`. The postbuild step also emits COOP/CORP and detaches `Access-Control-Allow-Origin`. |
 | `Strict-Transport-Security` | `max-age=63072000; includeSubDomains; preload` | Submitted at hstspreload.org (OPERATOR §7). |
 | `Permissions-Policy` | `camera=(), microphone=(), geolocation=(), payment=()` | |
 | `Cross-Origin-Opener-Policy` | `same-origin` | |
@@ -49,7 +56,12 @@ Cloudflare Pages applies these to every response (copied to `out/_headers` by th
 | `X-Content-Type-Options` | `nosniff` | |
 | `Referrer-Policy` | `strict-origin-when-cross-origin` | |
 
-**If you change this file, redeploy and re-check hydration** (browser console should show zero CSP violations, and clicking a radio button on `/de/survey/` should actually check it) before trusting the deploy — a too-strict `script-src` silently breaks React hydration site-wide without any 4xx/5xx to notice from a curl check alone.
+**If you change this file or `csp-hashes.ts`, redeploy and re-check.** A too-strict `script-src` silently breaks React hydration site-wide, with no 4xx/5xx to notice. Two automated guards cover this:
+
+- The Playwright `privacy` project loads every route under its real meta CSP and fails on any CSP violation.
+- `npm run check:live-headers [-- <origin>]` ([`scripts/check-live-headers.ts`](scripts/check-live-headers.ts)) fetches the deployed site. It fails if a security header is missing, a page has no meta CSP, `script-src` allows `'unsafe-inline'`/`'unsafe-eval'`, or an inline script isn't hashed. The [Live security headers](.github/workflows/live-headers.yml) workflow runs it against production after every push to `main` (retrying while Pages deploys), daily, and on demand.
+
+Zod 4 probes for `eval` support on first parse, which the CSP blocks and reports as a violation. All schemas therefore import `z` from [`src/lib/zod.ts`](src/lib/zod.ts), which sets `jitless: true`. Import from there, not from `"zod"`.
 
 ### Pages environment variables (production)
 
@@ -131,9 +143,9 @@ Every pull request and every push to `main` runs [`.github/workflows/ci.yml`](.g
 - Offline `check:*` validators (content, vendors, sources, glossary, rules, scanner, survey, survey-answers, survey-aggregates, classify, act, links-report, contrast)
 - `npm run build` (static export to `out/` + `postbuild` CSP hash rewrite)
 - Playwright e2e job (`build:e2e` + `test:e2e`, 45 min timeout), run **inside the `mcr.microsoft.com/playwright:v1.63.0-jammy` container**, the same image as `scripts/docker-visual.sh`, so visual baselines match pixel-for-pixel. Keep the image tag in sync with `@playwright/test` in `package.json`. Projects (see [`playwright.config.ts`](playwright.config.ts)):
-  - `configured` / `unconfigured`: functional specs for website-check, survey and benchmark, plus [`e2e/website-check/headers.spec.ts`](e2e/website-check/headers.spec.ts), which locks the full CSP (only `script-src` sha256 hashes may vary) and the other security headers in both `out-e2e` and `out-e2e-unconfigured` (**R53**)
+  - `configured` / `unconfigured`: functional specs for website-check, survey and benchmark, plus [`e2e/website-check/headers.spec.ts`](e2e/website-check/headers.spec.ts), which locks the header CSP, the per-page meta CSP (one per HTML file, before any script, hashing exactly its inline scripts), the other security headers and the 2,000-char header-value limit in both `out-e2e` and `out-e2e-unconfigured` (**R53**)
   - `layout`: [`e2e/layout/header.spec.ts`](e2e/layout/header.spec.ts), single-row header, no horizontal overflow, mobile menu and `aria-current` across all locales × 320–1280px
-  - `privacy`: no third-party requests on any public route or the 404 page, DE + FR (**R52**)
+  - `privacy`: no third-party requests and no CSP violations on any public route or the 404 page, DE + FR (**R52**)
   - `a11y-light` / `a11y-dark`: axe scan, no serious or critical violations (**R51**)
   - `visual-{375,768,1280}-{light,dark}`: **R50** full-page snapshots for all public routes × {de, fr}. Dates, copyright year, and Turnstile hosts are masked.
 

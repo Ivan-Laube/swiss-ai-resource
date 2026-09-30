@@ -31,6 +31,7 @@
     "check:links": "tsx scripts/check-links.ts",
     "check:links-report": "tsx scripts/check-links-report.ts",
     "check:contrast": "tsx scripts/check-contrast.ts",
+    "check:live-headers": "tsx scripts/check-live-headers.ts",
     "test:unit": "node --import tsx --test \"src/**/*.test.ts\"",
     "aggregate:survey": "tsx scripts/aggregate-survey.ts",
     "snapshot:sources": "tsx scripts/snapshot-sources.ts",

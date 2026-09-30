@@ -242,3 +242,4 @@ Homepage methodology copy and related UI depend on these remaining accurate. If 
 6. In client components (`"use client"`), import from `@/i18n/config` / `@/i18n/path`, never the `@/i18n` barrel: it pulls every locale's message catalogue into the browser bundle. Pass only the message slice a component needs (e.g. `SiteHeader` takes `nav={messages.nav}`), not the whole `Messages` object.
 7. After changing tokens or check pairs, also update the copied values in `scripts/check-contrast.ts` (`npm run check:contrast`).
 8. Every page's `generateMetadata` returns `buildPageMetadata()` from `src/lib/metadata.ts`. Next.js does not merge a page's title/description into the layout's Open Graph data, so a page that sets only `title`/`description` shares with the site-wide preview.
+9. Import Zod as `import { z } from "@/lib/zod"`, never from `"zod"`: that module sets `jitless: true`, without which Zod probes `eval` and triggers a CSP violation in the browser.

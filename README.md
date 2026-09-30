@@ -79,6 +79,7 @@ Open [http://localhost:3000](http://localhost:3000) (root redirects to `/de/`).
 | `npm run aggregate:survey -- --local [--write]` | Build aggregates from local D1 (T25) |
 | `npm run check:scanner` | Validate `data/scanner-checks.json` |
 | `npm run check:contrast` | WCAG AA contrast of the design-system token pairs, light and dark (R51) |
+| `npm run check:live-headers [-- <origin>]` | Security headers + per-page meta CSP actually served by a deployed site (default `https://aicompliant.ch`); also run by the Live security headers workflow |
 | `npm run dev:survey` | Survey Worker local (`wrangler dev`) |
 | `npm run db:survey:local` | Apply survey D1 migrations locally |
 | `npm run dev:scanner` | Scanner Worker local (`wrangler dev`) |

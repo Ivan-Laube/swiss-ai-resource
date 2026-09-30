@@ -1,6 +1,10 @@
 /**
  * R52: record network hosts per route; only same-origin (plus Turnstile/API
  * on website-check and survey) is allowed.
+ *
+ * Also asserts zero CSP violations per route: pages load under their real
+ * per-page meta CSP (scripts/csp-hashes.ts), so a missing hash or a new
+ * third-party script fails here, not only in production.
  */
 import { test, expect, type Page } from "@playwright/test";
 import {
@@ -59,6 +63,20 @@ for (const LANG of VISUAL_LOCALES) {
     for (const route of routes) {
       test(`${route.id}`, async ({ page, baseURL }) => {
         const seen = new Set<string>();
+        const cspViolations: string[] = [];
+        page.on("console", (message) => {
+          if (/Content[- ]Security[- ]Policy/i.test(message.text())) {
+            cspViolations.push(message.text());
+          }
+        });
+        await page.addInitScript(() => {
+          document.addEventListener("securitypolicyviolation", (event) => {
+            const w = window as unknown as { __cspViolations?: string[] };
+            (w.__cspViolations ??= []).push(
+              `${event.violatedDirective} blocked ${event.blockedURI || "inline"}`,
+            );
+          });
+        });
         page.on("request", (req) => {
           const host = hostFromRequestUrl(req.url());
           if (host) {
@@ -79,6 +97,16 @@ for (const LANG of VISUAL_LOCALES) {
         expect(
           unexpected,
           `Unexpected third-party host(s) on ${path}: ${unexpected.join(", ")}`,
+        ).toEqual([]);
+
+        const domViolations = await page.evaluate(
+          () =>
+            (window as unknown as { __cspViolations?: string[] })
+              .__cspViolations ?? [],
+        );
+        expect(
+          [...domViolations, ...cspViolations],
+          `CSP violations on ${path}`,
         ).toEqual([]);
       });
     }

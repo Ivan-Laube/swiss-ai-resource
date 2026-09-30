@@ -1,0 +1,52 @@
+name: Live security headers
+
+# Checks what the CDN actually serves (scripts/check-live-headers.ts): the
+# e2e tests only see the build output, and Cloudflare Pages once silently
+# dropped an over-long CSP header so production ran without one.
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "17 6 * * *"
+  workflow_dispatch:
+    inputs:
+      origin:
+        description: "Site origin to check"
+        required: false
+        default: "https://aicompliant.ch"
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+
+      - name: Setup Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # On push to main, Cloudflare Pages deploys asynchronously: retry for up
+      # to ~10 minutes so the check runs against the new deployment.
+      - name: Check live headers and CSP
+        env:
+          ORIGIN: ${{ github.event.inputs.origin || 'https://aicompliant.ch' }}
+        run: |
+          attempts=1
+          if [ "${{ github.event_name }}" = "push" ]; then attempts=10; sleep 60; fi
+          for i in $(seq 1 "$attempts"); do
+            if npm run -s check:live-headers -- "$ORIGIN"; then exit 0; fi
+            if [ "$i" -lt "$attempts" ]; then echo "Retrying in 60s ($i/$attempts)"; sleep 60; fi
+          done
+          exit 1

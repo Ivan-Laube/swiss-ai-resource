@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from "@/lib/zod";
 
 export const actPageActionSchema = z.object({
   slug: z.string().min(1),
