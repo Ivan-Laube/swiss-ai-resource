@@ -274,7 +274,7 @@ Task status is `Todo`, `In progress` or `Done`. The "Depends on" column refers t
 | R53 | `e2e/website-check/headers.spec.ts` locks the full CSP (exact directive set; only `script-src` sha256 hashes may vary, no `unsafe-inline`/`unsafe-eval`/extra origins) and the other security headers, in both `out-e2e` and `out-e2e-unconfigured` | R1A | Done |
 | R54 | Translation and overflow review: Ivan reviews the drafted EN/FR/IT strings; manual check that nav, buttons and cards don't overflow in FR/IT at every breakpoint (adjust the menu breakpoint if needed) | each PR | Todo |
 | R55 | Performance check: Lighthouse mobile on home, one guide, vendors and website-check. Targets: performance ≥ 90, accessibility = 100, CLS < 0.05. Guide pages ship no client JS apart from framework basics | PR 2, PR 3 | Todo |
-| R56 | Manual check on real devices (iOS Safari, Android Chrome) on the Cloudflare Pages preview (behind Access) before each merge | each PR | Todo |
+| R56 | Manual check on real devices (iOS Safari, Android Chrome): mobile menu open/close, header, forms. **Deferred to the production launch** (decision 2026-09-30: little traffic until then); done once on production, not per PR. Automated coverage per PR: `e2e/layout/header.spec.ts` + visual snapshots | Production launch | Todo |
 | R57 | Docs: add a redesign section to the README status table, link this plan, update `docs/design-system.md` as the building blocks change | PR 4 | Todo |
 
 ### Sequencing
@@ -297,7 +297,7 @@ PR 2, 3 and 4 depend only on PR 1 and can be done in any order. The one cross-de
 - [ ] All four locales render. New strings exist in DE/EN/FR/IT, with EN/FR/IT reviewed by Ivan
 - [ ] Checked at 375 / 768 / 1280 in light and dark; no horizontal page scroll; tap targets ≥ 44px
 - [ ] No invented numbers, verdict colours or overclaiming copy (§2)
-- [ ] Reviewed on the Cloudflare Pages preview, including a real-device check (R56)
+- [ ] Reviewed on the Cloudflare Pages preview (real-device check R56 is deferred to the production launch)
 
 ## 8. Risks and mitigations
 
