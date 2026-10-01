@@ -216,6 +216,24 @@ GitHub UI label may be **Secret protection** (includes scanning + push protectio
 
 Access app on `*.swiss-ai-resource.pages.dev` with Allow policy (email + OTP). Production `aicompliant.ch` not gated.
 
+**Correction 2026-10-01:** previews were in fact public. On 2026-10-01, branch and commit preview URLs returned `200` without login, and the Pages project showed **Preview access → Restrict previews** (i.e. off).
+
+**Re-done 2026-10-01** via **Workers & Pages → swiss-ai-resource → Settings → General → Preview access → Restrict previews**. That created the Zero Trust app "swiss-ai-resource - Cloudflare Pages":
+- destination `*.swiss-ai-resource.pages.dev`;
+- policy "Allow Members – Cloudflare Pages" (Cloudflare account members);
+- login with One-time PIN.
+
+Verified: `deps-security-bumps.…`, `23c8f167.…` and `redesign-foundation.…` return `302` to `misty-credit-a815.cloudflareaccess.com`. `swiss-ai-resource.pages.dev` (production alias) and `aicompliant.ch` return `200`.
+
+Re-check with:
+
+```bash
+curl -s -o /dev/null -w "%{http_code}
+" https://<branch>.swiss-ai-resource.pages.dev/
+```
+
+The expected result is `302`.
+
 ### 7.2 Submit HSTS preload — DONE
 
 Submitted 2026-09-29: `aicompliant.ch` pending inclusion on the HSTS preload list. Revisit hstspreload.org over coming weeks.
@@ -231,6 +249,12 @@ Verified 2026-09-29:
 - Survey hydration OK (radio sticks); Turnstile token present
 - Website-check Turnstile ready
 - `scripts/csp-hashes.ts` is on `main` (`postbuild`); after each Pages deploy, confirm `Content-Security-Policy` uses `sha256-...` (not only `'unsafe-inline'`) and that survey radios still hydrate
+
+**Correction 2026-09-30:** the CSP check above was wrong.
+- **Finding:** production served **no CSP at all**. The hashed header line was 6,182 characters, and Cloudflare Pages silently drops header values over 2,000.
+- **Fix (merged in #13):** a per-page `<meta>` CSP plus a short header policy. See [DEPLOY.md](DEPLOY.md#security-headers-public_headers).
+- **Verification is now automated:** `npm run check:live-headers`, and the **Live security headers** workflow, which runs after each push to `main`, daily, and on demand.
+- **Manual header greps** like the one above can't see the per-page policy, so use the script instead.
 
 ---
 
