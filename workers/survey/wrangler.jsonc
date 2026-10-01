@@ -42,6 +42,13 @@
     // Publish anonymized survey aggregates every Monday at 05:00 UTC.
     "crons": ["0 5 * * 1"]
   },
+  "analytics_engine_datasets": [
+    {
+      // Anonymous tool-usage counter (src/lib/usage-metrics.ts): tool, outcome, status only.
+      "binding": "USAGE",
+      "dataset": "aicompliant_usage"
+    }
+  ],
   "vars": {
     "SITE_ORIGIN": "https://aicompliant.ch",
     // Dedicated data-only repo (see DEPLOY.md "PAT blast radius" note):

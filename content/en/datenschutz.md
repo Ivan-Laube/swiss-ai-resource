@@ -53,6 +53,15 @@ To limit abuse, we temporarily store, for the survey, a **one-way hash of the cl
 
 If you have a URL checked, your browser sends the URL and a Turnstile token to our scanner worker. The worker retrieves the target page and evaluates publicly visible signals. **No scan results and no submitted URLs are stored by us on a permanent basis.**
 
+### 2.5 No cookies, no tracking; usage statistics
+
+This website sets **no cookies** and uses **no analytics or tracking tools** (no tracking pixels, no fingerprinting, no third-party scripts other than Turnstile). A cookie banner is therefore not needed. To hand a URL from the homepage to the form, the quick-check briefly places an entry in your browser's session storage (sessionStorage); it is deleted as soon as it is read and is not transmitted to us.
+
+To see how much the site and its tools are used, we rely exclusively on **server-side counts**:
+
+- **Page views:** Cloudflare's aggregated traffic statistics (e.g. number of requests per page), generated from the connection data that arises anyway (section 2.1) — without any script, cookie, or identifier in your browser.
+- **Tool usage:** For each quick-check or survey submission, our workers count one data point containing the tool, the outcome (e.g. successful, rejected), and the HTTP status. **No** IP address, URL, survey answer, or other identifier; a data point cannot be attributed to a person.
+
 ## 3. Purposes of processing
 
 | Data | Purpose |
@@ -72,6 +81,7 @@ We use services from **Cloudflare, Inc.** (and affiliated companies) for:
 - hosting/CDN of the website (Cloudflare Pages);
 - the survey API and storage in **Cloudflare D1**;
 - the website scanner (Cloudflare Worker, without permanent storage);
+- anonymous usage counts (Cloudflare Workers Analytics Engine) and aggregated traffic statistics;
 - optionally, **Cloudflare Turnstile**.
 
 Cloudflare acts as a processor (Auftragsbearbeiter) within the scope of the purposes we specify. Depending on Cloudflare's configuration, processing may also take place outside Switzerland or the EU/EEA. We select providers and settings with the aim of ensuring an adequate level of protection (including contractual safeguards from the provider).
@@ -84,6 +94,7 @@ Cloudflare acts as a processor (Auftragsbearbeiter) within the scope of the purp
 | Optional emails | Until the report notification is sent or until you request deletion; automatic deletion no later than after **24 months**; manual deletion from the signup table upon request |
 | IP-hash quotas (survey) | A few days (automatic deletion of older daily entries); used solely for abuse prevention |
 | Quick-check | No permanent storage by us |
+| Usage counts (tools) | Three months (automatic deletion by Cloudflare); not personal data |
 | Server/CDN logs | According to Cloudflare's standard settings; typically retained briefly for operations and security |
 
 ## 6. Your rights and deletion

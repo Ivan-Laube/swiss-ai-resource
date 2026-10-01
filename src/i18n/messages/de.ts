@@ -107,7 +107,7 @@ export const de = {
       "Geben Sie eine URL ein. Der Scan prüft öffentlich sichtbare Signale und liefert Fakten mit Status gefunden / nicht gefunden / unklar — keine Compliance-Bewertung.",
     backHome: "← Zur Startseite",
     urlLabel: "Website-URL",
-    urlPlaceholder: "https://beispiel.ch",
+    urlPlaceholder: "beispiel.ch",
     submit: "Scannen",
     scanning: "Scan läuft …",
     unavailable:
@@ -141,6 +141,11 @@ export const de = {
       "Die Seite wirkt dynamisch (z. B. GTM oder SPA-Shell). Ein statischer Scan sieht möglicherweise nicht alle Skripte und Banner — die Ergebnisse können unvollständig sein.",
     disclaimer:
       "Dieser Quick-Check ist eine erste Einschätzung anhand öffentlich sichtbarer Signale und stellt keine Rechtsberatung oder Compliance-Prüfung dar. Prüfen Sie die Quellen und holen Sie bei Bedarf Fachberatung ein.",
+    notFoundNote:
+      "«Nicht gefunden» heisst, dass der Scan das Signal auf den geprüften Seiten nicht erkannt hat — nicht, dass es auf der Website fehlt.",
+    siteOwnerNote:
+      "Sie betreiben eine geprüfte Website und halten ein Ergebnis für falsch? Kontaktangaben finden Sie im",
+    siteOwnerLinkLabel: "Impressum",
     scanAgain: "Neue Prüfung",
     surveyPrompt:
       "Helfen Sie beim Schweizer Benchmark — ca. {minutes} Minuten.",

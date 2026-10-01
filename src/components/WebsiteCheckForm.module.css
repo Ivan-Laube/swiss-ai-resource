@@ -199,3 +199,17 @@
 .surveyPrompt p {
   margin: 0 0 var(--space-3);
 }
+
+.disclaimerNotes p {
+  margin: 0;
+}
+
+.disclaimerNotes p + p {
+  margin-top: var(--space-2);
+}
+
+.disclaimerNotes a {
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}

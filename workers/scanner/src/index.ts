@@ -1,4 +1,5 @@
 import checksJson from "../../../data/scanner-checks.json";
+import { recordUsage } from "../../../src/lib/usage-metrics";
 import { parseScannerChecks } from "../../../src/scanner/schema";
 
 import {
@@ -204,7 +205,13 @@ const worker = {
     if (request.method === "POST" && url.pathname === "/scan") {
       const rejected = rejectIfDisallowedOrigin(request, origin);
       if (rejected) return rejected;
-      return handleScan(request, env, request.headers.get("Origin")!);
+      const response = await handleScan(
+        request,
+        env,
+        request.headers.get("Origin")!,
+      );
+      recordUsage(env.USAGE, "scan", response.status);
+      return response;
     }
 
     // Non-CORS routes: no Origin required; if present and allowed, reflect it.
