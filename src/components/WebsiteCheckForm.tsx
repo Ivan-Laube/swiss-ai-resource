@@ -635,7 +635,10 @@ export function WebsiteCheckForm({
           ) : null}
         </div>
       </form>
-      <Callout tone="neutral" className={`${styles.formDisclaimer} ${styles.disclaimerNotes}`}>
+      <Callout
+        tone="neutral"
+        className={`${styles.formDisclaimer} ${styles.disclaimerNotes}`}
+      >
         <p>{messages.disclaimer}</p>
         <SiteOwnerNote locale={locale} messages={messages} />
       </Callout>
