@@ -1,4 +1,5 @@
 import {
+  BROWSER_USER_AGENT,
   FETCH_TIMEOUT_MS,
   FetchError,
   USER_AGENT,
@@ -13,6 +14,19 @@ export type ProbeResult = {
 
 const GET_FALLBACK_STATUSES = new Set([403, 404, 405, 501]);
 
+/**
+ * URLs that load in a real browser but answer 403 to automated clients (WAF / TLS
+ * fingerprinting). A 403 on these is treated as reachable. Add an entry only after
+ * opening the URL manually; record the date.
+ */
+const BOT_BLOCKED_VERIFIED: ReadonlyMap<string, string> = new Map([
+  [
+    "https://www.consilium.europa.eu/en/press/press-releases/2026/06/29/artificial-intelligence-council-gives-final-green-light-to-simplify-and-streamline-rules/",
+    "2026-10-01",
+  ],
+  ["https://openai.com/", "2026-10-01"],
+]);
+
 function isSuccessStatus(status: number): boolean {
   return status >= 200 && status < 300;
 }
@@ -20,6 +34,7 @@ function isSuccessStatus(status: number): boolean {
 async function fetchStatus(
   url: string,
   method: "HEAD" | "GET",
+  browser = false,
 ): Promise<{ status: number; finalUrl: string }> {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
@@ -30,8 +45,9 @@ async function fetchStatus(
       redirect: "follow",
       signal: controller.signal,
       headers: {
-        "User-Agent": USER_AGENT,
+        "User-Agent": browser ? BROWSER_USER_AGENT : USER_AGENT,
         Accept: "text/html,application/xhtml+xml,application/pdf,*/*;q=0.8",
+        ...(browser ? { "Accept-Language": "en-US,en;q=0.9,de;q=0.8" } : {}),
       },
     });
 
@@ -88,7 +104,13 @@ export async function probeUrl(url: string): Promise<ProbeResult> {
   }
 
   try {
-    const get = await fetchStatus(url, "GET");
+    let get = await fetchStatus(url, "GET");
+    if (get.status === 403) {
+      get = await fetchStatus(url, "GET", true);
+    }
+    if (get.status === 403 && BOT_BLOCKED_VERIFIED.has(url)) {
+      return { ok: true, httpStatus: get.status, finalUrl: get.finalUrl };
+    }
     if (isSuccessStatus(get.status)) {
       return {
         ok: true,
