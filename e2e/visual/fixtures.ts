@@ -15,6 +15,9 @@ import {
 export { expect, listVisualRoutes, needsTurnstile, visualPath, VISUAL_LOCALES };
 export type { VisualLocale, VisualRoute };
 
+/** Fixed stand-in for data-dependent text before screenshots (see gotoStable). */
+export const VISUAL_TEXT_PLACEHOLDER = "00.00.0000";
+
 /** Locators whose pixels are masked (dates, copyright year, Turnstile). */
 export function maskLocators(page: Page): Locator[] {
   return [
@@ -52,6 +55,21 @@ export async function gotoStable(
       await expect(submit.first()).toBeEnabled({ timeout: 5_000 });
     }
   }
+
+  // Masking hides pixels but not layout: a longer date ("1. Oktober 2026"
+  // vs "10. Juli 2026") wraps differently and changes the page height, so the
+  // monthly last_verified bump broke the baselines. Replace the text of every
+  // masked leaf (dates, counts, reading times, copyright year) with a fixed
+  // placeholder so the layout no longer depends on today's data.
+  await page.evaluate((placeholder) => {
+    for (const el of document.querySelectorAll<HTMLElement>(
+      "time, [data-visual-mask]",
+    )) {
+      if (el.children.length === 0) {
+        el.textContent = placeholder;
+      }
+    }
+  }, VISUAL_TEXT_PLACEHOLDER);
 
   // Hide scrollbars (width differs by platform/theme and flakes full-page shots).
   await page.addStyleTag({
