@@ -36,7 +36,7 @@ This plan turns the reviewed Stitch proposal ("Helvetia Precision GovTech") into
 | D6 | The survey is promoted **after a result**, not in the hero | Survey prompt at the end of Quick-Check results and decision-tool outcomes, plus a band on the homepage. |
 | D7 | **Dark mode is kept** | Every token has a dark value. It follows `prefers-color-scheme`, with no manual toggle in this scope. |
 | D8 | "Reviewed by counsel" badge **appears only when the review fields are complete** | Uses `reviewFieldsComplete()`. There is no "not yet reviewed" label. Lawyer review (T29) is due before full launch. |
-| D9 | Mobile-first layout with breakpoints at **768px** and **1024px** | No horizontal page scroll anywhere. Tap targets are at least 44px. |
+| D9 | Mobile-first layout with breakpoints at **768px** and **1024px** | No horizontal page scroll anywhere. Tap targets are at least 44px. Exception: the header switches to the desktop nav at **1200px** (the DE/FR/IT nav needs ~1150px), and the header CTA moves into the menu below **480px**. |
 | D10 | Quick-Check and decision-tool state live in the **URL fragment** (`#…`) | The fragment is never sent to the server or written to logs, and it works with the static export. |
 | D11 | **`<html lang>` per locale** via a `[lang]` root layout + `(root)` for `/` + `global-not-found` | Next 16 i18n pattern (**R1A**). Shared font/metadata in `src/app/document.ts`. Single `404.html` defaults to `de` and sets `document.documentElement.lang` from the path when the first segment is a known locale (CSP-hashed). |
 
@@ -156,7 +156,7 @@ The existing message strings take precedence over the labels in this table. Conf
 - Nav: Leitfäden (`/guides/`), Entscheidungshilfen (`/tools/`), Anbietervergleich (`/vendors/`), Umfrage & Benchmark (`/survey/`)
 - Language control
 - Primary CTA "Website prüfen" (`/website-check/`)
-- Below 1024px everything except the logo and the CTA moves into a `<details>` menu. The breakpoint may shift if FR/IT labels need it; see R54.
+- Below **1200px** everything except the logo, the CTA and the menu toggle moves into a `<details>` menu (the panel drops down full width under the header). Below **480px** the CTA also moves into the menu, so the header stays one row. Covered by `e2e/layout/header.spec.ts` (all locales × 320–1280px).
 
 **Footer:**
 
@@ -206,7 +206,7 @@ Task status is `Todo`, `In progress` or `Done`. The "Depends on" column refers t
 | R14 | Logo: a `BrandMark` SVG component (Appendix A) and a `BrandLockup` (mark + "aicompliant**.ch**" + "Swiss AI Resource"). App icons: `icon.svg` (large-star-only variant), `favicon.ico`, `apple-icon.png`. Delete the default favicon and the create-next-app leftovers in `public/` (`next.svg`, `vercel.svg`, `file.svg`, `globe.svg`, `window.svg`) after checking nothing references them | R10 | Done |
 | R15 | Rewrite `SiteHeader`: white sticky header with a hairline border; light shadow on scroll through scroll-driven CSS animation (progressive enhancement, border only as fallback); nav items from §5.5; "Website prüfen" CTA; `aria-current` on the active section | R13, R14 | Done |
 | R16 | Language control that stays on the same page: each page passes the locales it exists in (e.g. via `localesWithSlug()`), and the switcher links to the same path in those locales and hides the rest. Segmented-control styling, `hrefLang` kept | R15 | Done |
-| R17 | Mobile menu (< 1024px) built with `<details>`/`<summary>`, no JS dependency for opening. Closes after client-side navigation (small effect keyed on pathname, or plain `<a>` links; decide during implementation). Tap targets ≥ 44px | R15 | Done |
+| R17 | Mobile menu (< 1200px) built with `<details>`/`<summary>`, no JS dependency for opening. Closes after client-side navigation (small effect keyed on pathname, or plain `<a>` links; decide during implementation). Tap targets ≥ 44px | R15 | Done |
 | R18 | Rewrite `SiteFooter` with the columns from §5.5 and the computed "last source check" date (latest of `last_verified` across published DE guides and `last_checked` across vendors), disclaimer and copyright | R13, R14 | Done |
 | R19 | New route `/[lang]/guides/`: guide index built from `Card`s, with hreflang alternates and a sitemap entry. It's the target of the "Leitfäden" nav item | R13 | Done |
 | R1A | Correct `<html lang>` per locale. Investigate the Next 16 options (multiple root layouts through a route group for `[lang]` vs root, `global-not-found`). Fallback: set `document.documentElement.lang` early, with its hash picked up by `csp-hashes.ts`. Root `/` redirect and `404.html` must keep working | R02 | Done |
@@ -270,11 +270,11 @@ Task status is `Todo`, `In progress` or `Done`. The "Depends on" column refers t
 |---|---|---|---|
 | R50 | Playwright visual snapshots: all routes × {375, 768, 1280} × {light, dark} × {de, fr}. Dates and live data are masked. Baselines are created in PR 1 and updated per PR | R1F | Done |
 | R51 | Automated accessibility checks with `@axe-core/playwright` (new dev dependency): no serious or critical violations on any route, both themes; contrast pairs from §5.1 pass AA | R1F | Done |
-| R52 | E2E test "no third-party requests": record network requests per route. Allowed: same origin; `api.aicompliant.ch` + `challenges.cloudflare.com` only on `/website-check/` and `/survey/` | R11 | Done |
+| R52 | E2E test "no third-party requests": record network requests per route (DE + FR, including the 404 page). Allowed: same origin; `api.aicompliant.ch` + `challenges.cloudflare.com` only on `/website-check/` and `/survey/`. Also fails on any CSP violation (pages load under their real per-page meta CSP) | R11 | Done |
 | R53 | CSP locked in both e2e builds (`e2e/website-check/headers.spec.ts`): the short header policy, all other security headers, every header value ≤ 2,000 chars (Cloudflare Pages limit), and one meta CSP per HTML page placed before any script and hashing exactly that page's inline scripts. Runtime: zero CSP violations on every route (privacy project); `check:live-headers` + workflow verify what production serves. **Found during R55:** production had served no CSP since T44 (6,182-char header dropped by Pages); fixed by the per-page meta CSP | R1A | Done |
 | R54 | Translation and overflow review: Ivan reviews the drafted EN/FR/IT strings; manual check that nav, buttons and cards don't overflow in FR/IT at every breakpoint (adjust the menu breakpoint if needed) | each PR | Todo |
 | R55 | Performance check: Lighthouse mobile on home, one guide, vendors and website-check. Targets: performance ≥ 90, accessibility = 100, CLS < 0.05. Guide pages ship no client JS apart from framework basics. **Run 2026-09-30 on the branch preview (median of 3):** home 93 / 100, guide 97 / 100, website-check 92 / 100; vendors first 86 / 98 → after server-rendering the table (filter island, card headings h2) **91 / 100, TBT 310 → 130 ms**. CLS ≤ 0.002 everywhere. SEO shows 66 on previews only (`x-robots-tag: noindex` added by Cloudflare) | PR 2, PR 3 | Done |
-| R56 | Manual check on real devices (iOS Safari, Android Chrome) on the Cloudflare Pages preview (behind Access) before each merge | each PR | Todo |
+| R56 | Manual check on real devices (iOS Safari, Android Chrome): mobile menu open/close, header, forms. Deferred from per-PR to the production launch (decision 2026-09-30); **done 2026-10-01 on production by Ivan: site looks good on mobile**. Automated coverage per PR: `e2e/layout/header.spec.ts` + visual snapshots | Production launch | Done |
 | R57 | Docs: add a redesign section to the README status table, link this plan, update `docs/design-system.md` as the building blocks change | PR 4 | Done |
 
 ### Sequencing
@@ -297,7 +297,7 @@ PR 2, 3 and 4 depend only on PR 1 and can be done in any order. The one cross-de
 - [ ] All four locales render. New strings exist in DE/EN/FR/IT, with EN/FR/IT reviewed by Ivan
 - [ ] Checked at 375 / 768 / 1280 in light and dark; no horizontal page scroll; tap targets ≥ 44px
 - [ ] No invented numbers, verdict colours or overclaiming copy (§2)
-- [ ] Reviewed on the Cloudflare Pages preview, including a real-device check (R56)
+- [ ] Reviewed on the Cloudflare Pages preview (real-device check R56 is done once, at the production launch)
 
 ## 8. Risks and mitigations
 
