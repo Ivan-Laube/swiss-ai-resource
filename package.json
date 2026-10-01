@@ -54,7 +54,7 @@
     "diff": "^9.0.0",
     "gray-matter": "^4.0.3",
     "marked": "^18.0.6",
-    "next": "16.3.5",
+    "next": "16.3.6",
     "pdf-parse": "^2.4.5",
     "react": "19.2.4",
     "react-dom": "19.2.4",
@@ -70,10 +70,10 @@
     "@types/react-dom": "^19",
     "@types/sanitize-html": "^2.16.1",
     "eslint": "^9",
-    "eslint-config-next": "16.3.5",
+    "eslint-config-next": "16.3.6",
     "sharp": "0.35.4",
     "tsx": "^4.23.0",
     "typescript": "^5",
-    "wrangler": "^4.36.0"
+    "wrangler": "^4.145.0"
   }
 }
