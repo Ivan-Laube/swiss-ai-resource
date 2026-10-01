@@ -177,6 +177,12 @@ Dependabot: [`.github/dependabot.yml`](.github/dependabot.yml) (weekly npm + Git
 
 The monthly and translate automation workflows also run `npm run build` **before** any push to `main`, so a broken export cannot land from those jobs alone.
 
+Both push with the **`bots-push-main` deploy key**, not `GITHUB_TOKEN`:
+- **Setup:** the private key is in the Actions secret `BOT_DEPLOY_KEY` and is passed as `ssh-key` to `actions/checkout`.
+- **Why:** the `protect-main` ruleset lets deploy keys bypass its required CI checks, and on a personal-account repo the Actions token can't be exempted.
+- **Side effect:** deploy-key pushes trigger the usual workflows (CI, Live security headers), which `GITHUB_TOKEN` pushes didn't.
+- **Setup, rotation and rollback:** see [docs/operator-followups-2026-10.md](docs/operator-followups-2026-10.md#b-require-ci-on-main-with-a-deploy-key-for-the-bots).
+
 ## Monthly source snapshots (GitHub Actions)
 
 Site hosting is Cloudflare Pages; the monthly source job is **not** a Cloudflare Worker. It runs in GitHub Actions:

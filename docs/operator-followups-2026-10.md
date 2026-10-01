@@ -89,13 +89,22 @@ On a personal-account repo, GitHub can't exempt the Actions token from a ruleset
 
 #### 1. Create the key pair (your computer)
 
-Use Git Bash or any terminal, in a temporary folder outside the repo:
+In PowerShell or Git Bash, in a temporary folder outside the repo:
 
-```bash
-ssh-keygen -t ed25519 -C "swiss-ai-resource bots" -N "" -f swiss-ai-bot-deploy-key
+```powershell
+ssh-keygen -t ed25519 -C "swiss-ai-resource bots" -f swiss-ai-bot-deploy-key
 ```
 
-This creates `swiss-ai-bot-deploy-key` (private) and `swiss-ai-bot-deploy-key.pub` (public).
+At both passphrase prompts, press **Enter**: the key must have **no passphrase**, because the workflow can't type one.
+
+> Don't add `-N ""` in Windows PowerShell 5.1. PowerShell drops the empty argument, and `ssh-keygen` fails with "Too many arguments". In Git Bash, `-N ""` works.
+
+This creates `swiss-ai-bot-deploy-key` (private) and `swiss-ai-bot-deploy-key.pub` (public). To copy them for steps 2 and 3 in PowerShell:
+
+```powershell
+Get-Content swiss-ai-bot-deploy-key.pub | Set-Clipboard        # public key, for step 2
+Get-Content swiss-ai-bot-deploy-key -Raw | Set-Clipboard       # private key, for step 3
+```
 
 #### 2. Add the public key to the repo
 
@@ -253,7 +262,7 @@ Dependabot closed #4, #6, #8 and #14 as superseded after #15 merged (Next.js 16.
 ## Summary checklist
 
 - [x] **A.** Preview URLs return `302` to Cloudflare Access; production `200`. `OPERATOR_CHECKLIST.md` item 7 re-verified (2026-10-01).
-- [ ] **B.1–3** Deploy key created, added with write access, private key saved as `BOT_DEPLOY_KEY`, local files deleted.
+- [x] **B.1–3** Deploy key created, added with write access, private key saved as `BOT_DEPLOY_KEY`, local files deleted (2026-10-01).
 - [ ] **B.4** 🤖 Bot workflows push with `BOT_DEPLOY_KEY` (PR merged).
 - [ ] **B.5** `protect-main`: deploy-key bypass, required checks `verify`, `e2e`, `survey-worker`, `survey-pipeline`.
 - [ ] **B.6** Allow auto-merge enabled (optional).
