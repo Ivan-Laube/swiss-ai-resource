@@ -39,7 +39,9 @@ const baseAnswers: Record<string, string | string[]> = {
   "ai-maturity": "piloting-custom",
   "ai-tools": ["chatgpt", "deepl"],
   "primary-use-cases": ["translation"],
-  "monthly-spend-chf": "101-500",
+  "monthly-spend-chf": "251-1000",
+  "spend-outlook-12m": "increase-up-to-50",
+  "weekly-ai-users-share": "11-25",
   "hosting-requirement": "switzerland",
   "ai-governance-measures": ["none"],
   "eu-market-exposure": "no-eu",
@@ -60,7 +62,7 @@ function row(
 const empty = aggregateResponses(survey, [], generatedAt);
 assert(empty.n === 0, "empty fixture should publish n=0");
 assert(
-  Object.keys(empty.questions).length === 12,
+  Object.keys(empty.questions).length === 14,
   "empty fixture should retain all aggregate question keys",
 );
 assert(
@@ -106,7 +108,7 @@ assert(
 );
 assert(
   atThreshold.cross_tabs.spend_by_company_size["10-49"].median_band ===
-    "101-500",
+    "251-1000",
   "n=5 usable spend answers should publish an ordinal median",
 );
 assert(
@@ -127,34 +129,34 @@ assert(
   "single published option should be 100% of question n",
 );
 assert(
-  !sizeView!.rows.some((entry) => entry.optionId === "1-9"),
+  !sizeView!.rows.some((entry) => entry.optionId === "2-9"),
   "suppressed company-size options must not appear in views",
 );
 
 const sizeOptions = buildCompanySizeOptions(survey, "en");
 assert(
-  sizeOptions.length === 5 && sizeOptions[0].id === "1-9",
+  sizeOptions.length === 6 && sizeOptions[0].id === "1",
   "comparison select must list instrument company-size options",
 );
 
 const medianLookup = buildSpendMedianLookup(survey, atThreshold, "en");
 assert(
-  medianLookup["10-49"]?.medianBandId === "101-500",
+  medianLookup["10-49"]?.medianBandId === "251-1000",
   "median lookup must expose published median band id",
 );
 assert(
-  medianLookup["10-49"]?.medianBandLabel === "CHF 101–500",
+  medianLookup["10-49"]?.medianBandLabel === "CHF 251–1,000",
   "median lookup must localize the spend band label",
 );
 assert(
-  medianLookup["1-9"] === undefined,
+  medianLookup["2-9"] === undefined,
   "suppressed size bands must be absent from the median lookup",
 );
 
 const preferNotRows = [
   ...Array.from({ length: 5 }, (_, index) =>
     row(index, {
-      "monthly-spend-chf": index === 0 ? "0" : "101-500",
+      "monthly-spend-chf": index === 0 ? "0" : "251-1000",
     }),
   ),
   ...Array.from({ length: 5 }, (_, index) =>
@@ -164,13 +166,13 @@ const preferNotRows = [
 const preferNot = aggregateResponses(survey, preferNotRows, generatedAt);
 assert(
   preferNot.cross_tabs.spend_by_company_size["10-49"].median_band ===
-    "101-500",
+    "251-1000",
   "prefer-not answers must not influence the median band",
 );
 
 const dontKnowRows = [
   ...Array.from({ length: 5 }, (_, index) =>
-    row(index, { "monthly-spend-chf": "501-2000" }),
+    row(index, { "monthly-spend-chf": "1001-5000" }),
   ),
   ...Array.from({ length: 5 }, (_, index) =>
     row(index + 5, { "monthly-spend-chf": "dont-know" }),
@@ -179,7 +181,7 @@ const dontKnowRows = [
 const dontKnow = aggregateResponses(survey, dontKnowRows, generatedAt);
 assert(
   dontKnow.cross_tabs.spend_by_company_size["10-49"].median_band ===
-    "501-2000",
+    "1001-5000",
   "dont-know answers must not influence the median band",
 );
 

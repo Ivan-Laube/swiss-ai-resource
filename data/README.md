@@ -385,7 +385,7 @@ Loader API (build-time): `listRuleIds`, `getRule`, `getAllRules`, `validateRules
 
 ## Survey questions (`survey-questions.json`)
 
-Single versioned questionnaire for the Swiss AI adoption survey (T22). **Current: `id` `swiss-ai-adoption-2026`, `version` 3, 12 questions.** One instrument file — not one file per question. Aggregates (T25) will live in a separate file (e.g. `survey-aggregates.json`); do not mix them here.
+Single versioned questionnaire for the Swiss AI adoption survey (T22). **Current: `id` `swiss-ai-adoption-2026`, `version` 4, 14 questions.** One instrument file — not one file per question. Aggregates (T25) will live in a separate file (e.g. `survey-aggregates.json`); do not mix them here.
 
 Implementation: Zod schema and loaders in [`src/survey/`](../src/survey/) (`schema.ts`, `load.ts`). Export barrel: `@/survey`. Reuses `localizedStringSchema` / `pickLocalized` from `@/rules`.
 
@@ -398,7 +398,7 @@ Implementation: Zod schema and loaders in [`src/survey/`](../src/survey/) (`sche
 | `estimated_minutes` | positive int | Shown to respondents (target ~5) |
 | `title` | localized string | Survey title |
 | `description` | localized string | Short intro |
-| `questions` | array | 10–12 questions |
+| `questions` | array | 10–14 questions (length guard for the ~5-minute target) |
 
 ### Localized strings
 
@@ -427,24 +427,28 @@ Same shape as decision rules:
 
 Loader rules: unique question ids; unique option ids within a question; choice questions must have `aggregate: true`; text questions must have `aggregate: false`.
 
-### Current instrument (12 questions, version 3)
+### Current instrument (14 questions, version 4)
 
 | id | input | Topics |
 |---|---|---|
-| `company-size` | single | Employee bands (BFS/EU SME thresholds) |
+| `company-size` | single | Employee bands (BFS/EU SME thresholds; micro split into solo `1` and `2-9`) |
 | `sector` | single, shuffled | Industry (incl. Bau, Logistik, Recht/Treuhand, Beratung/Agenturen) |
 | `language-region` | single | DE / FR / IT / multilingual Switzerland |
 | `ai-maturity` | single | Not using → individual ad hoc → sanctioned tools → piloting custom → production |
-| `ai-tools` | multi, shuffled | Tools in use (incl. DeepL, Apertus, embedded features; `none` exclusive) |
-| `primary-use-cases` | multi, max 3, shuffled | Use cases (incl. translation, sales; `none-yet` exclusive) |
-| `monthly-spend-chf` | single | Spend bands (CHF); licenses/API/cloud only; incl. `dont-know` |
-| `hosting-requirement` | single | CH / EU / depends on data / any / undecided |
-| `ai-governance-measures` | multi, shuffled | Usage policy, staff training, tool inventory, DPIA, business DPA (`none` exclusive) |
+| `ai-tools` | multi, shuffled | Tools in use (incl. DeepL, Apertus, coding assistants, Swiss-hosted services, embedded features; `none` exclusive) |
+| `primary-use-cases` | multi, max 3, shuffled | Use cases (incl. everyday productivity, document processing, translation; `none-yet` exclusive) |
+| `weekly-ai-users-share` | single | Share of employees using AI at least weekly (none / 1–10 / 11–25 / 26–50 / 51–75 / 76–100 % / don't know) |
+| `monthly-spend-chf` | single | Spend bands (CHF, ~×4–5 steps from 1–250 to 100,000+); licenses/API/cloud only; incl. `dont-know` |
+| `spend-outlook-12m` | single | AI spend in 12 months: decrease / same / up to +50% / more than +50% / don't know |
+| `hosting-requirement` | single | On-prem / CH / EU / depends on data / any / undecided |
+| `ai-governance-measures` | multi, shuffled | Usage policy, AI owner, human review, staff training, tool inventory, DPIA, business DPA (`none` exclusive) |
 | `eu-market-exposure` | single | EU provider / deployer with EU customers / no EU / unsure (AI Act reach) |
-| `deployment-blockers` | multi, max 3, shuffled | Blockers (incl. integration, buy-in; `none` exclusive) |
-| `vendor-decision-factors` | multi, max 3, shuffled | Vendor choice (incl. Swiss entity, fits existing stack, no training on data) |
+| `deployment-blockers` | multi, max 3, shuffled | Blockers (incl. data readiness, output reliability, integration, buy-in; `none` exclusive) |
+| `vendor-decision-factors` | multi, max 3, shuffled | Vendor choice (incl. Swiss entity, fits existing stack, no training on data, open models) |
 
 Option ids such as `1000-plus` / `10000-plus` stay kebab-case (no `+` in ids); display labels may show `1000+`.
+
+**v4 vs v3:** split company-size `1-9` into `1` (solo) and `2-9`; added `weekly-ai-users-share` and `spend-outlook-12m` (schema cap raised to 14); re-banded `monthly-spend-chf` (`0`, `1-250`, `251-1000`, `1001-5000`, `5001-25000`, `25001-100000`, `100000-plus`) so each company-size band has a distinct typical spend band (old top band was 50k+, and four of six bands sat under CHF 10k); added seat-price anchor and annual÷12 hint; added tools (`coding-assistants`, `google-vertex-ai`, `swiss-hosted-service`), use cases (`productivity`, `document-processing`), hosting `on-premises`, governance (`ai-owner`, `human-review`), blockers (`data-readiness`, `output-reliability`) and vendor factor `open-models`; Copilot label now covers Copilot Chat; EU-exposure help says provider wins if both apply.
 
 **v3 vs v2:** replaced `personal-data-in-ai` with multi-select `ai-governance-measures`; widened `ai-maturity`, `monthly-spend-chf`, `hosting-requirement` and `eu-market-exposure` into more discriminative bands (so benchmarks survive n<5 suppression); reworked sectors and tools (e.g. `apertus`, `embedded-features`); added `none-yet`, `max_select` caps and option shuffling. Response-quality and pilot gates: [docs/survey-pilot-gates.md](../docs/survey-pilot-gates.md).
 
@@ -459,7 +463,7 @@ Optional email, report opt-in, honeypot, and Turnstile are **form chrome**, not 
 ```json
 {
   "survey_id": "swiss-ai-adoption-2026",
-  "survey_version": 3,
+  "survey_version": 4,
   "locale": "de",
   "answers": {
     "company-size": "10-49",

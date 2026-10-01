@@ -37,8 +37,8 @@ const survey = parseSurvey(surveyJson);
 
 const profiles = [
   {
-    size: "1-9",
-    spend: "1-100",
+    size: "2-9",
+    spend: "1-250",
     sector: "legal-fiduciary",
     maturity: "individual-ad-hoc",
     tools: ["chatgpt"],
@@ -51,7 +51,7 @@ const profiles = [
   },
   {
     size: "10-49",
-    spend: "101-500",
+    spend: "251-1000",
     sector: "ict-software",
     maturity: "sanctioned-tools",
     tools: ["chatgpt", "deepl"],
@@ -64,7 +64,7 @@ const profiles = [
   },
   {
     size: "50-249",
-    spend: "501-2000",
+    spend: "1001-5000",
     sector: "finance-insurance",
     maturity: "piloting-custom",
     tools: ["claude"],
@@ -106,6 +106,8 @@ function answersFor(i: number) {
     "ai-tools": p.tools,
     "primary-use-cases": p.use,
     "monthly-spend-chf": p.spend,
+    "spend-outlook-12m": "increase-up-to-50",
+    "weekly-ai-users-share": "11-25",
     "hosting-requirement": p.host,
     "ai-governance-measures": p.gov,
     "eu-market-exposure": p.eu,

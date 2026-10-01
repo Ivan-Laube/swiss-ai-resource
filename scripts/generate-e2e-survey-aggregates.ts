@@ -30,8 +30,8 @@ type Profile = {
 
 const profiles: Profile[] = [
   {
-    size: "1-9",
-    spend: "1-100",
+    size: "2-9",
+    spend: "1-250",
     sector: "legal-fiduciary",
     maturity: "individual-ad-hoc",
     tools: ["chatgpt"],
@@ -44,7 +44,7 @@ const profiles: Profile[] = [
   },
   {
     size: "10-49",
-    spend: "101-500",
+    spend: "251-1000",
     sector: "ict-software",
     maturity: "sanctioned-tools",
     tools: ["chatgpt", "microsoft-copilot", "deepl"],
@@ -57,7 +57,7 @@ const profiles: Profile[] = [
   },
   {
     size: "50-249",
-    spend: "501-2000",
+    spend: "1001-5000",
     sector: "finance-insurance",
     maturity: "piloting-custom",
     tools: ["azure-openai", "claude"],
@@ -70,7 +70,7 @@ const profiles: Profile[] = [
   },
   {
     size: "250-999",
-    spend: "2001-10000",
+    spend: "5001-25000",
     sector: "manufacturing",
     maturity: "production",
     tools: ["microsoft-copilot", "embedded-features"],
@@ -134,6 +134,8 @@ for (const p of profiles) {
         "ai-tools": p.tools,
         "primary-use-cases": p.use,
         "monthly-spend-chf": p.spend,
+        "spend-outlook-12m": "increase-up-to-50",
+        "weekly-ai-users-share": "11-25",
         "hosting-requirement": p.host,
         "ai-governance-measures": p.gov,
         "eu-market-exposure": p.eu,
@@ -145,10 +147,10 @@ for (const p of profiles) {
   }
 }
 
-// Extra 1-9 with only prefer-not / dont-know spend so n>=5 but no usable median
+// Extra 2-9 with only prefer-not / dont-know spend so n>=5 but no usable median
 // — used by benchmark comparison "no median" case. Mix into a separate size
 // that already has a median would dilute it; instead add enough prefer-not
-// for size 1-9 that usable median still exists from the first profile's
+// for size 2-9 that usable median still exists from the first profile's
 // 1-100 answers. For comparisonNoMedian we need a size with n>=5 and no
 // median_band. Create synthetic size band... we can't. So use a trick:
 // for spend_by_company_size, if all spend is prefer-not/dont-know, median
@@ -159,28 +161,30 @@ for (const p of profiles) {
 // Simplest: make a dedicated block of 5 responses for size that we then
 //... Actually looking at aggregate code: if usableN < 5 for ordinal spend,
 // median_band is undefined but the row still publishes if tally.n >= 5.
-// So if we have 6×1-9 with 1-100 AND 5×1-9 with prefer-not, usable median
+// So if we have 6×2-9 with 1-250 AND 5×2-9 with prefer-not, usable median
 // still comes from the 6×1-100.
 // For no-median case: we need a size with n>=5 where ALL spend is
 // prefer-not/dont-know. The only size not in profiles is... all 5 sizes
 // are covered. So add 5 responses for a size with ONLY non-usable spend
 // without mixing usable: wipe size 1000-plus usable by... can't.
 // Alternative: leave comparisonNoMedian to be tested with a size that
-// has n>=5 but usableN < 5. With 6×1000-plus at 10001-50000, usable=6.
+// has n>=5 but usableN < 5. With 6×1000-plus at 25001-100000, usable=6.
 // Change 1000-plus profile spend to prefer-not entirely:
 
 for (let k = 0; k < 5; k++) {
-  // These add to 1-9 which already has usable median — fine for volume.
+  // These add to 2-9 which already has usable median — fine for volume.
   rows.push({
     id: `fix-extra-${k}`,
     answers_json: JSON.stringify({
-      "company-size": "1-9",
+      "company-size": "2-9",
       sector: "retail-trade",
       "language-region": "german-speaking",
       "ai-maturity": "not-using",
       "ai-tools": ["none"],
       "primary-use-cases": ["none-yet"],
       "monthly-spend-chf": "0",
+      "spend-outlook-12m": "stay-same",
+      "weekly-ai-users-share": "none",
       "hosting-requirement": "undecided",
       "ai-governance-measures": ["none"],
       "eu-market-exposure": "no-eu",

@@ -103,11 +103,12 @@ function pickMulti(
  * multi-select are independent probabilities (not required to sum to 1).
  *
  * BFS STATENT reference (approximate firm-size mix, for representativeness):
- * micro 1–9 ≈ 90%, small 10–49 ≈ 8%, medium 50–249 ≈ 1.5%, large 250+ ≈ 0.5%.
+ * micro 1–9 ≈ 90% (split ~evenly between solo and 2–9; verify), small 10–49 ≈ 8%, medium 50–249 ≈ 1.5%, large 250+ ≈ 0.5%.
  */
-const PRIORS_V3 = {
+const PRIORS_V4 = {
   "company-size": {
-    "1-9": 0.35,
+    "1": 0.12,
+    "2-9": 0.23,
     "10-49": 0.3,
     "50-249": 0.2,
     "250-999": 0.1,
@@ -142,12 +143,15 @@ const PRIORS_V3 = {
   "ai-tools": {
     chatgpt: 0.55,
     "microsoft-copilot": 0.35,
+    "coding-assistants": 0.15,
     "google-gemini": 0.2,
     claude: 0.15,
     mistral: 0.08,
     deepl: 0.4,
     "azure-openai": 0.12,
     "aws-bedrock": 0.05,
+    "google-vertex-ai": 0.04,
+    "swiss-hosted-service": 0.07,
     apertus: 0.06,
     "embedded-features": 0.3,
     "self-hosted-oss": 0.08,
@@ -155,7 +159,9 @@ const PRIORS_V3 = {
     none: 0.1,
   },
   "primary-use-cases": {
-    content: 0.45,
+    productivity: 0.45,
+    "document-processing": 0.2,
+    content: 0.35,
     translation: 0.35,
     coding: 0.25,
     support: 0.2,
@@ -166,19 +172,36 @@ const PRIORS_V3 = {
     other: 0.05,
     "none-yet": 0.12,
   },
+  "weekly-ai-users-share": {
+    none: 0.1,
+    "1-10": 0.2,
+    "11-25": 0.22,
+    "26-50": 0.2,
+    "51-75": 0.12,
+    "76-100": 0.1,
+    "dont-know": 0.06,
+  },
   "monthly-spend-chf": {
-    "0": 0.15,
-    "1-100": 0.22,
-    "101-500": 0.2,
-    "501-2000": 0.15,
-    "2001-10000": 0.1,
-    "10001-50000": 0.05,
-    "50000-plus": 0.02,
+    "0": 0.12,
+    "1-250": 0.24,
+    "251-1000": 0.2,
+    "1001-5000": 0.15,
+    "5001-25000": 0.1,
+    "25001-100000": 0.05,
+    "100000-plus": 0.02,
     "dont-know": 0.08,
     "prefer-not": 0.03,
   },
+  "spend-outlook-12m": {
+    decrease: 0.05,
+    "stay-same": 0.35,
+    "increase-up-to-50": 0.35,
+    "increase-over-50": 0.15,
+    "dont-know": 0.1,
+  },
   "hosting-requirement": {
-    switzerland: 0.22,
+    "on-premises": 0.05,
+    switzerland: 0.2,
     "eu-eea": 0.28,
     "depends-on-data": 0.3,
     any: 0.12,
@@ -186,6 +209,8 @@ const PRIORS_V3 = {
   },
   "ai-governance-measures": {
     "usage-policy": 0.28,
+    "ai-owner": 0.15,
+    "human-review": 0.15,
     "staff-training": 0.22,
     "tool-inventory": 0.18,
     dpia: 0.12,
@@ -201,6 +226,8 @@ const PRIORS_V3 = {
   "deployment-blockers": {
     cost: 0.35,
     "data-protection": 0.4,
+    "data-readiness": 0.22,
+    "output-reliability": 0.25,
     skills: 0.3,
     roi: 0.28,
     regulation: 0.25,
@@ -220,6 +247,7 @@ const PRIORS_V3 = {
     "swiss-entity-support": 0.2,
     "fits-existing-stack": 0.35,
     "no-training-on-data": 0.3,
+    "open-models": 0.12,
   },
 } as const;
 
@@ -331,7 +359,8 @@ const PRIORS_V2 = {
 
 // BFS STATENT-ish firm-size mix for representativeness reporting
 const STATENT_SIZE = {
-  "1-9": 0.9,
+  "1": 0.45,
+  "2-9": 0.45,
   "10-49": 0.08,
   "50-249": 0.015,
   "250-999": 0.004,
@@ -350,7 +379,7 @@ const STATENT_REGION = {
 type Priors = Record<string, Record<string, number>>;
 
 function selectPriors(survey: Survey): Priors {
-  if (survey.version >= 3) return PRIORS_V3 as unknown as Priors;
+  if (survey.version >= 4) return PRIORS_V4 as unknown as Priors;
   return PRIORS_V2 as unknown as Priors;
 }
 
@@ -447,59 +476,78 @@ function pickSpendForSize(
   rng: () => number,
 ): string {
   const boost: Record<string, Record<string, number>> = {
-    "1-9": {
+    "1": {
+      "0": 3,
+      "1-250": 2.5,
+      "251-1000": 0.3,
+      "1001-5000": 0.05,
+      "5001-25000": 0.01,
+      "25001-100000": 0.01,
+      "100000-plus": 0.01,
+    },
+    "2-9": {
       "0": 2.5,
-      "1-100": 2.2,
-      "101-500": 1.2,
+      "1-250": 2.5,
+      "251-1000": 0.8,
+      "1001-5000": 0.2,
+      "5001-25000": 0.05,
+      "25001-100000": 0.02,
+      "100000-plus": 0.01,
       "1-500": 2.5,
       "501-2000": 0.4,
       "2001-10000": 0.15,
-      "10001-50000": 0.05,
-      "50000-plus": 0.02,
       "10000-plus": 0.05,
     },
     "10-49": {
-      "0": 1.2,
-      "1-100": 1.5,
-      "101-500": 2,
+      "0": 1,
+      "1-250": 1.5,
+      "251-1000": 2.2,
+      "1001-5000": 1,
+      "5001-25000": 0.2,
+      "25001-100000": 0.05,
+      "100000-plus": 0.02,
       "1-500": 2,
       "501-2000": 1.5,
       "2001-10000": 0.5,
-      "10001-50000": 0.15,
-      "50000-plus": 0.05,
       "10000-plus": 0.15,
     },
     "50-249": {
-      "0": 0.5,
-      "1-100": 0.6,
-      "101-500": 1.2,
+      "0": 0.4,
+      "1-250": 0.5,
+      "251-1000": 1.2,
+      "1001-5000": 2.2,
+      "5001-25000": 1.2,
+      "25001-100000": 0.3,
+      "100000-plus": 0.1,
       "1-500": 1,
       "501-2000": 2,
       "2001-10000": 1.8,
-      "10001-50000": 0.6,
-      "50000-plus": 0.2,
       "10000-plus": 0.8,
     },
     "250-999": {
-      "0": 0.2,
-      "1-100": 0.3,
-      "101-500": 0.5,
+      "0": 0.15,
+      "1-250": 0.2,
+      "251-1000": 0.4,
+      "1001-5000": 1.2,
+      "5001-25000": 2.5,
+      "25001-100000": 1.5,
+      "100000-plus": 0.5,
       "1-500": 0.4,
       "501-2000": 1.2,
       "2001-10000": 2.2,
-      "10001-50000": 1.5,
-      "50000-plus": 0.6,
       "10000-plus": 2,
     },
     "1000-plus": {
-      "0": 0.1,
-      "1-100": 0.15,
-      "101-500": 0.3,
+      "0": 0.05,
+      "1-250": 0.1,
+      "251-1000": 0.2,
+      "1001-5000": 0.5,
+      "5001-25000": 1.5,
+      "25001-100000": 3,
+      "100000-plus": 4,
       "1-500": 0.2,
       "501-2000": 0.6,
       "2001-10000": 1.5,
-      "10001-50000": 2.2,
-      "50000-plus": 1.8,
       "10000-plus": 2.5,
     },
   };

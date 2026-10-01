@@ -1,6 +1,6 @@
 # Survey instrument cognitive pretest & pilot gates
 
-Run these steps before a public launch of survey v3. They are process/ops
+Run these steps before a public launch of survey v4. They are process/ops
 checks complementary to the automated gates in
 `npm run evaluate:survey`.
 

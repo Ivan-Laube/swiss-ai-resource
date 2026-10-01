@@ -1,6 +1,6 @@
 {
   "survey_id": "swiss-ai-adoption-2026",
-  "survey_version": 3,
+  "survey_version": 4,
   "generated_at": "2026-09-28T14:22:13.000Z",
   "n": 0,
   "questions": {
@@ -28,7 +28,15 @@
       "n": 0,
       "counts": {}
     },
+    "weekly-ai-users-share": {
+      "n": 0,
+      "counts": {}
+    },
     "monthly-spend-chf": {
+      "n": 0,
+      "counts": {}
+    },
+    "spend-outlook-12m": {
       "n": 0,
       "counts": {}
     },
