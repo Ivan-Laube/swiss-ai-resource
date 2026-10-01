@@ -1,6 +1,6 @@
 {
   "id": "swiss-ai-adoption-2026",
-  "version": 3,
+  "version": 4,
   "estimated_minutes": 5,
   "title": {
     "de": "Schweizer KI-Adoption 2026",
@@ -24,18 +24,27 @@
         "it": "Quanti dipendenti ha la vostra azienda?"
       },
       "help": {
-        "de": "Vollzeitäquivalente (FTE) in der Schweiz; grobe Bandbreite genügt. Bands entsprechen den BFS/EU-KMU-Schwellen.",
-        "en": "Full-time equivalents (FTE) in Switzerland; a rough band is enough. Bands follow BFS/EU SME thresholds.",
-        "fr": "Équivalents temps plein (ETP) en Suisse ; une fourchette approximative suffit. Les bandes suivent les seuils PME BFS/UE.",
-        "it": "Equivalenti a tempo pieno (FTE) in Svizzera; basta una fascia approssimativa. Le fasce seguono le soglie PMI BFS/UE."
+        "de": "Vollzeitäquivalente (FTE) in der Schweiz, inkl. Inhaber/in; grobe Bandbreite genügt. Bands entsprechen den BFS/EU-KMU-Schwellen.",
+        "en": "Full-time equivalents (FTE) in Switzerland, including owners; a rough band is enough. Bands follow BFS/EU SME thresholds.",
+        "fr": "Équivalents temps plein (ETP) en Suisse, propriétaires compris ; une fourchette approximative suffit. Les bandes suivent les seuils PME BFS/UE.",
+        "it": "Equivalenti a tempo pieno (FTE) in Svizzera, titolari inclusi; basta una fascia approssimativa. Le fasce seguono le soglie PMI BFS/UE."
       },
       "input": "single",
       "required": true,
       "aggregate": true,
       "options": [
         {
-          "id": "1-9",
-          "label": { "de": "1–9", "en": "1–9", "fr": "1–9", "it": "1–9" }
+          "id": "1",
+          "label": {
+            "de": "1 (Einzelunternehmen / selbstständig)",
+            "en": "1 (sole proprietor / self-employed)",
+            "fr": "1 (entreprise individuelle / indépendant)",
+            "it": "1 (ditta individuale / indipendente)"
+          }
+        },
+        {
+          "id": "2-9",
+          "label": { "de": "2–9", "en": "2–9", "fr": "2–9", "it": "2–9" }
         },
         {
           "id": "10-49",
@@ -315,10 +324,19 @@
         {
           "id": "microsoft-copilot",
           "label": {
-            "de": "Microsoft 365 Copilot",
-            "en": "Microsoft 365 Copilot",
-            "fr": "Microsoft 365 Copilot",
-            "it": "Microsoft 365 Copilot"
+            "de": "Microsoft Copilot (M365 Copilot oder Copilot Chat)",
+            "en": "Microsoft Copilot (M365 Copilot or Copilot Chat)",
+            "fr": "Microsoft Copilot (M365 Copilot ou Copilot Chat)",
+            "it": "Microsoft Copilot (M365 Copilot o Copilot Chat)"
+          }
+        },
+        {
+          "id": "coding-assistants",
+          "label": {
+            "de": "KI-Coding-Assistenten (z. B. GitHub Copilot, Cursor)",
+            "en": "AI coding assistants (e.g. GitHub Copilot, Cursor)",
+            "fr": "Assistants de code IA (p. ex. GitHub Copilot, Cursor)",
+            "it": "Assistenti di coding IA (p. es. GitHub Copilot, Cursor)"
           }
         },
         {
@@ -373,6 +391,24 @@
             "en": "AWS Bedrock",
             "fr": "AWS Bedrock",
             "it": "AWS Bedrock"
+          }
+        },
+        {
+          "id": "google-vertex-ai",
+          "label": {
+            "de": "Google Vertex AI",
+            "en": "Google Vertex AI",
+            "fr": "Google Vertex AI",
+            "it": "Google Vertex AI"
+          }
+        },
+        {
+          "id": "swiss-hosted-service",
+          "label": {
+            "de": "In der Schweiz gehosteter KI-Dienst (z. B. Swisscom, Infomaniak)",
+            "en": "Swiss-hosted AI service (e.g. Swisscom, Infomaniak)",
+            "fr": "Service d'IA hébergé en Suisse (p. ex. Swisscom, Infomaniak)",
+            "it": "Servizio di IA ospitato in Svizzera (p. es. Swisscom, Infomaniak)"
           }
         },
         {
@@ -442,6 +478,24 @@
       "max_select": 3,
       "shuffle_options": true,
       "options": [
+        {
+          "id": "productivity",
+          "label": {
+            "de": "Alltagsproduktivität (E-Mails, Zusammenfassungen, Protokolle)",
+            "en": "Everyday productivity (email, summaries, meeting notes)",
+            "fr": "Productivité quotidienne (e-mails, résumés, procès-verbaux)",
+            "it": "Produttività quotidiana (e-mail, riassunti, verbali)"
+          }
+        },
+        {
+          "id": "document-processing",
+          "label": {
+            "de": "Dokumentenverarbeitung (Rechnungen, Verträge, Formulare)",
+            "en": "Document processing (invoices, contracts, forms)",
+            "fr": "Traitement de documents (factures, contrats, formulaires)",
+            "it": "Elaborazione di documenti (fatture, contratti, moduli)"
+          }
+        },
         {
           "id": "content",
           "label": {
@@ -535,18 +589,71 @@
       ]
     },
     {
+      "id": "weekly-ai-users-share",
+      "prompt": {
+        "de": "Welcher Anteil der Mitarbeitenden nutzt KI-Tools mindestens wöchentlich?",
+        "en": "What share of employees use AI tools at least weekly?",
+        "fr": "Quelle part des employés utilise des outils d'IA au moins une fois par semaine ?",
+        "it": "Quale quota dei dipendenti usa strumenti di IA almeno una volta alla settimana?"
+      },
+      "help": {
+        "de": "Grobe Schätzung genügt — inkl. privat genutzter Tools für die Arbeit.",
+        "en": "A rough estimate is enough — include personal tools used for work.",
+        "fr": "Une estimation approximative suffit — y compris les outils personnels utilisés pour le travail.",
+        "it": "Basta una stima approssimativa — inclusi gli strumenti personali usati per lavoro."
+      },
+      "input": "single",
+      "required": true,
+      "aggregate": true,
+      "options": [
+        {
+          "id": "none",
+          "label": { "de": "Niemand", "en": "Nobody", "fr": "Personne", "it": "Nessuno" }
+        },
+        {
+          "id": "1-10",
+          "label": { "de": "1–10 %", "en": "1–10%", "fr": "1–10 %", "it": "1–10%" }
+        },
+        {
+          "id": "11-25",
+          "label": { "de": "11–25 %", "en": "11–25%", "fr": "11–25 %", "it": "11–25%" }
+        },
+        {
+          "id": "26-50",
+          "label": { "de": "26–50 %", "en": "26–50%", "fr": "26–50 %", "it": "26–50%" }
+        },
+        {
+          "id": "51-75",
+          "label": { "de": "51–75 %", "en": "51–75%", "fr": "51–75 %", "it": "51–75%" }
+        },
+        {
+          "id": "76-100",
+          "label": { "de": "76–100 %", "en": "76–100%", "fr": "76–100 %", "it": "76–100%" }
+        },
+        {
+          "id": "dont-know",
+          "label": {
+            "de": "Weiss nicht",
+            "en": "Don't know",
+            "fr": "Ne sait pas",
+            "it": "Non so"
+          }
+        }
+      ]
+    },
+    {
       "id": "monthly-spend-chf",
       "prompt": {
         "de": "Wie hoch sind die geschätzten monatlichen KI-Ausgaben Ihres Unternehmens (CHF)?",
-        "en": "What are your company’s estimated monthly AI spend (CHF)?",
+        "en": "What is your company’s estimated monthly AI spend (CHF)?",
         "fr": "Quelles sont les dépenses mensuelles estimées de votre entreprise en IA (CHF) ?",
         "it": "Qual è la spesa mensile stimata della vostra azienda per l'IA (CHF)?"
       },
       "help": {
-        "de": "Nur Lizenzen, API- und Cloud-Kosten für KI — ohne Personalzeit. Suite-Bundles (z. B. M365 Copilot im Abo) mitzählen, falls bekannt.",
-        "en": "Licenses, API, and cloud costs for AI only — exclude staff time. Include suite bundles (e.g. M365 Copilot in the subscription) if known.",
-        "fr": "Uniquement licences, API et coûts cloud pour l'IA — hors temps de personnel. Inclure les bundles de suite (p. ex. M365 Copilot dans l'abonnement) si connus.",
-        "it": "Solo licenze, API e costi cloud per l'IA — senza tempo del personale. Includere i bundle della suite (p. es. M365 Copilot nell'abbonamento) se noti."
+        "de": "Nur Lizenzen, API- und Cloud-Kosten für KI — ohne Personalzeit. Jahresabos durch 12 teilen. Richtwert: ein Business-Platz (z. B. ChatGPT, M365 Copilot) kostet ca. CHF 25–30 pro Monat.",
+        "en": "Licenses, API, and cloud costs for AI only — exclude staff time. Divide annual plans by 12. Rule of thumb: one business seat (e.g. ChatGPT, M365 Copilot) costs about CHF 25–30 per month.",
+        "fr": "Uniquement licences, API et coûts cloud pour l'IA — hors temps de personnel. Diviser les abonnements annuels par 12. Repère : une licence professionnelle (p. ex. ChatGPT, M365 Copilot) coûte env. CHF 25–30 par mois.",
+        "it": "Solo licenze, API e costi cloud per l'IA — senza tempo del personale. Dividere gli abbonamenti annuali per 12. Riferimento: una licenza business (p. es. ChatGPT, M365 Copilot) costa ca. CHF 25–30 al mese."
       },
       "input": "single",
       "required": true,
@@ -557,57 +664,57 @@
           "label": { "de": "CHF 0", "en": "CHF 0", "fr": "CHF 0", "it": "CHF 0" }
         },
         {
-          "id": "1-100",
+          "id": "1-250",
           "label": {
-            "de": "CHF 1–100",
-            "en": "CHF 1–100",
-            "fr": "CHF 1–100",
-            "it": "CHF 1–100"
+            "de": "CHF 1–250",
+            "en": "CHF 1–250",
+            "fr": "CHF 1–250",
+            "it": "CHF 1–250"
           }
         },
         {
-          "id": "101-500",
+          "id": "251-1000",
           "label": {
-            "de": "CHF 101–500",
-            "en": "CHF 101–500",
-            "fr": "CHF 101–500",
-            "it": "CHF 101–500"
+            "de": "CHF 251–1'000",
+            "en": "CHF 251–1,000",
+            "fr": "CHF 251–1 000",
+            "it": "CHF 251–1'000"
           }
         },
         {
-          "id": "501-2000",
+          "id": "1001-5000",
           "label": {
-            "de": "CHF 501–2000",
-            "en": "CHF 501–2000",
-            "fr": "CHF 501–2000",
-            "it": "CHF 501–2000"
+            "de": "CHF 1'001–5'000",
+            "en": "CHF 1,001–5,000",
+            "fr": "CHF 1 001–5 000",
+            "it": "CHF 1'001–5'000"
           }
         },
         {
-          "id": "2001-10000",
+          "id": "5001-25000",
           "label": {
-            "de": "CHF 2001–10'000",
-            "en": "CHF 2001–10,000",
-            "fr": "CHF 2001–10 000",
-            "it": "CHF 2001–10'000"
+            "de": "CHF 5'001–25'000",
+            "en": "CHF 5,001–25,000",
+            "fr": "CHF 5 001–25 000",
+            "it": "CHF 5'001–25'000"
           }
         },
         {
-          "id": "10001-50000",
+          "id": "25001-100000",
           "label": {
-            "de": "CHF 10'001–50'000",
-            "en": "CHF 10,001–50,000",
-            "fr": "CHF 10 001–50 000",
-            "it": "CHF 10'001–50'000"
+            "de": "CHF 25'001–100'000",
+            "en": "CHF 25,001–100,000",
+            "fr": "CHF 25 001–100 000",
+            "it": "CHF 25'001–100'000"
           }
         },
         {
-          "id": "50000-plus",
+          "id": "100000-plus",
           "label": {
-            "de": "CHF 50'000+",
-            "en": "CHF 50,000+",
-            "fr": "CHF 50 000+",
-            "it": "CHF 50'000+"
+            "de": "Über CHF 100'000",
+            "en": "More than CHF 100,000",
+            "fr": "Plus de CHF 100 000",
+            "it": "Oltre CHF 100'000"
           }
         },
         {
@@ -631,6 +738,65 @@
       ]
     },
     {
+      "id": "spend-outlook-12m",
+      "prompt": {
+        "de": "Wie werden sich Ihre KI-Ausgaben in den nächsten 12 Monaten entwickeln?",
+        "en": "How will your AI spend change over the next 12 months?",
+        "fr": "Comment vos dépenses en IA vont-elles évoluer au cours des 12 prochains mois ?",
+        "it": "Come cambierà la vostra spesa per l'IA nei prossimi 12 mesi?"
+      },
+      "input": "single",
+      "required": true,
+      "aggregate": true,
+      "options": [
+        {
+          "id": "decrease",
+          "label": {
+            "de": "Sinken",
+            "en": "Decrease",
+            "fr": "Baisser",
+            "it": "Diminuire"
+          }
+        },
+        {
+          "id": "stay-same",
+          "label": {
+            "de": "Etwa gleich bleiben",
+            "en": "Stay about the same",
+            "fr": "Rester à peu près stables",
+            "it": "Restare più o meno uguale"
+          }
+        },
+        {
+          "id": "increase-up-to-50",
+          "label": {
+            "de": "Steigen, um bis zu 50 %",
+            "en": "Increase by up to 50%",
+            "fr": "Augmenter jusqu'à 50 %",
+            "it": "Aumentare fino al 50%"
+          }
+        },
+        {
+          "id": "increase-over-50",
+          "label": {
+            "de": "Steigen, um mehr als 50 %",
+            "en": "Increase by more than 50%",
+            "fr": "Augmenter de plus de 50 %",
+            "it": "Aumentare di oltre il 50%"
+          }
+        },
+        {
+          "id": "dont-know",
+          "label": {
+            "de": "Weiss nicht",
+            "en": "Don't know",
+            "fr": "Ne sait pas",
+            "it": "Non so"
+          }
+        }
+      ]
+    },
+    {
       "id": "hosting-requirement",
       "prompt": {
         "de": "Welche Hosting-Anforderung gilt für KI-Datenverarbeitung in Ihrem Unternehmen?",
@@ -648,6 +814,15 @@
       "required": true,
       "aggregate": true,
       "options": [
+        {
+          "id": "on-premises",
+          "label": {
+            "de": "Nur eigene Infrastruktur / On-Premises",
+            "en": "Own infrastructure / on-premises only",
+            "fr": "Infrastructure propre / sur site uniquement",
+            "it": "Solo infrastruttura propria / on-premises"
+          }
+        },
         {
           "id": "switzerland",
           "label": {
@@ -724,6 +899,24 @@
           }
         },
         {
+          "id": "ai-owner",
+          "label": {
+            "de": "Benannte verantwortliche Person oder Gremium für KI",
+            "en": "Designated AI owner or committee",
+            "fr": "Responsable ou comité IA désigné",
+            "it": "Responsabile o comitato IA designato"
+          }
+        },
+        {
+          "id": "human-review",
+          "label": {
+            "de": "Regeln zur menschlichen Prüfung von KI-Ergebnissen",
+            "en": "Rules for human review of AI outputs",
+            "fr": "Règles de contrôle humain des résultats de l'IA",
+            "it": "Regole per la revisione umana dei risultati dell'IA"
+          }
+        },
+        {
           "id": "staff-training",
           "label": {
             "de": "Schulung zur KI-Kompetenz der Mitarbeitenden",
@@ -779,10 +972,10 @@
         "it": "Come si posiziona la vostra azienda rispetto al mercato UE e all'AI Act UE?"
       },
       "help": {
-        "de": "Relevant für die mögliche Anwendbarkeit des EU AI Act auf Schweizer Anbieter und Betreiber.",
-        "en": "Relevant to possible EU AI Act applicability for Swiss providers and deployers.",
-        "fr": "Pertinent pour l'applicabilité éventuelle de l'AI Act de l'UE aux fournisseurs et déployeurs suisses.",
-        "it": "Rilevante per la possibile applicabilità dell'AI Act UE a fornitori e deployer svizzeri."
+        "de": "Relevant für die mögliche Anwendbarkeit des EU AI Act auf Schweizer Anbieter und Betreiber. Trifft beides zu, «Anbieter» wählen.",
+        "en": "Relevant to possible EU AI Act applicability for Swiss providers and deployers. If both apply, choose “provider”.",
+        "fr": "Pertinent pour l'applicabilité éventuelle de l'AI Act de l'UE aux fournisseurs et déployeurs suisses. Si les deux s'appliquent, choisir « fournisseur ».",
+        "it": "Rilevante per la possibile applicabilità dell'AI Act UE a fornitori e deployer svizzeri. Se valgono entrambi, scegliere «fornitore»."
       },
       "input": "single",
       "required": true,
@@ -862,6 +1055,24 @@
             "en": "Data protection / compliance",
             "fr": "Protection des données / conformité",
             "it": "Protezione dei dati / conformità"
+          }
+        },
+        {
+          "id": "data-readiness",
+          "label": {
+            "de": "Datenqualität / Daten nicht bereit",
+            "en": "Data quality / data not ready",
+            "fr": "Qualité des données / données pas prêtes",
+            "it": "Qualità dei dati / dati non pronti"
+          }
+        },
+        {
+          "id": "output-reliability",
+          "label": {
+            "de": "Genauigkeit / Zuverlässigkeit der Ergebnisse",
+            "en": "Accuracy / reliability of outputs",
+            "fr": "Exactitude / fiabilité des résultats",
+            "it": "Accuratezza / affidabilità dei risultati"
           }
         },
         {
@@ -1037,6 +1248,15 @@
             "en": "No training on our data",
             "fr": "Pas d'entraînement sur nos données",
             "it": "Nessun training sui nostri dati"
+          }
+        },
+        {
+          "id": "open-models",
+          "label": {
+            "de": "Offene Modelle / Portabilität (kein Lock-in)",
+            "en": "Open models / portability (no lock-in)",
+            "fr": "Modèles ouverts / portabilité (pas de dépendance)",
+            "it": "Modelli aperti / portabilità (nessun lock-in)"
           }
         }
       ]

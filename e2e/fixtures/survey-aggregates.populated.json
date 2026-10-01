@@ -1,13 +1,13 @@
 {
   "survey_id": "swiss-ai-adoption-2026",
-  "survey_version": 3,
+  "survey_version": 4,
   "generated_at": "2026-09-29T12:00:00.000Z",
   "n": 39,
   "questions": {
     "company-size": {
       "n": 39,
       "counts": {
-        "1-9": 11,
+        "2-9": 11,
         "10-49": 12,
         "50-249": 6,
         "1000-plus": 6
@@ -70,15 +70,29 @@
         "none-yet": 5
       }
     },
+    "weekly-ai-users-share": {
+      "n": 39,
+      "counts": {
+        "11-25": 34,
+        "none": 5
+      }
+    },
     "monthly-spend-chf": {
       "n": 39,
       "counts": {
         "0": 5,
-        "1-100": 6,
-        "101-500": 6,
-        "501-2000": 6,
+        "1-250": 6,
+        "251-1000": 6,
+        "1001-5000": 6,
         "prefer-not": 6,
         "dont-know": 6
+      }
+    },
+    "spend-outlook-12m": {
+      "n": 39,
+      "counts": {
+        "increase-up-to-50": 34,
+        "stay-same": 5
       }
     },
     "hosting-requirement": {
@@ -137,28 +151,28 @@
   },
   "cross_tabs": {
     "spend_by_company_size": {
-      "1-9": {
+      "2-9": {
         "n": 11,
         "counts": {
           "0": 5,
-          "1-100": 6
+          "1-250": 6
         },
-        "median_band": "1-100"
+        "median_band": "1-250"
       },
       "10-49": {
         "n": 12,
         "counts": {
-          "101-500": 6,
+          "251-1000": 6,
           "dont-know": 6
         },
-        "median_band": "101-500"
+        "median_band": "251-1000"
       },
       "50-249": {
         "n": 6,
         "counts": {
-          "501-2000": 6
+          "1001-5000": 6
         },
-        "median_band": "501-2000"
+        "median_band": "1001-5000"
       },
       "1000-plus": {
         "n": 6,

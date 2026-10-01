@@ -11,7 +11,9 @@ const validAnswers = {
   "ai-maturity": "piloting-custom",
   "ai-tools": ["chatgpt", "deepl"],
   "primary-use-cases": ["translation"],
-  "monthly-spend-chf": "101-500",
+  "monthly-spend-chf": "251-1000",
+  "spend-outlook-12m": "increase-up-to-50",
+  "weekly-ai-users-share": "11-25",
   "hosting-requirement": "switzerland",
   "ai-governance-measures": ["none"],
   "eu-market-exposure": "no-eu",
@@ -22,7 +24,7 @@ const validAnswers = {
 function payload(overrides = {}) {
   return {
     survey_id: "swiss-ai-adoption-2026",
-    survey_version: 3,
+    survey_version: 4,
     locale: "de",
     answers: validAnswers,
     email: "bench@example.com",

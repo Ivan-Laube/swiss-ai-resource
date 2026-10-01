@@ -104,7 +104,7 @@ test.describe("benchmark populated", () => {
     await expect(
       page.getByText(m.comparisonMedianLabel, { exact: true }),
     ).toBeVisible();
-    await expect(page.getByRole("status")).toContainText("CHF 101–500");
+    await expect(page.getByRole("status")).toContainText("CHF 251–1,000");
 
     await surveyPage.selectCompanySize("1000-plus");
     await expect(

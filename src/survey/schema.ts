@@ -70,7 +70,7 @@ export const surveySchema = z
     estimated_minutes: z.number().int().positive(),
     title: localizedStringSchema,
     description: localizedStringSchema,
-    questions: z.array(surveyQuestionSchema).min(10).max(12),
+    questions: z.array(surveyQuestionSchema).min(10).max(14),
   })
   .strict()
   .superRefine((survey, ctx) => {
