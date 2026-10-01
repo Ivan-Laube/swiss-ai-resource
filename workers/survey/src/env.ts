@@ -7,6 +7,8 @@ export interface Env {
   };
   TURNSTILE_SECRET_KEY: string;
   SITE_ORIGIN: string;
+  /** Anonymous usage counter; absent in local dev. */
+  USAGE?: AnalyticsEngineDataset;
   GITHUB_TOKEN: string;
   GITHUB_REPO: string;
   GITHUB_BRANCH: string;

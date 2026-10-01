@@ -3,6 +3,7 @@ import {
   isHoneypotTriggered,
   validateIntake,
 } from "../../../src/survey/answers";
+import { recordUsage } from "../../../src/lib/usage-metrics";
 import { parseSurvey } from "../../../src/survey/schema";
 
 import { runAggregateJob } from "./aggregate-job";
@@ -152,7 +153,13 @@ const worker = {
     if (request.method === "POST" && url.pathname === "/submit") {
       const rejected = rejectIfDisallowedOrigin(request, origin);
       if (rejected) return rejected;
-      return handleSubmit(request, env, request.headers.get("Origin")!);
+      const response = await handleSubmit(
+        request,
+        env,
+        request.headers.get("Origin")!,
+      );
+      recordUsage(env.USAGE, "survey", response.status);
+      return response;
     }
 
     const requestOrigin = request.headers.get("Origin");

@@ -53,6 +53,15 @@ Zur Begrenzung von Missbrauch speichern wir für die Umfrage kurzzeitig einen **
 
 Wenn Sie eine URL prüfen lassen, sendet Ihr Browser die URL und ein Turnstile-Token an unseren Scanner-Worker. Der Worker ruft die Zielseite ab und wertet öffentlich sichtbare Signale aus. **Es werden keine Scan-Ergebnisse und keine eingegebenen URLs dauerhaft bei uns gespeichert.**
 
+### 2.5 Keine Cookies, kein Tracking; Nutzungsstatistik
+
+Diese Website setzt **keine Cookies** und verwendet **keine Analyse- oder Tracking-Werkzeuge** (keine Tracking-Pixel, kein Fingerprinting, keine Skripte von Drittanbietern ausser Turnstile). Ein Cookie-Banner ist daher nicht nötig. Der Quick-Check legt für die Übergabe einer URL von der Startseite an das Formular kurzzeitig einen Eintrag im Sitzungsspeicher (sessionStorage) Ihres Browsers ab; dieser wird beim Lesen sofort gelöscht und nicht an uns übermittelt.
+
+Um zu sehen, wie stark die Seite und die Werkzeuge genutzt werden, verwenden wir ausschliesslich **serverseitige Zählungen**:
+
+- **Seitenaufrufe:** die aggregierten Verkehrsstatistiken von Cloudflare (z. B. Anzahl Anfragen pro Seite), die aus den ohnehin anfallenden Verbindungsdaten (Ziff. 2.1) erzeugt werden – ohne Skript, Cookie oder Kennung in Ihrem Browser.
+- **Werkzeugnutzung:** Pro Quick-Check bzw. Umfrage-Einreichung zählen unsere Worker einen Datenpunkt mit Werkzeug, Ergebnis (z. B. erfolgreich, abgelehnt) und HTTP-Status. **Keine** IP-Adresse, URL, Umfrageantwort oder sonstige Kennung; ein Datenpunkt lässt sich keiner Person zuordnen.
+
 ## 3. Zwecke der Bearbeitung
 
 | Daten | Zweck |
@@ -72,6 +81,7 @@ Wir nutzen Dienste von **Cloudflare, Inc.** (und verbundene Unternehmen) für:
 - Hosting / CDN der Website (Cloudflare Pages);
 - die Umfrage-API und Speicherung in **Cloudflare D1**;
 - den Website-Scanner (Cloudflare Worker, ohne dauerhafte Speicherung);
+- anonyme Nutzungszählungen (Cloudflare Workers Analytics Engine) und aggregierte Verkehrsstatistiken;
 - optional **Cloudflare Turnstile**.
 
 Cloudflare handelt dabei als **Auftragsbearbeiter** im Rahmen der von uns vorgegebenen Zwecke. Je nach Cloudflare-Konfiguration können Bearbeitungen auch ausserhalb der Schweiz bzw. der EU/EWR stattfinden. Wir wählen Anbieter und Einstellungen so, dass ein angemessenes Schutzniveau angestrebt wird (u. a. vertragliche Absicherungen des Anbieters).
@@ -84,6 +94,7 @@ Cloudflare handelt dabei als **Auftragsbearbeiter** im Rahmen der von uns vorgeg
 | Optionale E-Mails | Bis zum Versand der Bericht-Benachrichtigung bzw. bis zu Ihrem Löschbegehren; automatische Löschung spätestens nach **24 Monaten**; manuelle Löschung aus der Anmeldetabelle auf Anfrage |
 | IP-Hash-Quoten (Umfrage) | Wenige Tage (automatische Löschung älterer Tages-Einträge); nur Missbrauchsabwehr |
 | Quick-Check | Keine dauerhafte Speicherung bei uns |
+| Nutzungszählungen (Werkzeuge) | Drei Monate (automatische Löschung durch Cloudflare); ohne Personenbezug |
 | Server-/CDN-Logs | Nach den Standard-Einstellungen von Cloudflare; typischerweise kurzfristig für Betrieb und Sicherheit |
 
 ## 6. Ihre Rechte und Löschung

@@ -30,6 +30,13 @@
       }
     }
   ],
+  "analytics_engine_datasets": [
+    {
+      // Anonymous tool-usage counter (src/lib/usage-metrics.ts): tool, outcome, status only.
+      "binding": "USAGE",
+      "dataset": "aicompliant_usage"
+    }
+  ],
   "vars": {
     "SITE_ORIGIN": "https://aicompliant.ch"
   }

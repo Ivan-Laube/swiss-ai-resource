@@ -53,6 +53,15 @@ Per limitare gli abusi, per il sondaggio memorizziamo temporaneamente un **hash 
 
 Se fate verificare un URL, il vostro browser invia l'URL e un token Turnstile al nostro scanner-worker. Il worker recupera la pagina di destinazione e valuta i segnali pubblicamente visibili. **Non vengono memorizzati in modo permanente presso di noi né i risultati della scansione né gli URL inseriti.**
 
+### 2.5 Nessun cookie, nessun tracciamento; statistiche di utilizzo
+
+Questo sito **non imposta cookie** e **non utilizza strumenti di analisi o di tracciamento** (nessun pixel di tracciamento, nessun fingerprinting, nessuno script di terzi oltre a Turnstile). Un banner per i cookie non è quindi necessario. Per trasferire un URL dalla pagina iniziale al modulo, il Quick-Check salva brevemente una voce nella memoria di sessione (sessionStorage) del vostro browser; viene cancellata non appena letta e non ci viene trasmessa.
+
+Per sapere quanto vengono utilizzati il sito e i suoi strumenti, ci basiamo esclusivamente su **conteggi lato server**:
+
+- **Visualizzazioni di pagina:** le statistiche di traffico aggregate di Cloudflare (ad es. numero di richieste per pagina), generate dai dati di connessione che si producono comunque (punto 2.1) — senza script, cookie o identificatori nel vostro browser.
+- **Utilizzo degli strumenti:** per ogni Quick-Check o invio del sondaggio, i nostri worker contano un punto dati con lo strumento, l'esito (ad es. riuscito, respinto) e lo stato HTTP. **Nessun** indirizzo IP, URL, risposta al sondaggio o altro identificatore; un punto dati non può essere attribuito a una persona.
+
 ## 3. Finalità del trattamento
 
 | Dati | Finalità |
@@ -72,6 +81,7 @@ Utilizziamo servizi di **Cloudflare, Inc.** (e società collegate) per:
 - l'hosting/CDN del sito web (Cloudflare Pages);
 - l'API del sondaggio e l'archiviazione in **Cloudflare D1**;
 - lo scanner del sito web (Cloudflare Worker, senza archiviazione permanente);
+- conteggi di utilizzo anonimi (Cloudflare Workers Analytics Engine) e statistiche di traffico aggregate;
 - facoltativamente **Cloudflare Turnstile**.
 
 Cloudflare agisce in tal caso come **responsabile del trattamento** nell'ambito delle finalità da noi definite. A seconda della configurazione di Cloudflare, i trattamenti possono avvenire anche al di fuori della Svizzera o dello SEE/UE. Selezioniamo i fornitori e le impostazioni in modo da perseguire un livello di protezione adeguato (tra l'altro tramite garanzie contrattuali del fornitore).
@@ -84,6 +94,7 @@ Cloudflare agisce in tal caso come **responsabile del trattamento** nell'ambito 
 | E-mail opzionali | Fino all'invio della notifica del rapporto ovvero fino alla vostra richiesta di cancellazione; cancellazione automatica al più tardi dopo **24 mesi**; cancellazione manuale dalla tabella di iscrizione su richiesta |
 | Quote hash IP (sondaggio) | Alcuni giorni (cancellazione automatica delle voci giornaliere più vecchie); solo per la prevenzione degli abusi |
 | Quick-Check | Nessuna memorizzazione permanente presso di noi |
+| Conteggi di utilizzo (strumenti) | Tre mesi (cancellazione automatica da parte di Cloudflare); nessun dato personale |
 | Log del server/CDN | Secondo le impostazioni standard di Cloudflare; tipicamente a breve termine per il funzionamento e la sicurezza |
 
 ## 6. I vostri diritti e la cancellazione
