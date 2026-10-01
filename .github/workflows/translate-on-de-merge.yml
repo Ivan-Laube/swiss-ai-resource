@@ -26,8 +26,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        # Push with the bots-push-main deploy key, not GITHUB_TOKEN: the
+        # protect-main ruleset requires CI checks and only deploy keys may
+        # bypass it (the Actions token can't on a personal-account repo).
+        # See docs/operator-followups-2026-10.md, section B.
         with:
           fetch-depth: 0
+          ssh-key: ${{ secrets.BOT_DEPLOY_KEY }}
 
       - name: Setup Node
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0

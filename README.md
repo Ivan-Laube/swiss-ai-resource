@@ -95,9 +95,9 @@ Open [http://localhost:3000](http://localhost:3000) (root redirects to `/de/`).
 | `npm run translate` | Draft EN/FR/IT content from DE (`ANTHROPIC_API_KEY` required unless `--dry-run`) |
 | `npm run build:e2e` | Dual static exports for Playwright (`out-e2e` / `out-e2e-unconfigured`); temporarily installs the populated survey fixture ([guard](DEPLOY.md#e2e-survey-fixture-guard)) |
 | `npm run test:e2e` | All Playwright projects: functional, CSP/headers, layout, privacy, a11y, visual |
-| `npm run test:visual` | Visual snapshots only, run natively (quick look; baselines must come from `scripts/docker-visual.sh`) |
+| `npm run test:visual` | Visual snapshots only, run natively (quick look; baselines must come from the Update visual baselines workflow or `scripts/docker-visual.sh`) |
 
-PR and `main` CI ([`.github/workflows/ci.yml`](.github/workflows/ci.yml)): typecheck, lint, offline `check:*`, `npm run build`, and Playwright e2e (inside the Playwright Docker image, so visual baselines match). Baselines are regenerated with `scripts/docker-visual.sh`; see [DEPLOY.md](DEPLOY.md#continuous-integration).
+PR and `main` CI ([`.github/workflows/ci.yml`](.github/workflows/ci.yml)): typecheck, lint, offline `check:*`, `npm run build`, and Playwright e2e (inside the Playwright Docker image, so visual baselines match). Baselines are regenerated with the manual **Update visual baselines** workflow (or `scripts/docker-visual.sh` where Docker works); see [DEPLOY.md](DEPLOY.md#continuous-integration).
 
 ## Project layout
 

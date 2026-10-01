@@ -147,11 +147,19 @@ Every pull request and every push to `main` runs [`.github/workflows/ci.yml`](.g
   - `layout`: [`e2e/layout/header.spec.ts`](e2e/layout/header.spec.ts), single-row header, no horizontal overflow, mobile menu and `aria-current` across all locales × 320–1280px
   - `privacy`: no third-party requests and no CSP violations on any public route or the 404 page, DE + FR (**R52**)
   - `a11y-light` / `a11y-dark`: axe scan, no serious or critical violations (**R51**)
-  - `visual-{375,768,1280}-{light,dark}`: **R50** full-page snapshots for all public routes × {de, fr}. Dates, copyright year, and Turnstile hosts are masked.
+  - `visual-{375,768,1280}-{light,dark}`: **R50** full-page snapshots for all public routes × {de, fr}. Dates, counts, reading times, the copyright year and Turnstile hosts are masked. Their text is also replaced with a fixed placeholder before the screenshot, so a monthly `last_verified` bump can't change the layout and break baselines.
 
   On failure CI uploads `playwright-report/` and `test-results/` (diff images).
 
-**Updating visual baselines (R50):** always regenerate in the **same Playwright Docker image CI uses**. Native Playwright on Linux, Windows or macOS is not authoritative, because font rendering differs. After intentional UI changes, with Docker available:
+**Updating visual baselines (R50):** always regenerate in the **same Playwright image CI uses**. Native Playwright on Linux, Windows or macOS is not authoritative, because font rendering differs.
+
+**Preferred, no local Docker needed:** **Actions → Update visual baselines → Run workflow** ([`update-visual-baselines.yml`](.github/workflows/update-visual-baselines.yml)).
+- Enter the PR branch (never `main`).
+- The workflow regenerates all snapshots in `mcr.microsoft.com/playwright:v1.63.0-jammy`, uploads them as the `visual-baselines` artifact, and (with **commit** ticked) commits them back to the branch.
+- It pushes with the deploy key, so CI re-runs on the branch automatically.
+- Review the changed PNGs in the PR before merging.
+
+**Alternative, local Docker:**
 
 ```bash
 npm run build:e2e
@@ -159,7 +167,11 @@ bash scripts/docker-visual.sh --update   # write baselines
 bash scripts/docker-visual.sh            # compare only; run once more to confirm they're stable
 ```
 
-The helper reuses an existing `out-e2e/` (it only builds when it's missing), so run `build:e2e` first after source changes. In Git Bash on Windows, prefix the commands with `MSYS_NO_PATHCONV=1` if Docker mangles the volume paths. Commit the PNGs under `e2e/visual/routes.spec.ts-snapshots/`. `npm run test:visual` runs the visual projects natively, which is only useful for a quick local look, not for baselines.
+- The helper reuses an existing `out-e2e/`, so run `build:e2e` first after source changes.
+- In Git Bash on Windows, prefix the commands with `MSYS_NO_PATHCONV=1` if Docker mangles the volume paths.
+- On the operator's Windows 10 machine, Docker Desktop crashed the system while its engine started (2026-10-01), so use the workflow there.
+
+`npm run test:visual` runs the visual projects natively, which is only useful for a quick local look, not for baselines.
 
 ### E2E survey fixture guard
 
@@ -176,6 +188,12 @@ Live citation probing (`npm run check:links`) stays in the monthly job — it ne
 Dependabot: [`.github/dependabot.yml`](.github/dependabot.yml) (weekly npm + GitHub Actions). Soft branch ruleset on `main` + secret scanning / push protection are enabled (OPERATOR §6).
 
 The monthly and translate automation workflows also run `npm run build` **before** any push to `main`, so a broken export cannot land from those jobs alone.
+
+Both push with the **`bots-push-main` deploy key**, not `GITHUB_TOKEN`:
+- **Setup:** the private key is in the Actions secret `BOT_DEPLOY_KEY` and is passed as `ssh-key` to `actions/checkout`.
+- **Why:** the `protect-main` ruleset lets deploy keys bypass its required CI checks, and on a personal-account repo the Actions token can't be exempted.
+- **Side effect:** deploy-key pushes trigger the usual workflows (CI, Live security headers), which `GITHUB_TOKEN` pushes didn't.
+- **Setup, rotation and rollback:** see [docs/operator-followups-2026-10.md](docs/operator-followups-2026-10.md#b-require-ci-on-main-with-a-deploy-key-for-the-bots).
 
 ## Monthly source snapshots (GitHub Actions)
 
