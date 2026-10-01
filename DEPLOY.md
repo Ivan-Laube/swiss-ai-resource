@@ -131,6 +131,30 @@ Impressum and Datenschutzerklärung are required for a customer-facing site (Art
 
 Do not treat lawyer review as a soft gate for marketing announce if you accept that risk: hand filled DE pages to lawyer review (**T29**) remains open. Engineering pre-announce items (T23e/T23f/T41/T42) are done.
 
+## Usage statistics (no cookies, no client script)
+
+The site sets no cookies and loads no analytics script, so it needs no cookie banner (Datenschutz §2.5 says so in all four languages). Usage is measured server-side only. Keep it that way: any change here must keep §2.5 true.
+
+### Page traffic — Cloudflare dashboard (nothing to deploy)
+
+Read it under **aicompliant.ch zone → Analytics & Logs → HTTP Traffic** (requests, visits, top paths, status codes), built from the CDN's own request data.
+
+**Do not** switch on **Web Analytics** (Pages project → Metrics, or the zone's *Web Analytics → automatic setup*). Both inject the `static.cloudflareinsights.com` beacon `<script>` into every page: that is a third-party client script, the meta CSP blocks it (`script-src` / `connect-src`), and §2.5 would become false.
+
+### Tool usage — Workers Analytics Engine
+
+Both API workers write one data point per `POST /scan` and `POST /submit` to the `aicompliant_usage` dataset (binding `USAGE`, see [`src/lib/usage-metrics.ts`](src/lib/usage-metrics.ts)): `blob1` = tool (`scan` / `survey`), `blob2` = outcome (`ok`, `bot_rejected`, `rate_limited`, `turnstile_failed`, `rejected`, `upstream_error`, `error`), `double1` = HTTP status. No IP, URL, answers, country or user agent. Analytics Engine keeps data for three months (matches the §5 retention row). Writes are best-effort and never fail a request; locally (`wrangler dev` without the binding) they are a no-op.
+
+The dataset is created on first write after `npm run deploy:scanner` and `npm run deploy:survey`. Query it with an API token that has **Account Analytics: Read**:
+
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT_ID/analytics_engine/sql" \
+  -H "Authorization: Bearer $CF_ANALYTICS_TOKEN" \
+  --data "SELECT blob1 AS tool, blob2 AS outcome, SUM(_sample_interval) AS requests FROM aicompliant_usage WHERE timestamp > NOW() - INTERVAL '30' DAY GROUP BY tool, outcome ORDER BY tool, requests DESC"
+```
+
+Use `SUM(_sample_interval)`, not `COUNT()`: Analytics Engine samples at high volume.
+
 ## Continuous integration
 
 Every pull request and every push to `main` runs [`.github/workflows/ci.yml`](.github/workflows/ci.yml):
