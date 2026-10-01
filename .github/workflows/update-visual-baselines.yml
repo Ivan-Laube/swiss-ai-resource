@@ -1,0 +1,91 @@
+name: Update visual baselines
+
+# Regenerates the R50 visual snapshots in the same Playwright image the CI
+# e2e job uses, so baselines never depend on a local Docker install.
+# Manual only. Commits back to the chosen branch (never main) or just
+# uploads the snapshots as an artifact for review.
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: "Branch to regenerate baselines for (not main)"
+        required: true
+      commit:
+        description: "Commit the updated baselines back to the branch"
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: visual-baselines-${{ github.event.inputs.branch }}
+  cancel-in-progress: true
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    # Must match the CI e2e job and @playwright/test in package.json.
+    container:
+      image: mcr.microsoft.com/playwright:v1.63.0-jammy
+      options: --ipc=host
+
+    steps:
+      - name: Refuse main
+        if: github.event.inputs.branch == 'main'
+        run: |
+          echo "Baselines are updated on a feature branch, then merged via PR."
+          exit 1
+
+      # The Playwright image may lack git/ssh; without them checkout falls
+      # back to a tarball download and the commit step can't push.
+      - name: Install git and ssh
+        run: |
+          apt-get update
+          apt-get install -y --no-install-recommends git openssh-client
+
+      # The deploy key lets the commit below trigger CI on the branch
+      # (pushes made with GITHUB_TOKEN don't start workflows).
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          ref: ${{ github.event.inputs.branch }}
+          ssh-key: ${{ secrets.BOT_DEPLOY_KEY }}
+
+      - name: Setup Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build e2e static exports
+        run: npm run build:e2e
+
+      - name: Regenerate visual snapshots
+        run: npx playwright test e2e/visual --update-snapshots
+
+      - name: Upload snapshots
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: visual-baselines
+          path: e2e/visual/routes.spec.ts-snapshots/
+          retention-days: 7
+
+      - name: Commit updated baselines
+        if: github.event.inputs.commit == 'true'
+        run: |
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add e2e/visual/routes.spec.ts-snapshots/
+          if git diff --cached --quiet; then
+            echo "Baselines unchanged."
+            exit 0
+          fi
+          git commit -m "test(visual): regenerate baselines in the Playwright image"
+          git push
