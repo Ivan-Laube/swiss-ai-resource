@@ -1,7 +1,7 @@
 ---
 title: "Checklist: AI procurement for Swiss SMEs"
 description: "Practical questions for vendors and internally before you buy an AI tool: data protection, hosting, contracts, governance, and EU nexus."
-last_verified: "2026-07-10"
+last_verified: "2026-10-01"
 volatility: "stable"
 translation_status: "draft"
 category: "beschaffung"

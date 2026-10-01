@@ -1,7 +1,7 @@
 ---
 title: "LLM hébergés aux États-Unis sous la LPD"
 description: "Quand les entreprises suisses peuvent communiquer des données personnelles à des modèles de langage hébergés aux États-Unis : adéquation, Swiss-U.S. Data Privacy Framework, garanties contractuelles et contrôles pratiques."
-last_verified: "2026-07-10"
+last_verified: "2026-10-01"
 volatility: "fast"
 translation_status: "draft"
 category: "datenschutz"

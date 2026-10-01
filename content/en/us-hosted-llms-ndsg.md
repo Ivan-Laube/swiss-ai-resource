@@ -1,7 +1,7 @@
 ---
 title: "US-hosted LLMs under the nDSG"
 description: "When Swiss companies may disclose personal data to US-hosted language models: adequacy, Swiss-U.S. Data Privacy Framework, contractual safeguards, and practical checks."
-last_verified: "2026-07-10"
+last_verified: "2026-10-01"
 volatility: "fast"
 translation_status: "draft"
 category: "datenschutz"

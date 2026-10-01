@@ -1,7 +1,7 @@
 ---
 title: "LPD e IA: basi per le imprese svizzere"
 description: "Cosa significa la Legge federale rivista sulla protezione dei dati per i trattamenti supportati dall'IA: trasparenza, valutazione d'impatto, controllo umano e obblighi di produttori, fornitori e utilizzatori."
-last_verified: "2026-07-10"
+last_verified: "2026-10-01"
 volatility: "moderate"
 translation_status: "draft"
 category: "datenschutz"

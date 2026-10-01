@@ -1,7 +1,7 @@
 ---
 title: "Liste de contrôle : achat d'IA pour les PME suisses"
 description: "Questions pratiques aux fournisseurs et en interne avant d'acheter un outil d'IA : protection des données, hébergement, contrats, gouvernance et lien avec l'UE."
-last_verified: "2026-07-10"
+last_verified: "2026-10-01"
 volatility: "stable"
 translation_status: "draft"
 category: "beschaffung"

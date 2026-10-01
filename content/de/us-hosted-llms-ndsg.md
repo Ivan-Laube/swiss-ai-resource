@@ -1,7 +1,7 @@
 ---
 title: "US-gehostete LLMs unter dem nDSG"
 description: "Wann Schweizer Unternehmen Personendaten an US-gehostete Sprachmodelle übermitteln dürfen: Angemessenheit, Swiss-U.S. Data Privacy Framework, vertragliche Garantien und Praxischecks."
-last_verified: "2026-07-10"
+last_verified: "2026-10-01"
 volatility: "fast"
 translation_status: "canonical"
 category: "datenschutz"

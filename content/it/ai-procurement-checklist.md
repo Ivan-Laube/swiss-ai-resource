@@ -1,7 +1,7 @@
 ---
 title: "Checklist: acquisto di IA per le PMI svizzere"
 description: "Domande pratiche ai fornitori e internamente prima di acquistare uno strumento di IA: protezione dei dati, hosting, contratti, governance e nesso con l'UE."
-last_verified: "2026-07-10"
+last_verified: "2026-10-01"
 volatility: "stable"
 translation_status: "draft"
 category: "beschaffung"

@@ -1,7 +1,7 @@
 ---
 title: "nDSG und KI: Grundlagen für Schweizer Unternehmen"
 description: "Was das revidierte Datenschutzgesetz für KI-gestützte Datenbearbeitungen bedeutet: Transparenz, DSFA, menschliche Kontrolle und Pflichten von Herstellern, Anbietern und Verwendern."
-last_verified: "2026-07-10"
+last_verified: "2026-10-01"
 volatility: "moderate"
 translation_status: "canonical"
 category: "datenschutz"

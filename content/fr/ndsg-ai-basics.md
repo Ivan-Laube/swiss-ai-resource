@@ -1,7 +1,7 @@
 ---
 title: "LPD et IA : bases pour les entreprises suisses"
 description: "Ce que la Loi fédérale révisée sur la protection des données signifie pour les traitements assistés par l'IA : transparence, analyse d'impact, contrôle humain et obligations des fabricants, fournisseurs et utilisateurs."
-last_verified: "2026-07-10"
+last_verified: "2026-10-01"
 volatility: "moderate"
 translation_status: "draft"
 category: "datenschutz"

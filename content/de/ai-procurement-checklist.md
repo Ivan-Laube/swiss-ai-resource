@@ -1,7 +1,7 @@
 ---
 title: "Checkliste: KI-Beschaffung für Schweizer KMU"
 description: "Praktische Fragen an Anbieter und intern, bevor Sie ein KI-Tool einkaufen: Datenschutz, Hosting, Verträge, Governance und EU-Bezug."
-last_verified: "2026-07-10"
+last_verified: "2026-10-01"
 volatility: "stable"
 translation_status: "canonical"
 category: "beschaffung"

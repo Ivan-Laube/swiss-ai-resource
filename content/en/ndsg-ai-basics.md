@@ -1,7 +1,7 @@
 ---
 title: "nDSG and AI: basics for Swiss companies"
 description: "What the revised Federal Act on Data Protection means for AI-supported data processing: transparency, DPIA, human review, and duties of manufacturers, providers, and users."
-last_verified: "2026-07-10"
+last_verified: "2026-10-01"
 volatility: "moderate"
 translation_status: "draft"
 category: "datenschutz"
