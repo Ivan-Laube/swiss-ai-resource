@@ -109,7 +109,7 @@ export const en: Messages = {
       "Enter a URL. The scan checks publicly visible signals and returns facts with status found / not found / indeterminate — not a compliance verdict.",
     backHome: "← Back to home",
     urlLabel: "Website URL",
-    urlPlaceholder: "https://example.ch",
+    urlPlaceholder: "example.ch",
     submit: "Scan",
     scanning: "Scanning …",
     unavailable:
@@ -140,6 +140,11 @@ export const en: Messages = {
       "The page looks dynamic (e.g. GTM or an SPA shell). A static scan may miss injected scripts and banners — results may be incomplete.",
     disclaimer:
       "This Quick-Check is a first assessment from publicly visible signals and is not legal advice or a compliance audit. Check the sources and consult qualified professionals when needed.",
+    notFoundNote:
+      "“Not found” means the scan did not detect the signal on the pages it checked — not that it is missing from the website.",
+    siteOwnerNote:
+      "Do you run a scanned website and think a result is wrong? Contact details are in our",
+    siteOwnerLinkLabel: "legal notice",
     scanAgain: "New check",
     surveyPrompt:
       "Help build the Swiss benchmark — about {minutes} minutes.",

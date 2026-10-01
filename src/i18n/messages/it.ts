@@ -109,7 +109,7 @@ export const it: Messages = {
       "Inserisca un URL. La scansione verifica segnali pubblici e restituisce fatti con stato trovato / non trovato / indeterminato — non un verdetto di conformità.",
     backHome: "← Torna alla home",
     urlLabel: "URL del sito",
-    urlPlaceholder: "https://esempio.ch",
+    urlPlaceholder: "esempio.ch",
     submit: "Scansiona",
     scanning: "Scansione in corso …",
     unavailable:
@@ -142,6 +142,11 @@ export const it: Messages = {
       "La pagina sembra dinamica (es. GTM o shell SPA). Una scansione statica può non vedere script e banner iniettati — i risultati possono essere incompleti.",
     disclaimer:
       "Questo Quick-Check è una prima stima da segnali pubblici e non costituisce consulenza legale né un audit di conformità. Verifichi le fonti e consulti professionisti se necessario.",
+    notFoundNote:
+      "«Non trovato» significa che la scansione non ha rilevato il segnale sulle pagine controllate — non che manchi sul sito.",
+    siteOwnerNote:
+      "Gestite un sito verificato e ritenete errato un risultato? I nostri contatti si trovano nelle",
+    siteOwnerLinkLabel: "note legali",
     scanAgain: "Nuova verifica",
     surveyPrompt:
       "Aiuti a costruire il benchmark svizzero — circa {minutes} minuti.",
