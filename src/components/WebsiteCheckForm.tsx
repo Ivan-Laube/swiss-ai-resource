@@ -567,7 +567,7 @@ export function WebsiteCheckForm({
           })}
           {/* T36: reserved for future LLM policy-content pass */}
           {null}
-          <Callout tone="neutral">
+          <Callout tone="neutral" className={styles.disclaimerNotes}>
             <p>{messages.disclaimer}</p>
             <p>{messages.notFoundNote}</p>
             <SiteOwnerNote locale={locale} messages={messages} />
@@ -635,7 +635,7 @@ export function WebsiteCheckForm({
           ) : null}
         </div>
       </form>
-      <Callout tone="neutral" className={styles.formDisclaimer}>
+      <Callout tone="neutral" className={`${styles.formDisclaimer} ${styles.disclaimerNotes}`}>
         <p>{messages.disclaimer}</p>
         <SiteOwnerNote locale={locale} messages={messages} />
       </Callout>
