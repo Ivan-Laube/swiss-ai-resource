@@ -1,10 +1,14 @@
 {
   "id": "anthropic-certifications",
   "url": "https://privacy.claude.com/en/articles/10015870-what-certifications-has-anthropic-obtained",
-  "fetched_at": "2026-07-16T09:43:53.348Z",
+  "fetched_url": "https://privacy.claude.com/en/articles/10015870-what-certifications-has-anthropic-obtained",
+  "fetched_at": "2026-10-01T12:30:48.580Z",
   "http_status": 200,
   "content_type": "text/html; charset=utf-8",
-  "sha256": "3df030d88bee0b0655c4d60d4b84190c63244d8e55d0e689304f6eeecadeeeaa",
-  "byte_length": 1676,
-  "ok": true
+  "sha256": "a1516836858bb8c27c2464de9e66c85ad1e83c3fbaec159e7b6ca8e11e05f289",
+  "byte_length": 1699,
+  "ok": true,
+  "consecutive_failures": 0,
+  "last_ok_at": "2026-10-01T12:30:48.580Z",
+  "attempt": "bot"
 }

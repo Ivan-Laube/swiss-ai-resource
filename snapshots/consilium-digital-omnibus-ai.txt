@@ -5,9 +5,9 @@ Direct access to search menu (press "Enter")
 
 EN - English
 
-EN - English
-
 FR - français
+
+EN - English
 
 News
 
@@ -134,7 +134,7 @@ Legislative priorities
 Joint Declaration 2026
 
 Status
-Procedure completed, awaiting publication in Official Journal
+Procedure completed
 
 Please go to Documentation gateway for any follow-up documents.
 
@@ -172,13 +172,13 @@ Shadow rapporteur
 
 VOSS Axel (EPP)
 
-BENIFEI Brando (S&D)
-
 VIGENIN Kristian (S&D)
 
-BŽOCH Jaroslav (PfE)
+BENIFEI Brando (S&D)
 
 JORON Virginie (PfE)
+
+BŽOCH Jaroslav (PfE)
 
 KANKO Assita (ECR)
 
@@ -186,13 +186,13 @@ MÜLLER Piotr (ECR)
 
 HAHN Svenja (Renew)
 
-GREGOROVÁ Markéta (Greens/EFA)
-
 VAN SPARRENTAK Kim (Greens/EFA)
 
-BARRENA ARZA Pernando (The Left)
+GREGOROVÁ Markéta (Greens/EFA)
 
 CHAIBI Leila (The Left)
+
+BARRENA ARZA Pernando (The Left)
 
 KHAN Mary (ESN)
 
@@ -327,6 +327,9 @@ Act adopted by Council after Parliament's 1st reading
 08/07/2026
 Final act signed
 
+24/07/2026
+Final act published in Official Journal
+
 Technical information
 
 pdf
@@ -366,7 +369,7 @@ Mandatory consultation of other institutions
 European Economic and Social Committee
 
 Stage reached in procedure
-Procedure completed, awaiting publication in Official Journal
+Procedure completed
 
 Committee dossier
 
@@ -498,6 +501,12 @@ COM(2025)0836
 
 Summary
 
+Commission response to text adopted in plenary
+
+SP(2026)09-01
+
+01/09/2026
+
 National parliaments
 
 Document type
@@ -623,7 +632,7 @@ Source
 Document
 Date
 
-EP Research Service
+European Parliament
 
 Briefing
 
@@ -667,7 +676,7 @@ LIBE
 
 19/05/2026
 
-ARD-Verbindungsbüro Brüssel
+ARD-Europabüro
 
 ZDF Europabüro Brüssel
 
@@ -699,7 +708,7 @@ IMCO
 
 05/05/2026
 
-Wolt Enterprises
+Wolt
 
 MCNAMARA Michael
 
@@ -764,13 +773,7 @@ LENAERS Jeroen
 
 04/06/2026
 
-Google
-
-WÖLKEN Tiemo
-
-07/05/2026
-
-TÜV
+Google Ireland Limited and its affiliates
 
 WAWRYKIEWICZ Michał
 
@@ -781,6 +784,12 @@ AI CHAMBER
 Polish Confederation Lewiatan
 
 AAVIT
+
+WÖLKEN Tiemo
+
+07/05/2026
+
+TÜV
 
 SIPPEL Birgit
 
@@ -826,6 +835,16 @@ European FinTech Association
 
 Load more
 
+Final act
+
+pdf
+
+Final act
+
+Regulation 2026/1744
+
+OJ OJ L 24.07.2026
+
 Procedure file
 
 Basic information
@@ -841,6 +860,8 @@ Documentation gateway
 Additional information
 
 Transparency
+
+Final act
 
 Share this page
 

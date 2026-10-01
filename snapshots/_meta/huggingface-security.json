@@ -1,10 +1,14 @@
 {
   "id": "huggingface-security",
   "url": "https://huggingface.co/docs/hub/main/security",
-  "fetched_at": "2026-07-16T09:44:05.101Z",
+  "fetched_url": "https://huggingface.co/docs/hub/main/security",
+  "fetched_at": "2026-10-01T12:30:59.926Z",
   "http_status": 200,
   "content_type": "text/html; charset=utf-8",
-  "sha256": "fceb2a1c63ca993f2867859d971b57e223eb802ad4457448a58c842083627d57",
-  "byte_length": 4661,
-  "ok": true
+  "sha256": "5cbec937edd91768f2eb5078cb056fb942e0ac59c2bc2ad6178305bd4291711e",
+  "byte_length": 4721,
+  "ok": true,
+  "consecutive_failures": 0,
+  "last_ok_at": "2026-10-01T12:30:59.926Z",
+  "attempt": "bot"
 }

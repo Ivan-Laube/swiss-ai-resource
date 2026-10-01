@@ -3706,8 +3706,7 @@ Surface Pro
 Surface Laptop
 Surface Laptop Ultra
 Surface RTX Spark Dev Box
-Copilot for organizations
-Copilot for personal use
+Explore Copilot
 Explore Microsoft products
 Windows 11 apps
 
@@ -3735,7 +3734,7 @@ Dynamics 365
 Microsoft 365
 Microsoft Power Platform
 Microsoft Teams
-Microsoft 365 Copilot
+Microsoft Copilot
 Small Business
 
 Azure

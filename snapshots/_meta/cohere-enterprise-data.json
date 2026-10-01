@@ -1,10 +1,14 @@
 {
   "id": "cohere-enterprise-data",
   "url": "https://cohere.com/enterprise-data-commitments",
-  "fetched_at": "2026-07-16T09:44:07.140Z",
+  "fetched_url": "https://cohere.com/enterprise-data-commitments",
+  "fetched_at": "2026-10-01T12:31:01.087Z",
   "http_status": 200,
   "content_type": "text/html; charset=utf-8",
-  "sha256": "de2d3d85ece8b50a8c99d0fb7b6097f40fb5a702e6a74c6a07e4904d798139cb",
-  "byte_length": 15348,
-  "ok": true
+  "sha256": "12141f86dfa8c15786f6ebd9a3c8b49b07a0229741fe9e91f583c708e62e2236",
+  "byte_length": 16927,
+  "ok": true,
+  "consecutive_failures": 0,
+  "last_ok_at": "2026-10-01T12:31:01.087Z",
+  "attempt": "bot"
 }

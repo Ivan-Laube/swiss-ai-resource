@@ -1,10 +1,14 @@
 {
   "id": "finma-guidance-08-2024-news",
   "url": "https://www.finma.ch/en/news/2024/12/20241218-mm-finma-am-08-24/",
-  "fetched_at": "2026-07-16T09:43:45.285Z",
+  "fetched_url": "https://www.finma.ch/en/news/2024/12/20241218-mm-finma-am-08-24/",
+  "fetched_at": "2026-10-01T12:30:31.717Z",
   "http_status": 200,
   "content_type": "text/html; charset=utf-8",
-  "sha256": "8e8679c4fac229e544a79c4398796b5c1a546ba597a0ad73a7c9801e3922e9cc",
-  "byte_length": 8449,
-  "ok": true
+  "sha256": "656cb4410b57014d0fd6ce8f056e0633e568dbc6f10e171181f76dff7c30ff7a",
+  "byte_length": 8477,
+  "ok": true,
+  "consecutive_failures": 0,
+  "last_ok_at": "2026-10-01T12:30:31.717Z",
+  "attempt": "bot"
 }

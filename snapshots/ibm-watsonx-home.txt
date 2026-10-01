@@ -229,12 +229,12 @@ Explore more
 
 AI academy
 
-Blog
-
 Client stories
 
-Community
-
 Documentation
+
+Blog
+
+Community
 
 *Accelerating software development with gen AI case study

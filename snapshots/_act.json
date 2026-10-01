@@ -1,0 +1,201 @@
+{
+  "acted_at": "2026-10-01T12:35:34.890Z",
+  "dry_run": false,
+  "verified_date": "2026-10-01",
+  "bumped": [
+    {
+      "slug": "ai-procurement-checklist",
+      "source_ids": [
+        "edoeb-bekanntgabe-ausland",
+        "edoeb-ki-und-datenschutz",
+        "finma-guidance-08-2024-pdf"
+      ],
+      "reason": "unchanged"
+    },
+    {
+      "slug": "ndsg-ai-basics",
+      "source_ids": [
+        "edoeb-dsg-ki-update",
+        "edoeb-ki-und-datenschutz",
+        "fedlex-dsg"
+      ],
+      "reason": "unchanged"
+    },
+    {
+      "slug": "us-hosted-llms-ndsg",
+      "source_ids": [
+        "edoeb-bekanntgabe-ausland",
+        "edoeb-chatgpt-ki-anwendungen",
+        "fedlex-dsg"
+      ],
+      "reason": "unchanged"
+    }
+  ],
+  "material": [
+    {
+      "slug": "eu-ai-act-swiss-exporters",
+      "source_ids": [
+        "consilium-digital-omnibus-ai"
+      ],
+      "reason": "material"
+    },
+    {
+      "slug": "finma-ai-expectations",
+      "source_ids": [
+        "finma-guidance-08-2024-news"
+      ],
+      "reason": "material"
+    }
+  ],
+  "skipped_slugs": [],
+  "bumped_files": [
+    "content/de/ai-procurement-checklist.md",
+    "content/de/ndsg-ai-basics.md",
+    "content/de/us-hosted-llms-ndsg.md",
+    "content/en/ai-procurement-checklist.md",
+    "content/en/ndsg-ai-basics.md",
+    "content/en/us-hosted-llms-ndsg.md",
+    "content/fr/ai-procurement-checklist.md",
+    "content/fr/ndsg-ai-basics.md",
+    "content/fr/us-hosted-llms-ndsg.md",
+    "content/it/ai-procurement-checklist.md",
+    "content/it/ndsg-ai-basics.md",
+    "content/it/us-hosted-llms-ndsg.md"
+  ],
+  "material_files": [
+    "data/vendors.json",
+    "snapshots/_act/material-brief.md",
+    "snapshots/_act/pr-body.md"
+  ],
+  "brief_path": "snapshots/_act/material-brief.md",
+  "vendors_bumped": [
+    {
+      "vendor_id": "aleph-alpha",
+      "source_ids": [
+        "aleph-alpha-pga"
+      ],
+      "reason": "unchanged"
+    },
+    {
+      "vendor_id": "aws-bedrock",
+      "source_ids": [
+        "aws-dpa"
+      ],
+      "reason": "unchanged"
+    }
+  ],
+  "vendors_material": [
+    {
+      "vendor_id": "anthropic",
+      "source_ids": [
+        "anthropic-regional-compliance"
+      ],
+      "fields_changed": [
+        "certifications"
+      ],
+      "rationale": "Snapshot confirms regional data residency in Europe, US, Canada, and Asia-Pacific (Japan, Korea, Singapore, India, Australia), explicit EU/EEA data processing support, default no-training-use commitment for commercial deployments, and SOC 2 Type 2 plus ISO/IEC 27001 certifications. No Swiss-specific hosting, entity, or DPA URL details were found in this snapshot, so those fields are left unchanged."
+    },
+    {
+      "vendor_id": "cohere",
+      "source_ids": [
+        "cohere-enterprise-data",
+        "cohere-trust"
+      ],
+      "fields_changed": [
+        "certifications"
+      ],
+      "rationale": "Trust Center confirms hosting is solely on Google Cloud US-Central servers with no non-US options, supporting hosting_regions=US and swiss/eu_hosting=false. Enterprise Data Commitments page explicitly describes an opt-out toggle for training data use. Trust Center lists SOC 2 Type II and ISO 27001 certifications plus additional certs (ISO 42001, UK Cyber Essentials) captured as 'other'. No explicit DPA document URL (only contact email) or pricing/entity details were found in the provided evidence, so those fields are left unchanged."
+    },
+    {
+      "vendor_id": "deepl",
+      "source_ids": [
+        "deepl-infrastructure"
+      ],
+      "fields_changed": [
+        "certifications"
+      ],
+      "rationale": "The updated blog post confirms DeepL remains ISO 27001 and SOC 2 Type 2 certified, and newly discloses additional compliance attestations (C5 Type 2, HIPAA, GDPR), supporting an 'other' certification tag. It reaffirms that paid customer data is not used for AI training (training_opt_out=true) and that DeepL was 'built in Europe' (eu_entity=true). It also confirms that EU-only data residency remains available on request, supporting eu_hosting=true, though data is no longer processed exclusively within Europe due to new AWS sub-processor usage for global scale. No explicit new region list (e.g., APAC) or DPA URL was found, so hosting_regions and dpa_url are left unchanged."
+    },
+    {
+      "vendor_id": "exoscale",
+      "source_ids": [
+        "exoscale-ai",
+        "exoscale-compliance"
+      ],
+      "fields_changed": [],
+      "rationale": "AI infrastructure page explicitly states data stays exclusively within Europe ('Sovereign European Cloud', 'Your data stays exclusively within Europe'), confirming eu_hosting. It also confirms usage-based billing ('billed by the second'). Other existing fields (CH hosting, SOC 2 certification, DPA, training opt-out, entity status) are not clearly confirmed or contradicted by the truncated snapshot text, so they are left unchanged to avoid invalidating previously sourced claims."
+    },
+    {
+      "vendor_id": "google-cloud",
+      "source_ids": [
+        "google-cloud-dpa",
+        "google-cloud-ml-locations"
+      ],
+      "fields_changed": [],
+      "rationale": "The provided evidence snapshots are truncated navigation/product listings from the Google Cloud DPA page and the Agent Platform locations/API reference page. Neither snapshot contains visible text confirming specific hosting regions (CH/EU/US), certifications, DPA content, training opt-out policy, or pricing tier details. Since the current claim values are not clearly supported by the visible snapshot text, no new or updated fields can be confidently proposed without risking invention of unverified details."
+    },
+    {
+      "vendor_id": "infomaniak",
+      "source_ids": [
+        "infomaniak-trust"
+      ],
+      "fields_changed": [
+        "swiss_entity"
+      ],
+      "rationale": "Trust center confirms Swiss-only data centers, ISO 27001 certification, FINMA Circular 2018/3 compliance mapping, and Infomaniak as an independent Swiss company—consistent with existing claims. No new evidence for dpa_url, training_opt_out, pricing_tier, or eu_entity to update beyond current values."
+    },
+    {
+      "vendor_id": "microsoft-azure",
+      "source_ids": [
+        "microsoft-azure-openai-privacy"
+      ],
+      "fields_changed": [],
+      "rationale": "Snapshot confirms EU geography deployment options and that customer prompts/completions are not used to train foundation models without permission, consistent with existing claim values. No new evidence for Swiss hosting, certifications, or entity location found."
+    },
+    {
+      "vendor_id": "mistral",
+      "source_ids": [
+        "mistral-dpa",
+        "mistral-home"
+      ],
+      "fields_changed": [
+        "training_opt_out"
+      ],
+      "rationale": "The DPA explicitly states Mistral AI may train its models on Customer Data 'unless Customer is or has opted-out of training,' confirming a training opt-out option is available. Other existing fields remain consistent with the evidence (EU hosting/entity, DPA URL, usage-based pricing)."
+    },
+    {
+      "vendor_id": "openai",
+      "source_ids": [
+        "openai-business-data",
+        "openai-dpa"
+      ],
+      "fields_changed": [
+        "pricing_tier"
+      ],
+      "rationale": "Snapshot confirms OpenAI offers data residency across EU, US, UK, JP, CA, KR, SG, AU, IN, AE (no CH), default non-training of customer data with opt-in, ISO 27001/27017/27018/27701 and SOC 2 Type 2 certifications, and a DPA contracted via OpenAI Ireland Ltd for EEA/Swiss customers (EU entity) while Swiss customers are also routed to OpenAI Ireland Ltd rather than a dedicated Swiss entity, supporting swiss_entity=false. Pricing remains usage-based per business-data page describing API/ChatGPT paid tiers."
+    },
+    {
+      "vendor_id": "ovhcloud",
+      "source_ids": [
+        "ovhcloud-ai-endpoints"
+      ],
+      "fields_changed": [],
+      "rationale": "Snapshot confirms AI Endpoints infrastructure is located in Gravelines, France (EU) and complies with European data protection regulations, supporting EU hosting and non-Swiss hosting. It states data is not stored or shared during or after model use, supporting training opt-out. Usage-based metrics (calls, tokens) indicate a usage pricing model. No new evidence found for dpa_url, swiss_entity, eu_entity, or certifications from this source, so those fields are left unchanged."
+    }
+  ],
+  "vendors_skipped": [],
+  "vendor_files": [
+    "data/vendors.json"
+  ],
+  "summary": {
+    "bumped": 3,
+    "material": 2,
+    "skipped": 0,
+    "bumped_files": 12,
+    "material_files": 3,
+    "vendors_bumped": 2,
+    "vendors_material": 10,
+    "vendors_skipped": 0,
+    "vendor_files": 1
+  }
+}

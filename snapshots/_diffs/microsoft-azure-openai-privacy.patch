@@ -1,0 +1,22 @@
+Index: snapshots/microsoft-azure-openai-privacy.txt
+===================================================================
+--- snapshots/microsoft-azure-openai-privacy.txt
++++ snapshots/microsoft-azure-openai-privacy.txt
+@@ -26,7 +26,7 @@
+ 
+ Add
+ 
+-Add to plan
++Add to Plans
+ 
+ Edit
+ 
+@@ -186,7 +186,7 @@
+ Compare Foundry Models sold by Azure in Azure Government
+ Limited access to Azure OpenAI Service
+ Report abuse of Azure OpenAI Service through the Report Abuse Portal
+-Report problematic to cscraireport@microsoft.com
++Report a security or safety issue: Security researchers and customers play a crucial role in protecting AI. To report security vulnerabilities or safety problems in Foundry Models sold by Azure, go to the Microsoft Security Response Center (MSRC). Examples of vulnerabilities include prompt injection, unsafe output, and data exposure. When reporting a problem, include the model name and version, the steps that led to the problem, and the potential impact.
+ 
+ Feedback
+ 

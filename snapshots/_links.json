@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-07-16T13:00:02.114Z",
+  "checked_at": "2026-10-01T12:35:46.006Z",
   "dry_run": false,
   "results": [
     {
@@ -83,6 +83,10 @@
         {
           "kind": "vendor",
           "id": "anthropic#training_opt_out.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "anthropic#certifications.source_url"
         }
       ]
     },
@@ -406,6 +410,10 @@
         },
         {
           "kind": "vendor",
+          "id": "mistral#training_opt_out.source_url"
+        },
+        {
+          "kind": "vendor",
           "id": "mistral#swiss_entity.source_url"
         },
         {
@@ -448,25 +456,21 @@
     },
     {
       "url": "https://openai.com/",
-      "ok": true,
-      "http_status": 200,
+      "ok": false,
+      "http_status": 403,
+      "error": "HTTP 403",
       "reused_from_run": false,
       "sources": [
         {
           "kind": "vendor",
           "id": "openai#website"
-        },
-        {
-          "kind": "vendor",
-          "id": "openai#pricing_tier.source_url"
         }
       ]
     },
     {
       "url": "https://openai.com/business-data/",
-      "ok": false,
-      "http_status": 403,
-      "error": "HTTP 403 Forbidden",
+      "ok": true,
+      "http_status": 200,
       "reused_from_run": true,
       "sources": [
         {
@@ -488,14 +492,17 @@
         {
           "kind": "vendor",
           "id": "openai#certifications.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "openai#pricing_tier.source_url"
         }
       ]
     },
     {
       "url": "https://openai.com/policies/data-processing-addendum/",
-      "ok": false,
-      "http_status": 403,
-      "error": "HTTP 403 Forbidden",
+      "ok": true,
+      "http_status": 200,
       "reused_from_run": true,
       "sources": [
         {
@@ -513,51 +520,6 @@
         {
           "kind": "vendor",
           "id": "openai#dpa_url.value"
-        }
-      ]
-    },
-    {
-      "url": "https://privacy.claude.com/en/articles/10015870-what-certifications-has-anthropic-obtained",
-      "ok": true,
-      "http_status": 200,
-      "reused_from_run": true,
-      "sources": [
-        {
-          "kind": "vendor",
-          "id": "anthropic#certifications.source_url"
-        }
-      ]
-    },
-    {
-      "url": "https://support.deepl.com/hc/en-us/articles/26380849099932-DeepL-infrastructure-and-data-protection",
-      "ok": false,
-      "http_status": 403,
-      "error": "HTTP 403 Forbidden",
-      "reused_from_run": true,
-      "sources": [
-        {
-          "kind": "vendor",
-          "id": "deepl#hosting_regions.source_url"
-        },
-        {
-          "kind": "vendor",
-          "id": "deepl#eu_hosting.source_url"
-        },
-        {
-          "kind": "vendor",
-          "id": "deepl#training_opt_out.source_url"
-        },
-        {
-          "kind": "vendor",
-          "id": "deepl#certifications.source_url"
-        },
-        {
-          "kind": "vendor",
-          "id": "deepl#swiss_entity.source_url"
-        },
-        {
-          "kind": "vendor",
-          "id": "deepl#eu_entity.source_url"
         }
       ]
     },
@@ -645,8 +607,8 @@
       "url": "https://www.consilium.europa.eu/en/press/press-releases/2026/06/29/artificial-intelligence-council-gives-final-green-light-to-simplify-and-streamline-rules/",
       "ok": false,
       "http_status": 403,
-      "error": "HTTP 403 Forbidden",
-      "reused_from_run": true,
+      "error": "HTTP 403",
+      "reused_from_run": false,
       "sources": [
         {
           "kind": "content",
@@ -731,6 +693,38 @@
         {
           "kind": "vendor",
           "id": "deepl#website"
+        }
+      ]
+    },
+    {
+      "url": "https://www.deepl.com/en/blog/expanding-deepl-data-infrastructure",
+      "ok": true,
+      "http_status": 200,
+      "reused_from_run": true,
+      "sources": [
+        {
+          "kind": "vendor",
+          "id": "deepl#hosting_regions.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "deepl#eu_hosting.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "deepl#training_opt_out.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "deepl#certifications.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "deepl#swiss_entity.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "deepl#eu_entity.source_url"
         }
       ]
     },
@@ -866,11 +860,19 @@
         },
         {
           "kind": "content",
+          "id": "de/datenschutz#sources"
+        },
+        {
+          "kind": "content",
           "id": "de/ndsg-ai-basics#sources"
         },
         {
           "kind": "content",
           "id": "en/ai-procurement-checklist#sources"
+        },
+        {
+          "kind": "content",
+          "id": "en/datenschutz#sources"
         },
         {
           "kind": "content",
@@ -882,11 +884,19 @@
         },
         {
           "kind": "content",
+          "id": "fr/datenschutz#sources"
+        },
+        {
+          "kind": "content",
           "id": "fr/ndsg-ai-basics#sources"
         },
         {
           "kind": "content",
           "id": "it/ai-procurement-checklist#sources"
+        },
+        {
+          "kind": "content",
+          "id": "it/datenschutz#sources"
         },
         {
           "kind": "content",
@@ -967,6 +977,30 @@
       ]
     },
     {
+      "url": "https://www.fedlex.admin.ch/eli/cc/1988/223_223_223/de#art_3",
+      "ok": true,
+      "http_status": 200,
+      "reused_from_run": false,
+      "sources": [
+        {
+          "kind": "content",
+          "id": "de/impressum#sources"
+        },
+        {
+          "kind": "content",
+          "id": "en/impressum#sources"
+        },
+        {
+          "kind": "content",
+          "id": "fr/impressum#sources"
+        },
+        {
+          "kind": "content",
+          "id": "it/impressum#sources"
+        }
+      ]
+    },
+    {
       "url": "https://www.fedlex.admin.ch/eli/cc/2022/491/de",
       "ok": true,
       "http_status": 200,
@@ -1031,6 +1065,30 @@
         {
           "kind": "rule",
           "id": "us-hosted-llm-ndsg#out-unclear-scc"
+        }
+      ]
+    },
+    {
+      "url": "https://www.fedlex.admin.ch/eli/cc/2022/491/de#art_19",
+      "ok": true,
+      "http_status": 200,
+      "reused_from_run": false,
+      "sources": [
+        {
+          "kind": "content",
+          "id": "de/datenschutz#sources"
+        },
+        {
+          "kind": "content",
+          "id": "en/datenschutz#sources"
+        },
+        {
+          "kind": "content",
+          "id": "fr/datenschutz#sources"
+        },
+        {
+          "kind": "content",
+          "id": "it/datenschutz#sources"
         }
       ]
     },
@@ -1142,10 +1200,6 @@
         },
         {
           "kind": "vendor",
-          "id": "infomaniak#swiss_entity.source_url"
-        },
-        {
-          "kind": "vendor",
           "id": "infomaniak#dpa_url.value"
         }
       ]
@@ -1175,6 +1229,10 @@
         {
           "kind": "vendor",
           "id": "infomaniak#certifications.source_url"
+        },
+        {
+          "kind": "vendor",
+          "id": "infomaniak#swiss_entity.source_url"
         }
       ]
     },
@@ -1264,10 +1322,10 @@
     }
   ],
   "summary": {
-    "total": 50,
-    "ok": 46,
-    "broken": 4,
-    "reused": 38,
-    "probed": 12
+    "total": 51,
+    "ok": 49,
+    "broken": 2,
+    "reused": 36,
+    "probed": 15
   }
 }

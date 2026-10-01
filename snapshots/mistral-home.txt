@@ -1,10 +1,10 @@
-Contact sales
+Get in touch
 
 Menu
 
 Products
 
-Solutions
+Industries
 
 Research
 
@@ -16,45 +16,43 @@ Customers
 
 Company
 
-Contact sales
+Get in touch
 
-Start building
+Login
 
-Studio Build, test, and run AI agents and apps.
+StudioBuild, test, and run AI agents and apps.
 
-Forge Train, align, and evaluate custom AI models.
+ForgeTrain, align, and evaluate custom AI models.
 
-Vibe AI agent for long-horizon work.
+VibeAI agent for long-horizon work.
 
-Vibe for code Coding agents in the terminal, IDE, and background.
+Vibe for codeCoding agents in the terminal, IDE, and background.
 
-Compute Frontier-scale infrastructure for training and inference.
+AI CloudFrontier-scale infrastructure for training and inference.
 
-Pricing Plans
+PricingPlans
 
 API pricing
 
 For enterprises
 
-Services
-
-Delivery methodology
-
-Model customization
-
-Industries Financial services
+Financial services
 
 Public sector & government
 
 Manufacturing
 
-Use cases Use case overview
+Energy & utilities
 
-Coding
+DomainsCoding
 
 Document intelligence
 
 Speech
+
+Applied AIDelivery methodology
+
+Model customization
 
 Latest models
 
@@ -76,15 +74,15 @@ Cookbooks
 
 Latest posts
 
-Your Prompts and Skills need a system of record.
+Hallo, Deutschland!
 
-Introducing Robostral Navigate
+Mistral and Mozilla are bringing open, private and multilingual AI to your web browser
 
-Leanstral 1.5: Proof Abundance for All
+Cloudera and Mistral Partner to Bring Specialized, Sovereign Intelligence to Enterprise Data
 
 Read all news
 
-Categories Product
+CategoriesProduct
 
 Research
 
@@ -102,7 +100,7 @@ CMA CGM
 
 HSBC
 
-BMW
+TotalEnergies
 
 See all
 
@@ -114,49 +112,47 @@ Careers
 
 Brand
 
-Connect Community
+ConnectCommunity
 
 Partners
 
 Help center
 
-ProductsSolutionsResearchDevelopersBlogCustomersCompany
+ProductsIndustriesResearchDevelopersBlogCustomersCompany
 
-Studio Build, test, and run AI agents and apps.
+StudioBuild, test, and run AI agents and apps.
 
-Forge Train, align, and evaluate custom AI models.
+ForgeTrain, align, and evaluate custom AI models.
 
-Vibe AI agent for long-horizon work.
+VibeAI agent for long-horizon work.
 
-Vibe for code Coding agents in the terminal, IDE, and background.
+Vibe for codeCoding agents in the terminal, IDE, and background.
 
-Compute Frontier-scale infrastructure for training and inference.
+AI CloudFrontier-scale infrastructure for training and inference.
 
-Pricing Plans
+PricingPlans
 
 API pricing
 
 For enterprises
 
-Services
-
-Delivery methodology
-
-Model customization
-
-Industries Financial services
+Financial services
 
 Public sector & government
 
 Manufacturing
 
-Use cases Use case overview
+Energy & utilities
 
-Coding
+DomainsCoding
 
 Document intelligence
 
 Speech
+
+Applied AIDelivery methodology
+
+Model customization
 
 Latest models
 
@@ -178,15 +174,15 @@ Cookbooks
 
 Latest posts
 
-Your Prompts and Skills need a system of record.
+Hallo, Deutschland!
 
-Introducing Robostral Navigate
+Mistral and Mozilla are bringing open, private and multilingual AI to your web browser
 
-Leanstral 1.5: Proof Abundance for All
+Cloudera and Mistral Partner to Bring Specialized, Sovereign Intelligence to Enterprise Data
 
 Read all news
 
-Categories Product
+CategoriesProduct
 
 Research
 
@@ -204,7 +200,7 @@ CMA CGM
 
 HSBC
 
-BMW
+TotalEnergies
 
 See all
 
@@ -216,13 +212,13 @@ Careers
 
 Brand
 
-Connect Community
+ConnectCommunity
 
 Partners
 
 Help center
 
-Start building
+Login
 
 Studio
 
@@ -230,44 +226,48 @@ Vibe
 
 Vibe for Code
 
-Contact sales
+Get in touch
 
 Frontier AI.
-In your hands. Frontier AI.In your hands. We help organizations build tailored AI systems to solve the world’s hardest problems. Featured news Introducing Robostral Navigate
+In your hands.Frontier AI.In your hands.We help organizations build tailored AI systems to solve the world’s hardest problems.Featured newsMistral raises €3B to make sovereign, open-weight AI the technology frontier
+
+In-region inference, open models, and new European infrastructure for sovereign AI.
+
+Introducing Shieldstral.
 
 Introducing Mistral OCR 4
-
-Vibe gets to work.
 
 We help organizations build tailored AI systems to solve the world’s hardest problems.
 
-Featured news Introducing Robostral Navigate
+Featured newsMistral raises €3B to make sovereign, open-weight AI the technology frontier
+
+In-region inference, open models, and new European infrastructure for sovereign AI.
+
+Introducing Shieldstral.
 
 Introducing Mistral OCR 4
 
-Vibe gets to work.
-
-Financial services Financial services HSBC boosts productivity with Mistral.
+Financial servicesFinancial servicesHSBC boosts productivity with Mistral.
 
 Learn more
 
-Financial services Technology and Software Technology and Software ASML accelerates advanced semiconductor lithography with Mistral.
+Financial servicesTechnology and SoftwareTechnology and SoftwareASML accelerates advanced semiconductor lithography with Mistral.
 
 Learn more
 
-Technology and Software Transportation and Logistics Transportation and Logistics CMA CGM streamlines global maritime operations with Mistral.
+Technology and SoftwareTransportation and LogisticsTransportation and LogisticsCMA CGM streamlines global maritime operations with Mistral.
 
 Learn more
 
-Transportation and Logistics Public sector Public sector Austrian Academy of Sciences unlocks Ancient Greek with Mistral.
+Transportation and LogisticsPublic sectorPublic sectorAustrian Academy of Sciences and Mistral: unlocking Ancient Greek with Apollo.
 
 Learn more
 
-Public sector Public sector Public sector The European Patent Office accelerates innovation with Mistral.
+Public sectorPublic sectorPublic sectorFrom PDFs to structured output: automated patent transcription at scale.
 
 Learn more
 
-Public sector Manufacturing Manufacturing Stellantis accelerates automotive innovation with Mistral.
+Public sectorManufacturingManufacturingBuilding a more intelligent car: How Stellantis is accelerating automotive innovation.
 
 Learn more
 
@@ -275,17 +275,17 @@ Manufacturing
 
 Do it all with Mistral.
 
-Vibe AI agent for long-horizon work.
+VibeAI agent for long-horizon work.
 
-Studio Build, test, and run AI agents and apps.
+StudioBuild, test, and run AI agents and apps.
 
-Forge Train, align, and evaluate custom AI models.
+ForgeTrain, align, and evaluate custom AI models.
 
 Applied AI services
 
 Frontier models
 
-Compute Frontier-scale infrastructure for training and inference. Summary
+AI CloudFrontier-scale infrastructure for training and inference.Summary
 
 Autonomous work.
 
@@ -295,7 +295,7 @@ AI agent for long-horizon tasks, fluent in your knowledge and tools.
 
 Discover Vibe
 
-Enterprise knowledge search Structured data analysis Document and report synthesis Multi-step task scheduling Persistent memory and reusable skills Autonomous coding.
+Enterprise knowledge searchStructured data analysisDocument and report synthesisMulti-step task schedulingPersistent memory and reusable skillsAutonomous coding.
 
 Discover Vibe for code
 
@@ -303,7 +303,7 @@ Ship faster with a stack that meets devs where they work.
 
 Discover Vibe for code
 
-Async code generation Architecture-aware reasoning Legacy code translation Automated CI/CD and code reviews Test and documentation authoring AI application development.
+Async code generationArchitecture-aware reasoningLegacy code translationAutomated CI/CD and code reviewsTest and documentation authoringAI application development.
 
 Discover Studio
 
@@ -311,7 +311,7 @@ Build and deploy AI apps with complete control: build custom agents, and run pro
 
 Discover Studio
 
-Agent orchestration End-to-end observability Unified AI registry Evals, judges, and guardrails Full deployment portability Custom model development.
+Agent orchestrationEnd-to-end observabilityUnified AI registryEvals, judges, and guardrailsFull deployment portabilityCustom model development.
 
 Discover Forge
 
@@ -319,7 +319,7 @@ Turn proprietary knowledge into model intelligence by training and aligning your
 
 Discover Forge
 
-Enterprise domain adaptation End-to-end model training Reinforcement learning and distillation Synthetic data generation Evaluation and lifecycle management Infrastructure for training and inference.
+Enterprise domain adaptationEnd-to-end model trainingReinforcement learning and distillationSynthetic data generationEvaluation and lifecycle managementInfrastructure for training and inference.
 
 Discover Compute
 
@@ -327,7 +327,7 @@ The frontier-grade infrastructure and orchestration platform behind Mistral's ow
 
 Discover Compute
 
-Dedicated GPU clusters Advanced R&D
+Dedicated GPU clustersAdvanced R&D
 
 Discover applied AI
 
@@ -335,26 +335,32 @@ Tailored, domain-specialized AI: from custom pre-training with your data to scal
 
 Discover applied AI
 
-Model customization Value realization Deployment services Use case acceleration Enterprise activation Supported by expert partnership. Work with world-class AI scientists to enable transformation that drives impact.
+Model customizationValue realizationDeployment servicesUse case accelerationEnterprise activationSupported by expert partnership.Work with world-class AI scientists to enable transformation that drives impact.
 
 Our services
 
-Use case acceleration. Prioritize high-value use cases and take them to production fast. Elite AI expertise. A cross-functional team that takes initiatives from kickoff to production at scale. Deep customization. Customize and optimize models for your domain. Enterprise activation. Deploy AI in your environment with full control.
+Use case acceleration.Prioritize high-value use cases and take them to production fast.Elite AI expertise.A cross-functional team that takes initiatives from kickoff to production at scale.Deep customization.Customize and optimize models for your domain.Enterprise activation.Deploy AI in your environment with full control.
 
-AI deployments designed for privacy. Deploy frontier AI in your environment, or consume as a service or from one of our cloud partners.
+AI deployments designed for privacy.Deploy frontier AI in your environment, or consume as a service or from one of our cloud partners.
 
-Self-hosted. Deploy Studio on virtual cloud, edge, or on-premises. Self-hosted deployments offer more advanced levels of customization and control. Your data stays within your walls.
+Self-hosted.Deploy Studio on virtual cloud, edge, or on-premises. Self-hosted deployments offer more advanced levels of customization and control. Your data stays within your walls.
 
-Mistral cloud. Get started with Studio hosted on Mistral’s infrastructure and build your own applications and services with our APIs. Our servers are hosted in the EU.
+Mistral cloud.Get started with Studio hosted on Mistral’s infrastructure and build your own applications and services with our APIs. Our servers are hosted in the EU.
 
-Cloud providers. Access the power of Studio via your preferred cloud provider (Google Cloud, AWS, Azure, SAP, IBM, Snowflake, NVIDIA, Outscale) using your cloud credits. Own your own AI future. Build, customize, and deploy tailored AI solutions with complete control.
+Cloud providers.Access the power of Studio via your preferred cloud provider (Google Cloud, AWS, Azure, SAP, IBM, Snowflake, NVIDIA, Outscale) using your cloud credits.Own your own AI future.Build, customize, and deploy tailored AI solutions with complete control.
 
 Start building
 
 Contact sales
 
-Products Vibe Vibe Code Studio Forge Compute Pricing Solutions Delivery methodology Model customization Coding Document intelligence Speech Mistral for finance Mistral for public institutions Mistral for manufacturing Why Mistral About us Careers Partners Our customers Our models Brand Legal Terms of Service Privacy Policy Privacy choices Data processing agreement Legal notice
-Get Mistral Vibe
-Mistral AI © 2026 Select language English
+ProductsVibeVibe CodeStudioForgeComputePricingSolutionsDelivery methodologyModel customizationCodingDocument intelligenceSpeechMistral for financeMistral for public institutionsMistral for manufacturingMistral for energy & utilitiesWhy MistralAbout usCareersPartnersOur customersOur modelsBrandCompanyTerms of ServicePrivacy PolicyPrivacy choicesData processing agreementTrust CenterLegal noticeGet Mistral Vibe
 
-English Français Italiano
+Mistral AI © 2026
+
+English
+
+English
+
+Français
+
+Italiano

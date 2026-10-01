@@ -1,0 +1,13 @@
+Index: snapshots/google-cloud-dpa.txt
+===================================================================
+--- snapshots/google-cloud-dpa.txt
++++ snapshots/google-cloud-dpa.txt
+@@ -4126,7 +4126,7 @@
+ Law.
+ 3. Data Center Locations. The locations of SecOps
+ Services data centers are described
+-at https://www.google.com/about/datacenters/locations/.
++at https://cloud.google.com/terms/secops/data-residency.
+ 
+ 4. No Certification by Non-EMEA Customers. Customer
+ is not obliged to certify or identify its competent

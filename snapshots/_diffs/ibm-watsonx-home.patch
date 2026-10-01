@@ -1,0 +1,21 @@
+Index: snapshots/ibm-watsonx-home.txt
+===================================================================
+--- snapshots/ibm-watsonx-home.txt
++++ snapshots/ibm-watsonx-home.txt
+@@ -229,12 +229,12 @@
+ 
+ AI academy
+ 
+-Blog
+-
+ Client stories
+ 
+-Community
+-
+ Documentation
+ 
++Blog
++
++Community
++
+ *Accelerating software development with gen AI case study

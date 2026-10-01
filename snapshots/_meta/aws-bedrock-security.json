@@ -1,10 +1,14 @@
 {
   "id": "aws-bedrock-security",
   "url": "https://aws.amazon.com/bedrock/security-compliance/",
-  "fetched_at": "2026-07-16T09:44:01.076Z",
+  "fetched_url": "https://aws.amazon.com/bedrock/security-compliance/",
+  "fetched_at": "2026-10-01T12:30:55.083Z",
   "http_status": 200,
   "content_type": "text/html;charset=utf-8",
-  "sha256": "9b75a66277dbd26b5be7a41fead05037ddcdc49b2456dabfe379a5a9819f064d",
-  "byte_length": 3899,
-  "ok": true
+  "sha256": "88dbe7ef54354ee37b36440507ba5a937a32b22fd99abe8006cd2eee105abd3d",
+  "byte_length": 8419,
+  "ok": true,
+  "consecutive_failures": 0,
+  "last_ok_at": "2026-10-01T12:30:55.083Z",
+  "attempt": "bot"
 }

@@ -13,7 +13,7 @@ See Certifications
 Compliance
 
 SOC 2 Type 2
-Service Organization Controls (Soc2) (Type II) Trust Services Principles
+Service Organization Controls (SOC 2) (Type II) Trust Services Principles
 Request
 
 ISO 27001
@@ -25,7 +25,7 @@ Artificial Intelligence Management System (AIMS)
 Request
 
 U.K. Cyber Essentials
-U.K. Gov't backed Cybersecurity standard
+U.K. Gov't-backed Cybersecurity Standard
 Request
 
 GDPR
@@ -55,11 +55,15 @@ Official Certificate
 Request
 
 U.K. Cyber Essentials
-Cohere's official issued certificate
+Certificate for Cohere Inc.
+Request
+
+U.K. Cyber Essentials
+Certificate for Cohere UK, LTD
 Request
 
 Latest Penetration Test Report
-API penetration test results
+API Penetration Test Results
 Request
 
 Latest Penetration Test Report
@@ -71,16 +75,12 @@ Rules of engagement for conducting and performing security research (i.e. vulner
 Download
 
 Cohere Enterprise Data Commitments
-Overview of how Cohere handles and protects our Enterprise Customers' Data
+
 Visit
 
-Cohere Secure AI Frontier Model Framework
-This document outlines Cohere's risk management methodology for managing risks to our models.
+EU AI Act FAQs
+FAQs regarding the GPAI Code of Practice
 Download
-
-Usage Policy
-This policy outlines the acceptable use cases for Cohere’s models and products by customers
-Visit
 
 View allSubprocessors
 
@@ -174,7 +174,7 @@ Change Management Policy
 
 Configuration and Asset Management Policy
 
-View 2 more controls
+View 3 more controls
 Availability
 
 Backup Restoration Testing
@@ -188,11 +188,11 @@ Organizational Management
 
 Acceptable Use Policy
 
-Internal Control Monitoring
-
 Performance Review Policy
 
-View 12 more controls
+Internal Control Policy
+
+View 9 more controls
 Confidentiality
 
 Data Classification Policy
@@ -201,7 +201,6 @@ Data Retention and Disposal Policy
 
 Disposal of Customer Data
 
-View 1 more control
 Vulnerability Management
 
 Vulnerability and Patch Management Policy
@@ -212,20 +211,17 @@ Incident Response
 
 Incident Response Plan Testing
 
-Tracking a Security Incident
+Incident Response Plan
 
-Lessons Learned
-
-View 1 more control
 Risk Assessment
 
 Vendor Risk Assessment
 
-Risk Register
-
 Risk Assessment
 
-View 3 more controls
+Vendor Risk Management Policy
+
+View 2 more controls
 Network Security
 
 Automated Alerting for Security Events
@@ -243,13 +239,7 @@ Encryption-in-Transit
 View 3 more controls
 Physical Security
 
-Visitor Control
-
-Physical Access Restrictions
-
 Physical Security Policy
-
-View 1 more control
 
 View allPowered by
 
@@ -268,6 +258,9 @@ A Configuration and Asset Management Policy governs configurations for new sensi
 
 Secure Development Policy
 A Secure Development Policy defines the requirements for secure software and system development and maintenance.
+
+Software Change Testing
+Software changes are tested prior to being deployed into production.
 
 Segregation of Environments
 Development, staging, and production environments are segregated.
@@ -294,14 +287,8 @@ Organizational Management
 Acceptable Use Policy
 An Acceptable Use Policy defines standards for appropriate and secure use of company hardware and electronic systems including storage media, communication tools and internet access.
 
-Internal Control Monitoring
-A continuous monitoring solution monitors internal controls used in the achievement of service commitments and system requirements.
-
 Performance Review Policy
 A Performance Review Policy provides personnel context and transparency into their performance and career development processes.
-
-Background Checks
-Background checks or their equivalent are performed before or promptly after a new hires start date, as permitted by local laws.
 
 Internal Control Policy
 An Internal Control Policy identifies how a system of controls should be maintained to safeguard assets, promote operational efficiency, and encourage adherence to prescribed managerial policies.
@@ -311,9 +298,6 @@ Management maintains a formal organizational chart to clearly identify positions
 
 Independent Advisor
 The board of directors or equivalent entity function includes senior management and external advisors, who are independent from the company's operations. An information security team has also been established to govern cybersecurity.
-
-New Hire Screening
-Hiring managers screen new hires or internal transfers to assess their qualifications, experience, and competency to fulfill their responsibilities. New hires sign confidentiality agreements or equivalents upon hire.
 
 Roles and Responsibilities
 Information security roles and responsibilities are outlined for personnel responsible for the security, availability, and confidentiality of the system.
@@ -347,9 +331,6 @@ A Data Retention and Disposal Policy specifies how customer data is to be retain
 Disposal of Customer Data
 Upon customer request, Company requires that data that is no longer needed from databases and other file stores is removed in accordance with agreed-upon customer requirements.
 
-Retention of Customer Data
-Procedures are in place to retain customer data based on agreed-upon customer requirements or in line with information security policies.
-
 Vulnerability Management
 
 Vulnerability and Patch Management Policy
@@ -363,12 +344,6 @@ Incident Response
 Incident Response Plan Testing
 The Incident Response Plan is periodically tested via tabletop exercises or equivalents. When necessary, Management makes changes to the Incident Response Plan based on the test results.
 
-Tracking a Security Incident
-Identified incidents are documented, tracked, and analyzed according to the Incident Response Plan.
-
-Lessons Learned
-After any identified security incident has been resolved, management provides a "Lessons Learned" document to the team in order to continually improve security and operations.
-
 Incident Response Plan
 An Incident Response Plan outlines the process of identifying, prioritizing, communicating, assigning and tracking confirmed incidents through to resolution.
 
@@ -376,9 +351,6 @@ Risk Assessment
 
 Vendor Risk Assessment
 New vendors are assessed in accordance with the Vendor Risk Management Policy prior to engaging with the vendor. Reassessment occurs at least annually.
-
-Risk Register
-A risk register is maintained, which records the risk mitigation strategies for identified risks, and the development or modification of controls consistent with the risk mitigation strategy.
 
 Risk Assessment
 Formal risk assessments are performed, which includes the identification of relevant internal and external threats related to security, availability, confidentiality, and fraud, and an analysis of risks associated with those threats.
@@ -422,17 +394,8 @@ A list of system assets, components, and respective owners are maintained and re
 
 Physical Security
 
-Visitor Control
-Production facilities require all visitors to formally sign-in, unless preauthorization for the visitor exists.
-
-Physical Access Restrictions
-Processes are in place to create, modify or remove physical access to facilities such as data centers, office spaces, and work areas based on the needs of such individual.
-
 Physical Security Policy
 A Physical Security Policy that details physical security requirements for the company facilities is in place.
-
-Physical Access Reviews
-Processes are in place to periodically review physical access to ensure consistency with job responsibilities.
 
 Communications
 

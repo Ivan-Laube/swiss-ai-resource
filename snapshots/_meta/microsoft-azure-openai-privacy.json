@@ -1,10 +1,14 @@
 {
   "id": "microsoft-azure-openai-privacy",
   "url": "https://learn.microsoft.com/en-us/azure/ai-foundry/responsible-ai/openai/data-privacy",
-  "fetched_at": "2026-07-16T09:43:56.910Z",
+  "fetched_url": "https://learn.microsoft.com/en-us/azure/foundry/responsible-ai/openai/data-privacy",
+  "fetched_at": "2026-10-01T12:30:51.700Z",
   "http_status": 200,
   "content_type": "text/html",
-  "sha256": "f1c29932103b2efdc0893ecf51b1570b7adeb3730a2bf54c4be7b10c9111987d",
-  "byte_length": 18155,
-  "ok": true
+  "sha256": "9be9f1d78d0adb07239b831b27f865a8afddff9709b58f26bc7778ba5e632800",
+  "byte_length": 18566,
+  "ok": true,
+  "consecutive_failures": 0,
+  "last_ok_at": "2026-10-01T12:30:51.700Z",
+  "attempt": "bot"
 }

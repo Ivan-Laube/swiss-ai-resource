@@ -1,0 +1,175 @@
+Index: snapshots/consilium-digital-omnibus-ai.txt
+===================================================================
+--- snapshots/consilium-digital-omnibus-ai.txt
++++ snapshots/consilium-digital-omnibus-ai.txt
+@@ -5,10 +5,10 @@
+ 
+ EN - English
+ 
+-EN - English
+-
+ FR - français
+ 
++EN - English
++
+ News
+ 
+ Topics
+@@ -134,7 +134,7 @@
+ Joint Declaration 2026
+ 
+ Status
+-Procedure completed, awaiting publication in Official Journal
++Procedure completed
+ 
+ Please go to Documentation gateway for any follow-up documents.
+ 
+@@ -172,28 +172,28 @@
+ 
+ VOSS Axel (EPP)
+ 
+-BENIFEI Brando (S&D)
+-
+ VIGENIN Kristian (S&D)
+ 
+-BŽOCH Jaroslav (PfE)
++BENIFEI Brando (S&D)
+ 
+ JORON Virginie (PfE)
+ 
++BŽOCH Jaroslav (PfE)
++
+ KANKO Assita (ECR)
+ 
+ MÜLLER Piotr (ECR)
+ 
+ HAHN Svenja (Renew)
+ 
+-GREGOROVÁ Markéta (Greens/EFA)
+-
+ VAN SPARRENTAK Kim (Greens/EFA)
+ 
+-BARRENA ARZA Pernando (The Left)
++GREGOROVÁ Markéta (Greens/EFA)
+ 
+ CHAIBI Leila (The Left)
+ 
++BARRENA ARZA Pernando (The Left)
++
+ KHAN Mary (ESN)
+ 
+ Committee for opinion
+@@ -327,6 +327,9 @@
+ 08/07/2026
+ Final act signed
+ 
++24/07/2026
++Final act published in Official Journal
++
+ Technical information
+ 
+ pdf
+@@ -366,7 +369,7 @@
+ European Economic and Social Committee
+ 
+ Stage reached in procedure
+-Procedure completed, awaiting publication in Official Journal
++Procedure completed
+ 
+ Committee dossier
+ 
+@@ -498,6 +501,12 @@
+ 
+ Summary
+ 
++Commission response to text adopted in plenary
++
++SP(2026)09-01
++
++01/09/2026
++
+ National parliaments
+ 
+ Document type
+@@ -623,7 +632,7 @@
+ Document
+ Date
+ 
+-EP Research Service
++European Parliament
+ 
+ Briefing
+ 
+@@ -667,7 +676,7 @@
+ 
+ 19/05/2026
+ 
+-ARD-Verbindungsbüro Brüssel
++ARD-Europabüro
+ 
+ ZDF Europabüro Brüssel
+ 
+@@ -699,7 +708,7 @@
+ 
+ 05/05/2026
+ 
+-Wolt Enterprises
++Wolt
+ 
+ MCNAMARA Michael
+ 
+@@ -764,14 +773,8 @@
+ 
+ 04/06/2026
+ 
+-Google
++Google Ireland Limited and its affiliates
+ 
+-WÖLKEN Tiemo
+-
+-07/05/2026
+-
+-TÜV
+-
+ WAWRYKIEWICZ Michał
+ 
+ 07/05/2026
+@@ -782,6 +785,12 @@
+ 
+ AAVIT
+ 
++WÖLKEN Tiemo
++
++07/05/2026
++
++TÜV
++
+ SIPPEL Birgit
+ 
+ 29/04/2026
+@@ -826,6 +835,16 @@
+ 
+ Load more
+ 
++Final act
++
++pdf
++
++Final act
++
++Regulation 2026/1744
++
++OJ OJ L 24.07.2026
++
+ Procedure file
+ 
+ Basic information
+@@ -842,6 +861,8 @@
+ 
+ Transparency
+ 
++Final act
++
+ Share this page
+ 
+ Facebook

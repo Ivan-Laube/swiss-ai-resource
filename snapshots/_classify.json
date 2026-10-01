@@ -1,36 +1,384 @@
 {
-  "classified_at": "2026-07-16T12:11:41.233Z",
-  "dry_run": true,
-  "model": "fixture",
+  "classified_at": "2026-10-01T12:33:00.724Z",
+  "dry_run": false,
+  "model": "claude-sonnet-5",
   "sources": [
+    {
+      "id": "dpf-participant-list",
+      "status": "classified",
+      "classification": "cosmetic",
+      "rationale": "Diff only changes FTC news/press release headlines, event listings, and minor search box text reflow. No changes to DPF participant status, obligations, certifications, or scope relevant to the dependent page on US-hosted LLMs under nDSG.",
+      "confidence": "high",
+      "dependent_pages": [
+        "us-hosted-llms-ndsg"
+      ],
+      "diff_stats": {
+        "additions": 6,
+        "deletions": 8,
+        "hunks": 2
+      },
+      "diff_truncated": false
+    },
+    {
+      "id": "finma-guidance-08-2024-news",
+      "status": "classified",
+      "classification": "material",
+      "rationale": "Addition of 'Portfolio managers' and 'Trustees' appears to expand the scope/applicability of the FINMA guidance to new categories of supervised institutions, which affects which entities the dependent page's description of expectations applies to.",
+      "confidence": "medium",
+      "dependent_pages": [
+        "finma-ai-expectations"
+      ],
+      "diff_stats": {
+        "additions": 2,
+        "deletions": 0,
+        "hunks": 1
+      },
+      "diff_truncated": false
+    },
+    {
+      "id": "consilium-digital-omnibus-ai",
+      "status": "classified",
+      "classification": "material",
+      "rationale": "The diff shows the Digital Omnibus on AI regulation has now been published in the Official Journal (Regulation 2026/1744, OJ L 24.07.2026), with status changing from 'awaiting publication' to 'Procedure completed' and a Final act document added. This is precisely the trigger event noted in the source title instructing a swap to the EUR-Lex consolidated text. This directly affects the dependent page on EU AI Act applicability for Swiss exporters, which should now reference the finalized, published regulation and its effective dates rather than a pending procedure.",
+      "confidence": "high",
+      "dependent_pages": [
+        "eu-ai-act-swiss-exporters"
+      ],
+      "diff_stats": {
+        "additions": 41,
+        "deletions": 20,
+        "hunks": 13
+      },
+      "diff_truncated": false
+    },
+    {
+      "id": "anthropic-ai-fluency",
+      "status": "classified",
+      "classification": "cosmetic",
+      "rationale": "Only a copyright year footer change; no substantive content about obligations, scope, or product capabilities affected.",
+      "confidence": "high",
+      "dependent_pages": [
+        "ai-procurement-checklist"
+      ],
+      "diff_stats": {
+        "additions": 1,
+        "deletions": 1,
+        "hunks": 1
+      },
+      "diff_truncated": false
+    },
+    {
+      "id": "openai-business-data",
+      "status": "classified",
+      "classification": "material",
+      "rationale": "The diff is truncated and only shows the original content; the actual changed lines are not visible, making it impossible to confirm that hosting, DPA, certification, or pricing facts remained unchanged. Given the bias toward material when context is missing, this should be flagged for review.",
+      "confidence": "low",
+      "dependent_pages": [],
+      "diff_stats": {
+        "additions": 1,
+        "deletions": 1,
+        "hunks": 1
+      },
+      "diff_truncated": true
+    },
+    {
+      "id": "openai-dpa",
+      "status": "classified",
+      "classification": "material",
+      "rationale": "Diff is truncated and affects the OpenAI DPA page, which contains vendor compliance facts (hosting, DPA terms, certifications). Lack of visible context means potential substantive changes cannot be ruled out, so bias toward material per policy.",
+      "confidence": "low",
+      "dependent_pages": [],
+      "diff_stats": {
+        "additions": 1,
+        "deletions": 1,
+        "hunks": 1
+      },
+      "diff_truncated": true
+    },
     {
       "id": "anthropic-regional-compliance",
       "status": "classified",
       "classification": "material",
-      "rationale": "fixture for T18 material dry-run",
+      "rationale": "The diff is truncated, so the actual content changes cannot be fully verified. Given this source tracks vendor compliance facts like hosting, DPA, pricing, and certifications, and the diff content is hidden/truncated, bias toward material to ensure human review of potential substantive changes.",
       "confidence": "low",
-      "dependent_pages": []
+      "dependent_pages": [],
+      "diff_stats": {
+        "additions": 2,
+        "deletions": 2,
+        "hunks": 2
+      },
+      "diff_truncated": true
+    },
+    {
+      "id": "anthropic-certifications",
+      "status": "classified",
+      "classification": "cosmetic",
+      "rationale": "The core certification list (HIPAA-ready, ISO 27001:2022, ISO/IEC 42001:2023, SOC 2 Type I & II) and date remain unchanged. Changes are limited to related-articles link list (addition of 'What Cookies Does Anthropic Use?', removal of one Interviewer sessions date link) and reaction emoji label text—no substantive vendor/compliance facts changed.",
+      "confidence": "high",
+      "dependent_pages": [],
+      "diff_stats": {
+        "additions": 1,
+        "deletions": 1,
+        "hunks": 1
+      },
+      "diff_truncated": false
+    },
+    {
+      "id": "google-cloud-dpa",
+      "status": "classified",
+      "classification": "material",
+      "rationale": "The change updates the referenced data center/data residency location URL for SecOps Services, which pertains to hosting/data residency information relevant to vendor compliance facts. Since this affects where customers find authoritative data residency details, it could reflect a substantive change in documentation structure or content relevant to hosting locations, warranting review.",
+      "confidence": "medium",
+      "dependent_pages": [],
+      "diff_stats": {
+        "additions": 1,
+        "deletions": 1,
+        "hunks": 1
+      },
+      "diff_truncated": false
     },
     {
       "id": "google-cloud-ml-locations",
       "status": "classified",
       "classification": "material",
-      "rationale": "fixture for T18 material dry-run",
+      "rationale": "The diff shows substantive API surface changes (new resources like servingProfiles, interactions, memoryBanks.ingestEvents, new methods like authorizeAccess, bidiExecute, getIamPolicy/setIamPolicy, retrieveProfiles, SDK version migration guide additions) beyond navigation/boilerplate restructuring. These reflect actual product capability changes that could affect vendor capability claims, and the diff is truncated so additional substantive changes may be hidden.",
+      "confidence": "medium",
+      "dependent_pages": [],
+      "diff_stats": {
+        "additions": 179,
+        "deletions": 62,
+        "hunks": 33
+      },
+      "diff_truncated": true
+    },
+    {
+      "id": "microsoft-azure-openai-privacy",
+      "status": "classified",
+      "classification": "material",
+      "rationale": "The change replaces a simple email contact for reporting problematic content with a substantially different and more detailed security/safety vulnerability reporting process (pointing to MSRC, specifying vulnerability types like prompt injection, unsafe output, data exposure, and required reporting details). This is a substantive change to vendor compliance/support process documentation, not just cosmetic wording.",
+      "confidence": "medium",
+      "dependent_pages": [],
+      "diff_stats": {
+        "additions": 2,
+        "deletions": 2,
+        "hunks": 2
+      },
+      "diff_truncated": false
+    },
+    {
+      "id": "microsoft-dpa",
+      "status": "classified",
+      "classification": "cosmetic",
+      "rationale": "Changes are navigation/menu label renaming (product links like 'Copilot for organizations/personal use' consolidated to 'Explore Copilot', 'Microsoft 365 Copilot' renamed to 'Microsoft Copilot') with no change to DPA terms, obligations, hosting, pricing, or certifications.",
+      "confidence": "medium",
+      "dependent_pages": [],
+      "diff_stats": {
+        "additions": 2,
+        "deletions": 3,
+        "hunks": 2
+      },
+      "diff_truncated": false
+    },
+    {
+      "id": "mistral-dpa",
+      "status": "classified",
+      "classification": "material",
+      "rationale": "The diff shows the entire DPA content replaced/removed (truncated to near-empty), with only a single line remaining and the rest deleted. This represents a drastic change to vendor DPA terms (obligations, subprocessor terms, security, transfer mechanisms all removed/altered in the diff), which directly affects dependent compliance claims about Mistral's DPA terms. Given truncation and inability to confirm final content, bias toward material.",
+      "confidence": "high",
+      "dependent_pages": [],
+      "diff_stats": {
+        "additions": 1,
+        "deletions": 178,
+        "hunks": 1
+      },
+      "diff_truncated": true
+    },
+    {
+      "id": "mistral-home",
+      "status": "classified",
+      "classification": "material",
+      "rationale": "Beyond cosmetic nav/formatting changes, the diff introduces new substantive content: a major funding/news item ('Mistral raises €3B... sovereign, open-weight AI... new European infrastructure'), a new product (Shieldstral), a new 'AI Cloud' branding replacing 'Compute', a new Energy & Utilities industry vertical, new partner/customer references (TotalEnergies replacing BMW, Mozilla/Cloudera partnerships), and a new 'Trust Center' link in the footer alongside legal/DPA links. These touch on hosting infrastructure claims, certifications/trust resources, and vendor capability/customer claims relevant to compliance tracking, so this should be treated as material and reviewed.",
+      "confidence": "medium",
+      "dependent_pages": [],
+      "diff_stats": {
+        "additions": 86,
+        "deletions": 80,
+        "hunks": 16
+      },
+      "diff_truncated": false
+    },
+    {
+      "id": "aws-bedrock-security",
+      "status": "classified",
+      "classification": "cosmetic",
+      "rationale": "The diff consists entirely of added site navigation menus, product category links, marketing promo blurbs (re:Invent, featured products), and boilerplate footer/nav items. No security, compliance, hosting, DPA, pricing, or certification facts for Amazon Bedrock were changed in the actual page content.",
+      "confidence": "high",
+      "dependent_pages": [],
+      "diff_stats": {
+        "additions": 236,
+        "deletions": 1,
+        "hunks": 3
+      },
+      "diff_truncated": false
+    },
+    {
+      "id": "swisscom-ai-platform",
+      "status": "classified",
+      "classification": "cosmetic",
+      "rationale": "The diff adds a customer testimonial quote and a generic 'Find out more' link. This is marketing/boilerplate content and does not change hosting, DPA, pricing, certifications, or any compliance-relevant facts.",
+      "confidence": "high",
+      "dependent_pages": [],
+      "diff_stats": {
+        "additions": 6,
+        "deletions": 0,
+        "hunks": 1
+      },
+      "diff_truncated": false
+    },
+    {
+      "id": "infomaniak-trust",
+      "status": "classified",
+      "classification": "material",
+      "rationale": "The diff is truncated and contains the full page content as a single-line replacement, making it impossible to verify that compliance-relevant claims (certifications, FINMA mapping, DPA terms, data residency) are unchanged. Given the bias toward material on uncertainty and the explicit truncation warning, this should be treated as material pending full review.",
       "confidence": "low",
-      "dependent_pages": []
+      "dependent_pages": [],
+      "diff_stats": {
+        "additions": 1,
+        "deletions": 1,
+        "hunks": 1
+      },
+      "diff_truncated": true
+    },
+    {
+      "id": "huggingface-security",
+      "status": "classified",
+      "classification": "cosmetic",
+      "rationale": "The diff only adds new navigation/menu entries (e.g., 'Download Analytics', 'Using Docker images', 'Train Models', 'Process Large Datasets') to the sidebar table of contents. The core security/compliance content body—GDPR, SOC2, BAA/DPA claims, feature list—remains unchanged.",
+      "confidence": "high",
+      "dependent_pages": [],
+      "diff_stats": {
+        "additions": 1,
+        "deletions": 1,
+        "hunks": 1
+      },
+      "diff_truncated": false
+    },
+    {
+      "id": "cohere-trust",
+      "status": "classified",
+      "classification": "material",
+      "rationale": "Beyond wording fixes, the diff shows substantive changes: a new UK Cyber Essentials certificate entity (Cohere UK, LTD) was added, the 'Cohere Secure AI Frontier Model Framework' and 'Usage Policy' documents were removed and replaced with an 'EU AI Act FAQs' document, and numerous specific security/compliance controls (e.g., Background Checks, New Hire Screening, Risk Register, Lessons Learned, Retention of Customer Data, Physical Access Reviews, Visitor Control) were removed from the listed control set while control counts changed. These affect certification scope, compliance documentation, and control coverage claims relevant to dependent vendor-risk content.",
+      "confidence": "high",
+      "dependent_pages": [],
+      "diff_stats": {
+        "additions": 22,
+        "deletions": 59,
+        "hunks": 16
+      },
+      "diff_truncated": false
+    },
+    {
+      "id": "cohere-enterprise-data",
+      "status": "classified",
+      "classification": "material",
+      "rationale": "Diff is truncated with limited visible context on vendor data commitments page covering hosting, DPA, certifications, or pricing. Per bias and guidance, truncated diffs with potentially missing context should default to material to avoid missing substantive changes to vendor compliance claims.",
+      "confidence": "low",
+      "dependent_pages": [],
+      "diff_stats": {
+        "additions": 1,
+        "deletions": 1,
+        "hunks": 1
+      },
+      "diff_truncated": true
+    },
+    {
+      "id": "ibm-watsonx-home",
+      "status": "classified",
+      "classification": "cosmetic",
+      "rationale": "The diff only reorders footer/navigation links (Blog, Client stories, Community, Documentation) with no change in content, wording, or vendor facts like hosting, DPA, pricing, or certifications.",
+      "confidence": "high",
+      "dependent_pages": [],
+      "diff_stats": {
+        "additions": 4,
+        "deletions": 4,
+        "hunks": 1
+      },
+      "diff_truncated": false
+    },
+    {
+      "id": "exoscale-compliance",
+      "status": "classified",
+      "classification": "material",
+      "rationale": "Beyond extensive navigation/menu restructuring (cosmetic), the diff adds a new datacenter zone ES-MAD-1 with its own certification set (ISO 27001, ISO 9001, ISO 20000, ISO 22301) to the compliance/certifications table — a substantive addition to hosting regions and certification scope that dependent vendor-comparison content should reflect.",
+      "confidence": "high",
+      "dependent_pages": [],
+      "diff_stats": {
+        "additions": 552,
+        "deletions": 44,
+        "hunks": 8
+      },
+      "diff_truncated": false
+    },
+    {
+      "id": "exoscale-ai",
+      "status": "classified",
+      "classification": "material",
+      "rationale": "The content section merges previously separate 'Dedicated Inference' and 'Managed Inference' product descriptions into a single 'Inference' offering with new wording about GPU reservation vs pay-per-token access, and pricing section language changed from 'pay-as-you-go for the managed inference' to 'pay-as-you-go for On-demand Inference'. These are substantive product capability and structure changes, not just navigation/menu restructuring, which could affect vendor comparison content.",
+      "confidence": "medium",
+      "dependent_pages": [],
+      "diff_stats": {
+        "additions": 554,
+        "deletions": 50,
+        "hunks": 10
+      },
+      "diff_truncated": true
     },
     {
       "id": "ovhcloud-ai-endpoints",
       "status": "classified",
       "classification": "material",
-      "rationale": "fixture for T18 material dry-run",
-      "confidence": "low",
-      "dependent_pages": []
+      "rationale": "The diff is truncated, providing insufficient context to confirm no changes to hosting, DPA, pricing, or certification facts on this vendor comparison page. Per bias and policy, truncated diffs with potentially missing context should default to material.",
+      "confidence": "medium",
+      "dependent_pages": [],
+      "diff_stats": {
+        "additions": 5,
+        "deletions": 5,
+        "hunks": 2
+      },
+      "diff_truncated": true
+    },
+    {
+      "id": "deepl-infrastructure",
+      "status": "classified",
+      "classification": "material",
+      "rationale": "The page content describes DeepL adding AWS as a sub-processor, ending exclusive EU-only data processing, and details on data residency, encryption, and certifications (C5, HIPAA, GDPR, ISO 27001, SOC 2). These are core vendor compliance facts (hosting region, sub-processor, data residency) that directly affect dependent compliance/vendor content. The diff is truncated, making it impossible to confirm no substantive change occurred, so bias toward material applies.",
+      "confidence": "medium",
+      "dependent_pages": [],
+      "diff_stats": {
+        "additions": 1,
+        "deletions": 1,
+        "hunks": 1
+      },
+      "diff_truncated": true
+    },
+    {
+      "id": "deepl-pro-security",
+      "status": "classified",
+      "classification": "cosmetic",
+      "rationale": "The diff changes are confined to navigation/menu items, blog post teasers, product links, and footer links (e.g., new blog titles, added 'AI agents' nav item, removed 'Cancel subscriptions hereStatus' link, added 'Sitemap' link). The core security/compliance content—SOC 2 Type II certification, GDPR compliance, penetration testing, encryption, BYOK, SSO/MFA, data handling practices—remains unchanged verbatim. No hosting, pricing, DPA, or certification claims were altered.",
+      "confidence": "medium",
+      "dependent_pages": [],
+      "diff_stats": {
+        "additions": 2,
+        "deletions": 2,
+        "hunks": 1
+      },
+      "diff_truncated": false
     }
   ],
   "summary": {
-    "material": 3,
-    "cosmetic": 0,
+    "material": 17,
+    "cosmetic": 9,
     "baseline": 0,
     "skipped": 0,
     "failed": 0

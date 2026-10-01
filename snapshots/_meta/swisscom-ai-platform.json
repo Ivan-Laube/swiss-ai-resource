@@ -1,10 +1,14 @@
 {
   "id": "swisscom-ai-platform",
   "url": "https://www.swisscom.ch/en/business/enterprise/offer/platforms-applications/data-driven-business/swiss-ai-platform.html",
-  "fetched_at": "2026-07-16T09:44:02.771Z",
+  "fetched_url": "https://www.swisscom.ch/en/business/enterprise/offer/platforms-applications/data-driven-business/swiss-ai-platform.html",
+  "fetched_at": "2026-10-01T12:30:56.352Z",
   "http_status": 200,
   "content_type": "text/html;charset=utf-8",
-  "sha256": "f2c0ba101e253d6d69f472295fb145d5ca80d3da4cfb58c79d765fcf6fd40380",
-  "byte_length": 5975,
-  "ok": true
+  "sha256": "0b9010f221e9be397cbe7d5d454228629f1ff1517c6d10cdbf76628cab787280",
+  "byte_length": 6101,
+  "ok": true,
+  "consecutive_failures": 0,
+  "last_ok_at": "2026-10-01T12:30:56.352Z",
+  "attempt": "bot"
 }

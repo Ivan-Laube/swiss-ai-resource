@@ -1,10 +1,14 @@
 {
   "id": "mistral-dpa",
   "url": "https://legal.mistral.ai/terms/data-processing-addendum",
-  "fetched_at": "2026-07-16T09:43:59.180Z",
+  "fetched_url": "https://legal.mistral.ai/terms/data-processing-addendum/",
+  "fetched_at": "2026-10-01T12:30:53.268Z",
   "http_status": 200,
-  "content_type": "text/html; charset=utf-8",
-  "sha256": "79c9f932efee64c0f10bf859ec147fc39f4d6f26df9bf31e0906b6a6bd5f6256",
-  "byte_length": 21919,
-  "ok": true
+  "content_type": "text/html; charset=UTF-8",
+  "sha256": "ab6bfe8663986da29a23869b95ee15c9775261d8576393ec42a0fc9873595684",
+  "byte_length": 22219,
+  "ok": true,
+  "consecutive_failures": 0,
+  "last_ok_at": "2026-10-01T12:30:53.268Z",
+  "attempt": "bot"
 }

@@ -1,10 +1,14 @@
 {
   "id": "google-cloud-dpa",
   "url": "https://cloud.google.com/terms/data-processing-addendum",
-  "fetched_at": "2026-07-16T09:43:54.339Z",
+  "fetched_url": "https://cloud.google.com/terms/data-processing-addendum",
+  "fetched_at": "2026-10-01T12:30:49.240Z",
   "http_status": 200,
   "content_type": "text/html; charset=utf-8",
-  "sha256": "75dc3699d41a5935d7f8857ce346e456eec22f78527243551b74b0606a940223",
-  "byte_length": 141149,
-  "ok": true
+  "sha256": "7cdb2f7477ee79f51d3295337188746f10f0096870ab3ac403cd70e377afac2b",
+  "byte_length": 141150,
+  "ok": true,
+  "consecutive_failures": 0,
+  "last_ok_at": "2026-10-01T12:30:49.240Z",
+  "attempt": "bot"
 }

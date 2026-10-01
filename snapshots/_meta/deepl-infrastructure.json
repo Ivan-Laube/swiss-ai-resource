@@ -2,13 +2,13 @@
   "id": "deepl-infrastructure",
   "url": "https://www.deepl.com/en/blog/expanding-deepl-data-infrastructure",
   "fetched_url": "https://www.deepl.com/en/blog/expanding-deepl-data-infrastructure",
-  "fetched_at": "2026-07-17T09:37:19.973Z",
+  "fetched_at": "2026-10-01T12:31:05.824Z",
   "http_status": 200,
-  "content_type": "text/html",
-  "sha256": "9394496d5fab0a93acd3b9baed417534a5b5debe5a89d6fa5450f2dddbcbcd87",
-  "byte_length": 7456,
+  "content_type": "text/html; charset=utf-8",
+  "sha256": "6280ec321e1c5d367b1ae4d41c2339de87a70fdff4d139b0efe9410b2f55de70",
+  "byte_length": 7364,
   "ok": true,
   "consecutive_failures": 0,
-  "last_ok_at": "2026-07-17T09:37:19.973Z",
+  "last_ok_at": "2026-10-01T12:31:05.824Z",
   "attempt": "bot"
 }

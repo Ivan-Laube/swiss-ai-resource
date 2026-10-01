@@ -1,51 +1,25 @@
-# Broken links (2026-07)
+# Broken links (2026-10)
 
 Automated T21 dead-link check from the monthly source job.
 Fix or replace unreachable citation URLs on published surfaces.
 Does **not** bump `last_verified` or clear lawyer review badges.
 
-Checked **50** unique URL(s): **46** ok, **4** broken.
-(Reused 38 from T15 run report; probed 12.)
+Checked **51** unique URL(s): **49** ok, **2** broken.
+(Reused 36 from T15 run report; probed 15.)
 
 ## Broken URLs
 
-### https://openai.com/business-data/
+### https://openai.com/
 
-- **Status:** 403 — HTTP 403 Forbidden
-- **Reused from T15:** yes
+- **Status:** 403 — HTTP 403
+- **Reused from T15:** no
 - **Cited from:**
-  - `vendor` `openai#hosting_regions.source_url`
-  - `vendor` `openai#swiss_hosting.source_url`
-  - `vendor` `openai#eu_hosting.source_url`
-  - `vendor` `openai#training_opt_out.source_url`
-  - `vendor` `openai#certifications.source_url`
-
-### https://openai.com/policies/data-processing-addendum/
-
-- **Status:** 403 — HTTP 403 Forbidden
-- **Reused from T15:** yes
-- **Cited from:**
-  - `vendor` `openai#dpa_url.source_url`
-  - `vendor` `openai#swiss_entity.source_url`
-  - `vendor` `openai#eu_entity.source_url`
-  - `vendor` `openai#dpa_url.value`
-
-### https://support.deepl.com/hc/en-us/articles/26380849099932-DeepL-infrastructure-and-data-protection
-
-- **Status:** 403 — HTTP 403 Forbidden
-- **Reused from T15:** yes
-- **Cited from:**
-  - `vendor` `deepl#hosting_regions.source_url`
-  - `vendor` `deepl#eu_hosting.source_url`
-  - `vendor` `deepl#training_opt_out.source_url`
-  - `vendor` `deepl#certifications.source_url`
-  - `vendor` `deepl#swiss_entity.source_url`
-  - `vendor` `deepl#eu_entity.source_url`
+  - `vendor` `openai#website`
 
 ### https://www.consilium.europa.eu/en/press/press-releases/2026/06/29/artificial-intelligence-council-gives-final-green-light-to-simplify-and-streamline-rules/
 
-- **Status:** 403 — HTTP 403 Forbidden
-- **Reused from T15:** yes
+- **Status:** 403 — HTTP 403
+- **Reused from T15:** no
 - **Cited from:**
   - `content` `de/eu-ai-act-swiss-exporters#sources`
   - `content` `en/eu-ai-act-swiss-exporters#sources`

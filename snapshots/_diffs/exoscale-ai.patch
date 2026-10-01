@@ -1,0 +1,729 @@
+Index: snapshots/exoscale-ai.txt
+===================================================================
+--- snapshots/exoscale-ai.txt
++++ snapshots/exoscale-ai.txt
+@@ -1,77 +1,578 @@
+-Newsletter
++Skip to main content
++
+ Blog
+-Partner Programs
+-Academy
+-Contact us
+ 
++Changelog
++
++Documentation
++
++Newsletter
++
++Support
++
++Contact Us
++
+ Exoscale
+ 
+ Products
+ 
+-Compute Instances
+-Concrete AI
+-Managed Kubernetes
+-DBaaS
++ComputeVirtual machines, GPUs and Kubernetes
++
++Concrete AIOur AI infrastructure suite, from GPUs to inference endpoints
++
++StorageStore any volume of data in Europe
++
++DBaaSOpen-source database and analytics engines, fully operated
++
++NetworkingConnect, route and protect your traffic
++
++SecurityKeys, access and encryption
++
++Compute InstancesSSD-backed VMs billed by the second
++
++GPU Servers1 to 8 NVIDIA cards per instance
++
++Managed KubernetesExoscale runs the control plane
++
++Concrete AI OverviewThe whole AI suite at a glance
++
++Inference
++
++Dedicated InferenceAny model as an API on dedicated GPUs
++
++On-Demand InferencePay-as-you-go AI model catalog
++
++GPUs and Databases
++
++GPU Servers1 to 8 NVIDIA cards per instance
++
++Vector DatabasesStore and search AI embeddings
++
+ Object Storage
++
++Object StorageS3-compatible storage across 8 European zones
++
++Archival StorageCold archives and long-term backups
++
+ Block Storage
+-GPU Servers
+ 
+-All products
++Block StoragePersistent volumes you can reattach to other instances
+ 
+-Marketplace
++Managed DatabasesPlans, pricing and how DBaaS works
+ 
+-Pricing
++Relational
+ 
++PostgreSQLThe feature-rich open-source relational database
++
++MySQLThe most widely deployed relational database
++
++NoSQL
++
++OpenSearchFull-text search, log analytics and dashboards
++
++ValkeyIn-memory key-value store for caching
++
++Streaming and Analytics
++
++KafkaEvent streaming for real-time pipelines
++
++ClickHouseColumnar analytics at real-time speed
++
++Vector Databases
++
++pgvectorVector similarity search inside PostgreSQL
++
++Vector SearchSemantic search over your own data
++
++Observability
++
++GrafanaDashboards for your metrics and logs
++
++ThanosLong-term storage for Prometheus metrics
++
++NetworkingPrivate Networks, Network Load Balancer and Elastic IPs
++
++Virtual Private CloudDedicated hypervisors and Private Connect
++
++DNSAnycast resolution at low latency
++
++CDNDeliver content directly from your buckets
++
++Key Management ServiceCreate and control your own encryption keys
++
++IAMRoles, API keys and fine-grained access control
++
++Audit TrailsA record of every action taken on your account
++
++EncryptionEncryption at rest and in transit
++
++Browse All Products
++
+ Resources
+ 
+-Documentation
+-API
+-Blog
+-Integration
+-Support
++DocumentationEverything you need to start and integrate
+ 
+-Changelog
++Trust and ComplianceCertifications, security and data protection
+ 
++InfrastructureWhere and how the platform runs
++
++News and LearningProduct news, training and events
++
++SupportPlans, status and how to reach us
++
++CompanyWho runs the platform
++
++Platform
++
++Quick StartFirst setup, registration and verification
++
++BillingBilled by the exact time or unit consumed
++
++Products
++
++ComputeInstances and dedicated hypervisors
++
++Containers (SKS)Cluster setup, operations and recipes
++
++Concrete AIOpenAI-compatible inference endpoints
++
++StorageObject Storage and Block Storage
++
++DBaaSEngines, plans and service boundaries
++
++NetworkingLoad balancing, DNS, CDN and Private Networks
++
++SecurityKey Management Service and IAM
++
++SupportSupport priorities and SLA
++
++Reference
++
++API ReferenceThe public Exoscale API
++
++CLIManage your resources with the exo CLI
++
++Terraform ProviderDeclare your infrastructure as code
++
++SDKsClient libraries per language
++
++IntegrationsTerraform, Kubernetes, Packer, Pulumi
++
++Compliance
++
++GDPREuropean Union data protection law
++
++Swiss FDPASwiss federal act on data protection
++
++BSI C5German cloud computing security criteria
++
++ISO 27001Information security management system
++
++Commitments
++
++SecurityHow we secure the platform
++
++Data PortabilityTake your data out whenever you want
++
++SLAAvailability commitments per product
++
++DatacentersEuropean zones and data residency
++
++SustainabilityRenewable energy and heat reuse
++
++Liquid CoolingLiquid-cooled GPU racks
++
++ChangelogWhat changes on the platform
++
++BlogAnnouncements and engineering write-ups
++
++AcademyTraining and certification
++
++Learning CenterHands-on Kubernetes and cloud-native workshops
++
++TutorialsStep-by-step guides for selected topics
++
++NewsletterSubscribe to product news by email
++
++EventsMeetups and conferences
++
++Support PlansFree support included, paid plans available
++
++FAQAnswers to common questions
++
++StatusIncidents and planned maintenance
++
++Report AbuseHow to submit a report
++
++About UsExoscale and the A1 Group
++
++JobsJoin the team
++
++ContactQuestions about your next cloud project
++
++Browse the Documentation
++
++Partners
++
++MarketplaceReady-to-deploy applications
++
++Become a PartnerResell, integrate or refer Exoscale
++
++MarketplaceAppliances, managed services and VM templates
++
++TemplatesLinux and Windows images for Compute Instances
++
++Partner ProgramsOverview of the programs
++
++Value Added PartnersResell with added value
++
++AgentsRefer clients and earn over the whole contract
++
++Technology ProvidersSoftware vendors and technology partners
++
++Pricing
++
++PricingRates per product, billed by the second
++
++Pricing CalculatorEstimate the cost of a deployment
++
++Volume DiscountsReduced rates for larger volumes
++
+ Log in
+ Register
+ 
+ Menu
+ 
+-Register
+-Log in
++Products
+ 
++Resources
++
++Partners
++
++Pricing
++
++Blog
++
++Changelog
++
++Documentation
++
++Newsletter
++
++Support
++
++Contact Us
++
++Back to Main Menu
+ Products
+ 
+-Compute Instances
++Products
++
++ComputeVirtual machines, GPUs and Kubernetes
++
++Concrete AIOur AI infrastructure suite, from GPUs to inference endpoints
++
++StorageStore any volume of data in Europe
++
++DBaaSOpen-source database and analytics engines, fully operated
++
++NetworkingConnect, route and protect your traffic
++
++SecurityKeys, access and encryption
++
++Browse All Products
++
++Back to Products
++Compute
++
++Compute
++Virtual machines, GPUs and Kubernetes
++
++Compute InstancesSSD-backed VMs billed by the second
++
++GPU Servers1 to 8 NVIDIA cards per instance
++
++Managed KubernetesExoscale runs the control plane
++
++Back to Products
+ Concrete AI
+-Managed Kubernetes
+-DBaaS
++
++Concrete AI
++Our AI infrastructure suite, from GPUs to inference endpoints
++
++Concrete AI OverviewThe whole AI suite at a glance
++
++Inference
++
++Dedicated InferenceAny model as an API on dedicated GPUs
++
++On-Demand InferencePay-as-you-go AI model catalog
++
++GPUs and Databases
++
++GPU Servers1 to 8 NVIDIA cards per instance
++
++Vector DatabasesStore and search AI embeddings
++
++Back to Products
++Storage
++
++Storage
++Store any volume of data in Europe
++
+ Object Storage
++
++Object StorageS3-compatible storage across 8 European zones
++
++Archival StorageCold archives and long-term backups
++
+ Block Storage
+-GPU Servers
+ 
+-All products
++Block StoragePersistent volumes you can reattach to other instances
+ 
+-Marketplace
++Back to Products
++DBaaS
+ 
+-Pricing
++DBaaS
++Open-source database and analytics engines, fully operated
+ 
++Managed DatabasesPlans, pricing and how DBaaS works
++
++Relational
++
++PostgreSQLThe feature-rich open-source relational database
++
++MySQLThe most widely deployed relational database
++
++NoSQL
++
++OpenSearchFull-text search, log analytics and dashboards
++
++ValkeyIn-memory key-value store for caching
++
++Streaming and Analytics
++
++KafkaEvent streaming for real-time pipelines
++
++ClickHouseColumnar analytics at real-time speed
++
++Vector Databases
++
++pgvectorVector similarity search inside PostgreSQL
++
++Vector SearchSemantic search over your own data
++
++Observability
++
++GrafanaDashboards for your metrics and logs
++
++ThanosLong-term storage for Prometheus metrics
++
++Back to Products
++Networking
++
++Networking
++Connect, route and protect your traffic
++
++NetworkingPrivate Networks, Network Load Balancer and Elastic IPs
++
++Virtual Private CloudDedicated hypervisors and Private Connect
++
++DNSAnycast resolution at low latency
++
++CDNDeliver content directly from your buckets
++
++Back to Products
++Security
++
++Security
++Keys, access and encryption
++
++Key Management ServiceCreate and control your own encryption keys
++
++IAMRoles, API keys and fine-grained access control
++
++Audit TrailsA record of every action taken on your account
++
++EncryptionEncryption at rest and in transit
++
++Back to Main Menu
+ Resources
+ 
++Resources
++
++DocumentationEverything you need to start and integrate
++
++Trust and ComplianceCertifications, security and data protection
++
++InfrastructureWhere and how the platform runs
++
++News and LearningProduct news, training and events
++
++SupportPlans, status and how to reach us
++
++CompanyWho runs the platform
++
++Browse the Documentation
++
++Back to Resources
+ Documentation
+-API
+-Blog
+-Integration
++
++Documentation
++Everything you need to start and integrate
++
++Platform
++
++Quick StartFirst setup, registration and verification
++
++BillingBilled by the exact time or unit consumed
++
++Products
++
++ComputeInstances and dedicated hypervisors
++
++Containers (SKS)Cluster setup, operations and recipes
++
++Concrete AIOpenAI-compatible inference endpoints
++
++StorageObject Storage and Block Storage
++
++DBaaSEngines, plans and service boundaries
++
++NetworkingLoad balancing, DNS, CDN and Private Networks
++
++SecurityKey Management Service and IAM
++
++SupportSupport priorities and SLA
++
++Reference
++
++API ReferenceThe public Exoscale API
++
++CLIManage your resources with the exo CLI
++
++Terraform ProviderDeclare your infrastructure as code
++
++SDKsClient libraries per language
++
++IntegrationsTerraform, Kubernetes, Packer, Pulumi
++
++Back to Resources
++Trust and Compliance
++
++Trust and Compliance
++Certifications, security and data protection
++
++Compliance
++
++GDPREuropean Union data protection law
++
++Swiss FDPASwiss federal act on data protection
++
++BSI C5German cloud computing security criteria
++
++ISO 27001Information security management system
++
++Commitments
++
++SecurityHow we secure the platform
++
++Data PortabilityTake your data out whenever you want
++
++SLAAvailability commitments per product
++
++Back to Resources
++Infrastructure
++
++Infrastructure
++Where and how the platform runs
++
++DatacentersEuropean zones and data residency
++
++SustainabilityRenewable energy and heat reuse
++
++Liquid CoolingLiquid-cooled GPU racks
++
++Back to Resources
++News and Learning
++
++News and Learning
++Product news, training and events
++
++ChangelogWhat changes on the platform
++
++BlogAnnouncements and engineering write-ups
++
++AcademyTraining and certification
++
++Learning CenterHands-on Kubernetes and cloud-native workshops
++
++TutorialsStep-by-step guides for selected topics
++
++NewsletterSubscribe to product news by email
++
++EventsMeetups and conferences
++
++Back to Resources
+ Support
+ 
+-What's new
++Support
++Plans, status and how to reach us
+ 
+-Newsletter
+-Blog
+-Partner Programs
+-Academy
+-Contact us
++Support PlansFree support included, paid plans available
+ 
++FAQAnswers to common questions
++
++StatusIncidents and planned maintenance
++
++Report AbuseHow to submit a report
++
++Back to Resources
++Company
++
++Company
++Who runs the platform
++
++About UsExoscale and the A1 Group
++
++JobsJoin the team
++
++ContactQuestions about your next cloud project
++
++Back to Main Menu
++Partners
++
++Partners
++Marketplace
++
++MarketplaceAppliances, managed services and VM templates
++
++TemplatesLinux and Windows images for Compute Instances
++
++Become a Partner
++
++Partner ProgramsOverview of the programs
++
++Value Added PartnersResell with added value
++
++AgentsRefer clients and earn over the whole contract
++
++Technology ProvidersSoftware vendors and technology partners
++
++Back to Main Menu
++Pricing
++
++Pricing
++
++PricingRates per product, billed by the second
++
++Pricing CalculatorEstimate the cost of a deployment
++
++Volume DiscountsReduced rates for larger volumes
++
++Log in
++Register
++
+ Exoscale - European Cloud Hosting Services
+ 
+ AI Cloud Infrastructure
+@@ -96,12 +597,9 @@
+ High-Performance GPUsAccelerate AI training, fine-tuning, and volume inference using powerful NVIDIA GPUs. Scale from a single GPU to multi-GPU setups without complex orchestration. Perfect for machine learning, data processing, 3D rendering, inference, and scientific computing.
+ Discover
+ 
+-Dedicated InferenceFully managed, secure, and production-ready API endpoints for any open-source AI model. Zero operations required. Focus on building your applications while we handle scaling, monitoring, and maintenance.
++InferencePut AI models into production your way. Reserve dedicated NVIDIA GPUs for full control and predictable performance, or use pay-per-token access to a curated catalog of ready-to-use models. Both options run on sovereign European infrastructure through an OpenAI-compatible API.
+ Discover
+ 
+-Managed InferenceAccess a curated catalog of production-ready AI models through a managed API with pay-as-you-go pricing. Ideal for rapid prototyping, variable traffic, and teams that want AI capabilities without operating dedicated GPU infrastructure.
+-Discover
+-
+ Managed Vector DatabasesEssential tools for modern AI, powering Retrieval-Augmented Generation (RAG) and semantic search workloads. Fully managed PostgreSQL with pgvector and OpenSearch-based vector search.
+ Discover
+ 
+@@ -111,7 +609,7 @@
+ Your data remains in Europe, ensuring GDPR compliance and sovereignty. Our data centers use renewable power and efficient cooling to reduce environmental impact significantly. Built in Europe, for Europe.
+ 
+ Predictable, Transparent Pricing
+-Pay only for the GPU usage you consume or pay-as-you-go for the managed inference. Transparent, per-second billing with no hidden fees or surprise costs.
++Pay only for the GPU usage you consume for Dedicated or pay-as-you-go for On-demand Inference. Transparent, per-second billing with no hidden fees or surprise costs.
+ 
+ OpenAI API Compatibility
+ Dedicated Inference integrates easily with your existing AI tools. No vendor lock-in and simple transition to our sovereign cloud infrastructure.
+@@ -161,7 +659,7 @@
+ 
+ What are the pricing models for the AI products?
+ 
+-For GPU compute, we offer transparent, per-second billing, meaning you only pay for the exact GPU time you use. Dedicated Inference cost is primarily on GPU time. For Managed Inference you will pay for what you use. For Vector Databases, you only pay for your PostgreSQL or OpenSearch instance. No extra fees are billed for the extension.
++For GPU compute, we offer transparent, per-second billing, meaning you only pay for the exact GPU time you use. Dedicated Inference cost is primarily on GPU time. For On-demand Inference you will pay for what you use. For Vector Databases, you only pay for your PostgreSQL or OpenSearch instance. No extra fees are billed for the extension.
+ 
+ Does Exoscale support open standards to avoid vendor lock-in?
+ 
+@@ -169,7 +667,7 @@
+ 
+ Exoscale
+ 
+-Company
++About Us
+ 
+ Jobs
+ 
+@@ -185,23 +683,25 @@
+ 
+ Cloud Hosting
+ 
+-Cloud Server
++Compute Instances
+ 
+-Kubernetes
++Concrete AI
+ 
++Managed Kubernetes
++
+ DBaaS
+ 
+ Object Storage
+ 
+ Block Storage
+ 
+-GPU
++GPU Servers
+ 
+ Networking
+ 
+ Virtual Private Cloud
+ 
+-Cloud DNS
++DNS
+ 
+ CDN
+ 
+@@ -221,6 +721,8 @@
+ 
+ Resources
+ 
++Pricing
++
+ Documentation
+ 
+ API
+@@ -229,8 +731,10 @@
+ 
+ Backup
+ 
+-Integration
++Marketplace
+ 
++Integrations
++
+ Technology Providers
+ 
+ Changelog
+@@ -241,7 +745,7 @@
+ 
+ Data Portability
+ 
+-Abuse
++Report Abuse
+ 
+ Exoscale
+ 
+@@ -251,7 +755,7 @@
+ Lausanne
+ Switzerland
+ 
+-Contact us
++Contact Us
+ 
+ PrivacyTerms and ConditionsSLA
+ 
