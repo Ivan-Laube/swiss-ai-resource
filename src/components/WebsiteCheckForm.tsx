@@ -197,6 +197,22 @@ function groupBySeverity(findings: Finding[]): Map<Severity, Finding[]> {
   }
   return groups;
 }
+/** Points operators of scanned sites to a contact if they dispute a result. */
+function SiteOwnerNote({
+  locale,
+  messages,
+}: {
+  locale: Locale;
+  messages: WebsiteCheckMessages;
+}) {
+  return (
+    <p>
+      {messages.siteOwnerNote}{" "}
+      <Link href={`/${locale}/impressum/`}>{messages.siteOwnerLinkLabel}</Link>.
+    </p>
+  );
+}
+
 export function WebsiteCheckForm({
   locale,
   messages,
@@ -551,7 +567,11 @@ export function WebsiteCheckForm({
           })}
           {/* T36: reserved for future LLM policy-content pass */}
           {null}
-          <Callout tone="neutral">{messages.disclaimer}</Callout>
+          <Callout tone="neutral">
+            <p>{messages.disclaimer}</p>
+            <p>{messages.notFoundNote}</p>
+            <SiteOwnerNote locale={locale} messages={messages} />
+          </Callout>
           <div className={styles.reportActions}>
             <Button type="button" variant="secondary" onClick={resetReport}>
               {messages.scanAgain}
@@ -616,7 +636,8 @@ export function WebsiteCheckForm({
         </div>
       </form>
       <Callout tone="neutral" className={styles.formDisclaimer}>
-        {messages.disclaimer}
+        <p>{messages.disclaimer}</p>
+        <SiteOwnerNote locale={locale} messages={messages} />
       </Callout>
     </div>
   );
