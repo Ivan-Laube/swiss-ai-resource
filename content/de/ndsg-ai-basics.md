@@ -44,6 +44,19 @@ KI-gestützte Bearbeitungen mit hohen Risiken sind dem Grundsatz nach zulässig,
 
 Anwendungen, die auf eine Aushöhlung der Privatsphäre und informationellen Selbstbestimmung abzielen – etwa flächendeckende Gesichtserkennung in Echtzeit oder «Social Scoring» – sind datenschutzrechtlich **verboten**.
 
+## Wer im Unternehmen zuständig ist {#responsibility}
+
+Datenschutzrechtlich verantwortlich ist das Unternehmen selbst (der «Verantwortliche» im Sinne des DSG), nicht das KI-Tool und nicht dessen Anbieter. Eine eigene KI-Beauftragte oder einen eigenen KI-Beauftragten verlangt das DSG nicht. Private Unternehmen können eine Datenschutzberaterin oder einen Datenschutzberater ernennen (Art. 10 DSG), müssen es aber nicht.
+
+In der Praxis braucht es trotzdem eine klar zuständige Person, sonst bleiben Fragen und Entscheide liegen. Bewährt hat sich, eine Person namentlich zu bestimmen, die:
+
+- das Verzeichnis der genutzten KI-Tools aktuell hält;
+- über neue Tools entscheidet oder den Entscheid vorbereitet;
+- Ansprechperson für Fragen und Vorfälle ist;
+- Schulungen organisiert und die interne KI-Richtlinie aktuell hält.
+
+In kleinen Unternehmen ist das meist die Inhaberin, der Inhaber oder die Geschäftsführung. Wichtig ist, dass die Aufgabe ausdrücklich zugewiesen ist und dafür etwas Zeit eingeplant wird. Für FINMA-beaufsichtigte Institute gelten weitergehende Erwartungen an Governance und Zuständigkeiten (siehe [FINMA-Erwartungen an KI-Governance](/de/finma-ai-expectations/)).
+
 ## Was KMU jetzt tun können {#next-steps}
 
 1. Inventar: Welche KI-Tools bearbeiten Personendaten?
@@ -51,6 +64,7 @@ Anwendungen, die auf eine Aushöhlung der Privatsphäre und informationellen Sel
 3. Bei hohem Risiko eine DSFA planen.
 4. Mit Anbietern klären: Auftragsbearbeitung, Trainingsnutzung, Speicherort.
 5. Menschliche Kontrolle bei automatisierten Entscheiden mit erheblicher Wirkung sicherstellen.
+6. Eine Person bestimmen, die für den KI-Einsatz zuständig ist (siehe [Wer im Unternehmen zuständig ist](#responsibility)).
 
 ## Hinweis
 
