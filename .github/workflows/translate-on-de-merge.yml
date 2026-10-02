@@ -23,8 +23,26 @@ concurrency:
 jobs:
   translate:
     runs-on: ubuntu-latest
+    timeout-minutes: 60
+    # Same Playwright image as the CI e2e job (and @playwright/test in
+    # package.json), so the FR visual baselines refreshed below match CI.
+    container:
+      image: mcr.microsoft.com/playwright:v1.63.0-jammy
+      options: --ipc=host
+    # Container steps default to sh; the scripts below use bash features
+    # (pipefail, arrays, mapfile).
+    defaults:
+      run:
+        shell: bash
 
     steps:
+      # The Playwright image may lack git/ssh; without them checkout falls
+      # back to a tarball download and the commit step can't push.
+      - name: Install git and ssh
+        run: |
+          apt-get update
+          apt-get install -y --no-install-recommends git openssh-client
+
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         # Push with the bots-push-main deploy key, not GITHUB_TOKEN: the
@@ -34,6 +52,11 @@ jobs:
         with:
           fetch-depth: 0
           ssh-key: ${{ secrets.BOT_DEPLOY_KEY }}
+
+      # In the container the checkout is owned by another user; without this,
+      # git (used by the change detection below) refuses to run.
+      - name: Mark workspace safe for git
+        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
 
       - name: Setup Node
         uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
@@ -168,6 +191,18 @@ jobs:
         if: steps.slugs.outputs.count != '0' || steps.templates.outputs.count != '0'
         run: npm run build
 
+      # Keep main green: new or changed translations change FR pages (and a
+      # new guide changes every page's footer, which lists all guides), so
+      # the FR visual baselines are refreshed and committed together with
+      # the translations. Only FR: EN/IT have no visual tests, and DE
+      # baselines must never be updated by the bot without review.
+      - name: Refresh FR visual baselines
+        if: steps.slugs.outputs.count != '0' || steps.templates.outputs.count != '0'
+        run: |
+          set -euo pipefail
+          npm run build:e2e
+          npx playwright test e2e/visual --grep "visual routes \(fr\)" --update-snapshots
+
       - name: Configure git
         if: steps.slugs.outputs.count != '0' || steps.templates.outputs.count != '0'
         run: |
@@ -183,11 +218,13 @@ jobs:
           set -euo pipefail
 
           git add -- content/en content/fr content/it content/templates
+          git add -- 'e2e/visual/routes.spec.ts-snapshots/fr-*'
           if git diff --cached --quiet; then
             echo "No translation file changes to commit."
             exit 0
           fi
 
           SLUG_LABEL="$(echo "${SLUG_LIST} ${TEMPLATE_LIST}" | xargs | tr ' ' ',')"
-          git commit -m "chore(content): regenerate translations (${SLUG_LABEL})"
+          git commit -m "chore(content): regenerate translations (${SLUG_LABEL})" \
+            -m "Includes refreshed FR visual baselines."
           git push
