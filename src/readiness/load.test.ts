@@ -60,6 +60,16 @@ describe("validateReadinessCheck", () => {
     });
   });
 
+  it("rejects listing a draft check", () => {
+    assert.throws(
+      validateWith((c) => {
+        c.status = "draft";
+        c.listed = true;
+      }),
+      /a draft check can't be listed/,
+    );
+  });
+
   it("rejects survey benchmarks that aren't survey options", () => {
     assert.throws(
       validateWith(

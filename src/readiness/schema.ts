@@ -184,6 +184,12 @@ export const readinessCheckSchema = z
     version: z.number().int().positive(),
     /** `draft`: FR/IT and pending links allowed. `live`: everything complete. */
     status: z.enum(["draft", "live"]),
+    /**
+     * Public discovery, separate from completeness: `true` lists the check on
+     * the tools index and in the sitemap and lets search engines index it.
+     * `false` keeps it reachable only by URL (noindex), e.g. during review.
+     */
+    listed: z.boolean().default(false),
     title: localizedStringSchema,
     description: localizedStringSchema,
     disclaimer: localizedStringSchema,

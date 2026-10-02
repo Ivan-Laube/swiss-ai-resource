@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SiteHeader } from "@/components/SiteHeader";
-import { ToolCard } from "@/components/ToolCard";
+import { ToolCard, ToolLinkCard } from "@/components/ToolCard";
 import { Container } from "@/components/ui";
 import {
   buildLanguageAlternates,
@@ -11,7 +11,8 @@ import {
   locales,
 } from "@/i18n";
 import { buildPageMetadata } from "@/lib/metadata";
-import { getAllRules } from "@/rules";
+import { getReadinessCheck, readinessQuestionCount } from "@/readiness";
+import { getAllRules, pickLocalized } from "@/rules";
 import styles from "./page.module.css";
 
 type PageProps = {
@@ -51,6 +52,7 @@ export default async function ToolsIndexPage({ params }: PageProps) {
 
   const messages = getMessages(lang);
   const trees = getAllRules();
+  const readiness = getReadinessCheck();
 
   return (
     <>
@@ -65,6 +67,19 @@ export default async function ToolsIndexPage({ params }: PageProps) {
 
           {trees.length > 0 ? (
             <ul className={styles.grid}>
+              {readiness.status === "live" && readiness.listed ? (
+                <li className={styles.gridItem}>
+                  <ToolLinkCard
+                    href={`/${lang}/tools/ai-readiness/`}
+                    title={pickLocalized(readiness.title, lang)}
+                    description={pickLocalized(readiness.description, lang)}
+                    meta={messages.readiness.cardMeta.replace(
+                      "{count}",
+                      String(readinessQuestionCount(readiness)),
+                    )}
+                  />
+                </li>
+              ) : null}
               {trees.map((tree) => (
                 <li key={tree.id} className={styles.gridItem}>
                   <ToolCard

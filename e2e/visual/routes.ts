@@ -3,6 +3,7 @@
  */
 import { listPublishableContentSlugs } from "../../src/content";
 import type { Locale } from "../../src/i18n";
+import { isReadinessCheckLive } from "../../src/readiness";
 import { listRuleIds } from "../../src/rules";
 
 export const VISUAL_LOCALES = ["de", "fr"] as const satisfies readonly Locale[];
@@ -44,7 +45,12 @@ export function listVisualRoutes(lang: VisualLocale): VisualRoute[] {
     segment: `tools/${toolId}`,
   }));
 
-  return [...FIXED_ROUTES, ...contentRoutes, ...toolRoutes, VISUAL_404_ROUTE];
+  // The readiness check is snapshotted once it is live (its question form).
+  const readinessRoutes: VisualRoute[] = isReadinessCheckLive()
+    ? [{ id: "tools-ai-readiness", segment: "tools/ai-readiness" }]
+    : [];
+
+  return [...FIXED_ROUTES, ...contentRoutes, ...toolRoutes, ...readinessRoutes, VISUAL_404_ROUTE];
 }
 
 export function visualPath(lang: VisualLocale, route: VisualRoute): string {

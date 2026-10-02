@@ -40,8 +40,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     path: "tools/ai-readiness",
     languages: buildLanguageAlternates("/tools/ai-readiness"),
   });
-  // Not indexed until the check is complete in all languages (status "live").
-  return check.status === "live" ? metadata : { ...metadata, robots: { index: false, follow: false } };
+  // Indexed only when listed (complete and released for discovery).
+  return check.status === "live" && check.listed
+    ? metadata
+    : { ...metadata, robots: { index: false, follow: false } };
 }
 
 /** Profile questions with their wording resolved (survey questions reused). */
