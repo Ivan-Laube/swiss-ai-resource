@@ -50,7 +50,13 @@ German (`de`) is the canonical content language. See [swiss_ai_resource_implemen
 | T41 | Live browser smoke (survey + website-check on aicompliant.ch) | Done |
 | T42 | GitHub Actions: allow Actions to create/approve PRs | Done |
 | T44 | Pre-traffic operator hardening (`api.aicompliant.ch`, Turnstile, DNSSEC, Access, CSP hashes, …) | Done — see [OPERATOR_CHECKLIST.md](OPERATOR_CHECKLIST.md) |
-| T29 | Lawyer review of DE pages (incl. legal pages after T40) | Not started |
+| T45 | AI readiness check: question set + scoring model incl. AI security section (draft in [docs/ai-readiness-check-draft.md](docs/ai-readiness-check-draft.md)) | In review |
+| T46–T48, T51 | AI readiness check: rules JSON + schema, `/[lang]/tools/ai-readiness/` page, benchmark lines, strings | Not started |
+| T49–T50 | AI policy template: Markdown source + Word (`.docx`) generated at build | Not started |
+| T52 | Incident-handling guidance for check Q12 | Merged into T53 |
+| T53–T55 | AI security guide `ai-security-risks`: DE page, tracked sources, EN/FR/IT translation | Not started |
+| T56–T59 | Deep links to guide sections: stable `{#id}` anchors, kept by translation, validated `slug#anchor` references, retrofit existing tools | Not started |
+| T29 | Lawyer review of DE pages (incl. legal pages after T40, AI readiness check, AI policy template) | Not started |
 | Redesign | Visual system + site shell, homepage, decision tools/guides, remaining pages | Done — PR 1–4 landed (cleanup R47 / Lighthouse R55 / docs R57 may still follow). See [website_redesign_plan.md](website_redesign_plan.md), [docs/design-system.md](docs/design-system.md) |
 
 ## Local development

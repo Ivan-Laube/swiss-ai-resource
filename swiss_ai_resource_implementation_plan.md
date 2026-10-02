@@ -14,6 +14,9 @@ Goal: a multilingual (DE/EN/FR/IT) resource site providing Swiss-specific AI dep
 | Vendor comparison table (hosting region, DPA terms, pricing, certifications) | Structured data | Automated monthly data refresh |
 | Interactive decision tools (e.g. "Can I use this US-hosted LLM under nDSG?") | Client-side logic | Updated only when underlying rules change |
 | Website compliance quick-check (visitor submits a URL, gets a heuristic first assessment against CH obligations) | Stateless Worker + client UI | Check definitions versioned in JSON; updated when underlying rules change |
+| AI readiness self-check for KMU (12 scored questions → score, tier, top-3 next steps; plus a separate AI security initial assessment; printable) | Client-side logic, no data sent | Question set + scoring versioned in JSON; updated when underlying rules change |
+| AI security guide for KMU (AI agents, prompt injection, AI-made fraud/deepfakes, incidents) | Static prose | Monthly change-check job; `volatility: fast` |
+| Downloadable AI policy template (Word) | Markdown source → `.docx` generated at build | Edited as Markdown; DE canonical, translated by the pipeline |
 | Swiss AI adoption survey + benchmark index | Data collection + annual report | Yearly cycle, rolling collection |
 | Deployment cost benchmarks | Aggregated survey data | Same pipeline as survey |
 | "Last verified" dates per page | Metadata | Written by the monthly job |
@@ -95,6 +98,45 @@ Required for a customer-facing launch (Art. 3 Abs. 1 lit. s UWG; Art. 19 DSG). T
 ### Decision tools (start with 2)
 1. "Can I use this US-hosted LLM under nDSG?" (data category → contractual safeguards → outcome with caveats)
 2. "Does the EU AI Act apply to my Swiss company?" (market exposure → system risk class → obligations timeline)
+
+### AI readiness self-check (v1, neutral)
+Draft question set, scoring model and decisions: [docs/ai-readiness-check-draft.md](docs/ai-readiness-check-draft.md).
+
+- 3 unscored profile questions (company size, AI usage stage, FINMA supervision) reusing survey option IDs, plus 12 scored questions in 6 dimensions; each answer 0/1/2, four questions allow N/A.
+- Score 0–100 over applicable questions; tiers Getting started (0–39) / In progress (40–74) / Well set up (75–100); DE Am Anfang / Im Aufbau / Gut aufgestellt.
+- **Red flags** (Q3 free/personal accounts for sensitive data, Q8 AI decisions about people without human review, Q10 EU exposure unchecked) cap the tier at In progress. When the cap lowers the tier, the result explains why, naming the answer; the score stays visible.
+- Top-3 next steps ranked by severity × gap, red flags first, each linking to an existing guide or tool.
+- Optional benchmark lines from `survey-aggregates.json` (same n<5 suppression as `/benchmark`).
+- **AI security: initial assessment (separate result):** 3 questions, not part of the main score or tier, clearly labelled as an initial assessment and not a full security review. S1 what AI tools can access and do (agents), S2 outside content and traceability (prompt injection; only shown if S1 ≠ N/A), S3 second-channel verification of payment/data requests (AI phishing, deepfakes; shown to everyone). Result: status per risk area (covered / partly / gap / not relevant) plus an overall risk level High (any 0) / Medium (no 0, any 1) / Low (all 2), its own next steps linking to the AI security guide, and an always-visible note on what is not assessed (general IT security, providers, technical testing) pointing to BACS/NCSC guidance. With a High level, the first security gap also enters the main top 3 after red flags. AI add-ons (browser extensions, plug-ins, connectors) are covered by Q2 tool approval.
+- **Printable result:** "Print or save as PDF" via a print stylesheet (no server, no PDF library). Includes an optional company name (only printed), date, question set version, all answers, all next steps with full URLs, the security assessment and the disclaimer. Answers live in memory only; the page says so at the start and next to the print button (closing or reloading clears them).
+- Scoring runs entirely in the browser; nothing is stored or sent. Disclaimer before and after: orientation, not legal advice or certification.
+- **No partners, referrals or "send my result" in v1** (see §9). Prerequisites for adding them later are listed in the draft (§8).
+
+### AI policy template (download)
+Drafts: [docs/ai-policy-template-de.md](docs/ai-policy-template-de.md) (canonical), [docs/ai-policy-template-en.md](docs/ai-policy-template-en.md).
+
+- Fill-in template for KMU: scope, principles, approved tools, green/yellow/red data levels, using results, transparency, prohibited uses, responsibilities, training, incidents, review; acknowledgement block and AI tool register annex. `[Placeholders]` in square brackets.
+- **Delivered as an editable Word file (`.docx`), generated from the Markdown at build time.** Markdown stays the single source; no `.docx` is committed. Must run on the Cloudflare Pages build image (no pandoc), i.e. a Node converter (e.g. `docx` + the existing `marked` lexer) in `prebuild`, writing to a gitignored `public/downloads/` so the static export copies it to `out/`. Placeholders highlighted in Word; build fails if conversion fails.
+- Linked from check Q5 and from the relevant guides (`ndsg-ai-basics`, `ai-procurement-checklist`, `ai-security-risks`).
+- Covers the security section too: add-ons count as tools needing approval, AI agents get only the access they need with confirmation for irreversible actions, and unusual payment/data requests are verified through a second channel.
+
+### AI security guide (`ai-security-risks`)
+Working title DE: *KI und Cybersicherheit für KMU*. Cornerstone-style page (DE canonical, normal frontmatter, sources, `last_verified`), linked from check S1–S3 and the policy template.
+
+- **Scope:** risks from the company's own AI use (agents with too much access, prompt injection via emails/web pages/documents, data leaking through connectors and add-ons, unchecked AI-generated code) and AI-made attacks from outside (phishing, voice/video deepfakes, CEO fraud). Practical safeguards a KMU can apply without a security team.
+- **When something goes wrong:** what to do after an AI-related incident, including the nDSG Art. 24 breach report to the FDPIC/EDÖB and reporting cyberattacks to BACS/NCSC. This is also the incident guidance that check Q12 links to (T52 merged here).
+- **Legal anchors:** nDSG Art. 8 + DSV Art. 1–6 (data security), Art. 24 (breach notification); EU AI Act Art. 15 for high-risk systems where in scope; reporting duty for critical infrastructure under the Information Security Act only where relevant.
+- **Sources** tracked in `sources.json` for the monthly job: BACS/NCSC guidance, OWASP Top 10 for LLM applications and its agentic AI guidance, ENISA. Marked `volatility: fast`.
+- **Tone:** concrete and calm, no alarmism and no vendor names, consistent with the rest of the site.
+
+### Deep links to guide sections (all tools)
+When a tool, check result or scanner finding points to a guide, it links to the **section** that answers the question (`/de/ndsg-ai-basics/#transparenz`), not the top of the page. Applies to the AI readiness check, the existing decision trees, the website quick-check and the policy template.
+
+- **Stable anchors.** Today heading ids are generated from the heading text ([`src/lib/markdown.ts`](src/lib/markdown.ts)), so they differ per language and change when a heading is reworded. Sections that are link targets get an explicit, language-independent anchor in the DE source: `## Transparenz und Information {#transparenz}`. The renderer uses the explicit id (and strips the marker); headings without one keep the generated id.
+- **Translation keeps anchors.** The translation pipeline must carry `{#…}` markers over unchanged, and its verification fails if a translated page's anchor set differs from DE.
+- **Validated references.** Data files reference sections as `slug#anchor`. Validators (`check:rules`, `check:scanner`, `check:content`) fail if the page or the anchor is missing in any locale, so a renamed or deleted section can't silently break links.
+- **Landing.** The target heading isn't hidden under the sticky header (`scroll-margin-top`) and is briefly highlighted (`:target`) so the reader sees where they landed. Respects `prefers-reduced-motion`.
+- **Granularity.** Anchors on h2/h3 only. If no section matches a question, add a section to the guide rather than linking to a near miss.
 
 ### Website quick-check (v1 checks, all deterministic)
 
@@ -260,6 +302,31 @@ Post-MVP, demand-driven (not built now):
 
 **Already shipped beyond original MVP notes:** Turnstile on `/scan` (same widget as survey), shared siteverify helper, zone WAF rate rule on `api.aicompliant.ch`, `workers_dev` disabled.
 
+### Phase 6, AI readiness check + policy template + AI security guide
+
+| ID | Task | Depends on | Status |
+|---|---|---|---|
+| T45 | Finalise check question set + scoring model incl. security section S1–S3 (DE canonical, EN draft) from [docs/ai-readiness-check-draft.md](docs/ai-readiness-check-draft.md); open questions settled 2026-10-02; final wording sign-off | — | In review |
+| T46 | `data/rules/ai-readiness.json` (links as `slug#anchor`) + Zod schema for a scored questionnaire (dimensions, 0/1/2 options, N/A, conditional questions, severity, red flags, separate security assessment section with per-area status, actions, links); validated by `check:rules` | T45, T8, T58 | |
+| T47 | Check page `/[lang]/tools/ai-readiness/`: client-only scoring, tiers, red-flag cap with explanation, top-3 actions + "show all" (incl. top security gap when High), security initial-assessment block below the main result, print view, disclaimer; no network calls | T46, T2, T53 (link target) | |
+| T48 | Benchmark lines on the result from survey aggregates (size bucket when n ≥ 5, else overall) + survey invitation | T47, T25 | |
+| T49 | AI policy template source moved to `content/templates/ai-policy/{de,en}.md`; FR/IT via the translation pipeline (glossary-constrained) | T13 | |
+| T50 | Build-time Markdown → Word (`.docx`) generation in `prebuild` (Node converter, no pandoc), output gitignored under `public/downloads/`, placeholders highlighted, build fails on error; download links from Q5 and guides | T49 | |
+| T51 | DE/EN/FR/IT strings for the check page | T47, T13 | |
+| T52 | Incident-handling guidance for check Q12 | T53 | Merged into T53 |
+| T53 | AI security guide `ai-security-risks` (DE canonical): agents, prompt injection, add-ons/connectors, AI-made fraud and deepfakes, incident steps (link target for check Q12); frontmatter `volatility: fast`, sources cited | T3, T6 (pattern), T54 | |
+| T54 | Add AI security sources to `sources.json` (BACS/NCSC, OWASP LLM Top 10 + agentic AI guidance, ENISA) so the monthly job tracks them | T5 | |
+| T55 | Translate the AI security guide EN/FR/IT via the pipeline | T53, T13 | |
+
+### Cross-cutting: deep links to guide sections
+
+| ID | Task | Depends on | Status |
+|---|---|---|---|
+| T56 | Explicit heading anchors `{#id}` in content Markdown: renderer support (explicit id wins, marker stripped, reserved-id and duplicate checks), TOC uses the same ids, `scroll-margin-top` + `:target` highlight | T3 | |
+| T57 | Translation pipeline preserves `{#id}` markers (prompt rule + verify step comparing anchor sets with DE) | T56, T13 | |
+| T58 | `slug#anchor` references in data files (readiness check, decision trees, scanner checks); validators fail on a missing page or anchor in any locale | T56 | |
+| T59 | Retrofit: add anchors to the existing guides' sections that tools cite and switch existing tool/scanner links to section links where a specific section fits | T56, T58 | |
+
 ### Post-launch / parallel (no phase)
 
 | ID | Task | Depends on | Status |
@@ -269,7 +336,7 @@ Post-MVP, demand-driven (not built now):
 | T41 | Live browser smoke on `aicompliant.ch`: survey (real Turnstile) + website-check + footer legal links — see [DEPLOY.md](DEPLOY.md#live-ui-smoke-t41) | T23d, T37b, Pages deploy | Done |
 | T42 | Enable GitHub Actions “Allow GitHub Actions to create and approve pull requests” (monthly material `gh pr create`) — see [DEPLOY.md](DEPLOY.md#github-actions-repo-permission-t42) | T17 | Done |
 | T44 | Pre-traffic operator hardening: `api.aicompliant.ch` cutover, Turnstile domains, DNS anti-spoof/DNSSEC, GitHub supply chain, Pages preview Access, HSTS preload, CSP hash postbuild — see [OPERATOR_CHECKLIST.md](OPERATOR_CHECKLIST.md) | T23e, T37b, T43 | Done |
-| T29 | Lawyer review of DE compliance pages (incl. filled legal pages from T40), badge wiring | T6, T17 (badge lifecycle), T40 | Not started |
+| T29 | Lawyer review of DE compliance pages (incl. filled legal pages from T40), badge wiring; also the AI readiness check (legal hooks + DE wording), the DE AI policy template and the AI security guide | T6, T17 (badge lifecycle), T40, T45, T49, T53 | Not started |
 | T30 | Quarterly: new decision tool or page, demand-driven | T8 | |
 | T31 | Yearly: survey re-run, benchmark refresh, lawyer re-review | T28, T29 | |
 
@@ -325,4 +392,5 @@ T1 → T3 → T6 → T9/T10 → T14 (public launch of the differentiated core), 
 - Newsletter (collect emails via survey opt-in only; decide later)
 - Named case studies (add only with written company consent)
 - Paid tier or monetization (this is a visibility/connection asset; revisit only if inbound demand appears)
+- Vendor or partner referrals from the AI readiness check in v1 (launch neutral; prerequisites for a later partner section in [docs/ai-readiness-check-draft.md](docs/ai-readiness-check-draft.md) §8)
 - Any accusatory or investigative content about specific providers
