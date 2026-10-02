@@ -322,7 +322,7 @@ Post-MVP, demand-driven (not built now):
 
 | ID | Task | Depends on | Status |
 |---|---|---|---|
-| T56 | Explicit heading anchors `{#id}` in content Markdown: renderer support (explicit id wins, marker stripped, reserved-id and duplicate checks), TOC uses the same ids, `scroll-margin-top` + `:target` highlight | T3 | |
+| T56 | Explicit heading anchors `{#id}` in content Markdown: renderer support (explicit id wins, marker stripped, reserved-id and duplicate checks), TOC uses the same ids, `scroll-margin-top` + `:target` highlight — see [content/README.md](content/README.md#section-anchors-t56) | T3 | Done |
 | T57 | Translation pipeline preserves `{#id}` markers (prompt rule + verify step comparing anchor sets with DE) | T56, T13 | |
 | T58 | `slug#anchor` references in data files (readiness check, decision trees, scanner checks); validators fail on a missing page or anchor in any locale | T56 | |
 | T59 | Retrofit: add anchors to the existing guides' sections that tools cite and switch existing tool/scanner links to section links where a specific section fits | T56, T58 | |

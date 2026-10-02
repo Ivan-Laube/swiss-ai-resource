@@ -80,6 +80,21 @@ sources:
 ---
 ```
 
+## Section anchors (T56)
+
+Every h2/h3 gets an `id`, so `/de/ndsg-ai-basics/#…` jumps to that section. By default the id is generated from the heading text, which means it differs per language and changes when the heading is reworded. Sections that tools, check results or other pages link to get an **explicit anchor** instead, written at the end of the heading in the DE source:
+
+```markdown
+## Transparenz und Information {#transparenz}
+```
+
+- The marker is not shown; `transparenz` becomes the heading id in every locale.
+- Lowercase kebab-case starting with a letter (`ai-agents`, `art-21`), h2/h3 only, unique per page, not one of the page-shell ids (`main`, `sources-heading`, …).
+- Keep the anchor when rewording or translating the heading; link to `slug#anchor`, never to a generated id.
+- Linked sections land below the sticky header and are briefly highlighted (static underline with reduced motion).
+
+Implementation: [`src/lib/heading-anchors.ts`](../src/lib/heading-anchors.ts), used by [`renderMarkdown`](../src/lib/markdown.ts). `check:content` renders every page, so a malformed, misplaced or duplicate anchor fails it with the file path.
+
 ## Translation pipeline (T13)
 
 Draft EN/FR/IT pages from canonical DE Markdown. Implementation: [`src/translate/`](../src/translate/) (`glossary-match`, `prompt`, `client`, `write`, `verify`). CLI: `npm run translate`.
@@ -131,7 +146,7 @@ npm run changed-de-slugs -- --slug=ndsg-ai-basics
 npm run check:content
 ```
 
-Parses every `content/{locale}/*.md` file with Zod. Invalid frontmatter fails the script with the file path and field errors. The same check runs in [`.github/workflows/ci.yml`](../.github/workflows/ci.yml) on every PR and push to `main`, and again in the translate workflow before `npm run build` and the bot commit.
+Parses every `content/{locale}/*.md` file with Zod and renders its body. Invalid frontmatter or heading anchors fail the script with the file path and the error. The same check runs in [`.github/workflows/ci.yml`](../.github/workflows/ci.yml) on every PR and push to `main`, and again in the translate workflow before `npm run build` and the bot commit.
 
 Loader API (build-time) from `@/content`:
 

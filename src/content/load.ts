@@ -4,6 +4,7 @@ import path from "node:path";
 import matter from "gray-matter";
 
 import { locales, type Locale } from "@/i18n/config";
+import { renderMarkdown } from "@/lib/markdown";
 
 import { LEGAL_SLUGS } from "./legal";
 import {
@@ -184,7 +185,14 @@ export function validateAllContent(): number {
 
   for (const locale of locales) {
     for (const slug of listContentSlugs(locale)) {
-      getContentPage(locale, slug);
+      const page = getContentPage(locale, slug);
+      // Rendering validates heading anchors ({#id}) as the build would.
+      try {
+        renderMarkdown(page.body);
+      } catch (error) {
+        const message = error instanceof Error ? error.message : String(error);
+        throw new Error(`${page.path}: ${message}`);
+      }
       count += 1;
     }
   }
