@@ -76,7 +76,7 @@
     "@types/sanitize-html": "^2.16.1",
     "docx": "^9.8.1",
     "eslint": "^9",
-    "eslint-config-next": "16.3.6",
+    "eslint-config-next": "16.3.7",
     "jszip": "^3.10.2",
     "sharp": "0.35.4",
     "tsx": "^4.23.15",
