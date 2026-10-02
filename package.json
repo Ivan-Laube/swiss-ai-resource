@@ -49,7 +49,7 @@
     "test:visual": "playwright test e2e/visual"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.110.0",
+    "@anthropic-ai/sdk": "^0.129.0",
     "cheerio": "^1.2.0",
     "diff": "^9.0.0",
     "gray-matter": "^4.0.3",
