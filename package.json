@@ -14,6 +14,7 @@
     "lint": "eslint .",
     "check:content": "tsx scripts/check-content.ts",
     "check:anchors": "tsx scripts/check-anchors.ts",
+    "sync:anchors": "tsx scripts/sync-anchors.ts",
     "check:vendors": "tsx scripts/check-vendors.ts",
     "check:sources": "tsx scripts/check-sources.ts",
     "check:glossary": "tsx scripts/check-glossary.ts",

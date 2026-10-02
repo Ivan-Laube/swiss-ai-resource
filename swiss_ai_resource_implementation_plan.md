@@ -325,7 +325,7 @@ Post-MVP, demand-driven (not built now):
 | T56 | Explicit heading anchors `{#id}` in content Markdown: renderer support (explicit id wins, marker stripped, reserved-id and duplicate checks), TOC uses the same ids, `scroll-margin-top` + `:target` highlight — see [content/README.md](content/README.md#section-anchors-t56) | T3 | Done |
 | T57 | Translation pipeline preserves `{#id}` markers: prompt rule, restore by heading position, write-time check; `check:anchors` (warn on PRs, `--strict` in the translate workflow) — see [content/README.md](content/README.md#generated-frontmatter-rules) | T56, T13 | Done |
 | T58 | `slug#anchor` references in data files (decision trees, scanner checks; the readiness check uses the same `pageRefSchema` at T46); validators fail on a missing page or anchor in DE (other locales via T57); links render as "title – section" and fall back to the page top where a translation lacks the anchor — see [data/README.md](data/README.md) | T56 | Done |
-| T59 | Retrofit: add anchors to the existing guides' sections that tools cite and switch existing tool/scanner links to section links where a specific section fits | T56, T58 | |
+| T59 | Retrofit: 17 anchors on the cited sections of `ndsg-ai-basics`, `us-hosted-llms-ndsg`, `eu-ai-act-swiss-exporters`, `ai-procurement-checklist` (all locales via `npm run sync:anchors`); all decision-tree outcomes and two scanner checks link to sections; marker-only DE edits no longer trigger re-translation — see [content/README.md](content/README.md#section-anchors-t56) | T56, T58 | Done |
 
 ### Post-launch / parallel (no phase)
 

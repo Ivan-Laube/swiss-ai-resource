@@ -21,13 +21,13 @@ sources:
 
 De nombreux modèles de langage génératifs (LLM) sont exploités aux États-Unis. Dès que des **données personnelles** quittent la Suisse, s'appliquent les règles relatives à la **Communication de données personnelles à l'étranger** (art. 16 et 17 LPD). Cette page explique le cadre pour les entreprises suisses — sans remplacer un conseil juridique.
 
-## Point de départ : données personnelles et transfert à l'étranger
+## Point de départ : données personnelles et transfert à l'étranger {#transfer-abroad}
 
 Les données personnelles ne peuvent en principe être communiquées à l'étranger que si le pays de destination offre un **niveau de protection adéquat** ou si des **garanties appropriées** s'appliquent. Le Conseil fédéral fixe dans l'**annexe 1 de l'Ordonnance sur la protection des données (OPDo)** quels États offrent une protection adéquate.
 
 La personne concernée doit être informée d'une communication de données à l'étranger (art. 19 al. 4 LPD). Les pays et les garanties font partie des mentions obligatoires du registre des activités de traitement (art. 12 LPD).
 
-## États-Unis et Swiss-U.S. Data Privacy Framework
+## États-Unis et Swiss-U.S. Data Privacy Framework {#swiss-us-dpf}
 
 Le **15 septembre 2024**, la modification de la liste des États (annexe 1 OPDo) relative aux États-Unis est entrée en vigueur. Le cadre juridique associé — le **Swiss-U.S. Data Privacy Framework (DPF)** — s'applique aux organisations américaines **certifiées**.
 
@@ -39,7 +39,7 @@ Contrôle pratique avant d'utiliser un fournisseur américain :
 
 Sans certification adaptée, « le fournisseur est situé aux États-Unis » ne constitue **pas** à elle seule une base d'adéquation.
 
-## Lorsqu'aucune décision d'adéquation ne s'applique
+## Lorsqu'aucune décision d'adéquation ne s'applique {#safeguards}
 
 En l'absence de décision d'adéquation (ou si elle ne s'applique pas au destinataire concret), les transferts peuvent néanmoins être admissibles si la protection des données est autrement assurée — notamment par :
 
@@ -49,7 +49,7 @@ En l'absence de décision d'adéquation (ou si elle ne s'applique pas au destina
 
 Le responsable du traitement doit s'assurer que le destinataire peut respecter les clauses et que le droit du pays tiers ne s'y oppose pas. Des mesures techniques peuvent être nécessaires si des accès disproportionnés des autorités menacent.
 
-## Points spécifiques aux LLM
+## Points spécifiques aux LLM {#llm-specifics}
 
 Le PFPDT recommande aux utilisatrices et utilisateurs un **usage conscient** des applications d'IA et rappelle aux entreprises leurs obligations — en particulier une information transparente sur les finalités et la nature du traitement.
 
@@ -60,7 +60,7 @@ Clarifier en outre :
 - Quelles catégories de données peuvent être saisies (pas de données personnelles particulièrement sensibles sans base légale claire et mesures de protection) ?
 - Où se trouvent les journaux, embeddings et tickets de support ?
 
-## Liste de contrôle courte
+## Liste de contrôle courte {#checklist}
 
 | Question | Pourquoi c'est pertinent |
 |---|---|

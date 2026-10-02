@@ -21,13 +21,13 @@ sources:
 
 Many generative language models (LLMs) are operated in the USA. As soon as **personal data (Personendaten)** leave Switzerland, the rules on **disclosure of personal data abroad (Bekanntgabe von Personendaten ins Ausland)** apply (Art. 16 and 17 of the Federal Act on Data Protection (Bundesgesetz über den Datenschutz, DSG)). This page explains the framework for Swiss companies — without replacing legal advice.
 
-## Starting point: personal data and cross-border transfer
+## Starting point: personal data and cross-border transfer {#transfer-abroad}
 
 Personal data may in principle only be disclosed abroad if the recipient country has an **adequate level of data protection (angemessenes Datenschutzniveau)** or **suitable safeguards** apply. Whether a state is adequate is determined by the Federal Council in **Annex 1 of the Ordinance on Data Protection (Datenschutzverordnung, DSV)**.
 
 The data subject (betroffene Person) must be informed about a disclosure of data abroad (Art. 19 para. 4 DSG). Countries and safeguards are among the mandatory particulars in the record of processing activities (Verzeichnis der Bearbeitungstätigkeiten) (Art. 12 DSG).
 
-## USA and Swiss-U.S. Data Privacy Framework
+## USA and Swiss-U.S. Data Privacy Framework {#swiss-us-dpf}
 
 On **15 September 2024**, the amendment to the list of states (Annex 1 DSV) regarding the USA entered into force. The related legal framework — the **Swiss-U.S. Data Privacy Framework (DPF)** — applies to **certified** US organisations.
 
@@ -39,7 +39,7 @@ Practical check before using a US provider:
 
 Without a matching certification, «the provider is based in the USA» alone is **not** an adequacy basis.
 
-## When no adequacy decision applies
+## When no adequacy decision applies {#safeguards}
 
 If there is no adequacy decision (or it does not apply to the specific recipient), transfers may still be permissible if data protection is otherwise ensured — in particular through:
 
@@ -49,7 +49,7 @@ If there is no adequacy decision (or it does not apply to the specific recipient
 
 The controller (Verantwortlicher) must ensure that the recipient can comply with the clauses and that the law of the third country does not prevent this. Technical measures may be necessary if disproportionate government access is a risk.
 
-## LLM-specific points
+## LLM-specific points {#llm-specifics}
 
 The EDÖB advises users to handle AI applications **consciously** and reminds companies of their duties — in particular transparent information about purposes and the nature of processing.
 
@@ -60,7 +60,7 @@ Also clarify:
 - Which data categories may be entered at all (no particularly sensitive personal data without a clear legal basis and protective measures)?
 - Where are logs, embeddings, and support tickets stored?
 
-## Short checklist
+## Short checklist {#checklist}
 
 | Question | Why it matters |
 |---|---|

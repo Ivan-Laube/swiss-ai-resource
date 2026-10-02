@@ -97,6 +97,25 @@ Implementation: [`src/lib/heading-anchors.ts`](../src/lib/heading-anchors.ts), u
 
 Translations carry the same anchors (T57, see the translation pipeline below). `npm run check:anchors` compares every EN/FR/IT page with DE: on PRs it only warns, because translations are regenerated after a DE change merges; the translate workflow runs it with `--strict` after regenerating.
 
+**Adding or renaming anchors** (T59): edit the DE heading, then run
+
+```bash
+npm run sync:anchors            # or -- --slug=<slug>
+```
+
+It copies the DE markers into the EN/FR/IT pages by heading position and changes nothing else. Marker-only DE edits don't count as a canonical change, so they don't trigger an LLM re-translation on merge.
+
+Anchors in use (English ids, same in every locale):
+
+| Page | Anchors |
+|---|---|
+| `ndsg-ai-basics` | `transparency`, `human-review`, `dpia`, `next-steps` |
+| `us-hosted-llms-ndsg` | `transfer-abroad`, `swiss-us-dpf`, `safeguards`, `llm-specifics`, `checklist` |
+| `eu-ai-act-swiss-exporters` | `scope`, `risk-classes`, `timeline`, `exporter-checklist` |
+| `ai-procurement-checklist` | `hosting-transfer`, `contract-operations`, `eu-ai-act`, `ai-literacy` |
+
+Removing or renaming one breaks `check:rules` / `check:scanner` if a tool still links to it — that is the point.
+
 ## Translation pipeline (T13)
 
 Draft EN/FR/IT pages from canonical DE Markdown. Implementation: [`src/translate/`](../src/translate/) (`glossary-match`, `prompt`, `client`, `write`, `verify`, `anchors`). CLI: `npm run translate`.

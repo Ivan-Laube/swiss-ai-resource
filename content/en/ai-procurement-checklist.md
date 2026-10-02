@@ -39,21 +39,21 @@ Use it before the pilot and again before go-live.
 - Can data subjects object to automatic processing or require **human review**?
 - Is there a current record of processing activities (Verzeichnis der Bearbeitungstätigkeiten) (including abroad and safeguards)?
 
-## 3. Hosting and cross-border transfer
+## 3. Hosting and cross-border transfer {#hosting-transfer}
 
 - In which regions are data stored and processed (CH / EU / US / other)?
 - For US recipients: active **Swiss-U.S. Data Privacy Framework** certification checked?
 - Otherwise: recognised **standard data protection clauses (Standarddatenschutzklauseln)**, DPA, and transfer assessment in place?
 - Are inputs used for **model training** — and is there an opt-out?
 
-## 4. Contract and operations
+## 4. Contract and operations {#contract-operations}
 
 - Data processing agreement (Auftragsbearbeiter / DPA) with clear sub-processor rules?
 - Deletion periods, export, incident notification, and audit rights regulated?
 - Availability, support location, and sub-processor list known?
 - Exit plan: Can you take data and configurations with you?
 
-## 5. EU AI Act (if EU nexus)
+## 5. EU AI Act (if EU nexus) {#eu-ai-act}
 
 - Is the system or its **output (Ausgabe) in the EU** offered or used?
 - What role do you have (provider (Anbieter) / deployer (Betreiber) / importer / distributor)?
@@ -67,7 +67,7 @@ Use it before the pilot and again before go-live.
 - Explainability to customers, audit, and supervisors?
 - Independent review for material applications?
 
-## 7. Competence and training
+## 7. Competence and training {#ai-literacy}
 
 - Do the people who operate or approve the tool have sufficient **AI literacy (KI-Kompetenz)** (EU AI Act Art. 4, in force since 2 February 2025)?
 - Are training and roles clear (business, IT, data protection) — also in the sense of FINMA's expectation of «broad training measures» for supervised institutions?

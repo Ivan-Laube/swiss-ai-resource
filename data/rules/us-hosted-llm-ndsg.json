@@ -279,7 +279,7 @@
           "url": "https://www.edoeb.admin.ch/de/04042023-einsatz-von-chatgpt-und-vergleichbaren-ki-gestuetzten-anwendungen"
         }
       ],
-      "related_pages": ["us-hosted-llms-ndsg", "ndsg-ai-basics"]
+      "related_pages": ["us-hosted-llms-ndsg#transfer-abroad", "ndsg-ai-basics"]
     },
     "out-special-category": {
       "type": "outcome",
@@ -320,7 +320,7 @@
           "url": "https://www.edoeb.admin.ch/de/bekanntgabe-von-personendaten-ins-ausland"
         }
       ],
-      "related_pages": ["us-hosted-llms-ndsg", "ndsg-ai-basics"]
+      "related_pages": ["us-hosted-llms-ndsg#llm-specifics", "ndsg-ai-basics#dpia"]
     },
     "out-no-transfer-basis": {
       "type": "outcome",
@@ -366,9 +366,9 @@
         }
       ],
       "related_pages": [
-        "us-hosted-llms-ndsg",
+        "us-hosted-llms-ndsg#safeguards",
         "ndsg-ai-basics",
-        "ai-procurement-checklist"
+        "ai-procurement-checklist#hosting-transfer"
       ]
     },
     "out-unclear-basis": {
@@ -410,7 +410,7 @@
           "url": "https://www.edoeb.admin.ch/de/bekanntgabe-von-personendaten-ins-ausland"
         }
       ],
-      "related_pages": ["us-hosted-llms-ndsg", "ai-procurement-checklist"]
+      "related_pages": ["us-hosted-llms-ndsg#swiss-us-dpf", "ai-procurement-checklist#hosting-transfer"]
     },
     "out-likely-dpf": {
       "type": "outcome",
@@ -456,9 +456,9 @@
         }
       ],
       "related_pages": [
-        "us-hosted-llms-ndsg",
-        "ndsg-ai-basics",
-        "ai-procurement-checklist"
+        "us-hosted-llms-ndsg#swiss-us-dpf",
+        "ndsg-ai-basics#transparency",
+        "ai-procurement-checklist#contract-operations"
       ]
     },
     "out-depends-training": {
@@ -500,7 +500,7 @@
           "url": "https://www.dataprivacyframework.gov/list"
         }
       ],
-      "related_pages": ["us-hosted-llms-ndsg", "ai-procurement-checklist"]
+      "related_pages": ["us-hosted-llms-ndsg#llm-specifics", "ai-procurement-checklist#contract-operations"]
     },
     "out-unclear-training": {
       "type": "outcome",
@@ -535,7 +535,7 @@
           "url": "https://www.fedlex.admin.ch/eli/cc/2022/491/de"
         }
       ],
-      "related_pages": ["us-hosted-llms-ndsg", "ai-procurement-checklist"]
+      "related_pages": ["us-hosted-llms-ndsg#llm-specifics", "ai-procurement-checklist#contract-operations"]
     },
     "out-depends-scc": {
       "type": "outcome",
@@ -577,9 +577,9 @@
         }
       ],
       "related_pages": [
-        "us-hosted-llms-ndsg",
+        "us-hosted-llms-ndsg#safeguards",
         "ndsg-ai-basics",
-        "ai-procurement-checklist"
+        "ai-procurement-checklist#contract-operations"
       ]
     },
     "out-unlikely-scc-training": {
@@ -621,7 +621,7 @@
           "url": "https://www.edoeb.admin.ch/de/bekanntgabe-von-personendaten-ins-ausland"
         }
       ],
-      "related_pages": ["us-hosted-llms-ndsg", "ai-procurement-checklist"]
+      "related_pages": ["us-hosted-llms-ndsg#llm-specifics", "ai-procurement-checklist#contract-operations"]
     },
     "out-unclear-scc": {
       "type": "outcome",
@@ -663,8 +663,8 @@
         }
       ],
       "related_pages": [
-        "us-hosted-llms-ndsg",
-        "ai-procurement-checklist"
+        "us-hosted-llms-ndsg#safeguards",
+        "ai-procurement-checklist#hosting-transfer"
       ]
     }
   }

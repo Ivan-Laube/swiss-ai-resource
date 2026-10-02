@@ -58,7 +58,7 @@ German (`de`) is the canonical content language. See [swiss_ai_resource_implemen
 | T56 | Stable `{#id}` heading anchors in content Markdown (renderer, `check:content`, landing styles) | Done |
 | T57 | Translations keep `{#id}` anchors (prompt rule, restore by heading position, `check:anchors`) | Done |
 | T58 | `slug#anchor` references in decision trees and scanner checks, validated against DE | Done |
-| T59 | Retrofit: anchors on cited guide sections, switch tool/scanner links to sections | Not started |
+| T59 | Retrofit: anchors on cited guide sections (all locales), tool and scanner links point to sections | Done |
 | T29 | Lawyer review of DE pages (incl. legal pages after T40, AI readiness check, AI policy template) | Not started |
 | Redesign | Visual system + site shell, homepage, decision tools/guides, remaining pages | Done — PR 1–4 landed (cleanup R47 / Lighthouse R55 / docs R57 may still follow). See [website_redesign_plan.md](website_redesign_plan.md), [docs/design-system.md](docs/design-system.md) |
 

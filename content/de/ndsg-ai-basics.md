@@ -25,7 +25,7 @@ Diese Seite fasst die Kernpunkte für Schweizer KMU zusammen. Sie ersetzt keine 
 
 Der EDÖB richtet sich an **Hersteller, Anbieter und Verwender** von KI-Applikationen. Wer Personendaten mit KI bearbeitet – intern oder über einen Cloud-Dienst – bleibt datenschutzrechtlich verantwortlich und muss die gesetzlichen Pflichten einhalten.
 
-## Transparenz und Information
+## Transparenz und Information {#transparency}
 
 Zweck, Funktionsweise und Datenquellen KI-gestützter Bearbeitungen müssen **transparent** ausgewiesen werden. Bei Sprachmodellen, die direkt mit Nutzerinnen und Nutzern kommunizieren, haben diese das Recht zu erfahren:
 
@@ -34,17 +34,17 @@ Zweck, Funktionsweise und Datenquellen KI-gestützter Bearbeitungen müssen **tr
 
 Auch Anwendungen, die Gesichter, Bilder oder Sprachnachrichten von identifizierbaren Personen verfälschen können, müssen klar erkennbar sein.
 
-## Widerspruch und menschliche Überprüfung
+## Widerspruch und menschliche Überprüfung {#human-review}
 
 Das Transparenzrecht ist eng verbunden mit dem Anspruch, einer automatischen Datenbearbeitung zu **widersprechen** oder zu verlangen, dass **automatisierte Einzelentscheidungen von einem Menschen überprüft** werden.
 
-## Hohe Risiken und Datenschutz-Folgenabschätzung
+## Hohe Risiken und Datenschutz-Folgenabschätzung {#dpia}
 
 KI-gestützte Bearbeitungen mit hohen Risiken sind dem Grundsatz nach zulässig, erfordern aber **angemessene Schutzmassnahmen**. Bei hohen Risiken verlangt das DSG eine **Datenschutz-Folgenabschätzung (DSFA)**.
 
 Anwendungen, die auf eine Aushöhlung der Privatsphäre und informationellen Selbstbestimmung abzielen – etwa flächendeckende Gesichtserkennung in Echtzeit oder «Social Scoring» – sind datenschutzrechtlich **verboten**.
 
-## Was KMU jetzt tun können
+## Was KMU jetzt tun können {#next-steps}
 
 1. Inventar: Welche KI-Tools bearbeiten Personendaten?
 2. Transparenztexte und interne Richtlinien anpassen.

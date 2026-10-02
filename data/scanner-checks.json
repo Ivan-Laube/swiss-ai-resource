@@ -29,7 +29,7 @@
       "method": "link",
       "severity": "high",
       "verify_link": true,
-      "related_page": "ndsg-ai-basics",
+      "related_page": "ndsg-ai-basics#transparency",
       "legal_basis": {
         "reference": "Art. 19 DSG (Informationspflicht)",
         "url": "https://www.fedlex.admin.ch/eli/cc/2022/491/de#art_19"
@@ -171,7 +171,7 @@
       "method": "script_signature",
       "severity": "high",
       "implies_data_export": true,
-      "related_page": "us-hosted-llms-ndsg",
+      "related_page": "us-hosted-llms-ndsg#transfer-abroad",
       "legal_basis": {
         "reference": "Art. 16 DSG (Bekanntgabe ins Ausland)",
         "url": "https://www.fedlex.admin.ch/eli/cc/2022/491/de#art_16"
