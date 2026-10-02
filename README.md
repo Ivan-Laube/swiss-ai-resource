@@ -50,8 +50,10 @@ German (`de`) is the canonical content language. See [swiss_ai_resource_implemen
 | T41 | Live browser smoke (survey + website-check on aicompliant.ch) | Done |
 | T42 | GitHub Actions: allow Actions to create/approve PRs | Done |
 | T44 | Pre-traffic operator hardening (`api.aicompliant.ch`, Turnstile, DNSSEC, Access, CSP hashes, …) | Done — see [OPERATOR_CHECKLIST.md](OPERATOR_CHECKLIST.md) |
-| T45 | AI readiness check: question set + scoring model incl. AI security section (draft in [docs/ai-readiness-check-draft.md](docs/ai-readiness-check-draft.md)) | In review |
-| T46–T48, T51 | AI readiness check: rules JSON + schema, `/[lang]/tools/ai-readiness/` page, benchmark lines, strings | Not started |
+| T45 | AI readiness check: question set + scoring model incl. AI security section ([draft](docs/ai-readiness-check-draft.md)) | Done (signed off) |
+| T46 | AI readiness check data (`data/readiness-check.json`), validator and scoring engine | Done |
+| T47–T48, T51 | AI readiness check: `/[lang]/tools/ai-readiness/` page, benchmark lines, FR/IT strings | Not started |
+| T60 | Responsibility section in `ndsg-ai-basics` (link target for check Q11) | Not started |
 | T49–T50 | AI policy template: Markdown source + Word (`.docx`) generated at build | Not started |
 | T52 | Incident-handling guidance for check Q12 | Merged into T53 |
 | T53–T55 | AI security guide `ai-security-risks`: DE page, tracked sources, EN/FR/IT translation | Not started |

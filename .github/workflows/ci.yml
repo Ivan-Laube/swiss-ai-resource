@@ -57,6 +57,9 @@ jobs:
       - name: Validate decision trees
         run: npm run check:rules
 
+      - name: Validate readiness check
+        run: npm run check:readiness
+
       - name: Validate scanner-checks.json
         run: npm run check:scanner
 

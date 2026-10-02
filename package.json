@@ -19,6 +19,7 @@
     "check:sources": "tsx scripts/check-sources.ts",
     "check:glossary": "tsx scripts/check-glossary.ts",
     "check:rules": "tsx scripts/check-rules.ts",
+    "check:readiness": "tsx scripts/check-readiness.ts",
     "check:scanner": "tsx scripts/check-scanner.ts",
     "check:survey": "tsx scripts/check-survey.ts",
     "check:survey-answers": "tsx scripts/check-survey-answers.ts",

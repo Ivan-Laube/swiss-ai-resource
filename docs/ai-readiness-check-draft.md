@@ -1,8 +1,8 @@
 # Draft: AI readiness check for Swiss SMEs (KI-Check für KMU)
 
-**Status:** Draft for review. Nothing is implemented yet.
+**Status:** Signed off 2026-10-02 (T45). Implemented as data in [`data/readiness-check.json`](../data/readiness-check.json) (T46); change the check there, not here — see [data/README.md](../data/README.md#readiness-check-readiness-checkjson).
 **Languages:** EN and DE here. FR and IT will go through the normal translation pipeline once DE is final, and DE is canonical.
-**Proposed route:** `/[lang]/tools/ai-readiness/`. The data would live in `data/rules/ai-readiness.json`, using the same Zod-validated, multilingual approach as the existing decision trees.
+**Proposed route:** `/[lang]/tools/ai-readiness/`. The data lives in `data/readiness-check.json` (not `data/rules/`, whose loader reads every file there as a decision tree).
 
 ## Open questions
 
