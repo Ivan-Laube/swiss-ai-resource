@@ -5,6 +5,11 @@ updates:
     schedule:
       interval: weekly
     open-pull-requests-limit: 10
+    groups:
+      # react and react-dom are pinned to the same exact version and
+      # react-dom peers on its own react version; bumping one alone fails npm ci.
+      react:
+        patterns: ["react", "react-dom", "@types/react", "@types/react-dom"]
     ignore:
       # Track the Node major we run (engines >=22, CI node 22); bump by hand
       # when the runtime moves, so types never offer APIs the runtime lacks.
