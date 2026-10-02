@@ -1,5 +1,5 @@
 ---
-title: "Impressum"
+title: "Note legali"
 description: "Identificazione del fornitore e dati di contatto per aicompliant.ch ai sensi dell'art. 3 cpv. 1 lett. s LCSl."
 last_verified: "2026-09-18"
 volatility: "stable"
@@ -19,15 +19,15 @@ Indicazioni ai sensi dell'**art. 3 cpv. 1 lett. s LCSl** (identificazione del fo
 | | |
 |---|---|
 | **Nome** | Ivan Laube |
-| **Via / N.** | Vorhaldenstrasse 10 |
-| **NPA / Luogo** | 8049 Zürich |
+| **Via / n.** | Vorhaldenstrasse 10 |
+| **NPA / località** | 8049 Zürich |
 | **Paese** | Svizzera |
-| **E-Mail** | [i.laube@gmail.com](mailto:i.laube@gmail.com) |
+| **E-mail** | [i.laube@gmail.com](mailto:i.laube@gmail.com) |
 
 ## Sito web
 
-Questo sito web è gestito sotto il dominio **aicompliant.ch** (incl. `www`).
+Questo sito è gestito sotto il dominio **aicompliant.ch** (incluso `www`).
 
-## Avvertenza sulla responsabilità
+## Avvertenza
 
-I contenuti di questo sito web servono a scopo di informazione generale e non costituiscono **consulenza legale**. Nonostante un'attenta verifica, non viene fornita alcuna garanzia circa l'attualità, l'esattezza e la completezza.
+I contenuti di questo sito hanno scopo informativo generale e **non costituiscono consulenza legale**. Nonostante un controllo accurato, non si assume alcuna garanzia di attualità, correttezza o completezza.

@@ -1,6 +1,6 @@
 ---
-title: "Impressum"
-description: "Identification du fournisseur et coordonnées de contact pour aicompliant.ch conformément à l'art. 3 al. 1 let. s LCD."
+title: "Mentions légales"
+description: "Identification du fournisseur et coordonnées pour aicompliant.ch selon l'art. 3 al. 1 let. s LCD."
 last_verified: "2026-09-18"
 volatility: "stable"
 translation_status: "draft"
@@ -12,22 +12,22 @@ sources:
     url: "https://www.fedlex.admin.ch/eli/cc/1988/223_223_223/de#art_3"
 ---
 
-Indications selon l'**art. 3 al. 1 let. s LCD** (identification du fournisseur dans les transactions commerciales électroniques).
+Indications selon l'**art. 3 al. 1 let. s LCD** (identification du fournisseur dans le commerce électronique).
 
 ## Fournisseur
 
 | | |
 |---|---|
 | **Nom** | Ivan Laube |
-| **Rue / N°** | Vorhaldenstrasse 10 |
-| **NPA / Lieu** | 8049 Zürich |
+| **Rue / n°** | Vorhaldenstrasse 10 |
+| **NPA / localité** | 8049 Zürich |
 | **Pays** | Suisse |
 | **E-mail** | [i.laube@gmail.com](mailto:i.laube@gmail.com) |
 
 ## Site web
 
-Ce site web est exploité sous le domaine **aicompliant.ch** (y compris `www`).
+Ce site est exploité sous le domaine **aicompliant.ch** (y compris `www`).
 
-## Avis de non-responsabilité
+## Avertissement
 
-Les contenus de ce site web servent à des fins d'information générale et ne constituent **pas un conseil juridique**. Malgré un contrôle soigneux, aucune garantie n'est offerte quant à l'actualité, l'exactitude et l'exhaustivité des informations.
+Le contenu de ce site a un but d'information générale et **ne constitue pas un conseil juridique**. Malgré un contrôle soigneux, aucune garantie n'est donnée quant à l'actualité, l'exactitude ou l'exhaustivité.
