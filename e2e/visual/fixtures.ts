@@ -56,6 +56,18 @@ export async function gotoStable(
     }
   }
 
+  // The text swap below must run after React has hydrated those nodes:
+  // otherwise hydration sees a text mismatch, client-renders the subtree and
+  // puts the real date back. Pages without a data-hydrated island (e.g.
+  // impressum) had no wait for that, so the swap raced hydration and
+  // de/impressum at 375px flaked when "18. September 2026" wrapped a line.
+  // React tags each hydrated DOM node with a __reactFiber$<id> property.
+  await page.waitForFunction(() =>
+    Array.from(
+      document.querySelectorAll<HTMLElement>("time, [data-visual-mask]"),
+    ).every((el) => Object.keys(el).some((k) => k.startsWith("__reactFiber$"))),
+  );
+
   // Masking hides pixels but not layout: a longer date ("1. Oktober 2026"
   // vs "10. Juli 2026") wraps differently and changes the page height, so the
   // monthly last_verified bump broke the baselines. Replace the text of every
@@ -85,6 +97,19 @@ export async function gotoStable(
 
   // Allow paints after fonts / hydration / Turnstile settle.
   await new Promise((resolve) => setTimeout(resolve, 250));
+
+  // Fail loudly if anything re-rendered the real data back in.
+  const reverted = await page.evaluate(
+    (placeholder) =>
+      Array.from(
+        document.querySelectorAll<HTMLElement>("time, [data-visual-mask]"),
+      )
+        .filter((el) => el.children.length === 0)
+        .map((el) => el.textContent)
+        .filter((text) => text !== placeholder),
+    VISUAL_TEXT_PLACEHOLDER,
+  );
+  expect(reverted, "masked text re-rendered after placeholder swap").toEqual([]);
 }
 
 type VisualFixtures = {
