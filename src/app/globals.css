@@ -366,6 +366,20 @@ input[type="radio"] {
   accent-color: var(--primary);
 }
 
+/*
+ * Justified running text across the site, with hyphenation (needs the
+ * page's lang attribute, set on <main>). Narrow screens stay left-aligned:
+ * justified short lines leave large word gaps. Navigation, tables, buttons
+ * and form labels keep their own alignment.
+ */
+@media (min-width: 640px) {
+  main :is(p, li, dd):not(:where(nav, table, button, label, figcaption) *) {
+    text-align: justify;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+  }
+}
+
 /* Shared Markdown / legal prose (guide bodies, future prose surfaces) */
 .prose {
   max-width: 72ch;
