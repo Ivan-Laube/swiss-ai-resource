@@ -68,6 +68,7 @@ export const fr: Messages = {
     categoryEuAiAct: "AI Act de l'UE",
     categoryFinanzmarkt: "Marchés financiers",
     categoryBeschaffung: "Achats",
+    categorySicherheit: "Sécurité",
     readingTime: "{n} min de lecture",
     toolsHeading: "Aides à la décision",
     toolsLead:

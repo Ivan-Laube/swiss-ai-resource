@@ -763,13 +763,7 @@
         "en": "Write down who to contact if something goes wrong, how to stop the damage, and when a data breach has to be reported to the FDPIC."
       },
       "links": [
-        "guide:ndsg-ai-basics"
-      ],
-      "pending_links": [
-        {
-          "link": "guide:ai-security-risks#incidents",
-          "task": "T53"
-        }
+        "guide:ai-security-risks#incidents"
       ]
     }
   ],
@@ -975,11 +969,8 @@
           "de": "Prüfen Sie, welche KI-Tools auf E-Mails, Dateien und andere Systeme zugreifen können. Entziehen Sie nicht benötigte Zugriffe und verlangen Sie, dass eine Person bestätigt, bevor eine KI etwas versendet, bezahlt oder löscht.",
           "en": "Review which AI tools can access email, files and other systems. Remove access they don't need, and require a person to confirm before an AI sends, pays or deletes anything."
         },
-        "pending_links": [
-          {
-            "link": "guide:ai-security-risks#ai-agents",
-            "task": "T53"
-          }
+        "links": [
+          "guide:ai-security-risks#ai-agents"
         ]
       },
       {
@@ -1035,11 +1026,8 @@
           "de": "Behandeln Sie Inhalte von aussen als nicht vertrauenswürdig: Eine präparierte E-Mail oder Webseite kann versteckte Anweisungen an die KI enthalten (Prompt Injection). Stellen Sie sicher, dass solche Inhalte keine Aktionen ohne Bestätigung auslösen, und aktivieren Sie die Protokollierung.",
           "en": "Treat outside content as untrusted: a prepared email or web page can contain hidden instructions for the AI (prompt injection). Make sure it can't trigger actions without confirmation, and switch on logging."
         },
-        "pending_links": [
-          {
-            "link": "guide:ai-security-risks#prompt-injection",
-            "task": "T53"
-          }
+        "links": [
+          "guide:ai-security-risks#prompt-injection"
         ]
       },
       {
@@ -1082,11 +1070,8 @@
           "de": "Legen Sie eine feste Regel fest: Zahlungs- und Datenanfragen werden durch Rückruf auf eine bekannte Nummer bestätigt, egal wie überzeugend E-Mail, Stimme oder Video wirken. Informieren Sie die Mitarbeitenden, dass Stimmen und Gesichter gefälscht werden können.",
           "en": "Set a fixed rule: payment and data requests are confirmed by calling back on a known number, however convincing the email, voice or video. Tell staff that voices and faces can be faked."
         },
-        "pending_links": [
-          {
-            "link": "guide:ai-security-risks#ai-fraud",
-            "task": "T53"
-          }
+        "links": [
+          "guide:ai-security-risks#ai-fraud"
         ]
       }
     ]

@@ -55,6 +55,8 @@ function categoryLabel(
       return home.categoryFinanzmarkt;
     case "beschaffung":
       return home.categoryBeschaffung;
+    case "sicherheit":
+      return home.categorySicherheit;
     default:
       return null;
   }
