@@ -49,7 +49,8 @@ describe("validateReadinessCheck", () => {
 
   it("rejects pending links and missing FR/IT once live", () => {
     assert.throws(validateWith((c) => (c.status = "live")), (error: Error) => {
-      assert.match(error.message, /pending link "guide:ai-security-risks#incidents" \(T53\) not allowed when live/);
+      // Any remaining pending link blocks going live (which one changes as targets get built).
+      assert.match(error.message, /pending link "[^"]+" \(T\d+\) not allowed when live/);
       assert.match(error.message, /title: missing fr, it/);
       return true;
     });

@@ -41,7 +41,7 @@
       "title": "Fedlex – Bundesgesetz über den Datenschutz (DSG)",
       "url": "https://www.fedlex.admin.ch/eli/cc/2022/491/de",
       "selector": "body",
-      "dependent_pages": ["ndsg-ai-basics", "us-hosted-llms-ndsg"],
+      "dependent_pages": ["ndsg-ai-basics", "us-hosted-llms-ndsg", "ai-security-risks"],
       "category": "regulator",
       "vendor_id": null
     },
@@ -362,6 +362,69 @@
       "dependent_pages": [],
       "category": "vendor",
       "vendor_id": "deepl"
+    },
+    {
+      "id": "bacs-ceo-betrug",
+      "title": "BACS – CEO-Betrug",
+      "url": "https://www.bacs.admin.ch/de/ceo-betrug",
+      "selector": "body",
+      "dependent_pages": ["ai-security-risks"],
+      "category": "regulator",
+      "vendor_id": null
+    },
+    {
+      "id": "bacs-woche-2026-04-dringende-ueberweisung",
+      "title": "BACS – Woche 4/2026: «Dringende Überweisung»",
+      "url": "https://www.bacs.admin.ch/de/26w4-de",
+      "selector": "body",
+      "dependent_pages": ["ai-security-risks"],
+      "category": "regulator",
+      "vendor_id": null
+    },
+    {
+      "id": "bacs-woche-2024-14-deepfake-chef",
+      "title": "BACS – Online-Meeting mit Deep-Fake-Chef: CEO-Betrug 2.0",
+      "url": "https://www.bacs.admin.ch/de/24w14-de",
+      "selector": "body",
+      "dependent_pages": ["ai-security-risks"],
+      "category": "regulator",
+      "vendor_id": null
+    },
+    {
+      "id": "bacs-meldepflicht",
+      "title": "BACS – Informationen zur Meldepflicht für kritische Infrastrukturen",
+      "url": "https://www.bacs.admin.ch/de/informationen-zur-meldepflicht",
+      "selector": "body",
+      "dependent_pages": ["ai-security-risks"],
+      "category": "regulator",
+      "vendor_id": null
+    },
+    {
+      "id": "owasp-llm01-prompt-injection",
+      "title": "OWASP – LLM01:2025 Prompt Injection",
+      "url": "https://genai.owasp.org/llmrisk/llm01-prompt-injection/",
+      "selector": "body",
+      "dependent_pages": ["ai-security-risks"],
+      "category": "guidance",
+      "vendor_id": null
+    },
+    {
+      "id": "owasp-llm06-excessive-agency",
+      "title": "OWASP – LLM06:2025 Excessive Agency",
+      "url": "https://genai.owasp.org/llmrisk/llm062025-excessive-agency/",
+      "selector": "body",
+      "dependent_pages": ["ai-security-risks"],
+      "category": "guidance",
+      "vendor_id": null
+    },
+    {
+      "id": "edoeb-leitfaden-meldung-art-24",
+      "title": "EDÖB – Leitfaden zur Meldung von Datensicherheitsverletzungen (Art. 24 DSG)",
+      "url": "https://www.edoeb.admin.ch/dam/de/sd-web/T64CAUyvAMcF/1_2%20Leitfaden%20des%20ED%C3%96B%20betreffend%20die%20Meldung%20von%20Datensicherheitsverletzungen%20und%20Information%20der%20Betroffenen%20nach%20Art.%2024%20DSG_DE.pdf",
+      "selector": "body",
+      "dependent_pages": ["ai-security-risks"],
+      "category": "regulator",
+      "vendor_id": null
     }
   ]
 }

@@ -18,6 +18,7 @@ export const guideCategories = [
   "eu-ai-act",
   "finanzmarkt",
   "beschaffung",
+  "sicherheit",
 ] as const;
 export type GuideCategory = (typeof guideCategories)[number];
 

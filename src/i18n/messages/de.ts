@@ -66,6 +66,7 @@ export const de = {
     categoryEuAiAct: "EU AI Act",
     categoryFinanzmarkt: "Finanzmarkt",
     categoryBeschaffung: "Beschaffung",
+    categorySicherheit: "Sicherheit",
     readingTime: "{n} Min. Lesezeit",
     toolsHeading: "Entscheidungshilfen",
     toolsLead:
