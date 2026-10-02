@@ -25,7 +25,7 @@ Cette page résume les points essentiels pour les PME suisses. Elle ne remplace 
 
 Le PFPDT s'adresse aux **fabricants, fournisseurs et utilisateurs** d'applications d'IA. Quiconque traite des données personnelles avec l'IA — en interne ou via un service cloud — reste responsable du traitement au sens de la protection des données et doit respecter les obligations légales.
 
-## Transparence et information
+## Transparence et information {#transparency}
 
 La finalité, le fonctionnement et les sources de données des traitements assistés par l'IA doivent être indiqués de manière **transparente**. Pour les modèles de langage qui communiquent directement avec les utilisatrices et utilisateurs, ceux-ci ont le droit de savoir :
 
@@ -34,17 +34,17 @@ La finalité, le fonctionnement et les sources de données des traitements assis
 
 Les applications susceptibles de falsifier des visages, des images ou des messages vocaux de personnes identifiables doivent également être clairement reconnaissables.
 
-## Opposition et contrôle humain
+## Opposition et contrôle humain {#human-review}
 
 Le droit à la transparence est étroitement lié au droit de **s'opposer** à un traitement automatique de données ou d'exiger qu'une **décision individuelle automatisée soit contrôlée par un être humain**.
 
-## Risques élevés et analyse d'impact relative à la protection des données personnelles
+## Risques élevés et analyse d'impact relative à la protection des données personnelles {#dpia}
 
 Les traitements assistés par l'IA présentant des risques élevés sont en principe admissibles, mais exigent des **mesures de protection appropriées**. En cas de risques élevés, la LPD exige une **analyse d'impact relative à la protection des données personnelles**.
 
 Les applications visant à vider de leur substance la vie privée et l'autodétermination informationnelle — par exemple la reconnaissance faciale généralisée en temps réel ou le « social scoring » — sont **interdites** au regard de la protection des données.
 
-## Ce que les PME peuvent faire maintenant
+## Ce que les PME peuvent faire maintenant {#next-steps}
 
 1. Inventaire : quels outils d'IA traitent des données personnelles ?
 2. Adapter les textes de transparence et les directives internes.

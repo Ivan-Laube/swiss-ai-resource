@@ -25,7 +25,7 @@ This page summarises the key points for Swiss SMEs. It does not replace legal ad
 
 The EDÖB addresses **manufacturers, providers, and users** of AI applications. Anyone who processes personal data with AI — internally or via a cloud service — remains responsible under data protection law and must meet the statutory duties.
 
-## Transparency and information
+## Transparency and information {#transparency}
 
 The purpose, functioning, and data sources of AI-supported processing must be disclosed **transparently**. For language models that communicate directly with users, those users have the right to know:
 
@@ -34,17 +34,17 @@ The purpose, functioning, and data sources of AI-supported processing must be di
 
 Applications that can distort faces, images, or voice messages of identifiable persons must also be clearly recognisable.
 
-## Objection and human review
+## Objection and human review {#human-review}
 
 The right to transparency is closely linked to the right to **object** to automatic data processing or to require that **automated individual decisions (automatisierte Einzelentscheidung) be reviewed by a human**.
 
-## High risks and data protection impact assessment
+## High risks and data protection impact assessment {#dpia}
 
 AI-supported processing with high risks is in principle permissible, but requires **appropriate protective measures**. For high risks, the DSG requires a **data protection impact assessment (Datenschutz-Folgenabschätzung, DSFA)**.
 
 Applications aimed at undermining privacy and informational self-determination — for example blanket real-time facial recognition or «social scoring» — are **prohibited** under data protection law.
 
-## What SMEs can do now
+## What SMEs can do now {#next-steps}
 
 1. Inventory: Which AI tools process personal data?
 2. Adjust transparency texts and internal policies.

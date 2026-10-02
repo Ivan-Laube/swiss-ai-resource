@@ -21,7 +21,7 @@ Regulation (EU) 2024/1689 («AI Act») does not apply only to companies establis
 
 This page provides an orientation framework for exporters and SMEs with an EU nexus. It is not legal advice.
 
-## Territorial scope (Art. 2)
+## Territorial scope (Art. 2) {#scope}
 
 Under Art. 2(1), the Regulation applies inter alia to:
 
@@ -37,7 +37,7 @@ For Swiss companies, two triggers are especially relevant in practice:
 
 Whether a purely Swiss deployment without EU output remains outside the AI Act depends on the concrete facts and should be assessed case by case.
 
-## Risk-based approach (overview)
+## Risk-based approach (overview) {#risk-classes}
 
 The AI Act distinguishes inter alia:
 
@@ -48,7 +48,7 @@ The AI Act distinguishes inter alia:
 
 The precise classification of your system determines the catalogue of duties — not the company seat alone.
 
-## Phased timeline
+## Phased timeline {#timeline}
 
 The AI Act applies in stages. Unchanged under Regulation (EU) 2024/1689:
 
@@ -68,7 +68,7 @@ Until Official Journal publication, the current legal position remains formally 
 
 Swiss providers with an EU market should map the stage applicable to their product class early.
 
-## What Swiss exporters should check
+## What Swiss exporters should check {#exporter-checklist}
 
 1. Is the system or its output offered or used in the EU?
 2. What role do you have: provider, deployer, importer, distributor?

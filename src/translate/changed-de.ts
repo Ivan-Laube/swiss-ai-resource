@@ -14,8 +14,20 @@ export type CanonicalContent = {
 
 const DE_CONTENT_PREFIX = "content/de/";
 
+/** `{#anchor}` markers at the end of ATX heading lines. */
+const HEADING_ANCHOR_MARKER = /^(#{1,6}[ \t].*?)[ \t]*\{#[^{}\n]*\}[ \t]*$/gm;
+
+/**
+ * Body for change detection. Heading anchor markers are dropped: adding or
+ * renaming one is not a prose change, and translations get markers via
+ * `npm run sync:anchors` instead of a full LLM regeneration.
+ */
 function normalizeBody(body: string): string {
-  return body.replace(/^\uFEFF?/, "").replace(/^\n+/, "").trimEnd();
+  return body
+    .replace(/^\uFEFF?/, "")
+    .replace(/^\n+/, "")
+    .replace(HEADING_ANCHOR_MARKER, "$1")
+    .trimEnd();
 }
 
 /** Extract title/description/body from raw Markdown (no Zod — git history may be older). */

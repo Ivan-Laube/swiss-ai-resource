@@ -21,7 +21,7 @@ Die Verordnung (EU) 2024/1689 («AI Act») gilt nicht nur für Unternehmen mit S
 
 Diese Seite gibt einen Orientierungsrahmen für Exporteure und KMU mit EU-Bezug. Sie ist keine Rechtsberatung.
 
-## Räumlicher Anwendungsbereich (Art. 2)
+## Räumlicher Anwendungsbereich (Art. 2) {#scope}
 
 Nach Art. 2 Abs. 1 gilt die Verordnung unter anderem für:
 
@@ -37,7 +37,7 @@ Für Schweizer Unternehmen sind vor allem zwei Trigger praxisrelevant:
 
 Ob ein rein schweizerischer Einsatz ohne EU-Output ausserhalb des AI Act bleibt, hängt vom konkreten Sachverhalt ab und sollte fallbezogen geprüft werden.
 
-## Risikobasierter Ansatz (Überblick)
+## Risikobasierter Ansatz (Überblick) {#risk-classes}
 
 Der AI Act unterscheidet unter anderem:
 
@@ -48,7 +48,7 @@ Der AI Act unterscheidet unter anderem:
 
 Die genaue Einstufung Ihres Systems bestimmt den Pflichtenkatalog – nicht der Firmensitz allein.
 
-## Zeitliche Staffelung
+## Zeitliche Staffelung {#timeline}
 
 Der AI Act ist gestaffelt anwendbar. Unverändert gelten (Verordnung (EU) 2024/1689):
 
@@ -68,7 +68,7 @@ Bis zur Amtsblatt-Veröffentlichung bleibt die bisherige Rechtslage formal massg
 
 Schweizer Anbieter mit EU-Markt sollten die für ihre Produktklasse geltende Stufe frühzeitig zuordnen.
 
-## Was Schweizer Exporteure prüfen sollten
+## Was Schweizer Exporteure prüfen sollten {#exporter-checklist}
 
 1. Wird das System oder sein Output in der EU angeboten bzw. genutzt?
 2. Welche Rolle haben Sie: Anbieter, Betreiber, Einführer, Händler?

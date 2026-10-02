@@ -21,13 +21,13 @@ sources:
 
 Molti modelli linguistici generativi (LLM) sono gestiti negli USA. Non appena i **dati personali** lasciano la Svizzera, si applicano le regole sulla **Comunicazione di dati personali all'estero** (art. 16 e 17 LPD). Questa pagina spiega il quadro per le imprese svizzere — senza sostituire una consulenza legale.
 
-## Punto di partenza: dati personali e trasferimento all'estero
+## Punto di partenza: dati personali e trasferimento all'estero {#transfer-abroad}
 
 I dati personali possono in linea di principio essere comunicati all'estero solo se nel Paese di destinazione esiste una **protezione adeguata** oppure se si applicano **garanzie idonee**. Se uno Stato offre una protezione adeguata è stabilito dal Consiglio federale nell'**allegato 1 dell'Ordinanza sulla protezione dei dati (OPDa)**.
 
 La persona interessata deve essere informata di una comunicazione di dati all'estero (art. 19 cpv. 4 LPD). Paesi e garanzie figurano tra le indicazioni obbligatorie del registro delle attività di trattamento (art. 12 LPD).
 
-## USA e Swiss-U.S. Data Privacy Framework
+## USA e Swiss-U.S. Data Privacy Framework {#swiss-us-dpf}
 
 Il **15 settembre 2024** è entrata in vigore la modifica dell'elenco degli Stati (allegato 1 OPDa) relativa agli USA. Il quadro giuridico correlato — lo **Swiss-U.S. Data Privacy Framework (DPF)** — si applica alle organizzazioni USA **certificate**.
 
@@ -39,7 +39,7 @@ Controllo pratico prima di utilizzare un fornitore USA:
 
 Senza una certificazione adeguata, «il fornitore ha sede negli USA» da solo **non** costituisce una base di adeguatezza.
 
-## Quando non si applica una decisione di adeguatezza
+## Quando non si applica una decisione di adeguatezza {#safeguards}
 
 In assenza di una decisione di adeguatezza (o se non si applica al destinatario concreto), i trasferimenti possono comunque essere ammessi se la protezione dei dati è altrimenti assicurata — in particolare mediante:
 
@@ -49,7 +49,7 @@ In assenza di una decisione di adeguatezza (o se non si applica al destinatario 
 
 Il titolare del trattamento deve assicurarsi che il destinatario possa rispettare le clausole e che il diritto del Paese terzo non vi si opponga. Misure tecniche possono essere necessarie se minacciano accessi sproporzionati delle autorità.
 
-## Punti specifici per gli LLM
+## Punti specifici per gli LLM {#llm-specifics}
 
 L'IFPDT invita le utenti e gli utenti a un **uso consapevole** delle applicazioni di IA e ricorda alle imprese i loro obblighi — in particolare un'informazione trasparente sulle finalità e sulla natura del trattamento.
 
@@ -60,7 +60,7 @@ Chiarire inoltre:
 - Quali categorie di dati possono essere inserite (nessun dato personale particolarmente degno di protezione senza base giuridica chiara e misure di protezione)?
 - Dove si trovano log, embedding e ticket di supporto?
 
-## Checklist breve
+## Checklist breve {#checklist}
 
 | Domanda | Perché è rilevante |
 |---|---|

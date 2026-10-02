@@ -21,13 +21,13 @@ sources:
 
 Viele generative Sprachmodelle (LLMs) werden in den USA betrieben. Sobald **Personendaten** die Schweiz verlassen, greifen die Regeln zur **Bekanntgabe ins Ausland** (Art. 16 und 17 DSG). Diese Seite erklärt den Rahmen für Schweizer Unternehmen – ohne Rechtsberatung zu ersetzen.
 
-## Ausgangspunkt: Personendaten und Auslandstransfer
+## Ausgangspunkt: Personendaten und Auslandstransfer {#transfer-abroad}
 
 Personendaten dürfen grundsätzlich nur ins Ausland bekanntgegeben werden, wenn im Empfängerland ein **angemessenes Datenschutzniveau** besteht oder **geeignete Garantien** greifen. Ob ein Staat angemessen ist, legt der Bundesrat in **Anhang 1 der Datenschutzverordnung (DSV)** fest.
 
 Über eine Datenbekanntgabe ins Ausland muss die betroffene Person informiert werden (Art. 19 Abs. 4 DSG). Länder und Garantien gehören zu den Pflichtangaben im Verzeichnis der Bearbeitungstätigkeiten (Art. 12 DSG).
 
-## USA und Swiss-U.S. Data Privacy Framework
+## USA und Swiss-U.S. Data Privacy Framework {#swiss-us-dpf}
 
 Am **15. September 2024** trat die Ergänzung der Staatenliste (Anhang 1 DSV) in Bezug auf die USA in Kraft. Der damit verbundene Rechtsrahmen – das **Swiss-U.S. Data Privacy Framework (DPF)** – gilt für **zertifizierte** US-Organisationen.
 
@@ -39,7 +39,7 @@ Praxischeck vor dem Einsatz eines US-Anbieters:
 
 Ohne passende Zertifizierung reicht «der Anbieter sitzt in den USA» allein **nicht** als Angemessenheitsgrundlage.
 
-## Wenn kein Angemessenheitsbeschluss greift
+## Wenn kein Angemessenheitsbeschluss greift {#safeguards}
 
 Fehlt ein Angemessenheitsbeschluss (oder greift er für den konkreten Empfänger nicht), können Transfers trotzdem zulässig sein, wenn der Datenschutz anders sichergestellt wird – insbesondere durch:
 
@@ -49,7 +49,7 @@ Fehlt ein Angemessenheitsbeschluss (oder greift er für den konkreten Empfänger
 
 Der Verantwortliche muss sicherstellen, dass der Empfänger die Klauseln einhalten kann und dass das Recht des Drittlandes dem nicht entgegensteht. Technische Massnahmen können nötig sein, wenn unverhältnismässige Behördenzugriffe drohen.
 
-## LLM-spezifische Punkte
+## LLM-spezifische Punkte {#llm-specifics}
 
 Der EDÖB rät Nutzerinnen und Nutzern zu einem **bewussten Umgang** mit KI-Anwendungen und erinnert Unternehmen an ihre Pflichten – insbesondere transparente Information über Zwecke und Art der Bearbeitung.
 
@@ -60,7 +60,7 @@ Zusätzlich klären:
 - Welche Datenkategorien dürfen überhaupt eingegeben werden (keine besonders schützenswerten Daten ohne klare Rechtsgrundlage und Schutzmassnahmen)?
 - Wo liegen Logs, Embeddings und Support-Tickets?
 
-## Kurz-Checkliste
+## Kurz-Checkliste {#checklist}
 
 | Frage | Warum relevant |
 |---|---|

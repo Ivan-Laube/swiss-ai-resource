@@ -21,7 +21,7 @@ Il regolamento (UE) 2024/1689 («AI Act») non si applica solo alle imprese stab
 
 Questa pagina fornisce un quadro orientativo per esportatori e PMI con un nesso con l'UE. Non costituisce consulenza legale.
 
-## Ambito di applicazione territoriale (art. 2)
+## Ambito di applicazione territoriale (art. 2) {#scope}
 
 Ai sensi dell'art. 2, par. 1, il regolamento si applica tra l'altro:
 
@@ -37,7 +37,7 @@ Per le imprese svizzere sono soprattutto rilevanti in pratica due trigger:
 
 Se un dispiegamento puramente svizzero senza output nell'UE resta fuori dal regolamento sull'IA dipende dai fatti concreti e va esaminato caso per caso.
 
-## Approccio basato sul rischio (panoramica)
+## Approccio basato sul rischio (panoramica) {#risk-classes}
 
 Il regolamento sull'IA distingue tra l'altro:
 
@@ -48,7 +48,7 @@ Il regolamento sull'IA distingue tra l'altro:
 
 La classificazione precisa del vostro sistema determina il catalogo degli obblighi — non la sola sede dell'impresa.
 
-## Gradualità temporale
+## Gradualità temporale {#timeline}
 
 Il regolamento sull'IA si applica in modo graduale. Restano invariati (regolamento (UE) 2024/1689):
 
@@ -68,7 +68,7 @@ Fino alla pubblicazione nella Gazzetta ufficiale, il diritto vigente resta forma
 
 I fornitori svizzeri con un mercato nell'UE dovrebbero attribuire tempestivamente lo stadio applicabile alla loro classe di prodotto.
 
-## Cosa dovrebbero verificare gli esportatori svizzeri
+## Cosa dovrebbero verificare gli esportatori svizzeri {#exporter-checklist}
 
 1. Il sistema o il suo output è offerto o utilizzato nell'UE?
 2. Quale ruolo avete: fornitore, deployer, importatore, distributore?

@@ -39,21 +39,21 @@ Usatela prima del pilota e di nuovo prima della messa in produzione.
 - Le persone interessate possono opporsi a un trattamento automatico o esigere un **controllo umano**?
 - Esiste un registro delle attività di trattamento aggiornato (incl. estero e garanzie)?
 
-## 3. Hosting e trasferimento all'estero
+## 3. Hosting e trasferimento all'estero {#hosting-transfer}
 
 - In quali regioni i dati sono memorizzati e trattati (CH / UE / US / altri)?
 - Per destinatari USA: certificazione attiva **Swiss-U.S. Data Privacy Framework** verificata?
 - Altrimenti: **clausole tipo di protezione dei dati** riconosciute, DPA ed esame del trasferimento presenti?
 - Gli input vengono usati per l'**addestramento del modello** — ed esiste un opt-out?
 
-## 4. Contratto ed esercizio
+## 4. Contratto ed esercizio {#contract-operations}
 
 - Contratto con il responsabile del trattamento (DPA) con regole chiare sui sub-responsabili?
 - Termini di cancellazione, export, notifica di incidenti e diritti di audit regolati?
 - Disponibilità, sede del supporto e elenco dei sub-processori noti?
 - Piano di exit: potete portare con voi dati e configurazioni?
 
-## 5. Regolamento sull'IA dell'UE (se nesso con l'UE)
+## 5. Regolamento sull'IA dell'UE (se nesso con l'UE) {#eu-ai-act}
 
 - Il sistema o il suo **output nell'UE** è offerto o utilizzato?
 - Quale ruolo avete (fornitore / deployer / importatore / distributore)?
@@ -67,7 +67,7 @@ Usatela prima del pilota e di nuovo prima della messa in produzione.
 - Spiegabilità verso clienti, audit e vigilanza?
 - Esame indipendente per le applicazioni materiali?
 
-## 7. Competenza e formazione
+## 7. Competenza e formazione {#ai-literacy}
 
 - Le persone che utilizzano o approvano lo strumento hanno un'**alfabetizzazione in materia di IA** sufficiente (regolamento (UE) 2024/1689 art. 4, in vigore dal 2 febbraio 2025)?
 - Formazioni e ruoli sono chiari (business, IT, protezione dei dati) — anche nel senso dell'aspettativa FINMA di «broad training measures» per gli istituti assoggettati?

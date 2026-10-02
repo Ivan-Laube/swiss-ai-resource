@@ -25,7 +25,7 @@ Questa pagina riassume i punti essenziali per le PMI svizzere. Non sostituisce u
 
 L'IFPDT si rivolge a **produttori, fornitori e utilizzatori** di applicazioni di IA. Chi tratta dati personali con l'IA — internamente o tramite un servizio cloud — rimane titolare del trattamento ai sensi della protezione dei dati e deve rispettare gli obblighi di legge.
 
-## Trasparenza e informazione
+## Trasparenza e informazione {#transparency}
 
 La finalità, il funzionamento e le fonti dei dati dei trattamenti supportati dall'IA devono essere indicati in modo **trasparente**. Per i modelli linguistici che comunicano direttamente con le utenti e gli utenti, questi hanno il diritto di sapere:
 
@@ -34,17 +34,17 @@ La finalità, il funzionamento e le fonti dei dati dei trattamenti supportati da
 
 Anche le applicazioni che possono alterare volti, immagini o messaggi vocali di persone identificabili devono essere chiaramente riconoscibili.
 
-## Opposizione e controllo umano
+## Opposizione e controllo umano {#human-review}
 
 Il diritto alla trasparenza è strettamente collegato al diritto di **opporsi** a un trattamento automatico dei dati o di esigere che una **decisione individuale automatizzata sia controllata da un essere umano**.
 
-## Rischi elevati e valutazione d'impatto sulla protezione dei dati
+## Rischi elevati e valutazione d'impatto sulla protezione dei dati {#dpia}
 
 I trattamenti supportati dall'IA con rischi elevati sono in linea di principio ammessi, ma richiedono **misure di protezione adeguate**. In caso di rischi elevati, la LPD richiede una **valutazione d'impatto sulla protezione dei dati**.
 
 Le applicazioni volte a svuotare la sfera privata e l'autodeterminazione informativa — ad esempio il riconoscimento facciale generalizzato in tempo reale o il «social scoring» — sono **vietate** sotto il profilo della protezione dei dati.
 
-## Cosa possono fare ora le PMI
+## Cosa possono fare ora le PMI {#next-steps}
 
 1. Inventario: quali strumenti di IA trattano dati personali?
 2. Adeguare i testi di trasparenza e le direttive interne.

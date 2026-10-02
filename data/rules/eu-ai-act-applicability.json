@@ -278,7 +278,7 @@
           "url": "https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX%3A32024R1689"
         }
       ],
-      "related_pages": ["eu-ai-act-swiss-exporters", "ndsg-ai-basics"]
+      "related_pages": ["eu-ai-act-swiss-exporters#scope", "ndsg-ai-basics"]
     },
     "out-unclear-nexus": {
       "type": "outcome",
@@ -315,7 +315,7 @@
           "url": "https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX%3A32024R1689"
         }
       ],
-      "related_pages": ["eu-ai-act-swiss-exporters"]
+      "related_pages": ["eu-ai-act-swiss-exporters#scope"]
     },
     "out-unclear-role": {
       "type": "outcome",
@@ -353,8 +353,8 @@
         }
       ],
       "related_pages": [
-        "eu-ai-act-swiss-exporters",
-        "ai-procurement-checklist"
+        "eu-ai-act-swiss-exporters#scope",
+        "ai-procurement-checklist#eu-ai-act"
       ]
     },
     "out-prohibited": {
@@ -393,8 +393,8 @@
         }
       ],
       "related_pages": [
-        "eu-ai-act-swiss-exporters",
-        "ai-procurement-checklist"
+        "eu-ai-act-swiss-exporters#risk-classes",
+        "ai-procurement-checklist#eu-ai-act"
       ]
     },
     "out-transparency": {
@@ -436,7 +436,7 @@
           "url": "https://www.consilium.europa.eu/en/press/press-releases/2026/06/29/artificial-intelligence-council-gives-final-green-light-to-simplify-and-streamline-rules/"
         }
       ],
-      "related_pages": ["eu-ai-act-swiss-exporters"]
+      "related_pages": ["eu-ai-act-swiss-exporters#risk-classes"]
     },
     "out-gpai": {
       "type": "outcome",
@@ -474,8 +474,8 @@
         }
       ],
       "related_pages": [
-        "eu-ai-act-swiss-exporters",
-        "ai-procurement-checklist"
+        "eu-ai-act-swiss-exporters#timeline",
+        "ai-procurement-checklist#eu-ai-act"
       ]
     },
     "out-limited-or-none": {
@@ -514,8 +514,8 @@
         }
       ],
       "related_pages": [
-        "eu-ai-act-swiss-exporters",
-        "ai-procurement-checklist"
+        "eu-ai-act-swiss-exporters#risk-classes",
+        "ai-procurement-checklist#ai-literacy"
       ]
     },
     "out-unclear-class": {
@@ -547,7 +547,7 @@
           "url": "https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX%3A32024R1689"
         }
       ],
-      "related_pages": ["eu-ai-act-swiss-exporters"]
+      "related_pages": ["eu-ai-act-swiss-exporters#risk-classes"]
     },
     "out-highrisk-annex-iii": {
       "type": "outcome",
@@ -589,8 +589,8 @@
         }
       ],
       "related_pages": [
-        "eu-ai-act-swiss-exporters",
-        "ai-procurement-checklist"
+        "eu-ai-act-swiss-exporters#timeline",
+        "ai-procurement-checklist#eu-ai-act"
       ]
     },
     "out-highrisk-annex-i": {
@@ -633,8 +633,8 @@
         }
       ],
       "related_pages": [
-        "eu-ai-act-swiss-exporters",
-        "ai-procurement-checklist"
+        "eu-ai-act-swiss-exporters#timeline",
+        "ai-procurement-checklist#eu-ai-act"
       ]
     },
     "out-unclear-annex": {
@@ -676,7 +676,7 @@
           "url": "https://www.consilium.europa.eu/en/press/press-releases/2026/06/29/artificial-intelligence-council-gives-final-green-light-to-simplify-and-streamline-rules/"
         }
       ],
-      "related_pages": ["eu-ai-act-swiss-exporters"]
+      "related_pages": ["eu-ai-act-swiss-exporters#timeline"]
     }
   }
 }

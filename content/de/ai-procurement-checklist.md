@@ -39,21 +39,21 @@ Nutzen Sie sie vor dem Pilot und erneut vor dem Produktivgang.
 - Können Betroffene einer automatischen Bearbeitung widersprechen bzw. eine **menschliche Überprüfung** verlangen?
 - Liegt ein aktuelles Verzeichnis der Bearbeitungstätigkeiten vor (inkl. Ausland und Garantien)?
 
-## 3. Hosting und Auslandstransfer
+## 3. Hosting und Auslandstransfer {#hosting-transfer}
 
 - In welchen Regionen werden Daten gespeichert und verarbeitet (CH / EU / US / andere)?
 - Bei US-Empfängern: aktive **Swiss-U.S. Data Privacy Framework**-Zertifizierung geprüft?
 - Sonst: anerkannte **Standarddatenschutzklauseln**, DPA und Transferprüfung vorhanden?
 - Werden Eingaben zum **Modelltraining** verwendet – und gibt es einen Opt-out?
 
-## 4. Vertrag und Betrieb
+## 4. Vertrag und Betrieb {#contract-operations}
 
 - Auftragsbearbeitungsvertrag (DPA) mit klaren Unterauftragsregeln?
 - Löschfristen, Export, Incident-Meldung und Audit-Rechte geregelt?
 - Verfügbarkeit, Support-Standort und Subprozessorenliste bekannt?
 - Exit-Plan: Können Sie Daten und Konfigurationen mitnehmen?
 
-## 5. EU AI Act (falls EU-Bezug)
+## 5. EU AI Act (falls EU-Bezug) {#eu-ai-act}
 
 - Wird das System oder sein **Output in der EU** angeboten bzw. genutzt?
 - Welche Rolle haben Sie (Anbieter / Betreiber / Einführer / Händler)?
@@ -67,7 +67,7 @@ Nutzen Sie sie vor dem Pilot und erneut vor dem Produktivgang.
 - Erklärbarkeit gegenüber Kunden, Audit und Aufsicht?
 - Unabhängige Review bei wesentlichen Anwendungen?
 
-## 7. Kompetenz und Schulung
+## 7. Kompetenz und Schulung {#ai-literacy}
 
 - Haben die Personen, die das Tool bedienen oder freigeben, ausreichende **KI-Kompetenz** (EU AI Act Art. 4, in Kraft seit 2. Februar 2025)?
 - Sind Schulungen und Rollen klar (Fach, IT, Datenschutz) – auch im Sinne der FINMA-Erwartung an «broad training measures» bei beaufsichtigten Instituten?
