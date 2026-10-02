@@ -103,9 +103,13 @@ const questionSchema = z
       .object({ option: kebabId, topic: localizedStringSchema })
       .strict()
       .optional(),
-    /** Survey aggregate to compare with (T48). */
+    /**
+     * Survey aggregate to compare with (T48): share of respondents who chose
+     * `option` in `field`. `statement` must contain {pct}, e.g.
+     * "{pct} % der befragten Unternehmen haben eine KI-Nutzungsrichtlinie."
+     */
     survey_benchmark: z
-      .object({ field: kebabId, option: kebabId })
+      .object({ field: kebabId, option: kebabId, statement: localizedStringSchema })
       .strict()
       .optional(),
   })

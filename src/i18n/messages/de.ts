@@ -313,6 +313,8 @@ export const de = {
     pricingContact: "Auf Anfrage",
   },
   readiness: {
+    benchmarkTitle: "So stehen andere Unternehmen da",
+    benchmarkSource: "Aus {n} Antworten der Schweizer KI-Umfrage. Machen Sie mit, damit der Vergleich genauer wird.",
     draftNotice: "Vorschau: Dieser Check wird noch fertiggestellt und übersetzt.",
     profileTitle: "Zu Ihrem Unternehmen",
     progress: "{answered} von {total} Fragen beantwortet",

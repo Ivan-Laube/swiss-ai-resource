@@ -5,6 +5,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Button, Callout, StatusPill, type StatusTone } from "@/components/ui";
 import type { Locale } from "@/i18n/config";
 import type { Messages } from "@/i18n/types";
+import { benchmarkSelection } from "@/readiness/benchmark";
 import { NA, type ReadinessCheck as CheckData } from "@/readiness/schema";
 import {
   isVisible,
@@ -34,6 +35,14 @@ type Props = {
   messages: Messages["readiness"];
   /** Absolute site origin, printed after links in the PDF. */
   siteUrl: string;
+  /** Survey comparison (T48): shares per question id, empty until n ≥ 5. */
+  benchmark: {
+    shares: Record<string, number>;
+    responses: number;
+    surveyHref: string;
+    surveyPrompt: string;
+    surveyCta: string;
+  };
 };
 
 type Question = CheckData["questions"][number] | CheckData["security"]["questions"][number];
@@ -63,7 +72,15 @@ function fill(template: string, values: Record<string, string | number>): string
  * this component only renders. Answers live in memory only: closing or
  * reloading the page clears them (the page says so; the printout is the record).
  */
-export function ReadinessCheck({ check, profile, links, locale, messages, siteUrl }: Props) {
+export function ReadinessCheck({
+  check,
+  profile,
+  links,
+  locale,
+  messages,
+  siteUrl,
+  benchmark,
+}: Props) {
   const t = (value: LocalizedString) => pickLocalized(value, locale);
   const [profileAnswers, setProfileAnswers] = useState<Answers>({});
   const [answers, setAnswers] = useState<Answers>({});
@@ -345,6 +362,42 @@ export function ReadinessCheck({ check, profile, links, locale, messages, siteUr
               ) : null}
             </>
           )}
+
+          {(() => {
+            const ids = benchmarkSelection(
+              benchmark.shares,
+              result.nextSteps.filter((s) => s.kind === "question").map((s) => s.id),
+              check.questions.map((q) => q.id),
+            );
+            return (
+              <section className={styles.benchmark} aria-labelledby="readiness-benchmark">
+                {ids.length > 0 ? (
+                  <>
+                    <h3 id="readiness-benchmark" className={styles.subTitle}>
+                      {messages.benchmarkTitle}
+                    </h3>
+                    <ul className={styles.benchmarkList}>
+                      {ids.map((id) => {
+                        const q = check.questions.find((x) => x.id === id)!;
+                        return (
+                          <li key={id}>
+                            {fill(t(q.survey_benchmark!.statement), { pct: benchmark.shares[id] })}
+                          </li>
+                        );
+                      })}
+                    </ul>
+                    <p className={styles.help}>
+                      {fill(messages.benchmarkSource, { n: benchmark.responses })}
+                    </p>
+                  </>
+                ) : null}
+                <p className={`${styles.surveyInvite} readiness-print-hide`}>
+                  {benchmark.surveyPrompt}{" "}
+                  <a href={benchmark.surveyHref}>{benchmark.surveyCta}</a>
+                </p>
+              </section>
+            );
+          })()}
 
           <h3 className={styles.subTitle}>{messages.dimensionsTitle}</h3>
           <ul className={styles.dimensions}>
