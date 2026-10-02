@@ -205,27 +205,61 @@ function isWide(token: Token): boolean {
 /** Left + right cell margin, in twips. */
 const CELL_PADDING = 120;
 
+const NARROW = new Set("iljtfrI.,;:!|'()[]/ -");
+const WIDE = new Set("mwMWOQGDHNU@%");
+
 /**
- * Column widths in twips. Each column gets at least its longest word (so
- * headers never break mid-word) or a sixth of its longest text, whichever
- * is larger; leftover width is shared equally, since fill-in columns with
+ * Rough width of a text in em for Calibri, per glyph class. Bold runs about
+ * 7% wider. Accurate enough to keep words like "Owner" (wide letters) from
+ * breaking without wasting width on narrow ones.
+ */
+function textEm(text: string, bold: boolean): number {
+  let em = 0;
+  for (const ch of text) {
+    em += NARROW.has(ch) ? 0.3 : WIDE.has(ch) ? 0.8 : /[A-ZÄÖÜ]/.test(ch) ? 0.62 : 0.5;
+  }
+  return bold ? em * 1.07 : em;
+}
+
+/**
+ * Column widths in twips. Every column gets at least its widest word, so no
+ * word breaks mid-way; short values ("ja / nein") stay on one line; long
+ * text may wrap. Spare width is shared equally, since fill-in columns with
  * short headers (e.g. "Purpose") need room for what people will write.
+ * When space is short, only the part above the widest word shrinks.
  */
 function columnWidths(token: Tokens.Table, total: number, sizeHalfPt: number): number[] {
-  const charWidth = (sizeHalfPt / 2) * 20 * 0.55; // average glyph ≈ 0.55 em
-  const needed = token.header.map((header, col) => {
-    const cells = [header.text, ...token.rows.map((row) => row[col]?.text ?? "")];
-    const longestWord = Math.max(4, ...cells.flatMap((t) => t.split(/\s+/).map((w) => w.length)));
-    const longestCell = Math.max(...cells.map((t) => t.length));
-    // Short values ("ja / nein") stay on one line; long text may wrap.
-    const unbroken = longestCell <= 12 ? longestCell : longestCell / 6;
-    // +1 character of slack: headers are bold, and estimates are averages.
-    return (Math.max(longestWord, unbroken) + 1) * charWidth + CELL_PADDING;
+  const twipsPerEm = (sizeHalfPt / 2) * 20;
+  const SLACK = 0.4; // em
+  const columns = token.header.map((header, col) => {
+    const cells = [
+      { text: header.text, bold: true },
+      ...token.rows.map((row) => ({ text: row[col]?.text ?? "", bold: false })),
+    ];
+    // Never broken: the widest word, and short values ("ja / nein") as a whole.
+    const unbreakable = Math.max(
+      ...cells.flatMap((c) => [
+        ...c.text.split(/\s+/).map((w) => textEm(w, c.bold)),
+        ...(c.text.length <= 12 ? [textEm(c.text, c.bold)] : []),
+      ]),
+    );
+    // Long text may wrap, but should not become a narrow column.
+    const longText = Math.max(...cells.map((c) => textEm(c.text, c.bold) / 6));
+    const min = (unbreakable + SLACK) * twipsPerEm + CELL_PADDING;
+    const want = Math.max(min, (longText + SLACK) * twipsPerEm + CELL_PADDING);
+    return { min, want };
   });
-  const sum = needed.reduce((a, b) => a + b, 0);
-  return sum >= total
-    ? needed.map((w) => Math.floor((w / sum) * total))
-    : needed.map((w) => Math.floor(w + (total - sum) / needed.length));
+
+  const sumWant = columns.reduce((a, c) => a + c.want, 0);
+  if (sumWant <= total) {
+    return columns.map((c) => Math.floor(c.want + (total - sumWant) / columns.length));
+  }
+  const sumMin = columns.reduce((a, c) => a + c.min, 0);
+  if (sumMin >= total) {
+    return columns.map((c) => Math.floor((c.min / sumMin) * total));
+  }
+  const flexible = sumWant - sumMin;
+  return columns.map((c) => Math.floor(c.min + ((c.want - c.min) / flexible) * (total - sumMin)));
 }
 
 function table(token: Tokens.Table, textWidth: number): Table {
