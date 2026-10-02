@@ -162,48 +162,6 @@ export default async function ContentPage({ params }: PageProps) {
             </ol>
           </nav>
 
-          <header className={styles.pageHeader}>
-            <h1 className={styles.title}>{page.frontmatter.title}</h1>
-            <div className={styles.metaRow}>
-              <p className={styles.meta}>
-                {messages.content.lastVerified}:{" "}
-                <time dateTime={lastVerified}>
-                  {formatIsoDate(lastVerified, lang)}
-                </time>
-              </p>
-              <p className={styles.meta}>{readingLabel}</p>
-              {showCounsel ? (
-                <StatusPill tone="info" className={styles.counselBadge}>
-                  {messages.content.counselBadge.replace(
-                    "{date}",
-                    formatIsoDate(page.frontmatter.review_date!, lang),
-                  )}
-                </StatusPill>
-              ) : null}
-            </div>
-          </header>
-
-          {lang !== "de" ? (
-            <Callout tone="neutral" className={styles.translationNotes}>
-              <p>{messages.content.translationCanonicalNote}</p>
-              {page.frontmatter.translation_status === "draft" ? (
-                <p>{messages.content.translationDraft}</p>
-              ) : null}
-            </Callout>
-          ) : null}
-
-          <p className={styles.lead}>{page.frontmatter.description}</p>
-
-          {showToc ? (
-            <details className={`${styles.tocMobile} print-hide-toc`}>
-              <summary className={styles.tocSummary}>
-                {messages.content.tocLabel}
-              </summary>
-              <nav aria-label={messages.content.tocNavLabel}>
-                <TocList headings={headings} />
-              </nav>
-            </details>
-          ) : null}
 
           <div
             className={
@@ -211,6 +169,51 @@ export default async function ContentPage({ params }: PageProps) {
             }
           >
             <div className={styles.content}>
+              {/* Title block inside the text column: the lead lines up with
+                  the body text and the desktop TOC starts level with the title. */}
+              <header className={styles.pageHeader}>
+                <h1 className={styles.title}>{page.frontmatter.title}</h1>
+                <div className={styles.metaRow}>
+                  <p className={styles.meta}>
+                    {messages.content.lastVerified}:{" "}
+                    <time dateTime={lastVerified}>
+                      {formatIsoDate(lastVerified, lang)}
+                    </time>
+                  </p>
+                  <p className={styles.meta}>{readingLabel}</p>
+                  {showCounsel ? (
+                    <StatusPill tone="info" className={styles.counselBadge}>
+                      {messages.content.counselBadge.replace(
+                        "{date}",
+                        formatIsoDate(page.frontmatter.review_date!, lang),
+                      )}
+                    </StatusPill>
+                  ) : null}
+                </div>
+              </header>
+
+              {lang !== "de" ? (
+                <Callout tone="neutral" className={styles.translationNotes}>
+                  <p>{messages.content.translationCanonicalNote}</p>
+                  {page.frontmatter.translation_status === "draft" ? (
+                    <p>{messages.content.translationDraft}</p>
+                  ) : null}
+                </Callout>
+              ) : null}
+
+              <p className={styles.lead}>{page.frontmatter.description}</p>
+
+              {showToc ? (
+                <details className={`${styles.tocMobile} print-hide-toc`}>
+                  <summary className={styles.tocSummary}>
+                    {messages.content.tocLabel}
+                  </summary>
+                  <nav aria-label={messages.content.tocNavLabel}>
+                    <TocList headings={headings} />
+                  </nav>
+                </details>
+              ) : null}
+
               <article
                 className="prose"
                 dangerouslySetInnerHTML={{ __html: html }}

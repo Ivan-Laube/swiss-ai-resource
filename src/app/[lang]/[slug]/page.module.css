@@ -98,7 +98,8 @@
 
 .lead {
   margin: 0 0 var(--space-6);
-  max-width: 72ch;
+  /* Width comes from .content: 72ch here would be measured in the larger
+     lead font and run past the body text. */
   font-size: var(--font-lead);
   line-height: var(--leading-lead);
   letter-spacing: var(--tracking-lead);
@@ -180,8 +181,10 @@
   text-underline-offset: 0.15em;
 }
 
+/* Text column: title block, body, sources. 72ch in body font, matching .prose. */
 .content {
   min-width: 0;
+  max-width: 72ch;
 }
 
 .sectionHeading {
