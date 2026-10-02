@@ -52,12 +52,24 @@ describe("validateReadinessCheck", () => {
       c.status = "live";
       // Self-contained: the real data may have no pending links left.
       c.questions[0].pending_links.push({ link: "guide:ndsg-ai-basics#later", task: "T99" });
+      delete c.title.fr;
+      delete c.title.it;
     });
     assert.throws(goLiveWithPending, (error: Error) => {
       assert.match(error.message, /pending link "guide:ndsg-ai-basics#later" \(T99\) not allowed when live/);
       assert.match(error.message, /title: missing fr, it/);
       return true;
     });
+  });
+
+  it("rejects listing a draft check", () => {
+    assert.throws(
+      validateWith((c) => {
+        c.status = "draft";
+        c.listed = true;
+      }),
+      /a draft check can't be listed/,
+    );
   });
 
   it("rejects survey benchmarks that aren't survey options", () => {

@@ -653,6 +653,7 @@ npm run test:unit         # includes the worked examples in src/readiness/score.
 |---|---|
 | `version` | Bump when questions, options or scoring change; printed on the result |
 | `status` | `draft`: FR/IT may be empty and `pending_links` are allowed. `live`: all four locales and no pending links |
+| `listed` | Public discovery, separate from `status`: `true` indexes the page and lists it on the tools index and in the sitemap; `false` (default) keeps it reachable only by URL with `noindex` (e.g. during legal review). Only a `live` check can be listed |
 | `profile[]` | Unscored questions. `from_survey` reuses a survey question's prompt and options (single source of wording); `notes` and `add_links` react to answers (e.g. FINMA adds a guide link and a note) |
 | `dimensions[]` | Result groups; every question names one |
 | `questions[]` | Scored questions in display order. Three `options` scored 0/1/2 (ids `gap` / `partly` / `covered`), optional `na_option`, `severity`, optional `severity_overrides`, `red_flag`, `survey_benchmark`, `action`, `links`, `pending_links`, `legal_hooks` (for reviewers, not shown) |

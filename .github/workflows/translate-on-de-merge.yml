@@ -6,12 +6,17 @@ on:
     paths:
       - "content/de/**/*.md"
       - "content/templates/*/de.md"
+      - "data/readiness-check.json"
   workflow_dispatch:
     inputs:
       slugs:
-        description: "Comma-separated DE slugs (empty = all publishable)"
+        description: "Comma-separated DE slugs (empty = all publishable, unless only the readiness check is requested)"
         required: false
         default: ""
+      readiness:
+        description: "Fill missing EN/FR/IT strings of the readiness check (data/readiness-check.json)"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -74,8 +79,16 @@ jobs:
           GITHUB_SHA: ${{ github.sha }}
           EVENT_NAME: ${{ github.event_name }}
           INPUT_SLUGS: ${{ github.event.inputs.slugs }}
+          INPUT_READINESS: ${{ github.event.inputs.readiness }}
         run: |
           set -euo pipefail
+
+          if [ "${EVENT_NAME}" = "workflow_dispatch" ] && [ "${INPUT_READINESS:-false}" = "true" ] && [ -z "${INPUT_SLUGS// }" ]; then
+            echo "Readiness check only; no guide pages requested."
+            echo "list=" >> "$GITHUB_OUTPUT"
+            echo "count=0" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
 
           if [ "${EVENT_NAME}" = "workflow_dispatch" ]; then
             INPUT="${INPUT_SLUGS:-}"
@@ -156,6 +169,53 @@ jobs:
             npm run translate:templates -- "--id=${id}" --strict
           done
 
+      # Readiness check texts (T51): on push, re-translate strings whose DE
+      # changed (never overwriting a translation updated in the same commit)
+      # and fill missing ones; a manual run with `readiness` fills missing ones.
+      - name: Resolve readiness check translation
+        id: readiness
+        env:
+          GITHUB_EVENT_BEFORE: ${{ github.event.before }}
+          GITHUB_SHA: ${{ github.sha }}
+          EVENT_NAME: ${{ github.event_name }}
+          INPUT_READINESS: ${{ github.event.inputs.readiness }}
+        run: |
+          set -euo pipefail
+          if [ "${EVENT_NAME}" = "workflow_dispatch" ]; then
+            if [ "${INPUT_READINESS:-false}" = "true" ]; then
+              echo "base=" >> "$GITHUB_OUTPUT"
+              echo "count=1" >> "$GITHUB_OUTPUT"
+            else
+              echo "count=0" >> "$GITHUB_OUTPUT"
+            fi
+            exit 0
+          fi
+          if [ -z "${GITHUB_EVENT_BEFORE//0/}" ] || git diff --quiet "${GITHUB_EVENT_BEFORE}" "${GITHUB_SHA}" -- data/readiness-check.json; then
+            echo "count=0" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          # Only continue if something actually needs translating: the bot's own
+          # commit changes this file too, and must not start another full run.
+          TODO="$(npx tsx scripts/translate-readiness.ts "--base=${GITHUB_EVENT_BEFORE}" --dry-run             | grep -oE '[0-9]+ strings? to translate' | awk '{ s += $1 } END { print s + 0 }')"
+          echo "Readiness strings to translate: ${TODO}"
+          echo "base=${GITHUB_EVENT_BEFORE}" >> "$GITHUB_OUTPUT"
+          echo "count=${TODO}" >> "$GITHUB_OUTPUT"
+
+      - name: Translate readiness check
+        if: steps.readiness.outputs.count != '0'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          TRANSLATE_MODEL: ${{ vars.TRANSLATE_MODEL }}
+          BASE: ${{ steps.readiness.outputs.base }}
+        run: |
+          set -euo pipefail
+          if [ -n "${BASE}" ]; then
+            npm run translate:readiness -- "--base=${BASE}"
+          else
+            npm run translate:readiness
+          fi
+          npm run check:readiness
+
       - name: Regenerate EN/FR/IT drafts
         if: steps.slugs.outputs.count != '0'
         env:
@@ -179,16 +239,16 @@ jobs:
           npm run translate -- "${ARGS[@]}" --strict
 
       - name: Validate content frontmatter
-        if: steps.slugs.outputs.count != '0' || steps.templates.outputs.count != '0'
+        if: steps.slugs.outputs.count != '0' || steps.templates.outputs.count != '0' || steps.readiness.outputs.count != '0'
         run: npm run check:content
 
       - name: Translations carry the DE heading anchors
-        if: steps.slugs.outputs.count != '0' || steps.templates.outputs.count != '0'
+        if: steps.slugs.outputs.count != '0' || steps.templates.outputs.count != '0' || steps.readiness.outputs.count != '0'
         run: npm run check:anchors -- --strict
 
       # Gate push to main: regenerated translations must not break the static export.
       - name: Verify static export still builds
-        if: steps.slugs.outputs.count != '0' || steps.templates.outputs.count != '0'
+        if: steps.slugs.outputs.count != '0' || steps.templates.outputs.count != '0' || steps.readiness.outputs.count != '0'
         run: npm run build
 
       # Keep main green: new or changed translations change FR pages (and a
@@ -197,34 +257,35 @@ jobs:
       # the translations. Only FR: EN/IT have no visual tests, and DE
       # baselines must never be updated by the bot without review.
       - name: Refresh FR visual baselines
-        if: steps.slugs.outputs.count != '0' || steps.templates.outputs.count != '0'
+        if: steps.slugs.outputs.count != '0' || steps.templates.outputs.count != '0' || steps.readiness.outputs.count != '0'
         run: |
           set -euo pipefail
           npm run build:e2e
           npx playwright test e2e/visual --grep "visual routes \(fr\)" --update-snapshots
 
       - name: Configure git
-        if: steps.slugs.outputs.count != '0' || steps.templates.outputs.count != '0'
+        if: steps.slugs.outputs.count != '0' || steps.templates.outputs.count != '0' || steps.readiness.outputs.count != '0'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
       - name: Commit regenerated translations
-        if: steps.slugs.outputs.count != '0' || steps.templates.outputs.count != '0'
+        if: steps.slugs.outputs.count != '0' || steps.templates.outputs.count != '0' || steps.readiness.outputs.count != '0'
         env:
           SLUG_LIST: ${{ steps.slugs.outputs.list }}
           TEMPLATE_LIST: ${{ steps.templates.outputs.added }} ${{ steps.templates.outputs.changed }}
+          READINESS_LABEL: ${{ steps.readiness.outputs.count != '0' && 'readiness-check' || '' }}
         run: |
           set -euo pipefail
 
-          git add -- content/en content/fr content/it content/templates
+          git add -- content/en content/fr content/it content/templates data/readiness-check.json
           git add -- 'e2e/visual/routes.spec.ts-snapshots/fr-*'
           if git diff --cached --quiet; then
             echo "No translation file changes to commit."
             exit 0
           fi
 
-          SLUG_LABEL="$(echo "${SLUG_LIST} ${TEMPLATE_LIST}" | xargs | tr ' ' ',')"
+          SLUG_LABEL="$(echo "${SLUG_LIST} ${TEMPLATE_LIST} ${READINESS_LABEL}" | xargs | tr ' ' ',')"
           git commit -m "chore(content): regenerate translations (${SLUG_LABEL})" \
             -m "Includes refreshed FR visual baselines."
           git push

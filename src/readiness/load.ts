@@ -233,6 +233,10 @@ export function validateReadinessCheck(check: ReadinessCheck): string[] {
     if (missing.length > 0) errors.push(`${at}: missing ${missing.join(", ")}`);
   }
 
+  if (check.listed && check.status !== "live") {
+    errors.push("listed: a draft check can't be listed; set status to live first");
+  }
+
   if (errors.length > 0) {
     throw new Error(`Invalid ${READINESS_CHECK_PATH}:\n${errors.map((e) => `  - ${e}`).join("\n")}`);
   }
@@ -259,4 +263,20 @@ export function loadReadinessCheck(): ReadinessValidation {
 
 export function getReadinessCheck(): ReadinessCheck {
   return loadReadinessCheck().check;
+}
+
+/** Complete in all languages (no preview notice). */
+export function isReadinessCheckLive(): boolean {
+  return getReadinessCheck().status === "live";
+}
+
+/** Indexed and listed on the tools index and in the sitemap (requires live). */
+export function isReadinessCheckListed(): boolean {
+  const check = getReadinessCheck();
+  return check.status === "live" && check.listed;
+}
+
+/** Most questions a visitor can see (profile + scored + all security). */
+export function readinessQuestionCount(check: ReadinessCheck): number {
+  return check.profile.length + check.questions.length + check.security.questions.length;
 }

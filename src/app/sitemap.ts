@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { listPublishableContentSlugs, localesWithSlug } from "@/content";
 import { buildLanguageAlternates, locales, type Locale } from "@/i18n";
 import { siteUrl } from "@/lib/site";
+import { isReadinessCheckListed } from "@/readiness";
 import { listRuleIds } from "@/rules";
 
 export const dynamic = "force-static";
@@ -45,6 +46,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     for (const toolId of listRuleIds()) {
       entries.push(entry(lang, `/tools/${toolId}`));
+    }
+
+    if (isReadinessCheckListed()) {
+      entries.push(entry(lang, "/tools/ai-readiness"));
     }
   }
 

@@ -312,6 +312,7 @@ export const en: Messages = {
     pricingContact: "Contact",
   },
   readiness: {
+    cardMeta: "{count} questions, about 6 minutes",
     benchmarkTitle: "How other companies compare",
     benchmarkSource: "From {n} responses to the Swiss AI survey. Take part to make the comparison more precise.",
     draftNotice: "Preview: this check is still being finalised and translated.",

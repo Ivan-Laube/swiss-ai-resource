@@ -18,6 +18,9 @@ export {
 export {
   READINESS_CHECK_PATH,
   getReadinessCheck,
+  isReadinessCheckListed,
+  isReadinessCheckLive,
+  readinessQuestionCount,
   linkProblem,
   loadReadinessCheck,
   validateReadinessCheck,

@@ -44,6 +44,7 @@
     "changed-de-slugs": "tsx scripts/changed-de-slugs.ts",
     "translate": "tsx scripts/translate.ts",
     "translate:templates": "tsx scripts/translate-templates.ts",
+    "translate:readiness": "tsx scripts/translate-readiness.ts",
     "dev:survey": "wrangler dev -c workers/survey/wrangler.jsonc",
     "deploy:survey": "wrangler deploy -c workers/survey/wrangler.jsonc",
     "db:survey:local": "wrangler d1 migrations apply swiss-ai-survey --local -c workers/survey/wrangler.jsonc",

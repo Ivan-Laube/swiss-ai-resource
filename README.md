@@ -54,7 +54,7 @@ German (`de`) is the canonical content language. See [swiss_ai_resource_implemen
 | T46 | AI readiness check data (`data/readiness-check.json`), validator and scoring engine | Done |
 | T47 | AI readiness check page `/[lang]/tools/ai-readiness/` (noindex, unlinked while draft) | Done |
 | T48 | AI readiness check: survey comparison lines on the result (overall shares, shown from n ≥ 5) | Done |
-| T51 | AI readiness check: FR/IT strings, then `status: live` | Not started |
+| T51 | AI readiness check: FR/IT translations; check is live by URL (`listed: false`, noindex) for the lawyer review | Done |
 | T60 | Responsibility section in `ndsg-ai-basics` (link target for check Q11; readiness check has no pending links left) | Done |
 | T61 | Guide layout fix (lead aligned, TOC at the top) and justified body text site-wide | Done |
 | T49–T50 | AI policy template: Markdown source, FR/IT via the translate workflow, Word (`.docx`) generated at build | Done |
@@ -64,7 +64,7 @@ German (`de`) is the canonical content language. See [swiss_ai_resource_implemen
 | T57 | Translations keep `{#id}` anchors (prompt rule, restore by heading position, `check:anchors`) | Done |
 | T58 | `slug#anchor` references in decision trees and scanner checks, validated against DE | Done |
 | T59 | Retrofit: anchors on cited guide sections (all locales), tool and scanner links point to sections | Done |
-| T29 | Lawyer review of DE pages (incl. legal pages after T40, AI readiness check, AI policy template) | Not started |
+| T29 | Lawyer review of DE pages (incl. legal pages after T40, AI readiness check, AI policy template, AI security guide). Review on the live site: [AI readiness check](https://aicompliant.ch/de/tools/ai-readiness/) (URL only, `noindex`, not listed; also `/fr/`, `/it/`, `/en/`; complete once T51 is merged), [AI security guide](https://aicompliant.ch/de/ai-security-risks/), [AI policy template (Word)](https://aicompliant.ch/downloads/ai-policy-template-de.docx), [nDSG und KI: Grundlagen](https://aicompliant.ch/de/ndsg-ai-basics/), [Impressum](https://aicompliant.ch/de/impressum/), [Datenschutz](https://aicompliant.ch/de/datenschutz/) | Not started |
 | Redesign | Visual system + site shell, homepage, decision tools/guides, remaining pages | Done — PR 1–4 landed (cleanup R47 / Lighthouse R55 / docs R57 may still follow). See [website_redesign_plan.md](website_redesign_plan.md), [docs/design-system.md](docs/design-system.md) |
 
 ## Local development

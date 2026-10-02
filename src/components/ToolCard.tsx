@@ -12,17 +12,35 @@ type ToolCardProps = {
   maxQuestionsLabel: Messages["tools"]["maxQuestions"];
 };
 
-export function ToolCard({ tree, locale, maxQuestionsLabel }: ToolCardProps) {
-  const maxQuestions = longestQuestionCount(tree, tree.start);
-  const meta = maxQuestionsLabel.replace("{count}", String(maxQuestions));
-
+/** Card for any tool on the tools index (decision trees, readiness check). */
+export function ToolLinkCard({
+  href,
+  title,
+  description,
+  meta,
+}: {
+  href: string;
+  title: string;
+  description: string;
+  meta: string;
+}) {
   return (
-    <Card href={`/${locale}/tools/${tree.id}/`} className={styles.card}>
-      <h2 className={styles.title}>{pickLocalized(tree.title, locale)}</h2>
-      <p className={styles.description}>
-        {pickLocalized(tree.description, locale)}
-      </p>
+    <Card href={href} className={styles.card}>
+      <h2 className={styles.title}>{title}</h2>
+      <p className={styles.description}>{description}</p>
       <p className={styles.meta}>{meta}</p>
     </Card>
+  );
+}
+
+export function ToolCard({ tree, locale, maxQuestionsLabel }: ToolCardProps) {
+  const maxQuestions = longestQuestionCount(tree, tree.start);
+  return (
+    <ToolLinkCard
+      href={`/${locale}/tools/${tree.id}/`}
+      title={pickLocalized(tree.title, locale)}
+      description={pickLocalized(tree.description, locale)}
+      meta={maxQuestionsLabel.replace("{count}", String(maxQuestions))}
+    />
   );
 }
