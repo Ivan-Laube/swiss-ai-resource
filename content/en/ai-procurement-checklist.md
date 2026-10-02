@@ -1,6 +1,6 @@
 ---
-title: "Checklist: AI procurement for Swiss SMEs"
-description: "Practical questions for vendors and internally before you buy an AI tool: data protection, hosting, contracts, governance, and EU nexus."
+title: "Checklist: AI Procurement for Swiss SMEs"
+description: "Practical questions for providers and internal teams before purchasing an AI tool: data protection, hosting, contracts, governance, and EU relevance."
 last_verified: "2026-10-01"
 volatility: "stable"
 translation_status: "draft"
@@ -21,75 +21,76 @@ sources:
     url: "https://www.anthropic.com/ai-fluency"
 ---
 
-This checklist bundles questions from the topics **nDSG/AI**, **US hosting**, **EU AI Act**, and — where relevant — **FINMA governance**. It is a procurement and due-diligence aid, not legal advice and not an approval decision.
+This checklist bundles questions from the topics **revised Federal Act on Data Protection (Bundesgesetz über den Datenschutz, DSG)/AI**, **US hosting**, **EU AI Act**, and – where relevant – **FINMA governance**. It is a procurement and due-diligence tool, not legal advice and not an approval decision.
 
-Use it before the pilot and again before go-live.
+Use it before the pilot and again before going into production.
 
-## 1. Use case and data
+## 1. Use Case and Data
 
-- Which business problem does the tool solve — and which **personal data (Personendaten)** flow in?
-- Are there particularly sensitive personal data, profiling, or automated individual decisions (automatisierte Einzelentscheidung) with significant effect?
-- Can you start the use case with **synthetic or anonymised** data?
-- Who is the internal owner (business, IT, data protection)?
+- What business problem does the tool solve – and what **personal data (Personendaten)** is involved?
+- Is there especially sensitive data, profiling, or automated individual decisions with significant effects?
+- Can you start the use case with **synthetic or anonymized** data?
+- Who is the internal owner (business unit, IT, data protection)?
 
-## 2. Data protection and transparency (Federal Act on Data Protection (Bundesgesetz über den Datenschutz, DSG))
+## 2. Data Protection and Transparency (DSG)
 
-- Are purpose, functioning, and data sources **transparently** explainable to data subjects (betroffene Person)?
-- Is a **data protection impact assessment (Datenschutz-Folgenabschätzung)** planned for high risk?
-- Can data subjects object to automatic processing or require **human review**?
-- Is there a current record of processing activities (Verzeichnis der Bearbeitungstätigkeiten) (including abroad and safeguards)?
+- Are the purpose, functioning, and data sources **transparently** explainable to data subjects?
+- Is a **data protection impact assessment (Datenschutz-Folgenabschätzung, DSFA)** planned in cases of high risk?
+- Can data subjects object to automated processing or request **human review**?
+- Is there an up-to-date **record of processing activities (Verzeichnis der Bearbeitungstätigkeiten)** (including foreign processing and safeguards)?
 
-## 3. Hosting and cross-border transfer {#hosting-transfer}
+## 3. Hosting and Cross-Border Transfer {#hosting-transfer}
 
-- In which regions are data stored and processed (CH / EU / US / other)?
-- For US recipients: active **Swiss-U.S. Data Privacy Framework** certification checked?
-- Otherwise: recognised **standard data protection clauses (Standarddatenschutzklauseln)**, DPA, and transfer assessment in place?
-- Are inputs used for **model training** — and is there an opt-out?
+- In which regions is data stored and processed (CH / EU / US / other)?
+- For US recipients: has active **Swiss-U.S. Data Privacy Framework** certification been verified?
+- Otherwise: are recognized **standard contractual clauses (Standarddatenschutzklauseln)**, a DPA, and a transfer assessment in place?
+- Is input data used for **model training** – and is there an opt-out?
 
-## 4. Contract and operations {#contract-operations}
+## 4. Contract and Operations {#contract-operations}
 
-- Data processing agreement (Auftragsbearbeiter / DPA) with clear sub-processor rules?
-- Deletion periods, export, incident notification, and audit rights regulated?
-- Availability, support location, and sub-processor list known?
-- Exit plan: Can you take data and configurations with you?
+- Is there a data processing agreement (DPA) with clear subprocessor rules?
+- Are deletion periods, export, incident notification, and audit rights regulated?
+- Are availability, support location, and the subprocessor list known?
+- Exit plan: can you take your data and configurations with you?
 
-## 5. EU AI Act (if EU nexus) {#eu-ai-act}
+## 5. EU AI Act (if there is an EU connection) {#eu-ai-act}
 
-- Is the system or its **output (Ausgabe) in the EU** offered or used?
-- What role do you have (provider (Anbieter) / deployer (Betreiber) / importer / distributor)?
-- Risk class roughly assessed (prohibited / high-risk AI system (Hochrisiko-KI-System) / transparency / general-purpose AI model (GPAI))?
-- Phased applicability deadlines mapped to the product?
+- Is the system or its **output offered or used in the EU**?
+- What role do you hold (provider (Anbieter) / deployer (Betreiber) / importer / distributor)?
+- Has the risk class been roughly assessed (prohibited / high-risk / transparency / GPAI)?
+- Have the staggered applicability deadlines been mapped to the product?
 
-## 6. Governance (especially financial sector)
+## 6. Governance (particularly in the financial sector)
 
-- Inventory entry and risk class for the application?
-- Tests of accuracy, robustness, bias, and monitoring of drift?
-- Explainability to customers, audit, and supervisors?
-- Independent review for material applications?
+- Is there an inventory entry and risk class for the application?
+- Are there tests for accuracy, robustness, bias, and monitoring for drift?
+- Is explainability provided to customers, auditors, and supervisors?
+- Is there independent review for material applications?
 
-## 7. Competence and training {#ai-literacy}
+## 7. Literacy and Training {#ai-literacy}
 
-- Do the people who operate or approve the tool have sufficient **AI literacy (KI-Kompetenz)** (EU AI Act Art. 4, in force since 2 February 2025)?
-- Are training and roles clear (business, IT, data protection) — also in the sense of FINMA's expectation of «broad training measures» for supervised institutions?
-- Is there a structured competence model for everyday work with AI? One freely licensed example is the [AI Fluency 4D framework](https://www.anthropic.com/ai-fluency) (Delegation, Description, Discernment, Diligence).
+- Do the people operating or approving the tool have sufficient **AI literacy (KI-Kompetenz)** (EU AI Act Art. 4, in force since February 2, 2025)?
+- Are training and roles clearly defined (business unit, IT, data protection) – also in line with FINMA's expectation of "broad training measures" at supervised institutions?
+- Is there a structured competency model for everyday use of AI? One freely licensed example is the [AI Fluency 4D Framework](https://www.anthropic.com/ai-fluency) (Delegation, Description, Discernment, Diligence).
 
-## 8. Decision rule (pragmatic)
+## 8. Decision Rule (pragmatic)
 
-| Signal | Meaning |
+| Traffic light | Meaning |
 |---|---|
-| Green | No personal data / CH or EU hosting with clear contract / low impact |
-| Amber | Personal data + abroad or automated decisions — approval with measures |
-| Red | Particularly sensitive data without protection concept, unclear training use, missing DPA/transfer basis |
+| Green | No personal data / CH or EU hosting with a clear contract / low impact |
+| Yellow | Personal data + foreign processing or automated decisions – approval with safeguards |
+| Red | Especially sensitive data without a protection concept, unclear training use, missing DPA/transfer basis |
 
-Amber and red: do not «try first and clean up later». Clarify the basics first, then pilot.
+Yellow and Red: not "try it out and clean up later." Clarify the fundamentals first, then pilot.
 
-## Further reading
+## Further Reading
 
-- [nDSG and AI: basics](/en/ndsg-ai-basics/)
-- [US-hosted LLMs under the nDSG](/en/us-hosted-llms-ndsg/)
-- [EU AI Act for Swiss companies](/en/eu-ai-act-swiss-exporters/)
-- [FINMA expectations for AI governance](/en/finma-ai-expectations/)
+- [DSG and AI: Fundamentals](/de/ndsg-ai-basics/)
+- [US-Hosted LLMs under the DSG](/de/us-hosted-llms-ndsg/)
+- [EU AI Act for Swiss Companies](/de/eu-ai-act-swiss-exporters/)
+- [FINMA Expectations for AI Governance](/de/finma-ai-expectations/)
+- [AI Policy Template (Word)](download:ai-policy-template)
 
-## Disclaimer
+## Note
 
-This checklist is **informational and not legal advice**. For regulated institutions and sensitive data categories, involve specialist units and, where appropriate, legal counsel.
+This checklist is **informational and not legal advice**. For regulated institutions and sensitive data categories, involve specialist departments and, where necessary, legal counsel.

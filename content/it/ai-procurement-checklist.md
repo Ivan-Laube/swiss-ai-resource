@@ -1,6 +1,6 @@
 ---
-title: "Checklist: acquisto di IA per le PMI svizzere"
-description: "Domande pratiche ai fornitori e internamente prima di acquistare uno strumento di IA: protezione dei dati, hosting, contratti, governance e nesso con l'UE."
+title: "Checklist: approvvigionamento di IA per le PMI svizzere"
+description: "Domande pratiche da porre ai fornitori e internamente prima di acquistare uno strumento di IA: protezione dei dati, hosting, contratti, governance e riferimento all'UE."
 last_verified: "2026-10-01"
 volatility: "stable"
 translation_status: "draft"
@@ -21,75 +21,76 @@ sources:
     url: "https://www.anthropic.com/ai-fluency"
 ---
 
-Questa checklist raggruppa domande dai temi **LPD/IA**, **hosting USA**, **regolamento sull'IA dell'UE** e — dove rilevante — **governance FINMA**. È uno strumento di acquisto e due diligence, non consulenza legale né una decisione di approvazione.
+Questa checklist raccoglie domande dai temi **nLPD/IA**, **hosting negli USA**, **EU AI Act** e – ove rilevante – **governance FINMA**. È uno strumento di approvvigionamento e due diligence, non una consulenza legale né una decisione di approvazione.
 
-Usatela prima del pilota e di nuovo prima della messa in produzione.
+Utilizzatela prima del pilota e nuovamente prima della messa in produzione.
 
 ## 1. Caso d'uso e dati
 
-- Quale problema di business risolve lo strumento — e quali **dati personali** vi confluiscono?
-- Ci sono dati personali particolarmente degni di protezione, profiling o decisioni individuali automatizzate con effetti rilevanti?
+- Quale problema aziendale risolve lo strumento – e quali **dati personali** sono coinvolti?
+- Vi sono dati particolarmente degni di protezione, profilazione o decisioni individuali automatizzate con effetti rilevanti?
 - Potete avviare il caso d'uso con dati **sintetici o anonimizzati**?
-- Chi è owner interno (business, IT, protezione dei dati)?
+- Chi è l'owner interno (settore specialistico, IT, protezione dei dati)?
 
 ## 2. Protezione dei dati e trasparenza (LPD)
 
-- Finalità, funzionamento e fonti dei dati sono **trasparentemente** spiegabili alle persone interessate?
-- In caso di rischio elevato è pianificata una **valutazione d'impatto sulla protezione dei dati**?
-- Le persone interessate possono opporsi a un trattamento automatico o esigere un **controllo umano**?
+- Scopo, funzionamento e fonti dei dati sono spiegabili in modo **trasparente** per gli interessati?
+- In caso di rischio elevato, è prevista una **valutazione d'impatto sulla protezione dei dati**?
+- Gli interessati possono opporsi a un trattamento automatizzato o esigere una **verifica umana**?
 - Esiste un registro delle attività di trattamento aggiornato (incl. estero e garanzie)?
 
 ## 3. Hosting e trasferimento all'estero {#hosting-transfer}
 
-- In quali regioni i dati sono memorizzati e trattati (CH / UE / US / altri)?
-- Per destinatari USA: certificazione attiva **Swiss-U.S. Data Privacy Framework** verificata?
-- Altrimenti: **clausole tipo di protezione dei dati** riconosciute, DPA ed esame del trasferimento presenti?
-- Gli input vengono usati per l'**addestramento del modello** — ed esiste un opt-out?
+- In quali regioni vengono archiviati ed elaborati i dati (CH / UE / USA / altre)?
+- In caso di destinatari statunitensi: è stata verificata una certificazione attiva **Swiss-U.S. Data Privacy Framework**?
+- Altrimenti: sono presenti **clausole tipo di protezione dei dati** riconosciute, un DPA e una verifica del trasferimento?
+- I dati immessi vengono utilizzati per l'**addestramento del modello** – ed esiste un'opzione di opt-out?
 
-## 4. Contratto ed esercizio {#contract-operations}
+## 4. Contratto e gestione operativa {#contract-operations}
 
-- Contratto con il responsabile del trattamento (DPA) con regole chiare sui sub-responsabili?
-- Termini di cancellazione, export, notifica di incidenti e diritti di audit regolati?
-- Disponibilità, sede del supporto e elenco dei sub-processori noti?
-- Piano di exit: potete portare con voi dati e configurazioni?
+- Esiste un contratto di trattamento dati (DPA) con regole chiare sui sub-incaricati?
+- Sono disciplinati termini di cancellazione, esportazione, notifica di incidenti e diritti di audit?
+- Sono noti disponibilità, sede del supporto ed elenco dei subprocessori?
+- Piano di uscita: potete portare con voi dati e configurazioni?
 
-## 5. Regolamento sull'IA dell'UE (se nesso con l'UE) {#eu-ai-act}
+## 5. EU AI Act (se vi è un riferimento all'UE) {#eu-ai-act}
 
-- Il sistema o il suo **output nell'UE** è offerto o utilizzato?
-- Quale ruolo avete (fornitore / deployer / importatore / distributore)?
-- Classe di rischio stimata grossolanamente (vietato / sistema di IA ad alto rischio / trasparenza / modello di IA per finalità generali)?
-- Scadenze dell'applicabilità graduale attribuite al prodotto?
+- Il sistema o il suo **output viene offerto o utilizzato nell'UE**?
+- Quale ruolo assumete (fornitore / deployer / importatore / distributore)?
+- La classe di rischio è stata valutata approssimativamente (proibito / alto rischio / trasparenza / GPAI)?
+- Le scadenze dell'applicabilità scaglionata sono state assegnate al prodotto?
 
-## 6. Governance (soprattutto settore finanziario)
+## 6. Governance (in particolare settore finanziario)
 
-- Voce di inventario e classe di rischio per l'applicazione?
-- Test di accuratezza, robustezza, bias e monitoraggio del drift?
-- Spiegabilità verso clienti, audit e vigilanza?
-- Esame indipendente per le applicazioni materiali?
+- Voce nell'inventario e classe di rischio per l'applicazione?
+- Test su accuratezza, robustezza, bias e monitoraggio del drift?
+- Spiegabilità nei confronti di clienti, audit e autorità di vigilanza?
+- Revisione indipendente per le applicazioni rilevanti?
 
 ## 7. Competenza e formazione {#ai-literacy}
 
-- Le persone che utilizzano o approvano lo strumento hanno un'**alfabetizzazione in materia di IA** sufficiente (regolamento (UE) 2024/1689 art. 4, in vigore dal 2 febbraio 2025)?
-- Formazioni e ruoli sono chiari (business, IT, protezione dei dati) — anche nel senso dell'aspettativa FINMA di «broad training measures» per gli istituti assoggettati?
-- Esiste un modello di competenza strutturato per il quotidiano con l'IA? Un esempio liberamente licenziato è il [framework AI Fluency 4D](https://www.anthropic.com/ai-fluency) (Delegation, Description, Discernment, Diligence).
+- Le persone che utilizzano o approvano lo strumento dispongono di sufficiente **alfabetizzazione in materia di IA** (EU AI Act art. 4, in vigore dal 2 febbraio 2025)?
+- Sono chiari formazione e ruoli (settore specialistico, IT, protezione dei dati) – anche nel senso dell'aspettativa FINMA di «broad training measures» per gli istituti vigilati?
+- Esiste un modello di competenza strutturato per l'uso quotidiano dell'IA? Un esempio con licenza libera è l'[AI Fluency 4D-Framework](https://www.anthropic.com/ai-fluency) (Delegation, Description, Discernment, Diligence).
 
 ## 8. Regola decisionale (pragmatica)
 
 | Semaforo | Significato |
 |---|---|
 | Verde | Nessun dato personale / hosting CH o UE con contratto chiaro / impatto basso |
-| Giallo | Dati personali + estero o decisioni automatizzate — approvazione con misure |
-| Rosso | Dati particolarmente degni di protezione senza concetto di protezione, uso per l'addestramento poco chiaro, DPA/base di trasferimento mancante |
+| Giallo | Dati personali + estero o decisioni automatizzate – approvazione con misure |
+| Rosso | Dati particolarmente degni di protezione senza concetto di protezione, uso di addestramento poco chiaro, DPA/base di trasferimento mancante |
 
-Giallo e rosso: non «provare prima e ripulire dopo». Prima chiarire le basi, poi il pilota.
+Giallo e rosso: non vale il principio «provare e sistemare dopo». Prima chiarire le basi, poi avviare il pilota.
 
 ## Per approfondire
 
-- [LPD e IA: basi](/it/ndsg-ai-basics/)
-- [LLM ospitati negli USA sotto la LPD](/it/us-hosted-llms-ndsg/)
-- [Regolamento sull'IA dell'UE per le imprese svizzere](/it/eu-ai-act-swiss-exporters/)
-- [Aspettative FINMA sulla governance dell'IA](/it/finma-ai-expectations/)
+- [nLPD e IA: nozioni di base](/de/ndsg-ai-basics/)
+- [LLM ospitati negli USA secondo la nLPD](/de/us-hosted-llms-ndsg/)
+- [EU AI Act per le aziende svizzere](/de/eu-ai-act-swiss-exporters/)
+- [Aspettative FINMA in materia di governance dell'IA](/de/finma-ai-expectations/)
+- [Modello di direttiva sull'IA (Word)](download:ai-policy-template)
 
 ## Avvertenza
 
-Questa checklist è **informativa e non costituisce consulenza legale**. Per istituti regolamentati e categorie di dati sensibili coinvolgere le funzioni specialistiche e, se del caso, una consulenza legale.
+Questa checklist è **informativa e non costituisce una consulenza legale**. Per istituti regolamentati e categorie di dati sensibili, coinvolgere i servizi specialistici ed eventualmente una consulenza legale.
