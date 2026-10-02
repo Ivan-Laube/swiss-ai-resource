@@ -62,8 +62,22 @@ describe("validateReadinessCheck", () => {
 
   it("rejects survey benchmarks that aren't survey options", () => {
     assert.throws(
-      validateWith((c) => (c.questions[0].survey_benchmark = { field: "ai-governance-measures", option: "nope" })),
+      validateWith(
+        (c) =>
+          (c.questions[0].survey_benchmark = {
+            field: "ai-governance-measures",
+            option: "nope",
+            statement: { de: "{pct} %", en: "{pct}%" },
+          }),
+      ),
       /survey_benchmark ai-governance-measures=nope is not a survey option/,
+    );
+  });
+
+  it("requires {pct} in benchmark statements", () => {
+    assert.throws(
+      validateWith((c) => (c.questions[0].survey_benchmark!.statement.en = "Many companies do this.")),
+      /survey_benchmark\.statement\.en must contain \{pct\}/,
     );
   });
 });

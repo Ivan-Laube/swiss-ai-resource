@@ -13,9 +13,10 @@ import {
 import { buildPageMetadata } from "@/lib/metadata";
 import { siteUrl } from "@/lib/site";
 import { getReadinessCheck } from "@/readiness";
+import { readinessBenchmarks } from "@/readiness/benchmark";
 import { resolveReadinessLinks } from "@/readiness/links";
 import { pickLocalized } from "@/rules";
-import { getSurvey } from "@/survey";
+import { getSurvey, getSurveyAggregates } from "@/survey";
 import styles from "./page.module.css";
 
 type PageProps = {
@@ -67,6 +68,7 @@ export default async function ReadinessPage({ params }: PageProps) {
 
   const messages = getMessages(lang);
   const check = getReadinessCheck();
+  const aggregates = getSurveyAggregates();
 
   return (
     <>
@@ -85,6 +87,16 @@ export default async function ReadinessPage({ params }: PageProps) {
             locale={lang}
             messages={messages.readiness}
             siteUrl={siteUrl}
+            benchmark={{
+              shares: readinessBenchmarks(check, aggregates),
+              responses: aggregates.n,
+              surveyHref: `/${lang}/survey/`,
+              surveyPrompt: messages.tools.surveyPrompt.replace(
+                "{minutes}",
+                String(getSurvey().estimated_minutes),
+              ),
+              surveyCta: messages.tools.surveyCta,
+            }}
           />
         </Container>
       </main>

@@ -197,6 +197,11 @@ export function validateReadinessCheck(check: ReadinessCheck): string[] {
       if (!surveyOptionIds(field).includes(option)) {
         errors.push(`question "${q.id}": survey_benchmark ${field}=${option} is not a survey option`);
       }
+      for (const [locale, text] of Object.entries(q.survey_benchmark.statement)) {
+        if (typeof text === "string" && !text.includes("{pct}")) {
+          errors.push(`question "${q.id}": survey_benchmark.statement.${locale} must contain {pct}`);
+        }
+      }
     }
   }
 

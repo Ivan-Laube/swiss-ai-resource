@@ -312,6 +312,8 @@ export const en: Messages = {
     pricingContact: "Contact",
   },
   readiness: {
+    benchmarkTitle: "How other companies compare",
+    benchmarkSource: "From {n} responses to the Swiss AI survey. Take part to make the comparison more precise.",
     draftNotice: "Preview: this check is still being finalised and translated.",
     profileTitle: "About your company",
     progress: "{answered} of {total} questions answered",
