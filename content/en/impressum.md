@@ -1,6 +1,6 @@
 ---
-title: "Legal notice"
-description: "Provider identification and contact details for aicompliant.ch under Art. 3 para. 1 lit. s UWG."
+title: "Impressum"
+description: "Provider identification (Anbieterkennzeichnung) and contact details for aicompliant.ch pursuant to Art. 3 para. 1 lit. s UWG."
 last_verified: "2026-09-18"
 volatility: "stable"
 translation_status: "draft"
@@ -12,15 +12,15 @@ sources:
     url: "https://www.fedlex.admin.ch/eli/cc/1988/223_223_223/de#art_3"
 ---
 
-Information pursuant to **Art. 3 para. 1 lit. s UWG** (provider identification in electronic commerce).
+Information pursuant to **Art. 3 para. 1 lit. s UWG** (Federal Act Against Unfair Competition) (provider identification (Anbieterkennzeichnung) in electronic commerce).
 
-## Provider
+## Provider (Anbieter)
 
 | | |
 |---|---|
 | **Name** | Ivan Laube |
 | **Street / No.** | Vorhaldenstrasse 10 |
-| **Postcode / city** | 8049 Zürich |
+| **Postal code / City** | 8049 Zürich |
 | **Country** | Switzerland |
 | **Email** | [i.laube@gmail.com](mailto:i.laube@gmail.com) |
 
@@ -28,6 +28,6 @@ Information pursuant to **Art. 3 para. 1 lit. s UWG** (provider identification i
 
 This website is operated under the domain **aicompliant.ch** (including `www`).
 
-## Disclaimer
+## Liability Notice
 
-The content of this website is for general information only and is **not legal advice**. Despite careful review, no warranty is given as to currency, accuracy, or completeness.
+The content of this website is provided for general information purposes only and does **not constitute legal advice**. Despite careful review, no guarantee is given for its topicality, accuracy, or completeness.
