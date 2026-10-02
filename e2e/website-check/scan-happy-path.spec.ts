@@ -1,5 +1,6 @@
 import { test, expect, E2E_TURNSTILE_TOKEN, SCAN_API } from "../fixtures/test";
 import { copy } from "../fixtures/messages";
+import { guideTitle } from "../fixtures/content";
 import {
   checkMeta,
   dynamicSite,
@@ -273,8 +274,15 @@ test.describe("scan happy path", () => {
     await expect(legalLink).toHaveAttribute("target", "_blank");
     await expect(legalLink).toHaveAttribute("rel", "noopener noreferrer");
 
-    const related = page.getByRole("link", { name: "ndsg-ai-basics" }).first();
-    await expect(related).toHaveAttribute("href", "/en/ndsg-ai-basics/");
+    // Related guide links show the localized page title (and section, if
+    // the ref has an anchor) and point at the page or one of its sections.
+    const related = page
+      .getByRole("link", { name: guideTitle("en", "ndsg-ai-basics") })
+      .first();
+    await expect(related).toHaveAttribute(
+      "href",
+      /^\/en\/ndsg-ai-basics\/(#[a-z][a-z0-9-]*)?$/,
+    );
 
     // Related page exists in the static export
     const relatedStatus = await page.request.get("/en/ndsg-ai-basics/");

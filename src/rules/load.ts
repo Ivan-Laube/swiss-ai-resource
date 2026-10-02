@@ -1,7 +1,8 @@
 import fs from "node:fs";
 import path from "node:path";
 
-import { listPublishableContentSlugs } from "@/content";
+import { pageRefProblem } from "@/content";
+import { parsePageRef } from "@/lib/page-ref";
 
 import {
   parseDecisionTree,
@@ -133,16 +134,15 @@ function assertGraph(tree: DecisionTree, filePath: string): void {
 }
 
 function assertRelatedPages(tree: DecisionTree, filePath: string): void {
-  const publishable = new Set(listPublishableContentSlugs("de"));
-
   for (const [nodeId, node] of Object.entries(tree.nodes)) {
     if (node.type !== "outcome") {
       continue;
     }
-    for (const slug of node.related_pages) {
-      if (!publishable.has(slug)) {
+    for (const ref of node.related_pages) {
+      const problem = pageRefProblem(ref);
+      if (problem) {
         throw new Error(
-          `Invalid decision tree (${filePath}): outcome "${nodeId}" related_pages references unknown DE content slug "${slug}"`,
+          `Invalid decision tree (${filePath}): outcome "${nodeId}" related_pages "${ref}": ${problem}`,
         );
       }
     }
@@ -274,7 +274,8 @@ export function toolsForContentSlug(slug: string): DecisionTree[] {
   return getAllRules().filter((tree) =>
     Object.values(tree.nodes).some(
       (node) =>
-        node.type === "outcome" && node.related_pages.includes(slug),
+        node.type === "outcome" &&
+        node.related_pages.some((ref) => parsePageRef(ref).slug === slug),
     ),
   );
 }

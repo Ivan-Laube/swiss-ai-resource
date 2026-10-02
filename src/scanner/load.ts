@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 
-import { listPublishableContentSlugs } from "@/content";
+import { pageRefProblem } from "@/content";
 
 import {
   parseScannerChecks,
@@ -108,13 +108,12 @@ function assertNestedIdsUnique(check: ScannerCheck, filePath: string): void {
 }
 
 function assertRelatedPages(file: ScannerChecksFile, filePath: string): void {
-  const publishable = new Set(listPublishableContentSlugs("de"));
-
   for (const check of file.checks) {
-    const slug = check.related_page;
-    if (slug !== null && !publishable.has(slug)) {
+    const ref = check.related_page;
+    const problem = ref === null ? null : pageRefProblem(ref);
+    if (problem) {
       throw new Error(
-        `Invalid scanner checks (${filePath}): check "${check.id}" related_page references unknown DE content slug "${slug}"`,
+        `Invalid scanner checks (${filePath}): check "${check.id}" related_page "${ref}": ${problem}`,
       );
     }
   }

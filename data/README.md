@@ -357,7 +357,7 @@ Implementation: Zod schema and loaders in [`src/rules/`](../src/rules/) (`schema
 | `verdict` | `"likely" \| "unlikely" \| "unclear" \| "depends"` — UI labels come from i18n, not the JSON |
 | `caveats` | ≥1 localized strings |
 | `sources` | ≥1; absolute `https://` URLs (same shape as content frontmatter sources) |
-| `related_pages` | Optional content slugs (DE publishable); empty array allowed. Non-empty slugs must exist under `content/de/` |
+| `related_pages` | Optional page refs: a content slug, or `slug#anchor` to link a section (T58). The slug must be publishable under `content/de/`; an anchor must be an explicit `{#anchor}` on that DE heading (generated ids are rejected). Empty array allowed. Rendered as "page title – section", linking to the section; if the locale page lacks the anchor yet, the link goes to the page top |
 
 Localized strings (`title`, `description`, `prompt`, `help`, `label`, `summary`, `caveats[]`) require **`de` + `en` + `fr` + `it`** on launch trees (T14). Zod still accepts DE-only drafts; `assertFullLocales` in the loader fails the check if any of EN/FR/IT is missing or blank. Source citation titles are not localized.
 
@@ -379,7 +379,7 @@ See [`rules/us-hosted-llm-ndsg.json`](rules/us-hosted-llm-ndsg.json) (T9) and [`
 npm run check:rules
 ```
 
-Parses every `data/rules/*.json` with Zod, runs graph checks, validates `related_pages` against DE content slugs, and requires EN/FR/IT on every LocalizedString (T14).
+Parses every `data/rules/*.json` with Zod, runs graph checks, validates `related_pages` refs (slug and optional `#anchor`) against DE content, and requires EN/FR/IT on every LocalizedString (T14).
 
 Loader API (build-time): `listRuleIds`, `getRule`, `getAllRules`, `validateRules` from `@/rules`.
 
@@ -551,7 +551,7 @@ Findings are **facts**, never verdicts: the engine emits `found / not_found / in
 | `description` | localized string | Fact-phrased explanation incl. legal context (DE + EN + FR + IT) |
 | `severity` | `"high" \| "medium" \| "low" \| "info"` | Report grouping; informational checks use `info` |
 | `legal_basis` | `{ reference, url }` | `reference` e.g. `Art. 19 DSG …`; `url` is an absolute `https://` Fedlex/source link |
-| `related_page` | kebab-case slug \| `null` | Cornerstone slug to cite; non-null must be a publishable `content/de/` slug (same rule as decision-tree `related_pages`) |
+| `related_page` | page ref \| `null` | Guide page or section to cite: `slug` or `slug#anchor`, same rule as decision-tree `related_pages` |
 
 Localized strings require **all four locales** on `title` / `description` (enforced by the loader, like rules/survey). Detection-pattern arrays are validated by Zod.
 
@@ -585,7 +585,7 @@ Bump `version` when check semantics change (definitions are versioned per plan �
 npm run check:scanner
 ```
 
-Parses `data/scanner-checks.json` with Zod, enforces unique check ids (and unique nested signature/header ids), validates non-null `related_page` against DE content slugs, and requires EN/FR/IT on every localized `title` / `description`.
+Parses `data/scanner-checks.json` with Zod, enforces unique check ids (and unique nested signature/header ids), validates non-null `related_page` refs (slug and optional `#anchor`) against DE content, and requires EN/FR/IT on every localized `title` / `description`.
 
 Loader API (build-time): `getScannerChecks`, `getScannerCheckById`, `validateScannerChecks` from `@/scanner`.
 
@@ -635,5 +635,5 @@ Link detection scans at most the first **512 KiB** of HTML and at most **2000** 
 
 ### Frontend report (T36)
 
-UI: [`/[lang]/website-check/`](../src/app/[lang]/website-check/page.tsx) + [`WebsiteCheckForm`](../src/components/WebsiteCheckForm.tsx). Posts to `{NEXT_PUBLIC_SCAN_API_URL}/scan`, groups findings by severity (`high` → `info`), shows localized title/description via `pickLocalized` (imported from `@/rules/schema` in the client form), legal citations, cornerstone links (`related_page`), static-scan caveat when `static_scan_incomplete`, and the informational disclaimer. Reserves an empty slot for a future LLM policy-content pass. Local + deploy: [DEPLOY.md](../DEPLOY.md#scanner-worker-t33t37). Verify with `npm run build` after UI changes — the static export fails if a `"use client"` module imports the `@/rules` barrel.
+UI: [`/[lang]/website-check/`](../src/app/[lang]/website-check/page.tsx) + [`WebsiteCheckForm`](../src/components/WebsiteCheckForm.tsx). Posts to `{NEXT_PUBLIC_SCAN_API_URL}/scan`, groups findings by severity (`high` → `info`), shows localized title/description via `pickLocalized` (imported from `@/rules/schema` in the client form), legal citations, guide links (`related_page`, resolved server-side to the localized page title and section), static-scan caveat when `static_scan_incomplete`, and the informational disclaimer. Reserves an empty slot for a future LLM policy-content pass. Local + deploy: [DEPLOY.md](../DEPLOY.md#scanner-worker-t33t37). Verify with `npm run build` after UI changes — the static export fails if a `"use client"` module imports the `@/rules` barrel.
 
