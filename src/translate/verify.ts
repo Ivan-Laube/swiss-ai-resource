@@ -54,6 +54,25 @@ export function verifyGlossaryTermsInTranslation(
   return { missing, checked };
 }
 
+/** `download:<id>` link targets in Markdown, sorted (multiset). */
+function downloadLinks(markdown: string): string[] {
+  return [...markdown.matchAll(/\]\((download:[^)\s]+)\)/g)].map((m) => m[1]).sort();
+}
+
+/**
+ * Refuse a translation whose `download:` links differ from the German source
+ * (they are resolved per language at build time and must stay untouched).
+ */
+export function assertDownloadLinksKept(deBody: string, translatedBody: string): void {
+  const want = downloadLinks(deBody);
+  const got = downloadLinks(translatedBody);
+  if (want.join() !== got.join()) {
+    throw new Error(
+      `Translation changed download: links (DE: ${want.join(", ") || "none"}; translation: ${got.join(", ") || "none"})`,
+    );
+  }
+}
+
 /** Opening/closing HTML tags that marked would pass through into the page. */
 const RAW_HTML_TAG = /<\/?[a-zA-Z][a-zA-Z0-9]*(?:\s[^<>]*)?>/g;
 

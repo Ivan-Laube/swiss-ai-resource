@@ -109,7 +109,7 @@ export default async function ContentPage({ params }: PageProps) {
   }
 
   const messages = getMessages(lang);
-  const { html, headings } = renderMarkdown(page.body);
+  const { html, headings } = renderMarkdown(page.body, { locale: page.locale });
   const lastVerified = page.frontmatter.last_verified;
   const minutes = readingTimeMinutes(page.body);
   const isLegal = LEGAL_SLUGS.has(slug);

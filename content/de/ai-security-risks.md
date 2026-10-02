@@ -47,7 +47,7 @@ Das Risiko liegt weniger im Tool selbst als in den Rechten, die es erhält. Bei 
 
 So schützen Sie sich:
 
-1. **Überblick schaffen:** Halten Sie fest, welche KI-Tools, Erweiterungen und Verbindungen auf welche Systeme zugreifen. Das gehört in das Tool-Verzeichnis Ihrer KI-Richtlinie.
+1. **Überblick schaffen:** Halten Sie fest, welche KI-Tools, Erweiterungen und Verbindungen auf welche Systeme zugreifen. Das gehört in das Tool-Verzeichnis Ihrer KI-Richtlinie (siehe [Vorlage für eine KI-Richtlinie, Word](download:ai-policy-template)).
 2. **Nur nötige Rechte vergeben:** Lesezugriff statt Schreibzugriff, wo das genügt; Zugriff nur auf die Ordner, Postfächer oder Kalender, die das Tool für seine Aufgabe braucht.
 3. **Bestätigung vor nicht umkehrbaren Aktionen:** Bevor eine KI etwas versendet, bezahlt, löscht oder nach aussen teilt, bestätigt eine Person.
 4. **Regelmässig prüfen:** Erteilte Zugriffe mindestens jährlich und bei Austritten von Mitarbeitenden überprüfen; nicht mehr genutzte Verbindungen entfernen.

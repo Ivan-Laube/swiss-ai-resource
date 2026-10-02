@@ -76,6 +76,7 @@ function sharedSystemRules(): string {
     "Some headings end with an anchor marker such as {#transparenz}. Copy each marker unchanged to the end of the corresponding translated heading. Never translate, rename, remove, or add markers.",
     "Do not invent sources, citations, articles, or facts.",
     "Keep every https:// URL and Fedlex/EUR-Lex citation unchanged.",
+    "Keep link targets that start with download: (e.g. (download:ai-policy-template)) exactly as they are; only translate the link text. They are resolved per language when the site is built.",
     "Do not add a disclaimer beyond what the source already contains.",
     "Do not emit raw HTML tags — use Markdown only (no <script>, <div>, <iframe>, etc.).",
     "Output ONLY a Markdown document with YAML frontmatter containing title and description, then the body.",

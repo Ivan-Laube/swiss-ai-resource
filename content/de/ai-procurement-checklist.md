@@ -89,6 +89,7 @@ Gelb und Rot: nicht «ausprobieren und später aufräumen». Erst Grundlagen kl�
 - [US-gehostete LLMs unter dem nDSG](/de/us-hosted-llms-ndsg/)
 - [EU AI Act für Schweizer Unternehmen](/de/eu-ai-act-swiss-exporters/)
 - [FINMA-Erwartungen an KI-Governance](/de/finma-ai-expectations/)
+- [Vorlage für eine KI-Richtlinie (Word)](download:ai-policy-template)
 
 ## Hinweis
 

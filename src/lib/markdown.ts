@@ -1,6 +1,9 @@
 import { Lexer, marked, type Tokens } from "marked";
 import sanitizeHtml from "sanitize-html";
 
+import type { Locale } from "@/i18n/config";
+import { DOWNLOAD_LINK_PREFIX, downloadHref } from "@/templates/links";
+
 import { listHeadingAnchors, splitHeadingAnchor } from "./heading-anchors";
 import { createHeadingSlugger } from "./slugify-heading";
 
@@ -64,8 +67,15 @@ const RESERVED_HEADING_IDS = [
  * h2/h3 headings with an explicit `{#anchor}` marker use that anchor as id
  * (see `./heading-anchors`); the others get an id slugified from their text.
  * Throws on a malformed, misplaced, duplicate or reserved anchor.
+ *
+ * Links to `download:<template id>` become the Word download in `locale`
+ * (DE fallback); an unknown template id throws.
  */
-export function renderMarkdown(markdown: string): RenderMarkdownResult {
+export function renderMarkdown(
+  markdown: string,
+  options: { locale?: Locale } = {},
+): RenderMarkdownResult {
+  const locale = options.locale ?? "de";
   const headings: MarkdownHeading[] = [];
   const explicit = listHeadingAnchors(markdown).map((a) => a.anchor);
   const reservedHit = explicit.find((id) => RESERVED_HEADING_IDS.includes(id));
@@ -93,6 +103,11 @@ export function renderMarkdown(markdown: string): RenderMarkdownResult {
   };
 
   const dirty = marked.parse(markdown, {
+    walkTokens(token) {
+      if (token.type === "link" && token.href.startsWith(DOWNLOAD_LINK_PREFIX)) {
+        token.href = downloadHref(token.href.slice(DOWNLOAD_LINK_PREFIX.length), locale);
+      }
+    },
     async: false,
     renderer,
   }) as string;

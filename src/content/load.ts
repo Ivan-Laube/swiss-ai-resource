@@ -186,9 +186,9 @@ export function validateAllContent(): number {
   for (const locale of locales) {
     for (const slug of listContentSlugs(locale)) {
       const page = getContentPage(locale, slug);
-      // Rendering validates heading anchors ({#id}) as the build would.
+      // Rendering validates heading anchors ({#id}) and download: links as the build would.
       try {
-        renderMarkdown(page.body);
+        renderMarkdown(page.body, { locale: page.locale });
       } catch (error) {
         const message = error instanceof Error ? error.message : String(error);
         throw new Error(`${page.path}: ${message}`);
