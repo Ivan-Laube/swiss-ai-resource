@@ -372,13 +372,8 @@
         "en": "Write a short AI policy (one to two pages): approved tools, data that must not go in, checking outputs and who to ask. Have every employee confirm they have read it."
       },
       "links": [
+        "download:ai-policy-template",
         "guide:ndsg-ai-basics#next-steps"
-      ],
-      "pending_links": [
-        {
-          "link": "download:ai-policy-template",
-          "task": "T50"
-        }
       ]
     },
     {

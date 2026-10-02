@@ -116,6 +116,23 @@ Anchors in use (English ids, same in every locale):
 
 Removing or renaming one breaks `check:rules` / `check:scanner` if a tool still links to it — that is the point.
 
+## Downloadable templates (T49–T50)
+
+Fill-in documents offered as Word downloads (e.g. the AI policy template linked from the readiness check, Q5).
+
+```
+content/templates/<id>/de.md   # canonical
+content/templates/<id>/en.md   # translations (same structure)
+content/templates/<id>/fr.md
+content/templates/<id>/it.md
+```
+
+- Plain Markdown, **no frontmatter**. The first `# ` heading is the document title. Write `[Placeholders]` in square brackets; they are highlighted yellow in Word. A block quote (`>`) renders as a shaded guidance box (for "delete before use" notes).
+- Supported Markdown: headings, paragraphs, bold/italic/code/links, nested lists, tables, block quotes, rules. Line breaks inside a paragraph are kept. Anything else fails the build rather than being dropped.
+- **Word files are generated at build** (`prebuild` → [`scripts/build-downloads.ts`](../scripts/build-downloads.ts), converter [`src/templates/docx.ts`](../src/templates/docx.ts)) into `public/downloads/<id>-<locale>.docx` (gitignored), served at `/downloads/<id>-<locale>.docx`. Run `npm run build:downloads` to generate them locally.
+- **Translation:** `npm run translate:templates -- --id=<id>` (same model and glossary as guides). Output is checked against DE before it is written: same number of headings, table rows and placeholders, no raw HTML. On merge to `main`, the translate workflow handles changed `content/templates/*/de.md`: a newly added template only gets its **missing** locales (`--missing-only`, keeps a hand-reviewed EN); a changed one is fully regenerated, like guide pages.
+- A new template id must also be registered in `DOWNLOADS` in [`src/readiness/schema.ts`](../src/readiness/schema.ts) to be linkable from the readiness check (`download:<id>`).
+
 ## Translation pipeline (T13)
 
 Draft EN/FR/IT pages from canonical DE Markdown. Implementation: [`src/translate/`](../src/translate/) (`glossary-match`, `prompt`, `client`, `write`, `verify`, `anchors`). CLI: `npm run translate`.
