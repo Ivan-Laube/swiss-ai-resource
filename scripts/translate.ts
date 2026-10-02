@@ -13,6 +13,7 @@ import {
   matchGlossaryTerms,
   parseLlmTranslation,
   requireAnthropicApiKey,
+  restoreHeadingAnchors,
   translateWithAnthropic,
   translationOutputPath,
   verifyGlossaryTermsInTranslation,
@@ -185,7 +186,13 @@ async function translateOne(
   console.log(`  model: ${getTranslateModel()}`);
 
   const raw = await translateWithAnthropic(prompt);
-  const parts = parseLlmTranslation(raw);
+  const parsed = parseLlmTranslation(raw);
+  // The prompt asks the model to keep {#anchor} markers; this makes sure.
+  const anchors = restoreHeadingAnchors(dePage.body, parsed.body);
+  if (anchors.restored.length > 0) {
+    console.log(`  anchors restored: ${anchors.restored.join(", ")}`);
+  }
+  const parts = { ...parsed, body: anchors.body };
   const written = writeTranslation(dePage, locale, parts);
   console.log(`  wrote: ${written}`);
 

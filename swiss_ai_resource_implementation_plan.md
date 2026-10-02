@@ -133,8 +133,8 @@ Working title DE: *KI und Cybersicherheit für KMU*. Cornerstone-style page (DE 
 When a tool, check result or scanner finding points to a guide, it links to the **section** that answers the question (`/de/ndsg-ai-basics/#transparenz`), not the top of the page. Applies to the AI readiness check, the existing decision trees, the website quick-check and the policy template.
 
 - **Stable anchors.** Today heading ids are generated from the heading text ([`src/lib/markdown.ts`](src/lib/markdown.ts)), so they differ per language and change when a heading is reworded. Sections that are link targets get an explicit, language-independent anchor in the DE source: `## Transparenz und Information {#transparenz}`. The renderer uses the explicit id (and strips the marker); headings without one keep the generated id.
-- **Translation keeps anchors.** The translation pipeline must carry `{#…}` markers over unchanged, and its verification fails if a translated page's anchor set differs from DE.
-- **Validated references.** Data files reference sections as `slug#anchor`. Validators (`check:rules`, `check:scanner`, `check:content`) fail if the page or the anchor is missing in any locale, so a renamed or deleted section can't silently break links.
+- **Translation keeps anchors.** The translation pipeline must carry `{#…}` markers over unchanged, and its verification fails if a translated page's anchor set differs from DE. Since translations are regenerated only after a DE change merges, the cross-locale comparison (`check:anchors`) warns on PRs and is strict in the translate workflow.
+- **Validated references.** Data files reference sections as `slug#anchor`. Validators (`check:rules`, `check:scanner`, `check:content`) fail if the page or the anchor is missing in DE, so a renamed or deleted section can't silently break links. Other locales follow DE through the translate workflow (strict `check:anchors`), so a PR that adds an anchor and a link to it in one go is not blocked by translation lag.
 - **Landing.** The target heading isn't hidden under the sticky header (`scroll-margin-top`) and is briefly highlighted (`:target`) so the reader sees where they landed. Respects `prefers-reduced-motion`.
 - **Granularity.** Anchors on h2/h3 only. If no section matches a question, add a section to the guide rather than linking to a near miss.
 
@@ -323,8 +323,8 @@ Post-MVP, demand-driven (not built now):
 | ID | Task | Depends on | Status |
 |---|---|---|---|
 | T56 | Explicit heading anchors `{#id}` in content Markdown: renderer support (explicit id wins, marker stripped, reserved-id and duplicate checks), TOC uses the same ids, `scroll-margin-top` + `:target` highlight — see [content/README.md](content/README.md#section-anchors-t56) | T3 | Done |
-| T57 | Translation pipeline preserves `{#id}` markers (prompt rule + verify step comparing anchor sets with DE) | T56, T13 | |
-| T58 | `slug#anchor` references in data files (readiness check, decision trees, scanner checks); validators fail on a missing page or anchor in any locale | T56 | |
+| T57 | Translation pipeline preserves `{#id}` markers: prompt rule, restore by heading position, write-time check; `check:anchors` (warn on PRs, `--strict` in the translate workflow) — see [content/README.md](content/README.md#generated-frontmatter-rules) | T56, T13 | Done |
+| T58 | `slug#anchor` references in data files (readiness check, decision trees, scanner checks); validators fail on a missing page or anchor in DE (other locales via T57) | T56 | |
 | T59 | Retrofit: add anchors to the existing guides' sections that tools cite and switch existing tool/scanner links to section links where a specific section fits | T56, T58 | |
 
 ### Post-launch / parallel (no phase)
