@@ -1,7 +1,8 @@
 {
   "id": "ai-readiness",
   "version": 1,
-  "status": "draft",
+  "status": "live",
+  "listed": false,
   "title": {
     "de": "KI-Check für KMU",
     "en": "AI readiness check for SMEs",
