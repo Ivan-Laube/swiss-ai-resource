@@ -29,6 +29,11 @@ jobs:
     container:
       image: mcr.microsoft.com/playwright:v1.63.0-jammy
       options: --ipc=host
+    # Container steps default to sh; the scripts below use bash features
+    # (pipefail, arrays, mapfile).
+    defaults:
+      run:
+        shell: bash
 
     steps:
       # The Playwright image may lack git/ssh; without them checkout falls
