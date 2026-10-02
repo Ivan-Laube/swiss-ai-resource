@@ -1,6 +1,6 @@
 # Data conventions
 
-Structured JSON under `data/` drives the vendor table, source registry, Fedlex glossary, decision tools (`rules/`), the adoption survey (`survey-questions.json`), and the website quick-check (`scanner-checks.json`).
+Structured JSON under `data/` drives the vendor table, source registry, Fedlex glossary, decision tools (`rules/`), the adoption survey (`survey-questions.json`), the website quick-check (`scanner-checks.json`), and the AI readiness check (`readiness-check.json`).
 
 Offline `check:*` validators for these files run locally and in [`.github/workflows/ci.yml`](../.github/workflows/ci.yml) on every PR and push to `main` (see [DEPLOY.md](../DEPLOY.md#continuous-integration)). Live citation probing (`check:links`) stays in the [monthly sources workflow](../.github/workflows/monthly-sources.yml).
 
@@ -637,3 +637,43 @@ Link detection scans at most the first **512 KiB** of HTML and at most **2000** 
 
 UI: [`/[lang]/website-check/`](../src/app/[lang]/website-check/page.tsx) + [`WebsiteCheckForm`](../src/components/WebsiteCheckForm.tsx). Posts to `{NEXT_PUBLIC_SCAN_API_URL}/scan`, groups findings by severity (`high` → `info`), shows localized title/description via `pickLocalized` (imported from `@/rules/schema` in the client form), legal citations, guide links (`related_page`, resolved server-side to the localized page title and section), static-scan caveat when `static_scan_incomplete`, and the informational disclaimer. Reserves an empty slot for a future LLM policy-content pass. Local + deploy: [DEPLOY.md](../DEPLOY.md#scanner-worker-t33t37). Verify with `npm run build` after UI changes — the static export fails if a `"use client"` module imports the `@/rules` barrel.
 
+
+## Readiness check (`readiness-check.json`)
+
+The AI readiness self-check for KMU (plan T45–T51; signed-off draft: [docs/ai-readiness-check-draft.md](../docs/ai-readiness-check-draft.md)). **Everything the check asks, scores and recommends is in this one file**: the code in [`src/readiness/`](../src/readiness/) is a generic engine that reads it. Schema: [`schema.ts`](../src/readiness/schema.ts). Engine: [`score.ts`](../src/readiness/score.ts) (pure, client-safe).
+
+```bash
+npm run check:readiness   # validate (also in CI)
+npm run test:unit         # includes the worked examples in src/readiness/score.test.ts
+```
+
+### Structure
+
+| Field | Purpose |
+|---|---|
+| `version` | Bump when questions, options or scoring change; printed on the result |
+| `status` | `draft`: FR/IT may be empty and `pending_links` are allowed. `live`: all four locales and no pending links |
+| `profile[]` | Unscored questions. `from_survey` reuses a survey question's prompt and options (single source of wording); `notes` and `add_links` react to answers (e.g. FINMA adds a guide link and a note) |
+| `dimensions[]` | Result groups; every question names one |
+| `questions[]` | Scored questions in display order. Three `options` scored 0/1/2 (ids `gap` / `partly` / `covered`), optional `na_option`, `severity`, optional `severity_overrides`, `red_flag`, `survey_benchmark`, `action`, `links`, `pending_links`, `legal_hooks` (for reviewers, not shown) |
+| `tiers[]` | Score bands; must cover 0–100 without gaps |
+| `red_flags` | `cap_tier` and the two messages (`{score}`, `{tier}`, `{capped_tier}`, `{topics}`) |
+| `next_steps` | How many headline steps (`top`) and the severity `weights` |
+| `security` | The separate initial assessment: texts, per-area statuses, three `levels` (rules `any-zero`, `no-zero-some-one`, `all-two`), `promote_on_level`, and its `questions` (`area` instead of `dimension`) |
+
+**Links** are prefixed: `guide:<slug>` or `guide:<slug>#<anchor>` (validated like decision-tree `related_pages`), `tool:<id>` (a decision tool), `site:<page>` (`SITE_PAGES`), `download:<id>` (`DOWNLOADS`; its Markdown source under `content/templates/<id>/` must exist). A link whose target isn't built yet goes in `pending_links` with the task id; `check:readiness` warns once it resolves and rejects it when `status` is `live`.
+
+**Conditions** (`show_if`, `severity_overrides[].when`, `security.none_can_act.when`): `{ "question": "<id>", "is": [...] }` or `"is_not": [...]`, using option ids (incl. `na`). `show_if` may only look at earlier questions; a hidden question counts as not applicable.
+
+### Common changes
+
+| Change | What to edit | Check |
+|---|---|---|
+| Reword a question, option or action | The `de` text (canonical) and `en`; FR/IT follow via the translation pipeline (T51) | `check:readiness` |
+| Change a link | `links` of the question; to point at a section, add an `{#anchor}` to the DE guide heading first and run `npm run sync:anchors` | `check:readiness` names a missing page or anchor |
+| Move a tier boundary or rename a tier | `tiers[]` (`min` / `max` / `label`) | Validator rejects gaps; worked-example tests show the effect |
+| Make a question count more or less | `severity` (or a `severity_overrides` rule); weights in `next_steps.weights` | `score.test.ts` shows changed step order |
+| Add a question | Append to `questions[]` with a new kebab-case id and an existing `dimension`; bump `version` | Validator + tests (fixtures list answers by position, so add the new answer there) |
+| Add or remove a red flag | `red_flag` on the question (option id + `topic`) | Tests for capping |
+
+Anything that changes what a result means (points, tiers, red flags, weights, questions) needs a `version` bump, so printed results stay comparable.

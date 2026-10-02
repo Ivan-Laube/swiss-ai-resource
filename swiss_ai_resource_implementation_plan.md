@@ -306,8 +306,8 @@ Post-MVP, demand-driven (not built now):
 
 | ID | Task | Depends on | Status |
 |---|---|---|---|
-| T45 | Finalise check question set + scoring model incl. security section S1–S3 (DE canonical, EN draft) from [docs/ai-readiness-check-draft.md](docs/ai-readiness-check-draft.md); open questions settled 2026-10-02; final wording sign-off | — | In review |
-| T46 | `data/rules/ai-readiness.json` (links as `slug#anchor`) + Zod schema for a scored questionnaire (dimensions, 0/1/2 options, N/A, conditional questions, severity, red flags, separate security assessment section with per-area status, actions, links); validated by `check:rules` | T45, T8, T58 | |
+| T45 | Finalise check question set + scoring model incl. security section S1–S3 (DE canonical, EN draft) from [docs/ai-readiness-check-draft.md](docs/ai-readiness-check-draft.md) | — | Done (signed off 2026-10-02) |
+| T46 | `data/readiness-check.json` + Zod schema, validator (`check:readiness`, in CI) and pure scoring engine in `src/readiness/`; worked examples as tests. Everything the check asks, scores and recommends is data, so changes don't need code — see [data/README.md](data/README.md#readiness-check-readiness-checkjson). `status: draft` until FR/IT (T51) and pending links (T50, T53, T60) are done | T45, T8, T58 | Done |
 | T47 | Check page `/[lang]/tools/ai-readiness/`: client-only scoring, tiers, red-flag cap with explanation, top-3 actions + "show all" (incl. top security gap when High), security initial-assessment block below the main result, print view, disclaimer; no network calls | T46, T2, T53 (link target) | |
 | T48 | Benchmark lines on the result from survey aggregates (size bucket when n ≥ 5, else overall) + survey invitation | T47, T25 | |
 | T49 | AI policy template source moved to `content/templates/ai-policy/{de,en}.md`; FR/IT via the translation pipeline (glossary-constrained) | T13 | |
@@ -317,6 +317,7 @@ Post-MVP, demand-driven (not built now):
 | T53 | AI security guide `ai-security-risks` (DE canonical): agents, prompt injection, add-ons/connectors, AI-made fraud and deepfakes, incident steps (link target for check Q12); frontmatter `volatility: fast`, sources cited | T3, T6 (pattern), T54 | |
 | T54 | Add AI security sources to `sources.json` (BACS/NCSC, OWASP LLM Top 10 + agentic AI guidance, ENISA) so the monthly job tracks them | T5 | |
 | T55 | Translate the AI security guide EN/FR/IT via the pipeline | T53, T13 | |
+| T60 | Section on assigning AI responsibility in `ndsg-ai-basics` (`{#responsibility}`, link target for check Q11) | T6, T56 | |
 
 ### Cross-cutting: deep links to guide sections
 
