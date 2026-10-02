@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { SiteHeader } from "@/components/SiteHeader";
 import { WebsiteCheckForm } from "@/components/WebsiteCheckForm";
 import { Container } from "@/components/ui";
+import { resolvePageLinks } from "@/content";
 import {
   buildLanguageAlternates,
   getMessages,
@@ -11,6 +12,7 @@ import {
   locales,
 } from "@/i18n";
 import { buildPageMetadata } from "@/lib/metadata";
+import { getScannerChecks } from "@/scanner";
 import { getSurvey } from "@/survey";
 import styles from "./page.module.css";
 
@@ -66,6 +68,12 @@ export default async function WebsiteCheckPage({ params }: PageProps) {
             locale={lang}
             messages={messages.websiteCheck}
             surveyEstimatedMinutes={survey.estimated_minutes}
+            relatedLinks={resolvePageLinks(
+              lang,
+              getScannerChecks().checks.flatMap((check) =>
+                check.related_page ? [check.related_page] : [],
+              ),
+            )}
           />
         </Container>
       </main>

@@ -27,6 +27,8 @@ export {
 
 export { LEGAL_SLUGS } from "./legal";
 
+export { pageRefProblem, resolvePageLink, resolvePageLinks } from "./refs";
+
 
 export {
   contentPagePath,

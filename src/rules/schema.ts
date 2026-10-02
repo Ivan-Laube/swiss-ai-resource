@@ -1,3 +1,4 @@
+import { pageRefSchema } from "@/lib/page-ref";
 import { z } from "@/lib/zod";
 
 import type { Locale } from "@/i18n/config";
@@ -71,7 +72,8 @@ const outcomeNodeSchema = z.object({
   summary: localizedStringSchema,
   caveats: z.array(localizedStringSchema).min(1),
   sources: z.array(ruleSourceSchema).min(1),
-  related_pages: z.array(kebabId).default([]),
+  /** Guide pages or sections: `slug` or `slug#anchor` (validated against DE). */
+  related_pages: z.array(pageRefSchema).default([]),
 });
 
 export const ruleNodeSchema = z.discriminatedUnion("type", [

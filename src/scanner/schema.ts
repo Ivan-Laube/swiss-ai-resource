@@ -1,3 +1,4 @@
+import { pageRefSchema } from "@/lib/page-ref";
 import { z } from "@/lib/zod";
 
 import {
@@ -92,8 +93,8 @@ const checkBaseSchema = z.object({
   description: localizedStringSchema,
   severity: z.enum(severities),
   legal_basis: legalBasisSchema,
-  /** Cornerstone slug to cite (must be a publishable DE slug), or null. */
-  related_page: kebabId.nullable(),
+  /** Guide page or section to cite (`slug` or `slug#anchor`, validated against DE), or null. */
+  related_page: pageRefSchema.nullable(),
 });
 
 const tlsCheckSchema = checkBaseSchema

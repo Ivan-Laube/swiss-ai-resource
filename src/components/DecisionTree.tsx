@@ -14,6 +14,7 @@ import { Button, Callout, IconExternalLink, StatusPill } from "@/components/ui";
 import { cx } from "@/components/ui/cx";
 import type { Locale } from "@/i18n/config";
 import type { Messages } from "@/i18n/types";
+import type { ResolvedPageLink } from "@/lib/page-ref";
 import {
   formatAnswerHash,
   longestQuestionCount,
@@ -31,16 +32,12 @@ import styles from "./DecisionTree.module.css";
 
 type ToolsMessages = Messages["tools"];
 
-type RelatedTitle = {
-  slug: string;
-  title: string;
-};
-
 type DecisionTreeProps = {
   tree: DecisionTreeData;
   locale: Locale;
   toolsMessages: ToolsMessages;
-  relatedTitles: RelatedTitle[];
+  /** Outcome `related_pages`, resolved for this locale (page or section links). */
+  relatedLinks: ResolvedPageLink[];
   surveyEstimatedMinutes: number;
 };
 
@@ -89,7 +86,7 @@ export function DecisionTree({
   tree,
   locale,
   toolsMessages,
-  relatedTitles,
+  relatedLinks,
   surveyEstimatedMinutes,
 }: DecisionTreeProps) {
   const [currentId, setCurrentId] = useState(tree.start);
@@ -223,9 +220,7 @@ export function DecisionTree({
     window.print();
   }
 
-  const relatedBySlug = new Map(
-    relatedTitles.map((item) => [item.slug, item.title]),
-  );
+  const relatedByRef = new Map(relatedLinks.map((link) => [link.ref, link]));
 
   const progressN = answerIds.length + 1;
   const progressM =
@@ -402,14 +397,18 @@ export function DecisionTree({
                 {toolsMessages.relatedPages}
               </h3>
               <ul className={styles.list}>
-                {node.related_pages.map((slug) => {
-                  const title = relatedBySlug.get(slug);
-                  if (!title) {
+                {node.related_pages.map((ref) => {
+                  const link = relatedByRef.get(ref);
+                  if (!link) {
                     return null;
                   }
                   return (
-                    <li key={slug}>
-                      <Link href={`/${locale}/${slug}/`}>{title}</Link>
+                    <li key={ref}>
+                      <Link href={link.href}>
+                        {link.section
+                          ? `${link.title} – ${link.section}`
+                          : link.title}
+                      </Link>
                     </li>
                   );
                 })}

@@ -5,6 +5,11 @@ import { useEffect, useRef, useState, type FormEvent } from "react";
 import type { Locale } from "@/i18n/config";
 import type { Messages } from "@/i18n/types";
 import { normalizeUrlInput } from "@/lib/normalize-url-input";
+import {
+  pageRefHref,
+  parsePageRef,
+  type ResolvedPageLink,
+} from "@/lib/page-ref";
 import { consumeQuickCheckHandoff } from "@/lib/quick-check-handoff";
 import {
   loadTurnstileScript,
@@ -64,7 +69,28 @@ type Props = {
   messages: WebsiteCheckMessages;
   /** From survey.estimated_minutes — used in the post-result survey prompt. */
   surveyEstimatedMinutes: number;
+  /** Scanner `related_page` refs resolved for this locale (title + section link). */
+  relatedLinks: ResolvedPageLink[];
 };
+
+/**
+ * Link for a finding's `related_page`. Falls back to the raw ref when the
+ * Worker returns one this build doesn't know (Worker deployed separately).
+ */
+function relatedLinkFor(
+  locale: Locale,
+  ref: string,
+  known: Map<string, ResolvedPageLink>,
+): { href: string; label: string } {
+  const link = known.get(ref);
+  if (link) {
+    return {
+      href: link.href,
+      label: link.section ? `${link.title} – ${link.section}` : link.title,
+    };
+  }
+  return { href: pageRefHref(locale, parsePageRef(ref)), label: ref };
+}
 
 function clearUrlFragment(): void {
   const { pathname, search } = window.location;
@@ -217,7 +243,9 @@ export function WebsiteCheckForm({
   locale,
   messages,
   surveyEstimatedMinutes,
+  relatedLinks,
 }: Props) {
+  const relatedByRef = new Map(relatedLinks.map((link) => [link.ref, link]));
   const apiUrl = (process.env.NEXT_PUBLIC_SCAN_API_URL ?? "").replace(
     /\/$/,
     "",
@@ -534,16 +562,23 @@ export function WebsiteCheckForm({
                                 {finding.legal_basis.reference}
                               </a>
                             </li>
-                            {finding.related_page ? (
-                              <li>
-                                {messages.relatedPage}:{" "}
-                                <Link
-                                  href={`/${locale}/${finding.related_page}/`}
-                                >
-                                  {finding.related_page}
-                                </Link>
-                              </li>
-                            ) : null}
+                            {finding.related_page
+                              ? (() => {
+                                  const related = relatedLinkFor(
+                                    locale,
+                                    finding.related_page,
+                                    relatedByRef,
+                                  );
+                                  return (
+                                    <li>
+                                      {messages.relatedPage}:{" "}
+                                      <Link href={related.href}>
+                                        {related.label}
+                                      </Link>
+                                    </li>
+                                  );
+                                })()
+                              : null}
                           </ul>
                           {evidence.length > 0 ? (
                             <div className={styles.evidence}>
