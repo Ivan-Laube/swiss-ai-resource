@@ -48,3 +48,17 @@ describe("renderMarkdown explicit heading anchors", () => {
     assert.throws(() => renderMarkdown("## Quellen {#main}"), /reserved/);
   });
 });
+
+describe("renderMarkdown download: links", () => {
+  it("resolves to the Word download in the page language", () => {
+    const md = "[Vorlage](download:ai-policy-template)";
+    assert.ok(renderMarkdown(md).html.includes('href="/downloads/ai-policy-template-de.docx"'));
+    assert.ok(
+      renderMarkdown(md, { locale: "fr" }).html.includes('href="/downloads/ai-policy-template-fr.docx"'),
+    );
+  });
+
+  it("fails on an unknown template id", () => {
+    assert.throws(() => renderMarkdown("[x](download:nope)"), /Unknown download "nope"/);
+  });
+});

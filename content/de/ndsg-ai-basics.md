@@ -60,7 +60,7 @@ In kleinen Unternehmen ist das meist die Inhaberin, der Inhaber oder die Geschä
 ## Was KMU jetzt tun können {#next-steps}
 
 1. Inventar: Welche KI-Tools bearbeiten Personendaten?
-2. Transparenztexte und interne Richtlinien anpassen.
+2. Transparenztexte und interne Richtlinien anpassen. Als Ausgangspunkt dient die [Vorlage für eine KI-Richtlinie (Word)](download:ai-policy-template).
 3. Bei hohem Risiko eine DSFA planen.
 4. Mit Anbietern klären: Auftragsbearbeitung, Trainingsnutzung, Speicherort.
 5. Menschliche Kontrolle bei automatisierten Entscheiden mit erheblicher Wirkung sicherstellen.

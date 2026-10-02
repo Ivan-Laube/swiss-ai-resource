@@ -1,10 +1,8 @@
-import fs from "node:fs";
-import path from "node:path";
-
 import { resolvePageLink } from "@/content";
 import type { Locale } from "@/i18n/config";
 import type { Messages } from "@/i18n/types";
 import { getRule, pickLocalized } from "@/rules";
+import { downloadHref } from "@/templates/links";
 
 import { DOWNLOADS, SITE_PAGES, type ReadinessCheck } from "./schema";
 
@@ -18,12 +16,6 @@ function allLinks(check: ReadinessCheck): string[] {
     ...check.security.questions.flatMap((q) => q.links),
     ...check.profile.flatMap((p) => p.add_links?.links ?? []),
   ];
-}
-
-/** The template source exists for this locale (otherwise fall back to DE). */
-function downloadLocale(id: string, locale: Locale): Locale {
-  const source = path.join(process.cwd(), "content", "templates", id, `${locale}.md`);
-  return fs.existsSync(source) ? locale : "de";
 }
 
 /**
@@ -70,12 +62,8 @@ export function resolveReadinessLinks(
       }
       case "download": {
         if (target in DOWNLOADS) {
-          const file = DOWNLOADS[target as keyof typeof DOWNLOADS].path.replace(
-            "{locale}",
-            downloadLocale(target, locale),
-          );
           out[link] = {
-            href: `/${file}`,
+            href: downloadHref(target, locale),
             label: target === "ai-policy-template" ? messages.readiness.downloadPolicyTemplate : target,
           };
         }
