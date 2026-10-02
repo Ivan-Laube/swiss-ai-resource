@@ -1,6 +1,7 @@
-import { marked, type Tokens } from "marked";
+import { Lexer, marked, type Tokens } from "marked";
 import sanitizeHtml from "sanitize-html";
 
+import { listHeadingAnchors, splitHeadingAnchor } from "./heading-anchors";
 import { createHeadingSlugger } from "./slugify-heading";
 
 /** Heading extracted for the table of contents (h2 / h3). */
@@ -59,17 +60,32 @@ const RESERVED_HEADING_IDS = [
  * Render Markdown to sanitized HTML and collect heading ids for the TOC.
  * Required because the translate workflow auto-commits LLM drafts to
  * `content/{en,fr,it}` and marked passes raw HTML through.
+ *
+ * h2/h3 headings with an explicit `{#anchor}` marker use that anchor as id
+ * (see `./heading-anchors`); the others get an id slugified from their text.
+ * Throws on a malformed, misplaced, duplicate or reserved anchor.
  */
 export function renderMarkdown(markdown: string): RenderMarkdownResult {
   const headings: MarkdownHeading[] = [];
-  const slugify = createHeadingSlugger(RESERVED_HEADING_IDS);
+  const explicit = listHeadingAnchors(markdown).map((a) => a.anchor);
+  const reservedHit = explicit.find((id) => RESERVED_HEADING_IDS.includes(id));
+  if (reservedHit) {
+    throw new Error(
+      `Heading anchor {#${reservedHit}} is reserved for the page shell; choose another`,
+    );
+  }
+  // Generated ids must not take an id that a later heading claims explicitly.
+  const slugify = createHeadingSlugger([...RESERVED_HEADING_IDS, ...explicit]);
 
   const renderer = new marked.Renderer();
-  renderer.heading = function heading({ tokens, depth }: Tokens.Heading) {
-    const text = this.parser.parseInline(tokens);
+  renderer.heading = function heading({ tokens, depth, text: raw }: Tokens.Heading) {
+    const { text: source, anchor } = splitHeadingAnchor(raw);
+    const text = this.parser.parseInline(
+      anchor === null ? tokens : Lexer.lexInline(source),
+    );
     const plain = sanitizeHtml(text, { allowedTags: [], allowedAttributes: {} });
     if (depth === 2 || depth === 3) {
-      const id = slugify(plain);
+      const id = anchor ?? slugify(plain);
       headings.push({ level: depth, text: plain, id });
       return `<h${depth} id="${id}">${text}</h${depth}>\n`;
     }

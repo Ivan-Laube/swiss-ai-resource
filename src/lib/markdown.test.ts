@@ -13,3 +13,38 @@ describe("renderMarkdown heading ids", () => {
     assert.ok(!html.includes('id="main"'));
   });
 });
+
+describe("renderMarkdown explicit heading anchors", () => {
+  it("uses the {#anchor} as id and strips the marker from the heading", () => {
+    const { html, headings } = renderMarkdown(
+      "## Transparenz und *Information* {#transparenz}\n\nText",
+    );
+    assert.deepEqual(headings, [
+      { level: 2, text: "Transparenz und Information", id: "transparenz" },
+    ]);
+    assert.ok(
+      html.includes('<h2 id="transparenz">Transparenz und <em>Information</em></h2>'),
+    );
+    assert.ok(!html.includes("{#"));
+  });
+
+  it("keeps generated ids for headings without a marker", () => {
+    const { headings } = renderMarkdown("## Wer ist betroffen?\n\n### Details {#details}");
+    assert.deepEqual(
+      headings.map((h) => h.id),
+      ["wer-ist-betroffen", "details"],
+    );
+  });
+
+  it("does not hand an explicit anchor to an earlier generated heading", () => {
+    const { headings } = renderMarkdown("## Hinweis\n\n## Disclaimer {#hinweis}");
+    assert.deepEqual(
+      headings.map((h) => h.id),
+      ["hinweis-2", "hinweis"],
+    );
+  });
+
+  it("rejects anchors reserved for the page shell", () => {
+    assert.throws(() => renderMarkdown("## Quellen {#main}"), /reserved/);
+  });
+});

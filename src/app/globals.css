@@ -390,6 +390,37 @@ input[type="radio"] {
   margin: var(--space-5) 0 var(--space-2);
 }
 
+/* Section links (TOC, tools: /guide/#anchor) land below the sticky header
+   and flash briefly so the reader sees where they arrived. */
+.prose :where(h2, h3) {
+  scroll-margin-top: calc(var(--header-sticky-offset) + var(--space-4));
+}
+
+.prose :where(h2, h3):target {
+  border-radius: var(--radius-control);
+  animation: prose-target-flash 1.6s var(--ease);
+}
+
+@keyframes prose-target-flash {
+  from {
+    background-color: var(--status-info-bg);
+    box-shadow: 0 0 0 var(--space-2) var(--status-info-bg);
+  }
+  to {
+    background-color: transparent;
+    box-shadow: 0 0 0 var(--space-2) transparent;
+  }
+}
+
+/* No flash with reduced motion: mark the target statically instead. */
+@media (prefers-reduced-motion: reduce) {
+  .prose :where(h2, h3):target {
+    animation: none;
+    text-decoration: underline 2px var(--focus);
+    text-underline-offset: 6px;
+  }
+}
+
 .prose :where(p, ul, ol, table, blockquote, pre, hr) {
   margin-bottom: var(--space-4);
 }
