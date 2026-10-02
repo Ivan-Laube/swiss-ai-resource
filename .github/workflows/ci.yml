@@ -41,6 +41,10 @@ jobs:
       - name: Validate content frontmatter
         run: npm run check:content
 
+      # Warn-only here: translations are regenerated after a DE change merges.
+      - name: Compare translation heading anchors with DE
+        run: npm run check:anchors
+
       - name: Validate vendors.json
         run: npm run check:vendors
 

@@ -34,6 +34,19 @@ export function splitHeadingAnchor(text: string): {
   return { text: text.slice(0, match.index), anchor: match[1] };
 }
 
+/** Anchors in `expected` but not `actual` (missing) and the reverse (extra). */
+export function diffHeadingAnchors(
+  expected: readonly string[],
+  actual: readonly string[],
+): { missing: string[]; extra: string[] } {
+  const want = new Set(expected);
+  const have = new Set(actual);
+  return {
+    missing: expected.filter((a) => !have.has(a)),
+    extra: actual.filter((a) => !want.has(a)),
+  };
+}
+
 /**
  * Explicit anchors of a Markdown document, in order. Throws if a marker is
  * malformed, sits on a heading other than h2/h3, or repeats an anchor.

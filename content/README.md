@@ -95,9 +95,11 @@ Every h2/h3 gets an `id`, so `/de/ndsg-ai-basics/#…` jumps to that section. By
 
 Implementation: [`src/lib/heading-anchors.ts`](../src/lib/heading-anchors.ts), used by [`renderMarkdown`](../src/lib/markdown.ts). `check:content` renders every page, so a malformed, misplaced or duplicate anchor fails it with the file path.
 
+Translations carry the same anchors (T57, see the translation pipeline below). `npm run check:anchors` compares every EN/FR/IT page with DE: on PRs it only warns, because translations are regenerated after a DE change merges; the translate workflow runs it with `--strict` after regenerating.
+
 ## Translation pipeline (T13)
 
-Draft EN/FR/IT pages from canonical DE Markdown. Implementation: [`src/translate/`](../src/translate/) (`glossary-match`, `prompt`, `client`, `write`, `verify`). CLI: `npm run translate`.
+Draft EN/FR/IT pages from canonical DE Markdown. Implementation: [`src/translate/`](../src/translate/) (`glossary-match`, `prompt`, `client`, `write`, `verify`, `anchors`). CLI: `npm run translate`.
 
 ```bash
 npm run translate -- --slug=ndsg-ai-basics --dry-run
@@ -115,6 +117,7 @@ Requires `ANTHROPIC_API_KEY` (optional local `.env`). Override model with `TRANS
 - Pipeline forces: `translation_status: "draft"`; `reviewed_by` / `review_date` / `review_scope` = `null` (lawyer review is DE-only).
 - FR/IT prompts inject matched Fedlex glossary rows; `--strict` fails if official terms are missing from the output.
 - EN prompts require conventional phrasing with the German term in parentheses on first use for matched glossary terms.
+- Heading anchors (`{#id}`, T57): the prompt tells the model to copy every marker unchanged; the pipeline then restores the DE markers by heading position (`restoreHeadingAnchors`; the n-th DE h2/h3 is the n-th translated one) and refuses to write if the anchor sets still differ (`assertHeadingAnchorsMatch`).
 - Raw HTML outside Markdown code blocks is rejected before write (`assertNoRawHtmlInTranslation`); pages additionally sanitize marked HTML at render (`src/lib/markdown.ts`).
 - Overwrites existing target files (regeneration on DE change intentionally resets `reviewed` → `draft`).
 
@@ -126,7 +129,7 @@ Workflow: [`.github/workflows/translate-on-de-merge.yml`](../.github/workflows/t
 
 - **Trigger:** push to `main` that touches `content/de/**/*.md`, plus manual `workflow_dispatch` (optional comma-separated slugs; empty = all publishable DE pages).
 - **Canonical-change filter:** only regenerates when DE `title`, `description`, or body changed. Metadata-only DE edits (`last_verified`, lawyer review fields, `sources`, `volatility`, `category`) are skipped so monthly T17 bumps do not burn API calls.
-- **Engine:** `changed-de-slugs` → `translate --strict` → `check:content` → `npm run build` → bot commit of `content/{en,fr,it}/`.
+- **Engine:** `changed-de-slugs` → `translate --strict` → `check:content` → `check:anchors --strict` → `npm run build` → bot commit of `content/{en,fr,it}/`.
 - **Landing:** commits regenerated `content/{en,fr,it}/*.md` to `main` with `translation_status: draft`. Translation-only commits do not re-trigger the workflow (path filter is DE-only).
 
 Local helpers:

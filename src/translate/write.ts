@@ -12,6 +12,7 @@ import {
 import { stripCodeFence } from "@/lib/llm-output";
 
 import type { TranslateTargetLocale } from "./prompt";
+import { assertHeadingAnchorsMatch } from "./anchors";
 import { assertNoRawHtmlInTranslation } from "./verify";
 
 export type LlmTranslationParts = {
@@ -49,6 +50,7 @@ export function assembleTranslationMarkdown(
   parts: LlmTranslationParts,
 ): string {
   assertNoRawHtmlInTranslation(parts.title, parts.description, parts.body);
+  assertHeadingAnchorsMatch(dePage.body, parts.body);
 
   const frontmatter: ContentFrontmatter = {
     title: parts.title,
@@ -86,6 +88,7 @@ export function writeTranslation(
   parts: LlmTranslationParts,
 ): string {
   assertNoRawHtmlInTranslation(parts.title, parts.description, parts.body);
+  assertHeadingAnchorsMatch(dePage.body, parts.body);
 
   const frontmatter: ContentFrontmatter = {
     title: parts.title,

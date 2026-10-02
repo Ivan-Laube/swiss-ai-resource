@@ -73,6 +73,7 @@ function sharedSystemRules(): string {
   return [
     "You translate Swiss legal/compliance Markdown from German into the target language.",
     "Preserve Markdown structure exactly: headings, lists, emphasis, tables, and links.",
+    "Some headings end with an anchor marker such as {#transparenz}. Copy each marker unchanged to the end of the corresponding translated heading. Never translate, rename, remove, or add markers.",
     "Do not invent sources, citations, articles, or facts.",
     "Keep every https:// URL and Fedlex/EUR-Lex citation unchanged.",
     "Do not add a disclaimer beyond what the source already contains.",

@@ -115,6 +115,10 @@ jobs:
         if: steps.slugs.outputs.count != '0'
         run: npm run check:content
 
+      - name: Translations carry the DE heading anchors
+        if: steps.slugs.outputs.count != '0'
+        run: npm run check:anchors -- --strict
+
       # Gate push to main: regenerated translations must not break the static export.
       - name: Verify static export still builds
         if: steps.slugs.outputs.count != '0'

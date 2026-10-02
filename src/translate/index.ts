@@ -50,6 +50,18 @@ export {
 
 export {
 
+  assertHeadingAnchorsMatch,
+
+  restoreHeadingAnchors,
+
+  type RestoreAnchorsResult,
+
+} from "./anchors";
+
+
+
+export {
+
   assertNoRawHtmlInTranslation,
 
   findRawHtmlOutsideCode,
