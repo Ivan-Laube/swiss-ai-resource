@@ -46,7 +46,7 @@ There are 12 scored questions. Each has three options scored **0 / 1 / 2**. Q3, 
 ### P1. Company size
 - **EN:** How many employees does your company have?
 - **DE:** Wie viele Mitarbeitende hat Ihr Unternehmen?
-- Options: same IDs as survey `company-size` (`1-9`, `10-49`, `50-249`, `250-999`, `1000-plus`), so benchmarks can be filtered by size.
+- Options: same IDs as survey `company-size` (`1`, `2-9`, `10-49`, `50-249`, `250-999`, `1000-plus`, survey v4), so benchmarks can be filtered by size.
 
 ### P2. AI usage stage
 - **EN:** How far along is your company with AI?
@@ -195,7 +195,7 @@ There are 12 scored questions. Each has three options scored **0 / 1 / 2**. Q3, 
 | 2 | Yes, with documented human review, and affected people can ask for a person to look at their case. | Ja, mit dokumentierter menschlicher Prüfung, und Betroffene können verlangen, dass eine Person ihren Fall beurteilt. |
 | N/A | No, AI does not make or prepare decisions about people. | Nein, KI trifft oder bereitet keine Entscheide über Personen vor. |
 
-- **Severity:** high · **Red flag if 0**
+- **Severity:** high · **Red flag if 0** · **Survey benchmark:** `human-review`
 - **Legal hook:** nDSG Art. 21 (automated individual decisions: duty to inform, right to state one's view and request human review), Art. 22 (DPIA).
 - **Action EN:** Make sure a person checks every AI-supported decision about individuals, write down how, and tell affected people they can ask for a human review.
 - **Action DE:** Stellen Sie sicher, dass eine Person jeden KI-gestützten Entscheid über Einzelpersonen prüft, halten Sie den Ablauf schriftlich fest und informieren Sie Betroffene über ihr Recht auf menschliche Überprüfung.
@@ -247,8 +247,8 @@ There are 12 scored questions. Each has three options scored **0 / 1 / 2**. Q3, 
 | 1 | Implicitly (e.g. IT or management), but not formally assigned. | Stillschweigend (z. B. IT oder Geschäftsleitung), aber nicht formell zugewiesen. |
 | 2 | A named person is responsible and has time for it. | Eine namentlich bestimmte Person ist zuständig und hat Zeit dafür. |
 
-- **Severity:** low
-- **Size note:** for `1-9`, the owner or managing director counts as "named."
+- **Severity:** low · **Survey benchmark:** `ai-owner`
+- **Size note:** for `1` and `2-9`, the owner or managing director counts as "named."
 - **Action EN:** Name one person who keeps the tool list current, approves new tools and answers questions. Give them a little time each month to do it.
 - **Action DE:** Bestimmen Sie eine Person, die die Tool-Liste aktuell hält, neue Tools freigibt und Fragen beantwortet. Geben Sie ihr jeden Monat etwas Zeit dafür.
 - **Link:** `ndsg-ai-basics`
@@ -431,6 +431,8 @@ After the score, show up to three comparisons from `data/survey-aggregates.json`
 | Q5 | `ai-governance-measures` = `usage-policy` |
 | Q6 | `ai-governance-measures` = `staff-training` |
 | Q9 | `ai-governance-measures` = `dpia` |
+| Q8 | `ai-governance-measures` = `human-review` |
+| Q11 | `ai-governance-measures` = `ai-owner` |
 | Q10 | `eu-market-exposure` = `unsure` |
 
 - **EN:** "{pct}% of surveyed companies with {size} employees have a written AI policy."
