@@ -48,9 +48,13 @@ describe("validateReadinessCheck", () => {
   });
 
   it("rejects pending links and missing FR/IT once live", () => {
-    assert.throws(validateWith((c) => (c.status = "live")), (error: Error) => {
-      // Any remaining pending link blocks going live (which one changes as targets get built).
-      assert.match(error.message, /pending link "[^"]+" \(T\d+\) not allowed when live/);
+    const goLiveWithPending = validateWith((c) => {
+      c.status = "live";
+      // Self-contained: the real data may have no pending links left.
+      c.questions[0].pending_links.push({ link: "guide:ndsg-ai-basics#later", task: "T99" });
+    });
+    assert.throws(goLiveWithPending, (error: Error) => {
+      assert.match(error.message, /pending link "guide:ndsg-ai-basics#later" \(T99\) not allowed when live/);
       assert.match(error.message, /title: missing fr, it/);
       return true;
     });

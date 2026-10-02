@@ -712,13 +712,7 @@
         "en": "Name one person who keeps the tool list current, approves new tools and answers questions. Give them a little time each month to do it."
       },
       "links": [
-        "guide:ndsg-ai-basics#next-steps"
-      ],
-      "pending_links": [
-        {
-          "link": "guide:ndsg-ai-basics#responsibility",
-          "task": "T60"
-        }
+        "guide:ndsg-ai-basics#responsibility"
       ]
     },
     {
