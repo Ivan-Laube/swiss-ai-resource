@@ -140,6 +140,12 @@ Ich habe die KI-Richtlinie von [Firmenname] (Version [1.0]) gelesen und verstand
 
 *Von der KI-verantwortlichen Person aktuell zu halten. Enthält alle bekannten KI-Tools, auch abgelehnte oder noch nicht geprüfte.*
 
-| Tool | Anbieter | Status (freigegeben / abgelehnt / in Prüfung) | Zweck | Datenstufe | Datenstandort | Auftragsbearbeitungsvertrag | Training ausgeschlossen | Zuständig | Letzte Prüfung |
+| Tool | Anbieter | Status | Zweck | Datenstufe | Standort | AVV | Kein Training | Zuständig | Geprüft am |
 |---|---|---|---|---|---|---|---|---|---|
 | | | | | | | ja / nein | ja / nein | | |
+| | | | | | | ja / nein | ja / nein | | |
+| | | | | | | ja / nein | ja / nein | | |
+| | | | | | | ja / nein | ja / nein | | |
+| | | | | | | ja / nein | ja / nein | | |
+
+*Status:* freigegeben, abgelehnt oder in Prüfung. *Datenstufe:* Grün, Gelb oder Rot (Abschnitt 4). *Standort:* wo der Anbieter die Daten bearbeitet und speichert (z. B. CH, EU, USA). *AVV:* Auftragsbearbeitungsvertrag mit dem Anbieter vorhanden. *Kein Training:* Der Anbieter verwendet Ihre Daten nicht zum Trainieren seiner Modelle.

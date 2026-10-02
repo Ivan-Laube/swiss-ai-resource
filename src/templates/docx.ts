@@ -8,10 +8,12 @@ import {
   LevelFormat,
   Packer,
   PageNumber,
+  PageOrientation,
   Paragraph,
   ShadingType,
   Table,
   TableCell,
+  TableLayoutType,
   TableRow,
   TextRun,
   WidthType,
@@ -30,9 +32,29 @@ import { PLACEHOLDER_RE } from "./load";
  * Anything else fails loudly instead of being dropped silently.
  */
 
-type RunStyle = Pick<IRunOptions, "bold" | "italics" | "font">;
+type RunStyle = Pick<IRunOptions, "bold" | "italics" | "font" | "size">;
 
 const FONT = "Calibri";
+/** Font size in half-points (Word's unit): 11 pt body, 9 pt in wide tables. */
+const BODY_SIZE = 22;
+const WIDE_TABLE_SIZE = 18;
+/** Tables with this many columns or more use the smaller font. */
+const WIDE_TABLE_COLUMNS = 7;
+
+/**
+ * A4 portrait, in twips (1/20 pt). Side margins match WordPad's fixed
+ * default (3.17 cm): WordPad ignores the document's margins and orientation
+ * but sizes percentage-wide tables from them, so with any other value
+ * tables overflow there. Word shows the same layout.
+ */
+const A4 = { width: 11906, height: 16838 };
+const MARGIN = { top: 1134, bottom: 1134, side: 1800 };
+const TEXT_WIDTH = A4.width - 2 * MARGIN.side;
+
+/** List indent per level (also the hanging indent for bullet/number), in twips. */
+const LIST_INDENT = 360;
+/** Extra left indent of the guidance box (block quotes). */
+const GUIDANCE_INDENT = 240;
 const GUIDANCE_FILL = "EEF2F7";
 const BORDER_COLOR = "94A3B8";
 
@@ -129,7 +151,7 @@ function guidanceProps(ctx: BlockContext) {
     ? {
         shading: { type: ShadingType.CLEAR, fill: GUIDANCE_FILL, color: "auto" },
         border: { left: { style: BorderStyle.SINGLE, size: 18, color: BORDER_COLOR, space: 8 } },
-        indent: { left: 240, right: 240 },
+        indent: { left: GUIDANCE_INDENT, right: GUIDANCE_INDENT },
       }
     : {};
 }
@@ -153,10 +175,16 @@ function list(token: Tokens.List, ctx: BlockContext, level: number): Paragraph[]
     out.push(
       new Paragraph({
         ...guidanceProps(ctx),
+        // Explicit indent: the guidance box's own indent would otherwise
+        // override the list indent and push bullets out of alignment.
+        indent: {
+          left: (ctx.guidance ? GUIDANCE_INDENT : 0) + LIST_INDENT * (level + 1),
+          hanging: LIST_INDENT,
+          ...(ctx.guidance ? { right: GUIDANCE_INDENT } : {}),
+        },
+        spacing: { after: 60 },
         children,
-        ...(token.ordered
-          ? { numbering: { reference: "ordered", level, instance } }
-          : { bullet: { level } }),
+        numbering: { reference: token.ordered ? "ordered" : "bullet", level, instance },
       }),
     );
     for (const child of children.length > 0 ? rest : item.tokens) {
@@ -170,23 +198,65 @@ function list(token: Tokens.List, ctx: BlockContext, level: number): Paragraph[]
   return out;
 }
 
-function table(token: Tokens.Table): Table {
-  const columns = token.header.length;
-  const cell = (cellToken: Tokens.TableCell, header: boolean) =>
+function isWide(token: Token): boolean {
+  return token.type === "table" && (token as Tokens.Table).header.length >= WIDE_TABLE_COLUMNS;
+}
+
+/** Left + right cell margin, in twips. */
+const CELL_PADDING = 120;
+
+/**
+ * Column widths in twips. Each column gets at least its longest word (so
+ * headers never break mid-word) or a sixth of its longest text, whichever
+ * is larger; leftover width is shared equally, since fill-in columns with
+ * short headers (e.g. "Purpose") need room for what people will write.
+ */
+function columnWidths(token: Tokens.Table, total: number, sizeHalfPt: number): number[] {
+  const charWidth = (sizeHalfPt / 2) * 20 * 0.55; // average glyph ≈ 0.55 em
+  const needed = token.header.map((header, col) => {
+    const cells = [header.text, ...token.rows.map((row) => row[col]?.text ?? "")];
+    const longestWord = Math.max(4, ...cells.flatMap((t) => t.split(/\s+/).map((w) => w.length)));
+    const longestCell = Math.max(...cells.map((t) => t.length));
+    // Short values ("ja / nein") stay on one line; long text may wrap.
+    const unbroken = longestCell <= 12 ? longestCell : longestCell / 6;
+    // +1 character of slack: headers are bold, and estimates are averages.
+    return (Math.max(longestWord, unbroken) + 1) * charWidth + CELL_PADDING;
+  });
+  const sum = needed.reduce((a, b) => a + b, 0);
+  return sum >= total
+    ? needed.map((w) => Math.floor((w / sum) * total))
+    : needed.map((w) => Math.floor(w + (total - sum) / needed.length));
+}
+
+function table(token: Tokens.Table, textWidth: number): Table {
+  const style: RunStyle = isWide(token) ? { size: WIDE_TABLE_SIZE } : {};
+  const widths = columnWidths(token, textWidth, typeof style.size === "number" ? style.size : BODY_SIZE);
+  // Percentages, not fixed widths: viewers that ignore the page setup
+  // (WordPad uses its own page size and no landscape) still fit the table.
+  const total = widths.reduce((a, b) => a + b, 0);
+  const percent = widths.map((w) => Math.max(1, Math.round((w / total) * 100)));
+  const cell = (cellToken: Tokens.TableCell, col: number, header: boolean) =>
     new TableCell({
-      width: { size: Math.floor(100 / columns), type: WidthType.PERCENTAGE },
+      width: { size: percent[col], type: WidthType.PERCENTAGE },
       shading: header ? { type: ShadingType.CLEAR, fill: GUIDANCE_FILL, color: "auto" } : undefined,
-      children: [new Paragraph({ children: inline(cellToken.tokens, header ? { bold: true } : {}) })],
+      margins: { top: 40, bottom: 40, left: CELL_PADDING / 2, right: CELL_PADDING / 2 },
+      children: [
+        new Paragraph({
+          spacing: { after: 0 },
+          children: inline(cellToken.tokens, header ? { ...style, bold: true } : style),
+        }),
+      ],
     });
   // `| | |` header rows exist only because Markdown tables need one.
   const hasHeader = token.header.some((c) => c.text.trim() !== "");
   return new Table({
     width: { size: 100, type: WidthType.PERCENTAGE },
+    layout: TableLayoutType.FIXED,
     rows: [
       ...(hasHeader
-        ? [new TableRow({ tableHeader: true, children: token.header.map((c) => cell(c, true)) })]
+        ? [new TableRow({ tableHeader: true, children: token.header.map((c, i) => cell(c, i, true)) })]
         : []),
-      ...token.rows.map((row) => new TableRow({ children: row.map((c) => cell(c, false)) })),
+      ...token.rows.map((row) => new TableRow({ children: row.map((c, i) => cell(c, i, false)) })),
     ],
   });
 }
@@ -202,6 +272,7 @@ function block(tokens: Token[], ctx: BlockContext): (Paragraph | Table)[] {
         out.push(
           new Paragraph({
             heading: HEADINGS[Math.min(h.depth, 4) - 1],
+            keepNext: true,
             children: inline(h.tokens),
           }),
         );
@@ -219,7 +290,7 @@ function block(tokens: Token[], ctx: BlockContext): (Paragraph | Table)[] {
         out.push(...list(token as Tokens.List, ctx, 0));
         break;
       case "table":
-        out.push(table(token as Tokens.Table), new Paragraph({}));
+        out.push(table(token as Tokens.Table, TEXT_WIDTH), new Paragraph({}));
         break;
       case "blockquote":
         out.push(...block((token as Tokens.Blockquote).tokens, { ...ctx, guidance: true }));
@@ -245,55 +316,80 @@ function block(tokens: Token[], ctx: BlockContext): (Paragraph | Table)[] {
   return out;
 }
 
+/**
+ * Title size (half-points) that fits the title on one portrait line,
+ * assuming an average Calibri Light glyph width of about half an em.
+ */
+export function titleSize(title: string): number {
+  const fitPt = TEXT_WIDTH / 20 / (title.length * 0.5);
+  return Math.max(36, Math.min(56, Math.floor(fitPt) * 2));
+}
+
 /** Convert a template's Markdown to a .docx file. */
 export async function markdownToDocx(
   markdown: string,
   meta: { title: string; footer: string },
 ): Promise<Buffer> {
   let instance = 0;
-  const children = block(marked.lexer(markdown), {
-    guidance: false,
-    nextListInstance: () => ++instance,
-  });
+  const nextListInstance = () => ++instance;
+
+  const footer = () =>
+    new Footer({
+      children: [
+        new Paragraph({
+          alignment: AlignmentType.CENTER,
+          children: [
+            new TextRun({ text: `${meta.footer} · `, size: 16, color: "64748B" }),
+            new TextRun({ children: [PageNumber.CURRENT], size: 16, color: "64748B" }),
+          ],
+        }),
+      ],
+    });
+
+  const sections = [
+    {
+      properties: {
+        page: {
+          size: { width: A4.width, height: A4.height, orientation: PageOrientation.PORTRAIT },
+          margin: { top: MARGIN.top, bottom: MARGIN.bottom, left: MARGIN.side, right: MARGIN.side },
+        },
+      },
+      footers: { default: footer() },
+      children: block(marked.lexer(markdown), { guidance: false, nextListInstance }),
+    },
+  ];
+
+  const levels = (format: "ordered" | "bullet") =>
+    [0, 1, 2].map((level) => ({
+      level,
+      format: format === "ordered" ? LevelFormat.DECIMAL : LevelFormat.BULLET,
+      text: format === "ordered" ? `%${level + 1}.` : ["•", "–", "•"][level],
+      alignment: AlignmentType.START,
+      style: { paragraph: { indent: { left: LIST_INDENT * (level + 1), hanging: LIST_INDENT } } },
+    }));
 
   const doc = new Document({
     title: meta.title,
     creator: "aicompliant.ch",
     styles: {
-      default: { document: { run: { font: FONT, size: 22 } } },
+      default: {
+        document: {
+          run: { font: FONT, size: BODY_SIZE },
+          paragraph: { spacing: { after: 120 } },
+        },
+        title: { run: { size: titleSize(meta.title) }, paragraph: { spacing: { after: 240 } } },
+        // A blank line's worth of space before each numbered section.
+        heading1: { paragraph: { spacing: { before: 480, after: 120 } } },
+        heading2: { paragraph: { spacing: { before: 240, after: 80 } } },
+      },
     },
     numbering: {
       config: [
-        {
-          reference: "ordered",
-          levels: [0, 1, 2].map((level) => ({
-            level,
-            format: LevelFormat.DECIMAL,
-            text: `%${level + 1}.`,
-            alignment: AlignmentType.START,
-            style: { paragraph: { indent: { left: 360 * (level + 1), hanging: 360 } } },
-          })),
-        },
+        { reference: "ordered", levels: levels("ordered") },
+        { reference: "bullet", levels: levels("bullet") },
       ],
     },
-    sections: [
-      {
-        footers: {
-          default: new Footer({
-            children: [
-              new Paragraph({
-                alignment: AlignmentType.CENTER,
-                children: [
-                  new TextRun({ text: `${meta.footer} · `, size: 16, color: "64748B" }),
-                  new TextRun({ children: [PageNumber.CURRENT], size: 16, color: "64748B" }),
-                ],
-              }),
-            ],
-          }),
-        },
-        children,
-      },
-    ],
+    sections,
   });
 
   return Packer.toBuffer(doc);
