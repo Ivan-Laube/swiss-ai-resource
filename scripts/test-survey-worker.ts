@@ -373,13 +373,15 @@ async function main(): Promise<void> {
     }
 
     // --- Body too large -> 413 ---
+    // The Worker checks the rate limiter before the body size, so retry on
+    // 429 like postAllowingRetry; otherwise this flakes when the window is spent.
     let tooBigStatus = 0;
     try {
       const oversized = JSON.stringify({
         ...payload(),
         website: "x".repeat(33 * 1024),
       });
-      tooBigStatus = await new Promise<number>((resolve, reject) => {
+      const probe = () => new Promise<number>((resolve, reject) => {
         const req = http.request(
           {
             hostname: "127.0.0.1",
@@ -405,6 +407,11 @@ async function main(): Promise<void> {
         req.on("error", reject);
         req.end(oversized);
       });
+      for (let i = 0; i < 6; i++) {
+        tooBigStatus = await probe();
+        if (tooBigStatus !== 429) break;
+        await delay(12_000);
+      }
     } catch (err) {
       console.warn("413 probe error:", err);
       tooBigStatus = -1;
