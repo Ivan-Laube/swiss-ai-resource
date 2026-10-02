@@ -148,7 +148,7 @@ There are 12 scored questions. Each has three options scored **0 / 1 / 2**. Q3, 
 - **Severity:** medium · **Survey benchmark:** `usage-policy`
 - **Action EN:** Write a short AI policy (one to two pages): approved tools, data that must not go in, checking outputs and who to ask. Have every employee confirm they have read it.
 - **Action DE:** Verfassen Sie eine kurze KI-Richtlinie (ein bis zwei Seiten): freigegebene Tools, Daten, die nicht eingegeben werden dürfen, Prüfung der Ergebnisse und Ansprechperson. Lassen Sie alle Mitarbeitenden die Kenntnisnahme bestätigen.
-- **Link:** AI policy template download (Word, generated at build; drafts: [ai-policy-template-de.md](ai-policy-template-de.md), [ai-policy-template-en.md](ai-policy-template-en.md)), `ndsg-ai-basics`
+- **Link:** AI policy template download (Word, generated at build; drafts: [ai-policy-template-de.md](../content/templates/ai-policy-template/de.md), [ai-policy-template-en.md](../content/templates/ai-policy-template/en.md)), `ndsg-ai-basics`
 
 #### Q6 `training`. AI literacy
 - **EN:** Do employees who use AI know its limits and risks (e.g. made-up answers, confidentiality)?
@@ -492,7 +492,7 @@ Before partners are added in a later version, these need to be in place:
 |---|---|
 | Tier names | Getting started / In progress / Well set up (DE: Am Anfang / Im Aufbau / Gut aufgestellt). |
 | Red flags | They lower the tier (capped at In progress), with an explanation when the score alone would have been Well set up (section 5.3). |
-| Policy template | Drafted as [ai-policy-template-de.md](ai-policy-template-de.md) and [ai-policy-template-en.md](ai-policy-template-en.md); Q5 links to it. |
+| Policy template | Drafted as [ai-policy-template-de.md](../content/templates/ai-policy-template/de.md) and [ai-policy-template-en.md](../content/templates/ai-policy-template/en.md); Q5 links to it. |
 | Partners | Not in v1 (section 8). |
 | Template format | Editable Word file (.docx), generated from the Markdown at build time. |
 | Legal review | The legal hooks (nDSG Art. 5, 8, 9, 16–17, 19, 21, 22, 24; DSV Art. 1–6; EU AI Act Art. 4, 50; ArGV 3 Art. 26) and the DE wording of the check, the policy template and the AI security guide go into the T29 lawyer review. |

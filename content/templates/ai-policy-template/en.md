@@ -141,6 +141,12 @@ I have read and understood the AI policy of [Company name] (version [1.0]) and w
 
 *Kept up to date by the AI lead. Lists every known AI tool, including rejected tools and tools still under review.*
 
-| Tool | Provider | Status (approved / rejected / under review) | Purpose | Data level | Data location | Data processing agreement | Training excluded | Owner | Last reviewed |
+| Tool | Provider | Status | Purpose | Data level | Location | DPA | No training | Owner | Reviewed on |
 |---|---|---|---|---|---|---|---|---|---|
 | | | | | | | yes / no | yes / no | | |
+| | | | | | | yes / no | yes / no | | |
+| | | | | | | yes / no | yes / no | | |
+| | | | | | | yes / no | yes / no | | |
+| | | | | | | yes / no | yes / no | | |
+
+*Status:* approved, rejected or under review. *Data level:* Green, Yellow or Red (section 4). *Location:* where the provider processes and stores the data (e.g. CH, EU, US). *DPA:* data processing agreement with the provider in place. *No training:* the provider does not use your data to train its models.

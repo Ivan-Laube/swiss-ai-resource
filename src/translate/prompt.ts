@@ -90,7 +90,7 @@ function sharedSystemRules(): string {
   ].join("\n");
 }
 
-function localeSystemRules(
+export function localeSystemRules(
   locale: TranslateTargetLocale,
   terms: MatchedGlossaryTerm[],
 ): string {

@@ -21,6 +21,9 @@
 /.next/
 /out/
 
+# generated at build from content/templates/ (T50)
+/public/downloads/
+
 # production
 /build
 

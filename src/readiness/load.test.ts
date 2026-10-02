@@ -49,7 +49,7 @@ describe("validateReadinessCheck", () => {
 
   it("rejects pending links and missing FR/IT once live", () => {
     assert.throws(validateWith((c) => (c.status = "live")), (error: Error) => {
-      assert.match(error.message, /pending link "download:ai-policy-template" \(T50\) not allowed when live/);
+      assert.match(error.message, /pending link "guide:ai-security-risks#incidents" \(T53\) not allowed when live/);
       assert.match(error.message, /title: missing fr, it/);
       return true;
     });

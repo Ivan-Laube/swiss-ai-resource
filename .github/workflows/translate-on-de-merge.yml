@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - "content/de/**/*.md"
+      - "content/templates/*/de.md"
   workflow_dispatch:
     inputs:
       slugs:
@@ -89,6 +90,49 @@ jobs:
           echo "list=${JOINED}" >> "$GITHUB_OUTPUT"
           echo "count=${#SLUGS[@]}" >> "$GITHUB_OUTPUT"
 
+      # Downloadable templates (T49): a newly added DE template only gets its
+      # missing locales (keeps a hand-reviewed EN); a changed one is fully
+      # regenerated, like guide pages.
+      - name: Resolve DE templates to translate
+        id: templates
+        env:
+          GITHUB_EVENT_BEFORE: ${{ github.event.before }}
+          GITHUB_SHA: ${{ github.sha }}
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          set -euo pipefail
+          ADDED=()
+          CHANGED=()
+          if [ "${EVENT_NAME}" = "push" ] && [ -n "${GITHUB_EVENT_BEFORE//0/}" ]; then
+            while IFS=$'\t' read -r status path; do
+              id="$(basename "$(dirname "$path")")"
+              case "$status" in
+                A) ADDED+=("$id") ;;
+                M) CHANGED+=("$id") ;;
+              esac
+            done < <(git diff --no-renames --name-status "${GITHUB_EVENT_BEFORE}" "${GITHUB_SHA}" -- 'content/templates/*/de.md')
+          fi
+          echo "added=${ADDED[*]:-}" >> "$GITHUB_OUTPUT"
+          echo "changed=${CHANGED[*]:-}" >> "$GITHUB_OUTPUT"
+          echo "count=$(( ${#ADDED[@]} + ${#CHANGED[@]} ))" >> "$GITHUB_OUTPUT"
+          echo "Templates added: ${ADDED[*]:-none}; changed: ${CHANGED[*]:-none}"
+
+      - name: Translate DE templates
+        if: steps.templates.outputs.count != '0'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          TRANSLATE_MODEL: ${{ vars.TRANSLATE_MODEL }}
+          ADDED: ${{ steps.templates.outputs.added }}
+          CHANGED: ${{ steps.templates.outputs.changed }}
+        run: |
+          set -euo pipefail
+          for id in ${ADDED}; do
+            npm run translate:templates -- "--id=${id}" --missing-only --strict
+          done
+          for id in ${CHANGED}; do
+            npm run translate:templates -- "--id=${id}" --strict
+          done
+
       - name: Regenerate EN/FR/IT drafts
         if: steps.slugs.outputs.count != '0'
         env:
@@ -112,37 +156,38 @@ jobs:
           npm run translate -- "${ARGS[@]}" --strict
 
       - name: Validate content frontmatter
-        if: steps.slugs.outputs.count != '0'
+        if: steps.slugs.outputs.count != '0' || steps.templates.outputs.count != '0'
         run: npm run check:content
 
       - name: Translations carry the DE heading anchors
-        if: steps.slugs.outputs.count != '0'
+        if: steps.slugs.outputs.count != '0' || steps.templates.outputs.count != '0'
         run: npm run check:anchors -- --strict
 
       # Gate push to main: regenerated translations must not break the static export.
       - name: Verify static export still builds
-        if: steps.slugs.outputs.count != '0'
+        if: steps.slugs.outputs.count != '0' || steps.templates.outputs.count != '0'
         run: npm run build
 
       - name: Configure git
-        if: steps.slugs.outputs.count != '0'
+        if: steps.slugs.outputs.count != '0' || steps.templates.outputs.count != '0'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
       - name: Commit regenerated translations
-        if: steps.slugs.outputs.count != '0'
+        if: steps.slugs.outputs.count != '0' || steps.templates.outputs.count != '0'
         env:
           SLUG_LIST: ${{ steps.slugs.outputs.list }}
+          TEMPLATE_LIST: ${{ steps.templates.outputs.added }} ${{ steps.templates.outputs.changed }}
         run: |
           set -euo pipefail
 
-          git add -- content/en content/fr content/it
+          git add -- content/en content/fr content/it content/templates
           if git diff --cached --quiet; then
             echo "No translation file changes to commit."
             exit 0
           fi
 
-          SLUG_LABEL="${SLUG_LIST}"
+          SLUG_LABEL="$(echo "${SLUG_LIST} ${TEMPLATE_LIST}" | xargs | tr ' ' ',')"
           git commit -m "chore(content): regenerate translations (${SLUG_LABEL})"
           git push
