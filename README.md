@@ -53,7 +53,7 @@ German (`de`) is the canonical content language. See [swiss_ai_resource_implemen
 | T45 | AI readiness check: question set + scoring model incl. AI security section ([draft](docs/ai-readiness-check-draft.md)) | Done (signed off) |
 | T46 | AI readiness check data (`data/readiness-check.json`), validator and scoring engine | Done |
 | T47–T48, T51 | AI readiness check: `/[lang]/tools/ai-readiness/` page, benchmark lines, FR/IT strings | Not started |
-| T60 | Responsibility section in `ndsg-ai-basics` (link target for check Q11) | Not started |
+| T60 | Responsibility section in `ndsg-ai-basics` (link target for check Q11; readiness check has no pending links left) | Done |
 | T61 | Guide layout fix (lead aligned, TOC at the top) and justified body text site-wide | Done |
 | T49–T50 | AI policy template: Markdown source, FR/IT via the translate workflow, Word (`.docx`) generated at build | Done |
 | T52 | Incident-handling guidance for check Q12 | Merged into T53 |

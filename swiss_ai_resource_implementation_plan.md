@@ -317,7 +317,7 @@ Post-MVP, demand-driven (not built now):
 | T53 | AI security guide `ai-security-risks` (DE canonical): agents, prompt injection, add-ons/connectors, AI-made fraud and deepfakes, incident steps (link target for check Q12); frontmatter `volatility: fast`, sources cited | T3, T6 (pattern), T54 | In review (DE written on branch `feat/ai-security-guide`; EN/FR/IT via T55 after merge) |
 | T54 | Add AI security sources to `sources.json` (BACS/NCSC, OWASP LLM Top 10 + agentic AI guidance, ENISA) so the monthly job tracks them | T5 | Done (on branch `feat/ai-security-guide`) |
 | T55 | Translate the AI security guide EN/FR/IT via the pipeline | T53, T13 | Automatic: translate workflow on merge of T53 |
-| T60 | Section on assigning AI responsibility in `ndsg-ai-basics` (`{#responsibility}`, link target for check Q11) | T6, T56 | |
+| T60 | Section on assigning AI responsibility in `ndsg-ai-basics` (`{#responsibility}`, link target for check Q11): company is the controller, no AI officer required, optional data protection advisor (Art. 10 DSG), named person with tasks | T6, T56 | Done |
 | T61 | Guide layout: title block inside the text column (lead aligned with the body, desktop TOC level with the title); justified running text with hyphenation site-wide from 640px — from review of the T53 preview (#41) | T1 | Done |
 
 ### Cross-cutting: deep links to guide sections
