@@ -314,6 +314,8 @@ export const fr: Messages = {
     pricingContact: "Sur demande",
   },
   readiness: {
+    benchmarkTitle: "Comment se situent les autres entreprises",
+    benchmarkSource: "D'après {n} réponses à l'enquête suisse sur l'IA. Participez pour rendre la comparaison plus précise.",
     draftNotice: "Aperçu : ce check est encore en cours de finalisation et de traduction.",
     profileTitle: "À propos de votre entreprise",
     progress: "{answered} sur {total} questions répondues",

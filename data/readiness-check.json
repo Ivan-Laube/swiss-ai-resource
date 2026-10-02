@@ -163,7 +163,11 @@
       "severity": "medium",
       "survey_benchmark": {
         "field": "ai-governance-measures",
-        "option": "tool-inventory"
+        "option": "tool-inventory",
+        "statement": {
+          "de": "{pct} % der befragten Unternehmen führen ein Inventar der eingesetzten KI-Tools.",
+          "en": "{pct}% of surveyed companies keep an inventory of the AI tools they use."
+        }
       },
       "action": {
         "de": "Erstellen Sie eine einseitige Liste aller genutzten KI-Tools mit Zweck und verwendeten Daten. Fragen Sie im Team nach, denn riskant sind gerade die Tools, von denen Sie nichts wissen.",
@@ -266,7 +270,11 @@
       },
       "survey_benchmark": {
         "field": "ai-governance-measures",
-        "option": "business-dpa"
+        "option": "business-dpa",
+        "statement": {
+          "de": "{pct} % der befragten Unternehmen nutzen Business-Konten mit Auftragsbearbeitungsvertrag.",
+          "en": "{pct}% of surveyed companies use business accounts with a data processing agreement."
+        }
       },
       "legal_hooks": [
         "nDSG Art. 9 (processing by processors)",
@@ -365,7 +373,11 @@
       "severity": "medium",
       "survey_benchmark": {
         "field": "ai-governance-measures",
-        "option": "usage-policy"
+        "option": "usage-policy",
+        "statement": {
+          "de": "{pct} % der befragten Unternehmen haben eine KI-Nutzungsrichtlinie.",
+          "en": "{pct}% of surveyed companies have an AI usage policy."
+        }
       },
       "action": {
         "de": "Verfassen Sie eine kurze KI-Richtlinie (ein bis zwei Seiten): freigegebene Tools, Daten, die nicht eingegeben werden dürfen, Prüfung der Ergebnisse und Ansprechperson. Lassen Sie alle Mitarbeitenden die Kenntnisnahme bestätigen.",
@@ -423,7 +435,11 @@
       ],
       "survey_benchmark": {
         "field": "ai-governance-measures",
-        "option": "staff-training"
+        "option": "staff-training",
+        "statement": {
+          "de": "{pct} % der befragten Unternehmen schulen ihre Mitarbeitenden in KI-Kompetenz.",
+          "en": "{pct}% of surveyed companies offer AI-literacy training to their staff."
+        }
       },
       "legal_hooks": [
         "EU AI Act Art. 4 (AI literacy) where in scope"
@@ -540,7 +556,11 @@
       },
       "survey_benchmark": {
         "field": "ai-governance-measures",
-        "option": "human-review"
+        "option": "human-review",
+        "statement": {
+          "de": "{pct} % der befragten Unternehmen haben Regeln zur menschlichen Prüfung von KI-Ergebnissen.",
+          "en": "{pct}% of surveyed companies have rules for human review of AI outputs."
+        }
       },
       "legal_hooks": [
         "nDSG Art. 21 (automated individual decisions)",
@@ -590,7 +610,11 @@
       "severity": "medium",
       "survey_benchmark": {
         "field": "ai-governance-measures",
-        "option": "dpia"
+        "option": "dpia",
+        "statement": {
+          "de": "{pct} % der befragten Unternehmen führen für KI-Einsätze eine Datenschutz-Folgenabschätzung durch.",
+          "en": "{pct}% of surveyed companies carry out a data protection impact assessment for AI uses."
+        }
       },
       "legal_hooks": [
         "nDSG Art. 22 (DPIA for high-risk processing)"
@@ -654,7 +678,11 @@
       },
       "survey_benchmark": {
         "field": "eu-market-exposure",
-        "option": "unsure"
+        "option": "unsure",
+        "statement": {
+          "de": "{pct} % der befragten Unternehmen sind unsicher, wie sie gegenüber dem EU-Markt und dem EU AI Act positioniert sind.",
+          "en": "{pct}% of surveyed companies are unsure where they stand on the EU market and the EU AI Act."
+        }
       },
       "action": {
         "de": "Machen Sie den 3-Minuten-Check zum EU AI Act und bewahren Sie das Ergebnis auf, inklusive Ihrer Rolle (Anbieter oder Betreiber) und der geltenden Fristen.",
@@ -705,7 +733,11 @@
       "severity": "low",
       "survey_benchmark": {
         "field": "ai-governance-measures",
-        "option": "ai-owner"
+        "option": "ai-owner",
+        "statement": {
+          "de": "{pct} % der befragten Unternehmen haben eine verantwortliche Person oder ein Gremium für KI benannt.",
+          "en": "{pct}% of surveyed companies have a designated person or committee responsible for AI."
+        }
       },
       "action": {
         "de": "Bestimmen Sie eine Person, die die Tool-Liste aktuell hält, neue Tools freigibt und Fragen beantwortet. Geben Sie ihr jeden Monat etwas Zeit dafür.",

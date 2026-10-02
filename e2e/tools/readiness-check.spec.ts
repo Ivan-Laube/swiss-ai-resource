@@ -82,6 +82,16 @@ test.describe("readiness check", () => {
     await expect(steps.nth(1)).toContainText("Halten Sie für jedes Tool auf Ihrer Liste fest");
     await expect(steps.nth(2)).toContainText("Legen Sie fest, welche Tools erlaubt sind");
     await expect(r.getByText("Nicht relevant").first()).toBeVisible();
+
+    // T48: comparison from the populated survey fixture (n = 39), user's gaps first.
+    const comparison = r.locator("section[aria-labelledby='readiness-benchmark'] li");
+    await expect(comparison).toHaveText([
+      "41 % der befragten Unternehmen nutzen Business-Konten mit Auftragsbearbeitungsvertrag.",
+      "46 % der befragten Unternehmen haben eine KI-Nutzungsrichtlinie.",
+      "31 % der befragten Unternehmen führen für KI-Einsätze eine Datenschutz-Folgenabschätzung durch.",
+    ]);
+    await expect(r.getByText(/Aus 39 Antworten der Schweizer KI-Umfrage/)).toBeVisible();
+    await expect(r.getByRole("link", { name: "Zur Umfrage" })).toHaveAttribute("href", "/de/survey/");
   });
 
   test("recruiting agency: 86 lowered to Im Aufbau, security gap promoted, section links", async ({ page }) => {
