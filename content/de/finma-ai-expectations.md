@@ -17,7 +17,7 @@ sources:
 
 Am **18. Dezember 2024** hat die Eidgenössische Finanzmarktaufsicht (FINMA) die Aufsichtsmitteilung **08/2024** zu Governance und Risikomanagement beim Einsatz von künstlicher Intelligenz veröffentlicht. Ein KI-spezifisches Finanzmarktgesetz gibt es in der Schweiz nicht. Die FINMA stützt sich auf die bestehenden, technologieneutralen und prinzipienbasierten Anforderungen an eine wirksame Governance und ein angemessenes Risikomanagement.
 
-Aufsichtsmitteilungen sind keine Verordnungen. Sie zeigen, welche Risiken die FINMA beobachtet und was sie bei **beaufsichtigten Instituten** erwartet und prüft. Für Unternehmen ausserhalb der Finanzbranche gilt die Mitteilung nicht. Wer KI-Lösungen an Banken, Versicherungen oder Vermögensverwalter liefert, sollte sie aber kennen, denn die Institute geben diese Erwartungen an ihre Anbieter weiter.
+Aufsichtsmitteilungen sind keine Verordnungen. Sie zeigen, welche Risiken die FINMA beobachtet und was sie bei **beaufsichtigten Instituten** erwartet und prüft. Für Unternehmen ausserhalb der Finanzbranche gilt die Mitteilung nicht. Wer KI-Lösungen an Banken, Versicherungen oder Vermögensverwalter liefert, sollte sie aber kennen, denn die Institute geben diese Erwartungen an ihre Lieferanten weiter.
 
 ## Kernbotschaft
 
