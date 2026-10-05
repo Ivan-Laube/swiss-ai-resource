@@ -6,9 +6,9 @@ What the lawyer has to check before the German copy can carry the "reviewed by c
 
 ## 0. Before sending it to the lawyer (operator)
 
-1. Merge PR #52 (`content/de-copy-review`) so the live site shows the reviewed copy. Wait for the Pages deploy.
-2. Note the commit SHA of `main` after that merge: `git rev-parse origin/main`. This is the **review version**. Send it with the brief, and ask the lawyer to review the live pages, which show that version.
-3. Send the lawyer this file plus [de-copy-review.md](de-copy-review.md). Only the **German** text is in scope. EN/FR/IT are machine translations of it and are marked as such.
+1. ~~Merge PR #52 (`content/de-copy-review`) so the live site shows the reviewed copy.~~ **Done 2026-10-05:** merged as `5773409`, deployed to aicompliant.ch.
+2. **Review version:** `577340930b0621aca91da3f71eafdb127c2062e8` (the PR #52 merge commit). Send it with the brief and ask the lawyer to review the live pages, which show that version. Later commits that only regenerate EN/FR/IT do not change the German text. If DE files change before the lawyer starts, take the new SHA of `main` instead.
+3. **Next step:** send the lawyer this file plus [de-copy-review.md](de-copy-review.md). Only the **German** text is in scope. EN/FR/IT are machine translations of it and are marked as such.
 
 ## 1. What to review
 
