@@ -31,7 +31,7 @@ Weitere Angaben: [Impressum](/de/impressum/).
 
 ### 2.1 Aufruf der Website
 
-Beim Aufruf der Website fallen technische Verbindungsdaten an (z. B. IP-Adresse, Zeitpunkt, Browser und Betriebssystem). Unser Hosting-Anbieter Cloudflare benötigt sie, um die Seiten auszuliefern und vor Angriffen zu schützen. Die Website besteht aus statischen Seiten; wir selbst erstellen keine Profile von Besucherinnen und Besuchern.
+Beim Aufruf der Website fallen technische Verbindungsdaten an (z. B. IP-Adresse, Zeitpunkt, Browser und Betriebssystem). Unser Hosting-Dienstleister Cloudflare benötigt sie, um die Seiten auszuliefern und vor Angriffen zu schützen. Die Website besteht aus statischen Seiten; wir selbst erstellen keine Profile von Besucherinnen und Besuchern.
 
 ### 2.2 Umfrage (optional mit E-Mail-Adresse)
 

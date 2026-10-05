@@ -7,7 +7,9 @@ What the lawyer has to check before the German copy can carry the "reviewed by c
 ## 0. Before sending it to the lawyer (operator)
 
 1. ~~Merge PR #52 (`content/de-copy-review`) so the live site shows the reviewed copy.~~ **Done 2026-10-05:** merged as `5773409`, deployed to aicompliant.ch.
-2. **Review version:** `577340930b0621aca91da3f71eafdb127c2062e8` (the PR #52 merge commit). Send it with the brief and ask the lawyer to review the live pages, which show that version. Later commits that only regenerate EN/FR/IT do not change the German text. If DE files change before the lawyer starts, take the new SHA of `main` instead.
+2. **Review version:** the last commit on `main` that changed German copy. Get it right before sending with
+   `git log -1 --format=%H origin/main -- content/de content/templates/ai-policy-template/de.md data src/i18n/messages/de.ts`
+   (after PR #52 and the follow-up wording fix for the translation glossary, PR #54, this is the #54 merge commit). Send it with the brief and ask the lawyer to review the live pages, which show that version. Commits that only regenerate EN/FR/IT do not change it.
 3. **Next step:** send the lawyer this file plus [de-copy-review.md](de-copy-review.md). Only the **German** text is in scope. EN/FR/IT are machine translations of it and are marked as such.
 
 ## 1. What to review
