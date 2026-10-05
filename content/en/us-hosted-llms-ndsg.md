@@ -1,6 +1,6 @@
 ---
-title: "US-hosted LLMs under the nDSG"
-description: "When Swiss companies may disclose personal data to US-hosted language models: adequacy, Swiss-U.S. Data Privacy Framework, contractual safeguards, and practical checks."
+title: "US-Hosted LLMs under the revised Federal Act on Data Protection (nDSG)"
+description: "When Swiss companies may transfer personal data to language models in the US: Swiss-U.S. Data Privacy Framework, standard contractual clauses, information duties, and a practical checklist."
 last_verified: "2026-10-01"
 volatility: "fast"
 translation_status: "draft"
@@ -13,63 +13,66 @@ sources:
     url: "https://www.edoeb.admin.ch/de/bekanntgabe-von-personendaten-ins-ausland"
   - title: "EDÖB – Einsatz von ChatGPT und vergleichbaren KI-gestützten Anwendungen"
     url: "https://www.edoeb.admin.ch/de/04042023-einsatz-von-chatgpt-und-vergleichbaren-ki-gestuetzten-anwendungen"
-  - title: "Fedlex – Bundesgesetz über den Datenschutz (DSG), Art. 16"
+  - title: "Fedlex – Bundesgesetz über den Datenschutz (DSG), Art. 16 und 17"
     url: "https://www.fedlex.admin.ch/eli/cc/2022/491/de"
+  - title: "Fedlex – Verordnung über den Datenschutz (DSV), Anhang 1"
+    url: "https://www.fedlex.admin.ch/eli/cc/2022/568/de"
   - title: "Data Privacy Framework – Participant List"
     url: "https://www.dataprivacyframework.gov/list"
 ---
 
-Many generative language models (LLMs) are operated in the USA. As soon as **personal data (Personendaten)** leave Switzerland, the rules on **disclosure of personal data abroad (Bekanntgabe von Personendaten ins Ausland)** apply (Art. 16 and 17 of the Federal Act on Data Protection (Bundesgesetz über den Datenschutz, DSG)). This page explains the framework for Swiss companies — without replacing legal advice.
+Many generative language models (Large Language Models, LLMs) are operated in the United States. As soon as **personal data (Personendaten)** reach that country, the rules on **cross-border disclosure** apply (Art. 16 and 17 of the Federal Act on Data Protection (Bundesgesetz über den Datenschutz, DSG)). Disclosure covers not only transmitting data but also making it accessible (Art. 5 let. e DSG), for example when a provider (Anbieter) in the US can access data stored in Switzerland.
 
-## Starting point: personal data and cross-border transfer {#transfer-abroad}
+## Basic rule: adequate protection or safeguards {#transfer-abroad}
 
-Personal data may in principle only be disclosed abroad if the recipient country has an **adequate level of data protection (angemessenes Datenschutzniveau)** or **suitable safeguards** apply. Whether a state is adequate is determined by the Federal Council in **Annex 1 of the Ordinance on Data Protection (Datenschutzverordnung, DSV)**.
+Personal data may be disclosed abroad if the Federal Council has determined that the recipient state ensures **adequate protection** (Art. 16 para. 1 DSG). The list of such states appears in **Annex 1 of the Data Protection Ordinance (Datenschutzverordnung, DSV)**; it includes, among others, all EU and EEA member states. For other states, **suitable safeguards** are required (Art. 16 para. 2 DSG), or an exception under Art. 17 DSG must apply.
 
-The data subject (betroffene Person) must be informed about a disclosure of data abroad (Art. 19 para. 4 DSG). Countries and safeguards are among the mandatory particulars in the record of processing activities (Verzeichnis der Bearbeitungstätigkeiten) (Art. 12 DSG).
+The company must inform data subjects about the recipient state and, where applicable, about the safeguards or exception applied (Art. 19 para. 4 DSG). Companies that maintain a **record of processing activities (Verzeichnis der Bearbeitungstätigkeiten)** must also document this information there (Art. 12 DSG). Companies with fewer than 250 employees are exempt from the record-keeping duty in most cases (Art. 24 DSV).
 
-## USA and Swiss-U.S. Data Privacy Framework {#swiss-us-dpf}
+## United States: Swiss-U.S. Data Privacy Framework {#swiss-us-dpf}
 
-On **15 September 2024**, the amendment to the list of states (Annex 1 DSV) regarding the USA entered into force. The related legal framework — the **Swiss-U.S. Data Privacy Framework (DPF)** — applies to **certified** US organisations.
+Since **15 September 2024**, the Federal Council recognizes adequate protection for the United States, but only for US companies certified under the **Swiss-U.S. Data Privacy Framework (DPF)** (Annex 1 DSV). This does not apply to any other recipients in the US.
 
-Practical check before using a US provider:
+Before engaging a US provider, check the following:
 
-1. Is the specific recipient actively certified on the public DPF participant list?
-2. Does the certification expressly cover the **Swiss-U.S.** extension (not only EU-U.S.)?
-3. Does the certified processing purpose match your use case (e.g. cloud AI, support, analytics)?
+1. Is the exact entity that will receive your data actively certified on the public DPF participant list?
+2. Does the certification expressly cover the **Swiss-U.S. DPF**, and not only the EU-U.S. DPF?
+3. Does it cover the data in question? HR data (personnel data) is certified separately.
 
-Without a matching certification, «the provider is based in the USA» alone is **not** an adequacy basis.
+If the recipient is not appropriately certified, another legal basis is required (see next section). Keep in mind that the adequacy finding depends on the DPF's continued existence. The predecessor arrangement (Privacy Shield) was declared invalid by the Court of Justice of the EU in 2020, and the Federal Data Protection and Information Commissioner (Eidgenössischer Datenschutz- und Öffentlichkeitsbeauftragter, EDÖB) subsequently found it insufficient for Switzerland as well. Many companies therefore additionally agree on standard contractual clauses (Standarddatenschutzklauseln) with important US providers.
 
-## When no adequacy decision applies {#safeguards}
+## Without the DPF: safeguards and exceptions {#safeguards}
 
-If there is no adequacy decision (or it does not apply to the specific recipient), transfers may still be permissible if data protection is otherwise ensured — in particular through:
+If no suitable DPF certification exists, disclosure may still be permissible if adequate data protection is otherwise ensured (Art. 16 para. 2 DSG), in particular through:
 
-- **standard data protection clauses (Standarddatenschutzklauseln)** (recognised or approved by the Federal Data Protection and Information Commissioner (Eidgenössischer Datenschutz- und Öffentlichkeitsbeauftragter, EDÖB); the EU SCCs and CoE MCCs are recognised by the EDÖB);
-- **data protection clauses in a specific contract** (with a duty to notify the EDÖB);
-- **binding corporate rules (BCR)**.
+- **Standard contractual clauses** approved, issued, or recognized by the EDÖB, namely the European Commission's standard contractual clauses with the adaptations required for Switzerland;
+- **Data protection clauses in an individual contract** that have been communicated to the EDÖB in advance;
+- **Binding corporate rules** for data protection, which apply only within a corporate group.
 
-The controller (Verantwortlicher) must ensure that the recipient can comply with the clauses and that the law of the third country does not prevent this. Technical measures may be necessary if disproportionate government access is a risk.
+Anyone relying on such clauses must assess whether the recipient can actually comply with them and whether the law of the recipient state — for example, regarding government access — stands in the way (Transfer Impact Assessment, TIA). Depending on the outcome, additional technical measures may be required, such as removing or pseudonymizing names in inputs.
 
-## LLM-specific points {#llm-specifics}
+In individual cases, Art. 17 DSG permits disclosure even without adequate protection, for instance with the explicit consent of the data subject or where disclosure is directly necessary for a contract with that person. These exceptions are rarely suitable for the ongoing use of an AI tool.
 
-The EDÖB advises users to handle AI applications **consciously** and reminds companies of their duties — in particular transparent information about purposes and the nature of processing.
+## Specific considerations for language models {#llm-specifics}
 
-Also clarify:
+The EDÖB advises a **deliberate approach** to AI applications and reminds companies of their obligations, in particular the duty to provide transparent information about the purpose and nature of the processing.
 
-- Are inputs used for **model training**? Is there an opt-out?
-- Is there a **data processing agreement (Auftragsbearbeiter / DPA)**?
-- Which data categories may be entered at all (no particularly sensitive personal data without a clear legal basis and protective measures)?
-- Where are logs, embeddings, and support tickets stored?
+Additionally, clarify:
 
-## Short checklist {#checklist}
+- Are inputs used for **training** the model, and can this be excluded?
+- Is a **data processing agreement (Auftragsbearbeitungsvertrag, DPA)** in place (Art. 9 DSG)?
+- What data may be entered at all? Sensitive personal data (e.g., health data) and data subject to professional secrecy only if this has been expressly reviewed and safeguarded.
+- Where are logs, embeddings, and support requests stored, and for how long?
+
+## Quick checklist {#checklist}
 
 | Question | Why it matters |
 |---|---|
-| Do prompts contain personal data? | Without personal data, no cross-border transfer issue under the DSG |
-| Is the US recipient Swiss-U.S. DPF-certified? | Possible adequacy basis since 15.09.2024 |
-| Otherwise SCC/DPA and transfer assessment? | Art. 16 para. 2 DSG |
-| Information of data subjects? | Art. 19 para. 4 DSG |
-| Training use and opt-out clarified? | Transparency and purpose limitation |
+| Do inputs or outputs contain personal data? | Without personal data, the rules on cross-border disclosure do not apply |
+| Is the US recipient certified under the Swiss-U.S. DPF? | Adequate protection since 15 September 2024, only for certified recipients (Annex 1 DSV) |
+| If not: are standard contractual clauses and a transfer assessment (TIA) in place? | Art. 16 para. 2 DSG |
+| Has a data processing agreement been concluded? | Art. 9 DSG |
+| Have data subjects been informed about the state and safeguards? | Art. 19 para. 4 DSG |
+| Is training on your data excluded? | Purpose limitation and transparency (Art. 6 para. 3 and Art. 19 DSG) |
 
-## Disclaimer
-
-This page is **informational and not legal advice**. Cross-border AI deployments should be assessed on a case-by-case basis.
+Cross-border AI deployments should be assessed on a case-by-case basis, particularly where sensitive personal data is involved.
