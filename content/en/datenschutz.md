@@ -23,7 +23,6 @@ Responsible for the data processing:
 | | |
 |---|---|
 | **Name** | Ivan Laube |
-| **Address** | Vorhaldenstrasse 10, 8049 Zürich, Switzerland |
 | **Email** | [i.laube@gmail.com](mailto:i.laube@gmail.com) |
 
 For further provider (Anbieter) information, see [Impressum](/de/impressum/).

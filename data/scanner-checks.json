@@ -18,7 +18,7 @@
         "it": "Crittografia HTTPS"
       },
       "description": {
-        "de": "Prüft, ob die Website über TLS erreichbar ist und HTTP-Aufrufe auf HTTPS umleiten. Transportverschlüsselung ist eine grundlegende Massnahme der Datensicherheit nach Art. 8 DSG (informativ).",
+        "de": "Prüft, ob die Website über HTTPS erreichbar ist und HTTP-Aufrufe auf HTTPS umleitet. Verschlüsselte Übertragung ist eine grundlegende Massnahme der Datensicherheit nach Art. 8 DSG.",
         "en": "Checks whether the site is reachable over TLS and whether plain HTTP redirects to HTTPS. Transport encryption is a baseline data-security measure under Art. 8 DSG (informational).",
         "fr": "Vérifie si le site est accessible via TLS et si les requêtes HTTP sont redirigées vers HTTPS. Le chiffrement du transport est une mesure de base de sécurité des données selon l'art. 8 LPD (à titre informatif).",
         "it": "Verifica se il sito è raggiungibile tramite TLS e se le richieste HTTP vengono reindirizzate a HTTPS. La crittografia del trasporto è una misura di base per la sicurezza dei dati secondo l'art. 8 LPD (a titolo informativo)."
@@ -41,7 +41,7 @@
         "it": "Link all'informativa sulla privacy"
       },
       "description": {
-        "de": "Sucht auf der Seite einen Link, dessen Text auf eine Datenschutzerklärung hinweist, und prüft per HEAD-Anfrage, ob der Link auflöst. Art. 19 DSG verlangt eine angemessene Information der betroffenen Personen über die Datenbearbeitung.",
+        "de": "Sucht auf der Seite einen Link, dessen Text auf eine Datenschutzerklärung hinweist, und prüft, ob der Link erreichbar ist. Nach Art. 19 DSG müssen Verantwortliche die betroffenen Personen bei der Beschaffung von Personendaten angemessen informieren; auf Websites geschieht das üblicherweise mit einer Datenschutzerklärung.",
         "en": "Looks for a link whose text points to a privacy policy and confirms via a HEAD request that the link resolves. Art. 19 DSG requires adequate information for data subjects about the processing of their data.",
         "fr": "Recherche un lien dont le texte renvoie à une politique de confidentialité et confirme via une requête HEAD qu'il aboutit. L'art. 19 LPD exige une information adéquate des personnes concernées sur le traitement de leurs données.",
         "it": "Cerca un link il cui testo rimanda a un'informativa sulla privacy e conferma con una richiesta HEAD che il link sia raggiungibile. L'art. 19 LPD richiede un'informazione adeguata degli interessati sul trattamento dei loro dati."
@@ -94,7 +94,7 @@
         "it": "Note legali / identificazione del fornitore"
       },
       "description": {
-        "de": "Sucht einen Link zur Anbieterkennzeichnung (Impressum). Art. 3 Abs. 1 lit. s UWG verpflichtet Betreiber von Websites im elektronischen Geschäftsverkehr, klar und vollständig ihre Identität und Kontaktadresse anzugeben.",
+        "de": "Sucht einen Link zum Impressum. Wer im elektronischen Geschäftsverkehr Waren, Werke oder Leistungen anbietet, muss nach Art. 3 Abs. 1 lit. s UWG klare und vollständige Angaben zu Identität und Kontaktadresse machen, einschliesslich der E-Mail-Adresse.",
         "en": "Looks for a link to the provider identification (legal notice). Art. 3 para. 1 lit. s UWG requires operators of e-commerce websites to state their identity and contact address clearly and completely.",
         "fr": "Recherche un lien vers l'identification du fournisseur (mentions légales). L'art. 3 al. 1 let. s LCD oblige les exploitants de sites de commerce électronique à indiquer clairement et complètement leur identité et leur adresse de contact.",
         "it": "Cerca un link all'identificazione del fornitore (note legali). L'art. 3 cpv. 1 lett. s LCSl obbliga i gestori di siti di commercio elettronico a indicare in modo chiaro e completo la propria identità e l'indirizzo di contatto."
@@ -117,13 +117,13 @@
         "url": "https://www.fedlex.admin.ch/eli/cc/1997/2187_2187_2187/de#art_45c"
       },
       "title": {
-        "de": "Cookie-Consent-Tool",
+        "de": "Cookie-Banner (Consent-Tool)",
         "en": "Cookie consent tooling",
         "fr": "Outil de gestion du consentement aux cookies",
         "it": "Strumento di consenso ai cookie"
       },
       "description": {
-        "de": "Erkennt bekannte Consent-Management-Plattformen (CMP) anhand ihrer Script-Signaturen. Art. 45c FMG verlangt bei Daten auf fremden Geräten (z. B. Cookies) eine Information und eine Ablehnungsmöglichkeit; ein CMP kann diese abbilden.",
+        "de": "Erkennt bekannte Consent-Management-Plattformen (CMP) anhand ihrer Skript-Signaturen. Nach Art. 45c FMG müssen Nutzerinnen und Nutzer informiert werden, wenn Daten auf ihren Geräten bearbeitet werden (z. B. Cookies), und darauf hingewiesen werden, dass sie dies ablehnen können. Ein Cookie-Banner ist dafür in der Schweiz nicht zwingend; die Information kann auch in der Datenschutzerklärung stehen. Richtet sich die Website an Personen in der EU, kann eine Einwilligung nötig sein.",
         "en": "Detects known consent-management platforms (CMPs) by their script signatures. Art. 45c FMG requires information and a refusal option for data stored on users' devices (e.g. cookies); a CMP can implement this.",
         "fr": "Détecte les plateformes de gestion du consentement (CMP) connues via leurs signatures de script. L'art. 45c LTC exige, pour les données stockées sur les appareils des utilisateurs (p. ex. cookies), une information et une possibilité de refus ; une CMP peut la mettre en œuvre.",
         "it": "Rileva le note piattaforme di gestione del consenso (CMP) tramite le loro firme di script. L'art. 45c LTC richiede, per i dati memorizzati sui dispositivi degli utenti (p. es. cookie), un'informazione e una possibilità di rifiuto; una CMP può attuarla."
@@ -177,13 +177,13 @@
         "url": "https://www.fedlex.admin.ch/eli/cc/2022/491/de#art_16"
       },
       "title": {
-        "de": "Drittanbieter-Tracker mit Datenexport",
+        "de": "Tracker von Drittanbietern (Daten ins Ausland)",
         "en": "Third-party trackers implying data export",
         "fr": "Traceurs tiers impliquant un export de données",
         "it": "Tracker di terzi che implicano un'esportazione di dati"
       },
       "description": {
-        "de": "Erkennt gängige Tracking- und Analytics-Signaturen sowie US-CDN-/Google-Fonts-Aufrufe, die typischerweise Personendaten ins Ausland (häufig in die USA) übertragen. Art. 16 DSG regelt die Voraussetzungen einer Bekanntgabe von Personendaten ins Ausland.",
+        "de": "Erkennt verbreitete Tracking- und Analyse-Skripte sowie Aufrufe von US-CDNs und Google Fonts, bei denen typischerweise Personendaten wie die IP-Adresse ins Ausland gelangen, häufig in die USA. Art. 16 DSG regelt, wann Personendaten ins Ausland bekanntgegeben werden dürfen.",
         "en": "Detects common tracking/analytics signatures and US-CDN / Google Fonts loads that typically transfer personal data abroad (often to the US). Art. 16 DSG governs the conditions for disclosing personal data abroad.",
         "fr": "Détecte les signatures courantes de suivi/analytics ainsi que les chargements de CDN américains / Google Fonts qui transfèrent généralement des données personnelles à l'étranger (souvent aux États-Unis). L'art. 16 LPD régit les conditions de la communication de données personnelles à l'étranger.",
         "it": "Rileva le comuni firme di tracciamento/analytics e i caricamenti da CDN statunitensi / Google Fonts che di norma trasferiscono dati personali all'estero (spesso negli USA). L'art. 16 LPD disciplina le condizioni per la comunicazione di dati personali all'estero."
@@ -236,13 +236,13 @@
         "url": "https://www.fedlex.admin.ch/eli/cc/2022/491/de#art_8"
       },
       "title": {
-        "de": "Sicherheits-HTTP-Header",
+        "de": "Sicherheits-Header",
         "en": "Security HTTP headers",
         "fr": "En-têtes HTTP de sécurité",
         "it": "Intestazioni HTTP di sicurezza"
       },
       "description": {
-        "de": "Prüft die Präsenz gängiger Sicherheits-Header (HSTS, CSP, X-Content-Type-Options). Ihr Vorhandensein ist ein Indiz für angemessene technische Massnahmen im Sinne der Datensicherheit (informativ).",
+        "de": "Prüft, ob verbreitete Sicherheits-Header gesetzt sind (HSTS, CSP, X-Content-Type-Options). Sie sind ein Hinweis auf angemessene technische Massnahmen zur Datensicherheit nach Art. 8 DSG.",
         "en": "Checks for the presence of common security headers (HSTS, CSP, X-Content-Type-Options). Their presence indicates appropriate technical measures for data security (informational).",
         "fr": "Vérifie la présence d'en-têtes de sécurité courants (HSTS, CSP, X-Content-Type-Options). Leur présence indique des mesures techniques appropriées pour la sécurité des données (à titre informatif).",
         "it": "Verifica la presenza delle comuni intestazioni di sicurezza (HSTS, CSP, X-Content-Type-Options). La loro presenza indica misure tecniche adeguate per la sicurezza dei dati (a titolo informativo)."
@@ -281,7 +281,7 @@
         "it": "Avviso sulla portata della scansione statica"
       },
       "description": {
-        "de": "Erkennt Tag-Manager oder SPA-Framework-Hüllen. Werden solche Signaturen gefunden, weist der Bericht darauf hin, dass dynamisch nachgeladene Skripte von einem statischen Scan nicht erfasst werden und die Ergebnisse unvollständig sein können.",
+        "de": "Erkennt Tag-Manager und Single-Page-Apps. In diesem Fall weist der Bericht darauf hin, dass ein statischer Scan nachgeladene Skripte nicht erfasst und die Ergebnisse unvollständig sein können.",
         "en": "Detects tag managers or SPA framework shells. When such signatures are found, the report states that dynamically injected scripts are not seen by a static scan and that results may be incomplete.",
         "fr": "Détecte les gestionnaires de balises ou les coques de frameworks SPA. Lorsque de telles signatures sont trouvées, le rapport indique que les scripts injectés dynamiquement ne sont pas vus par une analyse statique et que les résultats peuvent être incomplets.",
         "it": "Rileva i tag manager o gli involucri dei framework SPA. Quando vengono trovate tali firme, il rapporto segnala che gli script iniettati dinamicamente non vengono rilevati da una scansione statica e che i risultati possono essere incompleti."

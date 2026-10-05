@@ -60,7 +60,7 @@ test("no matches shows the empty message and hides the lists", async ({ page }) 
   test.skip(euAndFinma > 0, "data now has an EU-hosted FINMA-relevant vendor");
   await openVendors(page, 1280);
   await page.getByLabel("EU-Hosting").check();
-  await page.getByLabel("FINMA-relevant").check();
+  await page.getByLabel("FINMA (Selbstauskunft)").check();
   await expect(
     page.getByText("Keine Anbieter entsprechen den gewählten Filtern."),
   ).toBeVisible();

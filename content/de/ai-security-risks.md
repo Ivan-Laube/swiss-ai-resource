@@ -29,14 +29,14 @@ sources:
 
 KI verändert die Sicherheitslage von KMU auf zwei Arten. Erstens bringen die eigenen KI-Tools neue Risiken mit, sobald sie auf E-Mails, Dateien oder andere Systeme zugreifen und selbst handeln können. Zweitens nutzen Angreifer KI, um Betrugsversuche überzeugender zu machen, bis hin zu gefälschten Stimmen und Videos.
 
-Diese Seite erklärt die wichtigsten Risiken und Schutzmassnahmen, die ein KMU ohne eigene Sicherheitsabteilung umsetzen kann. Sie ersetzt weder eine Rechtsberatung noch eine umfassende IT-Sicherheitsprüfung.
+Diese Seite erklärt die wichtigsten Risiken und Schutzmassnahmen, die ein KMU auch ohne eigene Sicherheitsabteilung umsetzen kann.
 
 ## Was das Recht verlangt {#legal-basics}
 
-- **Datensicherheit (Art. 8 DSG):** Wer Personendaten bearbeitet, muss durch geeignete technische und organisatorische Massnahmen eine dem Risiko angemessene Datensicherheit gewährleisten. Die Datenschutzverordnung (DSV, Art. 1–3) konkretisiert das. Das gilt auch für Daten, die über KI-Tools laufen.
-- **Anbieter bleiben Ihre Verantwortung (Art. 9 DSG):** Bearbeitet ein KI-Anbieter Personendaten in Ihrem Auftrag, müssen Sie sich vergewissern, dass er die Datensicherheit gewährleistet.
-- **Meldung von Vorfällen (Art. 24 DSG):** Eine Verletzung der Datensicherheit, die voraussichtlich zu einem hohen Risiko für die betroffenen Personen führt, ist dem EDÖB so rasch als möglich zu melden (siehe [Wenn etwas passiert](#incidents)).
-- **Kritische Infrastrukturen:** Betreiberinnen kritischer Infrastrukturen (z. B. Energie- und Wasserversorgung, Transportunternehmen, Verwaltungen) müssen Cyberangriffe seit dem 1. April 2025 innerhalb von 24 Stunden dem Bundesamt für Cybersicherheit (BACS) melden.
+- **Datensicherheit (Art. 8 DSG):** Wer Personendaten bearbeitet, muss durch geeignete technische und organisatorische Massnahmen eine dem Risiko angemessene Datensicherheit gewährleisten. Die Datenschutzverordnung konkretisiert das (Art. 1 ff. DSV). Das gilt auch für Daten, die über KI-Tools laufen.
+- **Auch beim Anbieter bleiben Sie verantwortlich (Art. 9 DSG):** Bearbeitet ein KI-Anbieter Personendaten in Ihrem Auftrag, müssen Sie sich vergewissern, dass er die Datensicherheit gewährleisten kann.
+- **Meldung von Vorfällen (Art. 24 DSG):** Eine Verletzung der Datensicherheit, die voraussichtlich zu einem hohen Risiko für die Persönlichkeit oder die Grundrechte der betroffenen Personen führt, ist dem EDÖB so rasch als möglich zu melden (siehe [Wenn etwas passiert](#incidents)).
+- **Kritische Infrastrukturen:** Betreiberinnen kritischer Infrastrukturen (z. B. Energie- und Wasserversorgung, Transportunternehmen, Verwaltungen) müssen seit dem 1. April 2025 Cyberangriffe, die bestimmte Kriterien erfüllen (etwa die Funktionsfähigkeit gefährden oder zu einem Abfluss von Informationen führen), innerhalb von 24 Stunden dem Bundesamt für Cybersicherheit (BACS) melden (Art. 74a ff. Informationssicherheitsgesetz, ISG).
 - **EU AI Act:** Für Hochrisiko-KI-Systeme verlangt der AI Act unter anderem ein angemessenes Mass an Cybersicherheit (Art. 15). Ob er für Sie gilt, klärt der [Leitfaden zum EU AI Act](/de/eu-ai-act-swiss-exporters/#scope).
 
 ## KI-Tools, die selbst handeln {#ai-agents}
@@ -92,11 +92,11 @@ Ein KI-Tool hat vertrauliche Daten weitergegeben, eine manipulierte Aktion ausge
 2. **Festhalten:** Was ist wann passiert, welche Daten und Systeme sind betroffen, welches Tool war beteiligt?
 3. **Meldung an den EDÖB prüfen:** Führt die Verletzung der Datensicherheit voraussichtlich zu einem hohen Risiko für die betroffenen Personen, melden Sie sie dem EDÖB so rasch als möglich (Art. 24 DSG). Der EDÖB betreibt dafür ein Meldeportal. Im Zweifel nicht abwarten. Betroffene Personen sind zu informieren, wenn es zu ihrem Schutz nötig ist oder der EDÖB es verlangt.
 4. **Anbieter einbeziehen:** Informieren Sie den Anbieter des KI-Tools. Umgekehrt muss ein Auftragsbearbeiter Ihnen Verletzungen der Datensicherheit so rasch als möglich melden.
-5. **Weitere Meldungen:** Cybervorfälle und Betrugsversuche können Sie dem BACS melden; für Betreiberinnen kritischer Infrastrukturen ist das innerhalb von 24 Stunden Pflicht. Bei Betrug Anzeige bei der Polizei erstatten.
+5. **Weitere Meldungen:** Cybervorfälle und Betrugsversuche können Sie dem BACS melden; für Betreiberinnen kritischer Infrastrukturen ist das bei meldepflichtigen Cyberangriffen innerhalb von 24 Stunden Pflicht. Bei Betrug erstatten Sie Anzeige bei der Polizei.
 6. **Lernen:** Passen Sie Rechte, Abläufe und Ihre KI-Richtlinie an, damit derselbe Vorfall nicht wieder passiert.
 
 Legen Sie diese Schritte vorab fest: wer kontaktiert wird, wer entscheidet und wer meldet. Im Ernstfall fehlt die Zeit dafür.
 
-## Hinweis
+## Grundschutz nicht vergessen
 
-Diese Seite ist **informativ und keine Rechtsberatung**. Sie behandelt KI-bezogene Risiken und ersetzt keine umfassende IT-Sicherheitsprüfung (Datensicherung, Updates, Passwörter und Mehr-Faktor-Anmeldung, Netzwerk). Für eine umfassende Einschätzung beachten Sie die Empfehlungen des Bundesamts für Cybersicherheit (BACS) oder wenden Sie sich an eine IT-Sicherheitsfachperson.
+Diese Seite behandelt nur Risiken, die mit KI zusammenhängen. Die allgemeine IT-Sicherheit bleibt die Grundlage: Datensicherung, Updates, Passwörter und Mehr-Faktor-Anmeldung, Schutz des Netzwerks. Für eine umfassende Einschätzung beachten Sie die Empfehlungen des BACS oder wenden Sie sich an eine IT-Sicherheitsfachperson.

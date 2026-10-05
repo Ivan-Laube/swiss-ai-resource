@@ -19,9 +19,6 @@ Indications selon l'**art. 3 al. 1 let. s LCD** (identification du fournisseur d
 | | |
 |---|---|
 | **Nom** | Ivan Laube |
-| **Rue / n°** | Vorhaldenstrasse 10 |
-| **NPA / localité** | 8049 Zürich |
-| **Pays** | Suisse |
 | **E-mail** | [i.laube@gmail.com](mailto:i.laube@gmail.com) |
 
 ## Site web

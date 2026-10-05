@@ -23,7 +23,6 @@ Responsable du traitement des données :
 | | |
 |---|---|
 | **Nom** | Ivan Laube |
-| **Adresse** | Vorhaldenstrasse 10, 8049 Zurich, Suisse |
 | **E-mail** | [i.laube@gmail.com](mailto:i.laube@gmail.com) |
 
 Autres informations sur le fournisseur : [Impressum](/de/impressum/).

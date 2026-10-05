@@ -64,7 +64,7 @@ German (`de`) is the canonical content language. See [swiss_ai_resource_implemen
 | T57 | Translations keep `{#id}` anchors (prompt rule, restore by heading position, `check:anchors`) | Done |
 | T58 | `slug#anchor` references in decision trees and scanner checks, validated against DE | Done |
 | T59 | Retrofit: anchors on cited guide sections (all locales), tool and scanner links point to sections | Done |
-| T29 | Lawyer review of DE pages (incl. legal pages after T40, AI readiness check, AI policy template, AI security guide). Review on the live site: [AI readiness check](https://aicompliant.ch/de/tools/ai-readiness/) (URL only, `noindex`, not listed; also `/fr/`, `/it/`, `/en/`; complete once T51 is merged), [AI security guide](https://aicompliant.ch/de/ai-security-risks/), [AI policy template (Word)](https://aicompliant.ch/downloads/ai-policy-template-de.docx), [nDSG und KI: Grundlagen](https://aicompliant.ch/de/ndsg-ai-basics/), [Impressum](https://aicompliant.ch/de/impressum/), [Datenschutz](https://aicompliant.ch/de/datenschutz/) | Not started |
+| T29 | Lawyer review of DE pages (incl. legal pages after T40, AI readiness check, AI policy template, AI security guide). Review on the live site: [AI readiness check](https://aicompliant.ch/de/tools/ai-readiness/) (URL only, `noindex`, not listed; also `/fr/`, `/it/`, `/en/`; complete once T51 is merged), [AI security guide](https://aicompliant.ch/de/ai-security-risks/), [AI policy template (Word)](https://aicompliant.ch/downloads/ai-policy-template-de.docx), [nDSG und KI: Grundlagen](https://aicompliant.ch/de/ndsg-ai-basics/), [Impressum](https://aicompliant.ch/de/impressum/), [Datenschutz](https://aicompliant.ch/de/datenschutz/). Brief with everything to check and the sign-off steps: [docs/t29-lawyer-review.md](docs/t29-lawyer-review.md). | Brief ready, not yet sent |
 | Redesign | Visual system + site shell, homepage, decision tools/guides, remaining pages | Done — PR 1–4 landed (cleanup R47 / Lighthouse R55 / docs R57 may still follow). See [website_redesign_plan.md](website_redesign_plan.md), [docs/design-system.md](docs/design-system.md) |
 
 ## Local development
@@ -259,7 +259,7 @@ Heuristic first assessment of a public URL against Swiss-facing signals (HTTPS, 
 
 Impressum (`/[lang]/impressum/`) and Datenschutzerklärung (`/[lang]/datenschutz/`) are Markdown content pages in all four locales. Footer links: [`SiteFooter`](src/components/SiteFooter.tsx). Survey form links Datenschutzerklärung next to the optional email field. Datenschutz documents unlinkable D1 storage (`responses` vs `report_signups`), retention, and deletion via the public contact email. Conventions: [content/README.md](content/README.md#legal-pages).
 
-**T39** (done): draft pages + UI links. **T40** (done): natural-person operator (name, street, PLZ/Ort, email) in DE/EN/FR/IT; phone, Rechtsform, Vertretung, and Handelsregister/UID omitted as not applicable. Notes: [DEPLOY.md](DEPLOY.md#legal-pages-t39t40). Lawyer review of the filled DE text is T29.
+**T39** (done): draft pages + UI links. **T40** (done): natural-person operator (name, email; postal address removed October 2026) in DE/EN/FR/IT; phone, Rechtsform, Vertretung, and Handelsregister/UID omitted as not applicable. Notes: [DEPLOY.md](DEPLOY.md#legal-pages-t39t40). Lawyer review of the filled DE text is T29.
 
 ## Deploy
 

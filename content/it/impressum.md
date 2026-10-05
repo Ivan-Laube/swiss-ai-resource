@@ -19,9 +19,6 @@ Indicazioni ai sensi dell'**art. 3 cpv. 1 lett. s LCSl** (identificazione del fo
 | | |
 |---|---|
 | **Nome** | Ivan Laube |
-| **Via / n.** | Vorhaldenstrasse 10 |
-| **NPA / località** | 8049 Zürich |
-| **Paese** | Svizzera |
 | **E-mail** | [i.laube@gmail.com](mailto:i.laube@gmail.com) |
 
 ## Sito web

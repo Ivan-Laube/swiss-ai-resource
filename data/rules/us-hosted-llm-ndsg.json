@@ -8,7 +8,7 @@
     "it": "LLM ospitato negli USA sotto la LPD?"
   },
   "description": {
-    "de": "Erste Orientierung, ob Personendaten an ein in den USA betriebenes Sprachmodell übermittelt werden dürfen — mit Verweisen auf Art. 16 DSG, Swiss-U.S. DPF und vertragliche Garantien.",
+    "de": "Erste Orientierung, ob Personendaten an ein Sprachmodell in den USA übermittelt werden dürfen, mit Verweisen auf Art. 16 DSG, das Swiss-U.S. DPF und vertragliche Garantien.",
     "en": "Initial orientation on whether personal data (Personendaten) may be disclosed to a language model operated in the US — with references to Art. 16 DSG, the Swiss-U.S. DPF, and contractual safeguards.",
     "fr": "Première orientation sur la question de savoir si des données personnelles peuvent être communiquées à un modèle de langage exploité aux États-Unis — avec renvois à l'art. 16 LPD, au Swiss-U.S. DPF et aux garanties contractuelles.",
     "it": "Primo orientamento sulla possibilità di comunicare dati personali a un modello linguistico gestito negli USA — con riferimenti all'art. 16 LPD, allo Swiss-U.S. DPF e alle garanzie contrattuali."
@@ -18,13 +18,13 @@
     "q-personal-data": {
       "type": "question",
       "prompt": {
-        "de": "Enthalten Ihre Prompts, Kontext oder Ausgaben Personendaten?",
+        "de": "Enthalten Ihre Eingaben, der mitgegebene Kontext oder die Ergebnisse Personendaten?",
         "en": "Do your prompts, context, or outputs contain personal data (Personendaten)?",
         "fr": "Vos prompts, votre contexte ou vos sorties contiennent-ils des données personnelles ?",
         "it": "I vostri prompt, il contesto o gli output contengono dati personali?"
       },
       "help": {
-        "de": "Personendaten sind alle Angaben, die sich auf eine bestimmte oder bestimmbare natürliche Person beziehen. Ohne Personendaten greifen die Regeln zur Bekanntgabe ins Ausland (Art. 16 DSG) für diesen Einsatz typischerweise nicht.",
+        "de": "Personendaten sind alle Angaben, die sich auf eine bestimmte oder bestimmbare natürliche Person beziehen (Art. 5 lit. a DSG). Ohne Personendaten gelten die Regeln zur Bekanntgabe ins Ausland (Art. 16 DSG) für diesen Einsatz nicht.",
         "en": "Personal data (Personendaten) means any information relating to an identified or identifiable natural person. Without personal data, the rules on disclosure abroad (Bekanntgabe ins Ausland, Art. 16 DSG) typically do not apply to this use case.",
         "fr": "Les données personnelles sont toutes les informations qui se rapportent à une personne physique identifiée ou identifiable. Sans données personnelles, les règles sur la communication de données personnelles à l'étranger (art. 16 LPD) ne s'appliquent en principe pas à cet usage.",
         "it": "I dati personali sono tutte le informazioni relative a una persona fisica identificata o identificabile. Senza dati personali, le regole sulla comunicazione di dati personali all'estero (art. 16 LPD) in genere non si applicano a questo utilizzo."
@@ -61,7 +61,7 @@
         "it": "Si tratta di dati personali degni di particolare protezione?"
       },
       "help": {
-        "de": "Besonders schützenswerte Personendaten (Art. 5 lit. c DSG) umfassen u. a. Gesundheitsdaten, religiöse/politische Ansichten, biometrische Daten zur Identifikation und Daten über strafrechtliche Verfolgungen. Der Einsatz von US-LLMs mit solchen Daten stellt höhere Anforderungen.",
+        "de": "Besonders schützenswerte Personendaten (Art. 5 lit. c DSG) sind u. a. Daten über die Gesundheit, religiöse oder politische Ansichten, biometrische Daten zur eindeutigen Identifizierung und Daten über straf- oder verwaltungsrechtliche Verfolgungen. Für solche Daten gelten beim Einsatz eines Sprachmodells in den USA höhere Anforderungen.",
         "en": "Sensitive personal data (besonders schützenswerte Personendaten, Art. 5 lit. c DSG) includes, among other things, health data, religious/political views, biometric data for identification, and data on criminal prosecutions. Using US LLMs with such data raises higher requirements.",
         "fr": "Les données personnelles sensibles (art. 5 let. c LPD) comprennent notamment les données de santé, les opinions religieuses/politiques, les données biométriques destinées à l'identification et les données relatives à des poursuites pénales. L'utilisation de LLM américains avec de telles données impose des exigences plus élevées.",
         "it": "I dati personali degni di particolare protezione (art. 5 lett. c LPD) comprendono, tra l'altro, dati sulla salute, opinioni religiose/politiche, dati biometrici per l'identificazione e dati relativi a procedimenti penali. L'uso di LLM USA con tali dati pone requisiti più elevati."
@@ -70,7 +70,7 @@
         {
           "id": "ordinary",
           "label": {
-            "de": "Nein — gewöhnliche Personendaten",
+            "de": "Nein, gewöhnliche Personendaten",
             "en": "No — ordinary personal data",
             "fr": "Non — données personnelles ordinaires",
             "it": "No — dati personali ordinari"
@@ -80,7 +80,7 @@
         {
           "id": "special",
           "label": {
-            "de": "Ja — besonders schützenswert",
+            "de": "Ja, besonders schützenswerte Personendaten",
             "en": "Yes — sensitive personal data",
             "fr": "Oui — données personnelles sensibles",
             "it": "Sì — degni di particolare protezione"
@@ -98,7 +98,7 @@
         "it": "Su quale base comunicate i dati al fornitore USA?"
       },
       "help": {
-        "de": "Seit dem 15. September 2024 können zertifizierte US-Organisationen unter dem Swiss-U.S. Data Privacy Framework (DPF) ein angemessenes Schutzniveau bieten. Fehlt die passende Zertifizierung, kommen geeignete Garantien nach Art. 16 Abs. 2 DSG in Frage (z. B. Standarddatenschutzklauseln).",
+        "de": "Seit dem 15. September 2024 gilt für US-Unternehmen, die unter dem Swiss-U.S. Data Privacy Framework (DPF) zertifiziert sind, ein angemessener Datenschutz. Fehlt eine passende Zertifizierung, braucht es geeignete Garantien nach Art. 16 Abs. 2 DSG, z. B. Standarddatenschutzklauseln.",
         "en": "Since 15 September 2024, certified US organisations under the Swiss-U.S. Data Privacy Framework (DPF) can offer an adequate level of protection. Without a matching certification, suitable safeguards under Art. 16 para. 2 DSG may apply (e.g. standard contractual clauses / Standarddatenschutzklauseln).",
         "fr": "Depuis le 15 septembre 2024, les organisations américaines certifiées au titre du Swiss-U.S. Data Privacy Framework (DPF) peuvent offrir un niveau de protection adéquat. À défaut de certification appropriée, des garanties appropriées selon l'art. 16 al. 2 LPD entrent en ligne de compte (p. ex. clauses type de protection des données).",
         "it": "Dal 15 settembre 2024, le organizzazioni USA certificate ai sensi dello Swiss-U.S. Data Privacy Framework (DPF) possono offrire un livello di protezione adeguato. In assenza di certificazione idonea, possono entrare in gioco garanzie appropriate ai sensi dell'art. 16 cpv. 2 LPD (p. es. clausole tipo di protezione dei dati)."
@@ -107,7 +107,7 @@
         {
           "id": "dpf",
           "label": {
-            "de": "Empfänger ist aktiv Swiss-U.S.-DPF-zertifiziert (passender Zweck)",
+            "de": "Der Empfänger ist unter dem Swiss-U.S. DPF zertifiziert, auch für diese Daten",
             "en": "Recipient is actively Swiss-U.S. DPF-certified (matching purpose)",
             "fr": "Le destinataire est activement certifié Swiss-U.S. DPF (finalité appropriée)",
             "it": "Il destinatario è attivamente certificato Swiss-U.S. DPF (finalità adeguata)"
@@ -117,7 +117,7 @@
         {
           "id": "scc",
           "label": {
-            "de": "Standarddatenschutzklauseln oder andere Art.-16-Abs.-2-Garantien",
+            "de": "Standarddatenschutzklauseln oder andere Garantien nach Art. 16 Abs. 2 DSG",
             "en": "Standard contractual clauses or other Art. 16 para. 2 safeguards",
             "fr": "Clauses type de protection des données ou autres garanties art. 16 al. 2",
             "it": "Clausole tipo di protezione dei dati o altre garanzie art. 16 cpv. 2"
@@ -137,7 +137,7 @@
         {
           "id": "unsure",
           "label": {
-            "de": "Unsicher / noch nicht geprüft",
+            "de": "Unsicher oder noch nicht geprüft",
             "en": "Unsure / not yet checked",
             "fr": "Incertain / pas encore vérifié",
             "it": "Incerto / non ancora verificato"
@@ -149,13 +149,13 @@
     "q-training-dpf": {
       "type": "question",
       "prompt": {
-        "de": "Werden Eingaben zum Modelltraining verwendet — und ist das geklärt (inkl. Opt-out)?",
+        "de": "Verwendet der Anbieter Ihre Eingaben zum Training seiner Modelle?",
         "en": "Are inputs used for model training — and is that clarified (including opt-out)?",
         "fr": "Les entrées sont-elles utilisées pour l'entraînement du modèle — et cela est-il clarifié (y compris opt-out) ?",
         "it": "Gli input sono usati per l'addestramento del modello — ed è chiarito (incluso opt-out)?"
       },
       "help": {
-        "de": "Klären Sie in den Vertrags- und Produktbedingungen, ob Prompts und Outputs zum Training genutzt werden und ob ein Opt-out verfügbar ist. Das betrifft Transparenz und Zweckbindung.",
+        "de": "Prüfen Sie in Vertrag und Produktbedingungen, ob Eingaben und Ergebnisse zum Training verwendet werden und ob sich das ausschliessen lässt. Das betrifft Transparenz und Zweckbindung.",
         "en": "Clarify in the contract and product terms whether prompts and outputs are used for training and whether an opt-out is available. This affects transparency and purpose limitation.",
         "fr": "Clarifiez dans les conditions contractuelles et produit si les prompts et sorties sont utilisés pour l'entraînement et si un opt-out est disponible. Cela concerne la transparence et la finalité du traitement.",
         "it": "Chiarite nelle condizioni contrattuali e di prodotto se prompt e output sono usati per l'addestramento e se è disponibile un opt-out. Ciò riguarda trasparenza e vincolo di finalità."
@@ -164,7 +164,7 @@
         {
           "id": "no-training",
           "label": {
-            "de": "Nein / Opt-out aktiv — Training ausgeschlossen oder abgewählt",
+            "de": "Nein, Training ist ausgeschlossen oder abgewählt",
             "en": "No / opt-out active — training excluded or opted out",
             "fr": "Non / opt-out actif — entraînement exclu ou désactivé",
             "it": "No / opt-out attivo — addestramento escluso o disattivato"
@@ -174,7 +174,7 @@
         {
           "id": "training-on",
           "label": {
-            "de": "Ja — Eingaben können zum Training genutzt werden",
+            "de": "Ja, Eingaben können zum Training verwendet werden",
             "en": "Yes — inputs may be used for training",
             "fr": "Oui — les entrées peuvent être utilisées pour l'entraînement",
             "it": "Sì — gli input possono essere usati per l'addestramento"
@@ -196,13 +196,13 @@
     "q-training-scc": {
       "type": "question",
       "prompt": {
-        "de": "Sind DPA/SCC und Transferprüfung erledigt — und ist die Trainingsnutzung geklärt?",
+        "de": "Sind Auftragsbearbeitungsvertrag, Standarddatenschutzklauseln und Transferprüfung erledigt, und ist das Training mit Ihren Daten geklärt?",
         "en": "Are DPA/SCC and transfer assessment done — and is training use clarified?",
         "fr": "Le DPA/SCC et l'examen du transfert sont-ils faits — et l'usage pour l'entraînement est-il clarifié ?",
         "it": "DPA/SCC ed esame del trasferimento sono completati — e l'uso per l'addestramento è chiarito?"
       },
       "help": {
-        "de": "Ohne Angemessenheitsbeschluss für den konkreten Empfänger müssen geeignete Garantien greifen und der Verantwortliche prüfen, ob das Recht des Drittlandes dem nicht entgegensteht. Zusätzlich: Auftragsbearbeitungsvertrag (DPA) und Trainings-/Opt-out-Klauseln.",
+        "de": "Ohne DPF-Zertifizierung des Empfängers müssen geeignete Garantien bestehen, und Sie müssen prüfen, ob das Recht des Empfängerstaats ihnen nicht entgegensteht. Dazu kommen ein Auftragsbearbeitungsvertrag (DPA) und Regeln zum Training.",
         "en": "Without an adequacy decision for the specific recipient, suitable safeguards must apply and the controller (Verantwortlicher) must assess whether the third country's law does not undermine them. Additionally: a data processing agreement (DPA) and training/opt-out clauses.",
         "fr": "Sans décision d'adéquation pour le destinataire concret, des garanties appropriées doivent s'appliquer et le responsable du traitement doit vérifier que le droit du pays tiers n'y fait pas obstacle. En outre : contrat de sous-traitance (DPA) et clauses d'entraînement/opt-out.",
         "it": "Senza una decisione di adeguatezza per il destinatario concreto, devono applicarsi garanzie appropriate e il titolare del trattamento deve verificare che il diritto del Paese terzo non vi osti. Inoltre: contratto di elaborazione (DPA) e clausole su addestramento/opt-out."
@@ -211,7 +211,7 @@
         {
           "id": "safeguards-ok",
           "label": {
-            "de": "Ja — Garantien, DPA und kein Training (oder Opt-out)",
+            "de": "Ja: Garantien, Auftragsbearbeitungsvertrag und kein Training mit unseren Daten",
             "en": "Yes — safeguards, DPA, and no training (or opt-out)",
             "fr": "Oui — garanties, DPA et pas d'entraînement (ou opt-out)",
             "it": "Sì — garanzie, DPA e nessun addestramento (o opt-out)"
@@ -221,7 +221,7 @@
         {
           "id": "training-on",
           "label": {
-            "de": "Garantien vorhanden, aber Eingaben können trainiert werden",
+            "de": "Garantien vorhanden, aber Eingaben können zum Training verwendet werden",
             "en": "Safeguards in place, but inputs may be used for training",
             "fr": "Garanties présentes, mais les entrées peuvent servir à l'entraînement",
             "it": "Garanzie presenti, ma gli input possono essere usati per l'addestramento"
@@ -231,7 +231,7 @@
         {
           "id": "unsure",
           "label": {
-            "de": "Unklar / Transferprüfung offen",
+            "de": "Unklar oder Transferprüfung offen",
             "en": "Unclear / transfer assessment still open",
             "fr": "Pas clair / examen du transfert ouvert",
             "it": "Non chiaro / esame del trasferimento aperto"
@@ -244,26 +244,26 @@
       "type": "outcome",
       "verdict": "likely",
       "summary": {
-        "de": "Ohne Personendaten greifen die Regeln zur Bekanntgabe ins Ausland (Art. 16 DSG) für diesen LLM-Einsatz typischerweise nicht — eine Nutzung erscheint unter dem nDSG eher vertretbar.",
+        "de": "Ohne Personendaten gelten die Regeln zur Bekanntgabe ins Ausland (Art. 16 DSG) für diesen Einsatz nicht. Aus Sicht des DSG erscheint die Nutzung eher vertretbar.",
         "en": "Without personal data, the rules on disclosure abroad (Art. 16 DSG) typically do not apply to this LLM use — use appears rather defensible under the Federal Act on Data Protection (DSG).",
         "fr": "Sans données personnelles, les règles sur la communication de données personnelles à l'étranger (art. 16 LPD) ne s'appliquent en principe pas à cet usage de LLM — une utilisation apparaît plutôt défendable sous la LPD.",
         "it": "Senza dati personali, le regole sulla comunicazione di dati personali all'estero (art. 16 LPD) in genere non si applicano a questo uso di LLM — un utilizzo appare piuttosto difendibile sotto la LPD."
       },
       "caveats": [
         {
-          "de": "Andere Pflichten können trotzdem gelten (Vertrag, Branchenregeln, Geschäftsgeheimnisse, FINMA-Erwartungen).",
+          "de": "Andere Pflichten können trotzdem gelten, etwa aus Verträgen, Branchenregeln, dem Schutz von Geschäftsgeheimnissen oder FINMA-Vorgaben.",
           "en": "Other duties may still apply (contract, sector rules, trade secrets, FINMA expectations).",
           "fr": "D'autres obligations peuvent néanmoins s'appliquer (contrat, règles sectorielles, secrets d'affaires, attentes FINMA).",
           "it": "Altri obblighi possono comunque applicarsi (contratto, regole di settore, segreti commerciali, aspettative FINMA)."
         },
         {
-          "de": "Prüfen Sie, ob wirklich keine bestimmbaren Personen in Prompts, Logs oder Support-Tickets landen.",
+          "de": "Prüfen Sie, ob wirklich keine bestimmbaren Personen in Eingaben, Protokollen oder Support-Anfragen vorkommen.",
           "en": "Check whether identifiable persons really never end up in prompts, logs, or support tickets.",
           "fr": "Vérifiez qu'aucune personne identifiable ne se retrouve vraiment dans les prompts, journaux ou tickets de support.",
           "it": "Verificate che nessuna persona identificabile finisca davvero in prompt, log o ticket di supporto."
         },
         {
-          "de": "Dies ist eine Orientierungshilfe, keine Rechtsberatung — bei Unsicherheit Fachberatung einholen.",
+          "de": "Dies ist eine Orientierungshilfe, keine Rechtsberatung. Holen Sie bei Unsicherheit Fachberatung ein.",
           "en": "This is orientation guidance, not legal advice — seek professional advice if unsure.",
           "fr": "Ceci est une aide à l'orientation, pas un conseil juridique — en cas d'incertitude, consultez un spécialiste.",
           "it": "Si tratta di un orientamento, non di consulenza legale — in caso di incertezza, rivolgersi a un professionista."
@@ -285,26 +285,26 @@
       "type": "outcome",
       "verdict": "depends",
       "summary": {
-        "de": "Besonders schützenswerte Personendaten an ein US-gehostetes LLM zu übermitteln kommt stark darauf an: es braucht eine klare Rechtsgrundlage, erhöhte Schutzmassnahmen und eine fallbezogene Prüfung.",
-        "en": "Disclosing sensitive personal data to a US-hosted LLM strongly depends: you need a clear legal basis, heightened safeguards, and a case-by-case assessment.",
-        "fr": "Communiquer des données personnelles sensibles à un LLM hébergé aux États-Unis dépend fortement du cas : il faut une base légale claire, des mesures de protection renforcées et un examen au cas par cas.",
-        "it": "Comunicare dati personali degni di particolare protezione a un LLM ospitato negli USA dipende fortemente dal caso: servono una base giuridica chiara, misure di protezione rafforzate e un esame caso per caso."
+        "de": "Ob besonders schützenswerte Personendaten an ein Sprachmodell in den USA gehen dürfen, hängt stark vom Einzelfall ab. Nötig sind eine tragfähige Grundlage für die Bekanntgabe ins Ausland, ein Auftragsbearbeitungsvertrag, erhöhte Schutzmassnahmen und die Prüfung, ob ein Berufsgeheimnis oder eine andere Geheimhaltungspflicht entgegensteht (Art. 9 Abs. 1 lit. b DSG).",
+        "en": "Whether sensitive personal data may be sent to a language model in the US depends heavily on the individual case. You need a valid basis for the transfer abroad, a data processing agreement, enhanced safeguards, and a check whether professional secrecy or another confidentiality duty stands in the way (Art. 9(1)(b) FADP).",
+        "fr": "La possibilité de transmettre des données personnelles sensibles à un modèle de langage hébergé aux États-Unis dépend fortement du cas d'espèce. Il faut une base solide pour la communication à l'étranger, un contrat avec le sous-traitant, des mesures de protection renforcées et vérifier qu'aucun secret professionnel ni autre obligation de confidentialité ne s'y oppose (art. 9, al. 1, let. b, LPD).",
+        "it": "La possibilità di trasmettere dati personali degni di particolare protezione a un modello linguistico ospitato negli Stati Uniti dipende fortemente dal caso concreto. Occorrono una base solida per la comunicazione all'estero, un contratto con il responsabile del trattamento, misure di protezione rafforzate e la verifica che nessun segreto professionale o altro obbligo di riservatezza vi si opponga (art. 9 cpv. 1 lett. b LPD)."
       },
       "caveats": [
         {
-          "de": "Ohne passende Rechtsgrundlage und Schutzmassnahmen ist der Einsatz eher nicht vertretbar.",
-          "en": "Without a suitable legal basis and safeguards, use is rather not defensible.",
-          "fr": "Sans base légale et mesures de protection appropriées, l'usage n'est plutôt pas défendable.",
-          "it": "Senza base giuridica e misure di protezione adeguate, l'uso non appare piuttosto difendibile."
+          "de": "Ohne tragfähige Grundlage und Schutzmassnahmen ist der Einsatz eher nicht vertretbar. Bei umfangreicher Bearbeitung ist zudem eine Datenschutz-Folgenabschätzung nötig (Art. 22 DSG).",
+          "en": "Without a valid basis and safeguards, the use is unlikely to be justifiable. Extensive processing additionally requires a data protection impact assessment (Art. 22 FADP).",
+          "fr": "Sans base solide ni mesures de protection, l'utilisation paraît difficilement défendable. Un traitement à grande échelle requiert en outre une analyse d'impact relative à la protection des données personnelles (art. 22 LPD).",
+          "it": "Senza una base solida e misure di protezione, l'impiego appare difficilmente sostenibile. Un trattamento su vasta scala richiede inoltre una valutazione d'impatto sulla protezione dei dati (art. 22 LPD)."
         },
         {
-          "de": "Auch bei DPF oder SCC bleibt die Informationspflicht gegenüber Betroffenen (Art. 19 Abs. 4 DSG) und die Dokumentation im Verzeichnis der Bearbeitungstätigkeiten relevant.",
+          "de": "Auch mit DPF-Zertifizierung oder Standarddatenschutzklauseln müssen Sie die Betroffenen über die Bekanntgabe ins Ausland informieren (Art. 19 Abs. 4 DSG) und sie gegebenenfalls im Verzeichnis der Bearbeitungstätigkeiten festhalten.",
           "en": "Even with DPF or SCC, the duty to inform data subjects (Art. 19 para. 4 DSG) and documentation in the record of processing activities remain relevant.",
           "fr": "Même avec DPF ou SCC, le devoir d'information envers les personnes concernées (art. 19 al. 4 LPD) et la documentation dans le registre des activités de traitement restent pertinents.",
           "it": "Anche con DPF o SCC restano rilevanti l'obbligo di informazione verso gli interessati (art. 19 cpv. 4 LPD) e la documentazione nel registro delle attività di trattamento."
         },
         {
-          "de": "Dies ist eine Orientierungshilfe, keine Rechtsberatung — bei besonders schützenswerten Daten typischerweise Fachberatung einholen.",
+          "de": "Dies ist eine Orientierungshilfe, keine Rechtsberatung. Bei besonders schützenswerten Personendaten empfiehlt sich eine Fachberatung.",
           "en": "This is orientation guidance, not legal advice — with sensitive personal data, typically seek professional advice.",
           "fr": "Ceci est une aide à l'orientation, pas un conseil juridique — pour des données personnelles sensibles, consultez typiquement un spécialiste.",
           "it": "Si tratta di un orientamento, non di consulenza legale — con dati personali degni di particolare protezione, rivolgersi tipicamente a un professionista."
@@ -333,13 +333,13 @@
       },
       "caveats": [
         {
-          "de": "«Der Anbieter sitzt in den USA» allein ist seit dem Swiss-U.S. DPF keine ausreichende Angemessenheitsgrundlage — die Zertifizierung muss den konkreten Empfänger und Zweck abdecken.",
+          "de": "Der angemessene Datenschutz für die USA gilt nur für zertifizierte Empfänger. Die Zertifizierung muss genau die Gesellschaft abdecken, die Ihre Daten erhält.",
           "en": "«The provider is in the US» alone is not an adequate basis since the Swiss-U.S. DPF — certification must cover the specific recipient and purpose.",
           "fr": "« Le fournisseur est aux États-Unis » ne constitue pas à lui seul une base d'adéquation depuis le Swiss-U.S. DPF — la certification doit couvrir le destinataire et la finalité concrets.",
           "it": "«Il fornitore ha sede negli USA» da solo non è una base di adeguatezza sufficiente dopo lo Swiss-U.S. DPF — la certificazione deve coprire il destinatario e la finalità concreti."
         },
         {
-          "de": "Prüfen Sie Alternativen: DPF-zertifizierter Empfänger, SCC/DPA, oder Hosting in der Schweiz/EU.",
+          "de": "Prüfen Sie Alternativen: einen DPF-zertifizierten Anbieter, Standarddatenschutzklauseln oder Hosting in der Schweiz bzw. der EU.",
           "en": "Consider alternatives: a DPF-certified recipient, SCC/DPA, or hosting in Switzerland/the EU.",
           "fr": "Examinez des alternatives : destinataire certifié DPF, SCC/DPA, ou hébergement en Suisse/UE.",
           "it": "Valutate alternative: destinatario certificato DPF, SCC/DPA, oppure hosting in Svizzera/UE."
@@ -375,20 +375,20 @@
       "type": "outcome",
       "verdict": "unclear",
       "summary": {
-        "de": "Ohne geklärte Transfergrundlage (DPF-Zertifizierung oder Art.-16-Abs.-2-Garantien) lässt sich die Zulässigkeit nicht sinnvoll einschätzen.",
+        "de": "Ohne geklärte Grundlage für die Bekanntgabe (DPF-Zertifizierung oder Garantien nach Art. 16 Abs. 2 DSG) lässt sich die Zulässigkeit nicht einschätzen.",
         "en": "Without a clarified transfer basis (DPF certification or Art. 16 para. 2 safeguards), permissibility cannot be meaningfully assessed.",
         "fr": "Sans base de transfert clarifiée (certification DPF ou garanties art. 16 al. 2), la licéité ne peut pas être évaluée de façon pertinente.",
         "it": "Senza una base di trasferimento chiarita (certificazione DPF o garanzie art. 16 cpv. 2), la liceità non può essere valutata in modo sensato."
       },
       "caveats": [
         {
-          "de": "Prüfen Sie die öffentliche DPF-Teilnehmerliste auf aktive Swiss-U.S.-Zertifizierung und passenden Verarbeitungszweck.",
+          "de": "Prüfen Sie auf der öffentlichen DPF-Teilnehmerliste, ob der Empfänger aktiv unter dem Swiss-U.S. DPF zertifiziert ist und ob die Zertifizierung Ihre Daten abdeckt.",
           "en": "Check the public DPF participant list for active Swiss-U.S. certification and a matching processing purpose.",
           "fr": "Vérifiez la liste publique des participants DPF pour une certification Swiss-U.S. active et une finalité de traitement appropriée.",
           "it": "Verificate l'elenco pubblico dei partecipanti DPF per una certificazione Swiss-U.S. attiva e una finalità di trattamento adeguata."
         },
         {
-          "de": "Fehlt DPF: klären Sie SCC/DPA und ob eine Transferprüfung nötig ist.",
+          "de": "Ohne DPF-Zertifizierung: Klären Sie Standarddatenschutzklauseln, Auftragsbearbeitungsvertrag und Transferprüfung.",
           "en": "If DPF is missing: clarify SCC/DPA and whether a transfer assessment is needed.",
           "fr": "Si le DPF manque : clarifiez SCC/DPA et si un examen du transfert est nécessaire.",
           "it": "Se manca il DPF: chiarite SCC/DPA e se è necessario un esame del trasferimento."
@@ -416,26 +416,26 @@
       "type": "outcome",
       "verdict": "likely",
       "summary": {
-        "de": "Bei aktiver Swiss-U.S.-DPF-Zertifizierung des Empfängers (passender Zweck) und geklärter Trainingsnutzung (kein Training bzw. Opt-out) erscheint die Übermittlung unter dem nDSG eher vertretbar.",
+        "de": "Ist der Empfänger aktiv unter dem Swiss-U.S. DPF zertifiziert und das Training mit Ihren Daten ausgeschlossen, erscheint die Übermittlung unter dem DSG eher vertretbar.",
         "en": "With active Swiss-U.S. DPF certification of the recipient (matching purpose) and clarified training use (no training or opt-out), the transfer appears rather defensible under the Federal Act on Data Protection (DSG).",
         "fr": "Avec une certification Swiss-U.S. DPF active du destinataire (finalité appropriée) et un usage pour l'entraînement clarifié (pas d'entraînement ou opt-out), la communication apparaît plutôt défendable sous la LPD.",
         "it": "Con certificazione Swiss-U.S. DPF attiva del destinatario (finalità adeguata) e uso per l'addestramento chiarito (nessun addestramento o opt-out), la comunicazione appare piuttosto difendibile sotto la LPD."
       },
       "caveats": [
         {
-          "de": "Verifizieren Sie die Zertifizierung auf der öffentlichen Teilnehmerliste und dass die Swiss-U.S.-Erweiterung (nicht nur EU-U.S.) gilt.",
+          "de": "Prüfen Sie die Zertifizierung auf der öffentlichen Teilnehmerliste, und ob sie das Swiss-U.S. DPF umfasst (nicht nur das EU-U.S. DPF).",
           "en": "Verify the certification on the public participant list and that the Swiss-U.S. extension (not only EU-U.S.) applies.",
           "fr": "Vérifiez la certification sur la liste publique des participants et que l'extension Swiss-U.S. (pas seulement EU-U.S.) s'applique.",
           "it": "Verificate la certificazione sull'elenco pubblico dei partecipanti e che valga l'estensione Swiss-U.S. (non solo EU-U.S.)."
         },
         {
-          "de": "Betroffene Personen über die Bekanntgabe ins Ausland informieren (Art. 19 Abs. 4 DSG); Auftragsbearbeitung und Verzeichnis der Bearbeitungstätigkeiten nicht vergessen.",
+          "de": "Informieren Sie die Betroffenen über die Bekanntgabe in die USA (Art. 19 Abs. 4 DSG) und schliessen Sie einen Auftragsbearbeitungsvertrag ab (Art. 9 DSG).",
           "en": "Inform data subjects about disclosure abroad (Art. 19 para. 4 DSG); do not forget processor arrangements and the record of processing activities.",
           "fr": "Informer les personnes concernées de la communication de données personnelles à l'étranger (art. 19 al. 4 LPD) ; ne pas oublier le sous-traitement et le registre des activités de traitement.",
           "it": "Informare gli interessati sulla comunicazione di dati personali all'estero (art. 19 cpv. 4 LPD); non dimenticare l'elaborazione su incarico e il registro delle attività di trattamento."
         },
         {
-          "de": "Dies ist eine Orientierungshilfe, keine Rechtsberatung — fallbezogen prüfen.",
+          "de": "Dies ist eine Orientierungshilfe, keine Rechtsberatung. Prüfen Sie den Einzelfall.",
           "en": "This is orientation guidance, not legal advice — assess case by case.",
           "fr": "Ceci est une aide à l'orientation, pas un conseil juridique — examiner au cas par cas.",
           "it": "Si tratta di un orientamento, non di consulenza legale — valutare caso per caso."
@@ -465,14 +465,14 @@
       "type": "outcome",
       "verdict": "depends",
       "summary": {
-        "de": "DPF kann die Transfergrundlage tragen, aber Trainingsnutzung von Eingaben kommt darauf an: Transparenz, Zweckbindung und ob ein Opt-out möglich bzw. nötig ist.",
+        "de": "Das DPF kann die Bekanntgabe in die USA abdecken. Dürfen Eingaben aber zum Training verwendet werden, hängt die Zulässigkeit davon ab, ob die Betroffenen darüber informiert sind und ob das mit dem ursprünglichen Zweck vereinbar ist.",
         "en": "DPF may support the transfer basis, but training use of inputs depends: transparency, purpose limitation, and whether an opt-out is possible or needed.",
         "fr": "Le DPF peut porter la base de transfert, mais l'usage des entrées pour l'entraînement dépend : transparence, finalité, et si un opt-out est possible ou nécessaire.",
         "it": "Il DPF può sostenere la base di trasferimento, ma l'uso degli input per l'addestramento dipende: trasparenza, vincolo di finalità e se un opt-out è possibile o necessario."
       },
       "caveats": [
         {
-          "de": "Klären Sie vertraglich, ob Prompts zum Modelltraining verwendet werden, und dokumentieren Sie Opt-out oder Verbote.",
+          "de": "Klären Sie vertraglich, ob Eingaben zum Training verwendet werden, und dokumentieren Sie den Ausschluss oder das Verbot.",
           "en": "Clarify contractually whether prompts are used for model training, and document opt-out or prohibitions.",
           "fr": "Clarifiez contractuellement si les prompts sont utilisés pour l'entraînement du modèle, et documentez l'opt-out ou les interdictions.",
           "it": "Chiarite contrattualmente se i prompt sono usati per l'addestramento del modello e documentate opt-out o divieti."
@@ -506,14 +506,14 @@
       "type": "outcome",
       "verdict": "unclear",
       "summary": {
-        "de": "Die Transfergrundlage (DPF) mag passen, aber ohne geklärte Trainingsnutzung lässt sich die Gesamteinschätzung nicht abschliessen.",
+        "de": "Die Grundlage für die Bekanntgabe (DPF) passt, aber ohne Klarheit zum Training lässt sich die Gesamteinschätzung nicht abschliessen.",
         "en": "The transfer basis (DPF) may fit, but without clarified training use the overall assessment cannot be completed.",
         "fr": "La base de transfert (DPF) peut convenir, mais sans usage pour l'entraînement clarifié, l'évaluation d'ensemble ne peut pas être achevée.",
         "it": "La base di trasferimento (DPF) può essere adeguata, ma senza uso per l'addestramento chiarito la valutazione complessiva non può essere conclusa."
       },
       "caveats": [
         {
-          "de": "Lesen Sie DPA und Produktbedingungen zu Training, Logs und Opt-out, bevor Sie Personendaten eingeben.",
+          "de": "Lesen Sie Auftragsbearbeitungsvertrag und Produktbedingungen zu Training, Protokollen und Abwahl, bevor Sie Personendaten eingeben.",
           "en": "Read the DPA and product terms on training, logs, and opt-out before entering personal data.",
           "fr": "Lisez le DPA et les conditions produit sur l'entraînement, les journaux et l'opt-out avant de saisir des données personnelles.",
           "it": "Leggete DPA e condizioni di prodotto su addestramento, log e opt-out prima di inserire dati personali."
@@ -541,7 +541,7 @@
       "type": "outcome",
       "verdict": "depends",
       "summary": {
-        "de": "Mit Standarddatenschutzklauseln bzw. anderen Art.-16-Abs.-2-Garantien, DPA und geklärter (ausgeschlossener) Trainingsnutzung kann eine Übermittlung vertretbar sein — kommt aber auf die konkrete Transferprüfung an.",
+        "de": "Mit Standarddatenschutzklauseln oder anderen Garantien nach Art. 16 Abs. 2 DSG, einem Auftragsbearbeitungsvertrag und ausgeschlossenem Training kann die Übermittlung vertretbar sein. Entscheidend ist das Ergebnis der Transferprüfung.",
         "en": "With standard contractual clauses or other Art. 16 para. 2 safeguards, a DPA, and clarified (excluded) training use, a transfer may be defensible — but it depends on the concrete transfer assessment.",
         "fr": "Avec des clauses type de protection des données ou d'autres garanties art. 16 al. 2, un DPA et un usage pour l'entraînement clarifié (exclu), une communication peut être défendable — mais cela dépend de l'examen concret du transfert.",
         "it": "Con clausole tipo di protezione dei dati o altre garanzie art. 16 cpv. 2, un DPA e uso per l'addestramento chiarito (escluso), una comunicazione può essere difendibile — ma dipende dall'esame concreto del trasferimento."
@@ -560,7 +560,7 @@
           "it": "Informare gli interessati sulla comunicazione di dati personali all'estero (art. 19 cpv. 4 LPD)."
         },
         {
-          "de": "Dies ist eine Orientierungshilfe, keine Rechtsberatung — Transferprüfung fallbezogen dokumentieren.",
+          "de": "Dies ist eine Orientierungshilfe, keine Rechtsberatung. Dokumentieren Sie die Transferprüfung.",
           "en": "This is orientation guidance, not legal advice — document the transfer assessment case by case.",
           "fr": "Ceci est une aide à l'orientation, pas un conseil juridique — documenter l'examen du transfert au cas par cas.",
           "it": "Si tratta di un orientamento, non di consulenza legale — documentare l'esame del trasferimento caso per caso."
@@ -586,14 +586,14 @@
       "type": "outcome",
       "verdict": "unlikely",
       "summary": {
-        "de": "Auch mit SCC/Garantien erscheint die Nutzung eher nicht vertretbar, wenn Eingaben mit Personendaten zum Modelltraining verwendet werden dürfen und das nicht klar ausgeschlossen oder abgewählt ist.",
+        "de": "Auch mit Standarddatenschutzklauseln erscheint die Nutzung eher nicht vertretbar, solange der Anbieter Eingaben mit Personendaten zum Training verwenden darf.",
         "en": "Even with SCC/safeguards, use appears rather not defensible if inputs containing personal data may be used for model training and that is not clearly excluded or opted out.",
         "fr": "Même avec SCC/garanties, l'usage n'apparaît plutôt pas défendable si des entrées contenant des données personnelles peuvent servir à l'entraînement du modèle et que cela n'est pas clairement exclu ou désactivé.",
         "it": "Anche con SCC/garanzie, l'uso non appare piuttosto difendibile se input con dati personali possono essere usati per l'addestramento del modello e ciò non è chiaramente escluso o disattivato."
       },
       "caveats": [
         {
-          "de": "Verhandeln Sie Opt-out oder ein Trainingsverbot, oder vermeiden Sie Personendaten in Prompts.",
+          "de": "Verhandeln Sie ein Trainingsverbot oder wählen Sie das Training ab, oder geben Sie keine Personendaten ein.",
           "en": "Negotiate an opt-out or training ban, or avoid personal data in prompts.",
           "fr": "Négociez un opt-out ou une interdiction d'entraînement, ou évitez les données personnelles dans les prompts.",
           "it": "Negoziate un opt-out o un divieto di addestramento, oppure evitate dati personali nei prompt."
@@ -627,20 +627,20 @@
       "type": "outcome",
       "verdict": "unclear",
       "summary": {
-        "de": "Ohne abgeschlossene Transferprüfung und geklärte Vertrags-/Trainingslage lässt sich die Zulässigkeit unter Art. 16 DSG nicht einschätzen.",
+        "de": "Ohne abgeschlossene Transferprüfung und geklärte Vertrags- und Trainingslage lässt sich die Zulässigkeit nach Art. 16 DSG nicht einschätzen.",
         "en": "Without a completed transfer assessment and clarified contract/training situation, permissibility under Art. 16 DSG cannot be assessed.",
         "fr": "Sans examen du transfert achevé et situation contractuelle/entraînement clarifiée, la licéité sous l'art. 16 LPD ne peut pas être évaluée.",
         "it": "Senza esame del trasferimento concluso e situazione contrattuale/addestramento chiarita, la liceità ai sensi dell'art. 16 LPD non può essere valutata."
       },
       "caveats": [
         {
-          "de": "Schliessen Sie DPA und anerkannte Standarddatenschutzklauseln ab und prüfen Sie, ob zusätzliche Massnahmen nötig sind.",
+          "de": "Schliessen Sie einen Auftragsbearbeitungsvertrag und anerkannte Standarddatenschutzklauseln ab und prüfen Sie, ob zusätzliche Massnahmen nötig sind.",
           "en": "Conclude a DPA and recognised standard contractual clauses, and check whether additional measures are needed.",
           "fr": "Concluez un DPA et des clauses type de protection des données reconnues, et vérifiez si des mesures supplémentaires sont nécessaires.",
           "it": "Concludete un DPA e clausole tipo di protezione dei dati riconosciute, e verificate se servono misure aggiuntive."
         },
         {
-          "de": "Klären Sie parallel die Trainingsnutzung und Opt-out-Optionen.",
+          "de": "Klären Sie parallel, ob Ihre Eingaben zum Training verwendet werden und ob sich das abwählen lässt.",
           "en": "In parallel, clarify training use and opt-out options.",
           "fr": "Clarifiez en parallèle l'usage pour l'entraînement et les options d'opt-out.",
           "it": "Chiarite in parallelo l'uso per l'addestramento e le opzioni di opt-out."

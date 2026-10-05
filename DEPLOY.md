@@ -119,7 +119,7 @@ npm run build
 
 Impressum and Datenschutzerklärung are required for a customer-facing site (Art. 3 Abs. 1 lit. s UWG; Art. 19 DSG). Routes: `/[lang]/impressum/`, `/[lang]/datenschutz/`. Footer + survey links ship with **T39**. Conventions: [content/README.md](content/README.md#legal-pages).
 
-**T40 (done):** natural-person operator filled in DE/EN/FR/IT — name, street, PLZ/Ort, contact email (`mailto:`). Phone, Rechtsform, Vertretung, and Handelsregister/UID omitted as not applicable. Public deletion contact on Datenschutz matches the Impressum email (`i.laube@gmail.com`).
+**T40 (done):** natural-person operator filled in DE/EN/FR/IT — name and contact email (`mailto:`); postal address removed October 2026. Phone, Rechtsform, Vertretung, and Handelsregister/UID omitted as not applicable. Public deletion contact on Datenschutz matches the Impressum email (`i.laube@gmail.com`).
 
 ### Production checklist (T40)
 

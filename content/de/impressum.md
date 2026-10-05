@@ -12,22 +12,15 @@ sources:
     url: "https://www.fedlex.admin.ch/eli/cc/1988/223_223_223/de#art_3"
 ---
 
-Angaben gemäss **Art. 3 Abs. 1 lit. s UWG** (Anbieterkennzeichnung im elektronischen Geschäftsverkehr).
+Angaben gemäss **Art. 3 Abs. 1 lit. s UWG** (Anbieterkennzeichnung im elektronischen Geschäftsverkehr) für die Website **aicompliant.ch** (inkl. www.aicompliant.ch).
 
 ## Anbieter
 
 | | |
 |---|---|
 | **Name** | Ivan Laube |
-| **Strasse / Nr.** | Vorhaldenstrasse 10 |
-| **PLZ / Ort** | 8049 Zürich |
-| **Land** | Schweiz |
 | **E-Mail** | [i.laube@gmail.com](mailto:i.laube@gmail.com) |
-
-## Website
-
-Diese Website wird unter der Domain **aicompliant.ch** betrieben (inkl. `www`).
 
 ## Haftungshinweis
 
-Die Inhalte dieser Website dienen der allgemeinen Information und stellen **keine Rechtsberatung** dar. Trotz sorgfältiger Prüfung wird keine Gewähr für Aktualität, Richtigkeit und Vollständigkeit übernommen.
+Die Inhalte dieser Website dienen der allgemeinen Information und stellen **keine Rechtsberatung** dar. Sie werden sorgfältig erstellt und regelmässig überprüft; für Aktualität, Richtigkeit und Vollständigkeit wird jedoch keine Gewähr übernommen. Für die Inhalte verlinkter Websites sind ausschliesslich deren Betreiber verantwortlich.

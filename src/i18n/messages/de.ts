@@ -2,7 +2,7 @@ export const de = {
   meta: {
     title: "aicompliant.ch",
     description:
-      "Praxisnahe Informationen zum KI-Einsatz in der Schweiz: Compliance, Anbietervergleich und interaktive Entscheidungshilfen.",
+      "Praxisnahe Informationen für Schweizer Unternehmen zum Einsatz von KI: Datenschutz, EU AI Act, FINMA, Anbietervergleich und Entscheidungshilfen.",
   },
   nav: {
     brand: "aicompliant.ch",
@@ -37,21 +37,21 @@ export const de = {
     privacy: "Datenschutzerklärung",
   },
   home: {
-    eyebrow: "Schweizer KMU · KI-Einsatz",
-    title: "KI in der Schweiz einsetzen – auf belegter Grundlage.",
+    eyebrow: "Für Schweizer KMU",
+    title: "KI im Unternehmen einsetzen – was in der Schweiz gilt.",
     lead:
-      "Leitfäden zu DSG, EU AI Act und FINMA, Entscheidungshilfen, ein quellenbasierter Anbietervergleich und ein Website-Check. Unabhängig, ohne Tracking, monatlich gegen die Quellen geprüft.",
+      "Leitfäden zu Datenschutz, EU AI Act, FINMA und KI-Sicherheit, dazu Entscheidungshilfen, ein Anbietervergleich und ein Website-Check. Unabhängig, ohne Tracking und mit Quellenangaben, die monatlich automatisch auf Änderungen geprüft werden.",
     note:
-      "Deutsch ist die kanonische Sprache dieses Projekts. Übersetzungen in EN, FR und IT sind Entwürfe, bis sie geprüft wurden.",
+      "Massgebend ist die deutsche Fassung. Die englische, französische und italienische Übersetzung sind maschinell erstellte Entwürfe und noch nicht geprüft.",
     ctaTools: "Entscheidungshilfe starten",
     ctaVendors: "Anbieter vergleichen",
     quickCheckTitle: "Website Quick-Check",
     quickCheckLead:
-      "Prüft öffentlich sichtbare Signale Ihrer Website – Datenschutzerklärung, Impressum, Cookie-Tools, Tracker, Sicherheitsheader. Keine Compliance-Bewertung.",
+      "Prüft öffentlich sichtbare Merkmale Ihrer Website: Datenschutzerklärung, Impressum, Cookie-Tools, Tracker und Sicherheits-Header. Keine rechtliche Beurteilung.",
     quickCheckUrlLabel: "Website-URL",
     quickCheckSubmit: "Website prüfen",
     quickCheckPrivacy:
-      "Die URL wird einmalig an unseren Scanner gesendet und nicht dauerhaft gespeichert.",
+      "Die URL wird nur für diese Prüfung an unseren Scanner übermittelt und nicht dauerhaft gespeichert.",
     quickCheckChecksHeading: "Was geprüft wird",
     statsHeading: "Überblick",
     statsGuides: "Leitfäden",
@@ -60,7 +60,7 @@ export const de = {
     statsLastSource: "Letzte Quellenprüfung",
     guidesHeading: "Leitfäden",
     guidesLead:
-      "Quellenbasierte Grundlagen zu Datenschutz, EU AI Act, FINMA und Beschaffung.",
+      "Grundlagen zu Datenschutz, EU AI Act, FINMA, Beschaffung und KI-Sicherheit, jeweils mit Quellen.",
     guidesAction: "Alle Leitfäden",
     categoryDatenschutz: "Datenschutz",
     categoryEuAiAct: "EU AI Act",
@@ -70,42 +70,42 @@ export const de = {
     readingTime: "{n} Min. Lesezeit",
     toolsHeading: "Entscheidungshilfen",
     toolsLead:
-      "Interaktive Bäume mit belegten Quellen. Keine Compliance-Ampel.",
+      "Wenige Fragen, eine erste Einschätzung mit Quellenangaben. Ersetzt keine Prüfung im Einzelfall.",
     toolsMaxQuestions: "max. {n} Fragen",
     toolsAction: "Alle Entscheidungshilfen",
     vendorsHeading: "Anbietervergleich",
     vendorsLead:
-      "Fakten zu Hosting, DPA und Zertifizierungen — nur mit Quelle, sonst ungeprüft.",
+      "Hosting, Auftragsbearbeitungsvertrag (DPA) und Zertifizierungen im Vergleich. Jede Angabe mit Quelle, sonst als ungeprüft markiert.",
     vendorsListed: "{n} Anbieter gelistet",
     vendorsSwissHosting: "{n} mit belegtem Schweizer Hosting",
     vendorsDpa: "{n} mit belegter DPA",
     vendorsUnverifiedNote:
-      "Zellen ohne Quelle gelten als ungeprüft. Keine Empfehlungen oder Bewertungen.",
+      "Angaben ohne Quelle gelten als ungeprüft. Der Vergleich enthält keine Empfehlungen oder Bewertungen.",
     vendorsAction: "Zum Anbietervergleich",
     surveyHeading: "Umfrage & Benchmark",
     surveyLead:
-      "Kurze Umfrage zur KI-Adoption in Schweizer Unternehmen. Ergebnisse fliessen anonymisiert in den Benchmark ein.",
+      "Kurze Umfrage zur KI-Nutzung in Schweizer Unternehmen. Die Ergebnisse fliessen anonymisiert in den Benchmark ein.",
     surveyCta: "Zur Umfrage",
     benchmarkLink: "Zum Benchmark",
-    benchmarkPending: "Ergebnisse ab n ≥ {n}",
+    benchmarkPending: "Ergebnisse ab {n} Antworten",
     methodologyHeading: "Methode",
     methodologySourcesTitle: "Offizielle Quellen",
     methodologySourcesBody:
-      "Leitfäden und Entscheidungshilfen stützen sich auf behördliche und gesetzliche Primärquellen — mit Angabe der URL.",
+      "Leitfäden und Entscheidungshilfen stützen sich in erster Linie auf Gesetzestexte und Veröffentlichungen der Behörden (z. B. EDÖB, FINMA, BACS). Jede Seite nennt ihre Quellen mit Link.",
     methodologyChecksTitle: "Monatliche Quellenprüfung",
     methodologyChecksBody:
-      "Ein automatisierter Lauf prüft die hinterlegten Quellen monatlich und aktualisiert Verifikationsdaten im Repository.",
+      "Ein automatisierter Lauf ruft die Quellen jeden Monat ab und meldet Änderungen. Ändert sich eine Quelle inhaltlich, wird die betroffene Seite überprüft und angepasst.",
     methodologyIndependenceTitle: "Unabhängig",
     methodologyIndependenceBody:
-      "Keine Affiliate- oder Sponsor-Links, kein Tracking auf der Website, und keine Rechtsberatung.",
+      "Keine Affiliate- oder Sponsoring-Links und kein Tracking auf der Website.",
   },
   websiteCheck: {
     metaTitle: "Website Quick-Check",
     metaDescription:
-      "Erste Einschätzung einer Website: HTTPS, Datenschutzlink, Impressum, Cookie-Tools, Tracker und Sicherheitsheader — mit rechtlichen Bezügen. Keine Rechtsberatung.",
+      "Erste Einschätzung einer Website: HTTPS, Link zur Datenschutzerklärung, Impressum, Cookie-Tools, Tracker und Sicherheits-Header, mit den rechtlichen Bezügen. Keine Rechtsberatung.",
     title: "Website Quick-Check",
     lead:
-      "Geben Sie eine URL ein. Der Scan prüft öffentlich sichtbare Signale und liefert Fakten mit Status gefunden / nicht gefunden / unklar — keine Compliance-Bewertung.",
+      "Geben Sie eine URL ein. Der Scan prüft öffentlich sichtbare Merkmale und zeigt für jeden Punkt «gefunden», «nicht gefunden» oder «unklar». Ob die Website rechtskonform ist, beurteilt er nicht.",
     backHome: "← Zur Startseite",
     urlLabel: "Website-URL",
     urlPlaceholder: "beispiel.ch",
@@ -139,38 +139,38 @@ export const de = {
     legalBasis: "Rechtsgrundlage",
     evidence: "Hinweise",
     staticScanCaveat:
-      "Die Seite wirkt dynamisch (z. B. GTM oder SPA-Shell). Ein statischer Scan sieht möglicherweise nicht alle Skripte und Banner — die Ergebnisse können unvollständig sein.",
+      "Die Seite wird offenbar dynamisch geladen (z. B. über einen Tag-Manager oder als Single-Page-App). Ein statischer Scan erkennt dann möglicherweise nicht alle Skripte und Banner; die Ergebnisse können unvollständig sein.",
     disclaimer:
-      "Dieser Quick-Check ist eine erste Einschätzung anhand öffentlich sichtbarer Signale und stellt keine Rechtsberatung oder Compliance-Prüfung dar. Prüfen Sie die Quellen und holen Sie bei Bedarf Fachberatung ein.",
+      "Dieser Quick-Check ist eine erste Einschätzung anhand öffentlich sichtbarer Merkmale und stellt keine Rechtsberatung oder Compliance-Prüfung dar. Prüfen Sie die Quellen und holen Sie bei Bedarf Fachberatung ein.",
     notFoundNote:
-      "«Nicht gefunden» heisst, dass der Scan das Signal auf den geprüften Seiten nicht erkannt hat — nicht, dass es auf der Website fehlt.",
+      "«Nicht gefunden» bedeutet nur, dass der Scan das Merkmal auf den geprüften Seiten nicht erkannt hat. Es kann trotzdem vorhanden sein.",
     siteOwnerNote:
       "Sie betreiben eine geprüfte Website und halten ein Ergebnis für falsch? Kontaktangaben finden Sie im",
     siteOwnerLinkLabel: "Impressum",
     scanAgain: "Neue Prüfung",
     surveyPrompt:
-      "Helfen Sie beim Schweizer Benchmark — ca. {minutes} Minuten.",
+      "Machen Sie bei der Schweizer KI-Umfrage mit (ca. {minutes} Minuten).",
     surveyPromptCta: "Zur Umfrage",
   },
   benchmark: {
     metaTitle: "Benchmark",
     metaDescription:
-      "Anonymisierte Aggregatergebnisse der Schweizer KI-Adoptionsumfrage. Zellen mit weniger als fünf Antworten werden nicht ausgewiesen.",
-    indexTitle: "KI-Adoptions-Benchmark",
+      "Anonymisierte Ergebnisse der Umfrage zur KI-Nutzung in Schweizer Unternehmen. Werte, die auf weniger als fünf Antworten beruhen, werden nicht angezeigt.",
+    indexTitle: "Benchmark: KI-Nutzung in Schweizer Unternehmen",
     indexLead:
-      "Anonymisierte Auswertung der Umfrage. Nur veröffentlichte Zellen (n ≥ 5) werden gezeigt — kleine Gruppen bleiben unterdrückt.",
+      "Anonymisierte Auswertung der Umfrage. Angezeigt werden nur Werte, die auf mindestens fünf Antworten beruhen; kleinere Gruppen bleiben zum Schutz der Teilnehmenden ausgeblendet.",
     backHome: "← Zur Startseite",
     sampleSize: "Antworten gesamt: {n}",
     generatedAt: "Stand der Auswertung: {date}",
     emptyTitle: "Noch nicht genug Antworten",
     emptyLead:
-      "Der Benchmark erscheint, sobald genügend anonymisierte Antworten vorliegen (mindestens fünf pro ausgewiesener Zelle). Nehmen Sie an der Umfrage teil, um beizutragen.",
+      "Der Benchmark erscheint, sobald genügend Antworten vorliegen (mindestens fünf pro angezeigtem Wert). Mit Ihrer Teilnahme an der Umfrage tragen Sie dazu bei.",
     suppressionNote:
-      "Datenschutz: Optionen und Grössengruppen mit weniger als fünf Antworten werden nicht angezeigt.",
+      "Datenschutz: Antwortoptionen und Grössengruppen mit weniger als fünf Antworten werden nicht angezeigt.",
     questionSample: "n = {n}",
     comparisonHeading: "Ihre Grösse im Vergleich",
     comparisonLead:
-      "Wählen Sie Ihre Unternehmensgrösse. Wir zeigen den veröffentlichten Median der monatlichen KI-Ausgaben für diese Bandbreite — sofern genügend Antworten vorliegen.",
+      "Wählen Sie Ihre Unternehmensgrösse. Sofern genügend Antworten vorliegen, sehen Sie den Median der monatlichen KI-Ausgaben in dieser Grössenklasse.",
     comparisonSelectLabel: "Unternehmensgrösse",
     comparisonSelectPlaceholder: "Bandbreite wählen …",
     comparisonMedianLabel: "Median KI-Ausgaben (CHF/Monat) in Ihrer Bandbreite",
@@ -180,7 +180,7 @@ export const de = {
       "Für diese Gruppe gibt es noch keinen veröffentlichten Median.",
     surveyCta: "Zur Umfrage",
     disclaimer:
-      "Dieser Benchmark ist eine anonymisierte Pilotauswertung und stellt keine Rechtsberatung dar. Ergebnisse beschreiben die Stichprobe, nicht die gesamte Schweizer Wirtschaft.",
+      "Der Benchmark ist eine Pilotauswertung. Er beschreibt nur die Unternehmen, die an der Umfrage teilgenommen haben, und ist nicht repräsentativ für die Schweizer Wirtschaft.",
   },
   survey: {
     metaTitle: "Umfrage",
@@ -203,7 +203,7 @@ export const de = {
     turnstileLabel: "Sicherheitsprüfung",
     requiredHint: "Pflichtfrage",
     disclaimer:
-      "Die Umfrage dient der anonymisierten Benchmark-Auswertung. Antworten ohne E-Mail sind vollständig anonym. E-Mail-Adressen werden getrennt von den Antworten gespeichert und nur für die Bericht-Benachrichtigung genutzt. Keine Rechtsberatung.",
+      "Die Antworten werden nur für den anonymisierten Benchmark ausgewertet. Ohne E-Mail-Adresse bleibt Ihre Teilnahme anonym. Eine E-Mail-Adresse speichern wir getrennt von den Antworten und verwenden sie nur, um Sie über den Bericht zu informieren.",
     privacyLinkLabel: "Datenschutzerklärung",
     privacyNearEmail:
       "Weitere Hinweise zur optionalen E-Mail und zur Datenbearbeitung:",
@@ -226,31 +226,31 @@ export const de = {
     disclaimer:
       "Diese Seite dient nur der Information und stellt keine Rechtsberatung dar. Für konkrete Vorhaben empfiehlt sich die Prüfung durch Fachpersonen.",
     backHome: "← Zur Startseite",
-    breadcrumbLabel: "Brotkrumen",
+    breadcrumbLabel: "Pfadnavigation",
     breadcrumbHome: "Start",
     tocLabel: "Inhalt",
     tocNavLabel: "Inhaltsverzeichnis",
     relatedTools: "Passende Entscheidungshilfe",
     counselBadge: "Anwaltlich geprüft · {date}",
     translationDraft:
-      "Diese Übersetzung ist ein LLM-Entwurf und wurde noch nicht menschlich geprüft.",
+      "Diese Übersetzung wurde maschinell erstellt und noch nicht von einer Person geprüft.",
     translationCanonicalNote:
-      "Massgeblich ist die deutsche Fassung; Übersetzungen können abweichen.",
+      "Massgebend ist die deutsche Fassung; die Übersetzung kann davon abweichen.",
   },
   guides: {
     indexTitle: "Leitfäden",
     indexLead:
-      "Quellenbasierte Leitfäden zu DSG, EU AI Act, FINMA und Beschaffung. Keine Rechtsberatung.",
+      "Leitfäden zu Datenschutz, EU AI Act, FINMA, Beschaffung und KI-Sicherheit, jeweils mit Quellen. Keine Rechtsberatung.",
     backHome: "← Zur Startseite",
   },
   tools: {
     indexTitle: "Entscheidungshilfen",
     indexLead:
-      "Interaktive Entscheidungsbäume auf Basis strukturierter Regeln. Keine Rechtsberatung.",
+      "Beantworten Sie einige Fragen und erhalten Sie eine erste Einschätzung mit Quellenangaben. Keine Rechtsberatung.",
     backHome: "← Zur Startseite",
     backToIndex: "← Alle Entscheidungshilfen",
     back: "Zurück",
-    restart: "Von vorn",
+    restart: "Neu beginnen",
     progress: "Frage {n} · max. {m}",
     maxQuestions: "max. {count} Fragen",
     caveats: "Hinweise",
@@ -261,10 +261,10 @@ export const de = {
     copyLinkDone: "Kopiert",
     print: "Drucken / als PDF",
     surveyPrompt:
-      "Helfen Sie beim Schweizer Benchmark — ca. {minutes} Minuten",
+      "Machen Sie bei der Schweizer KI-Umfrage mit (ca. {minutes} Minuten).",
     surveyCta: "Zur Umfrage",
     disclaimer:
-      "Dieses Tool dient nur der Information und stellt keine Rechtsberatung dar. Ergebnisse sind Orientierungshilfen — prüfen Sie die Quellen und holen Sie bei Bedarf Fachberatung ein.",
+      "Dieses Tool dient nur der Information und stellt keine Rechtsberatung dar. Das Ergebnis ist eine Orientierungshilfe; prüfen Sie die Quellen und holen Sie bei Bedarf Fachberatung ein.",
     verdictLikely: "Eher vertretbar",
     verdictUnlikely: "Eher nicht vertretbar",
     verdictUnclear: "Unklar",
@@ -273,7 +273,7 @@ export const de = {
   vendors: {
     indexTitle: "Anbietervergleich",
     indexLead:
-      "Vergleich von KI-Anbietern nach Hosting, DPA, Zertifizierungen und weiteren Kriterien. Zellen ohne belegbare Quelle gelten als ungeprüft.",
+      "KI-Anbieter im Vergleich: Hosting, Auftragsbearbeitungsvertrag (DPA), Zertifizierungen und weitere Kriterien. Angaben ohne Quelle sind als ungeprüft markiert.",
     backHome: "← Zur Startseite",
     disclaimer:
       "Diese Übersicht dient nur der Information und stellt keine Rechtsberatung oder Empfehlung dar. Prüfen Sie die Quellen und holen Sie bei Bedarf Fachberatung ein.",
@@ -304,7 +304,7 @@ export const de = {
     dpaLink: "DPA öffnen",
     certIso27001: "ISO 27001",
     certSoc2: "SOC 2",
-    certFinmaRelevant: "FINMA-relevant",
+    certFinmaRelevant: "FINMA (Selbstauskunft)",
     certOther: "Sonstige",
     pricingFree: "Kostenlos",
     pricingUsage: "Nutzungsbasiert",

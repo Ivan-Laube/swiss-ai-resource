@@ -76,7 +76,7 @@ export const copy: Record<Locale, WebsiteCheckCopy> = {
   },
   de: {
     title: "Website Quick-Check",
-    lead: "Geben Sie eine URL ein. Der Scan prüft öffentlich sichtbare Signale und liefert Fakten mit Status gefunden / nicht gefunden / unklar — keine Compliance-Bewertung.",
+    lead: "Geben Sie eine URL ein. Der Scan prüft öffentlich sichtbare Merkmale und zeigt für jeden Punkt «gefunden», «nicht gefunden» oder «unklar». Ob die Website rechtskonform ist, beurteilt er nicht.",
     urlLabel: "Website-URL",
     submit: "Scannen",
     scanning: "Scan läuft …",
@@ -107,12 +107,12 @@ export const copy: Record<Locale, WebsiteCheckCopy> = {
     legalBasis: "Rechtsgrundlage",
     evidence: "Hinweise",
     staticScanCaveat:
-      "Die Seite wirkt dynamisch (z. B. GTM oder SPA-Shell). Ein statischer Scan sieht möglicherweise nicht alle Skripte und Banner — die Ergebnisse können unvollständig sein.",
+      "Die Seite wird offenbar dynamisch geladen (z. B. über einen Tag-Manager oder als Single-Page-App). Ein statischer Scan erkennt dann möglicherweise nicht alle Skripte und Banner; die Ergebnisse können unvollständig sein.",
     disclaimer:
-      "Dieser Quick-Check ist eine erste Einschätzung anhand öffentlich sichtbarer Signale und stellt keine Rechtsberatung oder Compliance-Prüfung dar. Prüfen Sie die Quellen und holen Sie bei Bedarf Fachberatung ein.",
+      "Dieser Quick-Check ist eine erste Einschätzung anhand öffentlich sichtbarer Merkmale und stellt keine Rechtsberatung oder Compliance-Prüfung dar. Prüfen Sie die Quellen und holen Sie bei Bedarf Fachberatung ein.",
     scanAgain: "Neue Prüfung",
     surveyPrompt:
-      "Helfen Sie beim Schweizer Benchmark — ca. {minutes} Minuten.",
+      "Machen Sie bei der Schweizer KI-Umfrage mit (ca. {minutes} Minuten).",
     surveyPromptCta: "Zur Umfrage",
   },
   fr: {
