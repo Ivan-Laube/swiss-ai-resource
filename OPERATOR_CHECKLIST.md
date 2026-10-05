@@ -1,6 +1,6 @@
 # Pre-traffic operator checklist — aicompliant.ch
 
-**Status (2026-10-05): items 1–8 complete; item 9 open** (survey privacy rollout, PR #51). This file is the historical runbook for Cloudflare / GitHub / DNS / terminal steps that shipped launch hardening. Re-run individual sections when rotating secrets or re-verifying production.
+**Status (2026-10-05): all items complete** (item 9, survey privacy rollout, done 2026-10-05). This file is the historical runbook for Cloudflare / GitHub / DNS / terminal steps that shipped launch hardening. Re-run individual sections when rotating secrets or re-verifying production.
 
 **Related:** [DEPLOY.md](DEPLOY.md) (full deploy runbook) · repo [`Ivan-Laube/swiss-ai-resource`](https://github.com/Ivan-Laube/swiss-ai-resource)
 
@@ -16,7 +16,7 @@
 | 6 | GitHub supply chain | High | [x] |
 | 7 | Pages preview Access + HSTS preload | Medium | [x] |
 | 8 | Post-deploy CSP / hydration smoke | Medium | [x] |
-| 9 | Survey IP hash secret + migration `0003` | High | [ ] |
+| 9 | Survey IP hash secret + migration `0003` | High | [x] |
 
 ---
 
@@ -259,7 +259,9 @@ Verified 2026-09-29:
 
 ---
 
-## 9. Survey IP hash secret + migration `0003` (High)
+## 9. Survey IP hash secret + migration `0003` (High) — DONE
+
+Verified 2026-10-05: secret set (10:13 UTC) → Worker uploaded (10:14) → `0003` applied. `responses` has no `report_opt_in`; `report_signups` is `WITHOUT ROWID`; a live opt-in submit stored the signup as `2026-10-05` (Monday) and a 64-char keyed quota hash; test signup deleted.
 
 **Why:** The survey Worker now stores the client IP for the daily cap as an HMAC keyed by a new secret, `IP_HASH_SECRET`. Before, it stored a plain SHA-256, which can be reversed for IPv4. Migration `0003` also removes the marker that let a survey answer be matched to its report email. Background: [DEPLOY.md → Unlinkability rollout](DEPLOY.md#unlinkability-rollout-migration-0003).
 
