@@ -39,10 +39,10 @@ export const it: Messages = {
     privacy: "Informativa sulla privacy",
   },
   home: {
-    eyebrow: "PMI svizzere · uso dell'IA",
-    title: "Usare l'IA in Svizzera — su basi documentate.",
+    eyebrow: "Per le PMI svizzere",
+    title: "Usare l'IA in azienda: cosa vale in Svizzera.",
     lead:
-      "Guide su LPD, AI Act UE e FINMA, strumenti decisionali, confronto fornitori basato su fonti e controllo del sito. Indipendente, senza tracking, verificato mensilmente rispetto alle fonti.",
+      "Guide su protezione dei dati, AI Act UE, FINMA e sicurezza dell'IA, oltre a strumenti decisionali, un confronto dei fornitori e un controllo del sito. Indipendente, senza tracking e con fonti verificate automaticamente ogni mese per eventuali modifiche.",
     note:
       "Il tedesco è la lingua di riferimento di questo progetto. Le traduzioni EN, FR e IT sono bozze fino a revisione.",
     ctaTools: "Avvia uno strumento decisionale",

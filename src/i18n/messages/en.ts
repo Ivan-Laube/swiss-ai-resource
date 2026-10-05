@@ -39,10 +39,10 @@ export const en: Messages = {
     privacy: "Privacy policy",
   },
   home: {
-    eyebrow: "Swiss SMEs · AI use",
-    title: "Deploy AI in Switzerland — on a sourced footing.",
+    eyebrow: "For Swiss SMEs",
+    title: "Using AI in your business: what applies in Switzerland.",
     lead:
-      "Guides on the FADP, EU AI Act and FINMA, decision tools, a source-based vendor comparison, and a website check. Independent, no tracking, checked monthly against the sources.",
+      "Guides on data protection, the EU AI Act, FINMA and AI security, plus decision tools, a vendor comparison and a website check. Independent, no tracking, and with sources that are checked automatically for changes every month.",
     note:
       "German is the canonical language of this project. EN, FR, and IT translations are drafts until reviewed.",
     ctaTools: "Start a decision tool",
