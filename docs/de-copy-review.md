@@ -1,6 +1,6 @@
 # DE copy review before the lawyer review (T29)
 
-Pre-review of the canonical German copy, 5 October 2026. This covers legal substance and language/style. It is a preparation for the lawyer review (T29), not a replacement for it. All changes are on branch `content/de-copy-review`.
+Pre-review of the canonical German copy, 5 October 2026. This covers legal substance and language/style. It is a preparation for the lawyer review (T29), not a replacement for it. All changes were merged in PR #52 (`5773409`) and are live.
 
 **Scope:** UI strings (`src/i18n/messages/de.ts`), all DE pages in `content/de/` (6 guides, Impressum, Datenschutz), the AI policy template (`content/templates/ai-policy-template/de.md`), and the DE strings of both decision tools (`data/rules/*.json`), the Website-Check (`data/scanner-checks.json`), the KI-Check (`data/readiness-check.json`, targeted fixes only) and the survey (`data/survey-questions.json`, title and one help text).
 
