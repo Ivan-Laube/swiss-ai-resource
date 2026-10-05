@@ -39,10 +39,10 @@ export const fr: Messages = {
     privacy: "Politique de confidentialité",
   },
   home: {
-    eyebrow: "PME suisses · usage de l'IA",
-    title: "Déployer l'IA en Suisse — sur des bases sourcées.",
+    eyebrow: "Pour les PME suisses",
+    title: "Utiliser l'IA dans l'entreprise : ce qui s'applique en Suisse.",
     lead:
-      "Guides sur la LPD, l'AI Act de l'UE et la FINMA, aides à la décision, comparatif d'offres sourcé et contrôle de site. Indépendant, sans suivi, vérifié chaque mois contre les sources.",
+      "Guides sur la protection des données, l'AI Act de l'UE, la FINMA et la sécurité de l'IA, ainsi que des aides à la décision, un comparatif des fournisseurs et un contrôle de site. Indépendant, sans suivi et avec des sources dont les modifications sont vérifiées automatiquement chaque mois.",
     note:
       "L'allemand est la langue de référence de ce projet. Les traductions EN, FR et IT sont des brouillons jusqu'à relecture.",
     ctaTools: "Lancer une aide à la décision",
