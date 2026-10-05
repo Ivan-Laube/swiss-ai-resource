@@ -23,4 +23,4 @@ Angaben gemäss **Art. 3 Abs. 1 lit. s UWG** (Anbieterkennzeichnung im elektroni
 
 ## Haftungshinweis
 
-Die Inhalte dieser Website dienen der allgemeinen Information und stellen **keine Rechtsberatung** dar. Sie werden sorgfältig erstellt und regelmässig überprüft; für Aktualität, Richtigkeit und Vollständigkeit wird jedoch keine Gewähr übernommen. Für die Inhalte verlinkter Websites sind ausschliesslich deren Betreiber verantwortlich.
+Die Inhalte dieser Website dienen der allgemeinen Information und stellen **keine Rechtsberatung** dar. Sie werden sorgfältig erstellt und regelmässig überprüft; für Aktualität, Richtigkeit und Vollständigkeit wird jedoch keine Gewähr übernommen. Für die Inhalte verlinkter fremder Websites übernehmen wir keine Verantwortung.
