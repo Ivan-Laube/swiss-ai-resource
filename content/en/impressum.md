@@ -1,6 +1,6 @@
 ---
-title: "Legal notice"
-description: "Provider identification and contact details for aicompliant.ch under Art. 3 para. 1 lit. s UWG."
+title: "Imprint"
+description: "Provider identification (Anbieterkennzeichnung) and contact details for aicompliant.ch pursuant to Art. 3 para. 1 lit. s UWG."
 last_verified: "2026-09-18"
 volatility: "stable"
 translation_status: "draft"
@@ -12,19 +12,15 @@ sources:
     url: "https://www.fedlex.admin.ch/eli/cc/1988/223_223_223/de#art_3"
 ---
 
-Information pursuant to **Art. 3 para. 1 lit. s UWG** (provider identification in electronic commerce).
+Information pursuant to **Art. 3 para. 1 lit. s UWG** (Unfair Competition Act (Bundesgesetz gegen den unlauteren Wettbewerb); provider identification (Anbieterkennzeichnung) in electronic commerce) for the website **aicompliant.ch** (including www.aicompliant.ch).
 
-## Provider
+## Provider (Anbieter)
 
 | | |
 |---|---|
 | **Name** | Ivan Laube |
 | **Email** | [i.laube@gmail.com](mailto:i.laube@gmail.com) |
 
-## Website
+## Liability notice
 
-This website is operated under the domain **aicompliant.ch** (including `www`).
-
-## Disclaimer
-
-The content of this website is for general information only and is **not legal advice**. Despite careful review, no warranty is given as to currency, accuracy, or completeness.
+The content of this website is provided for general information purposes only and does **not constitute legal advice**. It is prepared with care and reviewed regularly; however, no warranty is given as to its timeliness, accuracy, or completeness. We assume no responsibility for the content of linked third-party websites.

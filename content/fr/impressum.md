@@ -1,6 +1,6 @@
 ---
-title: "Mentions légales"
-description: "Identification du fournisseur et coordonnées pour aicompliant.ch selon l'art. 3 al. 1 let. s LCD."
+title: "Impressum"
+description: "Identification du fournisseur et coordonnées de contact pour aicompliant.ch conformément à l'art. 3 al. 1 let. s LCD."
 last_verified: "2026-09-18"
 volatility: "stable"
 translation_status: "draft"
@@ -12,7 +12,7 @@ sources:
     url: "https://www.fedlex.admin.ch/eli/cc/1988/223_223_223/de#art_3"
 ---
 
-Indications selon l'**art. 3 al. 1 let. s LCD** (identification du fournisseur dans le commerce électronique).
+Indications selon l'**art. 3 al. 1 let. s LCD** (identification du fournisseur dans les transactions commerciales électroniques) pour le site **aicompliant.ch** (y compris www.aicompliant.ch).
 
 ## Fournisseur
 
@@ -21,10 +21,6 @@ Indications selon l'**art. 3 al. 1 let. s LCD** (identification du fournisseur d
 | **Nom** | Ivan Laube |
 | **E-mail** | [i.laube@gmail.com](mailto:i.laube@gmail.com) |
 
-## Site web
+## Avis de non-responsabilité
 
-Ce site est exploité sous le domaine **aicompliant.ch** (y compris `www`).
-
-## Avertissement
-
-Le contenu de ce site a un but d'information générale et **ne constitue pas un conseil juridique**. Malgré un contrôle soigneux, aucune garantie n'est donnée quant à l'actualité, l'exactitude ou l'exhaustivité.
+Les contenus de ce site Internet servent à l'information générale et ne constituent **aucun conseil juridique**. Ils sont établis avec soin et vérifiés régulièrement ; toutefois, aucune garantie n'est donnée quant à leur actualité, leur exactitude et leur exhaustivité. Nous déclinons toute responsabilité pour le contenu de sites Internet tiers auxquels un lien renvoie.

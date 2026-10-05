@@ -1,6 +1,6 @@
 ---
-title: "Note legali"
-description: "Identificazione del fornitore e dati di contatto per aicompliant.ch ai sensi dell'art. 3 cpv. 1 lett. s LCSl."
+title: "Impressum"
+description: "Identificazione del fornitore e indicazioni di contatto per aicompliant.ch secondo l'art. 3 cpv. 1 lett. s LCSl."
 last_verified: "2026-09-18"
 volatility: "stable"
 translation_status: "draft"
@@ -12,7 +12,7 @@ sources:
     url: "https://www.fedlex.admin.ch/eli/cc/1988/223_223_223/de#art_3"
 ---
 
-Indicazioni ai sensi dell'**art. 3 cpv. 1 lett. s LCSl** (identificazione del fornitore nel commercio elettronico).
+Indicazioni secondo l'**art. 3 cpv. 1 lett. s LCSl** (identificazione del fornitore nelle transazioni commerciali elettroniche) per il sito web **aicompliant.ch** (incl. www.aicompliant.ch).
 
 ## Fornitore
 
@@ -21,10 +21,6 @@ Indicazioni ai sensi dell'**art. 3 cpv. 1 lett. s LCSl** (identificazione del fo
 | **Nome** | Ivan Laube |
 | **E-mail** | [i.laube@gmail.com](mailto:i.laube@gmail.com) |
 
-## Sito web
+## Avvertenza sulla responsabilità
 
-Questo sito è gestito sotto il dominio **aicompliant.ch** (incluso `www`).
-
-## Avvertenza
-
-I contenuti di questo sito hanno scopo informativo generale e **non costituiscono consulenza legale**. Nonostante un controllo accurato, non si assume alcuna garanzia di attualità, correttezza o completezza.
+I contenuti di questo sito web servono a fini di informazione generale e **non costituiscono una consulenza legale**. Essi vengono elaborati con cura e verificati regolarmente; tuttavia non viene fornita alcuna garanzia circa l'attualità, l'esattezza e la completezza. Non ci assumiamo alcuna responsabilità per i contenuti di siti web di terzi collegati tramite link.
