@@ -108,6 +108,11 @@ async function handleSubmit(
     return jsonResponse({ error: "Turnstile verification failed" }, 403, origin);
   }
 
+  // Fail closed: without the HMAC key the quota hash would be guessable.
+  if (!env.IP_HASH_SECRET) {
+    return jsonResponse({ error: "Server misconfigured" }, 500, origin);
+  }
+
   // Daily cap after Turnstile so invalid / bot traffic does not burn slots.
   const withinDaily = await consumeDailySubmitQuota(env, ip);
   if (!withinDaily) {

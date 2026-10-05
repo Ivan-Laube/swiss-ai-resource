@@ -49,6 +49,14 @@
       "dataset": "aicompliant_usage"
     }
   ],
+  // Secrets (`wrangler secret put <NAME> -c workers/survey/wrangler.jsonc`,
+  // never in git; local dev reads them from .dev.vars):
+  //   TURNSTILE_SECRET_KEY  Turnstile siteverify secret.
+  //   GITHUB_TOKEN          PAT for the weekly aggregates write (see T43).
+  //   IP_HASH_SECRET        HMAC key for the daily per-IP quota hash in
+  //                         submission_quotas (random, >= 32 bytes). /submit
+  //                         returns 500 without it. Rotating it only resets
+  //                         the current day's counters. See DEPLOY.md.
   "vars": {
     "SITE_ORIGIN": "https://aicompliant.ch",
     // Dedicated data-only repo (see DEPLOY.md "PAT blast radius" note):

@@ -268,6 +268,7 @@ npx wrangler whoami
 npx wrangler secret put TURNSTILE_SECRET_KEY -c workers/scanner/wrangler.jsonc
 npx wrangler secret put TURNSTILE_SECRET_KEY -c workers/survey/wrangler.jsonc
 npx wrangler secret put GITHUB_TOKEN -c workers/survey/wrangler.jsonc
+npx wrangler secret put IP_HASH_SECRET -c workers/survey/wrangler.jsonc   # set before deploy:survey (DEPLOY.md, migration 0003)
 
 # D1
 npx wrangler d1 migrations apply swiss-ai-survey --remote -c workers/survey/wrangler.jsonc
