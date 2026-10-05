@@ -37,16 +37,16 @@ Beim Aufruf der Website fallen technische Verbindungsdaten an (z. B. IP-Adresse,
 
 Wenn Sie an der Umfrage zur KI-Nutzung teilnehmen, speichern wir:
 
-- Ihre **Antworten**, zusammen mit Sprache, Umfrageversion, Zeitpunkt der Teilnahme und der Angabe, ob Sie den Bericht angefordert haben;
-- optional Ihre **E-Mail-Adresse**, wenn Sie den Benchmark-Bericht anfordern, zusammen mit Sprache und Datum.
+- Ihre **Antworten**, zusammen mit Sprache, Umfrageversion und Zeitpunkt der Teilnahme;
+- optional Ihre **E-Mail-Adresse**, wenn Sie den Benchmark-Bericht anfordern, zusammen mit Sprache und Kalenderwoche der Anmeldung.
 
-Antworten und E-Mail-Adressen werden in **getrennten Tabellen** einer Cloudflare-D1-Datenbank gespeichert, mit **eigenen Kennungen und ohne gemeinsamen Schlüssel**. Wir verknüpfen E-Mail-Adressen nicht mit Antworten und werten sie nicht gemeinsam aus. Ohne E-Mail-Adresse ist Ihre Teilnahme anonym.
+Antworten und E-Mail-Adressen werden in **getrennten Tabellen** einer Cloudflare-D1-Datenbank gespeichert, mit **eigenen Kennungen und ohne gemeinsamen Schlüssel**. Bei den Antworten wird nicht vermerkt, ob eine E-Mail-Adresse angegeben wurde, und bei der E-Mail-Adresse speichern wir nur die Kalenderwoche, nicht den genauen Zeitpunkt. Es besteht damit kein gespeicherter Bezug zwischen E-Mail-Adresse und Antwort. Wir verknüpfen beide nicht und werten sie nicht gemeinsam aus. Ohne E-Mail-Adresse ist Ihre Teilnahme anonym.
 
 ### 2.3 Schutz vor Missbrauch (Turnstile und Begrenzung der Einsendungen)
 
 Beim Absenden der Umfrage und beim Website Quick-Check prüft Cloudflare Turnstile, ob die Anfrage von einem Menschen stammt. Dazu werden technische Daten Ihres Browsers und Ihre IP-Adresse an Cloudflare übermittelt.
 
-Um Missbrauch der Umfrage zu begrenzen, speichern wir zudem kurzzeitig einen **Hashwert Ihrer IP-Adresse** (SHA-256; die IP-Adresse selbst speichern wir nicht) mit dem Datum und einem Zähler (höchstens 20 Einsendungen pro Tag). Diese Einträge werden spätestens nach zehn Tagen automatisch gelöscht. Sie dienen nur der Missbrauchsabwehr und werden nicht mit Antworten oder E-Mail-Adressen verknüpft.
+Um Missbrauch der Umfrage zu begrenzen, speichern wir zudem kurzzeitig einen **Hashwert Ihrer IP-Adresse** mit dem Datum und einem Zähler (höchstens 20 Einsendungen pro Tag). Der Hashwert wird mit einem geheimen Schlüssel und dem jeweiligen Datum gebildet (HMAC-SHA-256); er ändert sich daher täglich und lässt sich ohne diesen Schlüssel nicht auf die IP-Adresse zurückführen. Die IP-Adresse selbst speichern wir nicht. Diese Einträge werden spätestens nach zehn Tagen automatisch gelöscht. Sie dienen nur der Missbrauchsabwehr und werden nicht mit Antworten oder E-Mail-Adressen verknüpft.
 
 ### 2.4 Website Quick-Check
 
