@@ -384,7 +384,7 @@
           "id": "partly",
           "points": 1,
           "label": {
-            "de": "Wir kennen die Region, haben aber die Rechtsgrundlage für die Bekanntgabe ins Ausland nicht geprüft.",
+            "de": "Wir kennen die Region, haben aber nicht geprüft, ob die Bekanntgabe ins Ausland zulässig ist.",
             "en": "We know the region, but haven't checked the legal basis for disclosure abroad.",
             "fr": "Nous connaissons la région, mais nous n'avons pas vérifié la base légale de la communication à l'étranger.",
             "it": "Conosciamo la regione, ma non abbiamo verificato la base giuridica per la comunicazione all'estero."
@@ -394,7 +394,7 @@
           "id": "covered",
           "points": 2,
           "label": {
-            "de": "Bekannt und dokumentiert (z. B. Schweiz/EU, ein unter dem Swiss-US Data Privacy Framework zertifizierter US-Anbieter oder Standardvertragsklauseln).",
+            "de": "Bekannt und dokumentiert (z. B. Schweiz/EU, ein unter dem Swiss-U.S. Data Privacy Framework zertifizierter US-Anbieter oder Standarddatenschutzklauseln).",
             "en": "Known and documented (e.g. Switzerland/EU, a US provider certified under the Swiss-US Data Privacy Framework, or standard contractual clauses).",
             "fr": "Connue et documentée (p. ex. Suisse/UE, un fournisseur américain certifié dans le cadre du Swiss-US Data Privacy Framework, ou des clauses contractuelles types).",
             "it": "Nota e documentata (ad es. Svizzera/UE, un fornitore statunitense certificato secondo lo Swiss-US Data Privacy Framework o clausole contrattuali standard)."
@@ -698,7 +698,7 @@
         "nDSG Art. 22 (DPIA)"
       ],
       "action": {
-        "de": "Stellen Sie sicher, dass eine Person jeden KI-gestützten Entscheid über Einzelpersonen prüft, halten Sie den Ablauf schriftlich fest und informieren Sie Betroffene über ihr Recht auf menschliche Überprüfung.",
+        "de": "Stellen Sie sicher, dass eine Person jeden KI-gestützten Entscheid über Einzelpersonen prüft, und halten Sie den Ablauf schriftlich fest. Entscheidet ein System ausnahmsweise allein, müssen Sie die Betroffenen informieren und ihnen eine Überprüfung durch einen Menschen ermöglichen (Art. 21 DSG).",
         "en": "Make sure a person checks every AI-supported decision about individuals, write down how, and tell affected people they can ask for a human review.",
         "fr": "Veillez à ce qu'une personne contrôle chaque décision assistée par l'IA concernant des individus, consignez le processus par écrit et informez les personnes concernées de leur droit à un contrôle humain.",
         "it": "Assicuratevi che una persona controlli ogni decisione basata sull'IA riguardante singole persone, documentate per iscritto la procedura e informate gli interessati del loro diritto a un controllo umano."
@@ -864,7 +864,7 @@
         "it": "Qualcuno è responsabile dell'impiego dell'IA nella vostra azienda?"
       },
       "help": {
-        "de": "In Unternehmen mit weniger als 10 Personen gilt die Inhaberin, der Inhaber oder die Geschäftsführung als namentlich bestimmte Person.",
+        "de": "In Unternehmen mit weniger als 10 Personen genügt es, wenn die Inhaberin, der Inhaber oder die Geschäftsführung diese Aufgabe ausdrücklich übernimmt.",
         "en": "In companies with fewer than 10 people, the owner or managing director counts as a named person.",
         "fr": "Dans les entreprises de moins de 10 personnes, la ou le titulaire ou la direction est considérée comme la personne désignée nommément.",
         "it": "Nelle aziende con meno di 10 persone, la titolare, il titolare o la direzione è considerata la persona nominalmente designata."

@@ -3,7 +3,7 @@
   "version": 4,
   "estimated_minutes": 5,
   "title": {
-    "de": "Schweizer KI-Adoption 2026",
+    "de": "KI in Schweizer Unternehmen 2026",
     "en": "Swiss AI Adoption 2026",
     "fr": "Adoption de l'IA en Suisse 2026",
     "it": "Adozione dell'IA in Svizzera 2026"
@@ -24,7 +24,7 @@
         "it": "Quanti dipendenti ha la vostra azienda?"
       },
       "help": {
-        "de": "Vollzeitäquivalente (FTE) in der Schweiz, inkl. Inhaber/in; grobe Bandbreite genügt. Bands entsprechen den BFS/EU-KMU-Schwellen.",
+        "de": "Vollzeitstellen in der Schweiz, inkl. Inhaberin oder Inhaber; eine grobe Schätzung genügt. Die Grössenklassen entsprechen den KMU-Schwellen des BFS und der EU.",
         "en": "Full-time equivalents (FTE) in Switzerland, including owners; a rough band is enough. Bands follow BFS/EU SME thresholds.",
         "fr": "Équivalents temps plein (ETP) en Suisse, propriétaires compris ; une fourchette approximative suffit. Les bandes suivent les seuils PME BFS/UE.",
         "it": "Equivalenti a tempo pieno (FTE) in Svizzera, titolari inclusi; basta una fascia approssimativa. Le fasce seguono le soglie PMI BFS/UE."

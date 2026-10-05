@@ -64,7 +64,7 @@ Folgende Tools sind für die Arbeit freigegeben:
 |---|---|---|
 | 🟢 **Grün** (öffentlich) | Öffentlich verfügbare Informationen, allgemeine Fragen, eigene Texte ohne vertrauliche Inhalte | In allen freigegebenen Tools erlaubt. |
 | 🟡 **Gelb** (intern / Personendaten) | Interne Dokumente, Offerten, Namen und Kontaktdaten von Kundschaft oder Mitarbeitenden, Kundenkorrespondenz | Nur in Tools, die in Abschnitt 3 für «Gelb» freigegeben sind. Nur so viele Daten wie nötig; wo möglich anonymisieren oder Namen weglassen. |
-| 🔴 **Rot** (streng vertraulich / besonders schützenswert) | Gesundheitsdaten, Angaben zu Religion, Politik, Strafverfahren oder Sozialhilfe (besonders schützenswerte Personendaten, Art. 5 lit. c DSG); Daten unter Berufsgeheimnis; Geschäftsgeheimnisse von Kundschaft; Passwörter, Zugangsdaten, Bank- und Kartendaten | **Nie** in KI-Tools eingeben, ausser die KI-verantwortliche Person hat ein bestimmtes Tool für einen bestimmten Zweck schriftlich freigegeben. |
+| 🔴 **Rot** (streng vertraulich / besonders schützenswert) | Besonders schützenswerte Personendaten (Art. 5 lit. c DSG), z. B. zu Gesundheit, Religion, politischen Ansichten, Gewerkschaftszugehörigkeit oder Ethnie, genetische und biometrische Daten, Angaben zu Strafverfahren oder Sozialhilfe; Daten unter Berufsgeheimnis; Geschäftsgeheimnisse von Kundschaft; Passwörter, Zugangsdaten, Bank- und Kartendaten | **Nie** in KI-Tools eingeben, ausser die KI-verantwortliche Person hat ein bestimmtes Tool für einen bestimmten Zweck schriftlich freigegeben. |
 
 Wenn Sie nicht sicher sind, welche Stufe gilt, behandeln Sie die Daten wie die nächsthöhere Stufe.
 
@@ -72,7 +72,7 @@ Wenn Sie nicht sicher sind, welche Stufe gilt, behandeln Sie die Daten wie die n
 
 1. **Inhalt prüfen.** Fakten, Zahlen, Zitate, Quellen und Berechnungen werden vor der Verwendung überprüft. KI-Ergebnisse gelten nie als alleinige Quelle für rechtliche, steuerliche, medizinische oder finanzielle Aussagen.
 2. **Rechte Dritter beachten.** KI-erzeugte Texte, Bilder und Code können Rechte Dritter verletzen. Vor einer Veröffentlichung oder Weitergabe an Kundschaft wird dies mit gesundem Menschenverstand geprüft; im Zweifel wird die KI-verantwortliche Person gefragt.
-3. **Keine Entscheide über Personen ohne Menschen.** KI darf Entscheide über Personen (z. B. Bewerbungen, Kreditwürdigkeit, Preise, Kündigungen) vorbereiten, aber nicht allein treffen. Eine Person prüft jeden solchen Entscheid inhaltlich und hält fest, wie sie entschieden hat. Betroffene können verlangen, dass eine Person ihren Fall beurteilt (Art. 21 DSG).
+3. **Keine Entscheide über Personen ohne Menschen.** KI darf Entscheide über Personen (z. B. Bewerbungen, Kreditwürdigkeit, Preise, Kündigungen) vorbereiten, aber nicht allein treffen. Eine Person prüft jeden solchen Entscheid inhaltlich und hält fest, wie sie entschieden hat. So entstehen keine ausschliesslich automatisierten Einzelentscheide, für die besondere Informations- und Überprüfungspflichten gelten (Art. 21 DSG).
 4. **Kennzeichnen, wo nötig.** Inhalte, die mehrheitlich von KI erstellt wurden und für die Öffentlichkeit bestimmt sind, werden [als KI-generiert gekennzeichnet / nach Absprache mit der KI-verantwortlichen Person gekennzeichnet].
 5. **KI, die selbst handelt.** KI-Tools, die selbst Aktionen ausführen können (z. B. E-Mails versenden, buchen, bezahlen, löschen), erhalten nur die Zugriffe, die sie für ihre Aufgabe brauchen. Nicht umkehrbare Aktionen bestätigt vorher eine Person. Inhalte von aussen (eingehende E-Mails, Webseiten, Dokumente) können versteckte Anweisungen an die KI enthalten und gelten als nicht vertrauenswürdig.
 6. **Ungewöhnliche Anfragen prüfen.** Zahlungs- und Datenanfragen werden über einen zweiten Kanal bestätigt (z. B. Rückruf auf eine bekannte Nummer), egal wie überzeugend E-Mail, Stimme oder Video wirken. Stimmen und Gesichter lassen sich mit KI täuschend echt fälschen.
@@ -80,13 +80,13 @@ Wenn Sie nicht sicher sind, welche Stufe gilt, behandeln Sie die Daten wie die n
 ## 6. Transparenz gegenüber Dritten
 
 - Chatbots und andere KI-Systeme, mit denen Kundschaft oder Bewerbende direkt interagieren, sind klar als KI erkennbar.
-- Die KI-verantwortliche Person sorgt dafür, dass die Datenschutzerklärung die KI-Tools nennt, mit denen Personendaten bearbeitet werden, und den Zweck der Bearbeitung beschreibt (Art. 19 DSG).
+- Die KI-verantwortliche Person sorgt dafür, dass die Datenschutzerklärung über die Bearbeitung von Personendaten mit KI-Tools informiert: Zweck, Empfänger oder Kategorien von Empfängern (z. B. die Anbieter) und gegebenenfalls die Staaten, in die Daten gelangen (Art. 19 DSG).
 
 ## 7. Verbotene Verwendungen
 
 Folgendes ist nicht erlaubt:
 - KI zu nutzen, um Personen zu täuschen, z. B. durch gefälschte Bewertungen oder täuschend echte Bilder, Stimmen oder Videos real existierender Personen;
-- KI zur Überwachung des Verhaltens von Mitarbeitenden einzusetzen (Art. 26 ArGV 3);
+- KI zur Überwachung des Verhaltens von Mitarbeitenden einzusetzen (Art. 26 ArGV 3) oder um Daten über Mitarbeitende zu bearbeiten, die nicht ihre Eignung für die Stelle oder die Durchführung des Arbeitsvertrags betreffen (Art. 328b OR);
 - KI-Ergebnisse ungeprüft als Grundlage für Entscheide über Personen zu verwenden (siehe Abschnitt 5);
 - Sicherheitsvorkehrungen von KI-Tools oder unserer IT zu umgehen;
 - [weitere firmenspezifische Verbote].
@@ -116,7 +116,7 @@ Melden Sie **sofort** an [Name / E-Mail / Telefon], wenn:
 - Sie vermuten, dass ein KI-Tool oder ein Konto missbraucht wird oder dass ein KI-Tool etwas getan hat, das niemand veranlasst hat;
 - Sie eine verdächtige Anfrage erhalten haben, die gefälscht sein könnte (z. B. Anruf oder Video der Geschäftsleitung mit dringender Zahlungsanweisung).
 
-Eine Meldung ist erwünscht und hat keine Nachteile zur Folge, wenn sie rasch erfolgt. Die KI-verantwortliche Person begrenzt den Schaden, dokumentiert den Vorfall und prüft, ob eine Meldung an den Eidgenössischen Datenschutz- und Öffentlichkeitsbeauftragten (EDÖB) nötig ist (Art. 24 DSG) und ob Betroffene informiert werden müssen.
+Rasche Meldungen sind erwünscht. Wer einen Vorfall meldet, muss wegen der Meldung selbst keine Nachteile befürchten. Die KI-verantwortliche Person begrenzt den Schaden, dokumentiert den Vorfall und prüft, ob eine Meldung an den Eidgenössischen Datenschutz- und Öffentlichkeitsbeauftragten (EDÖB) nötig ist (Art. 24 DSG) und ob Betroffene informiert werden müssen.
 
 ## 11. Überprüfung und Verstösse
 

@@ -19,9 +19,6 @@ Information pursuant to **Art. 3 para. 1 lit. s UWG** (provider identification i
 | | |
 |---|---|
 | **Name** | Ivan Laube |
-| **Street / No.** | Vorhaldenstrasse 10 |
-| **Postcode / city** | 8049 Zürich |
-| **Country** | Switzerland |
 | **Email** | [i.laube@gmail.com](mailto:i.laube@gmail.com) |
 
 ## Website

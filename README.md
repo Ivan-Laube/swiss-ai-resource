@@ -259,7 +259,7 @@ Heuristic first assessment of a public URL against Swiss-facing signals (HTTPS, 
 
 Impressum (`/[lang]/impressum/`) and Datenschutzerklärung (`/[lang]/datenschutz/`) are Markdown content pages in all four locales. Footer links: [`SiteFooter`](src/components/SiteFooter.tsx). Survey form links Datenschutzerklärung next to the optional email field. Datenschutz documents unlinkable D1 storage (`responses` vs `report_signups`), retention, and deletion via the public contact email. Conventions: [content/README.md](content/README.md#legal-pages).
 
-**T39** (done): draft pages + UI links. **T40** (done): natural-person operator (name, street, PLZ/Ort, email) in DE/EN/FR/IT; phone, Rechtsform, Vertretung, and Handelsregister/UID omitted as not applicable. Notes: [DEPLOY.md](DEPLOY.md#legal-pages-t39t40). Lawyer review of the filled DE text is T29.
+**T39** (done): draft pages + UI links. **T40** (done): natural-person operator (name, email; postal address removed October 2026) in DE/EN/FR/IT; phone, Rechtsform, Vertretung, and Handelsregister/UID omitted as not applicable. Notes: [DEPLOY.md](DEPLOY.md#legal-pages-t39t40). Lawyer review of the filled DE text is T29.
 
 ## Deploy
 

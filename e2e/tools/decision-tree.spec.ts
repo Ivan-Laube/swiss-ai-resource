@@ -41,7 +41,7 @@ test.describe("decision tree", () => {
     await expect.poll(() => new URL(page.url()).hash).toBe("");
     await expect(
       page.getByRole("heading", {
-        name: "Enthalten Ihre Prompts, Kontext oder Ausgaben Personendaten?",
+        name: "Enthalten Ihre Eingaben, der mitgegebene Kontext oder die Ergebnisse Personendaten?",
       }),
     ).toBeVisible();
 
@@ -57,7 +57,7 @@ test.describe("decision tree", () => {
     await expect.poll(() => new URL(page.url()).hash).toBe("");
     await expect(
       page.getByRole("heading", {
-        name: "Enthalten Ihre Prompts, Kontext oder Ausgaben Personendaten?",
+        name: "Enthalten Ihre Eingaben, der mitgegebene Kontext oder die Ergebnisse Personendaten?",
       }),
     ).toBeVisible();
   });
