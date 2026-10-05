@@ -1,6 +1,6 @@
 # Pre-traffic operator checklist — aicompliant.ch
 
-**Status (2026-09-29): all items complete.** This file is the historical runbook for Cloudflare / GitHub / DNS / terminal steps that shipped launch hardening. Re-run individual sections when rotating secrets or re-verifying production.
+**Status (2026-10-05): items 1–8 complete; item 9 open** (survey privacy rollout, PR #51). This file is the historical runbook for Cloudflare / GitHub / DNS / terminal steps that shipped launch hardening. Re-run individual sections when rotating secrets or re-verifying production.
 
 **Related:** [DEPLOY.md](DEPLOY.md) (full deploy runbook) · repo [`Ivan-Laube/swiss-ai-resource`](https://github.com/Ivan-Laube/swiss-ai-resource)
 
@@ -16,6 +16,7 @@
 | 6 | GitHub supply chain | High | [x] |
 | 7 | Pages preview Access + HSTS preload | Medium | [x] |
 | 8 | Post-deploy CSP / hydration smoke | Medium | [x] |
+| 9 | Survey IP hash secret + migration `0003` | High | [ ] |
 
 ---
 
@@ -258,6 +259,64 @@ Verified 2026-09-29:
 
 ---
 
+## 9. Survey IP hash secret + migration `0003` (High)
+
+**Why:** The survey Worker now stores the client IP for the daily cap as an HMAC keyed by a new secret, `IP_HASH_SECRET`. Before, it stored a plain SHA-256, which can be reversed for IPv4. Migration `0003` also removes the marker that let a survey answer be matched to its report email. Background: [DEPLOY.md → Unlinkability rollout](DEPLOY.md#unlinkability-rollout-migration-0003).
+
+**Do not skip the order.** Without the secret, the new Worker rejects every survey submit (500). The old Worker breaks if the migration runs before the new one is deployed.
+
+Do this after PR #51 is merged, from an up-to-date `main` checkout.
+
+### 9.1 Set the secret
+
+Generate a random value and pipe it straight into Wrangler, so it is never shown or saved:
+
+```powershell
+node -e "process.stdout.write(require('crypto').randomBytes(32).toString('base64'))" | npx wrangler secret put IP_HASH_SECRET -c workers/survey/wrangler.jsonc
+```
+
+You never need to read the value back. If it's lost, set a new one; that only resets today's submission counters.
+
+**Check:** `npx wrangler secret list -c workers/survey/wrangler.jsonc` lists `IP_HASH_SECRET` next to `TURNSTILE_SECRET_KEY` and `GITHUB_TOKEN`.
+
+### 9.2 Deploy the survey Worker
+
+```powershell
+npm run deploy:survey
+```
+
+### 9.3 Apply migration `0003`
+
+```powershell
+npx wrangler d1 migrations apply swiss-ai-survey --remote -c workers/survey/wrangler.jsonc
+```
+
+Wrangler lists `0003_unlinkable_signups.sql` as pending; confirm.
+
+### 9.4 Check
+
+```powershell
+npx wrangler d1 execute swiss-ai-survey --remote -c workers/survey/wrangler.jsonc --command "PRAGMA table_info(responses);"
+npx wrangler d1 execute swiss-ai-survey --remote -c workers/survey/wrangler.jsonc --command "SELECT created_at, COUNT(*) AS n FROM report_signups GROUP BY created_at;"
+```
+
+- `report_opt_in` is not in the first list.
+- Every `created_at` in the second list is a Monday.
+- Submit once on [aicompliant.ch/de/survey/](https://aicompliant.ch/de/survey/) with a throwaway email and the report box checked: you get the success message.
+- Delete the test signup:
+
+  ```powershell
+  npx wrangler d1 execute swiss-ai-survey --remote -c workers/survey/wrangler.jsonc --command "DELETE FROM report_signups WHERE lower(email) = lower('your-test@example.com');"
+  ```
+
+**If the survey returns 500 after 9.2:** the secret is missing. Repeat 9.1; no redeploy needed.
+
+**Rollback:** before 9.3, `npx wrangler rollback -c workers/survey/wrangler.jsonc` restores the previous Worker. After 9.3, don't roll back the Worker (the old one needs the dropped column); fix forward instead.
+
+**Done when:** secret listed, migration applied, checks above pass. Then the Datenschutzerklärung §2.2/§2.3 wording can be updated (operator + lawyer, see PR #51).
+
+---
+
 ## Quick reference — commands
 
 ```powershell
@@ -268,7 +327,7 @@ npx wrangler whoami
 npx wrangler secret put TURNSTILE_SECRET_KEY -c workers/scanner/wrangler.jsonc
 npx wrangler secret put TURNSTILE_SECRET_KEY -c workers/survey/wrangler.jsonc
 npx wrangler secret put GITHUB_TOKEN -c workers/survey/wrangler.jsonc
-npx wrangler secret put IP_HASH_SECRET -c workers/survey/wrangler.jsonc   # set before deploy:survey (DEPLOY.md, migration 0003)
+npx wrangler secret put IP_HASH_SECRET -c workers/survey/wrangler.jsonc   # set before deploy:survey (section 9)
 
 # D1
 npx wrangler d1 migrations apply swiss-ai-survey --remote -c workers/survey/wrangler.jsonc

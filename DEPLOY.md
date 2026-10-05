@@ -466,11 +466,10 @@ The DE copy review (T29) found two gaps in what the Datenschutzerklärung §2.2/
 1. Create and set the secret (32 random bytes):
 
    ```bash
-   node -e "console.log(require('crypto').randomBytes(32).toString('base64'))"
-   npx wrangler secret put IP_HASH_SECRET -c workers/survey/wrangler.jsonc
+   node -e "process.stdout.write(require('crypto').randomBytes(32).toString('base64'))" | npx wrangler secret put IP_HASH_SECRET -c workers/survey/wrangler.jsonc
    ```
 
-   Don't store the value anywhere else; it never needs to be read back.
+   The value goes straight to Cloudflare and is never shown; it never needs to be read back. Step-by-step with checks: [OPERATOR_CHECKLIST.md §9](OPERATOR_CHECKLIST.md#9-survey-ip-hash-secret--migration-0003-high).
 2. Deploy the Worker: `npm run deploy:survey`. It works against both the old and the new schema.
 3. Apply the migration:
 
