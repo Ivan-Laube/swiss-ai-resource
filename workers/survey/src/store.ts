@@ -26,19 +26,19 @@ export async function storeResponse(
   },
 ): Promise<void> {
   const answersJson = JSON.stringify(input.answers);
-  const reportOptIn = input.reportOptIn ? 1 : 0;
 
   const statements: D1PreparedStatement[] = [
+    // No opt-in flag on the answer row: it would mark exactly the answers
+    // that have an email in report_signups (migration 0003 dropped it).
     env.DB.prepare(
-      `INSERT INTO responses (id, survey_id, survey_version, locale, answers_json, report_opt_in)
-       VALUES (?, ?, ?, ?, ?, ?)`,
+      `INSERT INTO responses (id, survey_id, survey_version, locale, answers_json)
+       VALUES (?, ?, ?, ?, ?)`,
     ).bind(
       input.id,
       input.surveyId,
       input.surveyVersion,
       input.locale,
       answersJson,
-      reportOptIn,
     ),
   ];
 
@@ -48,12 +48,14 @@ export async function storeResponse(
   // must not be persisted even if the client sent one.
   if (input.email && input.reportOptIn) {
     statements.push(
-      // created_at is date-only (not the shared batch's second-precision
-      // datetime) so it cannot be joined back to a `responses` row by
-      // matching insert timestamp — see privacy policy §2.2 unlinkability.
+      // created_at is the Monday of the current UTC week (not the shared
+      // batch's second-precision datetime, nor the day) so it cannot be
+      // matched to a `responses` row by insert time — see privacy policy
+      // §2.2 unlinkability. The table has no rowid (migration 0003), so
+      // insert order is not kept either.
       env.DB.prepare(
         `INSERT INTO report_signups (id, email, locale, created_at)
-         VALUES (?, ?, ?, date('now'))`,
+         VALUES (?, ?, ?, date('now', '-6 days', 'weekday 1'))`,
       ).bind(crypto.randomUUID(), input.email, input.locale),
     );
   }
@@ -88,9 +90,11 @@ export async function purgeExpiredSurveyData(
       `DELETE FROM responses
        WHERE created_at < datetime('now', ?)`,
     ).bind(`-${RESPONSE_RETENTION_MONTHS} months`),
+    // created_at is a week-start date, so compare date to date. The coarser
+    // date only moves deletion earlier (by up to six days), never later.
     env.DB.prepare(
       `DELETE FROM report_signups
-       WHERE created_at < datetime('now', ?)`,
+       WHERE created_at < date('now', ?)`,
     ).bind(`-${SIGNUP_RETENTION_MONTHS} months`),
     // Quota rows only matter for the current UTC day — drop older days.
     env.DB.prepare(
@@ -106,10 +110,34 @@ export async function purgeExpiredSurveyData(
   };
 }
 
-async function sha256Hex(value: string): Promise<string> {
-  const bytes = new TextEncoder().encode(value);
-  const digest = await crypto.subtle.digest("SHA-256", bytes);
-  return [...new Uint8Array(digest)]
+/**
+ * HMAC-SHA256(secret, "<UTC day>:<ip>") as hex. A plain SHA-256 of an IPv4
+ * address can be reversed by hashing all 2^32 addresses; without the Worker
+ * secret this cannot. The day in the message rotates the hash daily, so the
+ * same IP gets unrelated values on different days.
+ */
+async function hashClientIp(
+  secret: string,
+  day: string,
+  ip: string,
+): Promise<string> {
+  if (!secret) {
+    throw new Error("IP_HASH_SECRET is not configured");
+  }
+  const encoder = new TextEncoder();
+  const key = await crypto.subtle.importKey(
+    "raw",
+    encoder.encode(secret),
+    { name: "HMAC", hash: "SHA-256" },
+    false,
+    ["sign"],
+  );
+  const mac = await crypto.subtle.sign(
+    "HMAC",
+    key,
+    encoder.encode(`${day}:${ip}`),
+  );
+  return [...new Uint8Array(mac)]
     .map((b) => b.toString(16).padStart(2, "0"))
     .join("");
 }
@@ -117,7 +145,7 @@ async function sha256Hex(value: string): Promise<string> {
 /**
  * Atomically consume one daily submission slot for a hashed client IP.
  * Returns false when the UTC-day cap is already reached (no increment).
- * Does not store the raw IP — only SHA-256 hex.
+ * Does not store the raw IP — only a keyed, day-scoped hash (hashClientIp).
  */
 export async function consumeDailySubmitQuota(
   env: Env,
@@ -125,7 +153,7 @@ export async function consumeDailySubmitQuota(
   limit: number = DAILY_SUBMIT_LIMIT,
 ): Promise<boolean> {
   const day = new Date().toISOString().slice(0, 10);
-  const ipHash = await sha256Hex(ip === "unknown" ? `unknown:${day}` : ip);
+  const ipHash = await hashClientIp(env.IP_HASH_SECRET, day, ip);
 
   const existing = await env.DB.prepare(
     `SELECT count AS count FROM submission_quotas WHERE day = ? AND ip_hash = ?`,

@@ -269,18 +269,18 @@ Intake API for the Swiss AI adoption survey. Code lives in [`workers/survey/`](w
 | Worker | `https://api.aicompliant.ch` (`POST /submit`, cron `0 5 * * 1`; `workers_dev` / `preview_urls` disabled) |
 | D1 | `swiss-ai-survey` — `database_id` in [`workers/survey/wrangler.jsonc`](workers/survey/wrangler.jsonc); tables `responses` + `report_signups` (no FK) + `submission_quotas` (hashed IP daily cap) |
 | Origin / CORS | `SITE_ORIGIN=https://aicompliant.ch` — POST/OPTIONS enforce Origin; ACAO only for allowlisted origin |
-| Worker secrets | `TURNSTILE_SECRET_KEY`, `GITHUB_TOKEN` (classic PAT with `public_repo` for data-repo writes — never in git) |
+| Worker secrets | `TURNSTILE_SECRET_KEY`, `GITHUB_TOKEN` (classic PAT with `public_repo` for data-repo writes), `IP_HASH_SECRET` (HMAC key for the daily per-IP quota hash, see [Unlinkability rollout](#unlinkability-rollout-migration-0003)) — never in git |
 | Pages | `NEXT_PUBLIC_SURVEY_API_URL` + `NEXT_PUBLIC_TURNSTILE_SITE_KEY` set; form live on [aicompliant.ch/de/survey/](https://aicompliant.ch/de/survey/) |
 
 **Pre-launch hygiene (done):** Turnstile widget rotated to `swiss-ai-survey-v2` and Worker `GITHUB_TOKEN` replaced — [T23e / T23f](#pre-launch-secret-hygiene-t23e--t23f). PAT blast radius narrowed to [`swiss-ai-survey-data`](https://github.com/Ivan-Laube/swiss-ai-survey-data) — [T43](#pat-scoped-to-a-dedicated-data-repo-t43). Live form + Quick-Check browser smoke — [T41](#live-ui-smoke-t41). Operator cutover — [`OPERATOR_CHECKLIST.md`](OPERATOR_CHECKLIST.md).
 
-**D1 tables** ([`migrations/0001_init.sql`](workers/survey/migrations/0001_init.sql) + [`0002_submission_quotas.sql`](workers/survey/migrations/0002_submission_quotas.sql)):
+**D1 tables** ([`migrations/0001_init.sql`](workers/survey/migrations/0001_init.sql) + [`0002_submission_quotas.sql`](workers/survey/migrations/0002_submission_quotas.sql) + [`0003_unlinkable_signups.sql`](workers/survey/migrations/0003_unlinkable_signups.sql)):
 
 | Table | Purpose |
 |---|---|
-| `responses` | Survey answers (`answers_json`); own UUID; `report_opt_in` flag only |
-| `report_signups` | Optional report-notification emails; **own UUID, no FK** to `responses` |
-| `submission_quotas` | Hashed client IP → UTC-day successful submit count (cap 20/day) |
+| `responses` | Survey answers (`answers_json`), locale, survey version, `created_at`; own UUID; **no** opt-in flag (dropped in `0003`) |
+| `report_signups` | Optional report-notification emails; **own UUID, no FK** to `responses`; `created_at` is the Monday of the UTC week; `WITHOUT ROWID` (no insert order) |
+| `submission_quotas` | HMAC of the client IP (keyed by `IP_HASH_SECRET`, rotated daily) → UTC-day successful submit count (cap 20/day) |
 
 That separation is what makes the UI/privacy claim (“emails stored separately from answers”) accurate. Retention and deletion: [Email retention and deletion](#email-retention-and-deletion).
 
@@ -376,6 +376,7 @@ Open `http://localhost:3000/de/survey/`. Complete the form → expect `201` and 
 | `NEXT_PUBLIC_SURVEY_API_URL` | Pages / `.env` | Worker base URL (prod: `https://api.aicompliant.ch`; local: `http://127.0.0.1:8787`) |
 | `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | Pages / `.env` | Turnstile site key (test key for local; production widget on Pages) |
 | `TURNSTILE_SECRET_KEY` | Worker secret / `.dev.vars` | Siteverify secret (never in git) |
+| `IP_HASH_SECRET` | Worker secret / `.dev.vars` | HMAC key for the daily per-IP quota hash (never in git; random, at least 32 bytes in production; any non-empty value locally). Missing → `/submit` returns 500 |
 | `SITE_ORIGIN` | Worker `vars` | Allowed browser Origin + CORS reflect value (required; default `https://aicompliant.ch`; www sibling also accepted; use `http://localhost:3000` for local form UI; missing → 500) |
 
 ### Production checklist (T23a–T23d) — completed
@@ -439,7 +440,8 @@ The survey Worker also runs a weekly cron (`0 5 * * 1`, Monday 05:00 UTC) that f
 Optional report emails live in `report_signups` with their **own** id and **no foreign key** to `responses`, so they cannot be joined back to an answer row. That matches the survey UI claim that emails are stored separately from answers.
 
 - **Opt-in gated:** `storeResponse` in [`workers/survey/src/store.ts`](workers/survey/src/store.ts) only inserts a `report_signups` row when `report_opt_in` is `true` — an email typed into the field without checking the box is never persisted. (Previously any non-empty email was stored regardless of the checkbox; fixed as it contradicted the Datenschutzerklärung's opt-in basis for email storage.)
-- **Timestamp unlinkability:** `report_signups.created_at` is written at date-only precision (`date('now')`), not the shared insert batch's second-precision `datetime('now')` — so it can't be joined back to a `responses` row by matching insert timestamp, on top of the separate-id/no-FK design.
+- **No opt-in marker on answers:** `responses` has no `report_opt_in` column (dropped in migration `0003`). The flag marked exactly the answers that had an email, so (date, locale, opt-in) could match an answer to its signup on a quiet day.
+- **Timestamp unlinkability:** `report_signups.created_at` is the Monday of the UTC week (`date('now', '-6 days', 'weekday 1')`), not the shared insert batch's second-precision `datetime('now')` or the day. The table is `WITHOUT ROWID`, so rows are stored by their random UUID and insert order is not kept either.
 - **Public contact (T40):** deletion requests are directed to **i.laube@gmail.com** (Impressum / Datenschutzerklärung).
 - **Automatic retention:** the weekly cron deletes signup (and response) rows older than 24 months (`purgeExpiredSurveyData` in [`workers/survey/src/store.ts`](workers/survey/src/store.ts)).
 - **On-request deletion:** after a user emails the contact above, remove all signup rows for that address (case-insensitive):
@@ -450,6 +452,46 @@ Optional report emails live in `report_signups` with their **own** id and **no f
   ```
 
   Local D1: add `--local` instead of `--remote`. The Worker also exports `deleteReportSignupByEmail` for the same operation.
+
+### Unlinkability rollout (migration 0003)
+
+The DE copy review (T29) found two gaps in what the Datenschutzerklärung §2.2/§2.3 promised: `responses.report_opt_in` plus timestamps let an answer be matched to its email on a quiet day, and the quota table held an unsalted SHA-256 of the IP, which is reversible for IPv4 by hashing all 2^32 addresses. The fix:
+
+- **Answers:** the Worker no longer writes an opt-in flag; migration `0003` drops the column, which also removes it from existing rows.
+- **Signups:** `created_at` is the ISO week start (Monday, UTC), and the table is rebuilt `WITHOUT ROWID`. Existing rows are coarsened by the migration. The 24-month purge compares date to date; the coarser date only moves deletion earlier (by up to six days), never later.
+- **IP hash:** `ip_hash = HMAC-SHA256(IP_HASH_SECRET, "<UTC day>:<ip>")` (`hashClientIp` in [`workers/survey/src/store.ts`](workers/survey/src/store.ts)). Without the secret the hash cannot be brute-forced, and the day in the message gives the same IP unrelated hashes on different days. The migration deletes all existing quota rows, since they hold the old unsalted hashes.
+
+**Production order matters.** The previous Worker names `report_opt_in` in its `INSERT`, so applying the migration before the deploy breaks every submit (500) until the new Worker is live.
+
+1. Create and set the secret (32 random bytes):
+
+   ```bash
+   node -e "process.stdout.write(require('crypto').randomBytes(32).toString('base64'))" | npx wrangler secret put IP_HASH_SECRET -c workers/survey/wrangler.jsonc
+   ```
+
+   The value goes straight to Cloudflare and is never shown; it never needs to be read back. Step-by-step with checks: [OPERATOR_CHECKLIST.md §9](OPERATOR_CHECKLIST.md#9-survey-ip-hash-secret--migration-0003-high).
+2. Deploy the Worker: `npm run deploy:survey`. It works against both the old and the new schema.
+3. Apply the migration:
+
+   ```bash
+   npx wrangler d1 migrations apply swiss-ai-survey --remote -c workers/survey/wrangler.jsonc
+   ```
+
+4. Check:
+
+   ```bash
+   npx wrangler d1 execute swiss-ai-survey --remote -c workers/survey/wrangler.jsonc --command "PRAGMA table_info(responses);"
+   npx wrangler d1 execute swiss-ai-survey --remote -c workers/survey/wrangler.jsonc --command "SELECT created_at, COUNT(*) AS n FROM report_signups GROUP BY created_at;"
+   ```
+
+   `report_opt_in` is gone and every `created_at` is a Monday. Then submit once through the live form (as in [T41](#live-ui-smoke-t41)) and delete the test signup.
+
+**Rotating `IP_HASH_SECRET`:** `wrangler secret put` a new value. Only the current day's counters reset (old rows no longer match); no migration needed. If the secret may have leaked, rotate it and run `DELETE FROM submission_quotas;`.
+
+**What code does not cover:**
+
+- **D1 Time Travel** keeps point-in-time history (30 days on Workers Paid, 7 on Free), and it can't be turned off. Anyone with access to the Cloudflare account could restore the database to a minute before the migration, or step through restores to see which rows were added together. For pre-migration data this ends once the window has passed after the rollout; for new submissions it always applies to the most recent window.
+- **Small groups:** a signup still carries its week and locale. In a week where only one answer arrives in a given locale, an answer and an email in that week and locale belong together. With more traffic this becomes a 1-in-n guess.
 
 ### Local run (no GitHub, no secrets)
 

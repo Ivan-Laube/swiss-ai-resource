@@ -1,3 +1,7 @@
 # Cloudflare Turnstile test secret (always-passes).
 # See https://developers.cloudflare.com/turnstile/troubleshooting/testing/
 TURNSTILE_SECRET_KEY=1x0000000000000000000000000000000AA
+
+# HMAC key for the daily per-IP quota hash. Any non-empty value works
+# locally; production uses a random secret (see DEPLOY.md).
+IP_HASH_SECRET=local-dev-ip-hash-secret

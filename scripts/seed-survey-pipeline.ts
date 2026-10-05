@@ -20,6 +20,7 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const workerDir = join(root, "workers", "survey");
 const wranglerConfig = join(workerDir, "wrangler.jsonc");
 const ALWAYS_PASS = "1x0000000000000000000000000000000AA";
+const LOCAL_IP_HASH_SECRET = "local-dev-ip-hash-secret";
 const origin = "https://aicompliant.ch";
 
 const args = process.argv.slice(2);
@@ -137,7 +138,7 @@ async function main(): Promise<void> {
   console.log(`Seeding n=${n} via ${base}`);
   writeFileSync(
     join(workerDir, ".dev.vars"),
-    `TURNSTILE_SECRET_KEY=${ALWAYS_PASS}\n`,
+    `TURNSTILE_SECRET_KEY=${ALWAYS_PASS}\nIP_HASH_SECRET=${LOCAL_IP_HASH_SECRET}\n`,
   );
 
   const migrate = spawnSync(
