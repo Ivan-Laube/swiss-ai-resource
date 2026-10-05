@@ -77,7 +77,7 @@ Das DSG sieht Bussen bis CHF 250'000 vor, unter anderem bei Verletzung der Infor
 
 ## Was KMU jetzt tun können {#next-steps}
 
-1. **Überblick schaffen:** Halten Sie fest, welche KI-Tools Personendaten bearbeiten. Ein formelles Verzeichnis der Bearbeitungstätigkeiten (Art. 12 DSG) müssen Unternehmen mit weniger als 250 Mitarbeitenden nur führen, wenn sie umfangreich besonders schützenswerte Personendaten bearbeiten oder ein Profiling mit hohem Risiko durchführen (Art. 24 DSV).
+1. **Überblick schaffen:** Halten Sie fest, welche KI-Tools Personendaten bearbeiten. Ein Verzeichnis der Bearbeitungstätigkeiten (Art. 12 DSG) müssen Unternehmen mit weniger als 250 Mitarbeitenden nur führen, wenn sie umfangreich besonders schützenswerte Personendaten bearbeiten oder ein Profiling mit hohem Risiko durchführen (Art. 24 DSV).
 2. **Datenschutzerklärung und interne Regeln anpassen.** Als Ausgangspunkt dient die [Vorlage für eine KI-Richtlinie (Word)](download:ai-policy-template).
 3. **Bei hohem Risiko eine DSFA durchführen**, bevor die Anwendung startet.
 4. **Mit den Anbietern klären:** Auftragsbearbeitungsvertrag, Training mit Ihren Daten, Speicherort und Bekanntgabe ins Ausland (siehe [US-gehostete LLMs unter dem nDSG](/de/us-hosted-llms-ndsg/)).
