@@ -4,7 +4,7 @@ export const en: Messages = {
   meta: {
     title: "aicompliant.ch",
     description:
-      "Practical guidance on AI deployment in Switzerland: compliance, vendor comparison, and interactive decision tools.",
+      "Practical guidance for Swiss companies on using AI: data protection, the EU AI Act, FINMA, a vendor comparison and decision tools.",
   },
   nav: {
     brand: "aicompliant.ch",
@@ -44,16 +44,16 @@ export const en: Messages = {
     lead:
       "Guides on data protection, the EU AI Act, FINMA and AI security, plus decision tools, a vendor comparison and a website check. Independent, no tracking, and with sources that are checked automatically for changes every month.",
     note:
-      "German is the canonical language of this project. EN, FR, and IT translations are drafts until reviewed.",
+      "The German version is authoritative. The English, French and Italian translations are machine-generated drafts and have not been reviewed yet.",
     ctaTools: "Start a decision tool",
     ctaVendors: "Compare vendors",
     quickCheckTitle: "Website Quick-Check",
     quickCheckLead:
-      "Checks publicly visible signals on your site — privacy notice, impressum, cookie tools, trackers, security headers. Not a compliance assessment.",
+      "Checks publicly visible features of your website: privacy notice, impressum, cookie tools, trackers and security headers. Not a legal assessment.",
     quickCheckUrlLabel: "Website URL",
     quickCheckSubmit: "Check website",
     quickCheckPrivacy:
-      "The URL is sent once to our scanner and is not stored permanently.",
+      "The URL is sent to our scanner only for this check and is not stored permanently.",
     quickCheckChecksHeading: "What it checks",
     statsHeading: "At a glance",
     statsGuides: "Guides",
@@ -62,7 +62,7 @@ export const en: Messages = {
     statsLastSource: "Last source check",
     guidesHeading: "Guides",
     guidesLead:
-      "Source-based primers on data protection, the EU AI Act, FINMA, and procurement.",
+      "Primers on data protection, the EU AI Act, FINMA, procurement and AI security, each with sources.",
     guidesAction: "All guides",
     categoryDatenschutz: "Data protection",
     categoryEuAiAct: "EU AI Act",
@@ -72,42 +72,42 @@ export const en: Messages = {
     readingTime: "{n} min read",
     toolsHeading: "Decision tools",
     toolsLead:
-      "Interactive trees with cited sources. No compliance traffic lights.",
+      "A few questions, a first assessment with sources. Not a substitute for a case-by-case review.",
     toolsMaxQuestions: "up to {n} questions",
     toolsAction: "All decision tools",
     vendorsHeading: "Vendor comparison",
     vendorsLead:
-      "Facts on hosting, DPAs and certifications — only with a source, otherwise unverified.",
+      "Hosting, data processing agreements (DPA) and certifications compared. Every fact has a source, otherwise it is marked as unverified.",
     vendorsListed: "{n} vendors listed",
     vendorsSwissHosting: "{n} with sourced Swiss hosting",
     vendorsDpa: "{n} with a sourced DPA",
     vendorsUnverifiedNote:
-      "Cells without a source count as unverified. No recommendations or scores.",
+      "Information without a source counts as unverified. The comparison contains no recommendations or ratings.",
     vendorsAction: "Open vendor comparison",
     surveyHeading: "Survey & benchmark",
     surveyLead:
-      "A short survey on AI adoption in Swiss companies. Anonymized results feed the benchmark.",
+      "A short survey on AI use in Swiss companies. The results feed into the benchmark in anonymized form.",
     surveyCta: "Take the survey",
     benchmarkLink: "View benchmark",
-    benchmarkPending: "Results from n ≥ {n}",
+    benchmarkPending: "Results from {n} responses",
     methodologyHeading: "Method",
     methodologySourcesTitle: "Official sources",
     methodologySourcesBody:
-      "Guides and decision tools rely on primary regulatory and statutory sources — with the URL stated.",
+      "Guides and decision tools rely primarily on legal texts and publications by the authorities (e.g. FDPIC, FINMA, NCSC). Every page lists its sources with links.",
     methodologyChecksTitle: "Monthly source checks",
     methodologyChecksBody:
-      "An automated job checks registered sources each month and updates verification dates in the repository.",
+      "An automated job fetches the sources every month and reports changes. When a source changes in substance, the affected page is reviewed and updated.",
     methodologyIndependenceTitle: "Independent",
     methodologyIndependenceBody:
-      "No affiliate or sponsor links, no tracking on the site, and no legal advice.",
+      "No affiliate or sponsored links and no tracking on the website.",
   },
   websiteCheck: {
     metaTitle: "Website Quick-Check",
     metaDescription:
-      "A first look at a website: HTTPS, privacy link, impressum, cookie tools, trackers, and security headers — with legal citations. Not legal advice.",
+      "A first look at a website: HTTPS, link to the privacy notice, impressum, cookie tools, trackers and security headers, with the legal references. Not legal advice.",
     title: "Website Quick-Check",
     lead:
-      "Enter a URL. The scan checks publicly visible signals and returns facts with status found / not found / indeterminate — not a compliance verdict.",
+      "Enter a URL. The scan checks publicly visible features and shows “found”, “not found” or “indeterminate” for each item. It does not assess whether the website complies with the law.",
     backHome: "← Back to home",
     urlLabel: "Website URL",
     urlPlaceholder: "example.ch",
@@ -138,38 +138,38 @@ export const en: Messages = {
     legalBasis: "Legal basis",
     evidence: "Evidence",
     staticScanCaveat:
-      "The page looks dynamic (e.g. GTM or an SPA shell). A static scan may miss injected scripts and banners — results may be incomplete.",
+      "The page appears to load dynamically (e.g. through a tag manager or as a single-page app). A static scan may then miss some scripts and banners, so the results may be incomplete.",
     disclaimer:
-      "This Quick-Check is a first assessment from publicly visible signals and is not legal advice or a compliance audit. Check the sources and consult qualified professionals when needed.",
+      "This Quick-Check is a first assessment based on publicly visible features and is not legal advice or a compliance audit. Check the sources and consult qualified professionals when needed.",
     notFoundNote:
-      "“Not found” means the scan did not detect the signal on the pages it checked — not that it is missing from the website.",
+      "“Not found” only means that the scan did not detect the feature on the pages it checked. It may still be present.",
     siteOwnerNote:
       "Do you run a scanned website and think a result is wrong? Contact details are in our",
     siteOwnerLinkLabel: "legal notice",
     scanAgain: "New check",
     surveyPrompt:
-      "Help build the Swiss benchmark — about {minutes} minutes.",
+      "Take part in the Swiss AI survey (about {minutes} minutes).",
     surveyPromptCta: "Go to survey",
   },
   benchmark: {
     metaTitle: "Benchmark",
     metaDescription:
-      "Anonymized aggregate results from the Swiss AI adoption survey. Cells with fewer than five responses are not shown.",
-    indexTitle: "AI adoption benchmark",
+      "Anonymized results of the survey on AI use in Swiss companies. Values based on fewer than five responses are not shown.",
+    indexTitle: "Benchmark: AI use in Swiss companies",
     indexLead:
-      "Anonymized survey results. Only published cells (n ≥ 5) are shown — small groups stay suppressed.",
+      "Anonymized survey results. Only values based on at least five responses are shown; smaller groups stay hidden to protect participants.",
     backHome: "← Back to home",
     sampleSize: "Total responses: {n}",
     generatedAt: "Aggregate as of: {date}",
     emptyTitle: "Not enough responses yet",
     emptyLead:
-      "The benchmark appears once enough anonymized responses are available (at least five per published cell). Take the survey to contribute.",
+      "The benchmark appears once enough responses are available (at least five per value shown). Taking part in the survey helps.",
     suppressionNote:
-      "Privacy: options and size groups with fewer than five responses are not shown.",
+      "Privacy: answer options and size groups with fewer than five responses are not shown.",
     questionSample: "n = {n}",
     comparisonHeading: "Your size vs the median",
     comparisonLead:
-      "Select your company size. We show the published median monthly AI spend for that band — when enough responses exist.",
+      "Select your company size. If enough responses are available, you see the median monthly AI spend for that size band.",
     comparisonSelectLabel: "Company size",
     comparisonSelectPlaceholder: "Choose a band …",
     comparisonMedianLabel: "Median AI spend (CHF/month) in your band",
@@ -179,7 +179,7 @@ export const en: Messages = {
       "No published median is available for this group yet.",
     surveyCta: "Go to survey",
     disclaimer:
-      "This benchmark is an anonymized pilot snapshot and is not legal advice. Results describe the sample, not the whole Swiss economy.",
+      "The benchmark is a pilot analysis. It describes only the companies that took part in the survey and is not representative of the Swiss economy.",
   },
   survey: {
     metaTitle: "Survey",
@@ -202,7 +202,7 @@ export const en: Messages = {
     turnstileLabel: "Security check",
     requiredHint: "Required",
     disclaimer:
-      "This survey supports an anonymized benchmark. Answers without email are fully anonymous. Email addresses are stored separately from answers and used only for report notification. Not legal advice.",
+      "Answers are analysed only for the anonymized benchmark. Without an email address, your participation stays anonymous. If you give an email address, we store it separately from the answers and use it only to tell you about the report.",
     privacyLinkLabel: "Privacy policy",
     privacyNearEmail:
       "More on optional email and data processing:",
@@ -232,20 +232,20 @@ export const en: Messages = {
     relatedTools: "Related decision tool",
     counselBadge: "Reviewed by counsel · {date}",
     translationDraft:
-      "This translation is an LLM draft and has not yet been human-reviewed.",
+      "This translation was machine-generated and has not yet been reviewed by a person.",
     translationCanonicalNote:
-      "The German version is canonical; translations may differ.",
+      "The German version is authoritative; this translation may differ from it.",
   },
   guides: {
     indexTitle: "Guides",
     indexLead:
-      "Source-based guides on Swiss data protection, the EU AI Act, FINMA, and procurement. Not legal advice.",
+      "Guides on data protection, the EU AI Act, FINMA, procurement and AI security, each with sources. Not legal advice.",
     backHome: "← Back to home",
   },
   tools: {
     indexTitle: "Decision tools",
     indexLead:
-      "Interactive decision trees driven by structured rules. Not legal advice.",
+      "Answer a few questions and get a first assessment with sources. Not legal advice.",
     backHome: "← Back to home",
     backToIndex: "← All decision tools",
     back: "Back",
@@ -260,10 +260,10 @@ export const en: Messages = {
     copyLinkDone: "Copied",
     print: "Print / save as PDF",
     surveyPrompt:
-      "Help build the Swiss benchmark — about {minutes} minutes",
+      "Take part in the Swiss AI survey (about {minutes} minutes).",
     surveyCta: "Go to survey",
     disclaimer:
-      "This tool is for information only and is not legal advice. Outcomes are orientation aids — check the sources and consult qualified professionals when needed.",
+      "This tool is for information only and is not legal advice. The result is an orientation aid; check the sources and consult qualified professionals when needed.",
     verdictLikely: "Likely workable",
     verdictUnlikely: "Likely not workable",
     verdictUnclear: "Unclear",
@@ -272,7 +272,7 @@ export const en: Messages = {
   vendors: {
     indexTitle: "Vendor comparison",
     indexLead:
-      "Compare AI vendors by hosting, DPA, certifications, and related criteria. Cells without a verifiable source are shown as unverified.",
+      "AI vendors compared: hosting, data processing agreement (DPA), certifications and other criteria. Information without a source is marked as unverified.",
     backHome: "← Back to home",
     disclaimer:
       "This overview is for information only and is not legal advice or a recommendation. Check the sources and consult qualified professionals when needed.",
@@ -303,7 +303,7 @@ export const en: Messages = {
     dpaLink: "Open DPA",
     certIso27001: "ISO 27001",
     certSoc2: "SOC 2",
-    certFinmaRelevant: "FINMA-relevant",
+    certFinmaRelevant: "FINMA (self-declared)",
     certOther: "Other",
     pricingFree: "Free",
     pricingUsage: "Usage-based",

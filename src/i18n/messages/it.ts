@@ -4,7 +4,7 @@ export const it: Messages = {
   meta: {
     title: "aicompliant.ch",
     description:
-      "Informazioni pratiche sul deployment dell'IA in Svizzera: conformità, confronto fornitori e strumenti decisionali interattivi.",
+      "Informazioni pratiche per le aziende svizzere sull'uso dell'IA: protezione dei dati, AI Act UE, FINMA, confronto dei fornitori e strumenti decisionali.",
   },
   nav: {
     brand: "aicompliant.ch",
@@ -44,16 +44,16 @@ export const it: Messages = {
     lead:
       "Guide su protezione dei dati, AI Act UE, FINMA e sicurezza dell'IA, oltre a strumenti decisionali, un confronto dei fornitori e un controllo del sito. Indipendente, senza tracking e con fonti verificate automaticamente ogni mese per eventuali modifiche.",
     note:
-      "Il tedesco è la lingua di riferimento di questo progetto. Le traduzioni EN, FR e IT sono bozze fino a revisione.",
+      "Fa fede la versione tedesca. Le traduzioni inglese, francese e italiana sono bozze generate automaticamente e non sono ancora state riviste.",
     ctaTools: "Avvia uno strumento decisionale",
     ctaVendors: "Confronta i fornitori",
     quickCheckTitle: "Quick-Check sito web",
     quickCheckLead:
-      "Controlla segnali pubblici del vostro sito — informativa privacy, impressum, strumenti cookie, tracker, header di sicurezza. Non è una valutazione di conformità.",
+      "Verifica gli elementi visibili pubblicamente sul vostro sito: informativa sulla protezione dei dati, impressum, strumenti per i cookie, tracker e header di sicurezza. Non è una valutazione giuridica.",
     quickCheckUrlLabel: "URL del sito",
     quickCheckSubmit: "Controlla il sito",
     quickCheckPrivacy:
-      "L'URL viene inviato una sola volta al nostro scanner e non viene memorizzato in modo permanente.",
+      "L'URL viene trasmesso al nostro scanner solo per questo controllo e non viene memorizzato in modo permanente.",
     quickCheckChecksHeading: "Cosa viene controllato",
     statsHeading: "In sintesi",
     statsGuides: "Guide",
@@ -62,7 +62,7 @@ export const it: Messages = {
     statsLastSource: "Ultima verifica delle fonti",
     guidesHeading: "Guide",
     guidesLead:
-      "Basi documentate su protezione dei dati, AI Act UE, FINMA e approvvigionamento.",
+      "Basi su protezione dei dati, AI Act UE, FINMA, acquisti e sicurezza dell'IA, ciascuna con le relative fonti.",
     guidesAction: "Tutte le guide",
     categoryDatenschutz: "Protezione dei dati",
     categoryEuAiAct: "AI Act UE",
@@ -72,42 +72,42 @@ export const it: Messages = {
     readingTime: "{n} min di lettura",
     toolsHeading: "Strumenti decisionali",
     toolsLead:
-      "Alberi interattivi con fonti citate. Nessun semaforo di conformità.",
+      "Poche domande, una prima valutazione con fonti. Non sostituisce un esame caso per caso.",
     toolsMaxQuestions: "max. {n} domande",
     toolsAction: "Tutti gli strumenti",
     vendorsHeading: "Confronto fornitori",
     vendorsLead:
-      "Fatti su hosting, DPA e certificazioni — solo con fonte, altrimenti non verificato.",
+      "Hosting, contratti con il responsabile del trattamento (DPA) e certificazioni a confronto. Ogni dato ha una fonte, altrimenti è indicato come non verificato.",
     vendorsListed: "{n} fornitori elencati",
     vendorsSwissHosting: "{n} con hosting svizzero documentato",
     vendorsDpa: "{n} con DPA documentata",
     vendorsUnverifiedNote:
-      "Le celle senza fonte contano come non verificate. Nessuna raccomandazione o punteggio.",
+      "Le informazioni senza fonte sono considerate non verificate. Il confronto non contiene raccomandazioni né valutazioni.",
     vendorsAction: "Apri il confronto",
     surveyHeading: "Sondaggio & benchmark",
     surveyLead:
-      "Breve sondaggio sull'adozione dell'IA nelle aziende svizzere. I risultati anonimi alimentano il benchmark.",
+      "Breve sondaggio sull'uso dell'IA nelle aziende svizzere. I risultati confluiscono in forma anonima nel benchmark.",
     surveyCta: "Compila il sondaggio",
     benchmarkLink: "Vai al benchmark",
-    benchmarkPending: "Risultati da n ≥ {n}",
+    benchmarkPending: "Risultati da {n} risposte",
     methodologyHeading: "Metodo",
     methodologySourcesTitle: "Fonti ufficiali",
     methodologySourcesBody:
-      "Guide e strumenti si basano su fonti normative e legali primarie — con URL indicato.",
+      "Guide e strumenti decisionali si basano soprattutto su testi di legge e pubblicazioni delle autorità (p. es. IFPDT, FINMA, UFCS). Ogni pagina indica le proprie fonti con un link.",
     methodologyChecksTitle: "Verifica mensile delle fonti",
     methodologyChecksBody:
-      "Un job automatico controlla ogni mese le fonti registrate e aggiorna le date di verifica nel repository.",
+      "Un processo automatico consulta le fonti ogni mese e segnala le modifiche. Se una fonte cambia nella sostanza, la pagina interessata viene verificata e aggiornata.",
     methodologyIndependenceTitle: "Indipendente",
     methodologyIndependenceBody:
-      "Nessun link di affiliazione o sponsor, nessun tracking sul sito e nessuna consulenza legale.",
+      "Nessun link di affiliazione o sponsorizzato e nessun tracking sul sito.",
   },
   websiteCheck: {
     metaTitle: "Quick-Check sito web",
     metaDescription:
-      "Prima stima di un sito: HTTPS, link privacy, impressum, strumenti cookie, tracker e header di sicurezza — con citazioni legali. Non è consulenza legale.",
+      "Prima valutazione di un sito: HTTPS, link all'informativa sulla protezione dei dati, impressum, strumenti per i cookie, tracker e header di sicurezza, con i riferimenti giuridici. Non è consulenza legale.",
     title: "Quick-Check sito web",
     lead:
-      "Inserisca un URL. La scansione verifica segnali pubblici e restituisce fatti con stato trovato / non trovato / indeterminato — non un verdetto di conformità.",
+      "Inserisca un URL. La scansione verifica gli elementi visibili pubblicamente e indica per ogni punto «trovato», «non trovato» o «indeterminato». Non valuta se il sito è conforme al diritto.",
     backHome: "← Torna alla home",
     urlLabel: "URL del sito",
     urlPlaceholder: "esempio.ch",
@@ -140,38 +140,38 @@ export const it: Messages = {
     legalBasis: "Base giuridica",
     evidence: "Evidenze",
     staticScanCaveat:
-      "La pagina sembra dinamica (es. GTM o shell SPA). Una scansione statica può non vedere script e banner iniettati — i risultati possono essere incompleti.",
+      "La pagina sembra caricarsi in modo dinamico (p. es. tramite un tag manager o come single-page app). Una scansione statica può quindi non rilevare alcuni script e banner; i risultati possono essere incompleti.",
     disclaimer:
-      "Questo Quick-Check è una prima stima da segnali pubblici e non costituisce consulenza legale né un audit di conformità. Verifichi le fonti e consulti professionisti se necessario.",
+      "Questo Quick-Check è una prima valutazione basata su elementi visibili pubblicamente e non costituisce consulenza legale né un audit di conformità. Verifichi le fonti e consulti professionisti se necessario.",
     notFoundNote:
-      "«Non trovato» significa che la scansione non ha rilevato il segnale sulle pagine controllate — non che manchi sul sito.",
+      "«Non trovato» significa solo che la scansione non ha rilevato l'elemento sulle pagine controllate. Potrebbe comunque essere presente.",
     siteOwnerNote:
       "Gestite un sito verificato e ritenete errato un risultato? I nostri contatti si trovano nelle",
     siteOwnerLinkLabel: "note legali",
     scanAgain: "Nuova verifica",
     surveyPrompt:
-      "Aiuti a costruire il benchmark svizzero — circa {minutes} minuti.",
+      "Partecipi al sondaggio svizzero sull'IA (circa {minutes} minuti).",
     surveyPromptCta: "Vai al sondaggio",
   },
   benchmark: {
     metaTitle: "Benchmark",
     metaDescription:
-      "Risultati aggregati anonimi del sondaggio sull'adozione dell'IA in Svizzera. Le celle con meno di cinque risposte non vengono mostrate.",
-    indexTitle: "Benchmark di adozione dell'IA",
+      "Risultati anonimi del sondaggio sull'uso dell'IA nelle aziende svizzere. I valori basati su meno di cinque risposte non vengono mostrati.",
+    indexTitle: "Benchmark: l'IA nelle aziende svizzere",
     indexLead:
-      "Risultati anonimi del sondaggio. Solo le celle pubblicate (n ≥ 5) sono mostrate — i gruppi piccoli restano soppressi.",
+      "Risultati anonimi del sondaggio. Vengono mostrati solo i valori basati su almeno cinque risposte; i gruppi più piccoli restano nascosti per proteggere i partecipanti.",
     backHome: "← Torna alla home",
     sampleSize: "Risposte totali: {n}",
     generatedAt: "Aggregato al: {date}",
     emptyTitle: "Ancora non abbastanza risposte",
     emptyLead:
-      "Il benchmark compare quando ci sono abbastanza risposte anonime (almeno cinque per cella pubblicata). Partecipate al sondaggio per contribuire.",
+      "Il benchmark compare non appena sono disponibili abbastanza risposte (almeno cinque per valore mostrato). Partecipare al sondaggio aiuta.",
     suppressionNote:
-      "Privacy: opzioni e fasce dimensionali con meno di cinque risposte non vengono mostrate.",
+      "Protezione dei dati: le opzioni di risposta e le fasce dimensionali con meno di cinque risposte non vengono mostrate.",
     questionSample: "n = {n}",
     comparisonHeading: "La vostra dimensione rispetto alla mediana",
     comparisonLead:
-      "Selezionate la dimensione aziendale. Mostriamo la mediana pubblicata della spesa mensile per l'IA in quella fascia — quando ci sono abbastanza risposte.",
+      "Selezionate la dimensione aziendale. Se ci sono abbastanza risposte, vedete la mediana della spesa mensile per l'IA in quella fascia.",
     comparisonSelectLabel: "Dimensione aziendale",
     comparisonSelectPlaceholder: "Scegliere una fascia …",
     comparisonMedianLabel: "Mediana spesa IA (CHF/mese) nella vostra fascia",
@@ -181,7 +181,7 @@ export const it: Messages = {
       "Nessuna mediana pubblicata è ancora disponibile per questo gruppo.",
     surveyCta: "Vai al sondaggio",
     disclaimer:
-      "Questo benchmark è uno snapshot pilota anonimo e non costituisce consulenza legale. I risultati descrivono il campione, non l'intera economia svizzera.",
+      "Il benchmark è un'analisi pilota. Descrive solo le aziende che hanno partecipato al sondaggio e non è rappresentativo dell'economia svizzera.",
   },
   survey: {
     metaTitle: "Sondaggio",
@@ -204,7 +204,7 @@ export const it: Messages = {
     turnstileLabel: "Verifica di sicurezza",
     requiredHint: "Obbligatoria",
     disclaimer:
-      "Il sondaggio serve a un benchmark anonimo. Le risposte senza e-mail sono completamente anonime. Gli indirizzi e-mail sono memorizzati separatamente dalle risposte e usati solo per la notifica del rapporto. Non costituisce consulenza legale.",
+      "Le risposte vengono analizzate solo per il benchmark anonimo. Senza indirizzo e-mail la sua partecipazione resta anonima. Se indica un indirizzo e-mail, lo conserviamo separatamente dalle risposte e lo usiamo solo per informarla sul rapporto.",
     privacyLinkLabel: "Informativa sulla privacy",
     privacyNearEmail:
       "Ulteriori informazioni sull'e-mail facoltativa e sul trattamento dei dati:",
@@ -234,20 +234,20 @@ export const it: Messages = {
     relatedTools: "Strumento decisionale correlato",
     counselBadge: "Revisionato da un legale · {date}",
     translationDraft:
-      "Questa traduzione è una bozza generata da LLM e non è ancora stata revisionata da una persona.",
+      "Questa traduzione è stata generata automaticamente e non è ancora stata rivista da una persona.",
     translationCanonicalNote:
-      "Fa fede la versione tedesca; le traduzioni possono differire.",
+      "Fa fede la versione tedesca; questa traduzione può discostarsene.",
   },
   guides: {
     indexTitle: "Guide",
     indexLead:
-      "Guide basate su fonti su protezione dei dati, EU AI Act, FINMA e appalti. Non costituiscono consulenza legale.",
+      "Guide su protezione dei dati, AI Act UE, FINMA, acquisti e sicurezza dell'IA, ciascuna con le relative fonti. Non costituiscono consulenza legale.",
     backHome: "← Torna alla home",
   },
   tools: {
     indexTitle: "Strumenti decisionali",
     indexLead:
-      "Alberi decisionali interattivi basati su regole strutturate. Non costituiscono consulenza legale.",
+      "Risponda ad alcune domande e ottenga una prima valutazione con fonti. Non costituisce consulenza legale.",
     backHome: "← Torna alla home",
     backToIndex: "← Tutti gli strumenti",
     back: "Indietro",
@@ -262,10 +262,10 @@ export const it: Messages = {
     copyLinkDone: "Copiato",
     print: "Stampa / come PDF",
     surveyPrompt:
-      "Aiutate a costruire il benchmark svizzero — circa {minutes} minuti",
+      "Partecipate al sondaggio svizzero sull'IA (circa {minutes} minuti).",
     surveyCta: "Vai al sondaggio",
     disclaimer:
-      "Questo strumento ha solo scopo informativo e non costituisce consulenza legale. I risultati sono orientativi — verificate le fonti e consultate professionisti qualificati se necessario.",
+      "Questo strumento ha solo scopo informativo e non costituisce consulenza legale. Il risultato è un aiuto all'orientamento; verificate le fonti e consultate professionisti qualificati se necessario.",
     verdictLikely: "Piuttosto sostenibile",
     verdictUnlikely: "Piuttosto non sostenibile",
     verdictUnclear: "Poco chiaro",
@@ -274,7 +274,7 @@ export const it: Messages = {
   vendors: {
     indexTitle: "Confronto fornitori",
     indexLead:
-      "Confronta i fornitori di IA per hosting, DPA, certificazioni e altri criteri. Le celle senza fonte verificabile sono indicate come non verificate.",
+      "Fornitori di IA a confronto: hosting, contratto con il responsabile del trattamento (DPA), certificazioni e altri criteri. Le informazioni senza fonte sono indicate come non verificate.",
     backHome: "← Torna alla home",
     disclaimer:
       "Questa panoramica ha solo scopo informativo e non costituisce consulenza legale né una raccomandazione. Verificate le fonti e consultate professionisti qualificati se necessario.",
@@ -305,7 +305,7 @@ export const it: Messages = {
     dpaLink: "Apri DPA",
     certIso27001: "ISO 27001",
     certSoc2: "SOC 2",
-    certFinmaRelevant: "Rilevante FINMA",
+    certFinmaRelevant: "FINMA (autodichiarazione)",
     certOther: "Altro",
     pricingFree: "Gratuito",
     pricingUsage: "A consumo",
