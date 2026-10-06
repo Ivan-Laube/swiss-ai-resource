@@ -9,7 +9,7 @@ What the lawyer has to check before the German copy can carry the "reviewed by c
 1. ~~Merge PR #52 (`content/de-copy-review`) so the live site shows the reviewed copy.~~ **Done 2026-10-05:** merged as `5773409`, deployed to aicompliant.ch.
 2. **Review version:** the last commit on `main` that changed German copy. Get it right before sending with
    `git log -1 --format=%H origin/main -- content/de content/templates/ai-policy-template/de.md data src/i18n/messages/de.ts`
-   (after PR #52 and the follow-up wording fix for the translation glossary, PR #54, this is the #54 merge commit). Send it with the brief and ask the lawyer to review the live pages, which show that version. Commits that only regenerate EN/FR/IT do not change it.
+   (as of 6 October 2026 this is the PR #62 merge commit `681b44f`, the shorter homepage headline). Send it with the brief and ask the lawyer to review the live pages, which show that version. Commits that only regenerate EN/FR/IT do not change it.
 3. **Next step:** send the lawyer this file plus [de-copy-review.md](de-copy-review.md). Only the **German** text is in scope. EN/FR/IT are machine translations of it and are marked as such.
 
 ## 1. What to review
@@ -47,7 +47,7 @@ These have no badge, so the result is recorded only in section 3.
 | T3 | Entscheidungshilfe EU AI Act | [/de/tools/eu-ai-act-applicability/](https://aicompliant.ch/de/tools/eu-ai-act-applicability/) | Applicability outcomes after the Omnibus. |
 | T4 | Entscheidungshilfe US-LLM | [/de/tools/us-hosted-llm-ndsg/](https://aicompliant.ch/de/tools/us-hosted-llm-ndsg/) | The sensitive-data outcome. Also an operator decision the lawyer should comment on: DPF plus training ends at "Kommt darauf an", but SCCs plus training ends at "Eher nicht vertretbar". Is that asymmetry justified? |
 | T5 | Website Quick-Check | [/de/website-check/](https://aicompliant.ch/de/website-check/) | The Impressum check (Art. 3 Abs. 1 lit. s UWG applies only to e-commerce offerings); the cookie check (Art. 45c FMG requires information and an opt-out, not a banner); question B6. |
-| T6 | Homepage and UI copy | [/de/](https://aicompliant.ch/de/) | Headline "KI im Unternehmen einsetzen – was in der Schweiz gilt." and the lead: no outcome promises ("rechtssicher") and no misleading claims (Art. 3 Abs. 1 lit. b UWG); "Quellen werden automatisch überwacht" accurately describes the monitoring. |
+| T6 | Homepage and UI copy | [/de/](https://aicompliant.ch/de/) | Headline "KI im Unternehmen – Schweizer Vorgaben auf einen Blick" and the lead: no outcome promises ("rechtssicher") and no misleading claims (Art. 3 Abs. 1 lit. b UWG); "Quellen werden automatisch überwacht" accurately describes the monitoring. |
 
 ## 2. Questions to answer
 
