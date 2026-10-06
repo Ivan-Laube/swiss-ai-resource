@@ -42,6 +42,8 @@ Added where the copy had a gap a Swiss SME would care about. Please review in pa
 - "Was beim KI-Einsatz in der Schweiz gilt." (shortest, best as `<title>`)
 - "KI im Unternehmen: was erlaubt ist und was zu tun ist."
 
+*Update 6 October 2026:* the headline is now **"KI im Unternehmen – Schweizer Vorgaben auf einen Blick"** (PR #62), with matching EN/FR/IT headlines.
+
 Avoid "rechtssicher" or "sicher einsetzen": both promise an outcome the disclaimer then takes back, which is a misleading-advertising risk under Art. 3 Abs. 1 lit. b UWG.
 
 **Applied throughout:**
