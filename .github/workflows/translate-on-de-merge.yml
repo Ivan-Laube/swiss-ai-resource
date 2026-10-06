@@ -17,6 +17,14 @@ on:
         description: "Fill missing EN/FR/IT strings of the readiness check (data/readiness-check.json)"
         type: boolean
         default: false
+      readiness_base:
+        description: "Also re-translate readiness check strings whose DE changed since this ref (commit SHA); implies the readiness check"
+        required: false
+        default: ""
+      templates:
+        description: "Space-separated template ids to regenerate fully (e.g. ai-policy-template)"
+        required: false
+        default: ""
 
 permissions:
   contents: write
@@ -80,11 +88,13 @@ jobs:
           EVENT_NAME: ${{ github.event_name }}
           INPUT_SLUGS: ${{ github.event.inputs.slugs }}
           INPUT_READINESS: ${{ github.event.inputs.readiness }}
+          INPUT_READINESS_BASE: ${{ github.event.inputs.readiness_base }}
+          INPUT_TEMPLATES: ${{ github.event.inputs.templates }}
         run: |
           set -euo pipefail
 
-          if [ "${EVENT_NAME}" = "workflow_dispatch" ] && [ "${INPUT_READINESS:-false}" = "true" ] && [ -z "${INPUT_SLUGS// }" ]; then
-            echo "Readiness check only; no guide pages requested."
+          if [ "${EVENT_NAME}" = "workflow_dispatch" ] && [ -z "${INPUT_SLUGS// }" ] && { [ "${INPUT_READINESS:-false}" = "true" ] || [ -n "${INPUT_READINESS_BASE// }" ] || [ -n "${INPUT_TEMPLATES// }" ]; }; then
+            echo "Readiness check and/or templates only; no guide pages requested."
             echo "list=" >> "$GITHUB_OUTPUT"
             echo "count=0" >> "$GITHUB_OUTPUT"
             exit 0
@@ -135,10 +145,17 @@ jobs:
           GITHUB_EVENT_BEFORE: ${{ github.event.before }}
           GITHUB_SHA: ${{ github.sha }}
           EVENT_NAME: ${{ github.event_name }}
+          INPUT_TEMPLATES: ${{ github.event.inputs.templates }}
         run: |
           set -euo pipefail
           ADDED=()
           CHANGED=()
+          if [ "${EVENT_NAME}" = "workflow_dispatch" ]; then
+            for id in ${INPUT_TEMPLATES:-}; do
+              [ -f "content/templates/${id}/de.md" ] || { echo "Unknown template id: ${id}"; exit 1; }
+              CHANGED+=("$id")
+            done
+          fi
           if [ "${EVENT_NAME}" = "push" ] && [ -n "${GITHUB_EVENT_BEFORE//0/}" ]; then
             while IFS=$'\t' read -r status path; do
               id="$(basename "$(dirname "$path")")"
@@ -171,7 +188,8 @@ jobs:
 
       # Readiness check texts (T51): on push, re-translate strings whose DE
       # changed (never overwriting a translation updated in the same commit)
-      # and fill missing ones; a manual run with `readiness` fills missing ones.
+      # and fill missing ones; a manual run with `readiness` fills missing ones,
+      # with `readiness_base` it also re-translates strings changed since that ref.
       - name: Resolve readiness check translation
         id: readiness
         env:
@@ -179,10 +197,15 @@ jobs:
           GITHUB_SHA: ${{ github.sha }}
           EVENT_NAME: ${{ github.event_name }}
           INPUT_READINESS: ${{ github.event.inputs.readiness }}
+          INPUT_READINESS_BASE: ${{ github.event.inputs.readiness_base }}
         run: |
           set -euo pipefail
           if [ "${EVENT_NAME}" = "workflow_dispatch" ]; then
-            if [ "${INPUT_READINESS:-false}" = "true" ]; then
+            if [ -n "${INPUT_READINESS_BASE// }" ]; then
+              git cat-file -e "${INPUT_READINESS_BASE}^{commit}" || { echo "Unknown ref: ${INPUT_READINESS_BASE}"; exit 1; }
+              echo "base=${INPUT_READINESS_BASE}" >> "$GITHUB_OUTPUT"
+              echo "count=1" >> "$GITHUB_OUTPUT"
+            elif [ "${INPUT_READINESS:-false}" = "true" ]; then
               echo "base=" >> "$GITHUB_OUTPUT"
               echo "count=1" >> "$GITHUB_OUTPUT"
             else
