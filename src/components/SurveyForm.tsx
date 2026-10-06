@@ -20,7 +20,7 @@ import {
   type SurveyOption,
   type SurveyQuestion,
 } from "@/survey/schema";
-import { Button, Callout } from "@/components/ui";
+import { Button, Callout, StepProgress } from "@/components/ui";
 import styles from "./SurveyForm.module.css";
 
 type SurveyMessages = Messages["survey"];
@@ -326,10 +326,6 @@ export function SurveyForm({ survey, locale, messages }: SurveyFormProps) {
   const progressLabel = messages.progress
     .replace("{answered}", String(answeredChoiceCount))
     .replace("{total}", String(choiceQuestions.length));
-  const progressPercent =
-    choiceQuestions.length === 0
-      ? 0
-      : Math.round((answeredChoiceCount / choiceQuestions.length) * 100);
 
   if (!intakeReady) {
     return (
@@ -354,22 +350,12 @@ export function SurveyForm({ survey, locale, messages }: SurveyFormProps) {
 
   return (
     <div className={styles.root}>
-      <div className={styles.progress} aria-live="polite">
-        <p className={styles.progressLabel}>{progressLabel}</p>
-        <div
-          className={styles.progressTrack}
-          role="progressbar"
-          aria-valuemin={0}
-          aria-valuemax={choiceQuestions.length}
-          aria-valuenow={answeredChoiceCount}
-          aria-label={progressLabel}
-        >
-          <div
-            className={styles.progressFill}
-            style={{ width: `${progressPercent}%` }}
-          />
-        </div>
-      </div>
+      <StepProgress
+        label={progressLabel}
+        value={answeredChoiceCount}
+        max={choiceQuestions.length}
+        live
+      />
       <form className={styles.form} onSubmit={onSubmit} noValidate>
         {survey.questions.map((question) => (
           <fieldset key={question.id} className={styles.question}>

@@ -2,39 +2,6 @@
   margin-top: var(--space-5);
 }
 
-.progress {
-  margin-bottom: var(--space-5);
-}
-
-.progressLabel {
-  margin: 0 0 var(--space-2);
-  font-size: var(--font-caption);
-  font-weight: var(--weight-medium);
-  letter-spacing: var(--tracking-caption);
-  color: var(--text-subtle);
-  font-variant-numeric: tabular-nums;
-}
-
-.progressTrack {
-  height: 4px;
-  border-radius: var(--radius-pill);
-  background: var(--surface-muted);
-  overflow: hidden;
-}
-
-.progressFill {
-  height: 100%;
-  border-radius: inherit;
-  background: var(--text-muted);
-  transition: width var(--duration) var(--ease);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .progressFill {
-    transition: none;
-  }
-}
-
 .form {
   display: flex;
   flex-direction: column;

@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 
-import { Button, Callout, StatusPill, type StatusTone } from "@/components/ui";
+import { Button, Callout, StatusPill, StepProgress, type StatusTone } from "@/components/ui";
 import type { Locale } from "@/i18n/config";
 import type { Messages } from "@/i18n/types";
 import { benchmarkSelection } from "@/readiness/benchmark";
@@ -217,6 +217,11 @@ export function ReadinessCheck({
 
       {!result ? (
         <div ref={formStart} className={styles.form}>
+          <StepProgress
+            label={fill(messages.progress, { answered, total })}
+            value={answered}
+            max={total}
+          />
           <fieldset className={styles.section}>
             <legend className={styles.sectionTitle}>{messages.profileTitle}</legend>
             {profile.map((p) => (

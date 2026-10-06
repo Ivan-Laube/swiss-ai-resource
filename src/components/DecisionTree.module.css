@@ -21,34 +21,6 @@
   margin-bottom: var(--space-5);
 }
 
-.progress {
-  margin-bottom: var(--space-4);
-}
-
-.progressLabel {
-  margin: 0 0 var(--space-2);
-  font-size: var(--font-caption);
-  line-height: var(--leading-caption);
-  font-weight: var(--weight-medium);
-  letter-spacing: var(--tracking-caption);
-  color: var(--text-subtle);
-  font-variant-numeric: tabular-nums;
-}
-
-.progressTrack {
-  height: 4px;
-  border-radius: 9999px;
-  background: var(--surface-muted);
-  overflow: hidden;
-}
-
-.progressFill {
-  height: 100%;
-  border-radius: 9999px;
-  background: var(--primary);
-  transition: width var(--duration) var(--ease);
-}
-
 .prompt {
   margin: 0;
   font-size: var(--font-h3);
@@ -243,7 +215,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .progressFill,
   .answerButton {
     transition: none;
   }
