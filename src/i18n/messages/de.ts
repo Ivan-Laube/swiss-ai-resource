@@ -38,7 +38,7 @@ export const de = {
   },
   home: {
     eyebrow: "Für Schweizer KMU",
-    title: "KI im Unternehmen einsetzen – was in der Schweiz gilt.",
+    title: "KI im Unternehmen – Schweizer Vorgaben auf einen Blick",
     lead:
       "Leitfäden zu Datenschutz, EU AI Act, FINMA und KI-Sicherheit, dazu Entscheidungshilfen, ein Anbietervergleich und ein Website-Check. Unabhängig, ohne Tracking und mit Quellenangaben, die monatlich automatisch auf Änderungen geprüft werden.",
     note:

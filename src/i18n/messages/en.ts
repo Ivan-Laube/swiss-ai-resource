@@ -40,7 +40,7 @@ export const en: Messages = {
   },
   home: {
     eyebrow: "For Swiss SMEs",
-    title: "Using AI in your business: what applies in Switzerland.",
+    title: "AI in your business – Swiss requirements at a glance",
     lead:
       "Guides on data protection, the EU AI Act, FINMA and AI security, plus decision tools, a vendor comparison and a website check. Independent, no tracking, and with sources that are checked automatically for changes every month.",
     note:
