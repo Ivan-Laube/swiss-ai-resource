@@ -1,0 +1,45 @@
+.root {
+  position: sticky;
+  top: var(--header-sticky-offset);
+  /* Below the site header (z-index 100), above form content. */
+  z-index: 10;
+  padding-block: var(--space-3);
+  margin-bottom: var(--space-4);
+  background: var(--bg);
+}
+
+.label {
+  margin: 0 0 var(--space-2);
+  font-size: var(--font-caption);
+  line-height: var(--leading-caption);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-caption);
+  color: var(--text-subtle);
+  font-variant-numeric: tabular-nums;
+}
+
+.track {
+  height: 4px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-muted);
+  overflow: hidden;
+}
+
+.fill {
+  height: 100%;
+  border-radius: inherit;
+  background: var(--primary);
+  transition: width var(--duration) var(--ease);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fill {
+    transition: none;
+  }
+}
+
+@media print {
+  .root {
+    display: none;
+  }
+}

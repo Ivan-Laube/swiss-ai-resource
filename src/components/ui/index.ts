@@ -6,6 +6,7 @@ export { Card } from "./Card";
 export { Container } from "./Container";
 export { SectionHeader } from "./SectionHeader";
 export { StatusPill, type StatusTone } from "./StatusPill";
+export { StepProgress } from "./StepProgress";
 export {
   IconArrowRight,
   IconChevronDown,

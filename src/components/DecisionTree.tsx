@@ -10,7 +10,13 @@ import {
   useSyncExternalStore,
 } from "react";
 
-import { Button, Callout, IconExternalLink, StatusPill } from "@/components/ui";
+import {
+  Button,
+  Callout,
+  IconExternalLink,
+  StatusPill,
+  StepProgress,
+} from "@/components/ui";
 import { cx } from "@/components/ui/cx";
 import type { Locale } from "@/i18n/config";
 import type { Messages } from "@/i18n/types";
@@ -253,24 +259,13 @@ export function DecisionTree({
 
       {node.type === "question" ? (
         <div className={styles.question}>
-          <div className={cx(styles.progress, "decision-tree-progress")}>
-            <p className={styles.progressLabel}>{progressLabel}</p>
-            <div
-              className={styles.progressTrack}
-              role="progressbar"
-              aria-valuemin={1}
-              aria-valuemax={progressM}
-              aria-valuenow={progressN}
-              aria-label={progressLabel}
-            >
-              <div
-                className={styles.progressFill}
-                style={{
-                  width: `${Math.min(100, (progressN / Math.max(progressM, 1)) * 100)}%`,
-                }}
-              />
-            </div>
-          </div>
+          <StepProgress
+            className="decision-tree-progress"
+            label={progressLabel}
+            min={1}
+            value={progressN}
+            max={progressM}
+          />
 
           <h2
             ref={headingRef}
