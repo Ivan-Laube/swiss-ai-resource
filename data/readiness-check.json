@@ -385,9 +385,9 @@
           "points": 1,
           "label": {
             "de": "Wir kennen die Region, haben aber nicht geprüft, ob die Bekanntgabe ins Ausland zulässig ist.",
-            "en": "We know the region, but haven't checked the legal basis for disclosure abroad.",
-            "fr": "Nous connaissons la région, mais nous n'avons pas vérifié la base légale de la communication à l'étranger.",
-            "it": "Conosciamo la regione, ma non abbiamo verificato la base giuridica per la comunicazione all'estero."
+            "en": "We know the region, but have not checked whether disclosure abroad is permitted.",
+            "fr": "Nous connaissons la région, mais nous n'avons pas vérifié si la communication à l'étranger est licite.",
+            "it": "Conosciamo la regione, ma non abbiamo verificato se la comunicazione all'estero è ammessa."
           }
         },
         {
@@ -395,9 +395,9 @@
           "points": 2,
           "label": {
             "de": "Bekannt und dokumentiert (z. B. Schweiz/EU, ein unter dem Swiss-U.S. Data Privacy Framework zertifizierter US-Anbieter oder Standarddatenschutzklauseln).",
-            "en": "Known and documented (e.g. Switzerland/EU, a US provider certified under the Swiss-US Data Privacy Framework, or standard contractual clauses).",
-            "fr": "Connue et documentée (p. ex. Suisse/UE, un fournisseur américain certifié dans le cadre du Swiss-US Data Privacy Framework, ou des clauses contractuelles types).",
-            "it": "Nota e documentata (ad es. Svizzera/UE, un fornitore statunitense certificato secondo lo Swiss-US Data Privacy Framework o clausole contrattuali standard)."
+            "en": "Known and documented (e.g. Switzerland/EU, a US provider (Anbieter) certified under the Swiss-U.S. Data Privacy Framework, or standard contractual clauses (Standarddatenschutzklauseln)).",
+            "fr": "Connue et documentée (p. ex. Suisse/UE, un fournisseur américain certifié dans le cadre du Swiss-U.S. Data Privacy Framework ou des clauses type de protection des données).",
+            "it": "Nota e documentata (p. es. Svizzera/UE, un fornitore statunitense certificato secondo lo Swiss-U.S. Data Privacy Framework o clausole tipo di protezione dei dati)."
           }
         }
       ],
@@ -699,9 +699,9 @@
       ],
       "action": {
         "de": "Stellen Sie sicher, dass eine Person jeden KI-gestützten Entscheid über Einzelpersonen prüft, und halten Sie den Ablauf schriftlich fest. Entscheidet ein System ausnahmsweise allein, müssen Sie die Betroffenen informieren und ihnen eine Überprüfung durch einen Menschen ermöglichen (Art. 21 DSG).",
-        "en": "Make sure a person checks every AI-supported decision about individuals, write down how, and tell affected people they can ask for a human review.",
-        "fr": "Veillez à ce qu'une personne contrôle chaque décision assistée par l'IA concernant des individus, consignez le processus par écrit et informez les personnes concernées de leur droit à un contrôle humain.",
-        "it": "Assicuratevi che una persona controlli ogni decisione basata sull'IA riguardante singole persone, documentate per iscritto la procedura e informate gli interessati del loro diritto a un controllo umano."
+        "en": "Make sure that a person reviews every AI-supported decision about individuals, and document the process in writing. If a system exceptionally decides on its own, you must inform the data subjects and give them the opportunity for human review (Art. 21 of the Federal Act on Data Protection (Bundesgesetz über den Datenschutz, DSG)).",
+        "fr": "Veillez à ce qu'une personne examine chaque décision basée sur l'IA concernant des personnes physiques, et documentez cette procédure par écrit. Si, exceptionnellement, un système décide seul, vous devez en informer les personnes concernées et leur permettre de demander un contrôle par une personne physique (art. 21 LPD).",
+        "it": "Assicuratevi che una persona verifichi ogni decisione basata sull'IA riguardante singole persone e documentate per iscritto la procedura. Se eccezionalmente un sistema decide da solo, dovete informare gli interessati e consentire loro una verifica da parte di una persona (Art. 21 LPD)."
       },
       "links": [
         "guide:ndsg-ai-basics#human-review"
@@ -865,9 +865,9 @@
       },
       "help": {
         "de": "In Unternehmen mit weniger als 10 Personen genügt es, wenn die Inhaberin, der Inhaber oder die Geschäftsführung diese Aufgabe ausdrücklich übernimmt.",
-        "en": "In companies with fewer than 10 people, the owner or managing director counts as a named person.",
-        "fr": "Dans les entreprises de moins de 10 personnes, la ou le titulaire ou la direction est considérée comme la personne désignée nommément.",
-        "it": "Nelle aziende con meno di 10 persone, la titolare, il titolare o la direzione è considerata la persona nominalmente designata."
+        "en": "In companies with fewer than 10 people, it is sufficient if the owner or the management explicitly takes on this task.",
+        "fr": "Dans les entreprises de moins de 10 personnes, il suffit que la propriétaire, le propriétaire ou la direction assume expressément cette tâche.",
+        "it": "Nelle aziende con meno di 10 persone è sufficiente che la titolare, il titolare o la direzione assuma esplicitamente questo compito."
       },
       "options": [
         {
