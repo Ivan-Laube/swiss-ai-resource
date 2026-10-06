@@ -40,7 +40,7 @@ export const fr: Messages = {
   },
   home: {
     eyebrow: "Pour les PME suisses",
-    title: "Utiliser l'IA dans l'entreprise : ce qui s'applique en Suisse.",
+    title: "L'IA en entreprise – les exigences suisses en un coup d'œil",
     lead:
       "Guides sur la protection des données, l'AI Act de l'UE, la FINMA et la sécurité de l'IA, ainsi que des aides à la décision, un comparatif des fournisseurs et un contrôle de site. Indépendant, sans suivi et avec des sources dont les modifications sont vérifiées automatiquement chaque mois.",
     note:
