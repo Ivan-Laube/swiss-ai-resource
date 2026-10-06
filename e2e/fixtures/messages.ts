@@ -39,7 +39,7 @@ type WebsiteCheckCopy = {
 export const copy: Record<Locale, WebsiteCheckCopy> = {
   en: {
     title: "Website Quick-Check",
-    lead: "Enter a URL. The scan checks publicly visible signals and returns facts with status found / not found / indeterminate — not a compliance verdict.",
+    lead: "Enter a URL. The scan checks publicly visible features and shows “found”, “not found” or “indeterminate” for each item. It does not assess whether the website complies with the law.",
     urlLabel: "Website URL",
     submit: "Scan",
     scanning: "Scanning …",
@@ -67,11 +67,11 @@ export const copy: Record<Locale, WebsiteCheckCopy> = {
     legalBasis: "Legal basis",
     evidence: "Evidence",
     staticScanCaveat:
-      "The page looks dynamic (e.g. GTM or an SPA shell). A static scan may miss injected scripts and banners — results may be incomplete.",
+      "The page appears to load dynamically (e.g. through a tag manager or as a single-page app). A static scan may then miss some scripts and banners, so the results may be incomplete.",
     disclaimer:
-      "This Quick-Check is a first assessment from publicly visible signals and is not legal advice or a compliance audit. Check the sources and consult qualified professionals when needed.",
+      "This Quick-Check is a first assessment based on publicly visible features and is not legal advice or a compliance audit. Check the sources and consult qualified professionals when needed.",
     scanAgain: "New check",
-    surveyPrompt: "Help build the Swiss benchmark — about {minutes} minutes.",
+    surveyPrompt: "Take part in the Swiss AI survey (about {minutes} minutes).",
     surveyPromptCta: "Go to survey",
   },
   de: {
@@ -117,7 +117,7 @@ export const copy: Record<Locale, WebsiteCheckCopy> = {
   },
   fr: {
     title: "Quick-Check site web",
-    lead: "Saisissez une URL. Le scan vérifie des signaux publics et renvoie des faits avec le statut trouvé / non trouvé / indéterminé — pas un verdict de conformité.",
+    lead: "Saisissez une URL. Le scan vérifie les éléments visibles publiquement et indique pour chaque point « trouvé », « non trouvé » ou « indéterminé ». Il n'évalue pas la conformité du site au droit.",
     urlLabel: "URL du site",
     submit: "Analyser",
     scanning: "Analyse en cours …",
@@ -148,17 +148,17 @@ export const copy: Record<Locale, WebsiteCheckCopy> = {
     legalBasis: "Base légale",
     evidence: "Indices",
     staticScanCaveat:
-      "La page semble dynamique (p. ex. GTM ou coquille SPA). Un scan statique peut manquer des scripts et bannières injectés — les résultats peuvent être incomplets.",
+      "La page semble se charger de manière dynamique (p. ex. via un gestionnaire de balises ou en tant qu'application monopage). Un scan statique peut alors manquer certains scripts et bannières ; les résultats peuvent être incomplets.",
     disclaimer:
-      "Ce Quick-Check est une première estimation à partir de signaux publics et ne constitue ni un conseil juridique ni un audit de conformité. Vérifiez les sources et consultez des professionnels si nécessaire.",
+      "Ce Quick-Check est une première évaluation fondée sur des éléments visibles publiquement et ne constitue ni un conseil juridique ni un audit de conformité. Vérifiez les sources et consultez des professionnels si nécessaire.",
     scanAgain: "Nouvelle analyse",
     surveyPrompt:
-      "Aidez à constituer le benchmark suisse — environ {minutes} minutes.",
+      "Participez à l'enquête suisse sur l'IA (environ {minutes} minutes).",
     surveyPromptCta: "Aller à l'enquête",
   },
   it: {
     title: "Quick-Check sito web",
-    lead: "Inserisca un URL. La scansione verifica segnali pubblici e restituisce fatti con stato trovato / non trovato / indeterminato — non un verdetto di conformità.",
+    lead: "Inserisca un URL. La scansione verifica gli elementi visibili pubblicamente e indica per ogni punto «trovato», «non trovato» o «indeterminato». Non valuta se il sito è conforme al diritto.",
     urlLabel: "URL del sito",
     submit: "Scansiona",
     scanning: "Scansione in corso …",
@@ -187,12 +187,12 @@ export const copy: Record<Locale, WebsiteCheckCopy> = {
     legalBasis: "Base giuridica",
     evidence: "Evidenze",
     staticScanCaveat:
-      "La pagina sembra dinamica (es. GTM o shell SPA). Una scansione statica può non vedere script e banner iniettati — i risultati possono essere incompleti.",
+      "La pagina sembra caricarsi in modo dinamico (p. es. tramite un tag manager o come single-page app). Una scansione statica può quindi non rilevare alcuni script e banner; i risultati possono essere incompleti.",
     disclaimer:
-      "Questo Quick-Check è una prima stima da segnali pubblici e non costituisce consulenza legale né un audit di conformità. Verifichi le fonti e consulti professionisti se necessario.",
+      "Questo Quick-Check è una prima valutazione basata su elementi visibili pubblicamente e non costituisce consulenza legale né un audit di conformità. Verifichi le fonti e consulti professionisti se necessario.",
     scanAgain: "Nuova verifica",
     surveyPrompt:
-      "Aiuti a costruire il benchmark svizzero — circa {minutes} minuti.",
+      "Partecipi al sondaggio svizzero sull'IA (circa {minutes} minuti).",
     surveyPromptCta: "Vai al sondaggio",
   },
 };
