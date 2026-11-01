@@ -5,7 +5,18 @@
     "website": "https://openai.com/",
     "last_checked": "2026-07-10",
     "hosting_regions": {
-      "value": ["EU", "US", "UK", "JP", "CA", "KR", "SG", "AU", "IN", "AE"],
+      "value": [
+        "EU",
+        "US",
+        "UK",
+        "JP",
+        "CA",
+        "KR",
+        "SG",
+        "AU",
+        "IN",
+        "AE"
+      ],
       "source_url": "https://openai.com/business-data/"
     },
     "swiss_hosting": {
@@ -25,7 +36,10 @@
       "source_url": "https://openai.com/business-data/"
     },
     "certifications": {
-      "value": ["iso_27001", "soc_2"],
+      "value": [
+        "iso_27001",
+        "soc_2"
+      ],
       "source_url": "https://openai.com/business-data/"
     },
     "pricing_tier": {
@@ -47,7 +61,16 @@
     "website": "https://www.anthropic.com/",
     "last_checked": "2026-07-10",
     "hosting_regions": {
-      "value": ["EU", "US", "CA", "JP", "KR", "SG", "IN", "AU"],
+      "value": [
+        "EU",
+        "US",
+        "CA",
+        "JP",
+        "KR",
+        "SG",
+        "IN",
+        "AU"
+      ],
       "source_url": "https://claude.com/regional-compliance"
     },
     "swiss_hosting": {
@@ -67,7 +90,10 @@
       "source_url": "https://claude.com/regional-compliance"
     },
     "certifications": {
-      "value": ["iso_27001", "soc_2"],
+      "value": [
+        "iso_27001",
+        "soc_2"
+      ],
       "source_url": "https://privacy.claude.com/en/articles/10015870-what-certifications-has-anthropic-obtained"
     },
     "pricing_tier": {
@@ -89,7 +115,11 @@
     "website": "https://cloud.google.com/",
     "last_checked": "2026-07-10",
     "hosting_regions": {
-      "value": ["CH", "EU", "US"],
+      "value": [
+        "CH",
+        "EU",
+        "US"
+      ],
       "source_url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/machine-learning/general/locations"
     },
     "swiss_hosting": {
@@ -109,7 +139,10 @@
       "source_url": null
     },
     "certifications": {
-      "value": ["iso_27001", "soc_2"],
+      "value": [
+        "iso_27001",
+        "soc_2"
+      ],
       "source_url": "https://cloud.google.com/terms/data-processing-addendum"
     },
     "pricing_tier": {
@@ -131,7 +164,10 @@
     "website": "https://azure.microsoft.com/",
     "last_checked": "2026-07-10",
     "hosting_regions": {
-      "value": ["EU", "US"],
+      "value": [
+        "EU",
+        "US"
+      ],
       "source_url": "https://learn.microsoft.com/en-us/azure/ai-foundry/responsible-ai/openai/data-privacy"
     },
     "swiss_hosting": {
@@ -173,7 +209,9 @@
     "website": "https://mistral.ai/",
     "last_checked": "2026-07-10",
     "hosting_regions": {
-      "value": ["EU"],
+      "value": [
+        "EU"
+      ],
       "source_url": "https://mistral.ai/"
     },
     "swiss_hosting": {
@@ -213,9 +251,11 @@
     "id": "aleph-alpha",
     "name": "Aleph Alpha",
     "website": "https://aleph-alpha.com/",
-    "last_checked": "2026-07-10",
+    "last_checked": "2026-11-01",
     "hosting_regions": {
-      "value": ["EU"],
+      "value": [
+        "EU"
+      ],
       "source_url": "https://docs.aleph-alpha.com/verticals/pga.html"
     },
     "swiss_hosting": {
@@ -277,7 +317,10 @@
       "source_url": "https://aws.amazon.com/bedrock/security-compliance/"
     },
     "certifications": {
-      "value": ["iso_27001", "soc_2"],
+      "value": [
+        "iso_27001",
+        "soc_2"
+      ],
       "source_url": "https://aws.amazon.com/bedrock/security-compliance/"
     },
     "pricing_tier": {
@@ -297,9 +340,11 @@
     "id": "swisscom-ai",
     "name": "Swisscom AI",
     "website": "https://www.swisscom.ch/en/business/enterprise/offer/platforms-applications/data-driven-business/swiss-ai-platform.html",
-    "last_checked": "2026-07-10",
+    "last_checked": "2026-11-01",
     "hosting_regions": {
-      "value": ["CH"],
+      "value": [
+        "CH"
+      ],
       "source_url": "https://www.swisscom.ch/en/business/enterprise/offer/platforms-applications/data-driven-business/swiss-ai-platform.html"
     },
     "swiss_hosting": {
@@ -341,7 +386,9 @@
     "website": "https://www.infomaniak.com/",
     "last_checked": "2026-07-10",
     "hosting_regions": {
-      "value": ["CH"],
+      "value": [
+        "CH"
+      ],
       "source_url": "https://www.infomaniak.com/en/trust-center"
     },
     "swiss_hosting": {
@@ -361,7 +408,10 @@
       "source_url": "https://www.infomaniak.com/en/trust-center"
     },
     "certifications": {
-      "value": ["iso_27001", "finma_relevant"],
+      "value": [
+        "iso_27001",
+        "finma_relevant"
+      ],
       "source_url": "https://www.infomaniak.com/en/trust-center"
     },
     "pricing_tier": {
@@ -403,7 +453,9 @@
       "source_url": null
     },
     "certifications": {
-      "value": ["soc_2"],
+      "value": [
+        "soc_2"
+      ],
       "source_url": "https://huggingface.co/docs/hub/main/security"
     },
     "pricing_tier": {
@@ -425,7 +477,9 @@
     "website": "https://cohere.com/",
     "last_checked": "2026-07-10",
     "hosting_regions": {
-      "value": ["US"],
+      "value": [
+        "US"
+      ],
       "source_url": "https://trustcenter.cohere.com/"
     },
     "swiss_hosting": {
@@ -445,7 +499,10 @@
       "source_url": "https://cohere.com/enterprise-data-commitments"
     },
     "certifications": {
-      "value": ["iso_27001", "soc_2"],
+      "value": [
+        "iso_27001",
+        "soc_2"
+      ],
       "source_url": "https://trustcenter.cohere.com/"
     },
     "pricing_tier": {
@@ -509,7 +566,10 @@
     "website": "https://www.exoscale.com/",
     "last_checked": "2026-07-10",
     "hosting_regions": {
-      "value": ["CH", "EU"],
+      "value": [
+        "CH",
+        "EU"
+      ],
       "source_url": "https://www.exoscale.com/compliance/"
     },
     "swiss_hosting": {
@@ -529,7 +589,10 @@
       "source_url": null
     },
     "certifications": {
-      "value": ["iso_27001", "soc_2"],
+      "value": [
+        "iso_27001",
+        "soc_2"
+      ],
       "source_url": "https://www.exoscale.com/compliance/"
     },
     "pricing_tier": {
@@ -551,7 +614,9 @@
     "website": "https://www.ovhcloud.com/",
     "last_checked": "2026-07-10",
     "hosting_regions": {
-      "value": ["EU"],
+      "value": [
+        "EU"
+      ],
       "source_url": "https://docs.ovhcloud.com/en/guides/public-cloud/ai-machine-learning/ai-endpoints-capabilities"
     },
     "swiss_hosting": {
@@ -593,7 +658,11 @@
     "website": "https://www.deepl.com/",
     "last_checked": "2026-07-10",
     "hosting_regions": {
-      "value": ["EU", "US", "APAC"],
+      "value": [
+        "EU",
+        "US",
+        "APAC"
+      ],
       "source_url": "https://www.deepl.com/en/blog/expanding-deepl-data-infrastructure"
     },
     "swiss_hosting": {
@@ -613,7 +682,10 @@
       "source_url": "https://www.deepl.com/en/blog/expanding-deepl-data-infrastructure"
     },
     "certifications": {
-      "value": ["iso_27001", "soc_2"],
+      "value": [
+        "iso_27001",
+        "soc_2"
+      ],
       "source_url": "https://www.deepl.com/en/blog/expanding-deepl-data-infrastructure"
     },
     "pricing_tier": {
