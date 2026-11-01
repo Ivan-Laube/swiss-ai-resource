@@ -2,13 +2,13 @@
   "id": "aleph-alpha-pga",
   "url": "https://docs.aleph-alpha.com/verticals/pga.html",
   "fetched_url": "https://docs.aleph-alpha.com/verticals/pga.html",
-  "fetched_at": "2026-10-01T12:30:54.496Z",
+  "fetched_at": "2026-11-01T12:45:05.870Z",
   "http_status": 200,
   "content_type": "text/html; charset=utf-8",
   "sha256": "4b4e336e636009a658533f14cf165eb6c14cfc7ee03226e3337309467f90e76c",
   "byte_length": 4864,
   "ok": true,
   "consecutive_failures": 0,
-  "last_ok_at": "2026-10-01T12:30:54.496Z",
+  "last_ok_at": "2026-11-01T12:45:05.870Z",
   "attempt": "bot"
 }

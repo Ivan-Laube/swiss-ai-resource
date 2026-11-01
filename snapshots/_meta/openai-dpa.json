@@ -2,13 +2,13 @@
   "id": "openai-dpa",
   "url": "https://openai.com/policies/data-processing-addendum/",
   "fetched_url": "https://openai.com/policies/data-processing-addendum/",
-  "fetched_at": "2026-10-01T12:30:45.329Z",
+  "fetched_at": "2026-11-01T12:44:54.965Z",
   "http_status": 200,
   "content_type": "text/html; charset=utf-8",
-  "sha256": "c9385a7bd4e3401709a594816eee2b5f3f383bbd590fe9f00b7b87e862d85663",
-  "byte_length": 20222,
+  "sha256": "132c4746b4267b3ab9880ff0be5556fe66c8c5c61f98774d424328b105ae4705",
+  "byte_length": 20285,
   "ok": true,
   "consecutive_failures": 0,
-  "last_ok_at": "2026-10-01T12:30:45.329Z",
+  "last_ok_at": "2026-11-01T12:44:54.965Z",
   "attempt": "browser"
 }

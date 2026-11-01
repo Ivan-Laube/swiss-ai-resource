@@ -2,13 +2,13 @@
   "id": "eur-lex-ai-act-en",
   "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689",
   "fetched_url": null,
-  "fetched_at": "2026-10-01T12:29:46.232Z",
+  "fetched_at": "2026-11-01T12:44:01.745Z",
   "http_status": 202,
   "content_type": null,
   "sha256": null,
   "byte_length": null,
   "ok": false,
   "error": "HTTP 202 Accepted after 3 attempts (tried 3 URLs; last: https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng/pdf)",
-  "consecutive_failures": 1,
+  "consecutive_failures": 2,
   "last_ok_at": "2026-07-17T09:43:14.983Z"
 }

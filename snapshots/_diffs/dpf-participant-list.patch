@@ -2,40 +2,66 @@ Index: snapshots/dpf-participant-list.txt
 ===================================================================
 --- snapshots/dpf-participant-list.txt
 +++ snapshots/dpf-participant-list.txt
-@@ -189,19 +189,19 @@
+@@ -189,9 +189,9 @@
  Latest News
  
  Press Release
--RentGrow to Pay $2.25 Million to Settle FTC Allegations the Company Violated the Fair Credit Reporting Act and FTC Act
-+FTC, States Win Protections to Lower Pesticide Prices for American Farmers in Antitrust Case Against Corteva
+-FTC, States Win Protections to Lower Pesticide Prices for American Farmers in Antitrust Case Against Corteva
++FTC Staff Warn Marketers of Healthcare Plans and Lead Generators Not to Deceive Consumers about the Terms of the Advertised Plans
  
--July 9, 2026
-+September 28, 2026
+-September 28, 2026
++October 29, 2026
  
  View News and Events
  
- Upcoming Event
+@@ -409,32 +409,6 @@
  
--Jul22
-+Nov05
+ Privacy and Security
  
--Veterans: Here are Ways to Help Protect Your Small Business
-+Nineteenth Annual Microeconomics Conference
- 
--Wednesday, July 22, 2026 | 2:00PM
-+Thursday, November 5, 2026 - Friday, November 6, 2026
- 
- View more Events
- 
-@@ -397,10 +397,8 @@
- 
- Contact
- 
--Enter Search Term(s):  
-+Enter Search Term(s):  Looking for legal documents or records? Search the Legal Library instead.
- 
--Looking for legal documents or records? Search the Legal Library instead.
+-Privacy and Security Menu
 -
- Data Privacy Framework
+-Privacy and Security
+-
+-Children's Privacy
+-
+-Health Privacy
+-
+-Consumer Privacy
+-
+-Credit Reporting
+-
+-Data Security
+-
+-Gramm-Leach-Bliley Act
+-
+-Red Flags Rule
+-
+-Data Privacy Framework
+-
+-Privacy Shield
+-
+-U.S.-EU Safe Harbor Framework
+-
+-Tech
+-
+ If you work for a business looking to transfer data between the EU and the United States, the FTC has resources to point you in the right direction. On July 17, 2023, the European Commission issued an adequacy decision on the EU-U.S. Data Privacy Framework (DPF). This new voluntary Framework, which replaces the Privacy Shield program, provides a mechanism for companies to transfer personal data from the EU to the United States in a privacy-protective way consistent with EU law. To join the Data Privacy Framework, a company must self-certify to the Department of Commerce that it complies with the Data Privacy Framework Principles. A participating company’s failure to comply with the Principles may violate Section 5 of the FTC Act’s prohibition on unfair and deceptive acts. The FTC is committed to vigorous enforcement of the DPF Principles, and works with privacy authorities in the EU to protect consumer privacy on both sides of the Atlantic. For more information, including how to join, visit the Data Privacy Framework Program. The Data Privacy Framework site also features a searchable list of participating businesses.
  
- Breadcrumb
+ Plain Language Guidance
+@@ -575,6 +549,8 @@
+ Cases
+ Google, Inc., In the Matter of
+ Cases
++ExpatEdge Partners, LL
++Cases
+ Onyx Graphics, Inc.
+ Cases
+ World Innovators, Inc., In the Matter of
+@@ -585,8 +561,6 @@
+ Cases
+ Collectify LL
+ Cases
+-ExpatEdge Partners, LL
+-Cases
+ Best Priced Brands, LLC, et al.
+ Federal Register Notices
+ 

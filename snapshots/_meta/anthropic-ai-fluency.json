@@ -2,13 +2,13 @@
   "id": "anthropic-ai-fluency",
   "url": "https://www.anthropic.com/ai-fluency",
   "fetched_url": "https://anthropic.skilljar.com/ai-fluency-framework-foundations",
-  "fetched_at": "2026-10-01T12:30:41.404Z",
+  "fetched_at": "2026-11-01T12:44:50.445Z",
   "http_status": 200,
   "content_type": "text/html; charset=utf-8",
   "sha256": "1925959e6d41a81bc610142492d956eb4f3f26606e43354070bcb4d5899c816e",
   "byte_length": 5380,
   "ok": true,
   "consecutive_failures": 0,
-  "last_ok_at": "2026-10-01T12:30:41.404Z",
+  "last_ok_at": "2026-11-01T12:44:50.445Z",
   "attempt": "bot"
 }

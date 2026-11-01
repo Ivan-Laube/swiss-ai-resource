@@ -2,13 +2,13 @@
   "id": "cohere-trust",
   "url": "https://trustcenter.cohere.com/",
   "fetched_url": "https://trustcenter.cohere.com/",
-  "fetched_at": "2026-10-01T12:31:00.471Z",
+  "fetched_at": "2026-11-01T12:45:13.123Z",
   "http_status": 200,
   "content_type": "text/html; charset=utf-8",
-  "sha256": "579b45cf7274cd438a9a0d0e442d444767ec2675cd8393c0f84bcc46d981641a",
-  "byte_length": 17538,
+  "sha256": "18ce9f3f4fc3ec35970389f2ae920e7d80a4c6cb50450cb6a77660c264e778bc",
+  "byte_length": 17296,
   "ok": true,
   "consecutive_failures": 0,
-  "last_ok_at": "2026-10-01T12:31:00.471Z",
+  "last_ok_at": "2026-11-01T12:45:13.123Z",
   "attempt": "bot"
 }

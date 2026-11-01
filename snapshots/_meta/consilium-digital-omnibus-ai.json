@@ -2,13 +2,13 @@
   "id": "consilium-digital-omnibus-ai",
   "url": "https://oeil.europarl.europa.eu/oeil/en/procedure-file?reference=2025%2F0359%28COD%29",
   "fetched_url": "https://oeil.europarl.europa.eu/oeil/en/procedure-file?reference=2025%2F0359%28COD%29",
-  "fetched_at": "2026-10-01T12:30:32.882Z",
+  "fetched_at": "2026-11-01T12:44:48.591Z",
   "http_status": 200,
   "content_type": "text/html;charset=UTF-8",
-  "sha256": "663796c683559ac78f89cbff5bb74ab93ba907c75f1dd7043026070489162209",
-  "byte_length": 9410,
+  "sha256": "215021c9d69e5143c7662c4bdcd0dcb49dd2aa4019f3ebf31ebb0f9c4c094c15",
+  "byte_length": 9419,
   "ok": true,
   "consecutive_failures": 0,
-  "last_ok_at": "2026-10-01T12:30:32.882Z",
+  "last_ok_at": "2026-11-01T12:44:48.591Z",
   "attempt": "bot"
 }

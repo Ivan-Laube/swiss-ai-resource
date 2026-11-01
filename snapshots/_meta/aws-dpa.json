@@ -2,13 +2,13 @@
   "id": "aws-dpa",
   "url": "https://d1.awsstatic.com/legal/aws-gdpr/AWS_GDPR_DPA.pdf",
   "fetched_url": "https://d1.awsstatic.com/legal/aws-gdpr/AWS_GDPR_DPA.pdf",
-  "fetched_at": "2026-10-01T12:30:55.666Z",
+  "fetched_at": "2026-11-01T12:45:07.097Z",
   "http_status": 200,
   "content_type": "application/pdf",
   "sha256": "a525259e30854519b5298c8f195bbb70a901c90fdd2cdbc788a1bb07e20c6dd4",
   "byte_length": 29427,
   "ok": true,
   "consecutive_failures": 0,
-  "last_ok_at": "2026-10-01T12:30:55.666Z",
+  "last_ok_at": "2026-11-01T12:45:07.097Z",
   "attempt": "bot"
 }

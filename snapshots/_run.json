@@ -1,26 +1,22 @@
 {
-  "ran_at": "2026-10-01T12:31:06.665Z",
+  "ran_at": "2026-11-01T12:45:26.917Z",
   "dry_run": false,
-  "total": 38,
-  "ok": 36,
+  "total": 45,
+  "ok": 43,
   "failed": 2,
   "changed": [
+    "edoeb-ki-und-datenschutz",
     "dpf-participant-list",
-    "finma-guidance-08-2024-news",
     "consilium-digital-omnibus-ai",
-    "anthropic-ai-fluency",
     "openai-business-data",
     "openai-dpa",
     "anthropic-regional-compliance",
     "anthropic-certifications",
     "google-cloud-dpa",
     "google-cloud-ml-locations",
-    "microsoft-azure-openai-privacy",
     "microsoft-dpa",
-    "mistral-dpa",
     "mistral-home",
     "aws-bedrock-security",
-    "swisscom-ai-platform",
     "infomaniak-trust",
     "huggingface-security",
     "cohere-trust",
@@ -30,16 +26,23 @@
     "exoscale-ai",
     "ovhcloud-ai-endpoints",
     "deepl-infrastructure",
-    "deepl-pro-security"
+    "deepl-pro-security",
+    "bacs-ceo-betrug",
+    "bacs-woche-2026-04-dringende-ueberweisung",
+    "bacs-woche-2024-14-deepfake-chef",
+    "bacs-meldepflicht",
+    "owasp-llm01-prompt-injection",
+    "owasp-llm06-excessive-agency",
+    "edoeb-leitfaden-meldung-art-24"
   ],
   "results": [
     {
       "id": "edoeb-ki-und-datenschutz",
       "ok": true,
       "http_status": 200,
-      "change": "unchanged",
+      "change": "changed",
       "consecutive_failures": 0,
-      "last_ok_at": "2026-10-01T12:28:54.774Z",
+      "last_ok_at": "2026-11-01T12:43:07.423Z",
       "fetched_url": "https://www.edoeb.admin.ch/de/ki-und-datenschutz",
       "attempt": "bot"
     },
@@ -49,7 +52,7 @@
       "http_status": 200,
       "change": "unchanged",
       "consecutive_failures": 0,
-      "last_ok_at": "2026-10-01T12:28:55.970Z",
+      "last_ok_at": "2026-11-01T12:43:09.008Z",
       "fetched_url": "https://www.edoeb.admin.ch/de/update-geltendes-datenschutzgesetz-ist-auf-ki-direkt-anwendbar",
       "attempt": "bot"
     },
@@ -59,7 +62,7 @@
       "http_status": 200,
       "change": "unchanged",
       "consecutive_failures": 0,
-      "last_ok_at": "2026-10-01T12:28:56.693Z",
+      "last_ok_at": "2026-11-01T12:43:09.765Z",
       "fetched_url": "https://www.edoeb.admin.ch/de/04042023-einsatz-von-chatgpt-und-vergleichbaren-ki-gestuetzten-anwendungen",
       "attempt": "bot"
     },
@@ -69,7 +72,7 @@
       "http_status": 200,
       "change": "unchanged",
       "consecutive_failures": 0,
-      "last_ok_at": "2026-10-01T12:28:57.299Z",
+      "last_ok_at": "2026-11-01T12:43:10.536Z",
       "fetched_url": "https://www.edoeb.admin.ch/de/bekanntgabe-von-personendaten-ins-ausland",
       "attempt": "bot"
     },
@@ -79,7 +82,7 @@
       "http_status": 200,
       "change": "unchanged",
       "consecutive_failures": 0,
-      "last_ok_at": "2026-10-01T12:28:57.909Z",
+      "last_ok_at": "2026-11-01T12:43:11.313Z",
       "fetched_url": "https://www.fedlex.admin.ch/eli/cc/2022/491/de",
       "attempt": "bot"
     },
@@ -89,7 +92,7 @@
       "http_status": 200,
       "change": "changed",
       "consecutive_failures": 0,
-      "last_ok_at": "2026-10-01T12:28:59.080Z",
+      "last_ok_at": "2026-11-01T12:43:12.727Z",
       "fetched_url": "https://www.ftc.gov/business-guidance/privacy-security/data-privacy-framework",
       "attempt": "browser"
     },
@@ -99,7 +102,7 @@
       "http_status": 202,
       "change": "kept",
       "error": "HTTP 202 Accepted after 3 attempts (tried 3 URLs; last: https://eur-lex.europa.eu/eli/reg/2024/1689/oj/deu/pdf)",
-      "consecutive_failures": 1,
+      "consecutive_failures": 2,
       "last_ok_at": "2026-07-17T09:43:17.873Z"
     },
     {
@@ -108,7 +111,7 @@
       "http_status": 202,
       "change": "kept",
       "error": "HTTP 202 Accepted after 3 attempts (tried 3 URLs; last: https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng/pdf)",
-      "consecutive_failures": 1,
+      "consecutive_failures": 2,
       "last_ok_at": "2026-07-17T09:43:14.983Z"
     },
     {
@@ -117,7 +120,7 @@
       "http_status": 200,
       "change": "unchanged",
       "consecutive_failures": 0,
-      "last_ok_at": "2026-10-01T12:30:29.608Z",
+      "last_ok_at": "2026-11-01T12:44:45.040Z",
       "fetched_url": "https://www.finma.ch/en/~/media/finma/dokumente/dokumentencenter/myfinma/4dokumentation/finma-aufsichtsmitteilungen/20241218-finma-aufsichtsmitteilung-08-2024.pdf",
       "attempt": "bot"
     },
@@ -125,9 +128,9 @@
       "id": "finma-guidance-08-2024-news",
       "ok": true,
       "http_status": 200,
-      "change": "changed",
+      "change": "unchanged",
       "consecutive_failures": 0,
-      "last_ok_at": "2026-10-01T12:30:31.717Z",
+      "last_ok_at": "2026-11-01T12:44:47.306Z",
       "fetched_url": "https://www.finma.ch/en/news/2024/12/20241218-mm-finma-am-08-24/",
       "attempt": "bot"
     },
@@ -137,7 +140,7 @@
       "http_status": 200,
       "change": "changed",
       "consecutive_failures": 0,
-      "last_ok_at": "2026-10-01T12:30:32.882Z",
+      "last_ok_at": "2026-11-01T12:44:48.591Z",
       "fetched_url": "https://oeil.europarl.europa.eu/oeil/en/procedure-file?reference=2025%2F0359%28COD%29",
       "attempt": "bot"
     },
@@ -145,9 +148,9 @@
       "id": "anthropic-ai-fluency",
       "ok": true,
       "http_status": 200,
-      "change": "changed",
+      "change": "unchanged",
       "consecutive_failures": 0,
-      "last_ok_at": "2026-10-01T12:30:41.404Z",
+      "last_ok_at": "2026-11-01T12:44:50.445Z",
       "fetched_url": "https://anthropic.skilljar.com/ai-fluency-framework-foundations",
       "attempt": "bot"
     },
@@ -157,7 +160,7 @@
       "http_status": 200,
       "change": "changed",
       "consecutive_failures": 0,
-      "last_ok_at": "2026-10-01T12:30:42.358Z",
+      "last_ok_at": "2026-11-01T12:44:52.021Z",
       "fetched_url": "https://openai.com/business-data/",
       "attempt": "browser"
     },
@@ -167,7 +170,7 @@
       "http_status": 200,
       "change": "changed",
       "consecutive_failures": 0,
-      "last_ok_at": "2026-10-01T12:30:45.329Z",
+      "last_ok_at": "2026-11-01T12:44:54.965Z",
       "fetched_url": "https://openai.com/policies/data-processing-addendum/",
       "attempt": "browser"
     },
@@ -177,7 +180,7 @@
       "http_status": 200,
       "change": "changed",
       "consecutive_failures": 0,
-      "last_ok_at": "2026-10-01T12:30:48.031Z",
+      "last_ok_at": "2026-11-01T12:44:57.693Z",
       "fetched_url": "https://claude.com/regional-compliance",
       "attempt": "bot"
     },
@@ -187,7 +190,7 @@
       "http_status": 200,
       "change": "changed",
       "consecutive_failures": 0,
-      "last_ok_at": "2026-10-01T12:30:48.580Z",
+      "last_ok_at": "2026-11-01T12:44:58.575Z",
       "fetched_url": "https://privacy.claude.com/en/articles/10015870-what-certifications-has-anthropic-obtained",
       "attempt": "bot"
     },
@@ -197,7 +200,7 @@
       "http_status": 200,
       "change": "changed",
       "consecutive_failures": 0,
-      "last_ok_at": "2026-10-01T12:30:49.240Z",
+      "last_ok_at": "2026-11-01T12:44:59.822Z",
       "fetched_url": "https://cloud.google.com/terms/data-processing-addendum",
       "attempt": "bot"
     },
@@ -207,7 +210,7 @@
       "http_status": 200,
       "change": "changed",
       "consecutive_failures": 0,
-      "last_ok_at": "2026-10-01T12:30:50.294Z",
+      "last_ok_at": "2026-11-01T12:45:01.101Z",
       "fetched_url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/machine-learning/general/locations",
       "attempt": "bot"
     },
@@ -215,9 +218,9 @@
       "id": "microsoft-azure-openai-privacy",
       "ok": true,
       "http_status": 200,
-      "change": "changed",
+      "change": "unchanged",
       "consecutive_failures": 0,
-      "last_ok_at": "2026-10-01T12:30:51.700Z",
+      "last_ok_at": "2026-11-01T12:45:01.992Z",
       "fetched_url": "https://learn.microsoft.com/en-us/azure/foundry/responsible-ai/openai/data-privacy",
       "attempt": "bot"
     },
@@ -227,7 +230,7 @@
       "http_status": 200,
       "change": "changed",
       "consecutive_failures": 0,
-      "last_ok_at": "2026-10-01T12:30:52.358Z",
+      "last_ok_at": "2026-11-01T12:45:02.640Z",
       "fetched_url": "https://www.microsoft.com/licensing/docs/view/Microsoft-Products-and-Services-Data-Protection-Addendum-DPA",
       "attempt": "bot"
     },
@@ -235,9 +238,9 @@
       "id": "mistral-dpa",
       "ok": true,
       "http_status": 200,
-      "change": "changed",
+      "change": "unchanged",
       "consecutive_failures": 0,
-      "last_ok_at": "2026-10-01T12:30:53.268Z",
+      "last_ok_at": "2026-11-01T12:45:04.283Z",
       "fetched_url": "https://legal.mistral.ai/terms/data-processing-addendum/",
       "attempt": "bot"
     },
@@ -247,7 +250,7 @@
       "http_status": 200,
       "change": "changed",
       "consecutive_failures": 0,
-      "last_ok_at": "2026-10-01T12:30:53.881Z",
+      "last_ok_at": "2026-11-01T12:45:05.277Z",
       "fetched_url": "https://mistral.ai/",
       "attempt": "bot"
     },
@@ -257,7 +260,7 @@
       "http_status": 200,
       "change": "unchanged",
       "consecutive_failures": 0,
-      "last_ok_at": "2026-10-01T12:30:54.496Z",
+      "last_ok_at": "2026-11-01T12:45:05.870Z",
       "fetched_url": "https://docs.aleph-alpha.com/verticals/pga.html",
       "attempt": "bot"
     },
@@ -267,7 +270,7 @@
       "http_status": 200,
       "change": "changed",
       "consecutive_failures": 0,
-      "last_ok_at": "2026-10-01T12:30:55.083Z",
+      "last_ok_at": "2026-11-01T12:45:06.563Z",
       "fetched_url": "https://aws.amazon.com/bedrock/security-compliance/",
       "attempt": "bot"
     },
@@ -277,7 +280,7 @@
       "http_status": 200,
       "change": "unchanged",
       "consecutive_failures": 0,
-      "last_ok_at": "2026-10-01T12:30:55.666Z",
+      "last_ok_at": "2026-11-01T12:45:07.097Z",
       "fetched_url": "https://d1.awsstatic.com/legal/aws-gdpr/AWS_GDPR_DPA.pdf",
       "attempt": "bot"
     },
@@ -285,9 +288,9 @@
       "id": "swisscom-ai-platform",
       "ok": true,
       "http_status": 200,
-      "change": "changed",
+      "change": "unchanged",
       "consecutive_failures": 0,
-      "last_ok_at": "2026-10-01T12:30:56.352Z",
+      "last_ok_at": "2026-11-01T12:45:08.260Z",
       "fetched_url": "https://www.swisscom.ch/en/business/enterprise/offer/platforms-applications/data-driven-business/swiss-ai-platform.html",
       "attempt": "bot"
     },
@@ -297,7 +300,7 @@
       "http_status": 200,
       "change": "changed",
       "consecutive_failures": 0,
-      "last_ok_at": "2026-10-01T12:30:57.718Z",
+      "last_ok_at": "2026-11-01T12:45:09.979Z",
       "fetched_url": "https://www.infomaniak.com/en/trust-center",
       "attempt": "bot"
     },
@@ -307,7 +310,7 @@
       "http_status": 200,
       "change": "unchanged",
       "consecutive_failures": 0,
-      "last_ok_at": "2026-10-01T12:30:59.370Z",
+      "last_ok_at": "2026-11-01T12:45:11.975Z",
       "fetched_url": "https://www.infomaniak.com/documents/privacy/DPA/Data_Processing_Agreement_(DPA).pdf",
       "attempt": "bot"
     },
@@ -317,7 +320,7 @@
       "http_status": 200,
       "change": "changed",
       "consecutive_failures": 0,
-      "last_ok_at": "2026-10-01T12:30:59.926Z",
+      "last_ok_at": "2026-11-01T12:45:12.583Z",
       "fetched_url": "https://huggingface.co/docs/hub/main/security",
       "attempt": "bot"
     },
@@ -327,7 +330,7 @@
       "http_status": 200,
       "change": "changed",
       "consecutive_failures": 0,
-      "last_ok_at": "2026-10-01T12:31:00.471Z",
+      "last_ok_at": "2026-11-01T12:45:13.123Z",
       "fetched_url": "https://trustcenter.cohere.com/",
       "attempt": "bot"
     },
@@ -337,7 +340,7 @@
       "http_status": 200,
       "change": "changed",
       "consecutive_failures": 0,
-      "last_ok_at": "2026-10-01T12:31:01.087Z",
+      "last_ok_at": "2026-11-01T12:45:14.320Z",
       "fetched_url": "https://cohere.com/enterprise-data-commitments",
       "attempt": "bot"
     },
@@ -347,7 +350,7 @@
       "http_status": 200,
       "change": "changed",
       "consecutive_failures": 0,
-      "last_ok_at": "2026-10-01T12:31:01.638Z",
+      "last_ok_at": "2026-11-01T12:45:14.887Z",
       "fetched_url": "https://www.ibm.com/products/watsonx",
       "attempt": "bot"
     },
@@ -357,7 +360,7 @@
       "http_status": 200,
       "change": "changed",
       "consecutive_failures": 0,
-      "last_ok_at": "2026-10-01T12:31:02.315Z",
+      "last_ok_at": "2026-11-01T12:45:16.044Z",
       "fetched_url": "https://www.exoscale.com/compliance/",
       "attempt": "bot"
     },
@@ -367,7 +370,7 @@
       "http_status": 200,
       "change": "changed",
       "consecutive_failures": 0,
-      "last_ok_at": "2026-10-01T12:31:03.242Z",
+      "last_ok_at": "2026-11-01T12:45:17.229Z",
       "fetched_url": "https://www.exoscale.com/ai-cloud-infrastructure/",
       "attempt": "bot"
     },
@@ -377,7 +380,7 @@
       "http_status": 200,
       "change": "changed",
       "consecutive_failures": 0,
-      "last_ok_at": "2026-10-01T12:31:03.786Z",
+      "last_ok_at": "2026-11-01T12:45:17.930Z",
       "fetched_url": "https://docs.ovhcloud.com/en/guides/public-cloud/ai-machine-learning/ai-endpoints-capabilities",
       "attempt": "bot"
     },
@@ -387,7 +390,7 @@
       "http_status": 200,
       "change": "unchanged",
       "consecutive_failures": 0,
-      "last_ok_at": "2026-10-01T12:31:04.396Z",
+      "last_ok_at": "2026-11-01T12:45:18.895Z",
       "fetched_url": "https://www.ovh.com/fr/support/documents_legaux/Annexe%20Traitement%20de%20donn%C3%A9es%20%C3%A0%20caract%C3%A8re%20personnel.pdf",
       "attempt": "bot"
     },
@@ -397,7 +400,7 @@
       "http_status": 200,
       "change": "changed",
       "consecutive_failures": 0,
-      "last_ok_at": "2026-10-01T12:31:05.824Z",
+      "last_ok_at": "2026-11-01T12:45:20.196Z",
       "fetched_url": "https://www.deepl.com/en/blog/expanding-deepl-data-infrastructure",
       "attempt": "bot"
     },
@@ -407,8 +410,78 @@
       "http_status": 200,
       "change": "changed",
       "consecutive_failures": 0,
-      "last_ok_at": "2026-10-01T12:31:06.471Z",
+      "last_ok_at": "2026-11-01T12:45:20.799Z",
       "fetched_url": "https://www.deepl.com/en/pro-data-security",
+      "attempt": "bot"
+    },
+    {
+      "id": "bacs-ceo-betrug",
+      "ok": true,
+      "http_status": 200,
+      "change": "new",
+      "consecutive_failures": 0,
+      "last_ok_at": "2026-11-01T12:45:21.363Z",
+      "fetched_url": "https://www.bacs.admin.ch/de/ceo-betrug",
+      "attempt": "bot"
+    },
+    {
+      "id": "bacs-woche-2026-04-dringende-ueberweisung",
+      "ok": true,
+      "http_status": 200,
+      "change": "new",
+      "consecutive_failures": 0,
+      "last_ok_at": "2026-11-01T12:45:22.616Z",
+      "fetched_url": "https://www.bacs.admin.ch/de/26w4-de",
+      "attempt": "bot"
+    },
+    {
+      "id": "bacs-woche-2024-14-deepfake-chef",
+      "ok": true,
+      "http_status": 200,
+      "change": "new",
+      "consecutive_failures": 0,
+      "last_ok_at": "2026-11-01T12:45:23.246Z",
+      "fetched_url": "https://www.bacs.admin.ch/de/24w14-de",
+      "attempt": "bot"
+    },
+    {
+      "id": "bacs-meldepflicht",
+      "ok": true,
+      "http_status": 200,
+      "change": "new",
+      "consecutive_failures": 0,
+      "last_ok_at": "2026-11-01T12:45:23.883Z",
+      "fetched_url": "https://www.bacs.admin.ch/de/informationen-zur-meldepflicht",
+      "attempt": "bot"
+    },
+    {
+      "id": "owasp-llm01-prompt-injection",
+      "ok": true,
+      "http_status": 200,
+      "change": "new",
+      "consecutive_failures": 0,
+      "last_ok_at": "2026-11-01T12:45:24.537Z",
+      "fetched_url": "https://genai.owasp.org/llmrisk/llm01-prompt-injection/",
+      "attempt": "bot"
+    },
+    {
+      "id": "owasp-llm06-excessive-agency",
+      "ok": true,
+      "http_status": 200,
+      "change": "new",
+      "consecutive_failures": 0,
+      "last_ok_at": "2026-11-01T12:45:25.161Z",
+      "fetched_url": "https://genai.owasp.org/llmrisk/llm062025-excessive-agency/",
+      "attempt": "bot"
+    },
+    {
+      "id": "edoeb-leitfaden-meldung-art-24",
+      "ok": true,
+      "http_status": 200,
+      "change": "new",
+      "consecutive_failures": 0,
+      "last_ok_at": "2026-11-01T12:45:25.600Z",
+      "fetched_url": "https://www.edoeb.admin.ch/dam/de/sd-web/T64CAUyvAMcF/1_2%20Leitfaden%20des%20ED%C3%96B%20betreffend%20die%20Meldung%20von%20Datensicherheitsverletzungen%20und%20Information%20der%20Betroffenen%20nach%20Art.%2024%20DSG_DE.pdf",
       "attempt": "bot"
     }
   ],
@@ -417,14 +490,14 @@
       "id": "eur-lex-ai-act-de",
       "http_status": 202,
       "error": "HTTP 202 Accepted after 3 attempts (tried 3 URLs; last: https://eur-lex.europa.eu/eli/reg/2024/1689/oj/deu/pdf)",
-      "consecutive_failures": 1,
+      "consecutive_failures": 2,
       "last_ok_at": "2026-07-17T09:43:17.873Z"
     },
     {
       "id": "eur-lex-ai-act-en",
       "http_status": 202,
       "error": "HTTP 202 Accepted after 3 attempts (tried 3 URLs; last: https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng/pdf)",
-      "consecutive_failures": 1,
+      "consecutive_failures": 2,
       "last_ok_at": "2026-07-17T09:43:14.983Z"
     }
   ]

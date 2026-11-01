@@ -1,0 +1,14 @@
+{
+  "id": "bacs-woche-2026-04-dringende-ueberweisung",
+  "url": "https://www.bacs.admin.ch/de/26w4-de",
+  "fetched_url": "https://www.bacs.admin.ch/de/26w4-de",
+  "fetched_at": "2026-11-01T12:45:22.616Z",
+  "http_status": 200,
+  "content_type": "text/html;charset=utf-8",
+  "sha256": "b9daa5fc42696a44a4add6269a9aaf29cb43542c8a9c8d1477c1bbbc33d64403",
+  "byte_length": 6897,
+  "ok": true,
+  "consecutive_failures": 0,
+  "last_ok_at": "2026-11-01T12:45:22.616Z",
+  "attempt": "bot"
+}

@@ -2,13 +2,13 @@
   "id": "deepl-pro-security",
   "url": "https://www.deepl.com/en/pro-data-security",
   "fetched_url": "https://www.deepl.com/en/pro-data-security",
-  "fetched_at": "2026-10-01T12:31:06.471Z",
+  "fetched_at": "2026-11-01T12:45:20.799Z",
   "http_status": 200,
   "content_type": "text/html; charset=utf-8",
-  "sha256": "ed1139b6b1d25891e0a671045911984a530b8d76c9a29019b10d0c809af6abfd",
-  "byte_length": 6014,
+  "sha256": "bb26d58700aeef47d73ff81a748866034b170e7c270e45532eab678f36f1b225",
+  "byte_length": 5931,
   "ok": true,
   "consecutive_failures": 0,
-  "last_ok_at": "2026-10-01T12:31:06.471Z",
+  "last_ok_at": "2026-11-01T12:45:20.799Z",
   "attempt": "bot"
 }

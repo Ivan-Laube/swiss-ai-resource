@@ -1,0 +1,14 @@
+{
+  "id": "owasp-llm06-excessive-agency",
+  "url": "https://genai.owasp.org/llmrisk/llm062025-excessive-agency/",
+  "fetched_url": "https://genai.owasp.org/llmrisk/llm062025-excessive-agency/",
+  "fetched_at": "2026-11-01T12:45:25.161Z",
+  "http_status": 200,
+  "content_type": "text/html; charset=UTF-8",
+  "sha256": "92626826964bc71aef18918c5e93a4033b31b68cc91395a8294247774bb80b88",
+  "byte_length": 12144,
+  "ok": true,
+  "consecutive_failures": 0,
+  "last_ok_at": "2026-11-01T12:45:25.161Z",
+  "attempt": "bot"
+}

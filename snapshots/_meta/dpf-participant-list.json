@@ -2,13 +2,13 @@
   "id": "dpf-participant-list",
   "url": "https://www.dataprivacyframework.gov/list",
   "fetched_url": "https://www.ftc.gov/business-guidance/privacy-security/data-privacy-framework",
-  "fetched_at": "2026-10-01T12:28:59.080Z",
+  "fetched_at": "2026-11-01T12:43:12.727Z",
   "http_status": 200,
   "content_type": "text/html; charset=UTF-8",
-  "sha256": "4bb1cf3f9833d720aa1aeb9776b5d7c34bcc795ef384e25b562b3dada461fa45",
-  "byte_length": 14799,
+  "sha256": "8942301b3c458859c46e90c4d42c6f7b5a37ac4915b2fe66591366f50e65b00e",
+  "byte_length": 14565,
   "ok": true,
   "consecutive_failures": 0,
-  "last_ok_at": "2026-10-01T12:28:59.080Z",
+  "last_ok_at": "2026-11-01T12:43:12.727Z",
   "attempt": "browser"
 }

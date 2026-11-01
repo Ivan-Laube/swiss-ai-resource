@@ -2,13 +2,13 @@
   "id": "openai-business-data",
   "url": "https://openai.com/business-data/",
   "fetched_url": "https://openai.com/business-data/",
-  "fetched_at": "2026-10-01T12:30:42.358Z",
+  "fetched_at": "2026-11-01T12:44:52.021Z",
   "http_status": 200,
   "content_type": "text/html; charset=utf-8",
-  "sha256": "c51d02cf85c9e0ee36f4eca122f3bc953b8e7194c6c2c0013099329491f7bea8",
-  "byte_length": 8696,
+  "sha256": "bb0a76e4ce7475df3b82f5bdff9c1d81fad887a6e689c79aba76ccc222d2cdf3",
+  "byte_length": 8782,
   "ok": true,
   "consecutive_failures": 0,
-  "last_ok_at": "2026-10-01T12:30:42.358Z",
+  "last_ok_at": "2026-11-01T12:44:52.021Z",
   "attempt": "browser"
 }

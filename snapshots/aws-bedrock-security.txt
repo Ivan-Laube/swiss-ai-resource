@@ -34,27 +34,27 @@ Explore topics
 
 re:Invent 2026
 
-The session catalog is live. Explore what's waiting for you
+The sessions are set and your seat is waiting. Register now
 
 Build & Deploy AI Agents
 
 88% of agent pilots stall. Learn what the rest do differently
 
-Independent Software Vendors
+Get started
 
-AI for software & tech: build, scale, and monetize
+Sign up free, connect your coding agent, and start building
 
 Data for agentic AI
 
 The 7 essential data capabilities to scale agentic AI
 
-Agent Toolkit
+Analyst Report
 
-Give AI coding agents up-to-date docs and AWS resource access
+AWS named a Leader in the 2026 Gartner Magic Quadrant for SCPS
 
-Amazon Quick
+AI for Small Businesses
 
-Answers grounded in your actual business data
+Solutions designed for your business. Delivered by AWS Partners
 
 News & announcements
 
@@ -71,6 +71,7 @@ Compliance
 Trust Center
 Sustainability
 Global Infrastructure
+Careers
 
 Featured Products
 
@@ -325,6 +326,7 @@ AWS Cloud Security
 What's New
 Blogs
 Press Releases
+Careers
 
 Resources
 

@@ -2,13 +2,13 @@
   "id": "ibm-watsonx-home",
   "url": "https://www.ibm.com/watsonx",
   "fetched_url": "https://www.ibm.com/products/watsonx",
-  "fetched_at": "2026-10-01T12:31:01.638Z",
+  "fetched_at": "2026-11-01T12:45:14.887Z",
   "http_status": 200,
   "content_type": "text/html;charset=utf-8",
-  "sha256": "89889e1a0e51570eba757e64fa0fb5fe685ef93da4b2bd77d443b1886bd3ab43",
-  "byte_length": 6416,
+  "sha256": "972f584fdefe211466d165e4315e9a9e7d902b4d9403127b17396063d8546a06",
+  "byte_length": 6266,
   "ok": true,
   "consecutive_failures": 0,
-  "last_ok_at": "2026-10-01T12:31:01.638Z",
+  "last_ok_at": "2026-11-01T12:45:14.887Z",
   "attempt": "bot"
 }

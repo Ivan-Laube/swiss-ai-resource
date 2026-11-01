@@ -2,15 +2,9 @@ Get in touch
 
 Menu
 
-Products
+ResearchSovereign AI
 
-Industries
-
-Research
-
-Developers
-
-Blog
+Cloud
 
 Customers
 
@@ -20,340 +14,132 @@ Get in touch
 
 Login
 
-StudioBuild, test, and run AI agents and apps.
+Why Sovereign AI
 
-ForgeTrain, align, and evaluate custom AI models.
+Products
 
-VibeAI agent for long-horizon work.
+Method
 
-Vibe for codeCoding agents in the terminal, IDE, and background.
+Sovereign AI in practice
 
-AI CloudFrontier-scale infrastructure for training and inference.
+Inference
 
-PricingPlans
-
-API pricing
-
-For enterprises
-
-Financial services
-
-Public sector & government
-
-Manufacturing
+Compute
 
 Energy & utilities
 
-DomainsCoding
+Manufacturing
 
-Document intelligence
+Financial services
 
-Speech
+Public sector
 
-Applied AIDelivery methodology
+Cybersecurity
 
-Model customization
+All customers
 
-Latest models
-
-Mistral OCR 4
-
-Mistral Medium 3.5
-
-Mistral Small 4
-
-Voxtral TTS
-
-See all models
+Blog
 
 Docs
-
-API Reference
-
-Cookbooks
-
-Latest posts
-
-Hallo, Deutschland!
-
-Mistral and Mozilla are bringing open, private and multilingual AI to your web browser
-
-Cloudera and Mistral Partner to Bring Specialized, Sovereign Intelligence to Enterprise Data
-
-Read all news
-
-CategoriesProduct
-
-Research
-
-Engineering
-
-Solutions
-
-Company
-
-Featured stories
-
-ASML
-
-CMA CGM
-
-HSBC
-
-TotalEnergies
-
-See all
-
-Who we are
 
 About us
 
 Careers
 
-Brand
+ResearchSovereign AICloudCustomersCompany
 
-ConnectCommunity
+Why Sovereign AI
 
-Partners
+Products
 
-Help center
+Method
 
-ProductsIndustriesResearchDevelopersBlogCustomersCompany
+Sovereign AI in practice
 
-StudioBuild, test, and run AI agents and apps.
+Inference
 
-ForgeTrain, align, and evaluate custom AI models.
-
-VibeAI agent for long-horizon work.
-
-Vibe for codeCoding agents in the terminal, IDE, and background.
-
-AI CloudFrontier-scale infrastructure for training and inference.
-
-PricingPlans
-
-API pricing
-
-For enterprises
-
-Financial services
-
-Public sector & government
-
-Manufacturing
+Compute
 
 Energy & utilities
 
-DomainsCoding
+Manufacturing
 
-Document intelligence
+Financial services
 
-Speech
+Public sector
 
-Applied AIDelivery methodology
+Cybersecurity
 
-Model customization
+All customers
 
-Latest models
-
-Mistral OCR 4
-
-Mistral Medium 3.5
-
-Mistral Small 4
-
-Voxtral TTS
-
-See all models
+Blog
 
 Docs
-
-API Reference
-
-Cookbooks
-
-Latest posts
-
-Hallo, Deutschland!
-
-Mistral and Mozilla are bringing open, private and multilingual AI to your web browser
-
-Cloudera and Mistral Partner to Bring Specialized, Sovereign Intelligence to Enterprise Data
-
-Read all news
-
-CategoriesProduct
-
-Research
-
-Engineering
-
-Solutions
-
-Company
-
-Featured stories
-
-ASML
-
-CMA CGM
-
-HSBC
-
-TotalEnergies
-
-See all
-
-Who we are
 
 About us
 
 Careers
 
-Brand
-
-ConnectCommunity
-
-Partners
-
-Help center
-
-Login
+Get in touchLogin
 
 Studio
 
 Vibe
 
-Vibe for Code
+Mistral is #1 in Sovereign AI.Le Chonk: Built for Coders, Trusted by Defenders.
 
-Get in touch
+Le Chonk: Built for Coders, Trusted by Defenders.
 
-Frontier AI.
-In your hands.Frontier AI.In your hands.We help organizations build tailored AI systems to solve the world’s hardest problems.Featured newsMistral raises €3B to make sovereign, open-weight AI the technology frontier
+No one else should hold the strings to yourProcess knowledgeIntellectual propertyInventionDataCore product developmentQuality standardsDiscoveryProprietary AIPrivate code baseDecision logicEngineering practicesDesign tradeoffsMistral lets you decidehow AI works in your organization.Frontier open models
 
-In-region inference, open models, and new European infrastructure for sovereign AI.
+Frontier open models
 
-Introducing Shieldstral.
+Proprietary intelligence
 
-Introducing Mistral OCR 4
+AI operations
 
-We help organizations build tailored AI systems to solve the world’s hardest problems.
+Flexible compute
 
-Featured newsMistral raises €3B to make sovereign, open-weight AI the technology frontier
+We make the models. You keep them.Start with Mistral’s frontier and specialist open-weight models. Use them as they are, or make them specific to your organization.
 
-In-region inference, open models, and new European infrastructure for sovereign AI.
+Discover Research
 
-Introducing Shieldstral.
-
-Introducing Mistral OCR 4
-
-Financial servicesFinancial servicesHSBC boosts productivity with Mistral.
-
-Learn more
-
-Financial servicesTechnology and SoftwareTechnology and SoftwareASML accelerates advanced semiconductor lithography with Mistral.
-
-Learn more
-
-Technology and SoftwareTransportation and LogisticsTransportation and LogisticsCMA CGM streamlines global maritime operations with Mistral.
-
-Learn more
-
-Transportation and LogisticsPublic sectorPublic sectorAustrian Academy of Sciences and Mistral: unlocking Ancient Greek with Apollo.
-
-Learn more
-
-Public sectorPublic sectorPublic sectorFrom PDFs to structured output: automated patent transcription at scale.
-
-Learn more
-
-Public sectorManufacturingManufacturingBuilding a more intelligent car: How Stellantis is accelerating automotive innovation.
-
-Learn more
-
-Manufacturing
-
-Do it all with Mistral.
-
-VibeAI agent for long-horizon work.
-
-StudioBuild, test, and run AI agents and apps.
-
-ForgeTrain, align, and evaluate custom AI models.
-
-Applied AI services
-
-Frontier models
-
-AI CloudFrontier-scale infrastructure for training and inference.Summary
-
-Autonomous work.
-
-Discover Vibe
-
-AI agent for long-horizon tasks, fluent in your knowledge and tools.
-
-Discover Vibe
-
-Enterprise knowledge searchStructured data analysisDocument and report synthesisMulti-step task schedulingPersistent memory and reusable skillsAutonomous coding.
-
-Discover Vibe for code
-
-Ship faster with a stack that meets devs where they work.
-
-Discover Vibe for code
-
-Async code generationArchitecture-aware reasoningLegacy code translationAutomated CI/CD and code reviewsTest and documentation authoringAI application development.
-
-Discover Studio
-
-Build and deploy AI apps with complete control: build custom agents, and run production AI anywhere—from edge to cloud—with enterprise-grade tooling.
-
-Discover Studio
-
-Agent orchestrationEnd-to-end observabilityUnified AI registryEvals, judges, and guardrailsFull deployment portabilityCustom model development.
+We give you the tools. You tailor the models.Customize models around your data, use cases, and requirements with Forge. The intelligence you create is uniquely yours.
 
 Discover Forge
 
-Turn proprietary knowledge into model intelligence by training and aligning your own models.
+We build the software. You put AI to work.Build, govern and improve agents and applications with Studio. Vibe brings that AI into research, coding, and everyday tasks.
 
-Discover Forge
+Discover Vibe
 
-Enterprise domain adaptationEnd-to-end model trainingReinforcement learning and distillationSynthetic data generationEvaluation and lifecycle managementInfrastructure for training and inference.
+Discover Studio
+
+We host it.
+Or you do. Run on-prem, in your VPC, or have us run it for you. Keep inference in-region and reserve dedicated GPU capacity for predictable throughput without managing hardware.
+
+Discover Inference
 
 Discover Compute
 
-The frontier-grade infrastructure and orchestration platform behind Mistral's own models is now yours to build on.
+See Sovereign AI at work.
 
-Discover Compute
+Learn about our customers
 
-Dedicated GPU clustersAdvanced R&D
+Energy and utilities
 
-Discover applied AI
+Energy and utilities5 of the world's largest energy companies trust Mistral. TotalEnergies is accelerating reservoir exploration.“By combining a century of geoscience data, the expertise of our teams and Mistral's capabilities, we aim to develop a new generation of tools capable of supporting our experts in analyzing the most complex data and in their decision-making.”CEO, TotalEnergiesManufacturing
 
-Tailored, domain-specialized AI: from custom pre-training with your data to scaled deployment—with expert guidance throughout.
+ManufacturingThe world’s largest semiconductor equipment and aircraft manufacturers trust Mistral.ASML is identifying sub-system errors 70% faster.“Thanks to the high-performance models and made-to-measure support of Mistral experts, we are building the foundations necessary to power our current and future products and services, enabling us to serve our customers better.”Executive Vice President Digital, AirbusFinancial services
 
-Discover applied AI
+Financial servicesEurope’s three largest banks trust Mistral.BNP Paribas is speeding up the KYC process from weeks to days.“Mistral has delivered productivity gains across coding, research, and surveillance while maintaining the data control and compliance our business requires.”Head of Digital Global Markets, BNP ParibasPublic sector
 
-Model customizationValue realizationDeployment servicesUse case accelerationEnterprise activationSupported by expert partnership.Work with world-class AI scientists to enable transformation that drives impact.
+Public sectorNATO and 20+ national government entities trust Mistral.The European Patent Office is cutting transcription from days to minutes.“Our partnership with Mistral has accelerated the development of safer and smarter AI solutions which has greatly enhanced the productivity of public safety officers in Singapore.”Chief AI Officer and Assistant Chief Executive, HTX5 of the world's largest energy companies trust Mistral. TotalEnergies is accelerating reservoir exploration.“By combining a century of geoscience data, the expertise of our teams and Mistral's capabilities, we aim to develop a new generation of tools capable of supporting our experts in analyzing the most complex data and in their decision-making.”CEO, TotalEnergiesThe world’s largest semiconductor equipment and aircraft manufacturers trust Mistral.ASML is identifying sub-system errors 70% faster.“Thanks to the high-performance models and made-to-measure support of Mistral experts, we are building the foundations necessary to power our current and future products and services, enabling us to serve our customers better.”Executive Vice President Digital, AirbusEurope’s three largest banks trust Mistral.BNP Paribas is speeding up the KYC process from weeks to days.“Mistral has delivered productivity gains across coding, research, and surveillance while maintaining the data control and compliance our business requires.”Head of Digital Global Markets, BNP ParibasNATO and 20+ national government entities trust Mistral.The European Patent Office is cutting transcription from days to minutes.“Our partnership with Mistral has accelerated the development of safer and smarter AI solutions which has greatly enhanced the productivity of public safety officers in Singapore.”Chief AI Officer and Assistant Chief Executive, HTXGo deeper.
 
-Our services
+ResearchExplore the science and research behind Mistral’s frontier models.
 
-Use case acceleration.Prioritize high-value use cases and take them to production fast.Elite AI expertise.A cross-functional team that takes initiatives from kickoff to production at scale.Deep customization.Customize and optimize models for your domain.Enterprise activation.Deploy AI in your environment with full control.
+Sovereign AILearn about AI dependencies, where control matters, and what it takes to stay sovereign.
 
-AI deployments designed for privacy.Deploy frontier AI in your environment, or consume as a service or from one of our cloud partners.
-
-Self-hosted.Deploy Studio on virtual cloud, edge, or on-premises. Self-hosted deployments offer more advanced levels of customization and control. Your data stays within your walls.
-
-Mistral cloud.Get started with Studio hosted on Mistral’s infrastructure and build your own applications and services with our APIs. Our servers are hosted in the EU.
-
-Cloud providers.Access the power of Studio via your preferred cloud provider (Google Cloud, AWS, Azure, SAP, IBM, Snowflake, NVIDIA, Outscale) using your cloud credits.Own your own AI future.Build, customize, and deploy tailored AI solutions with complete control.
-
-Start building
-
-Contact sales
-
-ProductsVibeVibe CodeStudioForgeComputePricingSolutionsDelivery methodologyModel customizationCodingDocument intelligenceSpeechMistral for financeMistral for public institutionsMistral for manufacturingMistral for energy & utilitiesWhy MistralAbout usCareersPartnersOur customersOur modelsBrandCompanyTerms of ServicePrivacy PolicyPrivacy choicesData processing agreementTrust CenterLegal noticeGet Mistral Vibe
+CloudAccess models, regional inference, and dedicated compute on Mistral infrastructure.Build with usCustomersPartnersBrandPricingDive deeperCodingDocument intelligenceSpeechApplied AI servicesAll use casesCompanyTerms of ServicePrivacy PolicyPrivacy choicesData processing agreementTrust CenterLegal noticeGet Mistral Vibe
 
 Mistral AI © 2026
 

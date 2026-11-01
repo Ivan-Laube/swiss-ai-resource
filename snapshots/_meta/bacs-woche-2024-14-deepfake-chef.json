@@ -1,0 +1,14 @@
+{
+  "id": "bacs-woche-2024-14-deepfake-chef",
+  "url": "https://www.bacs.admin.ch/de/24w14-de",
+  "fetched_url": "https://www.bacs.admin.ch/de/24w14-de",
+  "fetched_at": "2026-11-01T12:45:23.246Z",
+  "http_status": 200,
+  "content_type": "text/html;charset=utf-8",
+  "sha256": "6bd648f9516fe7d2c539a15881c97f627312731f078772787256434424463e22",
+  "byte_length": 5853,
+  "ok": true,
+  "consecutive_failures": 0,
+  "last_ok_at": "2026-11-01T12:45:23.246Z",
+  "attempt": "bot"
+}

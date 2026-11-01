@@ -2,22 +2,319 @@ Index: snapshots/microsoft-dpa.txt
 ===================================================================
 --- snapshots/microsoft-dpa.txt
 +++ snapshots/microsoft-dpa.txt
-@@ -3706,8 +3706,7 @@
+@@ -121,7 +121,7 @@
+ Microsoft Products and Services Data Protection Addendum (DPA)
+ When you subscribe to a Product under the terms of the Product Terms site, the data processing and security terms are defined in Microsoft Online Services Data Protection Addendum (DPA). The DPA is an addendum to the Product Terms site (and formerly OST). The current and archived editions of the DPA are available for download.
+ 
+-Download the most recent version (English) (May 2026):
++Download the most recent version (English) (November 2026):
+ Microsoft Product and Services Data Protection Addendum (WW)
+ Download
+ 
+@@ -195,6 +195,286 @@
+ 
+ Microsoft Product and Services Data Protection Addendum (WW)
+ 
++November
++01
++2026
++
++Portuguese (Portugal)
++
++Microsoft Product and Services Data Protection Addendum (WW)
++
++November
++01
++2026
++
++Romanian
++
++Microsoft Product and Services Data Protection Addendum (WW)
++
++November
++01
++2026
++
++Russian
++
++Microsoft Product and Services Data Protection Addendum (WW)
++
++November
++01
++2026
++
++Serbian
++
++Microsoft Product and Services Data Protection Addendum (WW)
++
++November
++01
++2026
++
++Slovak
++
++Microsoft Product and Services Data Protection Addendum (WW)
++
++November
++01
++2026
++
++Slovenian
++
++Microsoft Product and Services Data Protection Addendum (WW)
++
++November
++01
++2026
++
++Dutch
++
++Microsoft Product and Services Data Protection Addendum (WW)
++
++November
++01
++2026
++
++English
++
++Microsoft Product and Services Data Protection Addendum (WW)
++
++November
++01
++2026
++
++Estonian
++
++Microsoft Product and Services Data Protection Addendum (WW)
++
++November
++01
++2026
++
++Finnish
++
++Microsoft Product and Services Data Protection Addendum (WW)
++
++November
++01
++2026
++
++French (Europe)
++
++Microsoft Product and Services Data Protection Addendum (WW)
++
++November
++01
++2026
++
++German
++
++Microsoft Product and Services Data Protection Addendum (WW)
++
++November
++01
++2026
++
++Greek
++
++Microsoft Product and Services Data Protection Addendum (WW)
++
++November
++01
++2026
++
++Hungarian
++
++Microsoft Product and Services Data Protection Addendum (WW)
++
++November
++01
++2026
++
++Indonesian
++
++Microsoft Product and Services Data Protection Addendum (WW)
++
++November
++01
++2026
++
++Italian
++
++Microsoft Product and Services Data Protection Addendum (WW)
++
++November
++01
++2026
++
++Japanese
++
++Microsoft Product and Services Data Protection Addendum (WW)
++
++November
++01
++2026
++
++Bulgarian
++
++Microsoft Product and Services Data Protection Addendum (WW)
++
++November
++01
++2026
++
++Catalan
++
++Microsoft Product and Services Data Protection Addendum (WW)
++
++November
++01
++2026
++
++Chinese (Simplified)
++
++Microsoft Product and Services Data Protection Addendum (WW)
++
++November
++01
++2026
++
++Chinese (Traditional)
++
++Microsoft Product and Services Data Protection Addendum (WW)
++
++November
++01
++2026
++
++Croatian
++
++Microsoft Product and Services Data Protection Addendum (WW)
++
++November
++01
++2026
++
++Czech
++
++Microsoft Product and Services Data Protection Addendum (WW)
++
++November
++01
++2026
++
++Danish
++
++Microsoft Product and Services Data Protection Addendum (WW)
++
++November
++01
++2026
++
++Spanish (International)
++
++Microsoft Product and Services Data Protection Addendum (WW)
++
++November
++01
++2026
++
++Swedish
++
++Microsoft Product and Services Data Protection Addendum (WW)
++
++November
++01
++2026
++
++Thai
++
++Microsoft Product and Services Data Protection Addendum (WW)
++
++November
++01
++2026
++
++Turkish
++
++Microsoft Product and Services Data Protection Addendum (WW)
++
++November
++01
++2026
++
++Ukranian
++
++Microsoft Product and Services Data Protection Addendum (WW)
++
++November
++01
++2026
++
++Korean
++
++Microsoft Product and Services Data Protection Addendum (WW)
++
++November
++01
++2026
++
++Latvian
++
++Microsoft Product and Services Data Protection Addendum (WW)
++
++November
++01
++2026
++
++Lithuanian
++
++Microsoft Product and Services Data Protection Addendum (WW)
++
++November
++01
++2026
++
++Norwegian (Bokmal)
++
++Microsoft Product and Services Data Protection Addendum (WW)
++
++November
++01
++2026
++
++Polish
++
++Microsoft Product and Services Data Protection Addendum (WW)
++
++November
++01
++2026
++
++Portuguese (Brazil)
++
++Microsoft Product and Services Data Protection Addendum (WW)
++
+ May
+ 22
+ 2026
+@@ -3702,9 +3982,9 @@
+ Welcome to the NEW Microsoft Licensing Resources and Documents site! This site has replaced MSVL and contains all the content formally hosted on MSVL. Please update your bookmark to https://aka.ms/licensingdocs.
+ Close
+ 
++Surface Laptop Ultra
+ Surface Pro
  Surface Laptop
- Surface Laptop Ultra
+-Surface Laptop Ultra
  Surface RTX Spark Dev Box
--Copilot for organizations
--Copilot for personal use
-+Explore Copilot
+ Explore Copilot
  Explore Microsoft products
- Windows 11 apps
+@@ -3716,7 +3996,7 @@
+ Returns
+ Order tracking
+ Certified Refurbished
+-Microsoft Store Promise
++Why buy from Microsoft Store
+ Flexible Payments
  
-@@ -3735,7 +3734,7 @@
- Microsoft 365
- Microsoft Power Platform
- Microsoft Teams
--Microsoft 365 Copilot
-+Microsoft Copilot
- Small Business
- 
- Azure
+ Microsoft in education

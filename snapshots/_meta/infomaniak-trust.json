@@ -2,13 +2,13 @@
   "id": "infomaniak-trust",
   "url": "https://www.infomaniak.com/en/trust-center",
   "fetched_url": "https://www.infomaniak.com/en/trust-center",
-  "fetched_at": "2026-10-01T12:30:57.718Z",
+  "fetched_at": "2026-11-01T12:45:09.979Z",
   "http_status": 200,
   "content_type": "text/html; charset=utf-8",
-  "sha256": "438a40a3423f224ee8f02a76a6cf962ea0283c3c7b34328bef385db850a394be",
-  "byte_length": 12547,
+  "sha256": "3b950bec7fb53addab50db2cc3e7bbe3b2ad6c723cf4c5844cb007ca124f9df0",
+  "byte_length": 12551,
   "ok": true,
   "consecutive_failures": 0,
-  "last_ok_at": "2026-10-01T12:30:57.718Z",
+  "last_ok_at": "2026-11-01T12:45:09.979Z",
   "attempt": "bot"
 }

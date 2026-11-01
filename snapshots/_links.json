@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-01T12:35:46.006Z",
+  "checked_at": "2026-11-01T12:46:04.533Z",
   "dry_run": false,
   "results": [
     {
@@ -83,10 +83,6 @@
         {
           "kind": "vendor",
           "id": "anthropic#training_opt_out.source_url"
-        },
-        {
-          "kind": "vendor",
-          "id": "anthropic#certifications.source_url"
         }
       ]
     },
@@ -327,6 +323,62 @@
       ]
     },
     {
+      "url": "https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX:32026R1744",
+      "ok": true,
+      "http_status": 202,
+      "reused_from_run": false,
+      "sources": [
+        {
+          "kind": "content",
+          "id": "de/ai-procurement-checklist#sources"
+        },
+        {
+          "kind": "content",
+          "id": "de/eu-ai-act-swiss-exporters#sources"
+        },
+        {
+          "kind": "content",
+          "id": "en/ai-procurement-checklist#sources"
+        },
+        {
+          "kind": "content",
+          "id": "en/eu-ai-act-swiss-exporters#sources"
+        },
+        {
+          "kind": "content",
+          "id": "fr/ai-procurement-checklist#sources"
+        },
+        {
+          "kind": "content",
+          "id": "fr/eu-ai-act-swiss-exporters#sources"
+        },
+        {
+          "kind": "content",
+          "id": "it/ai-procurement-checklist#sources"
+        },
+        {
+          "kind": "content",
+          "id": "it/eu-ai-act-swiss-exporters#sources"
+        },
+        {
+          "kind": "rule",
+          "id": "eu-ai-act-applicability#out-transparency"
+        },
+        {
+          "kind": "rule",
+          "id": "eu-ai-act-applicability#out-highrisk-annex-iii"
+        },
+        {
+          "kind": "rule",
+          "id": "eu-ai-act-applicability#out-highrisk-annex-i"
+        },
+        {
+          "kind": "rule",
+          "id": "eu-ai-act-applicability#out-unclear-annex"
+        }
+      ]
+    },
+    {
       "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689",
       "ok": true,
       "http_status": 202,
@@ -347,6 +399,54 @@
         {
           "kind": "content",
           "id": "it/eu-ai-act-swiss-exporters#sources"
+        }
+      ]
+    },
+    {
+      "url": "https://genai.owasp.org/llmrisk/llm01-prompt-injection/",
+      "ok": true,
+      "http_status": 200,
+      "reused_from_run": true,
+      "sources": [
+        {
+          "kind": "content",
+          "id": "de/ai-security-risks#sources"
+        },
+        {
+          "kind": "content",
+          "id": "en/ai-security-risks#sources"
+        },
+        {
+          "kind": "content",
+          "id": "fr/ai-security-risks#sources"
+        },
+        {
+          "kind": "content",
+          "id": "it/ai-security-risks#sources"
+        }
+      ]
+    },
+    {
+      "url": "https://genai.owasp.org/llmrisk/llm062025-excessive-agency/",
+      "ok": true,
+      "http_status": 200,
+      "reused_from_run": true,
+      "sources": [
+        {
+          "kind": "content",
+          "id": "de/ai-security-risks#sources"
+        },
+        {
+          "kind": "content",
+          "id": "en/ai-security-risks#sources"
+        },
+        {
+          "kind": "content",
+          "id": "fr/ai-security-risks#sources"
+        },
+        {
+          "kind": "content",
+          "id": "it/ai-security-risks#sources"
         }
       ]
     },
@@ -410,10 +510,6 @@
         },
         {
           "kind": "vendor",
-          "id": "mistral#training_opt_out.source_url"
-        },
-        {
-          "kind": "vendor",
           "id": "mistral#swiss_entity.source_url"
         },
         {
@@ -456,14 +552,17 @@
     },
     {
       "url": "https://openai.com/",
-      "ok": false,
-      "http_status": 403,
-      "error": "HTTP 403",
+      "ok": true,
+      "http_status": 200,
       "reused_from_run": false,
       "sources": [
         {
           "kind": "vendor",
           "id": "openai#website"
+        },
+        {
+          "kind": "vendor",
+          "id": "openai#pricing_tier.source_url"
         }
       ]
     },
@@ -492,10 +591,6 @@
         {
           "kind": "vendor",
           "id": "openai#certifications.source_url"
-        },
-        {
-          "kind": "vendor",
-          "id": "openai#pricing_tier.source_url"
         }
       ]
     },
@@ -524,6 +619,18 @@
       ]
     },
     {
+      "url": "https://privacy.claude.com/en/articles/10015870-what-certifications-has-anthropic-obtained",
+      "ok": true,
+      "http_status": 200,
+      "reused_from_run": true,
+      "sources": [
+        {
+          "kind": "vendor",
+          "id": "anthropic#certifications.source_url"
+        }
+      ]
+    },
+    {
       "url": "https://trustcenter.cohere.com/",
       "ok": true,
       "http_status": 200,
@@ -544,6 +651,30 @@
         {
           "kind": "vendor",
           "id": "cohere#certifications.source_url"
+        }
+      ]
+    },
+    {
+      "url": "https://www.admin.ch/gov/de/start/dokumentation/medienmitteilungen/bundesrat.msg-id-104110.html",
+      "ok": true,
+      "http_status": 200,
+      "reused_from_run": false,
+      "sources": [
+        {
+          "kind": "content",
+          "id": "de/ndsg-ai-basics#sources"
+        },
+        {
+          "kind": "content",
+          "id": "en/ndsg-ai-basics#sources"
+        },
+        {
+          "kind": "content",
+          "id": "fr/ndsg-ai-basics#sources"
+        },
+        {
+          "kind": "content",
+          "id": "it/ndsg-ai-basics#sources"
         }
       ]
     },
@@ -604,43 +735,98 @@
       ]
     },
     {
-      "url": "https://www.consilium.europa.eu/en/press/press-releases/2026/06/29/artificial-intelligence-council-gives-final-green-light-to-simplify-and-streamline-rules/",
-      "ok": false,
-      "http_status": 403,
-      "error": "HTTP 403",
-      "reused_from_run": false,
+      "url": "https://www.bacs.admin.ch/de/24w14-de",
+      "ok": true,
+      "http_status": 200,
+      "reused_from_run": true,
       "sources": [
         {
           "kind": "content",
-          "id": "de/eu-ai-act-swiss-exporters#sources"
+          "id": "de/ai-security-risks#sources"
         },
         {
           "kind": "content",
-          "id": "en/eu-ai-act-swiss-exporters#sources"
+          "id": "en/ai-security-risks#sources"
         },
         {
           "kind": "content",
-          "id": "fr/eu-ai-act-swiss-exporters#sources"
+          "id": "fr/ai-security-risks#sources"
         },
         {
           "kind": "content",
-          "id": "it/eu-ai-act-swiss-exporters#sources"
+          "id": "it/ai-security-risks#sources"
+        }
+      ]
+    },
+    {
+      "url": "https://www.bacs.admin.ch/de/26w4-de",
+      "ok": true,
+      "http_status": 200,
+      "reused_from_run": true,
+      "sources": [
+        {
+          "kind": "content",
+          "id": "de/ai-security-risks#sources"
         },
         {
-          "kind": "rule",
-          "id": "eu-ai-act-applicability#out-transparency"
+          "kind": "content",
+          "id": "en/ai-security-risks#sources"
         },
         {
-          "kind": "rule",
-          "id": "eu-ai-act-applicability#out-highrisk-annex-iii"
+          "kind": "content",
+          "id": "fr/ai-security-risks#sources"
         },
         {
-          "kind": "rule",
-          "id": "eu-ai-act-applicability#out-highrisk-annex-i"
+          "kind": "content",
+          "id": "it/ai-security-risks#sources"
+        }
+      ]
+    },
+    {
+      "url": "https://www.bacs.admin.ch/de/ceo-betrug",
+      "ok": true,
+      "http_status": 200,
+      "reused_from_run": true,
+      "sources": [
+        {
+          "kind": "content",
+          "id": "de/ai-security-risks#sources"
         },
         {
-          "kind": "rule",
-          "id": "eu-ai-act-applicability#out-unclear-annex"
+          "kind": "content",
+          "id": "en/ai-security-risks#sources"
+        },
+        {
+          "kind": "content",
+          "id": "fr/ai-security-risks#sources"
+        },
+        {
+          "kind": "content",
+          "id": "it/ai-security-risks#sources"
+        }
+      ]
+    },
+    {
+      "url": "https://www.bacs.admin.ch/de/informationen-zur-meldepflicht",
+      "ok": true,
+      "http_status": 200,
+      "reused_from_run": true,
+      "sources": [
+        {
+          "kind": "content",
+          "id": "de/ai-security-risks#sources"
+        },
+        {
+          "kind": "content",
+          "id": "en/ai-security-risks#sources"
+        },
+        {
+          "kind": "content",
+          "id": "fr/ai-security-risks#sources"
+        },
+        {
+          "kind": "content",
+          "id": "it/ai-security-risks#sources"
         }
       ]
     },
@@ -737,6 +923,30 @@
         {
           "kind": "vendor",
           "id": "deepl#pricing_tier.source_url"
+        }
+      ]
+    },
+    {
+      "url": "https://www.edoeb.admin.ch/dam/de/sd-web/T64CAUyvAMcF/1_2%20Leitfaden%20des%20ED%C3%96B%20betreffend%20die%20Meldung%20von%20Datensicherheitsverletzungen%20und%20Information%20der%20Betroffenen%20nach%20Art.%2024%20DSG_DE.pdf",
+      "ok": true,
+      "http_status": 200,
+      "reused_from_run": true,
+      "sources": [
+        {
+          "kind": "content",
+          "id": "de/ai-security-risks#sources"
+        },
+        {
+          "kind": "content",
+          "id": "en/ai-security-risks#sources"
+        },
+        {
+          "kind": "content",
+          "id": "fr/ai-security-risks#sources"
+        },
+        {
+          "kind": "content",
+          "id": "it/ai-security-risks#sources"
         }
       ]
     },
@@ -1008,11 +1218,19 @@
       "sources": [
         {
           "kind": "content",
+          "id": "de/ai-security-risks#sources"
+        },
+        {
+          "kind": "content",
           "id": "de/ndsg-ai-basics#sources"
         },
         {
           "kind": "content",
           "id": "de/us-hosted-llms-ndsg#sources"
+        },
+        {
+          "kind": "content",
+          "id": "en/ai-security-risks#sources"
         },
         {
           "kind": "content",
@@ -1024,11 +1242,19 @@
         },
         {
           "kind": "content",
+          "id": "fr/ai-security-risks#sources"
+        },
+        {
+          "kind": "content",
           "id": "fr/ndsg-ai-basics#sources"
         },
         {
           "kind": "content",
           "id": "fr/us-hosted-llms-ndsg#sources"
+        },
+        {
+          "kind": "content",
+          "id": "it/ai-security-risks#sources"
         },
         {
           "kind": "content",
@@ -1089,6 +1315,46 @@
         {
           "kind": "content",
           "id": "it/datenschutz#sources"
+        }
+      ]
+    },
+    {
+      "url": "https://www.fedlex.admin.ch/eli/cc/2022/568/de",
+      "ok": true,
+      "http_status": 200,
+      "reused_from_run": false,
+      "sources": [
+        {
+          "kind": "content",
+          "id": "de/ndsg-ai-basics#sources"
+        },
+        {
+          "kind": "content",
+          "id": "de/us-hosted-llms-ndsg#sources"
+        },
+        {
+          "kind": "content",
+          "id": "en/ndsg-ai-basics#sources"
+        },
+        {
+          "kind": "content",
+          "id": "en/us-hosted-llms-ndsg#sources"
+        },
+        {
+          "kind": "content",
+          "id": "fr/ndsg-ai-basics#sources"
+        },
+        {
+          "kind": "content",
+          "id": "fr/us-hosted-llms-ndsg#sources"
+        },
+        {
+          "kind": "content",
+          "id": "it/ndsg-ai-basics#sources"
+        },
+        {
+          "kind": "content",
+          "id": "it/us-hosted-llms-ndsg#sources"
         }
       ]
     },
@@ -1200,6 +1466,10 @@
         },
         {
           "kind": "vendor",
+          "id": "infomaniak#swiss_entity.source_url"
+        },
+        {
+          "kind": "vendor",
           "id": "infomaniak#dpa_url.value"
         }
       ]
@@ -1229,10 +1499,6 @@
         {
           "kind": "vendor",
           "id": "infomaniak#certifications.source_url"
-        },
-        {
-          "kind": "vendor",
-          "id": "infomaniak#swiss_entity.source_url"
         }
       ]
     },
@@ -1322,10 +1588,10 @@
     }
   ],
   "summary": {
-    "total": 51,
-    "ok": 49,
-    "broken": 2,
-    "reused": 36,
-    "probed": 15
+    "total": 61,
+    "ok": 61,
+    "broken": 0,
+    "reused": 44,
+    "probed": 17
   }
 }

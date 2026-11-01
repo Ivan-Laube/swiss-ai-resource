@@ -124,27 +124,47 @@ See all solutions
 
 Application Modernization
 
-Assess, plan, implement, and measure software practices and capabilities to modernize and simplify your organization’s business application portfolios.
+Modernize, automate, and scale your application and data portfolio using enterprise AI, intelligent engineering practices, and cloud-native infrastructure.
 
-CAMP
+Google Cloud Modernize
 
-Program that uses DORA to improve your software delivery capabilities.
+Unified program and AI-powered tools for end-to-end cloud migration and modernization.
 
-Modernize Traditional Applications
+Application Modernization with AI
 
-Analyze, categorize, and get started with cloud migration on traditional workloads.
+AI-assisted code refactoring, assessment, and transformation for legacy applications.
 
-Migrate from PaaS: Cloud Foundry, Openshift
+Gemini for business
 
-Tools for moving your existing containers into Google's managed container services.
+Enterprise-ready generative AI and agents to accelerate innovation across your organization.
 
-Migrate from Mainframe
+AI Hypercomputer
 
-Automated tools and prescriptive guidance for moving your mainframe apps to the cloud.
+Integrated supercomputing architecture to train, tune, and serve AI workloads.
 
-Modernize Software Delivery
+Mainframe Modernization
 
-Software supply chain best practices - innerloop productivity, CI/CD and S3C.
+Automated tools and AI-driven guidance for moving your mainframe apps to the cloud.
+
+Database Modernization
+
+Fully managed database services to migrate, manage, and modernize enterprise data.
+
+Data Lake Modernization
+
+Unify and govern multimodal data on an open, high-performance cloud data lake.
+
+Data Warehouse Modernization
+
+Migrate and modernize your enterprise data warehouse for serverless analytics and AI.
+
+APIs
+
+Unlock legacy applications and build new digital channels using APIs and automation.
+
+Platform Eng
+
+Managed services and golden paths to build, manage, and scale internal developer platforms.
 
 DevOps Best Practices
 
@@ -154,23 +174,15 @@ SRE Principles
 
 Tools and resources for adopting SRE in your org.
 
-Platform Engineering
-
-Comprehensive suite of managed services and Golden Paths to build, manage, and scale IDPs.
-
-Architect for Multicloud
-
-Manage workloads across multiple clouds with a consistent platform.
-
 Artificial Intelligence
 
 Add intelligence and efficiency to your business with AI and machine learning.
 
-Gemini Enterprise for Customer Experience
+Gemini for customer experience
 
 Build and manage agents that live across the entire customer lifecycle.
 
-Gemini Enterprise
+Gemini for enterprise
 
 Unified agentic portfolio for your entire organization.
 
@@ -278,57 +290,57 @@ Gemini for Databases
 
 Supercharge database development and management with AI.
 
-Infrastructure
+Infrastructure Modernization
 
-Migrate quickly with solutions for SAP, VMware, Windows, Oracle, and other workloads.
+Migrate core systems rapidly and modernize enterprise workloads with AI-powered infrastructure and automated cloud solutions.
 
-Application Migration
+Google Cloud Modernize
 
-Discovery and analysis tools for moving to the cloud.
+Unified program and AI-powered tools for end-to-end cloud migration and modernization.
 
-SAP on Google Cloud
+Gemini for business
 
-Certifications for running SAP applications and SAP HANA.
+Enterprise-ready generative AI and agents to accelerate innovation across your organization.
 
-High Performance Computing
+AI Hypercomputer
 
-Compute, storage, and networking options to support any workload.
+Integrated supercomputing architecture to train, tune, and serve AI workloads.
 
-Windows on Google Cloud
+Rapid Migration and Modernization Program (RaMP)
 
-Tools and partners for running Windows workloads.
+End-to-end migration program to simplify and accelerate your path to the cloud.
 
-Data Center Migration
+Data Center Exits
 
-Migration solutions for VMs, apps, databases, and more.
+Migration solutions for moving VMs, apps, databases, and workloads out of data centers.
 
-Active Assist
+Application Modernization & Migration
 
-Automatic cloud resource optimization and increased security.
+Discovery, assessment, and migration tools for moving and modernizing applications.
 
-Virtual Desktops
+Database Modernization & Migration
 
-Remote work solutions for desktops and applications (VDI & DaaS).
+Fully managed database services to migrate, manage, and modernize enterprise data.
 
-Rapid Migration and Modernization Program
-
-End-to-end migration program to simplify your path to the cloud.
-
-Backup and Disaster Recovery
-
-Ensure your business continuity needs are met.
-
-Red Hat on Google Cloud
-
-Google and Red Hat provide an enterprise-grade platform for traditional on-prem and custom applications.
-
-Cross-Cloud Network
+Cross-Cloud Networking
 
 Simplify hybrid and multicloud networking, and secure your workloads, data, and users.
 
-AI Infrastructure
+High Performance Computing (HPC)
 
-Train, serve and operate your AI applications on the agent-native infrastructure powering Google.
+Compute, storage, and networking options to support any high-performance workload.
+
+VMware
+
+Fully managed, native VMware Cloud Foundation software stack on Google Cloud.
+
+SAP
+
+Certified infrastructure and AI solutions for running SAP applications and SAP HANA.
+
+Windows
+
+Tools, licenses, and partner solutions for running enterprise Windows workloads.
 
 Productivity and Collaboration
 
@@ -404,11 +416,11 @@ close
 
 Featured Products
 
-Gemini Enterprise app
+Gemini for business
 
 Secure platform to discover, create, run, and govern AI agents for employees.
 
-Agent Platform
+Gemini platform
 
 Unified platform for ML models, generative AI, and agent building.
 
@@ -454,15 +466,15 @@ See all products (100+)
 
 AI and Machine Learning
 
-Gemini Enterprise Agent Platform
+Gemini platform
 
 Unified platform for ML models, generative AI, and agent building.
 
-Gemini Enterprise app
+Gemini for business
 
 Secure platform to discover, create, run, and govern AI agents for employees.
 
-Gemini Enterprise for Customer Experience
+Gemini for customer experience
 
 Build and manage agents that live across the entire customer lifecycle.
 
@@ -1068,7 +1080,7 @@ AppSheet Automation
 
 Build automations and applications on a unified platform.
 
-Gemini Enterprise app
+Gemini for business
 
 Secure platform to discover, create, run, and govern AI agents for employees.
 
@@ -1468,29 +1480,35 @@ See all solutions
 
 Application Modernization
 
-CAMP
+Google Cloud Modernize
 
-Modernize Traditional Applications
+Application Modernization with AI
 
-Migrate from PaaS&#58; Cloud Foundry, Openshift
+Gemini for business
 
-Migrate from Mainframe
+AI Hypercomputer
 
-Modernize Software Delivery
+Mainframe Modernization
+
+Database Modernization
+
+Data Lake Modernization
+
+Data Warehouse Modernization
+
+APIs
+
+Platform Eng
 
 DevOps Best Practices
 
 SRE Principles
 
-Platform Engineering
-
-Architect for Multicloud
-
 Artificial Intelligence
 
-Gemini Enterprise for Customer Experience
+Gemini for customer experience
 
-Gemini Enterprise
+Gemini for enterprise
 
 AI Commerce Search
 
@@ -1544,31 +1562,31 @@ SQL Server on Google Cloud
 
 Gemini for Databases
 
-Infrastructure
+Infrastructure Modernization
 
-Application Migration
+Google Cloud Modernize
 
-SAP on Google Cloud
+Gemini for business
 
-High Performance Computing
+AI Hypercomputer
 
-Windows on Google Cloud
+Rapid Migration and Modernization Program (RaMP)
 
-Data Center Migration
+Data Center Exits
 
-Active Assist
+Application Modernization & Migration
 
-Virtual Desktops
+Database Modernization & Migration
 
-Rapid Migration and Modernization Program
+Cross-Cloud Networking
 
-Backup and Disaster Recovery
+High Performance Computing (HPC)
 
-Red Hat on Google Cloud
+VMware
 
-Cross-Cloud Network
+SAP
 
-AI Infrastructure
+Windows
 
 Productivity and Collaboration
 
@@ -1606,9 +1624,9 @@ Software as a Service
 
 Featured Products
 
-Gemini Enterprise app
+Gemini for business
 
-Agent Platform
+Gemini platform
 
 Compute Engine
 
@@ -1632,11 +1650,11 @@ See all products (100+)
 
 AI and Machine Learning
 
-Gemini Enterprise Agent Platform
+Gemini platform
 
-Gemini Enterprise app
+Gemini for business
 
-Gemini Enterprise for Customer Experience
+Gemini for customer experience
 
 Model Garden
 
@@ -1956,7 +1974,7 @@ AppSheet
 
 AppSheet Automation
 
-Gemini Enterprise app
+Gemini for business
 
 Google Workspace
 
@@ -3786,6 +3804,54 @@ allow Customer to request access for the third-party
 controller to the NetApp SOC Reports in accordance with
 Section 7.5.3 (Additional Business Terms for Reviews and
 Audits).
+Google Cloud Universal Ledger (GCUL) (Google Cloud Platform)
+GCUL provides financial institutions and intermediaries with access to a
+managed, distributed ledger network and, by design, has certain distinct
+characteristics.
+1. Additional Definition.
+
+”Transaction” has the meaning given in the Service Specific Terms.
+”Transaction Data” means the Customer Data defined as Transaction
+Data in the Service Specific Terms.
+”Validator Nodes” has the meaning given in the Service Specific Terms.
+
+2. Amendments. This Addendum is amended as follows
+with respect to the Validator Nodes of GCUL:
+
+Section 3 (Duration) is replaced with the following:
+
+3. Duration. Regardless of whether the applicable Agreement
+has terminated or expired, this Addendum will remain in effect until, and
+automatically expire when, Google deletes all Customer Data (other than
+Transaction Data) as described in this Addendum.
+
+Section 6 (Data Deletion) is replaced with the following:
+
+6. Data Deletion. Customer acknowledges that (a) the
+functionality of the Services will not allow Customer to delete
+Transaction Data during the Term or Google to delete Transaction
+Data (including existing copies) from Google’s systems at the end of
+the Term, but that (b) the foregoing does not affect Customer’s ability
+to delete from systems managed or otherwise controlled by Customer any
+copies of, or information related to, Transaction Data at any time.
+
+Section 9.1 (Access; Rectification; Restricted Processing; Portability) is
+replaced with the following:
+
+Section 9.1 Access; Rectification; Restricted Processing;
+Portability. During the Term, Google will enable Customer, in a manner
+consistent with the functionality of the Services, to access and restrict
+processing of Transaction Data, and to export Transaction Data.
+If Customer becomes aware that any Transaction Data is inaccurate or
+outdated, Customer will be responsible for submitting a subsequent
+Transaction or other instruction to the Validator Node or using
+systems managed or otherwise controlled by Customer, to rectify or delete
+that data as appropriate.
+
+3. Customer Use Restriction. Customer acknowledges that
+Google does not require personal data in order to process, execute, and
+record Transactions on Validator Nodes and agrees that Customer will not
+include any personal data in Transaction Data.
 Google Workspace and Cloud Identity
 
 1. Additional Definitions.
@@ -4583,7 +4649,9 @@ February 22, 2023
 February 6, 2023
 
 Previous versions
-(Last modified June 8, 2026)
+(Last modified October 30, 2026)
+
+June 8, 2026
 
 October 23, 2025
 
@@ -4664,6 +4732,8 @@ Code samples
 Cloud Architecture Center
 
 Training and Certification
+
+Builders Hub
 
 Developer Center
 

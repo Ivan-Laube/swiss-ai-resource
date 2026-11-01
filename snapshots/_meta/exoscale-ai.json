@@ -2,13 +2,13 @@
   "id": "exoscale-ai",
   "url": "https://www.exoscale.com/ai-cloud-infrastructure/",
   "fetched_url": "https://www.exoscale.com/ai-cloud-infrastructure/",
-  "fetched_at": "2026-10-01T12:31:03.242Z",
+  "fetched_at": "2026-11-01T12:45:17.229Z",
   "http_status": 200,
   "content_type": "text/html; charset=utf-8",
-  "sha256": "fd4a5287aee9daa54af29ef230d863e697e0be93d42eabb6432d306284c6a9d7",
-  "byte_length": 17621,
+  "sha256": "fd5a51b4a8af19643e89d3da7afc94b7b319e3591b36a2b621b08e046fa63aa0",
+  "byte_length": 17693,
   "ok": true,
   "consecutive_failures": 0,
-  "last_ok_at": "2026-10-01T12:31:03.242Z",
+  "last_ok_at": "2026-11-01T12:45:17.229Z",
   "attempt": "bot"
 }

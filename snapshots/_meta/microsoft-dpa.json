@@ -2,13 +2,13 @@
   "id": "microsoft-dpa",
   "url": "https://www.microsoft.com/licensing/docs/view/Microsoft-Products-and-Services-Data-Protection-Addendum-DPA",
   "fetched_url": "https://www.microsoft.com/licensing/docs/view/Microsoft-Products-and-Services-Data-Protection-Addendum-DPA",
-  "fetched_at": "2026-10-01T12:30:52.358Z",
+  "fetched_at": "2026-11-01T12:45:02.640Z",
   "http_status": 200,
   "content_type": "text/html; charset=utf-8",
-  "sha256": "10c5519e63bc11870315eb9b6b31ebe142ff41806da9b005003ce22c56782901",
-  "byte_length": 42469,
+  "sha256": "8c62874edd86c536d9298b636c193a74116d75e7c2e38a5338d8e5e6ab3570f5",
+  "byte_length": 45685,
   "ok": true,
   "consecutive_failures": 0,
-  "last_ok_at": "2026-10-01T12:30:52.358Z",
+  "last_ok_at": "2026-11-01T12:45:02.640Z",
   "attempt": "bot"
 }

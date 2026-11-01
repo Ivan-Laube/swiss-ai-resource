@@ -172,17 +172,17 @@ Shadow rapporteur
 
 VOSS Axel (EPP)
 
-VIGENIN Kristian (S&D)
-
 BENIFEI Brando (S&D)
 
-JORON Virginie (PfE)
+VIGENIN Kristian (S&D)
 
 BŽOCH Jaroslav (PfE)
 
-KANKO Assita (ECR)
+JORON Virginie (PfE)
 
 MÜLLER Piotr (ECR)
+
+KANKO Assita (ECR)
 
 HAHN Svenja (Renew)
 
@@ -190,9 +190,9 @@ VAN SPARRENTAK Kim (Greens/EFA)
 
 GREGOROVÁ Markéta (Greens/EFA)
 
-CHAIBI Leila (The Left)
-
 BARRENA ARZA Pernando (The Left)
+
+CHAIBI Leila (The Left)
 
 KHAN Mary (ESN)
 
@@ -844,6 +844,8 @@ Final act
 Regulation 2026/1744
 
 OJ OJ L 24.07.2026
+
+Summary
 
 Procedure file
 

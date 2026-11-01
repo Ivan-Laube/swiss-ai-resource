@@ -90,13 +90,15 @@ GrafanaDashboards for your metrics and logs
 
 ThanosLong-term storage for Prometheus metrics
 
-NetworkingPrivate Networks, Network Load Balancer and Elastic IPs
+Networking OverviewExplore all networking products
 
-Virtual Private CloudDedicated hypervisors and Private Connect
+Virtual Private CloudSubnets, routing, Security Groups
 
 DNSAnycast resolution at low latency
 
 CDNDeliver content directly from your buckets
+
+Security OverviewEncryption, key management and keys you hold yourself
 
 Key Management ServiceCreate and control your own encryption keys
 
@@ -140,7 +142,7 @@ StorageObject Storage and Block Storage
 
 DBaaSEngines, plans and service boundaries
 
-NetworkingLoad balancing, DNS, CDN and Private Networks
+NetworkingLoad balancing, DNS, CDN and VPC
 
 SecurityKey Management Service and IAM
 
@@ -374,9 +376,9 @@ Networking
 Networking
 Connect, route and protect your traffic
 
-NetworkingPrivate Networks, Network Load Balancer and Elastic IPs
+Networking OverviewExplore all networking products
 
-Virtual Private CloudDedicated hypervisors and Private Connect
+Virtual Private CloudSubnets, routing, Security Groups
 
 DNSAnycast resolution at low latency
 
@@ -387,6 +389,8 @@ Security
 
 Security
 Keys, access and encryption
+
+Security OverviewEncryption, key management and keys you hold yourself
 
 Key Management ServiceCreate and control your own encryption keys
 
@@ -439,7 +443,7 @@ StorageObject Storage and Block Storage
 
 DBaaSEngines, plans and service boundaries
 
-NetworkingLoad balancing, DNS, CDN and Private Networks
+NetworkingLoad balancing, DNS, CDN and VPC
 
 SecurityKey Management Service and IAM
 

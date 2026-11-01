@@ -1,0 +1,14 @@
+{
+  "id": "bacs-ceo-betrug",
+  "url": "https://www.bacs.admin.ch/de/ceo-betrug",
+  "fetched_url": "https://www.bacs.admin.ch/de/ceo-betrug",
+  "fetched_at": "2026-11-01T12:45:21.363Z",
+  "http_status": 200,
+  "content_type": "text/html;charset=utf-8",
+  "sha256": "09e998126ed4fff4a76194c9049f4d910c0602c569a067c86f86f3df43b0478f",
+  "byte_length": 3352,
+  "ok": true,
+  "consecutive_failures": 0,
+  "last_ok_at": "2026-11-01T12:45:21.363Z",
+  "attempt": "bot"
+}

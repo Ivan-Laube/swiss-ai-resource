@@ -2,20 +2,16 @@ Index: snapshots/ibm-watsonx-home.txt
 ===================================================================
 --- snapshots/ibm-watsonx-home.txt
 +++ snapshots/ibm-watsonx-home.txt
-@@ -229,12 +229,12 @@
+@@ -187,12 +187,6 @@
  
- AI academy
+ For developers
  
--Blog
+-Sample watsonx applications
 -
- Client stories
- 
--Community
+-IBM's enterprise ready AI and data platform designed to leverage foundation models and machine learning
 -
- Documentation
+-For developers
+-
+ Sample watsonx code
  
-+Blog
-+
-+Community
-+
- *Accelerating software development with gen AI case study
+ Your launchpad to move faster, amplify impact, and deliver AI-driven solutions that set new standards - let’s take your business further

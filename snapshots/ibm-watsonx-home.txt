@@ -187,12 +187,6 @@ Using IBM watsonx.ai as a Service APIs, you can run text inference, prompt tunin
 
 For developers
 
-Sample watsonx applications
-
-IBM's enterprise ready AI and data platform designed to leverage foundation models and machine learning
-
-For developers
-
 Sample watsonx code
 
 Your launchpad to move faster, amplify impact, and deliver AI-driven solutions that set new standards - let’s take your business further

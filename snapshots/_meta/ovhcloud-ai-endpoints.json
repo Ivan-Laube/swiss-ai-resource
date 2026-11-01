@@ -2,13 +2,13 @@
   "id": "ovhcloud-ai-endpoints",
   "url": "https://docs.ovhcloud.com/en/guides/public-cloud/ai-machine-learning/ai-endpoints-capabilities",
   "fetched_url": "https://docs.ovhcloud.com/en/guides/public-cloud/ai-machine-learning/ai-endpoints-capabilities",
-  "fetched_at": "2026-10-01T12:31:03.786Z",
+  "fetched_at": "2026-11-01T12:45:17.930Z",
   "http_status": 200,
-  "content_type": "text/html",
-  "sha256": "af1af8eea8f327ad075fdb06a62c446acb1e7fa3854c11d27fc38d4a2a5f1489",
-  "byte_length": 119626,
+  "content_type": "text/html; charset=utf-8",
+  "sha256": "42097c72734ef930a342714331fbcd75aa87c5ee10d04543666a8506c345ca88",
+  "byte_length": 121340,
   "ok": true,
   "consecutive_failures": 0,
-  "last_ok_at": "2026-10-01T12:31:03.786Z",
+  "last_ok_at": "2026-11-01T12:45:17.930Z",
   "attempt": "bot"
 }

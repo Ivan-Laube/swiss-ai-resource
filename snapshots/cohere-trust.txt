@@ -192,7 +192,7 @@ Performance Review Policy
 
 Internal Control Policy
 
-View 9 more controls
+View 8 more controls
 Confidentiality
 
 Data Classification Policy
@@ -310,9 +310,6 @@ An Information Security Policy establishes the security requirements for maintai
 
 Advisor Meetings on Security
 Senior management and/or board of directors meets at least annually to review business goals, company initiatives, resource needs, risk management activities, and other internal/external matters. The information security team meets at least annually to discuss security risks, roles & responsibilities, controls, changes, audit results and/or other matters as necessary.
-
-Information Security Program Review
-Management is responsible for the design, implementation, and management of the organization’s security policies and procedures. The policies and procedures are reviewed by management at least annually.
 
 Disciplinary Action
 Personnel who violate information security policies are subject to disciplinary action and such disciplinary action is clearly documented in one or more policies.

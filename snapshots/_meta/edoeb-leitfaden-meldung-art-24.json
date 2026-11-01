@@ -1,0 +1,14 @@
+{
+  "id": "edoeb-leitfaden-meldung-art-24",
+  "url": "https://www.edoeb.admin.ch/dam/de/sd-web/T64CAUyvAMcF/1_2%20Leitfaden%20des%20ED%C3%96B%20betreffend%20die%20Meldung%20von%20Datensicherheitsverletzungen%20und%20Information%20der%20Betroffenen%20nach%20Art.%2024%20DSG_DE.pdf",
+  "fetched_url": "https://www.edoeb.admin.ch/dam/de/sd-web/T64CAUyvAMcF/1_2%20Leitfaden%20des%20ED%C3%96B%20betreffend%20die%20Meldung%20von%20Datensicherheitsverletzungen%20und%20Information%20der%20Betroffenen%20nach%20Art.%2024%20DSG_DE.pdf",
+  "fetched_at": "2026-11-01T12:45:25.600Z",
+  "http_status": 200,
+  "content_type": "application/pdf",
+  "sha256": "d3222251c25ebe70bd5a890dd48ea70b2de8d13d6bdc4b9cda66409018c625e1",
+  "byte_length": 28661,
+  "ok": true,
+  "consecutive_failures": 0,
+  "last_ok_at": "2026-11-01T12:45:25.600Z",
+  "attempt": "bot"
+}

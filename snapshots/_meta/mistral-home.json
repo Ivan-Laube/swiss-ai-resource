@@ -2,13 +2,13 @@
   "id": "mistral-home",
   "url": "https://mistral.ai/",
   "fetched_url": "https://mistral.ai/",
-  "fetched_at": "2026-10-01T12:30:53.881Z",
+  "fetched_at": "2026-11-01T12:45:05.277Z",
   "http_status": 200,
   "content_type": "text/html; charset=UTF-8",
-  "sha256": "affa43ec541203704ad4a68473fc4df8a2139125b486f9d9c6b8007f5a81bed1",
-  "byte_length": 7489,
+  "sha256": "7b1ea420cd95898e182ca521a019c32840aad4931ddde15f46807ce810c878cd",
+  "byte_length": 5586,
   "ok": true,
   "consecutive_failures": 0,
-  "last_ok_at": "2026-10-01T12:30:53.881Z",
+  "last_ok_at": "2026-11-01T12:45:05.277Z",
   "attempt": "bot"
 }

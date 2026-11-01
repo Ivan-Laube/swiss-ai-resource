@@ -1,0 +1,14 @@
+{
+  "id": "owasp-llm01-prompt-injection",
+  "url": "https://genai.owasp.org/llmrisk/llm01-prompt-injection/",
+  "fetched_url": "https://genai.owasp.org/llmrisk/llm01-prompt-injection/",
+  "fetched_at": "2026-11-01T12:45:24.537Z",
+  "http_status": 200,
+  "content_type": "text/html; charset=UTF-8",
+  "sha256": "7fc664089661db4b34e4257f35a25b0e2b49b3a30dd28bad95f13c94fb341519",
+  "byte_length": 12795,
+  "ok": true,
+  "consecutive_failures": 0,
+  "last_ok_at": "2026-11-01T12:45:24.537Z",
+  "attempt": "bot"
+}

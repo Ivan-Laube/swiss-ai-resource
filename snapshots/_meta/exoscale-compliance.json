@@ -2,13 +2,13 @@
   "id": "exoscale-compliance",
   "url": "https://www.exoscale.com/compliance/",
   "fetched_url": "https://www.exoscale.com/compliance/",
-  "fetched_at": "2026-10-01T12:31:02.315Z",
+  "fetched_at": "2026-11-01T12:45:16.044Z",
   "http_status": 200,
   "content_type": "text/html; charset=utf-8",
-  "sha256": "52610d6fe8dd5be8298df2e2fe02c9b41c3c0a68db4f0bf7a2baafdd66fad2fc",
-  "byte_length": 17391,
+  "sha256": "1fcea23beced83aaea3b9b0889682adcf8d40d279183a3ad10a640d8a0cd7dd6",
+  "byte_length": 17463,
   "ok": true,
   "consecutive_failures": 0,
-  "last_ok_at": "2026-10-01T12:31:02.315Z",
+  "last_ok_at": "2026-11-01T12:45:16.044Z",
   "attempt": "bot"
 }

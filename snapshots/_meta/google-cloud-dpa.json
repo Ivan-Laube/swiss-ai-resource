@@ -2,13 +2,13 @@
   "id": "google-cloud-dpa",
   "url": "https://cloud.google.com/terms/data-processing-addendum",
   "fetched_url": "https://cloud.google.com/terms/data-processing-addendum",
-  "fetched_at": "2026-10-01T12:30:49.240Z",
+  "fetched_at": "2026-11-01T12:44:59.822Z",
   "http_status": 200,
   "content_type": "text/html; charset=utf-8",
-  "sha256": "7cdb2f7477ee79f51d3295337188746f10f0096870ab3ac403cd70e377afac2b",
-  "byte_length": 141150,
+  "sha256": "ca5a316bde4fee9f7af67b2bcfa2df0a2050d81386b4d4d642c79198fde6b185",
+  "byte_length": 144074,
   "ok": true,
   "consecutive_failures": 0,
-  "last_ok_at": "2026-10-01T12:30:49.240Z",
+  "last_ok_at": "2026-11-01T12:44:59.822Z",
   "attempt": "bot"
 }

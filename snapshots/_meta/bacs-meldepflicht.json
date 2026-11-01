@@ -1,0 +1,14 @@
+{
+  "id": "bacs-meldepflicht",
+  "url": "https://www.bacs.admin.ch/de/informationen-zur-meldepflicht",
+  "fetched_url": "https://www.bacs.admin.ch/de/informationen-zur-meldepflicht",
+  "fetched_at": "2026-11-01T12:45:23.883Z",
+  "http_status": 200,
+  "content_type": "text/html;charset=utf-8",
+  "sha256": "2e09e80868b8e8e7be6db7f03e5b039cd2ae46c1219e46a66956b6c6684b0043",
+  "byte_length": 2816,
+  "ok": true,
+  "consecutive_failures": 0,
+  "last_ok_at": "2026-11-01T12:45:23.883Z",
+  "attempt": "bot"
+}

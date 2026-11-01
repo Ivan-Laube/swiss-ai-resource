@@ -2,13 +2,13 @@
   "id": "edoeb-ki-und-datenschutz",
   "url": "https://www.edoeb.admin.ch/de/ki-und-datenschutz",
   "fetched_url": "https://www.edoeb.admin.ch/de/ki-und-datenschutz",
-  "fetched_at": "2026-10-01T12:28:54.774Z",
+  "fetched_at": "2026-11-01T12:43:07.423Z",
   "http_status": 200,
   "content_type": "text/html;charset=utf-8",
-  "sha256": "a53aafcb0ab0f3ed4c5a71f4d785f7053451f9fd9b985a79941eb1c2f869534a",
-  "byte_length": 5541,
+  "sha256": "e921f344750004a8be28507d4b298876b91a0e21fa7dc759a32a7391fb56b97b",
+  "byte_length": 6115,
   "ok": true,
   "consecutive_failures": 0,
-  "last_ok_at": "2026-10-01T12:28:54.774Z",
+  "last_ok_at": "2026-11-01T12:43:07.423Z",
   "attempt": "bot"
 }

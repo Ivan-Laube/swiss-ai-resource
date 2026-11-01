@@ -2,13 +2,13 @@
   "id": "google-cloud-ml-locations",
   "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/machine-learning/general/locations",
   "fetched_url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/machine-learning/general/locations",
-  "fetched_at": "2026-10-01T12:30:50.294Z",
+  "fetched_at": "2026-11-01T12:45:01.101Z",
   "http_status": 200,
   "content_type": "text/html; charset=utf-8",
-  "sha256": "8f5f475f0689bb1791d9ff90934e8ce7d3a3739f003b0a538dd0aff85ddf4c75",
-  "byte_length": 66969,
+  "sha256": "b9eae45c315afe5e6a3728e17f0bb2a668076bc7a4bee5f4a884558b8a68ba48",
+  "byte_length": 30937,
   "ok": true,
   "consecutive_failures": 0,
-  "last_ok_at": "2026-10-01T12:30:50.294Z",
+  "last_ok_at": "2026-11-01T12:45:01.101Z",
   "attempt": "bot"
 }
