@@ -1,7 +1,7 @@
 ---
 title: "Attentes de la FINMA en matière de gouvernance de l'IA"
 description: "Ce que la communication FINMA sur la surveillance 08/2024 attend des établissements assujettis en matière d'utilisation de l'IA : gouvernance, inventaire, qualité des données, tests, explicabilité et contrôle indépendant."
-last_verified: "2026-07-10"
+last_verified: "2026-11-01"
 volatility: "moderate"
 translation_status: "draft"
 category: "finanzmarkt"

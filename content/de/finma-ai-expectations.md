@@ -1,7 +1,7 @@
 ---
 title: "FINMA-Erwartungen an KI-Governance"
 description: "Was die FINMA-Aufsichtsmitteilung 08/2024 von beaufsichtigten Instituten beim Einsatz von KI erwartet: Governance, Inventar, Datenqualität, Tests, Erklärbarkeit und unabhängige Überprüfung."
-last_verified: "2026-07-10"
+last_verified: "2026-11-01"
 volatility: "moderate"
 translation_status: "canonical"
 category: "finanzmarkt"

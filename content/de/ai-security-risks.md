@@ -1,7 +1,7 @@
 ---
 title: "KI und Cybersicherheit: Risiken für KMU"
 description: "KI-Tools mit zu vielen Rechten, manipulierte Inhalte (Prompt Injection) und KI-gestützter Betrug: was KMU wissen sollten, wie sie sich schützen und was bei einem Vorfall zu tun ist."
-last_verified: "2026-10-02"
+last_verified: "2026-11-01"
 volatility: "fast"
 translation_status: "canonical"
 category: "sicherheit"

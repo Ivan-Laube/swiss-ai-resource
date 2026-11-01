@@ -1,7 +1,7 @@
 ---
 title: "AI and Cybersecurity: Risks for SMEs"
 description: "AI tools with too many permissions, manipulated content (prompt injection), and AI-assisted fraud: what SMEs should know, how to protect themselves, and what to do in the event of an incident."
-last_verified: "2026-10-02"
+last_verified: "2026-11-01"
 volatility: "fast"
 translation_status: "draft"
 category: "sicherheit"

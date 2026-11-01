@@ -1,7 +1,7 @@
 ---
 title: "FINMA Expectations for AI Governance"
 description: "What FINMA Supervisory Notice 08/2024 expects from supervised institutions when using AI: governance, inventory, data quality, testing, explainability and independent review."
-last_verified: "2026-07-10"
+last_verified: "2026-11-01"
 volatility: "moderate"
 translation_status: "draft"
 category: "finanzmarkt"

@@ -1,7 +1,7 @@
 ---
 title: "Aspettative FINMA sulla governance dell'IA"
 description: "Che cosa richiede la comunicazione di vigilanza FINMA 08/2024 agli istituti sottoposti a vigilanza in relazione all'uso dell'IA: governance, inventario, qualità dei dati, test, spiegabilità e verifica indipendente."
-last_verified: "2026-07-10"
+last_verified: "2026-11-01"
 volatility: "moderate"
 translation_status: "draft"
 category: "finanzmarkt"

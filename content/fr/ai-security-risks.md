@@ -1,7 +1,7 @@
 ---
 title: "IA et cybersécurité : risques pour les PME"
 description: "Outils d'IA disposant de trop de droits, contenus manipulés (injection de prompt) et fraude assistée par l'IA : ce que les PME doivent savoir, comment s'en protéger et que faire en cas d'incident."
-last_verified: "2026-10-02"
+last_verified: "2026-11-01"
 volatility: "fast"
 translation_status: "draft"
 category: "sicherheit"

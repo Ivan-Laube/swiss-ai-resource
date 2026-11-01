@@ -1,7 +1,7 @@
 ---
 title: "IA e cibersicurezza: rischi per le PMI"
 description: "Strumenti di IA con troppi diritti, contenuti manipolati (prompt injection) e frodi assistite dall'IA: cosa le PMI devono sapere, come proteggersi e cosa fare in caso di incidente."
-last_verified: "2026-10-02"
+last_verified: "2026-11-01"
 volatility: "fast"
 translation_status: "draft"
 category: "sicherheit"
